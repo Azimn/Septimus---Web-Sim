@@ -1,14 +1,16 @@
-# SEPTIMUS | The Tower outside Ingolstadt
+# SEPTIMUS | The Living Laboratory
 
-A small, persistent, browser-based life simulation set at **Septimus Pretorius's partly ruined tower outside Ingolstadt**, before the separate Frankenstein Village story. It includes a physical kitchen, laboratory, garden, catalogs, finite supplies and mail delivery. It is a new independent project. It does **not** depend on Candidate B, its organs, or the original Pretorius-Laboratory physics.
+A small, persistent, browser-based life simulation with a concrete physical house, kitchen, laboratory, garden, catalogs, finite goods and mail delivery. It is a new independent project. It does **not** depend on Candidate B, its organs, or the original Pretorius-Laboratory physics.
 
-The frozen [450-memory autobiographical source](https://github.com/Azimn/Pretorius-Connectome/blob/main/memories/current/Pretorius_v12_450_Events_Complete.jsonl) repeatedly describes this tower but gives it no established proper name. The previous Ash Grove label had no source support. Our [home continuity audit](docs/HOME_CONTINUITY_AUDIT.md) separates source-backed history from gameplay inventions and explains the append-only correction for older save files.
+## Continuity and scenario time
 
-## Tower-era continuity
+The same fictional Septimus Pretorius has lived at the partly ruined tower since 1868. The last dated reconstructed memory is June 1899. This simulation begins on **July 1, 1899**, an explicit scenario starting assumption, and runs without a scripted end date. The future relocation to Frankenstein Village belongs to a separate game and is **not yet a lived world event**. Historical room and acquaintance references are exposed as read-only source-linked hooks; no visitor is silently spawned. The 450 source memories are **not imported yet**. See [TOWER_CHRONOLOGY.md](docs/TOWER_CHRONOLOGY.md).
 
-Septimus is the fictional resident from the frozen [450-memory Pretorius autobiography](https://github.com/Azimn/Pretorius-Connectome/blob/main/memories/current/Pretorius_v12_450_Events_Complete.jsonl). The last dated source event occurs in June 1899. Gameplay begins on **July 1, 1899**, an explicit scenario assumption. It runs indefinitely until a genuine in-world endpoint such as death. **No relocation date has been assigned** for the separate Frankenstein Village game.
+## The private diary and external self
 
-The 16 x 10 board remains a compressed navigation map rather than an invented architectural floor plan. `/api/state` and `/api/export` expose source-linked room and approximate floor metadata, a historical acquaintance index, and the currently unimported 450-record archive reference. The historical people are not spawned visitors; remembered history is not mislabeled as new lived experience. New physical receipts have calendar dates and the interface shows a story date and `@beats`. See [the chronology contract](docs/TOWER_CHRONOLOGY.md).
+The tower library now contains a physically reachable **private notebook**. He may write first-person retrospective pages only after reaching the object, with each page linked to a real prior world receipt. He may consult individual folios of the **actual 450 reconstructed autobiographical memories**, carried verbatim from `Pretorius-Connectome` with frozen source hash and explicitly labeled as reconstructed backstory. Observer tools may inspect all 450 via `/api/folios`, but the character is only permitted to know a folio after an in-world notebook-reading receipt. Historical memories are not relabeled as events lived in the new simulation.
+
+The simple external Ipseity remains in `identity.json`. Perception and optional model prompts are first-person and situated, with no BeatTime, engine ticks or omniscient access to events in other rooms. BeatTime is for operators and simulation mechanics only. Diary prose is conservative deterministic templating until a local language model is integrated for richer subjective recollection. See [journal and Ipseity design](docs/JOURNAL_AND_IPSEITY.md).
 
 ## Run locally
 
@@ -18,7 +20,7 @@ Requires Node.js 20 or later. No npm dependencies, database server, hosted API, 
 npm start
 ```
 
-Visit **http://127.0.0.1:8765/**. Press **Begin life** to run autonomously, even when the browser tab is closed (as long as the Node server remains running). **Step once**, **+10** and **+120** advance by deterministic ten-minute simulated ticks. Stop or restart the server, then restart it: world state, mail, weather-independent crops, money, goals, event history and the running setting survive in the local `data/events.jsonl` journal.
+Visit **http://127.0.0.1:8765/**. Press **Begin life** to run autonomously, even when the browser tab is closed (as long as the Node server remains running). **Step once**, **+10** and **+120** advance by deterministic ten-minute simulated ticks, dated from **July 1, 1899, 07:00**, stopping at the story handoff on **December 31, 1899, 23:50**. Stop or restart the server, then restart it: world state, mail, weather-independent crops, money, goals, event history and the running setting survive in the local `data/events.jsonl` journal.
 
 To run unit, integration and behavioral tests:
 
@@ -39,7 +41,7 @@ Septimus has hunger, thirst, fatigue, bladder, boredom, health, money, goods, pe
 
 Catalog orders debit the wallet and remain in transit for a bounded period; delivery creates a parcel at the mailbox. It must be collected, carried, and placed in the pantry before the stock is available. Scientific experiments generate reports that must be physically mailed; only later payment letters collected from the letter box credit money. There are no free respawns, magically replenished stock, or external scripts that perform work for him. Buying supplies is one of Septimus's actual goals.
 
-The world owns physical facts. The durable JSONL event journal is hash chained and reverified on load. Only physical event receipts are eligible for attributed autobiographical memory, which remains separate from narration. Identity is stored externally and tied to the journal's genesis digest. Source-referenced memories affect some decision scores; `GET /api/memory-control` returns linked, shuffled, and no-memory alternatives on the same unchanged world state. A report of a model's imagined activity cannot cook food or alter inventory.
+The pre-village scenario ends in December 1899, by explicit owner decision. The final source memory is `E05-021` dated June 1899. The end marker is not an invented physical move or autobiographical memory; the separate Village game must perform and record its own actual arrival. The world owns physical facts. The durable JSONL event journal is hash chained and reverified on load. Only physical event receipts are eligible for attributed autobiographical memory, which remains separate from narration. Identity is stored externally and tied to the journal's genesis digest. Source-referenced memories affect some decision scores; `GET /api/memory-control` returns linked, shuffled, and no-memory alternatives on the same unchanged world state. A report of a model's imagined activity cannot cook food or alter inventory.
 
 Optional Ollama narration, strictly local: set `OLLAMA_MODEL=your-model` (and an existing Ollama server at `127.0.0.1:11434`) before `npm start`. The model can write a first-person observation but does not select physical action or modify world records. If unavailable, truthful deterministic narration works offline. The model is **not** currently a full generative narrative planner; that remains an explicit experiment.
 

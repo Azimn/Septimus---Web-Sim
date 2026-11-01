@@ -1,9 +1,9 @@
 'use strict';
 const $=id=>document.getElementById(id);let last=null,busy=false,selected='';
-const icon={bed:'🛏',bookshelf:'📚',bench:'⚗',lamp:'🪔',sink:'🚰',stove:'🍲',pantry:'🫙',table:'🍽',toilet:'🚽',vegetable_plot:'🥕',tea_plot:'🌿',mailbox:'📬',catalog:'📖'};
+const icon={bed:'🛏',bookshelf:'📚',bench:'⚗',lamp:'🪔',sink:'🚰',stove:'🍲',pantry:'🫙',table:'🍽',toilet:'🚽',vegetable_plot:'🥕',tea_plot:'🌿',mailbox:'📬',catalog:'📖',journal:'📓'};
 const labels={hunger:'Hunger',thirst:'Thirst',fatigue:'Fatigue',bladder:'Bladder',boredom:'Boredom'};
 const nice=s=>s.replace(/_/g,' ').replace(/\b\w/g,x=>x.toUpperCase());
-const time=(s,c)=>c?`${c.date} · ${c.time} ${c.beat}`:`Day ${s.day} · ${String(Math.floor(s.minute/60)).padStart(2,'0')}:${String(s.minute%60).padStart(2,'0')}`;
+const time=(s,c)=>`${c.date} · ${c.time} ${c.beat}`;
 function toast(s){const n=$('toast');n.textContent=s;n.style.display='block';setTimeout(()=>n.style.display='none',2500)}
 async function api(method,url,payload){const r=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:payload===undefined?undefined:JSON.stringify(payload),cache:'no-store'});const out=await r.json();if(!r.ok)throw Error(out.error||`HTTP ${r.status}`);return out}
 function tileMap(data){const m=data.map,s=data.world,coord=`${s.position.x},${s.position.y}`,bypos=Object.fromEntries(m.objects.map(o=>[`${o.x},${o.y}`,o]));
@@ -23,6 +23,7 @@ function render(data){last=data;const s=data.world;$('clock').textContent=time(s
  $('research').textContent=`Repairs ${s.lab.repairs} · experiments ${s.lab.experiments} · damage ${s.lab.damage} · clutter ${s.lab.clutter} · books finished ${s.booksRead.length} / 8 · research reports to post ${s.researchReports}`;
  $('catalogs').innerHTML=Object.entries(data.map.catalog).map(([k,c])=>`<div class="catalog"><span>${c.name}<br><span class="support">${Object.entries(c.goods).map(([n,v])=>`${v} ${nice(n)}`).join(', ')}</span></span><b>£${c.price}</b></div>`).join('');
  $('events').innerHTML=data.recentEvents.slice().reverse().filter(e=>e.kind!=='walk'||e.tick%5===0).slice(0,55).map(e=>`<div class="ev ${e.kind}"><div class="seq">${String(e.id).slice(-5)}<br>D${e.day}</div><div class="note"><div class="what">${e.description.replaceAll('<','&lt;')}</div><div class="where">${nice(e.kind)} · (${e.position.x}, ${e.position.y}) · ${e.goalId||'world event'}</div></div></div>`).join('');
+ const notebook=data.privateJournal;const folio=notebook.readFolios.at(-1),page=notebook.pages.at(-1);const display=$('diary');if(display)display.textContent=`Historical notebook: ${notebook.historicalFoliosAvailable} source folios. Live pages: ${notebook.pages.length} recently shown.\n\n${folio?`LAST ACCESSED HISTORICAL FOLIO (${folio.sourceEventId}; reconstructed):\n${folio.firstPersonText}`:'No historical folio has yet been read in the simulated world.'}\n\n${page?`LAST WRITTEN DIARY PAGE (source ${page.sourceEventId}):\n${page.text}`:'No new diary page has yet been written.'}`;
  $('integrity').textContent=`Journal ${data.recordCount} records · ${data.lastHash.slice(0,12)}…`;
 }
 async function refresh(){if(busy)return;try{render(await api('GET','/api/state'))}catch(e){toast(e.message)}}

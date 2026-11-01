@@ -1,7 +1,7 @@
 'use strict';
 const {BY_ID,CATALOG,BOOKS,roomAt,pathBetween,fresh}=require('./world');
-const Calendar=require('./calendar');
 const clone=structuredClone;
+const Calendar=require('./calendar');
 function cap(n){return Math.min(100,Math.max(0,n))}
 function receipt(state,events,kind,description,extra={}){
  const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
@@ -32,6 +32,8 @@ function choose(state,evidence={}){
  if(p.tea_cups>0&&n.thirst>=16)add('sip_tea',75+n.thirst*.8,'Freshly brewed tea','table');
  if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48)add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
  if(state.booksRead.length<BOOKS.length&&n.boredom>=34)add('read',36+n.boredom*.9,'Curiosity and an unread book on the shelf','bookshelf');
+ if((evidence.__pendingJournal||[]).length>0&&(state.journal?.lastWriteTick??-999)<state.tick-20)add('write_journal',43+n.boredom*.18,'There is a source-backed event I have yet to enter in my notebook','journal',{sourceEventId:evidence.__pendingJournal[0]});
+ if((evidence.__historyCount||0)>0&&(state.journal?.lastReadTick??-999)<state.tick-70&&n.boredom>=35)add('read_journal',35+n.boredom*.45,'My earlier notes may help order my thoughts','journal');
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))add('work',46+n.boredom*.35,'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
@@ -52,6 +54,8 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'brew_tea':stockChange(state,{tea_leaves:-1,tea_cups:1});receipt(state,events,'brew_tea','Boiled tap water and steeped dried tea leaves',{teaLeavesRemaining:p.tea_leaves});break;
  case 'sleep':n.fatigue=cap(n.fatigue-76);receipt(state,events,'sleep','Slept on the iron bedstead',{energyRestored:true});break;
  case 'toilet':n.bladder=cap(n.bladder-90);receipt(state,events,'toilet','Used the plumbed water closet');break;
+ case 'write_journal':{const sourceEventId=goal.detail?.sourceEventId;if(!sourceEventId)throw Error('No grounded journal entry to write');state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};state.journal.lastWriteTick=state.tick;state.journal.entries++;receipt(state,events,'journal_write','Wrote a page in the private scientific diary',{sourceEventId});break;}
+ case 'read_journal':{state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};const folioIndex=state.journal.folioCursor;state.journal.folioCursor++;state.journal.lastReadTick=state.tick;n.boredom=cap(n.boredom-21);receipt(state,events,'journal_read','Consulted an older passage in the private notebook',{folioIndex});break;}
  case 'read':{const title=BOOKS.find(x=>!state.booksRead.includes(x));if(!title){receipt(state,events,'read_unavailable','No unread books remain');break;}const page=(state.bookProgress[title]||0)+1;state.bookProgress[title]=page;n.boredom=cap(n.boredom-33);receipt(state,events,'read_section',`Read section ${page} of ${title}`,{title,page});if(page>=2){state.booksRead.push(title);receipt(state,events,'book_completed',`Finished ${title}`,{title,sections:2});}break}
  case 'work':{if(!lab.lampLit){if(p.lamp_oil<1)throw Error('Lamp has no oil');stockChange(state,{lamp_oil:-1});lab.lampLit=true;receipt(state,events,'light_lamp','Lit the Laboratory oil lamp',{oilRemaining:p.lamp_oil});return false}
  if(lab.clutter>0){lab.clutter--;receipt(state,events,'clean_bench','Cleared clutter from the physical workbench',{remainingClutter:lab.clutter});return false}
@@ -91,11 +95,15 @@ function goalStillPossible(state,goal){
  if(k==='post_report')return state.researchReports>0;
  if(k.startsWith('order_')){const c=CATALOG[k.slice(6)];return Boolean(c)&&state.wallet>=c.price}
  if(k==='read')return state.booksRead.length<BOOKS.length;
+ if(k==='write_journal')return Boolean(goal.detail?.sourceEventId);
+ if(k==='read_journal')return true;
  if(k==='work')return (state.lab.damage>0&&p.spares>0)||p.reagents>0;
  return true;
 }
 function step(state,evidence={}){
- if(!state.alive)return {state,events:[],decision:null};const s=clone(state),events=[];s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
+ if(!state.alive)return {state,events:[],decision:null};
+ const s=clone(state),events=[];
+ s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
  for(const key of ['hunger','thirst','fatigue','bladder','boredom']){const rate={hunger:.9,thirst:1.17,fatigue:.78,bladder:1.04,boredom:.56}[key];s.needs[key]=cap(s.needs[key]+rate)}
  for(const [crop,plot] of Object.entries(s.garden)){if(plot.stage==='growing'&&plot.watered&&s.tick-plot.plantedTick>=(crop==='tea'?84:50)){plot.stage='ripe';receipt(s,events,'crop_ripened',`The ${crop} plot is ready to harvest`,{crop})}}
  for(const o of s.orders){if(!o.arrived&&s.tick>=o.dueTick){o.arrived=true;receipt(s,events,'delivery_arrived',o.type==='research_payment'?'The scientific society sent a payment':'A parcel arrived at the physical letter box',{orderId:o.id,type:o.type,source:o.source})}}
@@ -103,12 +111,13 @@ function step(state,evidence={}){
  if(s.goal&&crisis&&s.goal.kind!==crisis){if(!s.suspendedGoal){s.suspendedGoal=s.goal;receipt(s,events,'goal_suspended',`Suspended ${s.goal.kind} for an urgent bodily need`,{suspendedGoalId:s.goal.id})}s.goal=null}
  if(!s.goal&&s.suspendedGoal&&s.needs.thirst<60&&s.needs.hunger<74){s.goal=s.suspendedGoal;s.suspendedGoal=null;receipt(s,events,'goal_resumed',`Resumed unfinished intention ${s.goal.kind}`,{goalId:s.goal.id})}
  if(s.goal&&!goalStillPossible(s,s.goal)){receipt(s,events,'goal_obsolete',`The original opportunity for ${s.goal.kind} is no longer physically available`,{oldGoalId:s.goal.id});s.goal=null}
- let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds});}
+ let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds});}
  const target=BY_ID[s.goal.target];if(!target)throw Error(`Target missing ${s.goal.target}`);
  const route=pathBetween(s.position,target);if(route===null)throw Error(`Unreachable object ${target.id}`);
  if(route.length){const prior=clone(s.position);s.position=route[0];receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
  else {const completed=action(s,events,s.goal);if(completed){s.completed.push({id:s.goal.id,kind:s.goal.kind,completedTick:s.tick});s.recentKinds.push(s.goal.kind);s.recentKinds=s.recentKinds.slice(-8);s.goal=null}}
  if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;s.deathCause=s.needs.thirst>=100?'dehydration':'starvation';receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true});s.goal=null;}
+
  return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};
 }
 module.exports={step,choose,receipt};

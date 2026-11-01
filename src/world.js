@@ -1,16 +1,53 @@
 'use strict';
 // Septimus v0.1: no model is allowed to change physical state. Coordinates are physical.
 const WIDTH=16,HEIGHT=10;
-// A small navigational projection of a multi-level tower, not an architectural plan.
+// This compact map is a navigational projection of a multi-storey tower, not an architectural claim.
 const rooms={bedroom:'Tower sleeping chamber',library:'Tower library and study',workshop:'Tower laboratory',hall:'Tower stairs and landings',kitchen:'Tower kitchen and pantry',bathroom:'Utility washroom (scenario)',garden:'Tower garden',porch:'Tower entrance and road'};
-// Source-linked biographical hooks, not live-world objects or imported memories.
-const HISTORY_ARCHIVE=Object.freeze({"repository":"Azimn/Pretorius-Connectome","path":"memories/current/Pretorius_v12_450_Events_Complete.jsonl","edition":"v12","recordCount":450,"episodeCount":27,"kind":"reconstructed_autobiography","importStatus":"not_imported","lastMemoryId":"E05-021","lastMemoryDate":"1899-06"});
-// Floor hints are source labels; the 16x10 map remains an explicit compressed projection.
-const RESIDENCE=Object.freeze({"label":"The ruined tower outside Ingolstadt","properNameEstablished":false,"locality":"Ingolstadt outskirts, Bavaria","occupiedSince":"1868-09","settingBegins":"1899-07-01","settingDateStatus":"simulation_assumption","futureDestination":"Frankenstein Village","departureDate":null,"mapRepresentation":"compressed_two_dimensional_projection","spaces":{"bedroom":{"level":"upper","historical":["E03-001"],"status":"attested_sleeping_chamber"},"library":{"level":"upper","historical":["E05-014","E08-011"],"status":"attested_library_study"},"workshop":{"level":"lower","historical":["E05-019"],"status":"attested_laboratory"},"hall":{"level":"stairwell","historical":["E03-003","E03-020"],"status":"attested_stairs"},"kitchen":{"level":"ground","historical":["E22-001","E22-003","E22-012"],"status":"attested_kitchen_pantry"},"bathroom":{"level":"ground","historical":[],"status":"gameplay_convenience_not_attested"},"garden":{"level":"grounds","historical":["E18-010"],"status":"attested_garden_crops_unverified"},"porch":{"level":"grounds","historical":["E03-003"],"status":"attested_entrance_mailbox_gameplay_convenience"}},"unmodeledSpaces":["archive","glass chambers","guest room","music room","roof terrace","photographic darkroom"],"source":"Pretorius-Connectome:v12"});
-const KNOWN_PEOPLE=Object.freeze([{"id":"jakob_lenz","name":"Jakob Lenz","role":"glassworker","memoryIds":["E03-001","E03-015"],"livePresence":"not_simulated"},{"id":"clara_weiss","name":"Clara Weiss","role":"friend and dispensary owner","memoryIds":["E03-001","E18-010"],"livePresence":"not_simulated"},{"id":"rosa_brandl","name":"Rosa Brandl","role":"historical coal and household supplier","memoryIds":["E22-001","E22-003"],"livePresence":"not_simulated"},{"id":"mathilde","name":"Mathilde","role":"printer and correspondent","memoryIds":["E12-011","E08-011"],"livePresence":"not_simulated"},{"id":"anna","name":"Anna","role":"scientific collaborator","memoryIds":["E05-012","E21-017"],"livePresence":"not_simulated"},{"id":"voss","name":"Voss","role":"scientific collaborator","memoryIds":["E05-015","E21-017"],"livePresence":"not_simulated"},{"id":"julian_adler","name":"Julian Adler","role":"restorer and acquaintance","memoryIds":["E18-010","E21-017"],"livePresence":"not_simulated"},{"id":"marta","name":"Marta","role":"household associate","memoryIds":["E27-019","E27-020"],"livePresence":"not_simulated"}]);
+// Stable game-facing historical references. These are NOT live NPCs or imported memories.
+const HISTORY_ARCHIVE=Object.freeze({
+ repository:'Azimn/Pretorius-Connectome',
+ path:'memories/current/Pretorius_v12_450_Events_Complete.jsonl',
+ edition:'v12',recordCount:450,episodeCount:27,
+ kind:'reconstructed_autobiography',importStatus:'not_imported',
+ lastMemoryId:'E05-021',lastMemoryDate:'1899-06',
+ note:'Source material only. Never assert these 450 stories were lived inside the game.'
+});
+// Current 2-D map deliberately projects the real tower's multiple levels. Floor IDs are
+// architectural hints, not teleportable simulation coordinates or claimed exact plans.
+const RESIDENCE=Object.freeze({
+ label:'The ruined tower outside Ingolstadt',properNameEstablished:false,
+ locality:'Outskirts of Ingolstadt, Bavaria',occupiedSince:'1868-09',
+ settingBegins:'1899-07-01',settingDateStatus:'simulation_assumption',
+ futureDestination:'Frankenstein Village',departureDate:null,
+ mapRepresentation:'compressed_two_dimensional_projection',
+ spaces:{
+ bedroom:{level:'upper',historical:['E03-001','E26-014'],status:'attested_sleeping_chamber'},
+ library:{level:'upper',historical:['E05-014','E08-011'],status:'attested_library_study'},
+ workshop:{level:'lower',historical:['E03-005','E05-019'],status:'attested_laboratory'},
+ hall:{level:'stairwell',historical:['E03-003','E03-020'],status:'attested_damaged_and_repaired_stairs'},
+ kitchen:{level:'ground',historical:['E22-001','E22-003','E22-012'],status:'attested_kitchen_pantry'},
+ bathroom:{level:'ground',historical:[],status:'gameplay_convenience_not_attested'},
+ garden:{level:'grounds',historical:['E18-010'],status:'attested_garden_cultivation_details_unverified'},
+ porch:{level:'grounds',historical:['E03-003','E03-020'],status:'attested_entrance_road_mailbox_gameplay_convenience'}
+ },
+ unmodeledSpaces:['archive','glass chambers','guest room','music room','roof terrace','photographic darkroom'],
+ physicalContinuity:['roof leaks','fuel deliveries','narrow stair turns','uneven floors'],
+ source:'Pretorius-Connectome:v12'
+});
+const KNOWN_PEOPLE=Object.freeze([
+ {id:'jakob_lenz',name:'Jakob Lenz',role:'glassworker and equipment collaborator',memoryIds:['E03-001','E03-015'],livePresence:'not_simulated'},
+ {id:'clara_weiss',name:'Clara Weiss',role:'longtime friend and dispensary owner',memoryIds:['E03-001','E18-010'],livePresence:'not_simulated'},
+ {id:'rosa_brandl',name:'Rosa Brandl',role:'historical coal and household supplier',memoryIds:['E22-001','E22-003'],livePresence:'not_simulated'},
+ {id:'mathilde',name:'Mathilde',role:'printer and correspondent',memoryIds:['E12-011','E08-011'],livePresence:'not_simulated'},
+ {id:'anna',name:'Anna',role:'scientific collaborator and record keeper',memoryIds:['E05-012','E21-017'],livePresence:'not_simulated'},
+ {id:'voss',name:'Voss',role:'collaborator and skeptical observer',memoryIds:['E05-015','E21-017'],livePresence:'not_simulated'},
+ {id:'julian_adler',name:'Julian Adler',role:'art restorer and acquaintance',memoryIds:['E18-010','E21-017'],livePresence:'not_simulated'},
+ {id:'marta',name:'Marta',role:'household and recordkeeping associate',memoryIds:['E27-019','E27-020'],livePresence:'not_simulated'}
+]);
 const OBJECTS=[
 {id:'bed',name:'Iron bedstead',x:2,y:2,kind:'rest'},
 {id:'bookshelf',name:'Library shelves',x:6,y:2,kind:'read'},
+{id:'journal',name:'Private notebook and historical folios',x:7,y:2,kind:'journal'},
 {id:'bench',name:'Laboratory workbench',x:11,y:2,kind:'work'},
 {id:'lamp',name:'Oil lamp',x:12,y:2,kind:'light'},
 {id:'sink',name:'Kitchen water point (scenario)',x:2,y:5,kind:'drink'},
@@ -53,7 +90,7 @@ function fresh(seed=1729){return {
  carried:null,orders:[],nextOrder:1,researchReports:0,unpaidLetters:0,
  garden:{vegetables:{stage:'empty',plantedTick:null,watered:false},tea:{stage:'empty',plantedTick:null,watered:false}},
  lab:{lampLit:false,clutter:2,damage:2,repairs:0,experiments:0},booksRead:[],bookProgress:{},
- goal:null,suspendedGoal:null,nextGoal:1,completed:[],recentKinds:[],lastDecision:null,lastAction:'The day begins in the bedroom.',
+ goal:null,suspendedGoal:null,nextGoal:1,completed:[],recentKinds:[],lastDecision:null,lastAction:'The day begins in the sleeping chamber of the tower.',
  counters:{drinks:0,meals:0,tea:0,harvests:0,orders:0,deliveries:0,work:0},
  nextReceipt:1
 };}
