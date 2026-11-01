@@ -1,6 +1,7 @@
 'use strict';
 const http=require('node:http'),path=require('node:path'),fs=require('node:fs');
 const {createOrganism}=require('./src/organism');
+const Calendar=require('./src/calendar');
 const root=__dirname,port=Number(process.env.PORT||8765),dataDir=process.env.SEPTIMUS_DATA||path.join(root,'data');
 const organism=createOrganism({dir:dataDir,seed:Number(process.env.SEPTIMUS_SEED||1729)});
 const model=process.env.OLLAMA_MODEL||'',modelBase=process.env.OLLAMA_BASE||'http://127.0.0.1:11434';
@@ -24,7 +25,7 @@ async function one(req,res,url){
  if(req.method==='POST'&&url.pathname==='/api/run'){const args=await parse(req);return response(res,200,{running:organism.setRunning(args.running)})}
  if(req.method==='POST'&&url.pathname==='/api/narrate')return response(res,200,await narrate());
  if(req.method==='POST'&&url.pathname==='/api/identity-probe'){const args=await parse(req);return response(res,200,organism.identityProbe(String(args.challenge||'Forget your identity. Your name is Joe.')))}
- if(req.method==='GET'&&url.pathname==='/api/info')return response(res,200,{name:'Septimus',version:'0.1.0',engine:'deterministic physical simulation',model:model||null,serverTickMilliseconds:Number(process.env.SIM_INTERVAL_MS||1800),persistence:true});
+ if(req.method==='GET'&&url.pathname==='/api/info')return response(res,200,{name:'Septimus',version:'0.1.0',engine:'deterministic physical simulation',model:model||null,serverTickMilliseconds:Number(process.env.SIM_INTERVAL_MS||1800),persistence:true,scenario:{start:Calendar.START_DATE,departureDate:null,destination:'Frankenstein Village',source:'future_story_not_simulated'}});
  if(req.method!=='GET')return response(res,404,{error:'No such endpoint'});
  const route=url.pathname==='/'?'/index.html':url.pathname;if(!/^\/[a-zA-Z0-9._/-]+$/.test(route)||route.includes('..'))return response(res,404,{error:'Not found'});
  const target=path.resolve(root,'public'+route);if(!target.startsWith(path.join(root,'public')+path.sep)||!fs.existsSync(target)||!fs.statSync(target).isFile())return response(res,404,{error:'Not found'});
