@@ -3,20 +3,31 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const World=require('./world'),Simulation=require('./simulation');
 const hash=x=>crypto.createHash('sha256').update(typeof x==='string'?x:JSON.stringify(x)).digest('hex');
 const clone=structuredClone;
+// Canon correction is authorized only for two explicit external identity digests.
+// Source: frozen reconstructed Pretorius-Connectome v12 memory archive.
+const LEGACY_ASH_GROVE_IDENTITY_SHA256='3bcf918bfb00ce69f4b91ae07c7895db08c44ff93e8b6cc494349218898d2d01';
+const TOWER_IDENTITY_V2_SHA256='3af52f79ee93c3853582b4b6504e46306e8441cb86b2f37542c141d93c465057';
+const CANON_SOURCE='Pretorius-Connectome:v12:E03-001,E22-001,E03-020,E18-010,E05-021';
 function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../identity.json')}={}){
  if(!dir)throw Error('The data directory must be explicit');fs.mkdirSync(dir,{recursive:true});
  const identity=Object.freeze(JSON.parse(fs.readFileSync(identityPath,'utf8'))),identityHash=hash(identity),filename=path.join(dir,'events.jsonl');
- let rows=[],state=null,memory=[],narration=[],running=false,lastHash='GENESIS',events=[];
+ let rows=[],state=null,memory=[],narration=[],running=false,lastHash='GENESIS',events=[],effectiveIdentityHash=null;
  if(fs.existsSync(filename)){
   const lines=fs.readFileSync(filename,'utf8').split('\n').filter(Boolean);
   for(const [i,line] of lines.entries()){const row=JSON.parse(line),body={seq:row.seq,type:row.type,prev:row.prev,body:row.body};if(row.seq!==i+1||row.prev!==lastHash||hash(body)!==row.hash)throw Error(`Journal hash/sequence mismatch at row ${i+1}`);
    rows.push(row);lastHash=row.hash;
-   if(row.type==='GENESIS'){if(row.body.identityHash!==identityHash)throw Error('Immutable external identity has changed');state=row.body.world;}
+   if(row.type==='GENESIS'){if(i!==0)throw Error('Duplicate genesis');effectiveIdentityHash=row.body.identityHash;state=row.body.world;}
+   if(row.type==='CANON_CORRECTION'){const b=row.body;if(b.kind!=='historical_home_label_correction_v1'||b.from!==LEGACY_ASH_GROVE_IDENTITY_SHA256||b.to!==TOWER_IDENTITY_V2_SHA256||b.source!==CANON_SOURCE||effectiveIdentityHash!==b.from||identityHash!==b.to)throw Error('Unauthorized identity correction');effectiveIdentityHash=b.to;}
    if(row.type==='TICK'){state=row.body.worldAfter;events.push(...row.body.events);memory.push(...row.body.memories)}
    if(row.type==='NARRATION')narration.push(row.body);
    if(row.type==='CONTROL')running=row.body.running;
   }
   if(!state)throw Error('Journal has no genesis world');
+  if(effectiveIdentityHash!==identityHash){
+   if(effectiveIdentityHash!==LEGACY_ASH_GROVE_IDENTITY_SHA256||identityHash!==TOWER_IDENTITY_V2_SHA256||identity.name!=='Septimus Pretorius')throw Error('Immutable external identity has changed');
+   append('CANON_CORRECTION',{kind:'historical_home_label_correction_v1',from:effectiveIdentityHash,to:identityHash,source:CANON_SOURCE,note:'Correct residence label only. Existing world actions and memories remain unchanged.',memoryEligible:false});
+   effectiveIdentityHash=identityHash;
+  }
  }else{state=World.fresh(seed);append('GENESIS',{world:state,identityHash,version:1});}
  function append(type,body){const record={seq:rows.length+1,type,prev:lastHash,body};record.hash=hash(record);const fd=fs.openSync(filename,'a');try{fs.writeSync(fd,JSON.stringify(record)+'\n');fs.fsyncSync(fd)}finally{fs.closeSync(fd)}rows.push(record);lastHash=record.hash;return record}
  function validMemory(){const original=new Map(events.map(e=>[e.id,e]));return memory.filter(m=>original.has(m.eventId)&&m.sourceHash===hash(original.get(m.eventId)))}

@@ -1,17 +1,18 @@
 'use strict';
 // Septimus v0.1: no model is allowed to change physical state. Coordinates are physical.
 const WIDTH=16,HEIGHT=10;
-const rooms={bedroom:'Bedroom',library:'Library',workshop:'Laboratory',hall:'Hall',kitchen:'Kitchen',bathroom:'Washroom',garden:'Kitchen garden',porch:'Front porch'};
+// A small navigational projection of a multi-level tower, not an architectural plan.
+const rooms={bedroom:'Tower sleeping chamber',library:'Tower library and study',workshop:'Tower laboratory',hall:'Tower stairs and landings',kitchen:'Tower kitchen and pantry',bathroom:'Utility washroom (scenario)',garden:'Tower garden',porch:'Tower entrance and road'};
 const OBJECTS=[
 {id:'bed',name:'Iron bedstead',x:2,y:2,kind:'rest'},
 {id:'bookshelf',name:'Library shelves',x:6,y:2,kind:'read'},
 {id:'bench',name:'Laboratory workbench',x:11,y:2,kind:'work'},
 {id:'lamp',name:'Oil lamp',x:12,y:2,kind:'light'},
-{id:'sink',name:'Plumbed sink',x:2,y:5,kind:'drink'},
+{id:'sink',name:'Kitchen water point (scenario)',x:2,y:5,kind:'drink'},
 {id:'stove',name:'Kitchen range',x:4,y:5,kind:'cook'},
 {id:'pantry',name:'Pantry cupboard',x:6,y:5,kind:'store'},
 {id:'table',name:'Dining table',x:7,y:5,kind:'eat'},
-{id:'toilet',name:'Water closet',x:10,y:5,kind:'toilet'},
+{id:'toilet',name:'Washroom fixture (scenario)',x:10,y:5,kind:'toilet'},
 {id:'vegetable_plot',name:'Vegetable plot',x:3,y:8,kind:'grow'},
 {id:'tea_plot',name:'Tea bushes',x:6,y:8,kind:'grow'},
 {id:'mailbox',name:'Letter box',x:12,y:7,kind:'mail'},

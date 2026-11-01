@@ -44,7 +44,7 @@ function stableChoiceNoise(seed,tick,kind){
 function stockChange(state,delta){for(const [key,value] of Object.entries(delta)){if(!(key in state.stock))throw Error(`Unknown stock ${key}`);const after=state.stock[key]+value;if(after<0)throw Error(`Insufficient ${key}`);state.stock[key]=after}}
 function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.lab,garden=state.garden,kind=goal.kind;
  switch(kind){
- case 'drink':n.thirst=cap(n.thirst-78);n.bladder=cap(n.bladder+9);state.counters.drinks++;receipt(state,events,'drink_sink','Drank potable water from the plumbed kitchen sink',{source:'municipal water',finiteBottledStock:false});break;
+ case 'drink':n.thirst=cap(n.thirst-78);n.bladder=cap(n.bladder+9);state.counters.drinks++;receipt(state,events,'drink_sink','Drank potable water from the kitchen water point',{source:'scenario water service; historical mechanism unverified',finiteBottledStock:false});break;
  case 'eat':stockChange(state,{meals:-1});n.hunger=cap(n.hunger-75);state.counters.meals++;receipt(state,events,'eat_meal','Sat at the table and ate a cooked meal',{mealsRemaining:p.meals});break;
  case 'cook':{let recipe;if(p.vegetables>=1){stockChange(state,{vegetables:-1});recipe='vegetable soup'}else if(p.milk>=1&&p.grain>=1){stockChange(state,{milk:-1,grain:-1});recipe='milk porridge'}else throw Error('No recipe available');stockChange(state,{meals:1});receipt(state,events,'cook',`Cooked ${recipe} on the kitchen range`,{recipe,mealsPrepared:1});break}
  case 'sip_tea':stockChange(state,{tea_cups:-1});n.thirst=cap(n.thirst-43);n.bladder=cap(n.bladder+8);state.counters.tea++;receipt(state,events,'drink_tea','Drank a freshly brewed cup of tea',{source:'prepared tea'});break;
