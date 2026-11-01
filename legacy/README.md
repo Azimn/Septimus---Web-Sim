@@ -1,0 +1,1 @@
+Frozen source reference only. `minimum-organism-v0.1.js` and `reduced-engine.js` are preserved from the earlier Minimal Organism / Reduced offline prototype for research comparison. The Septimus runtime imports neither file. No Candidate B or original Laboratory sources were included.

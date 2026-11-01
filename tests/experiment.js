@@ -1,0 +1,5 @@
+'use strict';
+const {fresh}=require('../src/world');const {step}=require('../src/simulation');
+const count=Math.min(500,Number(process.argv[2]||40)),steps=Math.min(5000,Number(process.argv[3]||700)),data=[];
+for(let seed=1;seed<=count;seed++){let world=fresh(seed),events=[];for(let i=0;i<steps&&world.alive;i++){const r=step(world);world=r.state;events.push(...r.events)}const kinds=new Set(events.map(e=>e.kind));data.push({seed,ticks:world.tick,alive:world.alive,hunger:world.needs.hunger,thirst:world.needs.thirst,wallet:world.wallet,meals:world.counters.meals,drinks:world.counters.drinks,experiments:world.lab.experiments,repairs:world.lab.repairs,harvests:world.counters.harvests,orders:world.counters.orders,deliveries:world.counters.deliveries,full_life:['drink_sink','eat_meal','cook','harvest','catalog_order','collect_parcel','read_section','experiment'].every(x=>kinds.has(x))})}
+const summary={runs:count,steps,alive:data.filter(x=>x.alive).length,full_life:data.filter(x=>x.full_life).length,averageRemainingWallet:data.reduce((a,x)=>a+x.wallet,0)/count,first:data.slice(0,5)};console.log(JSON.stringify(summary,null,2));
