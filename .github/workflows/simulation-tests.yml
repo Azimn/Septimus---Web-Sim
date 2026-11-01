@@ -20,24 +20,4 @@ jobs:
         run: npm test
       - name: Preserve bounded life benchmark including failures
         run: npm run experiment
-      - name: Run preregistered real-source folio comparison
-        run: npm run folio-experiment
-      - name: Archive the complete pre-registered experiment output
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: septimus-folio-evidence
-          path: |
-            results/folio_experiment_v1.json
-            results/folio_experiment_v1.md
-          if-no-files-found: warn
-      - name: Commit immutable experiment report on main
-        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: |
-          git config user.name "Septimus Research CI"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/folio_experiment_v1.json results/folio_experiment_v1.md
-          if ! git diff --cached --quiet; then
-            git commit -m "results(septimus): preserve frozen 24-seed three-folio intervention"
-            git push origin HEAD:main
-          fi
+      # Frozen v1 outcome is never re-run or auto-committed by CI.\n

@@ -8,6 +8,72 @@ function receipt(state,events,kind,description,extra={},perceived=true){
  const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,perceived,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
 }
 function pending(state,type){return state.orders.some(o=>o.type===type&&!o.collected)}
+// Only perceived surfaces and published metadata may drive lookup. No folio text here.
+function consult(s){return s.consultation??={windows:[],unanswered:[],seenKinds:[],readIndices:[]}}
+function surfaceTags(e){
+ if(e.perceived===false)return [];
+ const d=e.details||{},v=[];
+ const add=(type,value)=>{if(value)v.push({type,value:String(value).toLowerCase()})};
+ if(['coal_collected','catalog_order','delivery_arrived'].includes(e.kind)&&d.supplierId==='rosa_brandl')add('person','Rosa Brandl');
+ if(e.kind==='coal_collected'&&d.wet||e.kind==='burn_coal'&&d.wet||e.kind==='inspect_coal'&&d.wet>0)add('object','wet coal');
+ if(e.kind==='catalog_order'&&d.supplierId==='rosa_brandl'&&d.price>9)add('anomaly','coal price');
+ if(e.kind==='garden_tended'||e.kind==='walk'&&d.objectId==='garden_path')add('place','garden path');
+ if(e.kind==='garden_tended')add('object','nettles');
+ if(e.kind==='floor_hazard')add('anomaly','floorboards');
+ if(e.kind==='inspect_fabric'&&d.subject==='floor')add('object','stair boards');
+ if(e.kind==='inspect_fabric'&&d.subject==='roof')add('object','roof');
+ if(e.kind==='burn_coal')add('object','stove gauge');
+ return v;
+}
+function matchSurface(f,t){
+ const field=t.type==='person'?'participants':t.type==='place'?'locations':'recall_cues';
+ return (f[field]||[]).some(v=>String(v).toLowerCase().includes(t.value))||
+  (t.type==='place'&&(f.recall_cues||[]).some(v=>String(v).toLowerCase().includes(t.value)));
+}
+function ingestConsultation(s,events,evidence){
+ const c=consult(s),catalog=evidence.__folioCatalog||[];
+ c.windows=c.windows.filter(x=>s.tick-x.raisedTick<96);
+ c.unanswered=c.unanswered.filter(x=>s.tick-x[1]<144);
+ for(const e of events){
+  if(e.perceived===false)continue;
+  const tags=surfaceTags(e);if(!tags.length)continue;
+  for(const t of tags){
+   let any=false;
+   for(const f of catalog)if(matchSurface(f,t)){
+    any=true;
+    if(!c.windows.some(x=>x.index===f.index&&x.type===t.type&&x.value===t.value))c.windows.push({index:f.index,id:f.id,type:t.type,value:t.value,raisedTick:s.tick});
+   }
+   if(any&&['inspect_fabric','coal_collected','floor_hazard','garden_tended','catalog_order'].includes(e.kind)){
+    const key=e.kind+':'+t.type+':'+t.value;
+    if(!c.seenKinds.includes(key)){
+     c.seenKinds.push(key);
+     if(!c.readIndices.some(index=>catalog.some(f=>f.index===index&&matchSurface(f,t))))c.unanswered.push([t.type+':'+t.value,s.tick]);
+    }
+   }
+  }
+ }
+ c.windows=c.windows.slice(-200);c.unanswered=c.unanswered.slice(-30);c.seenKinds=c.seenKinds.slice(-200);
+}
+function notebookChoice(s,evidence){
+ const c=consult(s),count=evidence.__historyCount||0;
+ if(!count||(s.journal?.lastReadTick??-999)>=s.tick-70)return null;
+ const windows=c.windows.filter(x=>x.index<count&&s.tick-x.raisedTick<96).map(x=>({...x,bonus:32*(1-(s.tick-x.raisedTick)/96)}));
+ const question=c.unanswered.some(x=>s.tick-x[1]<144);
+ if(s.needs.boredom<30&&!windows.length&&!question)return null;
+ windows.sort((a,b)=>b.bonus-a.bonus||a.index-b.index);
+ const evening=s.minute>=1080&&s.minute<1380;
+ const score=35+.9*s.needs.boredom+(windows[0]?.bonus||0)+(question?16:0)+(evening?16:0);
+ const groups=new Map();for(const w of windows)groups.set(w.index,(groups.get(w.index)||0)+w.bonus);
+ const lead=[...groups.entries()].sort((a,b)=>b[1]-a[1]||a[0]-b[0])[0];
+ let index=lead?.[0];
+ if(index===undefined){
+  const cursor=(s.journal?.folioCursor??0)%count,read=new Set(c.readIndices);index=cursor;
+  for(let i=0;i<count;i++){const x=(cursor+i)%count;if(!read.has(x)){index=x;break}}
+ }
+ const match=windows.find(w=>w.index===index),mechanism=match?'cue':question?'question':'chair';
+ return {score,reason:mechanism==='cue'?'A perceived detail prompted notebook consultation':mechanism==='question'?'An observed detail remains unanswered':'Idle time invites examination of an old folio',
+  detail:{folioIndex:index,mechanism,cueType:match?.type||null,cueValue:match?.value||null}};
+}
 function choose(state,evidence={}){
  const n=state.needs,p=state.stock,g=state.garden,options=[],h=Household.migrate(state);
  const add=(kind,score,reason,target,detail={})=>options.push({kind,score,reason,target,detail,memoryIds:(evidence[kind]||[]).slice(-3)});
@@ -46,14 +112,14 @@ function choose(state,evidence={}){
  if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48)add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
  if(state.booksRead.length<BOOKS.length&&n.boredom>=34)add('read',36+n.boredom*.9,'Curiosity and an unread book on the shelf','bookshelf');
  if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
- if((evidence.__historyCount||0)>0&&(state.journal?.lastReadTick??-999)<state.tick-70&&n.boredom>=35)add('read_journal',35+n.boredom*.45,'My earlier notes may help order my thoughts','journal');
+ const notebook=notebookChoice(state,evidence);if(notebook)add('read_journal',notebook.score,notebook.reason,'journal',notebook.detail);
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))add('work',46+n.boredom*.35,'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
  // Source-attributed preferences remain modest; no fabricated memory can change physics.
  for(const opt of options){if(opt.memoryIds.length)opt.score+=Math.min(2,opt.memoryIds.length*.5);
   // Pre-registered folio interventions are from actually read records, not the unconsulted archive.
-  const cue=evidence.__folioCue;if(cue&&cue.target===opt.kind)opt.score+=cue.effect;if(state.recentKinds.slice(-2).includes(opt.kind))opt.score-=4;if(opt.score<120)opt.score+=stableChoiceNoise(state.seed,state.tick,opt.kind)}
+  const cue=evidence.__folioCue,v=evidence.__verifiedFolioRead;if(cue&&v&&v.readingReceiptId===cue.readingReceiptId&&v.sourceEventId===cue.sourceEventId&&v.readTick<state.tick&&cue.target===opt.kind)opt.score+=cue.effect;if(state.recentKinds.slice(-2).includes(opt.kind))opt.score-=4;if(opt.score<120)opt.score+=stableChoiceNoise(state.seed,state.tick,opt.kind)}
  options.sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));return options;
 }
 function stableChoiceNoise(seed,tick,kind){
@@ -70,7 +136,12 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'sleep':{const c=Household.comfort(state,'bedroom');const relief=c.warmth<35?42:76;n.fatigue=cap(n.fatigue-relief);if(c.warmth<35)state.health=cap(state.health-.8);receipt(state,events,'sleep','Slept on the iron bedstead',{energyRestored:true,restRelief:relief,coldRoom:c.warmth<35});break;}
  case 'toilet':n.bladder=cap(n.bladder-90);receipt(state,events,'toilet','Used the plumbed water closet');break;
  case 'write_journal':{const sourceEventId=goal.detail?.sourceEventId;if(!sourceEventId)throw Error('No grounded journal entry to write');state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};state.journal.lastWriteTick=state.tick;state.journal.lastWrittenDay=state.day;state.journal.entries++;receipt(state,events,'journal_write','Wrote an evening retrospective in the private scientific diary',{sourceEventId,sourceEventIds:goal.detail.sourceEventIds||[sourceEventId]});break;}
- case 'read_journal':{state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};const folioIndex=state.journal.folioCursor;state.journal.folioCursor++;state.journal.lastReadTick=state.tick;n.boredom=cap(n.boredom-21);receipt(state,events,'journal_read','Consulted an older passage in the private notebook',{folioIndex});break;}
+ case 'read_journal':{state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};
+ const folioIndex=goal.detail?.folioIndex??state.journal.folioCursor,before=n.boredom;
+ state.journal.folioCursor=folioIndex+1;state.journal.lastReadTick=state.tick;n.boredom=cap(n.boredom-21);
+ const c=consult(state);c.readIndices.push(folioIndex);c.readIndices=c.readIndices.slice(-450);
+ if(goal.detail?.cueType){c.unanswered=c.unanswered.filter(x=>x[0]!==goal.detail.cueType+':'+goal.detail.cueValue);c.windows=c.windows.filter(x=>x.index!==folioIndex)}
+ receipt(state,events,'journal_read','Consulted an older passage in the private notebook',{folioIndex,mechanism:goal.detail?.mechanism||'chair',cueType:goal.detail?.cueType||null,cueValue:goal.detail?.cueValue||null,boredomBefore:before,boredomAfter:n.boredom});break;}
  case 'read':{const title=BOOKS.find(x=>!state.booksRead.includes(x));if(!title){receipt(state,events,'read_unavailable','No unread books remain');break;}const page=(state.bookProgress[title]||0)+1;state.bookProgress[title]=page;n.boredom=cap(n.boredom-33);receipt(state,events,'read_section',`Read section ${page} of ${title}`,{title,page});if(page>=2){state.booksRead.push(title);receipt(state,events,'book_completed',`Finished ${title}`,{title,sections:2});}break}
  case 'work':{if(!lab.lampLit){if(p.lamp_oil<1)throw Error('Lamp has no oil');stockChange(state,{lamp_oil:-1});lab.lampLit=true;receipt(state,events,'light_lamp','Lit the Laboratory oil lamp',{oilRemaining:p.lamp_oil});return false}
  if(lab.clutter>0){lab.clutter--;receipt(state,events,'clean_bench','Cleared clutter from the physical workbench',{remainingClutter:lab.clutter});return false}
@@ -128,7 +199,7 @@ function goalStillPossible(state,goal){
 }
 function step(state,evidence={}){
  if(!state.alive)return {state,events:[],decision:null};
- const s=clone(state),events=[];
+ const s=clone(state),events=[];consult(s);
  s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
  const hh=Household.migrate(s);Household.applyDay(s,(kind,description,details,perceived)=>receipt(s,events,kind,description,details,perceived));
  if(s.tick>hh.heat.fuelledUntil)hh.heat.warmth=0;else hh.heat.warmth=Household.comfort(s,'kitchen').warmth;
@@ -140,11 +211,12 @@ function step(state,evidence={}){
  if(s.goal&&crisis&&s.goal.kind!==crisis){if(!s.suspendedGoal){s.suspendedGoal=s.goal;receipt(s,events,'goal_suspended',`Suspended ${s.goal.kind} for an urgent bodily need`,{suspendedGoalId:s.goal.id})}s.goal=null}
  if(!s.goal&&s.suspendedGoal&&s.needs.thirst<60&&s.needs.hunger<74){s.goal=s.suspendedGoal;s.suspendedGoal=null;receipt(s,events,'goal_resumed',`Resumed unfinished intention ${s.goal.kind}`,{goalId:s.goal.id})}
  if(s.goal&&!goalStillPossible(s,s.goal)){receipt(s,events,'goal_obsolete',`The original opportunity for ${s.goal.kind} is no longer physically available`,{oldGoalId:s.goal.id});s.goal=null}
- let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds});}
+ let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds,consultation:c.kind==='read_journal'?c.detail:null,folioInfluence:evidence.__verifiedFolioRead?{postRead:evidence.__verifiedFolioRead.readTick<s.tick,sourceEventId:evidence.__verifiedFolioRead.sourceEventId,readingReceiptId:evidence.__verifiedFolioRead.readingReceiptId}:{postRead:false}});}
  const target=BY_ID[s.goal.target];if(!target)throw Error(`Target missing ${s.goal.target}`);
  const route=pathBetween(s.position,target);if(route===null)throw Error(`Unreachable object ${target.id}`);
  if(route.length){const prior=clone(s.position);s.position=route[0];if(roomAt(prior.x,prior.y)==='hall')Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15){s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);} receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
  else {const completed=action(s,events,s.goal);if(completed){s.completed.push({id:s.goal.id,kind:s.goal.kind,completedTick:s.tick});s.recentKinds.push(s.goal.kind);s.recentKinds=s.recentKinds.slice(-8);s.goal=null}}
+ ingestConsultation(s,events,evidence);
  if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;s.deathCause=s.needs.thirst>=100?'dehydration':'starvation';receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true});s.goal=null;}
 
  return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};

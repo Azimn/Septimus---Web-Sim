@@ -15,6 +15,7 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
  const identity=Object.freeze(JSON.parse(fs.readFileSync(identityPath,'utf8'))),identityHash=hash(identity),filename=path.join(dir,'events.jsonl');
  let rows=[],state=null,memory=[],narration=[],running=false,lastHash='GENESIS',events=[],effectiveIdentityHash=null,diaryPages=[],folioReads=[];
  const archive=Diary.loadArchive(process.env.SEPTIMUS_ARCHIVE||undefined);
+ const folioCatalog=archive.records.map((r,index)=>({index,id:r.event_id,participants:r.participants||[],locations:r.locations||[],recall_cues:r.recall_cues||[]}));
  if(fs.existsSync(filename)){
   const lines=fs.readFileSync(filename,'utf8').split('\n').filter(Boolean);
   for(const [i,line] of lines.entries()){const row=JSON.parse(line),body={seq:row.seq,type:row.type,prev:row.prev,body:row.body};if(row.seq!==i+1||row.prev!==lastHash||hash(body)!==row.hash)throw Error(`Journal hash/sequence mismatch at row ${i+1}`);
@@ -44,7 +45,7 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
  function append(type,body){const record={seq:rows.length+1,type,prev:lastHash,body};record.hash=hash(record);const fd=fs.openSync(filename,'a');try{fs.writeSync(fd,JSON.stringify(record)+'\n');fs.fsyncSync(fd)}finally{fs.closeSync(fd)}rows.push(record);lastHash=record.hash;return record}
  function validMemory(){const original=new Map(events.map(e=>[e.id,e]));return memory.filter(m=>original.has(m.eventId)&&m.sourceHash===hash(original.get(m.eventId)))}
  function memoryEvidence(control='linked'){
-  if(!['linked','shuffled','none'].includes(control))throw Error('Unknown control');if(control==='none'){const written=new Set(diaryPages.map(page=>page.sourceEventId));return {__historyCount:archive.records.length,__pendingJournal:validMemory().filter(m=>!written.has(m.eventId)).slice(-12).reverse().map(m=>m.eventId)}};
+  if(!['linked','shuffled','none'].includes(control))throw Error('Unknown control');if(control==='none'){const written=new Set(diaryPages.map(page=>page.sourceEventId));return {__folioCatalog:folioCatalog,__historyCount:archive.records.length,__pendingJournal:validMemory().filter(m=>!written.has(m.eventId)).slice(-12).reverse().map(m=>m.eventId)}};
   const found=clone(memory);if(control==='shuffled'&&found.length>1){const digests=found.map(x=>x.sourceHash);found.forEach((x,i)=>x.sourceHash=digests[(i+1)%digests.length])}
   const original=new Map(events.map(e=>[e.id,e])),relevant={};
   for(const m of found){if(!original.has(m.eventId)||m.sourceHash!==hash(original.get(m.eventId)))continue;
@@ -58,11 +59,11 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
   const seenKinds=new Set(),pending=[];
   for(const m of candidates){if(seenKinds.has(m.kind))continue;seenKinds.add(m.kind);pending.push(m);if(pending.length>=5)break;}
   relevant.__pendingJournal=pending.map(m=>m.eventId);
-  relevant.__historyCount=archive.records.length;
+  relevant.__historyCount=archive.records.length;relevant.__folioCatalog=folioCatalog;
   const recentFolio=folioReads.at(-1);
   const effects={'E22-001':'inspect_floor','E18-010':'tend_path','E03-002':'order_coal'};
   const readEvent=recentFolio&&events.find(e=>e.id===recentFolio.readingReceiptId);
-  if(readEvent&&state.tick-readEvent.tick<=160&&effects[recentFolio.sourceEventId])relevant.__folioCue={target:effects[recentFolio.sourceEventId],effect:18,sourceEventId:recentFolio.sourceEventId};
+  if(readEvent&&state.tick-readEvent.tick<=160&&effects[recentFolio.sourceEventId]){relevant.__verifiedFolioRead={readingReceiptId:readEvent.id,sourceEventId:recentFolio.sourceEventId,readTick:readEvent.tick};relevant.__folioCue={target:effects[recentFolio.sourceEventId],effect:18,sourceEventId:recentFolio.sourceEventId,readingReceiptId:readEvent.id};}
   return relevant;
  }
  function tick(control='linked'){
