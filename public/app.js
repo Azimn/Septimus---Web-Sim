@@ -3,14 +3,14 @@ const $=id=>document.getElementById(id);let last=null,busy=false,selected='';
 const icon={bed:'🛏',bookshelf:'📚',bench:'⚗',lamp:'🪔',sink:'🚰',stove:'🍲',pantry:'🫙',table:'🍽',toilet:'🚽',vegetable_plot:'🥕',tea_plot:'🌿',mailbox:'📬',catalog:'📖'};
 const labels={hunger:'Hunger',thirst:'Thirst',fatigue:'Fatigue',bladder:'Bladder',boredom:'Boredom'};
 const nice=s=>s.replace(/_/g,' ').replace(/\b\w/g,x=>x.toUpperCase());
-const time=s=>`Day ${String(s.day).padStart(2,'0')} · ${String(Math.floor(s.minute/60)).padStart(2,'0')}:${String(s.minute%60).padStart(2,'0')}`;
+const time=(s,c)=>c?`${c.date} · ${c.time} ${c.beat}`:`Day ${s.day} · ${String(Math.floor(s.minute/60)).padStart(2,'0')}:${String(s.minute%60).padStart(2,'0')}`;
 function toast(s){const n=$('toast');n.textContent=s;n.style.display='block';setTimeout(()=>n.style.display='none',2500)}
 async function api(method,url,payload){const r=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:payload===undefined?undefined:JSON.stringify(payload),cache:'no-store'});const out=await r.json();if(!r.ok)throw Error(out.error||`HTTP ${r.status}`);return out}
 function tileMap(data){const m=data.map,s=data.world,coord=`${s.position.x},${s.position.y}`,bypos=Object.fromEntries(m.objects.map(o=>[`${o.x},${o.y}`,o]));
  const html=[];for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++){const room=m.cells[y][x],o=bypos[`${x},${y}`];const here=coord===`${x},${y}`;html.push(`<div class="tile ${room||'empty'} ${o?'object':''}" data-obj="${o?.id||''}" title="${o?`${o.name} (${x},${y})`:`${m.rooms[room]||'Wall'} (${x},${y})`}" aria-label="${here?'Septimus at ':''}${o?.name||m.rooms[room]||'Wall'}"><span>${o?icon[o.id]||'◈':''}</span>${here?'<span class="occupant">◆</span>':''}</div>`)}$('map').innerHTML=html.join('');
  for(const el of document.querySelectorAll('.tile.object'))el.addEventListener('click',()=>{const o=m.objects.find(i=>i.id===el.dataset.obj);selected=o.id;$('object-info').textContent=`${o.name} · ${m.rooms[m.cells[o.y][o.x]]} · physical position (${o.x}, ${o.y}) · ${o.kind}`});
 }
-function render(data){last=data;const s=data.world;$('clock').textContent=time(s);$('status').textContent=!s.alive?'DECEASED':data.running?'LIVING':'PAUSED';$('status').classList.toggle('live',data.running);$('play').textContent=data.running?'Ⅱ Pause world':'▶ Begin life';$('play').disabled=!s.alive;
+function render(data){last=data;const s=data.world;$('clock').textContent=time(s,data.calendar);$('status').textContent=!s.alive?'DECEASED':data.running?'LIVING':'PAUSED';$('status').classList.toggle('live',data.running);$('play').textContent=data.running?'Ⅱ Pause world':'▶ Begin life';$('play').disabled=!s.alive;
  $('step').disabled=!s.alive;$('ten').disabled=!s.alive;$('hundred').disabled=!s.alive;
  tileMap(data);$('activity').textContent=`${data.map.rooms[data.map.cells[s.position.y][s.position.x]]}. ${s.lastAction}`;
  $('needs').innerHTML=Object.entries(s.needs).map(([k,v])=>`<div><div class="need-name"><span>${labels[k]}</span><span>${Math.round(v)} / 100</span></div><div class="bar"><div class="fill ${v>=85?'critical':v>=65?'high':''}" style="width:${v}%"></div></div></div>`).join('');
