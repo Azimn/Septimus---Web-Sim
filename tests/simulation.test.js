@@ -29,7 +29,7 @@ test('archived event chain and all world source receipts survive cold restart',(
  next.tick();assert.equal(next.view().world.tick,116);
 }));
 test('tampered journal is rejected rather than silently rewritten',()=>within(dir=>{
- const a=createOrganism({dir});for(let i=0;i<4;i++)a.tick();const f=path.join(dir,'events.jsonl');let v=fs.readFileSync(f,'utf8');v=v.replace('The day begins in the bedroom.','I am secretly immortal.');fs.writeFileSync(f,v);assert.throws(()=>createOrganism({dir}),/Journal hash/);
+ const a=createOrganism({dir});for(let i=0;i<4;i++)a.tick();const f=path.join(dir,'events.jsonl');let v=fs.readFileSync(f,'utf8');const existing=JSON.parse(v.split('\n')[0]).body.world.lastAction;assert.ok(v.includes(existing));v=v.replace(existing,'I am secretly immortal.');fs.writeFileSync(f,v);assert.throws(()=>createOrganism({dir}),/Journal hash/);
 }));
 test('external identity cannot be silently edited on reload',()=>within(dir=>{
  const original=path.join(__dirname,'../identity.json'),identityPath=path.join(dir,'identity.json');fs.copyFileSync(original,identityPath);const world=path.join(dir,'world');createOrganism({dir:world,identityPath});const v=JSON.parse(fs.readFileSync(identityPath,'utf8'));v.name='Joe';fs.writeFileSync(identityPath,JSON.stringify(v));assert.throws(()=>createOrganism({dir:world,identityPath}),/Immutable external identity/);
