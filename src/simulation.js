@@ -1,9 +1,10 @@
 'use strict';
 const {BY_ID,CATALOG,BOOKS,roomAt,pathBetween,fresh}=require('./world');
+const Calendar=require('./calendar');
 const clone=structuredClone;
 function cap(n){return Math.min(100,Math.max(0,n))}
 function receipt(state,events,kind,description,extra={}){
- const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,kind,description,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
+ const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
 }
 function pending(state,type){return state.orders.some(o=>o.type===type&&!o.collected)}
 function choose(state,evidence={}){
