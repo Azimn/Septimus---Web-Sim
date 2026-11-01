@@ -1,0 +1,18 @@
+name: Septimus simulation tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify simulation, save continuity and historical boundaries
+        run: npm test
+      - name: Run bounded autonomous-life experiment
+        run: npm run experiment
