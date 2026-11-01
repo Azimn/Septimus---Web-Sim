@@ -8,7 +8,7 @@ permissions:
 jobs:
   simulation:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,4 +20,29 @@ jobs:
         run: npm test
       - name: Preserve bounded life benchmark including failures
         run: npm run experiment
-      # Frozen v1 outcome is never re-run or auto-committed by CI.\n
+      # Frozen v1 outcome is never re-run or auto-committed by CI.
+      - name: Run preregistered v2 matched-seed folio experiment
+        run: node tests/folio_experiment_v2.js
+      - name: Run untuned 10-seed winter observation
+        run: node tests/winter_benchmark.js
+      - name: Archive full v2 and winter evidence including incomplete trials
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: septimus-v2-winter-evidence
+          path: |
+            results/folio_experiment_v2.json
+            results/folio_experiment_v2.md
+            results/winter_60_day.json
+            results/winter_60_day.md
+          if-no-files-found: warn
+      - name: Commit the measured results after the protocol and source
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "Septimus Research CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/folio_experiment_v2.json results/folio_experiment_v2.md results/winter_60_day.json results/winter_60_day.md
+          if ! git diff --cached --quiet; then
+            git commit -m "results(septimus): record v2 and winter observations [skip ci]"
+            git push origin HEAD:main
+          fi
