@@ -1,0 +1,25 @@
+{
+  "protocol": "unchanged pre-existing Septimus bounded life experiment",
+  "command": "npm run experiment",
+  "trials": 40,
+  "stepsPerTrial": 700,
+  "before": {
+    "gitHead": "8b1e4956c18630e2d9d99c2735a2946a213cbbcd",
+    "survived": 40,
+    "fullLife": 28,
+    "averageRemainingWallet": 58.825
+  },
+  "after": {
+    "workingSource": "source blobs staged for household and diary workstreams",
+    "survived": 40,
+    "fullLife": 28,
+    "averageRemainingWallet": 61.675
+  },
+  "interpretation": "Activity and survival totals did not change over the short 4.86-day July window. Fuel scarcity, hard winter, significant roof leakage and garden encroachment arise on longer horizons, so equality here does not establish long-term welfare.",
+  "gatesUnchanged": true,
+  "forcedRetune": false,
+  "evidence": [
+    "GitHub Actions 41349926474 for pre-change main",
+    "Locally executed seeded Node experiment after adding household conditions"
+  ]
+}

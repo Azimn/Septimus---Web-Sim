@@ -54,3 +54,9 @@ Optional Ollama narration, strictly local: set `OLLAMA_MODEL=your-model` (and an
 This is a *playable research toy*, not yet a convincing autonomous person. Its needs are deliberately compact and the world has no external economy, seasons, disease, real 17-book content, dialog with other inhabitants, actual grown-up science, or visual animation beyond a working map. Survival rates in bounded tests should not be mistaken for open-ended life. Running time stops when the local Node process is off. Do not call it perpetual or fault-tolerant. See `docs/SIMULATION_DESIGN.md` for boundaries and experiments.
 
 `legacy/` contains the original Minimum Organism and Reduced decision engines as frozen reference sources, not active code. The original Pretorius repositories remain untouched.
+
+## Household conditions and controlled memory experiment (November 2026)
+
+The tower now costs money and maintenance: deterministic coal-cart transit from Rosa Brandl's firm, wet/dry fuel, seasonally variable prices, hearth heat, weak floors, rain-driven roof leaks, physical repairs and slowly spreading garden nettles. See [household conditions](docs/HOUSEHOLD_CONDITIONS.md). The private notebook is now biased toward a single evening retrospective made from distinct authenticated events. Old reconstructed folios and lived journal receipts remain separate.
+
+The [folio influence protocol](docs/FOLIO_MEMORY_PREREGISTRATION.md) was frozen in Git before outcome runs. It specifies three matched-seed controls, no scripted choices and a fixed success criterion. Run the disposable experiment with `npm run folio-experiment`. This requires the complete verified canon file already in the repository and never edits a live save. No LLM integration is added by this change.

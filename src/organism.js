@@ -30,7 +30,7 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
   if(!state)throw Error('Journal has no genesis world');
   const sources=new Map(events.map(e=>[e.id,e]));
   for(const page of diaryPages){const writing=sources.get(page.writingReceiptId),source=sources.get(page.sourceEventId);
-   if(!writing||writing.kind!=='journal_write'||writing.details?.sourceEventId!==page.sourceEventId||!source||page.sourceHash!==hash(source)||page.id!==`PAGE-${writing.id}`)throw Error('Unverified diary page provenance');
+   if(!writing||writing.kind!=='journal_write'||writing.details?.sourceEventId!==page.sourceEventId||!source||page.sourceHash!==hash(source)||page.id!==`PAGE-${writing.id}`||(page.sourceEventIds&&(!page.sourceEventIds.every((id,i)=>sources.has(id)&&hash(sources.get(id))===page.sourceHashes?.[i])||page.sourceEventIds[0]!==page.sourceEventId)))throw Error('Unverified diary page provenance');
   }
   for(const folio of folioReads){const reading=sources.get(folio.readingReceiptId),record=archive.records.find(r=>r.event_id===folio.sourceEventId);
    if(!reading||reading.kind!=='journal_read'||!record||hash(record)!==folio.sourceHash||folio.id!==`FOLIO-${reading.id}`)throw Error('Unverified historical folio provenance');
@@ -50,21 +50,33 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
   for(const m of found){if(!original.has(m.eventId)||m.sourceHash!==hash(original.get(m.eventId)))continue;
    const group={eat_meal:'eat',drink_sink:'drink',sleep:'sleep',book_completed:'read',experiment:'work',repair:'work',catalog_order:'order_groceries',harvest:'harvest_vegetables'}[m.kind];if(group)(relevant[group]??=[]).push(m.id);
   }
-  const written=new Set(diaryPages.map(page=>page.sourceEventId));
-  const pending=validMemory().filter(m=>m.kind!=='journal_read'&&m.kind!=='journal_write'&&!written.has(m.eventId)).slice(-12).reverse();
+  const written=new Set(diaryPages.flatMap(page=>page.sourceEventIds||[page.sourceEventId]));
+  const salient=new Set(['catalog_order','collect_payment','coal_collected','inspect_fabric','roof_repair','floor_repair','garden_tended','burn_coal','cook','sleep','harvest','eat_meal','repair','experiment','journal_read']);
+  const candidates=validMemory().filter(m=>salient.has(m.kind)&&!written.has(m.eventId)&&events.find(e=>e.id===m.eventId)?.day===state.day);
+  const weight={coal_collected:10,catalog_order:10,collect_payment:10,roof_repair:11,floor_repair:11,inspect_fabric:8,inspect_coal:8,garden_tended:9,burn_coal:9,harvest:8,repair:7,experiment:8,journal_read:9,cook:4,eat_meal:2,sleep:2};
+  candidates.sort((a,b)=>(weight[b.kind]||0)-(weight[a.kind]||0)||b.tick-a.tick);
+  const seenKinds=new Set(),pending=[];
+  for(const m of candidates){if(seenKinds.has(m.kind))continue;seenKinds.add(m.kind);pending.push(m);if(pending.length>=5)break;}
   relevant.__pendingJournal=pending.map(m=>m.eventId);
   relevant.__historyCount=archive.records.length;
+  const recentFolio=folioReads.at(-1);
+  const effects={'E22-001':'inspect_floor','E18-010':'tend_path','E03-002':'order_coal'};
+  const readEvent=recentFolio&&events.find(e=>e.id===recentFolio.readingReceiptId);
+  if(readEvent&&state.tick-readEvent.tick<=160&&effects[recentFolio.sourceEventId])relevant.__folioCue={target:effects[recentFolio.sourceEventId],effect:18,sourceEventId:recentFolio.sourceEventId};
   return relevant;
  }
  function tick(control='linked'){
   if(!state.alive){if(running)setRunning(false);return {events:[],world:clone(state)}};
-  const outcome=Simulation.step(state,memoryEvidence(control));const freshMemory=outcome.events.filter(e=>!['walk','goal_selected','wait','crop_ripened','delivery_arrived','goal_suspended','goal_resumed','journal_write','journal_read'].includes(e.kind)).map(e=>({id:`M-${e.id}`,eventId:e.id,sourceHash:hash(e),kind:e.kind,...Diary.recollect(e),room:e.room,position:e.position,tick:e.tick,source:'world_receipt'}));
+  const outcome=Simulation.step(state,memoryEvidence(control));const freshMemory=outcome.events.filter(e=>!['walk','goal_selected','wait','crop_ripened','delivery_arrived','goal_suspended','goal_resumed','journal_write'].includes(e.kind)&&e.perceived!==false).map(e=>({id:`M-${e.id}`,eventId:e.id,sourceHash:hash(e),kind:e.kind,...Diary.recollect(e),room:e.room,position:e.position,tick:e.tick,source:'world_receipt'}));
   append('TICK',{control,tick:outcome.state.tick,events:outcome.events,memories:freshMemory,worldAfter:outcome.state});state=outcome.state;events.push(...outcome.events);memory.push(...freshMemory);
   for(const event of outcome.events){
    if(event.kind==='journal_write'){
     const source=events.find(e=>e.id===event.details.sourceEventId);
     if(!source)throw Error('Diary writing has no real world source');
-    const page=Diary.makePage(event,source,hash(source));append('JOURNAL_PAGE',page);diaryPages.push(page);
+    const other=(event.details.sourceEventIds||[]).slice(1).map(id=>events.find(e=>e.id===id)).filter(Boolean);
+    const recentFolio=folioReads.at(-1);const readEvent=recentFolio&&events.find(e=>e.id===recentFolio.readingReceiptId);
+    const response=readEvent&&readEvent.tick>=(diaryPages.at(-1)?.writingTick??-1)&&readEvent.tick<=event.tick?recentFolio:null;
+    const page=Diary.makePage(event,source,hash(source),other,response);page.writingTick=event.tick;append('JOURNAL_PAGE',page);diaryPages.push(page);
    }
    if(event.kind==='journal_read'&&archive.records.length){
     const folio=archive.records[event.details.folioIndex%archive.records.length];

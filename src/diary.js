@@ -38,13 +38,39 @@ function recollect(event){
  const text=subjective[event.kind]||`I recall an occurrence in the ${event.room||'tower'}, but the particulars require checking against my notes.`;
  return {text,confidence:'recollected_not_exact',observerTime:null,sourceEventId:event.id,objectiveText:event.description};
 }
-function makePage(writeEvent,observedEvent,sourceHash){
+// E03-002, E22-001, E22-012 and E18-010: a diary of observed household pressures.
+// This first-person prose is deterministic templating, not inference or exact recollection.
+function incident(event){
+ const d=event.details||{},place=event.room||'tower',kind=event.kind;
+ if(kind==='catalog_order')return `I ordered ${Object.entries(d.goods||{}).map(([item,count])=>`${count} ${item}`).join(', ')||'goods'} from ${d.supplierId==='rosa_brandl'?'Rosa Brandl’s firm':'the supplier'} for ${d.price??'an uncertain amount'} crowns; purchase is not delivery.`;
+ if(kind==='delivery_arrived')return `The cart or post brought ${d.type||'goods'} from ${d.source||'a supplier'}; I cannot swear I witnessed its arrival.`;
+ if(kind==='coal_collected')return `At the porch I handled ${d.quantity} baskets of ${d.wet?'wet':'dry'} coal, supplied by Rosa Brandl’s firm.`;
+ if(kind==='inspect_coal')return `I counted ${d.quantity} coal baskets near the entrance; ${d.wet||0} remained damp.`;
+ if(kind==='burn_coal')return `I stoked the kitchen hearth with ${d.wet?'damp':'dry'} coal, and observed the difference in warmth.`;
+ if(kind==='inspect_fabric')return `I examined the ${d.subject||'tower'} and found ${d.observation||'signs of wear'}.`;
+ if(kind==='roof_repair')return `I had the roof repaired using ${d.roofingUsed||1} packet of material; the chamber appeared dry again.`;
+ if(kind==='floor_repair')return `I had the stair boards renewed using ${d.boardsUsed||1} board.`;
+ if(kind==='garden_tended')return `I cut back the nettles along the garden path; the passage is clear for now.`;
+ if(kind==='cook')return `I prepared ${d.recipe||'a meal'} upon the kitchen range, a necessary domestic labour.`;
+ if(kind==='harvest')return `The garden yielded ${JSON.stringify(d.carried||{})}; I brought the crop indoors.`;
+ if(kind==='journal_read')return `I read an old passage in my private notebook, and judged my present circumstances against it.`;
+ if(kind==='collect_payment')return `I received ${d.amount||'some'} crowns for a report I had sent away.`;
+ if(kind==='sleep')return `I slept in the ${place}, with ${d.coldRoom?'little comfort from the chill':'comparative comfort'}.`;
+ if(kind==='eat_meal')return `I ate at the table and noted that ${d.mealsRemaining??'some'} meals remained.`;
+ if(kind==='repair')return `I repaired an instrument in the ${place} and found ${d.damageRemaining??'less'} damage remaining.`;
+ return recollect(event).text;
+}
+function makePage(writeEvent,observedEvent,sourceHash,otherEvents=[],folio=null){
  if(writeEvent.kind!=='journal_write'||writeEvent.details?.sourceEventId!==observedEvent.id)throw Error('A physical writing receipt and matching source event are required');
+ const selected=[observedEvent,...otherEvents.filter(e=>e&&e.id!==observedEvent.id)].slice(0,5);
+ const sourceEventIds=selected.map(e=>e.id),sourceHashes=selected.map(e=>sha(e));
+ const response=folio?` I have also read in my old journal a passage entitled “${folio.title}.” It describes an earlier account, not an occurrence of today; I find myself considering ${folio.sourceEventId} without asserting that the past has returned.`:'';
  return {id:`PAGE-${writeEvent.id}`,writtenBy:'Septimus Pretorius',authorshipMode:'deterministic_first_person_draft',
-   evidenceKind:'verified_world_receipt',writingReceiptId:writeEvent.id,sourceEventId:observedEvent.id,sourceHash,
-   approximateWhen:'Within the present stretch of days; precise time not asserted',
-   text:`I have returned to my notebook. ${recollect(observedEvent).text} The preceding is my own recollection; the experimental record, if one exists, must be consulted separately.`,
-   memoryEligible:false,mechanicalTimeNotInText:true};
+ evidenceKind:'verified_world_receipt',writingReceiptId:writeEvent.id,sourceEventId:observedEvent.id,sourceHash,
+ sourceEventIds,sourceHashes,responseFolioId:folio?.sourceEventId||null,writingDay:writeEvent.day,
+ approximateWhen:'This evening, as best I recall; no precise hour asserted',
+ text:`I set down these particulars at the end of the day, aware that my account is fallible. ${selected.map(incident).join(' ')}${response} These notes are impressions, not corrections to the physical ledger.`,
+ memoryEligible:false,mechanicalTimeNotInText:true};
 }
 function makeFolioAccess(readEvent,folio){
  if(readEvent.kind!=='journal_read'||!folio||readEvent.details?.folioIndex===undefined)throw Error('A physical reading receipt is required');

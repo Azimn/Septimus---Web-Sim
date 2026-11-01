@@ -52,6 +52,11 @@ const OBJECTS=[
 {id:'lamp',name:'Oil lamp',x:12,y:2,kind:'light'},
 {id:'sink',name:'Kitchen water point (scenario)',x:2,y:5,kind:'drink'},
 {id:'stove',name:'Kitchen range',x:4,y:5,kind:'cook'},
+{id:'hearth',name:'Coal-burning kitchen hearth',x:5,y:5,kind:'heat'},
+{id:'coal_pile',name:'Coal store beside cart entrance',x:14,y:8,kind:'fuel'},
+{id:'roof_access',name:'Roof inspection access',x:3,y:1,kind:'inspect'},
+{id:'floorboards',name:'Old stair boards',x:3,y:4,kind:'inspect'},
+{id:'garden_path',name:'Overgrown garden path',x:7,y:8,kind:'tend'},
 {id:'pantry',name:'Pantry cupboard',x:6,y:5,kind:'store'},
 {id:'table',name:'Dining table',x:7,y:5,kind:'eat'},
 {id:'toilet',name:'Washroom fixture (scenario)',x:10,y:5,kind:'toilet'},
@@ -65,7 +70,9 @@ const CATALOG={
   groceries:{name:'Grocer delivery',source:'grocer',price:12,delay:9,goods:{vegetables:4,grain:4,milk:2}},
   tea:{name:'Tea merchant parcel',source:'tea merchant',price:5,delay:18,goods:{tea_leaves:3}},
   seeds:{name:'Seed catalog',source:'seed house',price:7,delay:24,goods:{vegetable_seeds:4,tea_seeds:2}},
-  science:{name:'Scientific instrument supplier',source:'scientific catalog',price:16,delay:36,goods:{spares:2,reagents:2,lamp_oil:2}}
+  science:{name:'Scientific instrument supplier',source:'scientific catalog',price:16,delay:36,goods:{spares:2,reagents:2,lamp_oil:2}},
+  coal:{name:'Rosa Brandl coal cart',source:'Rosa Brandl firm',supplierId:'rosa_brandl',price:9,delay:24,goods:{coal:7}},
+  maintenance:{name:'Joiner and roofer',source:'building supplier',price:11,delay:32,goods:{boards:2,roofing:2}}
 };
 const BOOKS=['The Atlas of Quiet Machines','An Inquiry into Ash','The Astronomer\'s Garden','Small Experiments in Light','A History of Copper','The Clockmaker\'s Notes','On Dreams of Rain','A Dictionary of Night'];
 function roomAt(x,y){
@@ -86,12 +93,12 @@ function pathBetween(from,to){if(from.x===to.x&&from.y===to.y)return [];
 function fresh(seed=1729){return {
  version:1,seed,tick:0,minute:420,day:1,alive:true,deathCause:null,
  position:{x:2,y:2},needs:{hunger:24,thirst:26,fatigue:24,bladder:14,boredom:28},health:100,wallet:72,
- stock:{vegetables:2,grain:3,milk:1,tea_leaves:1,meals:1,tea_cups:0,vegetable_seeds:2,tea_seeds:1,spares:2,reagents:1,lamp_oil:2},
+ stock:{vegetables:2,grain:3,milk:1,tea_leaves:1,meals:1,tea_cups:0,vegetable_seeds:2,tea_seeds:1,spares:2,reagents:1,lamp_oil:2,boards:0,roofing:0},
  carried:null,orders:[],nextOrder:1,researchReports:0,unpaidLetters:0,
  garden:{vegetables:{stage:'empty',plantedTick:null,watered:false},tea:{stage:'empty',plantedTick:null,watered:false}},
  lab:{lampLit:false,clutter:2,damage:2,repairs:0,experiments:0},booksRead:[],bookProgress:{},
  goal:null,suspendedGoal:null,nextGoal:1,completed:[],recentKinds:[],lastDecision:null,lastAction:'The day begins in the sleeping chamber of the tower.',
  counters:{drinks:0,meals:0,tea:0,harvests:0,orders:0,deliveries:0,work:0},
- nextReceipt:1
+ household:require('./household').create(),nextReceipt:1
 };}
 module.exports={WIDTH,HEIGHT,rooms,OBJECTS,BY_ID,CATALOG,BOOKS,RESIDENCE,KNOWN_PEOPLE,HISTORY_ARCHIVE,roomAt,pathBetween,fresh};

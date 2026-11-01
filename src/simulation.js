@@ -2,13 +2,14 @@
 const {BY_ID,CATALOG,BOOKS,roomAt,pathBetween,fresh}=require('./world');
 const clone=structuredClone;
 const Calendar=require('./calendar');
+const Household=require('./household');
 function cap(n){return Math.min(100,Math.max(0,n))}
-function receipt(state,events,kind,description,extra={}){
- const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
+function receipt(state,events,kind,description,extra={},perceived=true){
+ const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,perceived,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
 }
 function pending(state,type){return state.orders.some(o=>o.type===type&&!o.collected)}
 function choose(state,evidence={}){
- const n=state.needs,p=state.stock,g=state.garden,options=[];
+ const n=state.needs,p=state.stock,g=state.garden,options=[],h=Household.migrate(state);
  const add=(kind,score,reason,target,detail={})=>options.push({kind,score,reason,target,detail,memoryIds:(evidence[kind]||[]).slice(-3)});
  // Survival pressure is defined over needs, not the text generated about those needs.
  if(n.thirst>=38)add('drink',(n.thirst>=87?350:50)+n.thirst*1.5,`Thirst pressure ${n.thirst.toFixed(1)}`,'sink');
@@ -28,17 +29,31 @@ function choose(state,evidence={}){
  if(p.vegetable_seeds<1&&p.tea_seeds<1&&!pending(state,'seeds')&&state.wallet>=CATALOG.seeds.price)add('order_seeds',40,'Garden seeds nearly exhausted','catalog');
  if(p.tea_leaves<1&&g.tea.stage==='empty'&&!pending(state,'tea')&&state.wallet>=CATALOG.tea.price)add('order_tea',23,'Tea merchant can replace finite dried leaves','catalog');
  if(p.reagents<1&&p.spares<1&&!pending(state,'science')&&state.wallet>=CATALOG.science.price)add('order_science',42,'Workbench supplies exhausted','catalog');
+ // E03-002, E22-012: the purse cannot buy heat, food, and equipment independently.
+ if((Household.winter(state.day)||h.weather.rain)&&h.coal.dry+h.coal.wet>0&&h.heat.fuelledUntil<=state.tick)add('stoke_hearth',Household.winter(state.day)?116:47,'The kitchen is cold; there is fuel in the coal pile','hearth');
+ if(h.coal.dry+h.coal.wet<3&&!pending(state,'coal')&&state.wallet>=Household.price(CATALOG.coal.price,state.day,'coal'))add('order_coal',Household.winter(state.day)?91:27,'Fuel reserve appears low; order from Rosa Brandl','catalog');
+ if(h.fabric.roof<55||h.fabric.floor<55){
+  if(!pending(state,'maintenance')&&state.stock.boards<1&&state.stock.roofing<1&&state.wallet>=Household.price(CATALOG.maintenance.price,state.day,'maintenance'))add('order_maintenance',25,'Old tower needs repair materials','catalog');
+ }
+ if(h.fabric.roof<49&&state.stock.roofing>0)add('repair_roof',h.fabric.leaking?144:55,'Observed water stains justify roof work','roof_access');
+ if(h.fabric.floor<48&&state.stock.boards>0)add('repair_floor',h.fabric.floor<18?145:59,'Weak stair boards need replacement','floorboards');
+ if(state.tick%144>=30&&state.tick%144<=120&&h.garden.nettles>12)add('tend_path',41+h.garden.nettles*.40,'Nettles obscure the garden path','garden_path');
+ if(!h.observed.roof||state.day-h.observed.roof.day>=5)add('inspect_roof',h.fabric.leaking?70:20,'Look for damp or damaged slate at the roof access','roof_access');
+ if(!h.observed.floor||state.day-h.observed.floor.day>=5)add('inspect_floor',h.fabric.floor<30?70:20,'Check the old stair boards','floorboards');
+ if(!h.observed.coal||state.day-h.observed.coal.day>=5)add('inspect_coal',Household.winter(state.day)?49:12,'Check the coal store directly','coal_pile');
  if(state.researchReports>0)add('post_report',55,'An independently completed experiment has a report to mail','mailbox');
  if(p.tea_cups>0&&n.thirst>=16)add('sip_tea',75+n.thirst*.8,'Freshly brewed tea','table');
  if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48)add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
  if(state.booksRead.length<BOOKS.length&&n.boredom>=34)add('read',36+n.boredom*.9,'Curiosity and an unread book on the shelf','bookshelf');
- if((evidence.__pendingJournal||[]).length>0&&(state.journal?.lastWriteTick??-999)<state.tick-20)add('write_journal',43+n.boredom*.18,'There is a source-backed event I have yet to enter in my notebook','journal',{sourceEventId:evidence.__pendingJournal[0]});
+ if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
  if((evidence.__historyCount||0)>0&&(state.journal?.lastReadTick??-999)<state.tick-70&&n.boredom>=35)add('read_journal',35+n.boredom*.45,'My earlier notes may help order my thoughts','journal');
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))add('work',46+n.boredom*.35,'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
  // Source-attributed preferences remain modest; no fabricated memory can change physics.
- for(const opt of options){if(opt.memoryIds.length)opt.score+=Math.min(2,opt.memoryIds.length*.5);if(state.recentKinds.slice(-2).includes(opt.kind))opt.score-=4;if(opt.score<120)opt.score+=stableChoiceNoise(state.seed,state.tick,opt.kind)}
+ for(const opt of options){if(opt.memoryIds.length)opt.score+=Math.min(2,opt.memoryIds.length*.5);
+  // Pre-registered folio interventions are from actually read records, not the unconsulted archive.
+  const cue=evidence.__folioCue;if(cue&&cue.target===opt.kind)opt.score+=cue.effect;if(state.recentKinds.slice(-2).includes(opt.kind))opt.score-=4;if(opt.score<120)opt.score+=stableChoiceNoise(state.seed,state.tick,opt.kind)}
  options.sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));return options;
 }
 function stableChoiceNoise(seed,tick,kind){
@@ -52,9 +67,9 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'cook':{let recipe;if(p.vegetables>=1){stockChange(state,{vegetables:-1});recipe='vegetable soup'}else if(p.milk>=1&&p.grain>=1){stockChange(state,{milk:-1,grain:-1});recipe='milk porridge'}else throw Error('No recipe available');stockChange(state,{meals:1});receipt(state,events,'cook',`Cooked ${recipe} on the kitchen range`,{recipe,mealsPrepared:1});break}
  case 'sip_tea':stockChange(state,{tea_cups:-1});n.thirst=cap(n.thirst-43);n.bladder=cap(n.bladder+8);state.counters.tea++;receipt(state,events,'drink_tea','Drank a freshly brewed cup of tea',{source:'prepared tea'});break;
  case 'brew_tea':stockChange(state,{tea_leaves:-1,tea_cups:1});receipt(state,events,'brew_tea','Boiled tap water and steeped dried tea leaves',{teaLeavesRemaining:p.tea_leaves});break;
- case 'sleep':n.fatigue=cap(n.fatigue-76);receipt(state,events,'sleep','Slept on the iron bedstead',{energyRestored:true});break;
+ case 'sleep':{const c=Household.comfort(state,'bedroom');const relief=c.warmth<35?42:76;n.fatigue=cap(n.fatigue-relief);if(c.warmth<35)state.health=cap(state.health-.8);receipt(state,events,'sleep','Slept on the iron bedstead',{energyRestored:true,restRelief:relief,coldRoom:c.warmth<35});break;}
  case 'toilet':n.bladder=cap(n.bladder-90);receipt(state,events,'toilet','Used the plumbed water closet');break;
- case 'write_journal':{const sourceEventId=goal.detail?.sourceEventId;if(!sourceEventId)throw Error('No grounded journal entry to write');state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};state.journal.lastWriteTick=state.tick;state.journal.entries++;receipt(state,events,'journal_write','Wrote a page in the private scientific diary',{sourceEventId});break;}
+ case 'write_journal':{const sourceEventId=goal.detail?.sourceEventId;if(!sourceEventId)throw Error('No grounded journal entry to write');state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};state.journal.lastWriteTick=state.tick;state.journal.lastWrittenDay=state.day;state.journal.entries++;receipt(state,events,'journal_write','Wrote an evening retrospective in the private scientific diary',{sourceEventId,sourceEventIds:goal.detail.sourceEventIds||[sourceEventId]});break;}
  case 'read_journal':{state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};const folioIndex=state.journal.folioCursor;state.journal.folioCursor++;state.journal.lastReadTick=state.tick;n.boredom=cap(n.boredom-21);receipt(state,events,'journal_read','Consulted an older passage in the private notebook',{folioIndex});break;}
  case 'read':{const title=BOOKS.find(x=>!state.booksRead.includes(x));if(!title){receipt(state,events,'read_unavailable','No unread books remain');break;}const page=(state.bookProgress[title]||0)+1;state.bookProgress[title]=page;n.boredom=cap(n.boredom-33);receipt(state,events,'read_section',`Read section ${page} of ${title}`,{title,page});if(page>=2){state.booksRead.push(title);receipt(state,events,'book_completed',`Finished ${title}`,{title,sections:2});}break}
  case 'work':{if(!lab.lampLit){if(p.lamp_oil<1)throw Error('Lamp has no oil');stockChange(state,{lamp_oil:-1});lab.lampLit=true;receipt(state,events,'light_lamp','Lit the Laboratory oil lamp',{oilRemaining:p.lamp_oil});return false}
@@ -65,12 +80,20 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'plant_tea':stockChange(state,{tea_seeds:-1});garden.tea={stage:'growing',plantedTick:state.tick,watered:false};receipt(state,events,'plant','Planted tea seedlings in garden plot',{crop:'tea'});break;
  case 'water_vegetables':garden.vegetables.watered=true;receipt(state,events,'water_garden','Watered the vegetable plot using tap water',{crop:'vegetables'});break;
  case 'water_tea':garden.tea.watered=true;receipt(state,events,'water_garden','Watered the tea bushes using tap water',{crop:'tea'});break;
- case 'harvest_vegetables':if(garden.vegetables.stage!=='ripe')throw Error('Vegetables not ripe');state.carried={vegetables:3};garden.vegetables={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Harvested three homegrown vegetables',{carried:{vegetables:3}});break;
- case 'harvest_tea':if(garden.tea.stage!=='ripe')throw Error('Tea not ripe');state.carried={tea_leaves:3};garden.tea={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Picked and dried three portions of tea leaves',{carried:{tea_leaves:3}});break;
+ case 'harvest_vegetables':if(garden.vegetables.stage!=='ripe')throw Error('Vegetables not ripe');state.carried={vegetables:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.vegetables={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Harvested homegrown vegetables',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
+ case 'harvest_tea':if(garden.tea.stage!=='ripe')throw Error('Tea not ripe');state.carried={tea_leaves:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.tea={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Picked and dried homegrown tea leaves',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'put_away':if(!state.carried)throw Error('Nothing to put away');stockChange(state,state.carried);receipt(state,events,'put_away','Put a physical parcel or harvest into pantry storage',{goods:state.carried});state.carried=null;break;
- case 'order_groceries':case 'order_seeds':case 'order_science':case 'order_tea':{const type=kind.replace('order_','');const catalog=CATALOG[type];if(!catalog||state.wallet<catalog.price)throw Error('Catalog order is not affordable');state.wallet-=catalog.price;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type,source:catalog.source,paid:catalog.price,goods:clone(catalog.goods),placedTick:state.tick,dueTick:state.tick+catalog.delay,arrived:false,collected:false};state.orders.push(order);state.counters.orders++;receipt(state,events,'catalog_order',`Posted paid order to ${catalog.source}`,{orderId:order.id,price:catalog.price,goods:order.goods,etaTick:order.dueTick});break}
+ case 'order_groceries':case 'order_seeds':case 'order_science':case 'order_tea':case 'order_coal':case 'order_maintenance':{const type=kind.replace('order_','');const catalog=CATALOG[type];if(!catalog||state.wallet<Household.price(catalog.price,state.day,type))throw Error('Catalog order is not affordable');const paid=Household.price(catalog.price,state.day,type);state.wallet-=paid;const variance=type==='coal'?Household.transit(state.seed,state.nextOrder):null;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type,source:catalog.source,paid,goods:clone(catalog.goods),placedTick:state.tick,dueTick:state.tick+catalog.delay+(variance?.late||0),late:variance?.late||0,wet:variance?.wet||false,supplierId:catalog.supplierId||null,arrived:false,collected:false};state.orders.push(order);state.counters.orders++;receipt(state,events,'catalog_order',`Posted paid order to ${catalog.source}`,{orderId:order.id,price:paid,goods:order.goods,etaTick:order.dueTick,supplierId:order.supplierId});break}
  case 'collect':{const order=state.orders.find(o=>o.arrived&&!o.collected);if(!order||state.carried)throw Error('No collectable parcel or hands full');order.collected=true;state.counters.deliveries++;if(order.type==='research_payment'){state.wallet+=order.payment;receipt(state,events,'collect_payment','Collected a scientific society payment by post',{orderId:order.id,amount:order.payment,wallet:state.wallet});}
+ else if(order.type==='coal'){const h=Household.migrate(state);if(order.wet)h.coal.wet+=order.goods.coal;else h.coal.dry+=order.goods.coal;h.observed.coal={day:state.day,count:h.coal.dry+h.coal.wet};receipt(state,events,'coal_collected','Moved Rosa Brandl firm coal from the porch cart into the visible coal pile',{orderId:order.id,supplierId:order.supplierId,quantity:order.goods.coal,wet:order.wet});}
  else {state.carried=clone(order.goods);receipt(state,events,'collect_parcel','Collected a physical parcel from the letter box',{orderId:order.id,goods:order.goods});}break}
+ case 'inspect_roof':{const h=Household.migrate(state);h.observed.roof={day:state.day,description:h.fabric.leaking?'Water stains and drips':'Slate and joint wear'};receipt(state,events,'inspect_fabric','Inspected the tower roof',{subject:'roof',observation:h.observed.roof.description});break;}
+ case 'inspect_floor':{const h=Household.migrate(state);h.observed.floor={day:state.day,description:h.fabric.floor<35?'The stair boards flex alarmingly':'The stair boards are worn'};receipt(state,events,'inspect_fabric','Inspected the stairs',{subject:'floor',observation:h.observed.floor.description});break;}
+ case 'inspect_coal':{const h=Household.migrate(state);h.observed.coal={day:state.day,count:h.coal.dry+h.coal.wet};receipt(state,events,'inspect_coal','Counted coal baskets by the porch',{quantity:h.observed.coal.count,wet:h.coal.wet});break;}
+ case 'stoke_hearth':{const h=Household.migrate(state),wet=h.coal.dry===0;if(wet&&h.coal.wet<=0||!wet&&h.coal.dry<=0)throw Error('No coal fuel');if(wet)h.coal.wet--;else h.coal.dry--;h.heat.fuelledUntil=state.tick+(wet?12:26);receipt(state,events,'burn_coal',wet?'Burned wet coal weakly in the hearth':'Fed dry coal into the kitchen hearth',{wet,efficiency:wet?.46:1,until:h.heat.fuelledUntil,quantity:h.coal.dry+h.coal.wet});break;}
+ case 'repair_roof':{const h=Household.migrate(state);stockChange(state,{roofing:-1});h.fabric.roof=cap(h.fabric.roof+45);h.fabric.roofRepaired++;h.fabric.leaking=false;h.fabric.dryRooms.library=true;receipt(state,events,'roof_repair','Repaired the leaky tower roof',{roofingUsed:1,dryStatusRestored:true});break;}
+ case 'repair_floor':{const h=Household.migrate(state);stockChange(state,{boards:-1});h.fabric.floor=cap(h.fabric.floor+40);h.fabric.floorRepaired++;receipt(state,events,'floor_repair','Replaced worn stair boards',{boardsUsed:1});break;}
+ case 'tend_path':{const h=Household.migrate(state);h.garden.nettles=0;h.garden.pathTendedTick=state.tick;receipt(state,events,'garden_tended','Cut back nettles along the garden path',{plant:'nettles',pathClear:true});break;}
  case 'post_report':{if(state.researchReports<=0)throw Error('No verified research report');state.researchReports--;const due=state.tick+22;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type:'research_payment',source:'scientific society',placedTick:state.tick,dueTick:due,arrived:false,collected:false,payment:25};state.orders.push(order);receipt(state,events,'report_posted','Mailed an earned research report to the scientific society',{report:true,paymentPending:25,etaTick:due});break}
  case 'reflect':n.boredom=cap(n.boredom-22);receipt(state,events,'reflection','Reflected on verified experiences without changing world facts');break;
  case 'wait':receipt(state,events,'wait','Waited for something worth doing');break;
@@ -93,10 +116,13 @@ function goalStillPossible(state,goal){
  if(k==='water_vegetables')return g.vegetables.stage==='growing'&&!g.vegetables.watered;
  if(k==='water_tea')return g.tea.stage==='growing'&&!g.tea.watered;
  if(k==='post_report')return state.researchReports>0;
- if(k.startsWith('order_')){const c=CATALOG[k.slice(6)];return Boolean(c)&&state.wallet>=c.price}
+ if(k.startsWith('order_')){const c=CATALOG[k.slice(6)];return Boolean(c)&&state.wallet>=Household.price(c.price,state.day,k.slice(6))}
  if(k==='read')return state.booksRead.length<BOOKS.length;
  if(k==='write_journal')return Boolean(goal.detail?.sourceEventId);
  if(k==='read_journal')return true;
+ if(k==='repair_roof')return state.stock.roofing>0;
+ if(k==='repair_floor')return state.stock.boards>0;
+ if(k==='stoke_hearth')return Household.migrate(state).coal.dry+Household.migrate(state).coal.wet>0;
  if(k==='work')return (state.lab.damage>0&&p.spares>0)||p.reagents>0;
  return true;
 }
@@ -104,9 +130,12 @@ function step(state,evidence={}){
  if(!state.alive)return {state,events:[],decision:null};
  const s=clone(state),events=[];
  s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
+ const hh=Household.migrate(s);Household.applyDay(s,(kind,description,details,perceived)=>receipt(s,events,kind,description,details,perceived));
+ if(s.tick>hh.heat.fuelledUntil)hh.heat.warmth=0;else hh.heat.warmth=Household.comfort(s,'kitchen').warmth;
+ Household.exposure(s,roomAt(s.position.x,s.position.y),(kind,desc,details,perceived)=>receipt(s,events,kind,desc,details,perceived));
  for(const key of ['hunger','thirst','fatigue','bladder','boredom']){const rate={hunger:.9,thirst:1.17,fatigue:.78,bladder:1.04,boredom:.56}[key];s.needs[key]=cap(s.needs[key]+rate)}
  for(const [crop,plot] of Object.entries(s.garden)){if(plot.stage==='growing'&&plot.watered&&s.tick-plot.plantedTick>=(crop==='tea'?84:50)){plot.stage='ripe';receipt(s,events,'crop_ripened',`The ${crop} plot is ready to harvest`,{crop})}}
- for(const o of s.orders){if(!o.arrived&&s.tick>=o.dueTick){o.arrived=true;receipt(s,events,'delivery_arrived',o.type==='research_payment'?'The scientific society sent a payment':'A parcel arrived at the physical letter box',{orderId:o.id,type:o.type,source:o.source})}}
+ for(const o of s.orders){if(!o.arrived&&s.tick>=o.dueTick){o.arrived=true;receipt(s,events,'delivery_arrived',o.type==='research_payment'?'The scientific society sent a payment':o.type==='coal'?'Rosa Brandl firm delivered a coal cart to the tower porch':'A parcel arrived at the physical letter box',{orderId:o.id,type:o.type,source:o.source,supplierId:o.supplierId||null,wet:o.wet||false,late:o.late||0},roomAt(s.position.x,s.position.y)==='porch')}}
  const past=clone(s.goal);const crisis=s.needs.thirst>=87?'drink':s.needs.hunger>=91?(s.stock.meals>0?'eat':'cook'):null;
  if(s.goal&&crisis&&s.goal.kind!==crisis){if(!s.suspendedGoal){s.suspendedGoal=s.goal;receipt(s,events,'goal_suspended',`Suspended ${s.goal.kind} for an urgent bodily need`,{suspendedGoalId:s.goal.id})}s.goal=null}
  if(!s.goal&&s.suspendedGoal&&s.needs.thirst<60&&s.needs.hunger<74){s.goal=s.suspendedGoal;s.suspendedGoal=null;receipt(s,events,'goal_resumed',`Resumed unfinished intention ${s.goal.kind}`,{goalId:s.goal.id})}
@@ -114,7 +143,7 @@ function step(state,evidence={}){
  let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds});}
  const target=BY_ID[s.goal.target];if(!target)throw Error(`Target missing ${s.goal.target}`);
  const route=pathBetween(s.position,target);if(route===null)throw Error(`Unreachable object ${target.id}`);
- if(route.length){const prior=clone(s.position);s.position=route[0];receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
+ if(route.length){const prior=clone(s.position);s.position=route[0];if(roomAt(prior.x,prior.y)==='hall')Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15){s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);} receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
  else {const completed=action(s,events,s.goal);if(completed){s.completed.push({id:s.goal.id,kind:s.goal.kind,completedTick:s.tick});s.recentKinds.push(s.goal.kind);s.recentKinds=s.recentKinds.slice(-8);s.goal=null}}
  if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;s.deathCause=s.needs.thirst>=100?'dehydration':'starvation';receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true});s.goal=null;}
 

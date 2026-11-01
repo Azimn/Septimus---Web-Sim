@@ -3,16 +3,41 @@ on:
   push:
     branches: [main]
   pull_request:
+permissions:
+  contents: write
 jobs:
   simulation:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify simulation, save continuity and historical boundaries
+      - name: Test the actual simulation and journal evidence
         run: npm test
-      - name: Run bounded autonomous-life experiment
+      - name: Preserve bounded life benchmark including failures
         run: npm run experiment
+      - name: Run preregistered real-source folio comparison
+        run: npm run folio-experiment
+      - name: Archive the complete pre-registered experiment output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: septimus-folio-evidence
+          path: |
+            results/folio_experiment_v1.json
+            results/folio_experiment_v1.md
+          if-no-files-found: warn
+      - name: Commit immutable experiment report on main
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "Septimus Research CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/folio_experiment_v1.json results/folio_experiment_v1.md
+          if ! git diff --cached --quiet; then
+            git commit -m "results(septimus): preserve frozen 24-seed three-folio intervention"
+            git push origin HEAD:main
+          fi
