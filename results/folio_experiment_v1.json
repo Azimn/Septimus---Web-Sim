@@ -1,0 +1,645 @@
+{
+  "version": 1,
+  "protocol": "docs/FOLIO_MEMORY_PREREGISTRATION.md",
+  "archiveSource": "Pretorius-Connectome:v12",
+  "archiveDigest": "becdf4ca72b85365c35940ccd68f3b6a9bbb1093b7b3cc89c33b113bbe5608ec",
+  "archiveCount": 450,
+  "simulatedWorldsDisposable": true,
+  "sourceOriginalUntouched": true,
+  "modelCalls": 0,
+  "threshold": {
+    "divergenceFraction": 0.3,
+    "sourceMin": 2,
+    "targetAdvantage": "read>withheld"
+  },
+  "meetsOverallCriterion": false,
+  "classification": "NULL: memory present but not load-bearing under preregistered criterion",
+  "summary": [
+    {
+      "source": "E22-001",
+      "target": "inspect_floor",
+      "allSeeds": 24,
+      "triggered": 0,
+      "noTrigger": 24,
+      "A_vs_B_firstFiveDivergence": 0,
+      "A_vs_C_firstFiveDivergence": 0,
+      "divergenceFraction": 0,
+      "predictedTargetSelected": {
+        "read": 0,
+        "withheld": 0,
+        "replaced": 0
+      },
+      "meetsSourceCriterion": false
+    },
+    {
+      "source": "E18-010",
+      "target": "tend_path",
+      "allSeeds": 24,
+      "triggered": 0,
+      "noTrigger": 24,
+      "A_vs_B_firstFiveDivergence": 0,
+      "A_vs_C_firstFiveDivergence": 0,
+      "divergenceFraction": 0,
+      "predictedTargetSelected": {
+        "read": 0,
+        "withheld": 0,
+        "replaced": 0
+      },
+      "meetsSourceCriterion": false
+    },
+    {
+      "source": "E03-002",
+      "target": "order_coal",
+      "allSeeds": 24,
+      "triggered": 0,
+      "noTrigger": 24,
+      "A_vs_B_firstFiveDivergence": 0,
+      "A_vs_C_firstFiveDivergence": 0,
+      "divergenceFraction": 0,
+      "predictedTargetSelected": {
+        "read": 0,
+        "withheld": 0,
+        "replaced": 0
+      },
+      "meetsSourceCriterion": false
+    }
+  ],
+  "results": [
+    {
+      "seed": 1,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 2,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 3,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 4,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 5,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 6,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 7,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 8,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 9,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 10,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 11,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 12,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 13,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 14,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 15,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 16,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 17,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 18,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 19,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 20,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 21,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 22,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 23,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 24,
+      "source": "E22-001",
+      "sourceDigest": "f9540718370409b65e6312fcb54d81f51782f660b6f37c2c76e82cd927072303",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 1,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 2,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 3,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 4,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 5,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 6,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 7,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 8,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 9,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 10,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 11,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 12,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 13,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 14,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 15,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 16,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 17,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 18,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 19,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 20,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 21,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 22,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 23,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 24,
+      "source": "E18-010",
+      "sourceDigest": "135870aad1ef5be442792d2409d1ddb2ad93312190b242e5c40a228ae3ec67f1",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 1,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 2,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 3,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 4,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 5,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 6,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 7,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 8,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 9,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 10,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 11,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 12,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 13,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 14,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 15,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 16,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 17,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 18,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 19,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 20,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 21,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 22,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 23,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    },
+    {
+      "seed": 24,
+      "source": "E03-002",
+      "sourceDigest": "93488ad949091af481e90bd2c649d82fdc731837d6234acb7dfee52e428b7358",
+      "trigger": false,
+      "arms": [],
+      "note": "no-trigger within 800 ticks, included as failure in 24-seed denominator"
+    }
+  ]
+}
