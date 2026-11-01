@@ -1,0 +1,1946 @@
+{
+  "version": 1,
+  "kind": "winter_observation_untuned",
+  "protocol": "docs/FOLIO_MEMORY_PREREGISTRATION_V2.md",
+  "requestedStart": "1899-11-01",
+  "actualStart": "1899-11-01",
+  "window": "60 days",
+  "ticksPerDay": 144,
+  "seedsRun": 10,
+  "runtimeMs": 5554,
+  "modelCalls": 0,
+  "uneditedPhysics": true,
+  "summary": {
+    "alive": 0,
+    "dead": 10,
+    "fullLife": 5,
+    "deathsByCause": {
+      "starvation": 10
+    },
+    "totalCoalEmptyTicks": 10289,
+    "dryRoomLosses": 0,
+    "dryRoomRecoveries": 0
+  },
+  "seeds": [
+    {
+      "seed": 1,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 1633,
+      "finalDate": "1899-11-12",
+      "alive": false,
+      "death": {
+        "tick": 1633,
+        "date": "1899-11-12",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 9,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 100,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 100,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 97.1,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 34,
+          "health": 95.64999999999999,
+          "coal": 9,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 34,
+          "health": 94.99999999999999,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 22,
+          "health": 94.99999999999999,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 9,
+          "health": 93.54999999999998,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 9,
+          "health": 90.64999999999998,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 9,
+          "health": 90.64999999999998,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 9,
+          "health": 87.74999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 9,
+          "health": 83.39999999999996,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 909,
+          "endTick": 936,
+          "durationTicks": 28
+        },
+        {
+          "startTick": 1239,
+          "endTick": 1633,
+          "durationTicks": 395
+        }
+      ],
+      "coalEmptyTicks": 423,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": false,
+      "fullLifeMissing": [
+        "experiment"
+      ],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "fabric_weather",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "repair",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 377
+    },
+    {
+      "seed": 2,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 1605,
+      "finalDate": "1899-11-12",
+      "alive": false,
+      "death": {
+        "tick": 1605,
+        "date": "1899-11-12",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 9,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 100,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 100,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 34,
+          "health": 97.89999999999999,
+          "coal": 1,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 34,
+          "health": 94.99999999999999,
+          "coal": 6,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 22,
+          "health": 93.54999999999998,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 9,
+          "health": 92.09999999999998,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 9,
+          "health": 89.19999999999997,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 9,
+          "health": 89.19999999999997,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 9,
+          "health": 87.74999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 9,
+          "health": 83.39999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 9,
+          "health": 79.04999999999995,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 402,
+          "endTick": 435,
+          "durationTicks": 34
+        },
+        {
+          "startTick": 1200,
+          "endTick": 1605,
+          "durationTicks": 406
+        }
+      ],
+      "coalEmptyTicks": 440,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": false,
+      "fullLifeMissing": [
+        "experiment"
+      ],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "fabric_weather",
+        "garden_tended",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "inspect_coal",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "repair",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 343
+    },
+    {
+      "seed": 3,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 1197,
+      "finalDate": "1899-11-09",
+      "alive": false,
+      "death": {
+        "tick": 1197,
+        "date": "1899-11-09",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 9,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 100,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 97.75,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 97.1,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 35,
+          "health": 94.19999999999999,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 22,
+          "health": 91.29999999999998,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 22,
+          "health": 86.94999999999997,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 9,
+          "health": 85.49999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 9,
+          "health": 82.59999999999997,
+          "coal": 6,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 451,
+          "endTick": 650,
+          "durationTicks": 200
+        },
+        {
+          "startTick": 906,
+          "endTick": 997,
+          "durationTicks": 92
+        }
+      ],
+      "coalEmptyTicks": 292,
+      "coalAtEnd": 4,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": false,
+      "fullLifeMissing": [
+        "harvest",
+        "experiment"
+      ],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "cook",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "fabric_weather",
+        "goal_selected",
+        "goal_suspended",
+        "journal_read",
+        "plant",
+        "put_away",
+        "read_section",
+        "sleep",
+        "toilet",
+        "walk"
+      ],
+      "runtimeMs": 205
+    },
+    {
+      "seed": 4,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 1977,
+      "finalDate": "1899-11-15",
+      "alive": false,
+      "death": {
+        "tick": 1977,
+        "date": "1899-11-15",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 10,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 98.55,
+          "coal": 9,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 96.3,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 92.74999999999999,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 35,
+          "health": 92.74999999999999,
+          "coal": 1,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 35,
+          "health": 89.84999999999998,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 22,
+          "health": 85.49999999999997,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 10,
+          "health": 85.49999999999997,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 10,
+          "health": 85.49999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 10,
+          "health": 81.14999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 10,
+          "health": 78.24999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 10,
+          "health": 73.89999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-13",
+          "wallet": 10,
+          "health": 69.54999999999994,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-14",
+          "wallet": 10,
+          "health": 65.19999999999993,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-15",
+          "wallet": 10,
+          "health": 10.849999999999945,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 541,
+          "endTick": 743,
+          "durationTicks": 203
+        },
+        {
+          "startTick": 1106,
+          "endTick": 1977,
+          "durationTicks": 872
+        }
+      ],
+      "coalEmptyTicks": 1075,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": true,
+      "fullLifeMissing": [],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "experiment",
+        "fabric_weather",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "inspect_coal",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "repair",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 447
+    },
+    {
+      "seed": 5,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 1211,
+      "finalDate": "1899-11-09",
+      "alive": false,
+      "death": {
+        "tick": 1211,
+        "date": "1899-11-09",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 9,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 100,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 95.64999999999999,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 91.29999999999998,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 35,
+          "health": 88.39999999999998,
+          "coal": 1,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 22,
+          "health": 86.94999999999997,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 22,
+          "health": 84.04999999999997,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 9,
+          "health": 82.59999999999997,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 9,
+          "health": 79.69999999999996,
+          "coal": 5,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 542,
+          "endTick": 641,
+          "durationTicks": 100
+        }
+      ],
+      "coalEmptyTicks": 100,
+      "coalAtEnd": 2,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": false,
+      "fullLifeMissing": [
+        "harvest",
+        "experiment"
+      ],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "fabric_weather",
+        "goal_selected",
+        "goal_suspended",
+        "journal_read",
+        "plant",
+        "put_away",
+        "read_section",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 187
+    },
+    {
+      "seed": 6,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 2812,
+      "finalDate": "1899-11-20",
+      "alive": false,
+      "death": {
+        "tick": 2812,
+        "date": "1899-11-20",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 3,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 100,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 100,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 95.64999999999999,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 35,
+          "health": 94.19999999999999,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 22,
+          "health": 92.09999999999998,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 10,
+          "health": 90.64999999999998,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 10,
+          "health": 87.74999999999997,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 10,
+          "health": 86.29999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 10,
+          "health": 82.59999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 10,
+          "health": 77.59999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 10,
+          "health": 73.89999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-13",
+          "wallet": 10,
+          "health": 70.34999999999994,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-14",
+          "wallet": 35,
+          "health": 65.99999999999993,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-15",
+          "wallet": 22,
+          "health": 61.649999999999935,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-16",
+          "wallet": 10,
+          "health": 50.19999999999994,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-17",
+          "wallet": 3,
+          "health": 48.74999999999994,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-18",
+          "wallet": 3,
+          "health": 44.399999999999956,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-19",
+          "wallet": 3,
+          "health": 40.04999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-20",
+          "wallet": 3,
+          "health": 35.69999999999998,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 587,
+          "endTick": 648,
+          "durationTicks": 62
+        },
+        {
+          "startTick": 1047,
+          "endTick": 1912,
+          "durationTicks": 866
+        },
+        {
+          "startTick": 2169,
+          "endTick": 2812,
+          "durationTicks": 644
+        }
+      ],
+      "coalEmptyTicks": 1572,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": true,
+      "fullLifeMissing": [],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "collect_payment",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "experiment",
+        "fabric_weather",
+        "garden_tended",
+        "goal_obsolete",
+        "goal_resumed",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "inspect_coal",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "reflection",
+        "repair",
+        "report_posted",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 742
+    },
+    {
+      "seed": 7,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 1675,
+      "finalDate": "1899-11-12",
+      "alive": false,
+      "death": {
+        "tick": 1675,
+        "date": "1899-11-12",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 9,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 98.55,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 94.19999999999999,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 92.74999999999999,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 34,
+          "health": 89.84999999999998,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 34,
+          "health": 86.94999999999997,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 22,
+          "health": 85.49999999999997,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 22,
+          "health": 84.04999999999997,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 9,
+          "health": 82.59999999999997,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 9,
+          "health": 79.69999999999996,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 9,
+          "health": 78.24999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 9,
+          "health": 75.34999999999995,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 1041,
+          "endTick": 1064,
+          "durationTicks": 24
+        },
+        {
+          "startTick": 1397,
+          "endTick": 1675,
+          "durationTicks": 279
+        }
+      ],
+      "coalEmptyTicks": 303,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": false,
+      "fullLifeMissing": [
+        "experiment"
+      ],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "fabric_weather",
+        "goal_obsolete",
+        "goal_resumed",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "repair",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 310
+    },
+    {
+      "seed": 8,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 3414,
+      "finalDate": "1899-11-25",
+      "alive": false,
+      "death": {
+        "tick": 3414,
+        "date": "1899-11-25",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 3,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 98.55,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 95.64999999999999,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 94.19999999999999,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 35,
+          "health": 91.29999999999998,
+          "coal": 1,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 22,
+          "health": 89.84999999999998,
+          "coal": 6,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 10,
+          "health": 89.84999999999998,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 10,
+          "health": 88.39999999999998,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 10,
+          "health": 86.94999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 10,
+          "health": 82.59999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 10,
+          "health": 78.89999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 10,
+          "health": 73.89999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-13",
+          "wallet": 10,
+          "health": 69.54999999999994,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-14",
+          "wallet": 10,
+          "health": 66.64999999999993,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-15",
+          "wallet": 23,
+          "health": 63.749999999999936,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-16",
+          "wallet": 10,
+          "health": 59.39999999999995,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-17",
+          "wallet": 3,
+          "health": 57.94999999999995,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-18",
+          "wallet": 3,
+          "health": 55.04999999999996,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-19",
+          "wallet": 3,
+          "health": 52.14999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-20",
+          "wallet": 3,
+          "health": 49.24999999999998,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-21",
+          "wallet": 3,
+          "health": 44.89999999999999,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-22",
+          "wallet": 3,
+          "health": 42,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-23",
+          "wallet": 3,
+          "health": 37.65000000000001,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-24",
+          "wallet": 3,
+          "health": 33.300000000000026,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-25",
+          "wallet": 3,
+          "health": 0,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 555,
+          "endTick": 634,
+          "durationTicks": 80
+        },
+        {
+          "startTick": 1013,
+          "endTick": 2084,
+          "durationTicks": 1072
+        },
+        {
+          "startTick": 2452,
+          "endTick": 3414,
+          "durationTicks": 963
+        }
+      ],
+      "coalEmptyTicks": 2115,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": true,
+      "fullLifeMissing": [],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "collect_payment",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "experiment",
+        "fabric_weather",
+        "garden_tended",
+        "goal_obsolete",
+        "goal_resumed",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "inspect_coal",
+        "inspect_fabric",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "reflection",
+        "repair",
+        "report_posted",
+        "sleep",
+        "toilet",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 980
+    },
+    {
+      "seed": 9,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 3371,
+      "finalDate": "1899-11-24",
+      "alive": false,
+      "death": {
+        "tick": 3371,
+        "date": "1899-11-24",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 3,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 98.55,
+          "coal": 8,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 97.1,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 47,
+          "health": 94.19999999999999,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 35,
+          "health": 91.29999999999998,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 22,
+          "health": 91.29999999999998,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 10,
+          "health": 89.84999999999998,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 10,
+          "health": 86.94999999999997,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 10,
+          "health": 84.04999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 10,
+          "health": 81.14999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 10,
+          "health": 76.79999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 10,
+          "health": 72.44999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-13",
+          "wallet": 10,
+          "health": 68.09999999999994,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-14",
+          "wallet": 35,
+          "health": 63.749999999999936,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-15",
+          "wallet": 23,
+          "health": 60.849999999999945,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-16",
+          "wallet": 10,
+          "health": 56.49999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-17",
+          "wallet": 3,
+          "health": 53.599999999999966,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-18",
+          "wallet": 3,
+          "health": 51.34999999999997,
+          "coal": 2,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-19",
+          "wallet": 3,
+          "health": 51.34999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-20",
+          "wallet": 3,
+          "health": 46.999999999999986,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-21",
+          "wallet": 3,
+          "health": 44.099999999999994,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-22",
+          "wallet": 3,
+          "health": 40.400000000000006,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-23",
+          "wallet": 3,
+          "health": 36.850000000000016,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-24",
+          "wallet": 3,
+          "health": 31.200000000000028,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 579,
+          "endTick": 677,
+          "durationTicks": 99
+        },
+        {
+          "startTick": 1023,
+          "endTick": 2118,
+          "durationTicks": 1096
+        },
+        {
+          "startTick": 2475,
+          "endTick": 3371,
+          "durationTicks": 897
+        }
+      ],
+      "coalEmptyTicks": 2092,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": true,
+      "fullLifeMissing": [],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "collect_payment",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "experiment",
+        "fabric_weather",
+        "garden_tended",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "inspect_coal",
+        "inspect_fabric",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "reflection",
+        "repair",
+        "report_posted",
+        "sleep",
+        "toilet",
+        "wait",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 992
+    },
+    {
+      "seed": 10,
+      "startDate": "1899-11-01",
+      "startDay": 124,
+      "requestedDays": 60,
+      "completedTicks": 3329,
+      "finalDate": "1899-11-24",
+      "alive": false,
+      "death": {
+        "tick": 3329,
+        "date": "1899-11-24",
+        "cause": "starvation",
+        "health": 0
+      },
+      "finalHealth": 0,
+      "initialWallet": 72,
+      "finalWallet": 3,
+      "walletTrajectory": [
+        {
+          "date": "1899-11-01",
+          "wallet": 72,
+          "health": 100,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-02",
+          "wallet": 59,
+          "health": 100,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-03",
+          "wallet": 47,
+          "health": 100,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-04",
+          "wallet": 34,
+          "health": 98.55,
+          "coal": 9,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-05",
+          "wallet": 22,
+          "health": 97.1,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-06",
+          "wallet": 10,
+          "health": 94.19999999999999,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-07",
+          "wallet": 10,
+          "health": 91.29999999999998,
+          "coal": 3,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-08",
+          "wallet": 10,
+          "health": 91.29999999999998,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-09",
+          "wallet": 10,
+          "health": 88.39999999999998,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-10",
+          "wallet": 10,
+          "health": 84.04999999999997,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-11",
+          "wallet": 10,
+          "health": 79.69999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-12",
+          "wallet": 10,
+          "health": 76.79999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-13",
+          "wallet": 35,
+          "health": 72.44999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-14",
+          "wallet": 22,
+          "health": 68.09999999999994,
+          "coal": 7,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-15",
+          "wallet": 10,
+          "health": 63.74999999999993,
+          "coal": 5,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-16",
+          "wallet": 3,
+          "health": 60.84999999999994,
+          "coal": 4,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-17",
+          "wallet": 3,
+          "health": 59.39999999999994,
+          "coal": 1,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-18",
+          "wallet": 3,
+          "health": 55.69999999999995,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-19",
+          "wallet": 3,
+          "health": 52.14999999999996,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-20",
+          "wallet": 3,
+          "health": 47.799999999999976,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-21",
+          "wallet": 3,
+          "health": 44.899999999999984,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-22",
+          "wallet": 3,
+          "health": 40.55,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-23",
+          "wallet": 3,
+          "health": 36.20000000000001,
+          "coal": 0,
+          "libraryDry": true
+        },
+        {
+          "date": "1899-11-24",
+          "wallet": 3,
+          "health": 32.00000000000002,
+          "coal": 0,
+          "libraryDry": true
+        }
+      ],
+      "dryRoomLosses": [],
+      "dryRoomRecoveries": [],
+      "libraryDryAtEnd": true,
+      "coalStockouts": [
+        {
+          "startTick": 72,
+          "endTick": 94,
+          "durationTicks": 23
+        },
+        {
+          "startTick": 941,
+          "endTick": 1817,
+          "durationTicks": 877
+        },
+        {
+          "startTick": 2353,
+          "endTick": 3329,
+          "durationTicks": 977
+        }
+      ],
+      "coalEmptyTicks": 1877,
+      "coalAtEnd": 0,
+      "roofRepairs": 0,
+      "floorRepairs": 0,
+      "fullLife": true,
+      "fullLifeMissing": [],
+      "eventKinds": [
+        "book_completed",
+        "brew_tea",
+        "burn_coal",
+        "catalog_order",
+        "clean_bench",
+        "coal_collected",
+        "cold_exposure",
+        "collect_parcel",
+        "collect_payment",
+        "cook",
+        "crop_ripened",
+        "death",
+        "delivery_arrived",
+        "drink_sink",
+        "drink_tea",
+        "eat_meal",
+        "experiment",
+        "fabric_weather",
+        "garden_tended",
+        "goal_selected",
+        "goal_suspended",
+        "harvest",
+        "inspect_coal",
+        "inspect_fabric",
+        "journal_read",
+        "light_lamp",
+        "plant",
+        "put_away",
+        "read_section",
+        "reflection",
+        "repair",
+        "report_posted",
+        "sleep",
+        "toilet",
+        "wait",
+        "walk",
+        "water_garden"
+      ],
+      "runtimeMs": 958
+    }
+  ]
+}
