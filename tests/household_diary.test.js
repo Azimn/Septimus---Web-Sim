@@ -34,3 +34,17 @@ test('a seeded week has no near-duplicate evening pages or clock leakage',()=>{
   }
  }finally{fs.rmSync(dir,{recursive:true,force:true})}
 });
+
+test('first-person reports seen coal stock and inspected fabric, never hidden mechanical values',()=>{
+ const Ipseity=require('../src/ipseity'),identity={name:'Septimus Pretorius'};
+ const w=World.fresh();w.position={x:14,y:8};w.household.observed.coal={day:1,count:4};
+ const e={id:'EV-TEST',kind:'inspect_coal',room:'porch',perceived:true,details:{quantity:4,wet:1}};
+ const p=Ipseity.firstPersonPerception(identity,w,[e]);
+ assert.match(JSON.stringify(p),/4 coal baskets/);assert.match(JSON.stringify(p),/1 were damp/);
+ assert.doesNotMatch(JSON.stringify(p),/@\d{3}|engine tick/i);
+ w.position={x:2,y:2};
+ const other=Ipseity.firstPersonPerception(identity,w,[e]);
+ assert.doesNotMatch(JSON.stringify(other),/4 coal baskets/);
+ const roof={id:'EV-ROOF',kind:'inspect_fabric',room:'bedroom',perceived:true,details:{subject:'roof',observation:'Water stains and drips'}};
+ assert.match(JSON.stringify(Ipseity.firstPersonPerception(identity,w,[roof])),/Water stains and drips/);
+});

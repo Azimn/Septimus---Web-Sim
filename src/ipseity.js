@@ -10,7 +10,7 @@ function firstPersonPerception(identity,world,events=[],lastFolio=null){
  const c=Household.comfort(world,where);
  if(c.warmth<34)bodily.push('I feel the cold of this room.');
  if(!c.dry)bodily.push('I can see signs of damp here.');
- if(where==='porch'&&world.household?.observed?.coal)bodily.push('The coal pile stands by the cart entrance.');
+ if(where==='porch'&&world.household?.observed?.coal){const x=world.household.observed.coal;bodily.push(`I have counted ${x.count} coal baskets at the cart entrance; this is a count made on my visit, not knowledge of distant deliveries.`);}
  if(world.needs.thirst>=65)bodily.push('My mouth is dry.');
  if(world.needs.hunger>=65)bodily.push('I feel hungry.');
  if(world.needs.fatigue>=65)bodily.push('My limbs feel weary.');

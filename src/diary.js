@@ -35,6 +35,11 @@ const subjective={
  check_clock:'I glanced at the dial. Its reading is a perception, not an innate knowledge of time.'
 };
 function recollect(event){
+ // Only locally inspected receipts may enter first-person descriptions.
+ const d=event.details||{};
+ if(event.kind==='inspect_coal')return {text:`I counted ${d.quantity} baskets in the coal pile by the cart entrance; ${d.wet||0} were damp.`,confidence:'recollected_not_exact',observerTime:null,sourceEventId:event.id,objectiveText:event.description};
+ if(event.kind==='inspect_fabric')return {text:`I examined the ${d.subject||'tower fabric'} and observed ${d.observation||'signs of age'}.`,confidence:'recollected_not_exact',observerTime:null,sourceEventId:event.id,objectiveText:event.description};
+ if(event.kind==='coal_collected')return {text:`I received ${d.quantity} baskets of ${d.wet?'wet':'dry'} fuel at the entrance.`,confidence:'recollected_not_exact',observerTime:null,sourceEventId:event.id,objectiveText:event.description};
  const text=subjective[event.kind]||`I recall an occurrence in the ${event.room||'tower'}, but the particulars require checking against my notes.`;
  return {text,confidence:'recollected_not_exact',observerTime:null,sourceEventId:event.id,objectiveText:event.description};
 }
