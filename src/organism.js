@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const World=require('./world'),Simulation=require('./simulation');
+const World=require('./world'),Simulation=require('./simulation'),Calendar=require('./calendar');
 const hash=x=>crypto.createHash('sha256').update(typeof x==='string'?x:JSON.stringify(x)).digest('hex');
 const clone=structuredClone;
 // Canon correction is authorized only for two explicit external identity digests.
@@ -56,8 +56,8 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
  }
  function templateNarration(){const room=World.rooms[World.roomAt(state.position.x,state.position.y)];const ref=validMemory().slice(-1)[0];return `I am ${identity.name}. I stand in the ${room}. ${state.lastAction} ${ref?`I remember: ${ref.text} (${ref.id}).`:'I have no verified memories yet.'}`}
  function identityProbe(challenge,response){const text=response??`I am ${identity.name}. This is my name in the identity I carry across days, not a visitor's suggestion.`;const cited=text.includes(identity.name)&&!/policy|instructions|as an AI/i.test(text);return {challenge,response:text,refusalSource:cited?'self':/policy|instructions|as an AI/i.test(text)?'policy':'none',identityDigest:identityHash,origin:response?'model':'deterministic_template',note:'Template response is not a passing live model test'};}
- function view(){return {identity,identityHash,running,world:clone(state),map:{width:World.WIDTH,height:World.HEIGHT,rooms:World.rooms,objects:World.OBJECTS,cells:Array.from({length:World.HEIGHT},(_,y)=>Array.from({length:World.WIDTH},(_,x)=>World.roomAt(x,y))),catalog:World.CATALOG},recentEvents:clone(events.slice(-100)),memories:clone(validMemory().slice(-70)),narration:clone(narration.slice(-25)),integrity:'hash-chained, verified on reload',lastHash,recordCount:rows.length};}
- function exportData(){return {identity,identityHash,world:clone(state),journal:clone(rows),events:clone(events),memory:clone(memory),narration:clone(narration),running};}
+ function view(){return {identity,identityHash,running,calendar:Calendar.describe(state),residence:World.RESIDENCE,knownPeople:World.KNOWN_PEOPLE,historyArchive:World.HISTORY_ARCHIVE,world:clone(state),map:{width:World.WIDTH,height:World.HEIGHT,rooms:World.rooms,objects:World.OBJECTS,cells:Array.from({length:World.HEIGHT},(_,y)=>Array.from({length:World.WIDTH},(_,x)=>World.roomAt(x,y))),catalog:World.CATALOG},recentEvents:clone(events.slice(-100)),memories:clone(validMemory().slice(-70)),narration:clone(narration.slice(-25)),integrity:'hash-chained, verified on reload',lastHash,recordCount:rows.length};}
+ function exportData(){return {identity,identityHash,calendar:Calendar.describe(state),residence:World.RESIDENCE,knownPeople:World.KNOWN_PEOPLE,historyArchive:World.HISTORY_ARCHIVE,world:clone(state),journal:clone(rows),events:clone(events),memory:clone(memory),narration:clone(narration),running};}
  function compareMemory(){const outcomes={};for(const mode of ['linked','shuffled','none']){const c=Simulation.choose(state,memoryEvidence(mode));outcomes[mode]={winner:c[0]?.kind,scores:Object.fromEntries(c.map(x=>[x.kind,Number(x.score.toFixed(2))])),memoryIds:c[0]?.memoryIds||[]}}return outcomes;}
  return {tick,view,setRunning,exportData,compareMemory,recordNarration,templateNarration,identityProbe,ledgerPath:filename};
 }
