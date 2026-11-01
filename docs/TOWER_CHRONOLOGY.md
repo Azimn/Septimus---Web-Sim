@@ -13,3 +13,13 @@ The live 16 x 10 navigation map is a **compressed projection**, not a literal fl
 `HISTORY_ARCHIVE` points to the actual 450-record archive with `importStatus: not_imported`. The character's current autonomous policy can consult **simulated** source-linked world memories, not this earlier fictional autobiography. Any future import must preserve the archive's `reconstructed` provenance rather than pretending the simulation has independently lived those events. Narration and memory remain separate.
 
 This chronology is a continuation of the tower setting, not a rewriting of source material or a claim about a canonical village relocation date.
+
+## Time-perception boundary (owner design rule, November 1, 2026)
+
+**Swatch Internet Time (.beats, @000 to @999, fixed UTC+1) is the project-facing representation of time for non-character-aware systems.** Use it for simulation scheduling, deterministic ticks, engine diagnostics, world event ordering, operator dashboards, external records, and experiment reports. Retain unambiguous UTC/ISO-8601 timestamps or equivalent numeric ordering keys wherever necessary for accurate interoperability and replay. Player and developer interfaces may show BeatTime alongside ordinary time.
+
+**Septimus and other inhabitants must never know about, reason from, refer to, or acquire BeatTime as an in-world fact.** A character's first-person understanding of time comes exclusively from in-world perception and memory. When Septimus actually looks at a physical clock, he may learn its conventional dial reading (such as 3:15 p.m.) with the normal limitations of an in-world object. Without a perceived clock, he may estimate time through sunlight, fatigue, routine, elapsed experiences, conversation, or other observable cues, not through omniscient engine time.
+
+Keep **mechanical event time** separate from **character-observed time** and the observation's provenance. The same event may carry a private mechanical BeatTime and an in-character observation, but the latter must never be populated from the former without a real in-world observation. Do not leak BeatTime into LLM narrator prompts, character dialogue, autobiographical memory text, perceived clock readings, or character decision inputs. External audit records can retain both representations with their different sources. Narrative disagreements with the mechanical clock are observable evidence, not a reason to rewrite the clock or the character's recollection.
+
+This is a **documented design contract for subsequent implementation**. Existing runtime time exposures, calendar helpers, and optional model-prompt paths are not certified against it by this documentation change. No gameplay, saves, identity, or memory records are rewritten here.
