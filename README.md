@@ -1,6 +1,8 @@
-# SEPTIMUS | The Living Laboratory
+# SEPTIMUS | The Tower outside Ingolstadt
 
-A small, persistent, browser-based life simulation with a concrete physical house, kitchen, laboratory, garden, catalogs, finite goods and mail delivery. It is a new independent project. It does **not** depend on Candidate B, its organs, or the original Pretorius-Laboratory physics.
+A small, persistent, browser-based life simulation set at **Septimus Pretorius's partly ruined tower outside Ingolstadt**, before the separate Frankenstein Village story. It includes a physical kitchen, laboratory, garden, catalogs, finite supplies and mail delivery. It is a new independent project. It does **not** depend on Candidate B, its organs, or the original Pretorius-Laboratory physics.
+
+The frozen [450-memory autobiographical source](https://github.com/Azimn/Pretorius-Connectome/blob/main/memories/current/Pretorius_v12_450_Events_Complete.jsonl) repeatedly describes this tower but gives it no established proper name. The previous Ash Grove label had no source support. Our [home continuity audit](docs/HOME_CONTINUITY_AUDIT.md) separates source-backed history from gameplay inventions and explains the append-only correction for older save files.
 
 ## Run locally
 
