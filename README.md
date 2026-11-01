@@ -4,6 +4,12 @@ A small, persistent, browser-based life simulation set at **Septimus Pretorius's
 
 The frozen [450-memory autobiographical source](https://github.com/Azimn/Pretorius-Connectome/blob/main/memories/current/Pretorius_v12_450_Events_Complete.jsonl) repeatedly describes this tower but gives it no established proper name. The previous Ash Grove label had no source support. Our [home continuity audit](docs/HOME_CONTINUITY_AUDIT.md) separates source-backed history from gameplay inventions and explains the append-only correction for older save files.
 
+## Tower-era continuity
+
+Septimus is the fictional resident from the frozen [450-memory Pretorius autobiography](https://github.com/Azimn/Pretorius-Connectome/blob/main/memories/current/Pretorius_v12_450_Events_Complete.jsonl). The last dated source event occurs in June 1899. Gameplay begins on **July 1, 1899**, an explicit scenario assumption. It runs indefinitely until a genuine in-world endpoint such as death. **No relocation date has been assigned** for the separate Frankenstein Village game.
+
+The 16 x 10 board remains a compressed navigation map rather than an invented architectural floor plan. `/api/state` and `/api/export` expose source-linked room and approximate floor metadata, a historical acquaintance index, and the currently unimported 450-record archive reference. The historical people are not spawned visitors; remembered history is not mislabeled as new lived experience. New physical receipts have calendar dates and the interface shows a story date and `@beats`. See [the chronology contract](docs/TOWER_CHRONOLOGY.md).
+
 ## Run locally
 
 Requires Node.js 20 or later. No npm dependencies, database server, hosted API, external images, or internet connection.
