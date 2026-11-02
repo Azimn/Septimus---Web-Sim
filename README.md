@@ -1,6 +1,6 @@
 # SEPTIMUS | The Living Laboratory
 
-A small, persistent, browser-based life simulation with a concrete physical house, kitchen, laboratory, garden, catalogs, finite goods and mail delivery. It is a new independent project. It does **not** depend on Candidate B, its organs, or the original Pretorius-Laboratory physics.
+A persistent, browser-based life simulation of Septimus Pretorius's ruined tower, with a concrete physical house, laboratory, kitchen, garden, finite goods, paid mail-order supplies and endogenous household decisions. **Designated successor environment:** as of November 2, 2026, this repository is the target physical/life simulator replacing the standalone Pretorius-Laboratory *after capability-parity and continuity gates pass*. The old Laboratory remains a protected mechanical donor and experimental control, while The-Doctor-Lives remains the sole actual Pretorius cognitive authority. No direct brain/Laboratory runtime integration is claimed. See [the cross-repository capability audit and migration contract](docs/LABORATORY_SUCCESSOR_GAP_AUDIT_V1.md).
 
 ## Continuity and scenario time
 
@@ -51,7 +51,7 @@ Optional Ollama narration, strictly local: set `OLLAMA_MODEL=your-model` (and an
 
 ## Status and limits
 
-This is a *playable research toy*, not yet a convincing autonomous person. Its needs are deliberately compact and the world has no external economy, seasons, disease, real 17-book content, dialog with other inhabitants, actual grown-up science, or visual animation beyond a working map. Survival rates in bounded tests should not be mistaken for open-ended life. Running time stops when the local Node process is off. Do not call it perpetual or fault-tolerant. See `docs/SIMULATION_DESIGN.md` for boundaries and experiments.
+This is the **successor-designated tower simulation**, not yet the full Pretorius cognitive integration or a fully migrated Laboratory. The verified V5 household correction survived the existing twenty-seed continuous winter benchmark, **10/10 September on-ramps and 10/10 endowed November starts**; see [the bounded V5 review](results/V5_HOUSEHOLD_REVIEW.md). Survival under the existing one-tick activity rules does not validate realistic multi-hour sleep, scientific work, study, or future long-run autonomy. The tower has a genuine mail-order economy, seasonal climate/price effects, weather and building damage, but still lacks the old Laboratory's real 17-book texts, detailed object custody, instrument measurement, reliable darkness/reach gating, and the real Doctor Lives cognitive bridge. No Village travel, full physical experiment system, disease, inhabited dialog, or character-quality certification is claimed. Running time stops when the local Node process is off; it is not perpetual or fault-tolerant. See [the successor gap audit](docs/LABORATORY_SUCCESSOR_GAP_AUDIT_V1.md) for the detailed engineering gates.
 
 `legacy/` contains the original Minimum Organism and Reduced decision engines as frozen reference sources, not active code. The original Pretorius repositories remain untouched.
 
