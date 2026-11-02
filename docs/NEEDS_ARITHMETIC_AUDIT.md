@@ -41,3 +41,30 @@ These are raw pre-correction constants. High-bounded meters clamp at 100, so act
 A separate unchanged-state seven-final-day replay will use the two v3 gated scenarios, plus the previously observed 95-wallet autumn case, at the reviewed engine. For **each of ten seeds** report tick allocations across sleep, heating, eating/cooking, drinking/brewing, toileting, travel, idle, work, and other, plus terminal needs, wallet, food stocks and actual final rooms. Compare tick totals to the real seven-lived-day denominator, with an explicit one-category-per-tick rule. Commit that replay as a separate unedited result.
 
 **No corrections, household-rule changes or v4 folio grants may begin until oracle and allocation results are committed and this document is updated to report them.** Any subsequent model correction must cite a line A01-A16 and change one independently tested constant/behavior at a time. No economy price or report payment tuning in this round.
+
+## Untouched-policy measured equilibria, recorded before correcting mechanics
+
+Corrected isolated-run artifact: `results/needs_arithmetic_isolated.json`, produced at source head `3346ce3964d0eb0fec394bf2fb536632cc786374` using `tests/needs_audit_oracles.js`; full raw baseline generated in 292,130 ms Node runtime. A first instrument mistakenly allowed unrelated cold-bedroom damage to kill hunger/thirst/fatigue probes; those intermediate values remain unaltered in `results/needs_arithmetic_baseline.*`, but **must not** be interpreted as need-specific failures.
+
+| Line | Need | Ideal isolated restoration/day, measured | Accrual/day | Mathematical closure verdict | Observed evidence |
+|---|---|---:|---:|---|---|
+| **E01** | Hunger | 176.250 | 129.600 | **YES** given unlimited meals | 141 real eat receipts / 60 days, peak hunger 54.0 |
+| **E02** | Thirst | 215.800 | 168.480 | **YES** given unlimited sink water | 166 sink receipts, peak thirst 59.67 |
+| **E03** | Fatigue, cold sleep | **111.300** | **112.320** | **NO indefinitely**, deficit 1.020/day | 159 cold sleeps restoring 42 each; meter peak 65.4 by day 60, still below critical for that *finite* window |
+| **E04** | Bladder | 205.500 | 149.760 | **YES** in isolated proof | 137 toilet actions, peak bladder 64.48 |
+| **E05** | Boredom, after all eight books | **79.933** | **80.640** | **NO indefinitely**, deficit 0.707/day | 218 reflect actions restoring 22 each; peak boredom 53.6 in finite 60 days |
+| **E06** | Warmth | **149.933 covered heating ticks/day** in at-hearth ceiling | No meter; dry heat lasts 26 ticks | **YES at hearth with artificially unlimited dry coal**, not an economic or bedroom-warmth guarantee | 346 stokes / 60 days, minimum bedroom pipe warmth 59 while fuelled; this cost is 5.77 coal baskets/day |
+| **E07** | Cold-bedroom health | **0 restoration/day** | Up to 23.4 direct damage/day | **NO** with cold exposure | Health reached 0 at tick 616, 4.28 days, without another failing need |
+| **E08** | Heated-kitchen health | Not a refill loop; **0 loss** under perfect heat | 0 damage when warm | **Conditionally YES** through damage avoidance, but cannot recover a prior injury | Survived 8,640 ticks without a loss at the hearth |
+
+The use of `starvation` in isolated cold-health death is a known mechanical misclassification: when health reaches zero the existing classifier names starvation unless thirst==100, even though hunger was held at zero. No underlying death classifier correction is authorized by this arithmetic round.
+
+**Dying-run time budget:** `results/needs_arithmetic_isolated.md` preserves 30 ten-seed final-week allocations (10 `september_onramp_gated`, 10 `november_autumn_stores_gated`, plus 10 September ungated cases to examine the wallet-rich death). Every row totals exactly 1,008 lived ticks. E.g. November gated seed 1: **874 travel, 28 heating, 26 eating/cooking, 24 drinking, 15 sleep, 14 toilet, 2 work, 25 other**; travel alone consumes **86.7%**. September gated seed 2 died with **83 crowns**, hunger 100, 0 meals, 0 vegetables, 0 milk, 6 grain, and 3 coal. Its final week: 527 travel, 424 other, 26 eat/cook, 18 drink, 5 toilet, 4 sleep, 4 work. This confirms that cash is not equivalent to cookable food and that goal/path throughput is a major binding constraint.
+
+**A03/E03 required correction:** raise cold sleep fatigue relief from **42 to 44**. Under the identical 159 cold-sleep opportunities in 60 days, that yields 116.6 relief/day, strictly greater than 112.32 accrual. This changes exactly one restoration constant, not travel or prices.
+
+**A05/E05 required correction:** raise reflection boredom relief from **22 to 23**. With the identical 218 reflection opportunities over 60 days, that yields **83.567/day**, strictly greater than 80.64. This changes exactly one restoration constant; the existing eligibility condition (all books read) stays.
+
+**A07/A15/E07 required correction:** grant **+10 health per completed sleep**, separately retaining the existing **-0.8 health for cold sleep** and exposure from the actual room. Three completed cold sleeps/day then return a net **27.6 health/day** before cold room exposure, greater than the maximum **23.4 health/day** cold-bedroom exposure, giving a closing health loop under ideal physically reached bed. Health-only corrected oracle must choose to sleep and report actual receipts. This is one additive restorative rule, not two parameter changes.
+
+**Ordering contract:** Commit audit before any changes, implement the cold-fatigue correction and rerun its equilibrium oracle; then implement reflection relief and rerun; then implement sleep health and rerun a separate cold-bedroom health-and-fatigue oracle. Do not silently bundle changes. Only after these close may the standing pantry habit be implemented. Prices, income and coal physics remain unchanged.
