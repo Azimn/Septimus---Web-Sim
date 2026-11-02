@@ -58,3 +58,25 @@ test('a cold-health death is not incorrectly labeled starvation',()=>{
  assert.equal(death.details.coldDamageObserved,true);
  assert.ok(death.details.terminalHunger<100);
 });
+
+test('severe fatigue, bladder pressure and boredom compete successfully with income work',()=>{
+ const w=stocked();w.needs={hunger:20,thirst:20,fatigue:94,bladder:94,boredom:98};
+ w.researchReports=0;w.stock.reagents=1;
+ const ranked=Sim.choose(w,{__historyCount:450,__folioCatalog:[]});
+ assert.ok(['sleep','toilet'].includes(ranked[0].kind),'bodily needs cannot be postponed forever by profitable errands');
+ const leisure=ranked.find(x=>x.kind==='read');
+ assert.ok(leisure&&leisure.score>200,'leisure should eventually outrank optional low-need chores');
+});
+
+test('one-house motion records every intermediate step and preserves doors',()=>{
+ const w=World.fresh(9);w.goal={id:'WALK',kind:'order_groceries',target:'catalog',detail:{}};
+ const r=Sim.step(w),e=r.events.find(x=>x.kind==='walk');
+ assert.ok(e);assert.ok(e.details.tiles>1&&e.details.tiles<=3);
+ let previous=e.details.from;
+ for(const next of e.details.via){
+  assert.equal(World.pathBetween(previous,next).length,1,'each substep is adjacent and passes a valid door');
+  previous=next;
+ }
+ assert.deepEqual(previous,r.state.position);
+ assert.equal(e.details.remainingRoute,World.pathBetween(r.state.position,World.BY_ID.catalog).length);
+});
