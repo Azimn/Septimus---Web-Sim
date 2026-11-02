@@ -4,45 +4,20 @@ on:
     branches: [main]
   pull_request:
 permissions:
-  contents: write
+  contents: read
 jobs:
   simulation:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test actual simulation, source receipts, and journal evidence
+      - name: Test simulation, provenance inventory and frozen research generations
         run: npm test
-      - name: Preserve bounded baseline life benchmark
+      - name: Bounded ordinary-life smoke benchmark
         run: npm run experiment
-      # v1/v2 and the original-policy winter diagnostic are FROZEN. Never re-run
-      # those scripts against a changed engine or auto-commit their result paths.
-      # v3 comparison and fair-spawn winter experiments are separate new artifacts.
-      - name: Run preregistered v3 matched folio experiment
-        run: node tests/folio_experiment_v3.js
-      - name: Run declared fair-spawn winter comparisons and one-knob sensitivity
-        run: node tests/winter_balance_v3.js
-      - name: Archive the new independent v3 and winter evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: septimus-v3-encounter-and-winter-evidence
-          path: |
-            results/folio_experiment_v3.json
-            results/folio_experiment_v3.md
-            results/winter_balance_v3.json
-            results/winter_balance_v3.md
-          if-no-files-found: warn
-      - name: Commit v3 results independently of frozen prior generations
-        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: |
-          git config user.name "Septimus Research CI"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/folio_experiment_v3.json results/folio_experiment_v3.md results/winter_balance_v3.json results/winter_balance_v3.md
-          if ! git diff --cached --quiet; then
-            git commit -m "results(septimus): retain full v3 and fair-winter comparisons [skip ci]"
-            git push origin HEAD:main
-          fi
+      # V1, V2, v3, winter and original diagnostic artifacts are immutable.
+      # Re-running a research script requires a separately named future generation.
+      # No CI job automatically modifies or re-commits frozen results.
