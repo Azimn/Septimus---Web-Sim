@@ -18,5 +18,22 @@ jobs:
         run: npm test
       - name: Bounded ordinary-life smoke benchmark
         run: npm run experiment
+      - name: Independent household trace (new v5, read-only)
+        run: node tests/diagnose_household_v5.js
       # Original v1, v2, v3, needs audit, corrected equilibrium and winter v4
       # outputs are frozen and never automatically regenerated or rewritten.
+
+  winter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        seed_range: ['1-2', '3-4', '5-6', '7-8', '9-10']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify fixed ten-seed winter cohort in reproducible shards
+        run: node tests/winter_continuity_v5.js ${{ matrix.seed_range }}

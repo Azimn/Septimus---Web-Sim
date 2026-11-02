@@ -83,8 +83,9 @@ function choose(state,evidence={}){
  if(n.thirst>=38)add('drink',(n.thirst>=87?350:50)+n.thirst*1.5,`Thirst pressure ${n.thirst.toFixed(1)}`,'sink');
  if(n.hunger>=44&&p.meals>0)add('eat',(n.hunger>=91?345:46)+n.hunger*1.5,`Hunger ${n.hunger.toFixed(1)}; prepared food exists`,'table');
  if(n.hunger>=40&&p.meals<1&&(p.vegetables>0||p.milk>0&&p.grain>0))add('cook',(n.hunger>=91?340:47)+n.hunger*1.4,`No prepared meal; ingredients stored in pantry`,'stove');
- if(n.fatigue>=66)add('sleep',40+n.fatigue,`Physical fatigue ${n.fatigue.toFixed(1)}`,'bed');
- if(n.bladder>=66)add('toilet',46+n.bladder,`Water closet needed`,'toilet');
+ // Sustained work cannot outrank every rest opportunity until fatigue reaches 100.
+ if(n.fatigue>=66)add('sleep',40+n.fatigue+(n.fatigue>=85?230+4*(n.fatigue-85):n.fatigue>=75?90:0),`Physical fatigue ${n.fatigue.toFixed(1)}`,'bed');
+ if(n.bladder>=66)add('toilet',46+n.bladder+(n.bladder>=85?225+4*(n.bladder-85):n.bladder>=75?85:0),'Water closet needed','toilet');
  if(state.carried)add('put_away',230,'A package or harvest must be placed in the appropriate store','pantry');
  if(!state.carried&&state.orders.some(o=>o.arrived&&!o.collected))add('collect',195,'A real delivery is at the letter box','mailbox');
  if(g.vegetables.stage==='ripe')add('harvest_vegetables',130+n.hunger*.25,'Ripe vegetables in the garden','vegetable_plot');
@@ -101,11 +102,23 @@ function choose(state,evidence={}){
  if(pantry.onHand<=2&&!pantry.pending&&!pantry.eligible&&
     state.wallet>=Household.price(CATALOG.groceries.price,state.day,'groceries'))
   add('order_groceries',86+n.hunger*.32,'Emergency small grocery basket when week batch cannot be funded','catalog');
- if(p.vegetable_seeds<1&&p.tea_seeds<1&&!pending(state,'seeds')&&state.wallet>=CATALOG.seeds.price)add('order_seeds',40,'Garden seeds nearly exhausted','catalog');
- if(p.tea_leaves<1&&g.tea.stage==='empty'&&!pending(state,'tea')&&state.wallet>=CATALOG.tea.price)add('order_tea',23,'Tea merchant can replace finite dried leaves','catalog');
- if(p.reagents<1&&p.spares<1&&!pending(state,'science')&&state.wallet>=CATALOG.science.price)add('order_science',42,'Workbench supplies exhausted','catalog');
+ // Vegetable and tea stock have independent consumption rates. Leftover tea seeds
+ // must never prevent vegetable replenishment when the edible crop is exhausted.
+ if(p.vegetable_seeds<1&&!pending(state,'seeds')&&state.wallet>=CATALOG.seeds.price)
+  add('order_seeds',g.vegetables.stage==='empty'?118:68,'Order replacement vegetable seed before the edible garden stops','catalog');
+ if(p.tea_leaves<1&&g.tea.stage==='empty'&&!pending(state,'tea')&&state.wallet>=CATALOG.tea.price&&state.wallet>=Pantry.plan(state).quote+CATALOG.tea.price)
+  add('order_tea',23,'Tea merchant can replace finite dried leaves if the food budget is secure','catalog');
+ // Research is the only modeled repeatable cash income. Spare mechanical parts
+ // cannot be substituted for a chemical reagent, so do not block reordering.
+ if(p.reagents<1&&!pending(state,'science')&&state.wallet>=Household.price(CATALOG.science.price,state.day,'science'))
+  add('order_science',state.wallet<80?186:93,'Replenish experimental reagents to fund future household orders','catalog');
  // E03-002, E22-012: the purse cannot buy heat, food, and equipment independently.
- if((Household.winter(state.day)||h.weather.rain)&&h.coal.dry+h.coal.wet>0&&h.heat.fuelledUntil<=state.tick)add('stoke_hearth',Household.winter(state.day)?116:47,'The kitchen is cold; there is fuel in the coal pile','hearth');
+ // One dry basket only heats for 26 ticks; indiscriminate restoking burns a
+ // week's winter income in days. Heat when bodily conditions actually warrant it.
+ const needsHeat=state.health<65||n.fatigue>73;
+ if((Household.winter(state.day)||h.weather.rain)&&h.coal.dry+h.coal.wet>0&&h.heat.fuelledUntil<=state.tick)
+  add('stoke_hearth',needsHeat?(state.health<35?176:104):9,
+   needsHeat?'The cold tower and bodily condition warrant burning stored coal':'Heating is possible but fuel should be conserved','hearth');
  if(h.coal.dry+h.coal.wet<3&&!pending(state,'coal')&&state.wallet>=Household.price(CATALOG.coal.price,state.day,'coal'))add('order_coal',Household.winter(state.day)?91:27,'Fuel reserve appears low; order from Rosa Brandl','catalog');
  if(h.fabric.roof<55||h.fabric.floor<55){
   if(!pending(state,'maintenance')&&state.stock.boards<1&&state.stock.roofing<1&&state.wallet>=Household.price(CATALOG.maintenance.price,state.day,'maintenance'))add('order_maintenance',25,'Old tower needs repair materials','catalog');
@@ -116,14 +129,19 @@ function choose(state,evidence={}){
  if(!h.observed.roof||state.day-h.observed.roof.day>=5)add('inspect_roof',h.fabric.leaking?70:20,'Look for damp or damaged slate at the roof access','roof_access');
  if(!h.observed.floor||state.day-h.observed.floor.day>=5)add('inspect_floor',h.fabric.floor<30?70:20,'Check the old stair boards','floorboards');
  if(!h.observed.coal||state.day-h.observed.coal.day>=5)add('inspect_coal',Household.winter(state.day)?49:12,'Check the coal store directly','coal_pile');
- if(state.researchReports>0)add('post_report',55,'An independently completed experiment has a report to mail','mailbox');
+ // Earned receivables should not sit unposted while the pantry is being depleted.
+ if(state.researchReports>0)add('post_report',state.wallet<90?242:110,'Post a completed report so earned payment can reach the household','mailbox');
  if(p.tea_cups>0&&n.thirst>=16)add('sip_tea',75+n.thirst*.8,'Freshly brewed tea','table');
  if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48)add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
- if(state.booksRead.length<BOOKS.length&&n.boredom>=34)add('read',36+n.boredom*.9,'Curiosity and an unread book on the shelf','bookshelf');
+ if(state.booksRead.length<BOOKS.length&&n.boredom>=34)
+  add('read',36+n.boredom*.9+(n.boredom>=85?190+3*(n.boredom-85):0),'Curiosity and an unread book on the shelf','bookshelf');
  if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
- const notebook=notebookChoice(state,evidence);if(notebook)add('read_journal',notebook.score,notebook.reason,'journal',notebook.detail);
- if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))add('work',46+n.boredom*.35,'A verifiable physical repair or experiment is possible','bench');
- if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
+ const notebook=notebookChoice(state,evidence);
+ if(notebook)add('read_journal',notebook.score+(n.boredom>=85?200+3*(n.boredom-85):0),notebook.reason,'journal',notebook.detail);
+ if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))
+  add('work',((state.wallet<55||(state.wallet<90&&n.boredom<65))&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
+ if(n.boredom>50&&state.booksRead.length===BOOKS.length)
+  add('reflect',20+n.boredom*.2+(n.boredom>=85?210+3*(n.boredom-85):0),'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
  // The explicit knowledge inventory changes priority only after an actual grant receipt.
  // No unread text and no pre-folio cues may stand in for held knowledge.
@@ -155,7 +173,11 @@ function choose(state,evidence={}){
  }
  // Critical bodily safety beats science, notebook work, leisure and comfort.
  const localWarmth=Household.comfort(state,roomAt(state.position.x,state.position.y)).warmth;
- const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,cold:Household.winter(state.day)&&localWarmth<34};
+ // A cold *location* is not the same as a bodily emergency. In particular,
+// standing at the outdoor mailbox must not force a needless return to the
+// hearth, interrupting the paid parcels or outgoing research correspondence.
+ const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,
+  cold:Household.winter(state.day)&&localWarmth<34&&(state.health<=40||n.fatigue>=85)};
  const acute=state.policyOptions?.survivalFloor!==false&&Object.values(crisis).some(Boolean);
  const priority={drink:crisis.thirst||crisis.health,eat:crisis.hunger||crisis.health,cook:crisis.hunger||crisis.health,
   order_groceries:crisis.hunger||crisis.health,order_staples:crisis.hunger||crisis.health,collect:crisis.hunger||crisis.health,put_away:crisis.hunger||crisis.health,
@@ -247,8 +269,10 @@ function step(state,evidence={}){
  const s=clone(state),events=[];consult(s);Knowledge.inventory(s);
  s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
  const hh=Household.migrate(s);Household.applyDay(s,(kind,description,details,perceived)=>receipt(s,events,kind,description,details,perceived));
+ const healthBeforeExposure=s.health;
  if(s.tick>hh.heat.fuelledUntil)hh.heat.warmth=0;else hh.heat.warmth=Household.comfort(s,'kitchen').warmth;
  Household.exposure(s,roomAt(s.position.x,s.position.y),(kind,desc,details,perceived)=>receipt(s,events,kind,desc,details,perceived));
+ const coldInjuryThisTick=s.health<healthBeforeExposure;
  for(const key of ['hunger','thirst','fatigue','bladder','boredom']){const rate={hunger:.9,thirst:1.17,fatigue:.78,bladder:1.04,boredom:.56}[key];s.needs[key]=cap(s.needs[key]+rate)}
  for(const [crop,plot] of Object.entries(s.garden)){if(plot.stage==='growing'&&plot.watered&&s.tick-plot.plantedTick>=(crop==='tea'?84:50)){plot.stage='ripe';receipt(s,events,'crop_ripened',`The ${crop} plot is ready to harvest`,{crop})}}
  for(const o of s.orders){if(!o.arrived&&s.tick>=o.dueTick){o.arrived=true;receipt(s,events,'delivery_arrived',o.type==='research_payment'?'The scientific society sent a payment':o.type==='coal'?'Rosa Brandl firm delivered a coal cart to the tower porch':'A parcel arrived at the physical letter box',{orderId:o.id,type:o.type,source:o.source,supplierId:o.supplierId||null,wet:o.wet||false,late:o.late||0},roomAt(s.position.x,s.position.y)==='porch')}}
@@ -265,17 +289,31 @@ function step(state,evidence={}){
   s.goal=null;ingestConsultation(s,events,evidence);
   return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};
  }
- if(route.length){const prior=clone(s.position);s.position=route[0];if(roomAt(prior.x,prior.y)==='hall'){
-  const oldFloor=hh.fabric.floor;
-  Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));
-  if(s.scenarioEncounters?.floorStepOnce&&oldFloor>=12&&hh.fabric.floor<12){
-   s.scenarioEncounters.floorStepOnce=false;s.health=cap(s.health-3);
-   receipt(s,events,'floor_hazard','The worn hall board gave visibly underfoot',{floor:'hall',healthLost:3,scenarioAssumption:'floor_threshold_encounter'},true);
+ if(route.length){
+  // 16x10 depicts one house, not 160 city blocks. One physical ten-minute
+  // movement action can cross three adjacent map cells. Every intermediate
+  // square remains independently traversed for door, stair and garden hazards;
+  // the full path is recorded, never teleported.
+  const origin=clone(s.position),via=[];
+  for(const next of route.slice(0,3)){
+   const prior=clone(s.position);s.position=next;
+   if(roomAt(prior.x,prior.y)==='hall'){
+    const oldFloor=hh.fabric.floor;
+    Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));
+    if(s.scenarioEncounters?.floorStepOnce&&oldFloor>=12&&hh.fabric.floor<12){
+     s.scenarioEncounters.floorStepOnce=false;s.health=cap(s.health-3);
+     receipt(s,events,'floor_hazard','The worn hall board gave visibly underfoot',{floor:'hall',healthLost:3,scenarioAssumption:'floor_threshold_encounter'},true);
+    }
+   }
+   if(roomAt(s.position.x,s.position.y)==='garden'&&roomAt(prior.x,prior.y)!=='garden'&&hh.garden.nettles>=40)
+    receipt(s,events,'garden_path_seen','Saw the nettles gathering along the garden approach',{nettles:hh.garden.nettles,objectId:'garden_path'},true);
+   if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15)
+    s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);
+   via.push(clone(s.position));
   }
+  receipt(s,events,'walk',`Walked toward ${target.name}`,{from:origin,to:s.position,via,tiles:via.length,objectId:target.id,remainingRoute:route.length-via.length});
+  s.goal.phase='travelling';
  }
- if(roomAt(s.position.x,s.position.y)==='garden'&&roomAt(prior.x,prior.y)!=='garden'&&hh.garden.nettles>=40){
-   receipt(s,events,'garden_path_seen','Saw the nettles gathering along the garden approach',{nettles:hh.garden.nettles,objectId:'garden_path'},true);
- }if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15){s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);} receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
  else {const completed=action(s,events,s.goal);if(completed){s.completed.push({id:s.goal.id,kind:s.goal.kind,completedTick:s.tick});s.recentKinds.push(s.goal.kind);s.recentKinds=s.recentKinds.slice(-8);s.goal=null}}
  // Direct experience is an independently receipted, more costly learning route.
  for(const ev of [...events]){
@@ -284,7 +322,10 @@ function step(state,evidence={}){
   }
  }
  ingestConsultation(s,events,evidence);
- if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;s.deathCause=s.needs.thirst>=100?'dehydration':'starvation';receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true});s.goal=null;}
+ if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;
+   const coldDamage=coldInjuryThisTick;
+   s.deathCause=s.needs.thirst>=100?'dehydration':s.needs.hunger>=100?'starvation':coldDamage?'cold_exposure':'health_failure_unclassified';
+   receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true,coldDamageObserved:coldDamage,terminalHunger:s.needs.hunger,terminalThirst:s.needs.thirst});s.goal=null;}
 
  return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};
 }
