@@ -4,7 +4,7 @@ on:
     branches: [main]
   pull_request:
 permissions:
-  contents: read
+  contents: write
 jobs:
   simulation:
     runs-on: ubuntu-latest
@@ -20,3 +20,23 @@ jobs:
         run: npm run experiment
       # Existing audit, v1-v3, and equilibrium artifacts are frozen.
       # Never regenerate or auto-commit an older research generation.
+      - name: Run only two declared v4 gated winter scenarios
+        run: node tests/winter_pantry_v4.js
+      - name: Preserve full v4 winter evidence, including failed lives
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: septimus-v4-two-gated-winter-trials
+          path: |
+            results/winter_pantry_v4.json
+            results/winter_pantry_v4.md
+      - name: Commit new winter generation without changing frozen results
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "Septimus Research CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/winter_pantry_v4.json results/winter_pantry_v4.md
+          if ! git diff --cached --quiet; then
+            git commit -m "results(septimus): measure two gated winter pantry variants [skip ci]"
+            git push origin HEAD:main
+          fi
