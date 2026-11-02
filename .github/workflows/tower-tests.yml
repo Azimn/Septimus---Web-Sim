@@ -1,0 +1,29 @@
+name: Simple Tower mechanical tests
+on:
+  push:
+    branches: ['feature/simple-tower-v1-20261102']
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'canon/**'
+      - 'identity.json'
+      - 'package.json'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - name: Verify exact frozen source and identity
+        run: |
+          node - <<'NODE'
+          const h=require('./src/history'); const p=require('node:path');
+          const a=h.readCanon(p.join(process.cwd(),'canon/Pretorius_v12_450_Events_Complete.jsonl'));
+          const i=h.externalIdentity(p.join(process.cwd(),'identity.json'));
+          if(a.records.length!==450||i.record.name!=='Septimus Pretorius')process.exit(1);
+          console.log('Verified',a.records.length,'archive records',a.sha);
+          NODE
