@@ -1,6 +1,6 @@
 # V3 source-grounded knowledge trial
 
-Result: **held_facts_load_bearing**. Runtime 4131 ms. v1/v2 unchanged. Original source corpus unchanged.
+Result: **held_facts_load_bearing**. Runtime 3971 ms. v1/v2 unchanged. Original source corpus unchanged.
 
 | Folio | Target reads | Cue / question / chair | A/B first five | A/C first five | Target A/B/C | Related A/B/C | Decisions using facts A/B/C | Pass |
 |---|---:|---|---:|---:|---|---|---|---|
