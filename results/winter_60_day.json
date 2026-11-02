@@ -7,7 +7,7 @@
   "window": "60 days",
   "ticksPerDay": 144,
   "seedsRun": 10,
-  "runtimeMs": 4128,
+  "runtimeMs": 5539,
   "modelCalls": 0,
   "uneditedPhysics": true,
   "summary": {
@@ -179,7 +179,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 270
+      "runtimeMs": 368
     },
     {
       "seed": 2,
@@ -340,7 +340,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 243
+      "runtimeMs": 336
     },
     {
       "seed": 3,
@@ -473,7 +473,7 @@
         "toilet",
         "walk"
       ],
-      "runtimeMs": 152
+      "runtimeMs": 201
     },
     {
       "seed": 4,
@@ -653,7 +653,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 298
+      "runtimeMs": 408
     },
     {
       "seed": 5,
@@ -783,7 +783,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 143
+      "runtimeMs": 189
     },
     {
       "seed": 6,
@@ -1009,7 +1009,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 551
+      "runtimeMs": 736
     },
     {
       "seed": 7,
@@ -1170,7 +1170,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 237
+      "runtimeMs": 310
     },
     {
       "seed": 8,
@@ -1432,7 +1432,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 737
+      "runtimeMs": 993
     },
     {
       "seed": 9,
@@ -1686,7 +1686,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 761
+      "runtimeMs": 1005
     },
     {
       "seed": 10,
@@ -1940,7 +1940,7 @@
         "walk",
         "water_garden"
       ],
-      "runtimeMs": 725
+      "runtimeMs": 980
     }
   ]
 }
