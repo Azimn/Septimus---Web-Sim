@@ -12,6 +12,10 @@ The tower library now contains a physically reachable **private notebook**. He m
 
 The simple external Ipseity remains in `identity.json`. Perception and optional model prompts are first-person and situated, with no BeatTime, engine ticks or omniscient access to events in other rooms. BeatTime is for operators and simulation mechanics only. Diary prose is conservative deterministic templating until a local language model is integrated for richer subjective recollection. See [journal and Ipseity design](docs/JOURNAL_AND_IPSEITY.md).
 
+## Playable G0: direct Septimus in the tower
+
+This is now a **gameplay-first playable alpha**, not only an observation dashboard. Click a furnished object on the map to see context-sensitive, real available actions. While the simulation is paused, choose an action to direct Septimus to its physical location. He still has to travel, consume supplies, pay for orders, and endure ordinary simulation ticks; player orders are recorded separately from spontaneous autonomous choices. Resume the simulation to let his life continue. This game layer runs without Python, the old Laboratory runtime, an LLM, or the Doctor Lives brain. The older 17-book library and realistic multi-hour activity scheduling are **not yet** part of this playable slice. See [game-first acceptance gates](docs/GAMEPLAY_FIRST_ALPHA.md).
+
 ## Run locally
 
 Requires Node.js 20 or later. No npm dependencies, database server, hosted API, external images, or internet connection.
@@ -47,7 +51,7 @@ Optional Ollama narration, strictly local: set `OLLAMA_MODEL=your-model` (and an
 
 ## API
 
-`GET /api/state`, `GET /api/info`, `GET /api/memory-control`, `GET /api/export`; `POST /api/step` with `{"steps":10}` (maximum 120); `POST /api/run` with `{"running":true}`; `POST /api/narrate` and `POST /api/identity-probe` for separate narration/identity probes. Local HTTP binds to loopback only.
+`GET /api/state` (including `availableActions`), `GET /api/info`, `GET /api/memory-control`, `GET /api/export`; `POST /api/direct` with `{\"kind\":\"read\",\"target\":\"bookshelf\"}` (only while paused, acts through normal physics); `POST /api/step` with `{"steps":10}` (maximum 120); `POST /api/run` with `{"running":true}`; `POST /api/narrate` and `POST /api/identity-probe` for separate narration/identity probes. Local HTTP binds to loopback only.
 
 ## Status and limits
 
