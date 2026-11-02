@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Replay original winter failure for purchase and need diagnosis
+        run: node tests/winter_diagnosis_original.js
       - name: Test the actual simulation and journal evidence
         run: npm test
       - name: Preserve bounded life benchmark including failures
@@ -35,13 +37,15 @@ jobs:
             results/folio_experiment_v2.md
             results/winter_60_day.json
             results/winter_60_day.md
+            results/winter_diagnosis_original.json
+            results/winter_diagnosis_original.md
           if-no-files-found: warn
       - name: Commit the measured results after the protocol and source
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           git config user.name "Septimus Research CI"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/folio_experiment_v2.json results/folio_experiment_v2.md results/winter_60_day.json results/winter_60_day.md
+          git add results/folio_experiment_v2.json results/folio_experiment_v2.md results/winter_60_day.json results/winter_60_day.md results/winter_diagnosis_original.json results/winter_diagnosis_original.md
           if ! git diff --cached --quiet; then
             git commit -m "results(septimus): record v2 and winter observations [skip ci]"
             git push origin HEAD:main
