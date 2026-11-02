@@ -4,7 +4,7 @@ on:
     branches: [main]
   pull_request:
 permissions:
-  contents: read
+  contents: write
 jobs:
   simulation:
     runs-on: ubuntu-latest
@@ -19,3 +19,23 @@ jobs:
       - name: Bounded smoke benchmark
         run: npm run experiment
       # All existing research data are frozen; do not regenerate archived experiments.
+      - name: Run corrected 60-day isolated need oracles
+        run: node tests/needs_equilibrium_corrected.js
+      - name: Archive corrected need equilibrium without editing any previous generation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: septimus-corrected-need-equilibrium
+          path: |
+            results/needs_equilibrium_corrected.json
+            results/needs_equilibrium_corrected.md
+      - name: Commit corrected equilibrium evidence separately
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "Septimus Research CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/needs_equilibrium_corrected.json results/needs_equilibrium_corrected.md
+          if ! git diff --cached --quiet; then
+            git commit -m "results(septimus): preserve corrected physiological oracle receipts [skip ci]"
+            git push origin HEAD:main
+          fi
