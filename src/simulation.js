@@ -264,7 +264,49 @@ function goalStillPossible(state,goal){
  if(k==='work')return (state.lab.damage>0&&p.spares>0)||p.reagents>0;
  return true;
 }
-function step(state,evidence={}){
+
+// Directable interactions are regular household actions, not an alternate
+// physics engine or pretend evidence of autonomous cognitive selection.
+function playerChoices(state,evidence={}){
+ if(!state.alive)return [];
+ const n=state.needs,p=state.stock,g=state.garden,h=Household.migrate(clone(state));
+ const options=new Map(choose(clone(state),evidence).filter(x=>x.kind!=='wait').map(x=>[x.kind,x]));
+ const add=(kind,target,reason,allowed)=>{
+  if(allowed&&!options.has(kind))options.set(kind,{kind,target,reason,score:0,detail:{},memoryIds:[],usedFacts:[]});
+ };
+ add('drink','sink','Drink water',true);
+ add('eat','table','Eat a prepared meal',p.meals>0);
+ add('cook','stove','Cook a meal',p.vegetables>0||(p.milk>0&&p.grain>0));
+ add('sleep','bed','Sleep on the bedstead',n.fatigue>=10);
+ add('toilet','toilet','Use the water closet',n.bladder>=10);
+ add('brew_tea','stove','Prepare tea',p.tea_leaves>0&&p.tea_cups<1);
+ add('sip_tea','table','Drink prepared tea',p.tea_cups>0);
+ add('read','bookshelf','Read the next section of a book',state.booksRead.length<BOOKS.length);
+ add('reflect','table','Reflect quietly',true);
+ add('work','bench','Work with real laboratory supplies',(state.lab.damage>0&&p.spares>0)||p.reagents>0);
+ add('post_report','mailbox','Post a completed research report',state.researchReports>0);
+ add('collect','mailbox','Collect a delivered parcel or payment',!state.carried&&state.orders.some(o=>o.arrived&&!o.collected));
+ add('put_away','pantry','Store carried goods',!!state.carried);
+ add('plant_vegetables','vegetable_plot','Plant vegetables',g.vegetables.stage==='empty'&&p.vegetable_seeds>0);
+ add('plant_tea','tea_plot','Plant tea seedlings',g.tea.stage==='empty'&&p.tea_seeds>0);
+ add('water_vegetables','vegetable_plot','Water vegetable crop',g.vegetables.stage==='growing'&&!g.vegetables.watered);
+ add('water_tea','tea_plot','Water tea crop',g.tea.stage==='growing'&&!g.tea.watered);
+ add('harvest_vegetables','vegetable_plot','Harvest ripe vegetables',g.vegetables.stage==='ripe');
+ add('harvest_tea','tea_plot','Pick ripe tea leaves',g.tea.stage==='ripe');
+ add('inspect_roof','roof_access','Inspect the roof',true);
+ add('inspect_floor','floorboards','Inspect the stairs',true);
+ add('inspect_coal','coal_pile','Count stored coal',true);
+ add('tend_path','garden_path','Clear nettles',h.garden.nettles>0);
+ add('repair_floor','floorboards','Repair worn floorboards',p.boards>0&&h.fabric.floor<100);
+ add('repair_roof','roof_access','Repair roof damage',p.roofing>0&&h.fabric.roof<100);
+ add('stoke_hearth','hearth','Heat the tower using coal',h.coal.dry+h.coal.wet>0&&h.heat.fuelledUntil<=state.tick);
+ for(const [type,catalog] of Object.entries(CATALOG))add('order_'+type,'catalog','Pay for '+catalog.name,!pending(state,type)&&state.wallet>=Household.price(catalog.price,state.day,type));
+ return [...options.values()].filter(x=>BY_ID[x.target]&&goalStillPossible(state,x)&&
+  (!x.kind.startsWith('order_')||!pending(state,x.kind.slice(6)))&&
+  (x.kind!=='work'||state.lab.lampLit||p.lamp_oil>0))
+  .map(x=>({kind:x.kind,target:x.target,reason:x.reason,score:x.score,detail:x.detail||{},memoryIds:x.memoryIds||[],usedFacts:x.usedFacts||[],survivalFloor:!!x.survivalFloor}));
+}
+function step(state,evidence={},directive=null){
  if(!state.alive)return {state,events:[],decision:null};
  const s=clone(state),events=[];consult(s);Knowledge.inventory(s);
  s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
@@ -280,7 +322,7 @@ function step(state,evidence={}){
  if(s.goal&&crisis&&s.goal.kind!==crisis){if(!s.suspendedGoal){s.suspendedGoal=s.goal;receipt(s,events,'goal_suspended',`Suspended ${s.goal.kind} for an urgent bodily need`,{suspendedGoalId:s.goal.id})}s.goal=null}
  if(!s.goal&&s.suspendedGoal&&s.needs.thirst<60&&s.needs.hunger<74){s.goal=s.suspendedGoal;s.suspendedGoal=null;receipt(s,events,'goal_resumed',`Resumed unfinished intention ${s.goal.kind}`,{goalId:s.goal.id})}
  if(s.goal&&!goalStillPossible(s,s.goal)){receipt(s,events,'goal_obsolete',`The original opportunity for ${s.goal.kind} is no longer physically available`,{oldGoalId:s.goal.id});s.goal=null}
- let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,usedFacts:c.usedFacts||[],survivalFloor:!!c.survivalFloor,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score,usedFacts:x.usedFacts||[],survivalFloor:!!x.survivalFloor}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds,usedFacts:c.usedFacts||[],survivalFloor:!!c.survivalFloor,consultation:c.kind==='read_journal'?c.detail:null,folioInfluence:evidence.__verifiedFolioRead?{postRead:evidence.__verifiedFolioRead.readTick<s.tick,sourceEventId:evidence.__verifiedFolioRead.sourceEventId,readingReceiptId:evidence.__verifiedFolioRead.readingReceiptId}:{postRead:false}});}
+ let candidates=null,selectedByPlayer=null; if(directive!==null){if(!directive||typeof directive!=='object'||Object.keys(directive).sort().join(',')!=='kind,target'||typeof directive.kind!=='string'||typeof directive.target!=='string')throw Error('Malformed object interaction');selectedByPlayer=playerChoices(s,evidence).find(x=>x.kind===directive.kind&&x.target===directive.target);if(!selectedByPlayer)throw Error('Unavailable action for this object');for(const prior of [s.goal,s.suspendedGoal])if(prior)receipt(s,events,'goal_cancelled',`Player replaced unfinished ${prior.kind}`,{oldGoalId:prior.id,controller:'player'});s.goal=null;s.suspendedGoal=null;}if(!s.goal){candidates=choose(s,evidence);const c=selectedByPlayer||candidates[0],controller=selectedByPlayer?'player':'autonomous';s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score,...(selectedByPlayer?{controller:'player'}:{})};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,usedFacts:c.usedFacts||[],survivalFloor:!!c.survivalFloor,...(selectedByPlayer?{controller:'player'}:{}),options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score,usedFacts:x.usedFacts||[],survivalFloor:!!x.survivalFloor}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds,usedFacts:c.usedFacts||[],survivalFloor:!!c.survivalFloor,...(selectedByPlayer?{controller:'player'}:{}),consultation:c.kind==='read_journal'?c.detail:null,folioInfluence:evidence.__verifiedFolioRead?{postRead:evidence.__verifiedFolioRead.readTick<s.tick,sourceEventId:evidence.__verifiedFolioRead.sourceEventId,readingReceiptId:evidence.__verifiedFolioRead.readingReceiptId}:{postRead:false}});}
  const target=BY_ID[s.goal.target];if(!target)throw Error(`Target missing ${s.goal.target}`);
  const unsafeCarrying=!!s.carried&&!!Knowledge.held(s,'floor_east_rotten')&&hh.fabric.floor<30;
  const route=pathBetween(s.position,target,unsafeCarrying?[{x:3,y:4}]:[]);if(route===null){
@@ -329,4 +371,4 @@ function step(state,evidence={}){
 
  return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};
 }
-module.exports={step,choose,receipt};
+module.exports={step,choose,playerChoices,receipt};

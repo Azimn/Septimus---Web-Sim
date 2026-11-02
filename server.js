@@ -19,6 +19,12 @@ async function one(req,res,url){
  if(req.method==='GET'&&url.pathname==='/api/memory-control')return response(res,200,organism.compareMemory());
  if(req.method==='GET'&&url.pathname==='/api/export')return response(res,200,organism.exportData());
  if(req.method==='GET'&&url.pathname==='/api/folios'){const offset=Number(url.searchParams.get('offset')||0),limit=Number(url.searchParams.get('limit')||10);return response(res,200,organism.archiveBrowse(offset,limit));}
+ if(req.method==='POST'&&url.pathname==='/api/direct'){
+  if(busy)return response(res,409,{error:'Simulation step already in progress'});
+  const args=await parse(req);
+  if(!args||typeof args!=='object'||Array.isArray(args)||Object.keys(args).sort().join(',')!=='kind,target'||typeof args.kind!=='string'||typeof args.target!=='string'||args.kind.length>64||args.target.length>64)return response(res,400,{error:'Choose one valid action at a real object'});
+  busy=true;try{const result=organism.direct(args.kind,args.target);return response(res,200,{result,view:organism.view()})}finally{busy=false}
+ }
  if(req.method==='POST'&&url.pathname==='/api/step'){
   const args=await parse(req),n=Math.max(1,Math.min(120,Number(args.steps)||1));if(busy)return response(res,409,{error:'Simulation step already in progress'});
   busy=true;try{let out;for(let i=0;i<n;i++){out=organism.tick();if(!out.world.alive)break}return response(res,200,{result:out,view:organism.view()})}finally{busy=false}}
