@@ -115,8 +115,9 @@ function choose(state,evidence={}){
  // One dry basket only heats for 26 ticks; indiscriminate restoking burns a
  // week's winter income in days. Heat when bodily conditions actually warrant it.
  const needsHeat=state.health<65||n.fatigue>73;
- if((Household.winter(state.day)||h.weather.rain)&&h.coal.dry+h.coal.wet>0&&h.heat.fuelledUntil<=state.tick&&needsHeat)
-  add('stoke_hearth',state.health<35?176:104,'The cold tower and bodily condition warrant burning stored coal','hearth');
+ if((Household.winter(state.day)||h.weather.rain)&&h.coal.dry+h.coal.wet>0&&h.heat.fuelledUntil<=state.tick)
+  add('stoke_hearth',needsHeat?(state.health<35?176:104):9,
+   needsHeat?'The cold tower and bodily condition warrant burning stored coal':'Heating is possible but fuel should be conserved','hearth');
  if(h.coal.dry+h.coal.wet<3&&!pending(state,'coal')&&state.wallet>=Household.price(CATALOG.coal.price,state.day,'coal'))add('order_coal',Household.winter(state.day)?91:27,'Fuel reserve appears low; order from Rosa Brandl','catalog');
  if(h.fabric.roof<55||h.fabric.floor<55){
   if(!pending(state,'maintenance')&&state.stock.boards<1&&state.stock.roofing<1&&state.wallet>=Household.price(CATALOG.maintenance.price,state.day,'maintenance'))add('order_maintenance',25,'Old tower needs repair materials','catalog');
@@ -135,7 +136,7 @@ function choose(state,evidence={}){
  if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
  const notebook=notebookChoice(state,evidence);if(notebook)add('read_journal',notebook.score,notebook.reason,'journal',notebook.detail);
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))
-  add('work',(state.wallet<90&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
+  add('work',((state.wallet<55||(state.wallet<90&&n.boredom<65))&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
  // The explicit knowledge inventory changes priority only after an actual grant receipt.
