@@ -12,7 +12,7 @@
     "sourceMin": 2,
     "targetAdvantage": "read>withheld"
   },
-  "runtimeMs": 3377,
+  "runtimeMs": 2586,
   "meetsOverallCriterion": false,
   "classification": "NULL: controller criterion not met",
   "summary": [
