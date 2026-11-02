@@ -148,7 +148,7 @@ function choose(state,evidence={}){
  // Critical bodily safety beats science, notebook work, leisure and comfort.
  const localWarmth=Household.comfort(state,roomAt(state.position.x,state.position.y)).warmth;
  const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,cold:Household.winter(state.day)&&localWarmth<34};
- const acute=Object.values(crisis).some(Boolean);
+ const acute=state.policyOptions?.survivalFloor!==false&&Object.values(crisis).some(Boolean);
  const priority={drink:crisis.thirst||crisis.health,eat:crisis.hunger||crisis.health,cook:crisis.hunger||crisis.health,
   order_groceries:crisis.hunger||crisis.health,collect:crisis.hunger||crisis.health,put_away:crisis.hunger||crisis.health,
   stoke_hearth:crisis.cold||crisis.health,order_coal:crisis.cold||crisis.health};
@@ -202,7 +202,7 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'repair_roof':{const h=Household.migrate(state);stockChange(state,{roofing:-1});h.fabric.roof=cap(h.fabric.roof+45);h.fabric.roofRepaired++;h.fabric.leaking=false;h.fabric.dryRooms.library=true;receipt(state,events,'roof_repair','Repaired the leaky tower roof',{roofingUsed:1,dryStatusRestored:true});break;}
  case 'repair_floor':{const h=Household.migrate(state);stockChange(state,{boards:-1});h.fabric.floor=cap(h.fabric.floor+40);h.fabric.floorRepaired++;receipt(state,events,'floor_repair','Replaced worn stair boards',{boardsUsed:1});break;}
  case 'tend_path':{const h=Household.migrate(state);h.garden.nettles=0;h.garden.pathTendedTick=state.tick;receipt(state,events,'garden_tended','Cut back nettles along the garden path',{plant:'nettles',pathClear:true});break;}
- case 'post_report':{if(state.researchReports<=0)throw Error('No verified research report');state.researchReports--;const due=state.tick+22;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type:'research_payment',source:'scientific society',placedTick:state.tick,dueTick:due,arrived:false,collected:false,payment:25};state.orders.push(order);receipt(state,events,'report_posted','Mailed an earned research report to the scientific society',{report:true,paymentPending:25,etaTick:due});break}
+ case 'post_report':{if(state.researchReports<=0)throw Error('No verified research report');state.researchReports--;const due=state.tick+(state.scenarioEconomy?.reportPaymentDelay??22);const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type:'research_payment',source:'scientific society',placedTick:state.tick,dueTick:due,arrived:false,collected:false,payment:25};state.orders.push(order);receipt(state,events,'report_posted','Mailed an earned research report to the scientific society',{report:true,paymentPending:25,etaTick:due});break}
  case 'reflect':n.boredom=cap(n.boredom-22);receipt(state,events,'reflection','Reflected on verified experiences without changing world facts');break;
  case 'wait':receipt(state,events,'wait','Waited for something worth doing');break;
  default:throw Error(`Unknown action ${kind}`);
