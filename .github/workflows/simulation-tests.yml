@@ -4,49 +4,20 @@ on:
     branches: [main]
   pull_request:
 permissions:
-  contents: write
+  contents: read
 jobs:
   simulation:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Replay original winter failure for purchase and need diagnosis
-        run: node tests/winter_diagnosis_original.js
-      - name: Test the actual simulation and journal evidence
+      - name: Test actual simulation, source receipts, and journal evidence
         run: npm test
-      - name: Preserve bounded life benchmark including failures
+      - name: Preserve bounded baseline life benchmark
         run: npm run experiment
-      # Frozen v1 outcome is never re-run or auto-committed by CI.
-      - name: Run preregistered v2 matched-seed folio experiment
-        run: node tests/folio_experiment_v2.js
-      - name: Run untuned 10-seed winter observation
-        run: node tests/winter_benchmark.js
-      - name: Archive full v2 and winter evidence including incomplete trials
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: septimus-v2-winter-evidence
-          path: |
-            results/folio_experiment_v2.json
-            results/folio_experiment_v2.md
-            results/winter_60_day.json
-            results/winter_60_day.md
-            results/winter_diagnosis_original.json
-            results/winter_diagnosis_original.md
-          if-no-files-found: warn
-      - name: Commit the measured results after the protocol and source
-        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: |
-          git config user.name "Septimus Research CI"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/folio_experiment_v2.json results/folio_experiment_v2.md results/winter_60_day.json results/winter_60_day.md results/winter_diagnosis_original.json results/winter_diagnosis_original.md
-          if ! git diff --cached --quiet; then
-            git commit -m "results(septimus): record v2 and winter observations [skip ci]"
-            git push origin HEAD:main
-          fi
+      # v1/v2 and the original-policy winter diagnostic are FROZEN. Never re-run
+      # those scripts against a changed engine or auto-commit their result paths.
+      # v3 comparison and fair-spawn winter experiments are separate new artifacts.
