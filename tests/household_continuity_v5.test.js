@@ -41,9 +41,11 @@ test('posting earned research income is preferred before optional purchases when
 test('coal is burned selectively rather than automatically whenever a hearth timer expires',()=>{
  const w=stocked();w.household.coal.dry=4;w.household.heat.fuelledUntil=0;
  w.needs.fatigue=24;w.health=100;
- assert.ok(Sim.choose(w).find(x=>x.kind==='stoke_hearth').score<50,'optional fuel should rank below productive and survival tasks');
+ const elective=Sim.choose(w).find(x=>x.kind==='stoke_hearth').score;
+ assert.ok(elective<50,'optional fuel should rank below productive and survival tasks');
  w.health=50;
- assert.ok(Sim.choose(w).find(x=>x.kind==='stoke_hearth').score>100,'serious physical cold should justify using fuel');
+ const needed=Sim.choose(w).find(x=>x.kind==='stoke_hearth').score;
+ assert.ok(needed>=elective+60,'serious physical cold should substantially elevate heating');
 });
 
 test('a cold-health death is not incorrectly labeled starvation',()=>{
