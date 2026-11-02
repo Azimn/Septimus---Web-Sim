@@ -23,6 +23,7 @@ test('standing weekly pantry habit is not a folio fact, and uses usable meal equ
 test('weekly delivery remains paid, physically delayed, and unowned until collected',()=>{
  const w=W.fresh(15);w.day=124;w.position={x:13,y:7};
  w.stock={...w.stock,meals:0,vegetables:0,milk:0,grain:0};w.wallet=72;
+ w.household.heat.fuelledUntil=100; // no fuel-burning candidate should mask this delivery receipt test
  const r=S.step(w),o=r.state.orders.find(o=>o.type==='staples');
  assert.ok(o);assert.equal(r.state.wallet,46);
  assert.equal(o.dueTick-r.state.tick,9);

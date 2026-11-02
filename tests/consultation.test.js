@@ -13,7 +13,7 @@ test('only source metadata, never unread folio text, selects consultation',()=>{
  assert.deepEqual(x,y);
 });
 test('notebook physically relieves boredom on read, with mechanism and before/after receipt',()=>{
- const s=World.fresh(7);s.position={x:7,y:2};s.needs={hunger:0,thirst:0,fatigue:0,bladder:0,boredom:100};s.minute=1150;
+ const s=World.fresh(7);s.position={x:7,y:2};s.needs={hunger:0,thirst:0,fatigue:0,bladder:0,boredom:100};s.minute=1150;s.stock.meals=6;s.stock.vegetables=8; // isolate leisure from pantry shortage
  const r=Sim.step(s,evidence),read=r.events.find(e=>e.kind==='journal_read');
  assert.ok(read,'natural winning decision reads at reachable journal');assert.equal(read.details.mechanism,'chair');
  assert.equal(read.details.boredomBefore-read.details.boredomAfter,21);

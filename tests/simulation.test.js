@@ -11,7 +11,7 @@ test('initial deterministic run reaches food, sink, books, work, garden and mail
 test('same initial world yields identical goals and receipts',()=>{let a=fresh(41),b=fresh(41);for(let n=0;n<80;n++){a=step(a).state;b=step(b).state;assert.deepEqual(a,b)}});
 test('a catalog order debits real money, arrives at the mailbox, and remains unavailable until collected and put away',()=>{
  let w=fresh();w.position={x:13,y:7};w.stock.meals=0;w.stock.vegetables=0;w.stock.milk=0;w.stock.grain=0;w.wallet=40;w.needs.hunger=65;w.needs.thirst=5;
- const choice=choose(w).find(x=>x.kind==='order_groceries');assert.ok(choice);const o=step(w);const placed=o.state.orders.find(x=>x.type==='staples');assert.ok(placed);assert.equal(o.state.wallet,14);assert.equal(o.state.stock.vegetables,0);assert.equal(o.state.stock.grain,0);
+ const choice=choose(w).find(x=>x.kind==='order_staples');assert.ok(choice);const o=step(w);const placed=o.state.orders.find(x=>x.type==='staples');assert.ok(placed);assert.equal(o.state.wallet,14);assert.equal(o.state.stock.vegetables,0);assert.equal(o.state.stock.grain,0);
  let current=o.state,received=null;for(let i=0;i<20;i++){const v=step(current);current=v.state;received??=v.events.find(e=>e.kind==='delivery_arrived');if(received)break}assert.ok(received);assert.equal(current.stock.vegetables,0);assert.equal(current.orders[0].arrived,true);
 });
 test('death from physical starvation/dehydration is irreversible and not fixed by narration',()=>{
