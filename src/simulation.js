@@ -137,7 +137,7 @@ function choose(state,evidence={}){
   add('read',36+n.boredom*.9+(n.boredom>=85?190+3*(n.boredom-85):0),'Curiosity and an unread book on the shelf','bookshelf');
  if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
  const notebook=notebookChoice(state,evidence);
- if(notebook)add('read_journal',notebook.score+(n.boredom>=85?145+3*(n.boredom-85):0),notebook.reason,'journal',notebook.detail);
+ if(notebook)add('read_journal',notebook.score+(n.boredom>=85?200+3*(n.boredom-85):0),notebook.reason,'journal',notebook.detail);
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))
   add('work',((state.wallet<55||(state.wallet<90&&n.boredom<65))&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)
