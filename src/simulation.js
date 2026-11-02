@@ -203,7 +203,7 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'repair_floor':{const h=Household.migrate(state);stockChange(state,{boards:-1});h.fabric.floor=cap(h.fabric.floor+40);h.fabric.floorRepaired++;receipt(state,events,'floor_repair','Replaced worn stair boards',{boardsUsed:1});break;}
  case 'tend_path':{const h=Household.migrate(state);h.garden.nettles=0;h.garden.pathTendedTick=state.tick;receipt(state,events,'garden_tended','Cut back nettles along the garden path',{plant:'nettles',pathClear:true});break;}
  case 'post_report':{if(state.researchReports<=0)throw Error('No verified research report');state.researchReports--;const due=state.tick+(state.scenarioEconomy?.reportPaymentDelay??22);const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type:'research_payment',source:'scientific society',placedTick:state.tick,dueTick:due,arrived:false,collected:false,payment:25};state.orders.push(order);receipt(state,events,'report_posted','Mailed an earned research report to the scientific society',{report:true,paymentPending:25,etaTick:due});break}
- case 'reflect':n.boredom=cap(n.boredom-22);receipt(state,events,'reflection','Reflected on verified experiences without changing world facts');break;
+ case 'reflect':n.boredom=cap(n.boredom-23); /* A05/E05: 218 reflections/60d repay 83.567 >80.64 boredom/day */receipt(state,events,'reflection','Reflected on verified experiences without changing world facts');break;
  case 'wait':receipt(state,events,'wait','Waited for something worth doing');break;
  default:throw Error(`Unknown action ${kind}`);
  }
