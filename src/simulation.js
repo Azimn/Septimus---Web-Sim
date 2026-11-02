@@ -263,6 +263,7 @@ function step(state,evidence={}){
  const healthBeforeExposure=s.health;
  if(s.tick>hh.heat.fuelledUntil)hh.heat.warmth=0;else hh.heat.warmth=Household.comfort(s,'kitchen').warmth;
  Household.exposure(s,roomAt(s.position.x,s.position.y),(kind,desc,details,perceived)=>receipt(s,events,kind,desc,details,perceived));
+ const coldInjuryThisTick=s.health<healthBeforeExposure;
  for(const key of ['hunger','thirst','fatigue','bladder','boredom']){const rate={hunger:.9,thirst:1.17,fatigue:.78,bladder:1.04,boredom:.56}[key];s.needs[key]=cap(s.needs[key]+rate)}
  for(const [crop,plot] of Object.entries(s.garden)){if(plot.stage==='growing'&&plot.watered&&s.tick-plot.plantedTick>=(crop==='tea'?84:50)){plot.stage='ripe';receipt(s,events,'crop_ripened',`The ${crop} plot is ready to harvest`,{crop})}}
  for(const o of s.orders){if(!o.arrived&&s.tick>=o.dueTick){o.arrived=true;receipt(s,events,'delivery_arrived',o.type==='research_payment'?'The scientific society sent a payment':o.type==='coal'?'Rosa Brandl firm delivered a coal cart to the tower porch':'A parcel arrived at the physical letter box',{orderId:o.id,type:o.type,source:o.source,supplierId:o.supplierId||null,wet:o.wet||false,late:o.late||0},roomAt(s.position.x,s.position.y)==='porch')}}
@@ -299,7 +300,7 @@ function step(state,evidence={}){
  }
  ingestConsultation(s,events,evidence);
  if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;
-   const coldDamage=healthBeforeExposure>s.health&&Household.comfort(s,roomAt(s.position.x,s.position.y)).warmth<34;
+   const coldDamage=coldInjuryThisTick;
    s.deathCause=s.needs.thirst>=100?'dehydration':s.needs.hunger>=100?'starvation':coldDamage?'cold_exposure':'health_failure_unclassified';
    receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true,coldDamageObserved:coldDamage,terminalHunger:s.needs.hunger,terminalThirst:s.needs.thirst});s.goal=null;}
 
