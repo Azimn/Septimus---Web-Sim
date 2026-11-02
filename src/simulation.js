@@ -4,6 +4,7 @@ const clone=structuredClone;
 const Calendar=require('./calendar');
 const Household=require('./household');
 const Knowledge=require('./knowledge');
+const Pantry=require('./pantry');
 function cap(n){return Math.min(100,Math.max(0,n))}
 function receipt(state,events,kind,description,extra={},perceived=true){
  const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,perceived,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
@@ -92,7 +93,14 @@ function choose(state,evidence={}){
  if(g.tea.stage==='growing'&&!g.tea.watered)add('water_tea',65,'Tea bushes need watering','tea_plot');
  if(g.vegetables.stage==='empty'&&p.vegetable_seeds>0)add('plant_vegetables',67,'Unused vegetable seeds and a free plot','vegetable_plot');
  if(g.tea.stage==='empty'&&p.tea_seeds>0)add('plant_tea',72,'Unused tea seeds and a free plot','tea_plot');
- if(p.meals<2&&p.vegetables<2&&!pending(state,'groceries')&&state.wallet>=CATALOG.groceries.price)add('order_groceries',86+n.hunger*.32,'Fresh food stock below reserve; order groceries','catalog');
+ const pantry=Pantry.plan(state);
+ if(pantry.eligible)add('order_staples',174+10*(pantry.reserveTriggerPortions-pantry.onHand),
+  'Standing pantry practice: order seven days of cookable staples before transit buffer expires','catalog',
+  {habit:'weekly_pantry_stocking',onHand:pantry.onHand,reserveTriggerPortions:pantry.reserveTriggerPortions,quote:pantry.quote,mealEquivalents:pantry.weeklyPortions});
+ // Small legacy basket remains an emergency fallback when the week batch is unaffordable.
+ if(pantry.onHand<=2&&!pantry.pending&&!pantry.eligible&&
+    state.wallet>=Household.price(CATALOG.groceries.price,state.day,'groceries'))
+  add('order_groceries',86+n.hunger*.32,'Emergency small grocery basket when week batch cannot be funded','catalog');
  if(p.vegetable_seeds<1&&p.tea_seeds<1&&!pending(state,'seeds')&&state.wallet>=CATALOG.seeds.price)add('order_seeds',40,'Garden seeds nearly exhausted','catalog');
  if(p.tea_leaves<1&&g.tea.stage==='empty'&&!pending(state,'tea')&&state.wallet>=CATALOG.tea.price)add('order_tea',23,'Tea merchant can replace finite dried leaves','catalog');
  if(p.reagents<1&&p.spares<1&&!pending(state,'science')&&state.wallet>=CATALOG.science.price)add('order_science',42,'Workbench supplies exhausted','catalog');
@@ -150,7 +158,7 @@ function choose(state,evidence={}){
  const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,cold:Household.winter(state.day)&&localWarmth<34};
  const acute=state.policyOptions?.survivalFloor!==false&&Object.values(crisis).some(Boolean);
  const priority={drink:crisis.thirst||crisis.health,eat:crisis.hunger||crisis.health,cook:crisis.hunger||crisis.health,
-  order_groceries:crisis.hunger||crisis.health,collect:crisis.hunger||crisis.health,put_away:crisis.hunger||crisis.health,
+  order_groceries:crisis.hunger||crisis.health,order_staples:crisis.hunger||crisis.health,collect:crisis.hunger||crisis.health,put_away:crisis.hunger||crisis.health,
   stoke_hearth:crisis.cold||crisis.health,order_coal:crisis.cold||crisis.health};
  if(acute)for(const opt of options)if(priority[opt.kind]){opt.score+=500;opt.survivalFloor=true;}
  // Source-attributed preferences remain modest; no fabricated memory can change physics.
@@ -191,7 +199,7 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'harvest_vegetables':if(garden.vegetables.stage!=='ripe')throw Error('Vegetables not ripe');state.carried={vegetables:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.vegetables={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Harvested homegrown vegetables',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'harvest_tea':if(garden.tea.stage!=='ripe')throw Error('Tea not ripe');state.carried={tea_leaves:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.tea={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Picked and dried homegrown tea leaves',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'put_away':if(!state.carried)throw Error('Nothing to put away');stockChange(state,state.carried);receipt(state,events,'put_away','Put a physical parcel or harvest into pantry storage',{goods:state.carried});state.carried=null;break;
- case 'order_groceries':case 'order_seeds':case 'order_science':case 'order_tea':case 'order_coal':case 'order_maintenance':{const type=kind.replace('order_','');const catalog=CATALOG[type];if(!catalog||state.wallet<Household.price(catalog.price,state.day,type))throw Error('Catalog order is not affordable');const paid=Household.price(catalog.price,state.day,type);state.wallet-=paid;const variance=type==='coal'?(state.scenarioEncounters?.forcedLateWetCoal?{late:9,wet:true}:Household.transit(state.seed,state.nextOrder)):null;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type,source:catalog.source,paid,goods:clone(catalog.goods),placedTick:state.tick,dueTick:state.tick+catalog.delay+(variance?.late||0),late:variance?.late||0,wet:variance?.wet||false,supplierId:catalog.supplierId||null,arrived:false,collected:false};state.orders.push(order);state.counters.orders++;receipt(state,events,'catalog_order',`Posted paid order to ${catalog.source}`,{orderId:order.id,price:paid,goods:order.goods,etaTick:order.dueTick,supplierId:order.supplierId});break}
+ case 'order_groceries':case 'order_staples':case 'order_seeds':case 'order_science':case 'order_tea':case 'order_coal':case 'order_maintenance':{const type=kind.replace('order_','');const catalog=CATALOG[type];if(!catalog||state.wallet<Household.price(catalog.price,state.day,type))throw Error('Catalog order is not affordable');const paid=Household.price(catalog.price,state.day,type);state.wallet-=paid;const variance=type==='coal'?(state.scenarioEncounters?.forcedLateWetCoal?{late:9,wet:true}:Household.transit(state.seed,state.nextOrder)):null;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type,source:catalog.source,paid,goods:clone(catalog.goods),placedTick:state.tick,dueTick:state.tick+catalog.delay+(variance?.late||0),late:variance?.late||0,wet:variance?.wet||false,supplierId:catalog.supplierId||null,arrived:false,collected:false};state.orders.push(order);state.counters.orders++;receipt(state,events,'catalog_order',`Posted paid order to ${catalog.source}`,{orderId:order.id,price:paid,goods:order.goods,etaTick:order.dueTick,supplierId:order.supplierId});break}
  case 'collect':{const order=state.orders.find(o=>o.arrived&&!o.collected);if(!order||state.carried)throw Error('No collectable parcel or hands full');order.collected=true;state.counters.deliveries++;if(order.type==='research_payment'){state.wallet+=order.payment;receipt(state,events,'collect_payment','Collected a scientific society payment by post',{orderId:order.id,amount:order.payment,wallet:state.wallet});}
  else if(order.type==='coal'){const h=Household.migrate(state);if(order.wet)h.coal.wet+=order.goods.coal;else h.coal.dry+=order.goods.coal;h.observed.coal={day:state.day,count:h.coal.dry+h.coal.wet};receipt(state,events,'coal_collected','Moved Rosa Brandl firm coal from the porch cart into the visible coal pile',{orderId:order.id,supplierId:order.supplierId,quantity:order.goods.coal,wet:order.wet});}
  else {state.carried=clone(order.goods);receipt(state,events,'collect_parcel','Collected a physical parcel from the letter box',{orderId:order.id,goods:order.goods});}break}

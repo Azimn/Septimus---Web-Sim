@@ -6,7 +6,7 @@ const clamp=n=>Math.max(0,Math.min(100,n));
 function hash(seed,n,salt=0){let x=(seed^Math.imul(n+1,2654435761)^Math.imul(salt+1,1597334677))>>>0;x^=x>>>16;x=Math.imul(x,2246822507);x^=x>>>13;return x>>>0}
 function month(day){const d=new Date(Date.UTC(1899,6,1)+(day-1)*86400000);return d.getUTCMonth()+1}
 function winter(day){return [11,12,1,2,3].includes(month(day))}
-function price(base,day,kind){const m=month(day);const factor=kind==='coal'?(winter(day)?1.35:1):kind==='groceries'?([12,1,2].includes(m)?1.20:1):kind==='science'?(winter(day)?1.10:1):1;return Math.ceil(base*factor)}
+function price(base,day,kind){if(kind==='staples')return Math.ceil(price(12,day,'groceries')*13/6);const m=month(day);const factor=kind==='coal'?(winter(day)?1.35:1):kind==='groceries'?([12,1,2].includes(m)?1.20:1):kind==='science'?(winter(day)?1.10:1):1;return Math.ceil(base*factor)}
 function forecast(seed,day){return {rain:hash(seed,day,13)%100<(winter(day)?38:26),season:winter(day)?'cold':'mild'};}
 function create(){return {coal:{dry:3,wet:0,storage:'coal_pile'},heat:{fuelledUntil:0,room:'kitchen',warmth:0},fabric:{roof:62,floor:53,roofRepaired:0,floorRepaired:0,leaking:false,dryRooms:{bedroom:true,library:true,kitchen:true},roomGoods:{library:{paper:3}}},garden:{pathTendedTick:0,nettles:0,lastEncroachDay:0},lastFabricDay:0,lastWeatherDay:0,weather:{rain:false,season:'mild'},observed:{coal:null,roof:null,floor:null,nettles:null}};}
 function migrate(state){state.household??=create();const h=state.household;h.observed??={coal:null,roof:null,floor:null,nettles:null};return h}

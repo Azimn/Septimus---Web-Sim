@@ -68,6 +68,8 @@ const OBJECTS=[
 const BY_ID=Object.fromEntries(OBJECTS.map(x=>[x.id,x]));
 const CATALOG={
   groceries:{name:'Grocer delivery',source:'grocer',price:12,delay:9,goods:{vegetables:4,grain:4,milk:2}},
+  // Week-sized delivery of 13 meal equivalents at unchanged per-portion grocery price.
+  staples:{name:'Weekly pantry staples',source:'grocer',price:26,delay:9,goods:{vegetables:9,grain:4,milk:4}},
   tea:{name:'Tea merchant parcel',source:'tea merchant',price:5,delay:18,goods:{tea_leaves:3}},
   seeds:{name:'Seed catalog',source:'seed house',price:7,delay:24,goods:{vegetable_seeds:4,tea_seeds:2}},
   science:{name:'Scientific instrument supplier',source:'scientific catalog',price:16,delay:36,goods:{spares:2,reagents:2,lamp_oil:2}},
