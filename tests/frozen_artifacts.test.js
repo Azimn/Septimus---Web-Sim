@@ -2,6 +2,11 @@
 const test=require('node:test'),assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..');
 const original={
+ "results/needs_arithmetic_baseline.json":"0cd681d1fe0b1b11ddba28ff19217cfb603297d1",
+ "results/needs_arithmetic_isolated.json":"848d9b69500a9dda6a179001342de2a2f53e5c0f",
+ "results/needs_equilibrium_corrected.json":"dc7d691b9fe777aca0a7414c1a6a75cd4a06d3e7",
+ "results/winter_pantry_v4.json":"9da9bb8f2bf324a2c42103818941a87ec6336689",
+ "results/winter_pantry_v4.md":"88cdcb2890ea678cc4604339ada8037dca81788c",
   "canon/Pretorius_v12_450_Events_Complete.jsonl": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
   "results/folio_experiment_v1.json": "b8d42c074a195ba8fe936d0398b2add04437076a",
   "results/folio_experiment_v1.md": "13dd3b3db8b711a700c13132891c7585e29d8f7c",
