@@ -1,0 +1,67 @@
+{
+  "kind": "corrected_real_engine_need_equilibrium",
+  "audit": "docs/NEEDS_ARITHMETIC_AUDIT.md",
+  "isolatedExternalControls": "unrelated needs set to zero, nonhealth control health restored externally; cold health case retains genuine cold damage",
+  "corrections": [
+    "A03/E03 sleep cold 42->44",
+    "A05/E05 reflect 22->23",
+    "A07/E07 health +10 per completed sleep"
+  ],
+  "totalSimulatedTicks": 25920,
+  "runs": [
+    {
+      "name": "fatigue",
+      "requestedTicks": 8640,
+      "completedTicks": 8640,
+      "alive": true,
+      "deathCause": null,
+      "peakNeed": 50.76000000000557,
+      "lowestNeed": 0.78,
+      "ticksCritical": 0,
+      "completedRestorativeActions": 153,
+      "restorativeUnits": 6732,
+      "restorationPerDay": 112.2,
+      "finalNeed": 7.200000000006554,
+      "finalHealth": 99.2,
+      "totalHealthDamage": 1501.0500000000359,
+      "totalHealthRecovery": 0,
+      "runtimeMs": 24601
+    },
+    {
+      "name": "boredom",
+      "requestedTicks": 8640,
+      "completedTicks": 8640,
+      "alive": true,
+      "deathCause": null,
+      "peakNeed": 53.64000000001723,
+      "lowestNeed": 0.56,
+      "ticksCritical": 0,
+      "completedRestorativeActions": 209,
+      "restorativeUnits": 4807,
+      "restorationPerDay": 80.11666666666666,
+      "finalNeed": 31.400000000018007,
+      "finalHealth": 100,
+      "totalHealthDamage": 0,
+      "totalHealthRecovery": 0,
+      "runtimeMs": 21643
+    },
+    {
+      "name": "health_cold_sleep",
+      "requestedTicks": 8640,
+      "completedTicks": 8640,
+      "alive": true,
+      "deathCause": null,
+      "peakNeed": 50.76000000000557,
+      "lowestNeed": 0.78,
+      "ticksCritical": 0,
+      "completedRestorativeActions": 153,
+      "restorativeUnits": 6732,
+      "restorationPerDay": 112.2,
+      "finalNeed": 7.200000000006554,
+      "finalHealth": 98.74999999999984,
+      "totalHealthDamage": 1378.650000000025,
+      "totalHealthRecovery": 1377.4000000000137,
+      "runtimeMs": 23966
+    }
+  ]
+}
