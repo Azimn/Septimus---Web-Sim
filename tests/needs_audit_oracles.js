@@ -28,7 +28,7 @@ function runProbe(name){
  const kinds={},start=performance.now();
  const thresholds={hunger:52,thirst:55,fatigue:60,bladder:55,boredom:52};
  const goals={hunger:'eat',thirst:'drink',fatigue:'sleep',bladder:'toilet',boredom:'reflect'};
- const targetMap={eat:'table',drink:'sink',sleep:'bed',toilet:'toilet',reflect:'table',stoke_hearth:'hearth',wait:'bed'};
+ const targetMap={eat:'table',drink:'sink',sleep:'bed',toilet:'toilet',reflect:'table',stoke_hearth:'hearth',wait:'hearth'};
  for(let i=0;i<T&&s.alive;i++){
   // Unlimited materials and external reset of all OTHER needs produce an upper bound,
   // not a claim of achievable household economics.
@@ -39,10 +39,12 @@ function runProbe(name){
   if(name!=='fatigue')s.needs.fatigue=0;
   if(name!=='bladder')s.needs.bladder=0;
   if(name!=='boredom')s.needs.boredom=0;
+  if(!name.startsWith('health'))s.health=100; // isolate the measured need, not cold exposure
   if(name==='health_cold_bedroom'){s.position={x:2,y:2};s.goal={id:'ORACLE-COLD',kind:'wait',target:'bed',detail:{}};}
   else if(name==='health_heated_kitchen'||name==='warmth'){
    s.position={x:5,y:5};
-   s.goal={id:'ORACLE-HEARTH',kind:'stoke_hearth',target:'hearth',detail:{}};
+   const active=s.household.heat.fuelledUntil>s.tick+2;
+   s.goal={id:'ORACLE-HEARTH',kind:active?'wait':'stoke_hearth',target:'hearth',detail:{}};
   }else if(!s.goal){
    const kind=s.needs[name]>=thresholds[name]?goals[name]:'wait';
    s.goal={id:'ORACLE-'+i,kind,target:targetMap[kind],detail:{}};
@@ -71,7 +73,7 @@ function runProbe(name){
   theoreticalMaxRestorePerDay:Math.round(1000*restored/(Math.max(s.tick,1)/144))/1000,
   completedRestorativeActions:fulfilled,restorationUnits:restored,
   peakMeter:highest,minimumMeter:lowest,underCriticalOrHealthDamagedTicks:belowCritical,
-  bedroomWarmTicks:warmTicks,minBedOrLocalWarmth:minWarmth,
+  bedroomWarmTicks:warmTicks,minBedOrLocalWarmth:minWarmth,isolationFix:'Health held at 100 for nonhealth probes; stationary idle target is hearth instead of cold bed',
   finalHealth:s.health,deathCause:s.deathCause,kinds,runtimeMs:Math.round(performance.now()-start),
   caveat:'Other needs zeroed and inventories replenished externally each tick; isolated ceiling, not a playable policy.'};
 }
@@ -115,9 +117,9 @@ function run(){
   allocationMethod:'last min(1008, lived ticks) classified one category per actual tick; 10 seeds per named v3 variant',
   runtimeMs:Math.round(performance.now()-start),oracles,runs};
  const dir=path.join(__dirname,'../results');fs.mkdirSync(dir,{recursive:true});
- fs.writeFileSync(path.join(dir,'needs_arithmetic_baseline.json'),JSON.stringify(obj,null,2)+'\n');
+ fs.writeFileSync(path.join(dir,'needs_arithmetic_isolated.json'),JSON.stringify(obj,null,2)+'\n');
  const fmt=o=>o.toFixed?o.toFixed(2):o;
- const md=['# Needs arithmetic audit: untouched-policy oracle and dying-week allocation','','Scripted oracle supplies materials externally and silences unrelated needs, providing a **ceiling**, not an ordinary character run. Baseline mechanics are unchanged.',
+ const md=['# Corrected isolated-need oracle (untouched simulation) and original allocation','','Scripted oracle supplies materials externally and silences unrelated needs, providing a **ceiling**, not an ordinary character run. Baseline mechanics are unchanged. This corrects the first diagnostic instrument which mistakenly allowed unrelated cold-health damage to kill other-need probes. The first diagnostic is retained separately as an invalid ceiling test.',
   '','| Need | Ticks observed | Maintains target / death | Actions | Restoration units per 144 ticks | Peak meter | Warm ticks |',
   '|---|---:|---|---:|---:|---:|---:|',
   ...oracles.map(x=>`| ${x.name} | ${x.completedTicks} | ${x.alive?'survived isolated probe':'DIED: '+x.deathCause} | ${x.completedRestorativeActions} | ${fmt(x.theoreticalMaxRestorePerDay)} | ${fmt(x.peakMeter)} | ${x.bedroomWarmTicks} |`),
@@ -126,7 +128,7 @@ function run(){
   '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|',
   ...runs.map(x=>`| ${x.variant}/${x.seed} | ${x.finalDate} | ${x.finalWindowTicks} | ${x.timeAllocation.sleep} | ${x.timeAllocation.heating} | ${x.timeAllocation.eating_cooking} | ${x.timeAllocation.drinking_brewing} | ${x.timeAllocation.toileting} | ${x.timeAllocation.travel} | ${x.timeAllocation.idle} | ${x.timeAllocation.work} | ${x.timeAllocation.other} | ${x.finalWallet} | ${fmt(x.finalNeeds.hunger)} | ${x.finalRoom} |`),
   '','Each row counts exactly one use of each lived tick. The complete JSON contains last-week need samples and pantry stock, including seed(s) that die with substantial money. These are measurements on v3, not a balance intervention.'];
- fs.writeFileSync(path.join(dir,'needs_arithmetic_baseline.md'),md.join('\n')+'\n');
+ fs.writeFileSync(path.join(dir,'needs_arithmetic_isolated.md'),md.join('\n')+'\n');
  console.log(JSON.stringify({runtimeMs:obj.runtimeMs,oracles:oracles.map(x=>({name:x.name,ticks:x.completedTicks,alive:x.alive,actions:x.completedRestorativeActions,perDay:x.theoreticalMaxRestorePerDay,peak:x.peakMeter,coldTicks:x.underCriticalOrHealthDamagedTicks})),sampleRuns:runs.filter(x=>x.finalWallet>60).map(x=>({seed:x.seed,variant:x.variant,finalWallet:x.finalWallet,hunger:x.finalNeeds.hunger,stock:x.finalStock,allocation:x.timeAllocation})),allAllocations:runs.length}));
 }
 if(require.main===module)run();
