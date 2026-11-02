@@ -17,3 +17,11 @@ test('A05 E05 reflection closes the measured boredom loop',()=>{
  assert.equal(Number(out.state.needs.boredom.toFixed(2)),37.56);
  assert.ok(218*23/60>144*.56);
 });
+test('A07 E07 completed cold sleep now restores health above sustained cold exposure',()=>{
+ const w=W.fresh(3);w.day=124;w.position={x:2,y:2};w.health=50;w.needs.fatigue=70;
+ w.goal={id:'TEST-HEALTH',kind:'sleep',target:'bed',detail:{}};
+ const r=S.step(w),sleep=r.events.find(e=>e.kind==='sleep');
+ assert.equal(sleep?.details.restRelief,44);
+ assert.equal(Number(r.state.health.toFixed(2)),59.2);
+ assert.ok((144*.78/44)*(10-.8)>144/4*.65);
+});
