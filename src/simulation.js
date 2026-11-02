@@ -289,17 +289,31 @@ function step(state,evidence={}){
   s.goal=null;ingestConsultation(s,events,evidence);
   return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};
  }
- if(route.length){const prior=clone(s.position);s.position=route[0];if(roomAt(prior.x,prior.y)==='hall'){
-  const oldFloor=hh.fabric.floor;
-  Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));
-  if(s.scenarioEncounters?.floorStepOnce&&oldFloor>=12&&hh.fabric.floor<12){
-   s.scenarioEncounters.floorStepOnce=false;s.health=cap(s.health-3);
-   receipt(s,events,'floor_hazard','The worn hall board gave visibly underfoot',{floor:'hall',healthLost:3,scenarioAssumption:'floor_threshold_encounter'},true);
+ if(route.length){
+  // 16x10 depicts one house, not 160 city blocks. One physical ten-minute
+  // movement action can cross three adjacent map cells. Every intermediate
+  // square remains independently traversed for door, stair and garden hazards;
+  // the full path is recorded, never teleported.
+  const origin=clone(s.position),via=[];
+  for(const next of route.slice(0,3)){
+   const prior=clone(s.position);s.position=next;
+   if(roomAt(prior.x,prior.y)==='hall'){
+    const oldFloor=hh.fabric.floor;
+    Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));
+    if(s.scenarioEncounters?.floorStepOnce&&oldFloor>=12&&hh.fabric.floor<12){
+     s.scenarioEncounters.floorStepOnce=false;s.health=cap(s.health-3);
+     receipt(s,events,'floor_hazard','The worn hall board gave visibly underfoot',{floor:'hall',healthLost:3,scenarioAssumption:'floor_threshold_encounter'},true);
+    }
+   }
+   if(roomAt(s.position.x,s.position.y)==='garden'&&roomAt(prior.x,prior.y)!=='garden'&&hh.garden.nettles>=40)
+    receipt(s,events,'garden_path_seen','Saw the nettles gathering along the garden approach',{nettles:hh.garden.nettles,objectId:'garden_path'},true);
+   if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15)
+    s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);
+   via.push(clone(s.position));
   }
+  receipt(s,events,'walk',`Walked toward ${target.name}`,{from:origin,to:s.position,via,tiles:via.length,objectId:target.id,remainingRoute:route.length-via.length});
+  s.goal.phase='travelling';
  }
- if(roomAt(s.position.x,s.position.y)==='garden'&&roomAt(prior.x,prior.y)!=='garden'&&hh.garden.nettles>=40){
-   receipt(s,events,'garden_path_seen','Saw the nettles gathering along the garden approach',{nettles:hh.garden.nettles,objectId:'garden_path'},true);
- }if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15){s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);} receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
  else {const completed=action(s,events,s.goal);if(completed){s.completed.push({id:s.goal.id,kind:s.goal.kind,completedTick:s.tick});s.recentKinds.push(s.goal.kind);s.recentKinds=s.recentKinds.slice(-8);s.goal=null}}
  // Direct experience is an independently receipted, more costly learning route.
  for(const ev of [...events]){
