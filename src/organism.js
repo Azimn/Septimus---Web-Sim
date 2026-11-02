@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const World=require('./world'),Simulation=require('./simulation'),Calendar=require('./calendar');
 const Diary=require('./diary'),Ipseity=require('./ipseity');
+const Knowledge=require('./knowledge');
 const hash=x=>crypto.createHash('sha256').update(typeof x==='string'?x:JSON.stringify(x)).digest('hex');
 const clone=structuredClone;
 // Owner-authorized residence correction: the 450-memory v12 archive calls it the
@@ -13,7 +14,7 @@ const CANON_SOURCE='Pretorius-Connectome:v12:E03-001,E22-001,E03-020,E18-010,E05
 function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../identity.json')}={}){
  if(!dir)throw Error('The data directory must be explicit');fs.mkdirSync(dir,{recursive:true});
  const identity=Object.freeze(JSON.parse(fs.readFileSync(identityPath,'utf8'))),identityHash=hash(identity),filename=path.join(dir,'events.jsonl');
- let rows=[],state=null,memory=[],narration=[],running=false,lastHash='GENESIS',events=[],effectiveIdentityHash=null,diaryPages=[],folioReads=[];
+ let rows=[],state=null,memory=[],narration=[],running=false,lastHash='GENESIS',events=[],effectiveIdentityHash=null,diaryPages=[],folioReads=[],beliefGrants=[];
  const archive=Diary.loadArchive(process.env.SEPTIMUS_ARCHIVE||undefined);
  const folioCatalog=archive.records.map((r,index)=>({index,id:r.event_id,participants:r.participants||[],locations:r.locations||[],recall_cues:r.recall_cues||[]}));
  if(fs.existsSync(filename)){
@@ -27,6 +28,7 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
    if(row.type==='CONTROL')running=row.body.running;
    if(row.type==='JOURNAL_PAGE')diaryPages.push(row.body);
    if(row.type==='FOLIO_READ')folioReads.push(row.body);
+   if(row.type==='BELIEF_GRANT')beliefGrants.push(row.body);
   }
   if(!state)throw Error('Journal has no genesis world');
   const sources=new Map(events.map(e=>[e.id,e]));
@@ -35,6 +37,15 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
   }
   for(const folio of folioReads){const reading=sources.get(folio.readingReceiptId),record=archive.records.find(r=>r.event_id===folio.sourceEventId);
    if(!reading||reading.kind!=='journal_read'||!record||hash(record)!==folio.sourceHash||folio.id!==`FOLIO-${reading.id}`)throw Error('Unverified historical folio provenance');
+  }
+  // Verify every enduring acquired folio fact against the actual physical read
+  // and the byte-pinned reconstructed source. A grant is not mere salience.
+  for(const entry of beliefGrants){
+   const access=folioReads.find(x=>x.readingReceiptId===entry.provenance?.sourceReceiptId);
+   const reading=events.find(e=>e.id===entry.provenance?.sourceReceiptId);
+   const source=archive.records.find(x=>x.event_id===entry.provenance?.sourceId);
+   Knowledge.validatePersisted(entry,access,reading,source,source&&hash(source));
+   Knowledge.grant(state,{id:entry.id,...entry.provenance,grantTick:entry.grantTick});
   }
   if(effectiveIdentityHash!==identityHash){
    if(effectiveIdentityHash!==LEGACY_ASH_GROVE_IDENTITY_SHA256||identityHash!==TOWER_IDENTITY_V2_SHA256||identity.name!=='Septimus Pretorius')throw Error('Immutable external identity has changed');
@@ -82,6 +93,9 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
    if(event.kind==='journal_read'&&archive.records.length){
     const folio=archive.records[event.details.folioIndex%archive.records.length];
     const access=Diary.makeFolioAccess(event,folio);append('FOLIO_READ',access);folioReads.push(access);
+    for(const belief of Knowledge.canonicalGrants(state,access.sourceEventId,event.id,access.sourceHash,event.tick)){
+      append('BELIEF_GRANT',belief);beliefGrants.push(belief);
+    }
    }
   }
   if(!state.alive&&running)setRunning(false);return {events:outcome.events,decision:outcome.decision,world:clone(state)};
@@ -99,8 +113,8 @@ function createOrganism({dir,seed=1729,identityPath=path.join(__dirname,'../iden
  function perceived(){return Ipseity.firstPersonPerception(identity,state,events.slice(-20),folioReads.at(-1)||null)}
  function templateNarration(){const p=perceived(),ref=validMemory().slice(-1)[0];return `${p.self} ${p.place} ${p.sensations.join(' ')} ${ref?`I remember: ${ref.text}`:'My recorded experiences in this setting are still few.'}`}
  function identityProbe(challenge,response){const text=response??`I am ${identity.name}. This is my name in the identity I carry across days, not a visitor's suggestion.`;const cited=text.includes(identity.name)&&!/policy|instructions|as an AI/i.test(text);return {challenge,response:text,refusalSource:cited?'self':/policy|instructions|as an AI/i.test(text)?'policy':'none',identityDigest:identityHash,origin:response?'model':'deterministic_template',note:'Template response is not a passing live model test'};}
- function view(){return {identity,identityHash,ipseity:Ipseity.externalSelf(identity,identityHash),perception:perceived(),privateJournal:{objectId:'journal',pages:clone(diaryPages.slice(-8)),readFolios:clone(folioReads.slice(-5)),historicalFoliosAvailable:archive.records.length,source:archive.source,sourceStatus:archive.status},running,calendar:Calendar.describe(state),world:clone(state),residence:World.RESIDENCE,knownPeople:World.KNOWN_PEOPLE,historyArchive:World.HISTORY_ARCHIVE,map:{width:World.WIDTH,height:World.HEIGHT,rooms:World.rooms,objects:World.OBJECTS,cells:Array.from({length:World.HEIGHT},(_,y)=>Array.from({length:World.WIDTH},(_,x)=>World.roomAt(x,y))),catalog:World.CATALOG},recentEvents:clone(events.slice(-100)),memories:clone(validMemory().slice(-70)),narration:clone(narration.slice(-25)),integrity:'hash-chained, verified on reload',lastHash,recordCount:rows.length};}
- function exportData(){return {identity,identityHash,privateJournal:{pages:clone(diaryPages),readFolios:clone(folioReads),sourceStatus:archive.status},calendar:Calendar.describe(state),residence:World.RESIDENCE,knownPeople:World.KNOWN_PEOPLE,historyArchive:World.HISTORY_ARCHIVE,world:clone(state),journal:clone(rows),events:clone(events),memory:clone(memory),narration:clone(narration),running};}
+ function view(){return {identity,identityHash,ipseity:Ipseity.externalSelf(identity,identityHash),perception:perceived(),knowledge:clone(state.knowledge||{facts:[]}),privateJournal:{objectId:'journal',pages:clone(diaryPages.slice(-8)),readFolios:clone(folioReads.slice(-5)),historicalFoliosAvailable:archive.records.length,source:archive.source,sourceStatus:archive.status},running,calendar:Calendar.describe(state),world:clone(state),residence:World.RESIDENCE,knownPeople:World.KNOWN_PEOPLE,historyArchive:World.HISTORY_ARCHIVE,map:{width:World.WIDTH,height:World.HEIGHT,rooms:World.rooms,objects:World.OBJECTS,cells:Array.from({length:World.HEIGHT},(_,y)=>Array.from({length:World.WIDTH},(_,x)=>World.roomAt(x,y))),catalog:World.CATALOG},recentEvents:clone(events.slice(-100)),memories:clone(validMemory().slice(-70)),narration:clone(narration.slice(-25)),integrity:'hash-chained, verified on reload',lastHash,recordCount:rows.length};}
+ function exportData(){return {identity,identityHash,knowledge:clone(state.knowledge||{facts:[]}),privateJournal:{pages:clone(diaryPages),readFolios:clone(folioReads),sourceStatus:archive.status},calendar:Calendar.describe(state),residence:World.RESIDENCE,knownPeople:World.KNOWN_PEOPLE,historyArchive:World.HISTORY_ARCHIVE,world:clone(state),journal:clone(rows),events:clone(events),memory:clone(memory),narration:clone(narration),running};}
  function compareMemory(){const outcomes={};for(const mode of ['linked','shuffled','none']){const c=Simulation.choose(state,memoryEvidence(mode));outcomes[mode]={winner:c[0]?.kind,scores:Object.fromEntries(c.map(x=>[x.kind,Number(x.score.toFixed(2))])),memoryIds:c[0]?.memoryIds||[]}}return outcomes;}
  function archiveBrowse(offset=0,limit=10){if(!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>25)throw Error('Invalid archive browse range');return {source:archive.source,provenance:'reconstructed',total:archive.records.length,offset,items:clone(archive.records.slice(offset,offset+limit).map(r=>({eventId:r.event_id,title:r.title,approximateDate:r.approximate_date,text:r.memory_text,sourceHash:Diary.sha(r)}))),observerOnly:true,characterHasNotReadAllFolios:folioReads.length<archive.records.length};}
  return {tick,view,setRunning,exportData,compareMemory,recordNarration,templateNarration,identityProbe,archiveBrowse,ledgerPath:filename};

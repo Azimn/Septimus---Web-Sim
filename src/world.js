@@ -87,8 +87,8 @@ const DOORS=new Set(['bedroom:hall:2,3:2,4','library:hall:6,3:6,4','workshop:hal
 function canCross(a,b){const ar=roomAt(a.x,a.y),br=roomAt(b.x,b.y);if(!ar||!br)return false;if(ar===br)return true;
  const k=`${ar}:${br}:${a.x},${a.y}:${b.x},${b.y}`,rev=`${br}:${ar}:${b.x},${b.y}:${a.x},${a.y}`;return DOORS.has(k)||DOORS.has(rev);
 }
-function pathBetween(from,to){if(from.x===to.x&&from.y===to.y)return [];
- const todo=[[from]],seen=new Set([`${from.x},${from.y}`]);for(let i=0;i<todo.length;i++){const path=todo[i],current=path[path.length-1];for(const [dx,dy] of [[0,1],[1,0],[0,-1],[-1,0]]){const next={x:current.x+dx,y:current.y+dy},key=`${next.x},${next.y}`;if(seen.has(key)||!canCross(current,next))continue;const candidate=path.concat([next]);if(next.x===to.x&&next.y===to.y)return candidate.slice(1);seen.add(key);todo.push(candidate)}}return null;
+function pathBetween(from,to,avoid=[]){if(from.x===to.x&&from.y===to.y)return [];
+ const todo=[[from]],seen=new Set([`${from.x},${from.y}`]);for(let i=0;i<todo.length;i++){const path=todo[i],current=path[path.length-1];for(const [dx,dy] of [[0,1],[1,0],[0,-1],[-1,0]]){const next={x:current.x+dx,y:current.y+dy},key=`${next.x},${next.y}`;if(seen.has(key)||avoid.some(p=>p.x===next.x&&p.y===next.y)||!canCross(current,next))continue;const candidate=path.concat([next]);if(next.x===to.x&&next.y===to.y)return candidate.slice(1);seen.add(key);todo.push(candidate)}}return null;
 }
 function fresh(seed=1729){return {
  version:1,seed,tick:0,minute:420,day:1,alive:true,deathCause:null,

@@ -3,6 +3,7 @@ const {BY_ID,CATALOG,BOOKS,roomAt,pathBetween,fresh}=require('./world');
 const clone=structuredClone;
 const Calendar=require('./calendar');
 const Household=require('./household');
+const Knowledge=require('./knowledge');
 function cap(n){return Math.min(100,Math.max(0,n))}
 function receipt(state,events,kind,description,extra={},perceived=true){
  const record={id:`EV-${String(state.nextReceipt++).padStart(7,'0')}`,tick:state.tick,day:state.day,minute:state.minute,calendarDate:Calendar.dateForDay(state.day),kind,description,perceived,room:roomAt(state.position.x,state.position.y),position:clone(state.position),goalId:state.goal?.id||null,details:extra};events.push(record);state.lastAction=description;return record;
@@ -116,6 +117,42 @@ function choose(state,evidence={}){
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))add('work',46+n.boredom*.35,'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
+ // The explicit knowledge inventory changes priority only after an actual grant receipt.
+ // No unread text and no pre-folio cues may stand in for held knowledge.
+ const held=Knowledge.held;
+ const factApplies=(opt,fact,amount)=>{const x=held(state,fact);if(x){opt.score+=amount;(opt.usedFacts??=[]).push({id:fact,grantTick:x.grantTick,provenance:x.provenance});}};
+ for(const opt of options){
+  if(opt.kind==='inspect_floor'){factApplies(opt,'floor_inspection_warranted',105);factApplies(opt,'floor_sound',-38);}
+  if(opt.kind==='repair_floor'){factApplies(opt,'floor_east_rotten',125);factApplies(opt,'floor_sound',-48);}
+  if(opt.kind==='order_maintenance')factApplies(opt,'floor_east_rotten',90);
+  if(opt.kind==='order_coal'){
+   const coal=h.coal.dry+h.coal.wet;
+   if(coal>=3&&coal<=9&&state.wallet>=Household.price(CATALOG.coal.price,state.day,'coal')&&!pending(state,'coal')){
+    // A learned reserve changes availability, not merely the ranking of an unavailable goal.
+    factApplies(opt,'coal_unreliable',90);
+   }else factApplies(opt,'coal_unreliable',coal<3?65:0);
+   factApplies(opt,'coal_reliable',-55);
+  }
+  if(opt.kind==='tend_path'){factApplies(opt,'paths_nettle_untended',100);factApplies(opt,'paths_clear',-65);}
+ }
+ // Learned early-reserve intentions, enabled only by genuinely held facts.
+ if(!options.some(x=>x.kind==='order_coal')&&held(state,'coal_unreliable')&&h.coal.dry+h.coal.wet<=9&&!pending(state,'coal')&&state.wallet>=Household.price(CATALOG.coal.price,state.day,'coal')){
+  const fact=held(state,'coal_unreliable');options.push({kind:'order_coal',score:170,reason:'A consulted or experienced coal warning calls for a reserve',target:'catalog',detail:{},memoryIds:[],usedFacts:[{id:fact.id,grantTick:fact.grantTick,provenance:fact.provenance}]});
+ }
+ if(!options.some(x=>x.kind==='tend_path')&&held(state,'paths_nettle_untended')&&h.garden.nettles>=7){
+  const fact=held(state,'paths_nettle_untended');options.push({kind:'tend_path',score:130,reason:'A learned nettle warning calls for early tending',target:'garden_path',detail:{},memoryIds:[],usedFacts:[{id:fact.id,grantTick:fact.grantTick,provenance:fact.provenance}]});
+ }
+ if(!options.some(x=>x.kind==='inspect_floor')&&held(state,'floor_inspection_warranted')){
+  const fact=held(state,'floor_inspection_warranted');options.push({kind:'inspect_floor',score:150,reason:'A learned warning requires examining the stair floor',target:'floorboards',detail:{},memoryIds:[],usedFacts:[{id:fact.id,grantTick:fact.grantTick,provenance:fact.provenance}]});
+ }
+ // Critical bodily safety beats science, notebook work, leisure and comfort.
+ const localWarmth=Household.comfort(state,roomAt(state.position.x,state.position.y)).warmth;
+ const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,cold:Household.winter(state.day)&&localWarmth<34};
+ const acute=Object.values(crisis).some(Boolean);
+ const priority={drink:crisis.thirst||crisis.health,eat:crisis.hunger||crisis.health,cook:crisis.hunger||crisis.health,
+  order_groceries:crisis.hunger||crisis.health,collect:crisis.hunger||crisis.health,put_away:crisis.hunger||crisis.health,
+  stoke_hearth:crisis.cold||crisis.health,order_coal:crisis.cold||crisis.health};
+ if(acute)for(const opt of options)if(priority[opt.kind]){opt.score+=500;opt.survivalFloor=true;}
  // Source-attributed preferences remain modest; no fabricated memory can change physics.
  for(const opt of options){if(opt.memoryIds.length)opt.score+=Math.min(2,opt.memoryIds.length*.5);
   // Pre-registered folio interventions are from actually read records, not the unconsulted archive.
@@ -154,7 +191,7 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  case 'harvest_vegetables':if(garden.vegetables.stage!=='ripe')throw Error('Vegetables not ripe');state.carried={vegetables:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.vegetables={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Harvested homegrown vegetables',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'harvest_tea':if(garden.tea.stage!=='ripe')throw Error('Tea not ripe');state.carried={tea_leaves:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.tea={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Picked and dried homegrown tea leaves',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'put_away':if(!state.carried)throw Error('Nothing to put away');stockChange(state,state.carried);receipt(state,events,'put_away','Put a physical parcel or harvest into pantry storage',{goods:state.carried});state.carried=null;break;
- case 'order_groceries':case 'order_seeds':case 'order_science':case 'order_tea':case 'order_coal':case 'order_maintenance':{const type=kind.replace('order_','');const catalog=CATALOG[type];if(!catalog||state.wallet<Household.price(catalog.price,state.day,type))throw Error('Catalog order is not affordable');const paid=Household.price(catalog.price,state.day,type);state.wallet-=paid;const variance=type==='coal'?Household.transit(state.seed,state.nextOrder):null;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type,source:catalog.source,paid,goods:clone(catalog.goods),placedTick:state.tick,dueTick:state.tick+catalog.delay+(variance?.late||0),late:variance?.late||0,wet:variance?.wet||false,supplierId:catalog.supplierId||null,arrived:false,collected:false};state.orders.push(order);state.counters.orders++;receipt(state,events,'catalog_order',`Posted paid order to ${catalog.source}`,{orderId:order.id,price:paid,goods:order.goods,etaTick:order.dueTick,supplierId:order.supplierId});break}
+ case 'order_groceries':case 'order_seeds':case 'order_science':case 'order_tea':case 'order_coal':case 'order_maintenance':{const type=kind.replace('order_','');const catalog=CATALOG[type];if(!catalog||state.wallet<Household.price(catalog.price,state.day,type))throw Error('Catalog order is not affordable');const paid=Household.price(catalog.price,state.day,type);state.wallet-=paid;const variance=type==='coal'?(state.scenarioEncounters?.forcedLateWetCoal?{late:9,wet:true}:Household.transit(state.seed,state.nextOrder)):null;const order={id:`O-${String(state.nextOrder++).padStart(4,'0')}`,type,source:catalog.source,paid,goods:clone(catalog.goods),placedTick:state.tick,dueTick:state.tick+catalog.delay+(variance?.late||0),late:variance?.late||0,wet:variance?.wet||false,supplierId:catalog.supplierId||null,arrived:false,collected:false};state.orders.push(order);state.counters.orders++;receipt(state,events,'catalog_order',`Posted paid order to ${catalog.source}`,{orderId:order.id,price:paid,goods:order.goods,etaTick:order.dueTick,supplierId:order.supplierId});break}
  case 'collect':{const order=state.orders.find(o=>o.arrived&&!o.collected);if(!order||state.carried)throw Error('No collectable parcel or hands full');order.collected=true;state.counters.deliveries++;if(order.type==='research_payment'){state.wallet+=order.payment;receipt(state,events,'collect_payment','Collected a scientific society payment by post',{orderId:order.id,amount:order.payment,wallet:state.wallet});}
  else if(order.type==='coal'){const h=Household.migrate(state);if(order.wet)h.coal.wet+=order.goods.coal;else h.coal.dry+=order.goods.coal;h.observed.coal={day:state.day,count:h.coal.dry+h.coal.wet};receipt(state,events,'coal_collected','Moved Rosa Brandl firm coal from the porch cart into the visible coal pile',{orderId:order.id,supplierId:order.supplierId,quantity:order.goods.coal,wet:order.wet});}
  else {state.carried=clone(order.goods);receipt(state,events,'collect_parcel','Collected a physical parcel from the letter box',{orderId:order.id,goods:order.goods});}break}
@@ -199,7 +236,7 @@ function goalStillPossible(state,goal){
 }
 function step(state,evidence={}){
  if(!state.alive)return {state,events:[],decision:null};
- const s=clone(state),events=[];consult(s);
+ const s=clone(state),events=[];consult(s);Knowledge.inventory(s);
  s.tick++;s.minute+=10;if(s.minute>=1440){s.minute-=1440;s.day++}
  const hh=Household.migrate(s);Household.applyDay(s,(kind,description,details,perceived)=>receipt(s,events,kind,description,details,perceived));
  if(s.tick>hh.heat.fuelledUntil)hh.heat.warmth=0;else hh.heat.warmth=Household.comfort(s,'kitchen').warmth;
@@ -211,11 +248,33 @@ function step(state,evidence={}){
  if(s.goal&&crisis&&s.goal.kind!==crisis){if(!s.suspendedGoal){s.suspendedGoal=s.goal;receipt(s,events,'goal_suspended',`Suspended ${s.goal.kind} for an urgent bodily need`,{suspendedGoalId:s.goal.id})}s.goal=null}
  if(!s.goal&&s.suspendedGoal&&s.needs.thirst<60&&s.needs.hunger<74){s.goal=s.suspendedGoal;s.suspendedGoal=null;receipt(s,events,'goal_resumed',`Resumed unfinished intention ${s.goal.kind}`,{goalId:s.goal.id})}
  if(s.goal&&!goalStillPossible(s,s.goal)){receipt(s,events,'goal_obsolete',`The original opportunity for ${s.goal.kind} is no longer physically available`,{oldGoalId:s.goal.id});s.goal=null}
- let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds,consultation:c.kind==='read_journal'?c.detail:null,folioInfluence:evidence.__verifiedFolioRead?{postRead:evidence.__verifiedFolioRead.readTick<s.tick,sourceEventId:evidence.__verifiedFolioRead.sourceEventId,readingReceiptId:evidence.__verifiedFolioRead.readingReceiptId}:{postRead:false}});}
+ let candidates=null;if(!s.goal){candidates=choose(s,evidence);const c=candidates[0];s.goal={id:`G-${String(s.nextGoal++).padStart(5,'0')}`,kind:c.kind,target:c.target,detail:c.detail||{},selectedTick:s.tick,phase:'active',reason:c.reason,memoryIds:c.memoryIds,score:c.score};s.lastDecision={goalId:s.goal.id,kind:c.kind,score:c.score,reason:c.reason,memoryIds:c.memoryIds,usedFacts:c.usedFacts||[],survivalFloor:!!c.survivalFloor,options:candidates.slice(0,8).map(x=>({kind:x.kind,score:x.score,usedFacts:x.usedFacts||[],survivalFloor:!!x.survivalFloor}))};receipt(s,events,'goal_selected',`Intended to ${c.kind}: ${c.reason}`,{score:c.score,memoryIds:c.memoryIds,usedFacts:c.usedFacts||[],survivalFloor:!!c.survivalFloor,consultation:c.kind==='read_journal'?c.detail:null,folioInfluence:evidence.__verifiedFolioRead?{postRead:evidence.__verifiedFolioRead.readTick<s.tick,sourceEventId:evidence.__verifiedFolioRead.sourceEventId,readingReceiptId:evidence.__verifiedFolioRead.readingReceiptId}:{postRead:false}});}
  const target=BY_ID[s.goal.target];if(!target)throw Error(`Target missing ${s.goal.target}`);
- const route=pathBetween(s.position,target);if(route===null)throw Error(`Unreachable object ${target.id}`);
- if(route.length){const prior=clone(s.position);s.position=route[0];if(roomAt(prior.x,prior.y)==='hall')Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15){s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);} receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
+ const unsafeCarrying=!!s.carried&&!!Knowledge.held(s,'floor_east_rotten')&&hh.fabric.floor<30;
+ const route=pathBetween(s.position,target,unsafeCarrying?[{x:3,y:4}]:[]);if(route===null){
+  if(!unsafeCarrying)throw Error(`Unreachable object ${target.id}`);
+  receipt(s,events,'unsafe_route_refused','Refused to carry a heavy parcel over the known unsafe stair',{goal:s.goal.kind,factId:'floor_east_rotten',provenance:Knowledge.held(s,'floor_east_rotten')?.provenance});
+  s.goal=null;ingestConsultation(s,events,evidence);
+  return {state:s,events,decision:s.lastDecision,pastGoalId:past?.id||null};
+ }
+ if(route.length){const prior=clone(s.position);s.position=route[0];if(roomAt(prior.x,prior.y)==='hall'){
+  const oldFloor=hh.fabric.floor;
+  Household.traffic(s,(k,d,ex,seen)=>receipt(s,events,k,d,ex,seen));
+  if(s.scenarioEncounters?.floorStepOnce&&oldFloor>=12&&hh.fabric.floor<12){
+   s.scenarioEncounters.floorStepOnce=false;s.health=cap(s.health-3);
+   receipt(s,events,'floor_hazard','The worn hall board gave visibly underfoot',{floor:'hall',healthLost:3,scenarioAssumption:'floor_threshold_encounter'},true);
+  }
+ }
+ if(roomAt(s.position.x,s.position.y)==='garden'&&roomAt(prior.x,prior.y)!=='garden'&&hh.garden.nettles>=40){
+   receipt(s,events,'garden_path_seen','Saw the nettles gathering along the garden approach',{nettles:hh.garden.nettles,objectId:'garden_path'},true);
+ }if(roomAt(prior.x,prior.y)==='garden'&&hh.garden.nettles>15){s.needs.fatigue=cap(s.needs.fatigue+hh.garden.nettles*.003);} receipt(s,events,'walk',`Walked toward ${target.name}`,{from:prior,to:s.position,objectId:target.id,remainingRoute:route.length-1});s.goal.phase='travelling';}
  else {const completed=action(s,events,s.goal);if(completed){s.completed.push({id:s.goal.id,kind:s.goal.kind,completedTick:s.tick});s.recentKinds.push(s.goal.kind);s.recentKinds=s.recentKinds.slice(-8);s.goal=null}}
+ // Direct experience is an independently receipted, more costly learning route.
+ for(const ev of [...events]){
+  for(const fact of Knowledge.experiencedGrants(s,ev)){
+   receipt(s,events,'knowledge_grant','Learned a practical fact from direct experience',{factId:fact.id,grantTick:fact.grantTick,sourceKind:'experienced',sourceReceiptId:ev.id,sourceEventKind:ev.kind},true);
+  }
+ }
  ingestConsultation(s,events,evidence);
  if(s.needs.hunger>=100)s.health-=5;if(s.needs.thirst>=100)s.health-=13;if(s.health<=0){s.alive=false;s.health=0;s.deathCause=s.needs.thirst>=100?'dehydration':'starvation';receipt(s,events,'death',`Septimus died from ${s.deathCause}`,{irreversible:true});s.goal=null;}
 
