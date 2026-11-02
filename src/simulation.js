@@ -83,8 +83,9 @@ function choose(state,evidence={}){
  if(n.thirst>=38)add('drink',(n.thirst>=87?350:50)+n.thirst*1.5,`Thirst pressure ${n.thirst.toFixed(1)}`,'sink');
  if(n.hunger>=44&&p.meals>0)add('eat',(n.hunger>=91?345:46)+n.hunger*1.5,`Hunger ${n.hunger.toFixed(1)}; prepared food exists`,'table');
  if(n.hunger>=40&&p.meals<1&&(p.vegetables>0||p.milk>0&&p.grain>0))add('cook',(n.hunger>=91?340:47)+n.hunger*1.4,`No prepared meal; ingredients stored in pantry`,'stove');
- if(n.fatigue>=66)add('sleep',40+n.fatigue,`Physical fatigue ${n.fatigue.toFixed(1)}`,'bed');
- if(n.bladder>=66)add('toilet',46+n.bladder,`Water closet needed`,'toilet');
+ // Sustained work cannot outrank every rest opportunity until fatigue reaches 100.
+ if(n.fatigue>=66)add('sleep',40+n.fatigue+(n.fatigue>=85?230+4*(n.fatigue-85):n.fatigue>=75?90:0),`Physical fatigue ${n.fatigue.toFixed(1)}`,'bed');
+ if(n.bladder>=66)add('toilet',46+n.bladder+(n.bladder>=85?225+4*(n.bladder-85):n.bladder>=75?85:0),'Water closet needed','toilet');
  if(state.carried)add('put_away',230,'A package or harvest must be placed in the appropriate store','pantry');
  if(!state.carried&&state.orders.some(o=>o.arrived&&!o.collected))add('collect',195,'A real delivery is at the letter box','mailbox');
  if(g.vegetables.stage==='ripe')add('harvest_vegetables',130+n.hunger*.25,'Ripe vegetables in the garden','vegetable_plot');
@@ -132,12 +133,15 @@ function choose(state,evidence={}){
  if(state.researchReports>0)add('post_report',state.wallet<90?242:110,'Post a completed report so earned payment can reach the household','mailbox');
  if(p.tea_cups>0&&n.thirst>=16)add('sip_tea',75+n.thirst*.8,'Freshly brewed tea','table');
  if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48)add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
- if(state.booksRead.length<BOOKS.length&&n.boredom>=34)add('read',36+n.boredom*.9,'Curiosity and an unread book on the shelf','bookshelf');
+ if(state.booksRead.length<BOOKS.length&&n.boredom>=34)
+  add('read',36+n.boredom*.9+(n.boredom>=85?190+3*(n.boredom-85):0),'Curiosity and an unread book on the shelf','bookshelf');
  if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
- const notebook=notebookChoice(state,evidence);if(notebook)add('read_journal',notebook.score,notebook.reason,'journal',notebook.detail);
+ const notebook=notebookChoice(state,evidence);
+ if(notebook)add('read_journal',notebook.score+(n.boredom>=85?145+3*(n.boredom-85):0),notebook.reason,'journal',notebook.detail);
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))
   add('work',((state.wallet<55||(state.wallet<90&&n.boredom<65))&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
- if(n.boredom>50&&state.booksRead.length===BOOKS.length)add('reflect',20+n.boredom*.2,'Unhurried thought about verified experiences','table');
+ if(n.boredom>50&&state.booksRead.length===BOOKS.length)
+  add('reflect',20+n.boredom*.2+(n.boredom>=85?210+3*(n.boredom-85):0),'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
  // The explicit knowledge inventory changes priority only after an actual grant receipt.
  // No unread text and no pre-folio cues may stand in for held knowledge.
