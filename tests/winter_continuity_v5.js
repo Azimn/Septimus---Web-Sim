@@ -46,6 +46,11 @@ function run(seed,scenario){
   walkedTicks,walkShare:+(walkedTicks/Math.max(1,observed)).toFixed(4),walkTargets,coalEmptyTicks,localColdTicks,heatActions,
   counters:counts,spending,income,fullLifeWinter:FULL.every(x=>eventsWinter.has(x)),fullLifeEver:FULL.every(x=>eventsEver.has(x)),lastDays:daily.slice(-5)};
 }
-const variants=scenarios.map(s=>({id:s.id,runs:Array.from({length:10},(_,i)=>run(i+1,s))}));
-for(const v of variants){v.survivors=v.runs.filter(x=>x.survived).length;v.novemberReached=v.runs.filter(x=>x.novemberReached).length;v.fullLifeWinter=v.runs.filter(x=>x.fullLifeWinter).length;v.walkShareAvg=+(v.runs.reduce((t,r)=>t+r.walkShare,0)/10).toFixed(4);v.coalEmptyTicks=v.runs.reduce((t,r)=>t+r.coalEmptyTicks,0);}
-console.log('V5WINTER_JSON '+JSON.stringify({name:'independent_one_house_v5',version:1,scenarios:variants,modelCalls:0,noAddedResources:true,priorGenerationsUntouched:true}));
+// Default runs all ten declared seeds. CI shards the same fixed seed set to
+// keep continuous multi-month tests within predictable per-job time bounds.
+const range=process.argv[2]||'1-10',match=/^([1-9]|10)-([1-9]|10)$/.exec(range);
+if(!match||Number(match[1])>Number(match[2]))throw Error('Seed range must be 1-10 or a contiguous inclusive subset, e.g. 3-4');
+const seeds=Array.from({length:Number(match[2])-Number(match[1])+1},(_,i)=>Number(match[1])+i);
+const variants=scenarios.map(s=>({id:s.id,runs:seeds.map(seed=>run(seed,s))}));
+for(const v of variants){v.survivors=v.runs.filter(x=>x.survived).length;v.novemberReached=v.runs.filter(x=>x.novemberReached).length;v.fullLifeWinter=v.runs.filter(x=>x.fullLifeWinter).length;v.walkShareAvg=+(v.runs.reduce((t,r)=>t+r.walkShare,0)/v.runs.length).toFixed(4);v.coalEmptyTicks=v.runs.reduce((t,r)=>t+r.coalEmptyTicks,0);}
+console.log('V5WINTER_JSON '+JSON.stringify({name:'independent_one_house_v5',version:1,seedRange:range,seeds,scenarios:variants,modelCalls:0,noAddedResources:true,priorGenerationsUntouched:true}));
