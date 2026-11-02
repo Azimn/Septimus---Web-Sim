@@ -4,7 +4,7 @@ on:
     branches: [main]
   pull_request:
 permissions:
-  contents: write
+  contents: read
 jobs:
   simulation:
     runs-on: ubuntu-latest
@@ -14,31 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test simulation, provenance inventory and frozen research generations
+      - name: Simulation, equilibrium and frozen-source regressions
         run: npm test
-      - name: Bounded ordinary-life smoke benchmark
+      - name: Bounded smoke benchmark
         run: npm run experiment
-      # V1, V2, v3, winter and original diagnostic artifacts are immutable.
-      # Re-running a research script requires a separately named future generation.
-      # No CI job automatically modifies or re-commits frozen results.
-
-      - name: Run unchanged-policy need oracles and dying-week allocation
-        run: node tests/needs_audit_oracles.js
-      - name: Save baseline needs audit raw figures
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: septimus-needs-baseline
-          path: |
-            results/needs_arithmetic_isolated.json
-            results/needs_arithmetic_isolated.md
-      - name: Commit corrected pre-correction isolation measurement without altering prior generations
-        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: |
-          git config user.name "Septimus Research CI"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add results/needs_arithmetic_isolated.json results/needs_arithmetic_isolated.md
-          if ! git diff --cached --quiet; then
-            git commit -m "results(septimus): commit pre-correction needs arithmetic evidence [skip ci]"
-            git push origin HEAD:main
-          fi
+      # All existing research data are frozen; do not regenerate archived experiments.
