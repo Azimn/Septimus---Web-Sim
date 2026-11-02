@@ -19,7 +19,7 @@ function surfaceTags(e){
  if(e.kind==='coal_collected'&&d.wet||e.kind==='burn_coal'&&d.wet||e.kind==='inspect_coal'&&d.wet>0)add('object','wet coal');
  if(e.kind==='catalog_order'&&d.supplierId==='rosa_brandl'&&d.price>9)add('anomaly','coal price');
  if(e.kind==='garden_tended'||e.kind==='walk'&&d.objectId==='garden_path')add('place','garden path');
- if(e.kind==='garden_tended')add('object','nettles');
+ if(e.kind==='garden_tended'||e.kind==='garden_path_seen'){add('object','nettles');add('place','garden path');}
  if(e.kind==='floor_hazard')add('anomaly','floorboards');
  if(e.kind==='inspect_fabric'&&d.subject==='floor')add('object','stair boards');
  if(e.kind==='inspect_fabric'&&d.subject==='roof')add('object','roof');
@@ -44,7 +44,7 @@ function ingestConsultation(s,events,evidence){
     any=true;
     if(!c.windows.some(x=>x.index===f.index&&x.type===t.type&&x.value===t.value))c.windows.push({index:f.index,id:f.id,type:t.type,value:t.value,raisedTick:s.tick});
    }
-   if(any&&['inspect_fabric','coal_collected','floor_hazard','garden_tended','catalog_order'].includes(e.kind)){
+   if(any&&['inspect_fabric','coal_collected','floor_hazard','garden_tended','garden_path_seen','catalog_order'].includes(e.kind)){
     const key=e.kind+':'+t.type+':'+t.value;
     if(!c.seenKinds.includes(key)){
      c.seenKinds.push(key);
