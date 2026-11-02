@@ -18,5 +18,5 @@ jobs:
         run: npm test
       - name: Bounded ordinary-life smoke benchmark
         run: npm run experiment
-      # Original v1, v2, v3, needs audit, corrected equilibrium and winter v4
+      - name: Independent household trace (new v5, read-only)\n        run: node tests/diagnose_household_v5.js\n      # Original v1, v2, v3, needs audit, corrected equilibrium and winter v4
       # outputs are frozen and never automatically regenerated or rewritten.
