@@ -20,5 +20,7 @@ jobs:
         run: npm run experiment
       - name: Independent household trace (new v5, read-only)
         run: node tests/diagnose_household_v5.js
+      - name: Independent continuous 60-day winter v5 comparison (10 seeds each)
+        run: node tests/winter_continuity_v5.js
       # Original v1, v2, v3, needs audit, corrected equilibrium and winter v4
       # outputs are frozen and never automatically regenerated or rewritten.
