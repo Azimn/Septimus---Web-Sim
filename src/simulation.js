@@ -169,7 +169,11 @@ function choose(state,evidence={}){
  }
  // Critical bodily safety beats science, notebook work, leisure and comfort.
  const localWarmth=Household.comfort(state,roomAt(state.position.x,state.position.y)).warmth;
- const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,cold:Household.winter(state.day)&&localWarmth<34};
+ // A cold *location* is not the same as a bodily emergency. In particular,
+// standing at the outdoor mailbox must not force a needless return to the
+// hearth, interrupting the paid parcels or outgoing research correspondence.
+ const crisis={hunger:n.hunger>=80,thirst:n.thirst>=78,health:state.health<=35,
+  cold:Household.winter(state.day)&&localWarmth<34&&(state.health<=40||n.fatigue>=85)};
  const acute=state.policyOptions?.survivalFloor!==false&&Object.values(crisis).some(Boolean);
  const priority={drink:crisis.thirst||crisis.health,eat:crisis.hunger||crisis.health,cook:crisis.hunger||crisis.health,
   order_groceries:crisis.hunger||crisis.health,order_staples:crisis.hunger||crisis.health,collect:crisis.hunger||crisis.health,put_away:crisis.hunger||crisis.health,
