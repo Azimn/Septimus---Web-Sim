@@ -214,9 +214,9 @@ function forcedFork(){
  // Both histories are identical through day 52; only plot availability changes.
  for(let day=1;day<=90;day++){
   if(day===53){
-   fork.worldLosses.plot=57*DAY;
+   fork.worldLosses.plot=59*DAY;
    log(fork,'operator_fork_intervention','The garden plot was made inaccessible through month-two provisions deadline.',{
-    target:'plot',until:57*DAY,experimentOnly:true});
+    target:'plot',until:59*DAY,experimentOnly:true});
   }
   oneDay(base);oneDay(fork);
  }
@@ -228,7 +228,7 @@ function forcedFork(){
   afterFailureRuminations:relevant(s).filter(e=>e.seriesId==='MONTH-PROVISIONS').length,
   totalRuminations:relevant(s).length});
  const a=report(base),b=report(fork);
- return {seed:11,intervention:{target:'plot',startDay:53,endDay:57},
+ return {seed:11,intervention:{target:'plot',startDay:53,endDay:59},
   baseline:a,forced:b,deltaFailedRumination:b.afterFailureRuminations-a.afterFailureRuminations};
 }
 function emit(prefix,value){

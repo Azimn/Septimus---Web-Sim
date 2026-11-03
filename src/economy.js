@@ -19,6 +19,25 @@ const SURPLUS=Object.freeze({
  prioritizeFuelBelow:10,prioritizeTeaBelow:14
 });
 const {DAY}=require('./world');
+// Oldest-preserved may be eaten before spoilage, with fresh-food expiry priority.
+const ROTATION=Object.freeze({freshLow:6,preservedAgeDays:45,freshUrgentDays:2,decisionBonus:22});
+function rotationPolicy(s){
+ const preserved=(s.preservedBatches||[]).filter(b=>b.quantity>0)
+  .reduce((m,b)=>Math.min(m,b.createdAt),Infinity);
+ const fresh=(s.freshBatches||[]).filter(b=>b.quantity>0)
+  .reduce((m,b)=>Math.min(m,b.createdAt),Infinity);
+ const age=Number.isFinite(preserved)?(s.clock.centibeats-preserved)/DAY:null;
+ const freshAge=Number.isFinite(fresh)?(s.clock.centibeats-fresh)/DAY:null;
+ const urgentFresh=freshAge!==null&&freshAge>=SURPLUS.freshShelfLifeDays-ROTATION.freshUrgentDays;
+ const rotate=(s.stores.preserved||0)>0&&(s.stores.food<=ROTATION.freshLow||
+  age!==null&&age>=ROTATION.preservedAgeDays)&&!(urgentFresh&&s.stores.food>0);
+ return {source:rotate?'preserved':s.stores.food>0?'food':'preserved',
+  factor:rotate?ROTATION.decisionBonus:0,rotationDue:rotate,
+  preservedAgeDays:age===null?null:Math.round(age*100)/100,
+  oldestPreservedTick:Number.isFinite(preserved)?preserved:null,
+  reason:rotate?(s.stores.food<=ROTATION.freshLow?'fresh_low':'preserved_aging'):
+   urgentFresh?'fresh_near_expiry':'fresh_first'};
+}
 function batches(s){
  s.stores.preserved??=0;
  s.freshBatches??=[{quantity:s.stores.food,createdAt:s.clock.centibeats}].filter(x=>x.quantity>0);
@@ -65,6 +84,7 @@ function preserve(s,log){
   inputs:{food:SURPLUS.preserveInput,fuel:SURPLUS.preserveFuel},
   output:{preserved:SURPLUS.preserveOutput},controller:s.activity?.controller,
   economyContract:'v1.5-surplus-v1'});
+ s.preservedBatches.at(-1).sourceEventId=receipt.id;
  return receipt;
 }
 function tradeOffer(s){
@@ -95,12 +115,16 @@ function trade(s,log){
 }
 function consumeMeal(s,log,kind='eat'){
  batches(s);
- const source=s.stores.food>0?'food':'preserved';
+ const policy=rotationPolicy(s),source=policy.source;
  if(s.stores[source]<1)throw Error('All edible stores exhausted');
+ const batch=(source==='preserved'?s.preservedBatches:s.freshBatches)[0];
+ const sourceBatchTick=batch?.createdAt??null,sourceEventId=batch?.sourceEventId??null;
  const before=s.stores[source];drawStock(s,source,1);
- log(s,'meal_stock','I drew one actual portion from household stores.',{
+ log(s,'meal_stock','I drew one physical portion from the household stores.',{
   sourceStock:source,amount:1,before,after:s.stores[source],kind,
-  rule:'fresh_first_preserved_when_fresh_empty'});
+  rule:'v1.9_oldest_first_rotation',rotationFactor:policy.factor,
+  rotationReason:policy.reason,rotationDue:policy.rotationDue,
+  oldestPreservedAgeDays:policy.preservedAgeDays,sourceBatchTick,sourceEventId});
  return source;
 }
 function spoil(s,log){
@@ -186,4 +210,4 @@ function metabolicTick(s,log,clip){
  }else if(n.hunger<70&&n.energy>35&&s.health<100)s.health=clip(s.health+ECONOMY.healthRecoveryPerRest);
  return true;
 }
-module.exports={ECONOMY,SURPLUS,BODY_LIMITS,batches,drawStock,putFresh,preserve,tradeOffer,trade,consumeMeal,spoil,ensureGarden,availableGarden,supplyScore,harvestOrPlant,collect,metabolicTick};
+module.exports={ECONOMY,SURPLUS,ROTATION,rotationPolicy,BODY_LIMITS,batches,drawStock,putFresh,preserve,tradeOffer,trade,consumeMeal,spoil,ensureGarden,availableGarden,supplyScore,harvestOrPlant,collect,metabolicTick};

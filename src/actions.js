@@ -3,6 +3,8 @@ const {OBJECTS,TRIGGERS,distance}=require('./world');
 const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
 const {POST}=require('./post_contract');
 const Commitments=require('./commitments');
+const Skill=require('./skill_growth');
+const {rotationPolicy}=require('./economy');
 const post=()=>require('./post');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
@@ -108,6 +110,9 @@ function scores(state){const enabled=state.debugSwitches||{};
   }
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;
+  const rotationFactor=key==='eat'?rotationPolicy(state):null;
+  if(rotationFactor?.factor)score+=rotationFactor.factor;
+  const skillFactor=Skill.choiceFactor(state,key);score+=skillFactor.bonus;
   const supplyFactor=supplyScore(state,key);score+=supplyFactor;
   if(key==='check_mail')score+=70+(state.mail?.box?.length||0)*6;
   if(key==='read_letter')score+=85;
@@ -164,7 +169,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
   const targetRoom=a.target in (state.people||{})?(state.people[a.target].room||'garden'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
-    failures:contextualFailures,contextKey,quirkFactors,supplyFactor,distance:distance(state.location,targetRoom)};
+    failures:contextualFailures,contextKey,quirkFactors,supplyFactor,rotationFactor,skillFactor,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
 function perceiveTopic(state,text,source='visitor'){

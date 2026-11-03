@@ -9,7 +9,8 @@ const SERIES_TEMPLATES=Object.freeze([
   duePhase:65000,title:'Consult folios in two sessions before the tenth day closes',action:'read',requiredProgress:2},
  {id:'MONTH-INSTRUMENT',kind:'monthly',intervalDays:PERIOD_DAYS,openOffset:16,dueOffset:18,
   duePhase:65000,title:'Inspect the instrument in two sessions before the eighteenth day closes',action:'inspect',requiredProgress:2},
- {id:'MONTH-PROVISIONS',kind:'monthly',intervalDays:PERIOD_DAYS,openOffset:23,dueOffset:25,
+ // Six-day window spans the physical 140000-centibeat growth cycle.
+ {id:'MONTH-PROVISIONS',kind:'monthly',intervalDays:PERIOD_DAYS,openOffset:21,dueOffset:27,
   duePhase:65000,title:'Tend twice and hold twelve edible portions before the twenty-fifth day closes',
   action:'tend',requiredProgress:2,stockTarget:{item:'food',minimum:12,includePreserved:true}}
 ]);
