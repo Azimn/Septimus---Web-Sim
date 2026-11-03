@@ -4,6 +4,15 @@
 const {fresh,archive}=require('./v12_probe');
 const {advance,log}=require('../src/engine');
 const C=require('../src/commitments');
+const crypto=require('node:crypto');
+// Exact byte count for the src/store.js save() payload. Timestamp is fixed
+// for repeatable evidence but has the same ISO length as a real save.
+function saveBytes(s){
+ const raw=JSON.stringify(s),hash=crypto.createHash('sha256').update(raw).digest('hex');
+ return Buffer.byteLength(JSON.stringify({
+  format:'simple-tower-save-v1',hash,savedAt:'1899-07-01T00:00:00.000Z',state:s
+ },null,2),'utf8');
+}
 const Social=require('../src/social');
 const DAY=100000,STEPPER=1000,MONTH=30;
 const round=n=>Math.round(n*100)/100;
@@ -51,7 +60,7 @@ function snapshot(s,elapsed){
   folioReadEntries:s.folioReads.length,
   series:summarySeries(s).map(r=>({id:r.id,opened:r.opened,kept:r.kept,broken:r.broken,
    keptStreak:r.keptStreak,brokenStreak:r.brokenStreak,avgCompletionTicks:r.avgCompletionTicks})),
-  serializedSaveBytes:Buffer.byteLength(JSON.stringify(s),'utf8')};
+  serializedSaveBytes:saveBytes(s)};
 }
 function periodResult(i,days){
  const full=days.filter(x=>x.elapsedDay>i*MONTH&&x.elapsedDay<=Math.min(days.at(-1).elapsedDay,(i+1)*MONTH));
@@ -123,7 +132,7 @@ function life(seed,horizon){
    flags.trustOutside={day:elapsed,traits};
   if(!flags.skillInflation&&elapsed>=120&&s.skills.science>600)
    flags.skillInflation={day:elapsed,value:s.skills.science,rule:'science greater than 600 after 120 days'};
-  if(elapsed%MONTH===0||elapsed===horizon)snapshots.push(snapshot(s,elapsed));
+  if(elapsed===1||elapsed%MONTH===0||elapsed===horizon)snapshots.push(snapshot(s,elapsed));
  }
  const monthly=Array.from({length:intervals},(_,i)=>periodResult(i,days));
  const series=summarySeries(s),accountLedger=account(s);
@@ -154,7 +163,10 @@ function life(seed,horizon){
  };
  // The skill threshold is an explicitly monitored scientific concern, not an
  // intervention. We preserve unmodified run evidence if it fails.
- const milestones={start:snapshots[0],end:snapshots.at(-1),
+ const milestones={initialState:snapshots[0],
+  day1:snapshots.find(x=>x.elapsedDay===1)||snapshots[0],
+  dayEnd:snapshots.at(-1),start:snapshots.find(x=>x.elapsedDay===1)||snapshots[0],
+  end:snapshots.at(-1),
   quarterPredictions:Array.from({length:Math.ceil(horizon/90)},(_,q)=>{
    const from=q*90+1,to=Math.min(horizon,(q+1)*90),slice=monthly.flatMap(x=>x.failedSeriesRuminations);
    const ev=days.filter(x=>x.elapsedDay>=from&&x.elapsedDay<=to).flatMap(x=>x.events).filter(x=>x.type==='prediction');

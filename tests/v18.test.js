@@ -121,3 +121,14 @@ test('v1.8 A3: inability to settle produces sourced friction and explicit credit
  assert.ok(friction.delta<0&&friction.sourceEventId===settled.id);
  assert.ok(s.events.some(e=>e.type==='merchant_credit_carried'&&e.unpaid===settled.closingBalance));
 });
+
+test('v1.8 horizon: day-one development and exact save-envelope bytes are measured',()=>{
+ const {life}=require('../scripts/v18_probe');
+ const r=life(11,2);
+ assert.equal(r.development.day1.elapsedDay,1);
+ assert.equal(r.development.end.elapsedDay,2);
+ assert.ok(r.snapshots.some(x=>x.elapsedDay===0));
+ assert.ok(r.development.day1.serializedSaveBytes>1000);
+ assert.ok(r.development.end.serializedSaveBytes>r.development.day1.serializedSaveBytes);
+ assert.equal(r.invariants.stateGrowthReported,true);
+});
