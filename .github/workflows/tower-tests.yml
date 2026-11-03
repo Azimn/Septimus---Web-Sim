@@ -26,6 +26,8 @@ jobs:
         run: node scripts/v14_probe.js
       - name: Run v1.4 eight Article discriminators and preserve negative findings
         run: node scripts/v14_discriminations.js
+      - name: V1.5 fixed-economy 5 by 30 days and 90-day slow failure audit
+        run: node scripts/v15_probe.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
