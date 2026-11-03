@@ -178,7 +178,16 @@ function life(seed,horizon){
     accuracy:ev.length?round(ev.filter(e=>e.hit).length/ev.length):null};
   })};
  const recentDecisions=s.decisions.slice(-25).map(x=>({tick:x.t,chosen:x.chosen,margin:x.margin,
-  quirkFactors:x.candidates?.[0]?.quirkFactors?.length||0}));
+  quirkFactors:x.candidates?.[0]?.quirkFactors?.length||0,
+  skillFactor:x.candidates?.[0]?.skillFactor||null}));
+ const skillDecisions=s.events.filter(e=>e.type==='decision'&&
+  (e.candidates||[]).some(c=>(c.skillFactor?.bonus||0)>0));
+ const skillChoiceInfluence={decisionsWithPositiveSkillFactor:skillDecisions.length,
+  chosenWithPositiveSkillFactor:skillDecisions.filter(e=>
+   (e.candidates||[]).some(c=>c.kind===e.chosen&&(c.skillFactor?.bonus||0)>0)).length,
+  recentChoices:skillDecisions.slice(-12).map(e=>({id:e.id,t:e.t,chosen:e.chosen,
+   factors:e.candidates.filter(c=>c.skillFactor?.bonus>0).map(c=>({
+    kind:c.kind,score:c.score,skill:c.skillFactor}))}))};
  const trustComposition=Object.fromEntries(['visitor_01','mcfeely'].map(id=>{
   const actor=s.people[id]||{trust:0,events:[]},kinds={};
   for(const event of actor.events||[]){
@@ -203,7 +212,7 @@ function life(seed,horizon){
    ...collapse.map(day=>({type:'two_action_collapse',day})),
    ...Object.entries(flags).filter(([k,v])=>v&&k!=='skillInflation').map(([k,v])=>({type:k,...v}))
   ].sort((a,b)=>a.day-b.day)[0]||null),
-  trustComposition,
+  trustComposition,skillChoiceInfluence,
   monthly:monthly.map(({failedSeriesRuminations,...r})=>({...r,
    failedSeriesRuminationCount:failedSeriesRuminations.length,
    failedSeriesRuminationSources:failedSeriesRuminations.slice(0,10)})),
