@@ -35,7 +35,7 @@ function nextDay(s,log){
  if(s.commitments.some(c=>c.id===id))return;
  const c={id,title:'Secure the hearth before dusk',deadline:s.clock.day*100000+65000,action:'prepare',status:'open',done:false};
  s.commitments.push(c);
- log(s,'commitment_opened','I undertook another day's hearth preparation.',{commitmentId:id,deadline:c.deadline});
+ log(s,'commitment_opened','I undertook the next hearth preparation.',{commitmentId:id,deadline:c.deadline});
 }
 function add(s,{id,title,deadline,action},log){
  if(!id||!title||!Number.isSafeInteger(deadline)||!action||s.commitments.some(c=>c.id===id))throw Error('Invalid or repeated commitment');
