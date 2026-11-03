@@ -34,19 +34,35 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  if(actualRoom!==a.room&&s.habitProfiles[a.kind]?.formed)return fail(s,a,'habit_cue_missing');
  if(actualRoom!==a.room)return fail(s,a,'stale_object_location');
  if((s.worldLosses[a.target]||0)>s.clock.centibeats||(s.worldLosses['room:'+a.room]||0)>s.clock.centibeats)return fail(s,a,'durable_impairment');
- if(['eat','cook'].includes(a.kind)&&st.food<1)return fail(s,a,'food_exhausted');
+ if(['eat','cook'].includes(a.kind)&&st.food<1&&(st.preserved||0)<1)return fail(s,a,'food_exhausted');
+ if(a.kind==='trade'&&!Economy.tradeOffer(s))return fail(s,a,'trade_offer_unavailable');
+ if(a.kind==='preserve'&&!available(s,'preserve'))return fail(s,a,'preservation_materials_unavailable');
  if(a.kind==='work'&&n.hunger>=Economy.ECONOMY.workFailureHunger&&n.energy<Economy.ECONOMY.workFailureEnergy)
   return fail(s,a,'deprivation_reduced_work_success');
- if(a.kind==='converse'&&!s.people.visitor_01.present)return fail(s,a,'visitor_departed');
+ if(['converse','trade'].includes(a.kind)&&!s.people.visitor_01.present)return fail(s,a,'visitor_departed');
  if(['cook','tea'].includes(a.kind)&&(st.water<1||st.fuel<1))return fail(s,a,'supplies_exhausted');
  if(a.kind==='tea'&&st.tea<1)return fail(s,a,'tea_exhausted');
  const habit=s.habitProfiles[a.kind];if(habit?.formed&&habit.cue===a.target+'@'+a.room&&s.objectPositions[a.target]&&s.objectPositions[a.target]!==a.room)return fail(s,a,'habit_cue_missing');
  switch(a.kind){
  case 'sleep':n.energy=clip(n.energy+18);n.comfort=clip(n.comfort+6);description='I slept, though the tower did not sleep with me.';break;
  case 'rest':n.energy=clip(n.energy+8);description='I sat awhile to recover my strength.';break;
- case 'eat':st.food--;n.hunger=clip(n.hunger-40);description='I ate from the finite provisions.';break;
- case 'cook':st.food--;st.water--;st.fuel--;n.hunger=clip(n.hunger-32);description='I cooked a modest meal from the stores.';break;
+ case 'eat':{const source=Economy.consumeMeal(s,log,'eat');n.hunger=clip(n.hunger-40);description='I ate from the '+(source==='food'?'fresh':'preserved')+' provisions.';break;}
+ case 'cook':{Economy.consumeMeal(s,log,'cook');st.water--;st.fuel--;n.hunger=clip(n.hunger-32);description='I cooked a modest meal from finite stores.';break;}
  case 'tea':st.water--;st.fuel--;st.tea--;n.comfort=clip(n.comfort+13);description='I brewed tea at the kettle.';break;
+ case 'preserve':{
+  const e=Economy.preserve(s,log);s.skills.household++;
+  n.energy=clip(n.energy-4);description='I sealed a batch of provisions for later use.';
+  s.lastSurplusReceiptId=e.id;break;
+ }
+ case 'trade':{
+  const receipt=Economy.trade(s,log);
+  const shared=Social.shared(s,log,'trade');
+  n.company=clip(n.company+7);description='I traded provisions with the caller on terms I chose.';
+  s.lastSurplusReceiptId=receipt.id;
+  log(s,'trade_link','The economic exchange and social consequence concern the same visitor.',
+   {tradeEventId:receipt.id,socialEventId:shared.id,personId:'visitor_01'});
+  break;
+ }
  case 'prepare':n.comfort=clip(n.comfort+8);description='I secured the hearth against the approaching dusk.';break;
  case 'work':s.skills.science++;n.energy=clip(n.energy-9);n.stimulation=clip(n.stimulation+18);description='I worked at my bench and learned something of the apparatus.';break;
  case 'inspect':n.stimulation=clip(n.stimulation+8);description='I inspected the instrument before making any claims.';break;
@@ -85,6 +101,7 @@ function tick(s,archive){ensureHooks(s);if(s.dead)return s;const n=s.needs,a=s.a
  n.hunger=clip(n.hunger+.06);n.stimulation=clip(n.stimulation-.027);n.comfort=clip(n.comfort-.013);
  if(a?.kind==='sleep'&&a.status==='active')n.energy=clip(n.energy+.18);else n.energy=clip(n.energy-.038);
  if(!Economy.metabolicTick(s,log,clip))return s;
+ Economy.spoil(s,log);
  s.mood=s.mood.filter(x=>x.until>s.clock.centibeats);
  for(const [id,until] of Object.entries(s.worldLosses||{}))if(until<=s.clock.centibeats){delete s.worldLosses[id];log(s,'world_restored','I found an earlier obstruction had cleared.',{target:id});}
  Social.scheduled(s,log);

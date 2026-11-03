@@ -1,6 +1,6 @@
 'use strict';
 const {OBJECTS,TRIGGERS,distance}=require('./world');
-const {ECONOMY,availableGarden,supplyScore}=require('./economy');
+const {ECONOMY,SURPLUS,availableGarden,supplyScore,tradeOffer}=require('./economy');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
  rest:{target:'bed',duration:3000,base:6,trait:'gentle'},
@@ -17,7 +17,9 @@ const DEFINITIONS={
  tend:{target:'plot',duration:3200,base:7,trait:'industrious'},
  gather_fuel:{target:'path',duration:1800,base:4,trait:'industrious'},
  draw_water:{target:'path',duration:1600,base:5,trait:'industrious'},
- converse:{target:'visitor_01',duration:900,base:9,trait:'sociable'}
+ converse:{target:'visitor_01',duration:900,base:9,trait:'sociable'},
+ preserve:{target:'stove',duration:SURPLUS.preserveDuration,base:8,trait:'industrious'},
+ trade:{target:'visitor_01',duration:SURPLUS.tradeDuration,base:8,trait:'sociable'}
 };
 const clip=n=>Math.max(0,Math.min(100,Math.round(n*100)/100));
 const ACTION_WEIGHTS=Object.freeze(Object.fromEntries(Object.keys(DEFINITIONS).map(k=>[k,1])));
@@ -38,9 +40,13 @@ function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OB
  if(state.dead)return false;
  if(state.productionDisabled&&['tend','gather_fuel','draw_water'].includes(kind))return false;
  if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
+ if(kind==='trade')return !!tradeOffer(state);
  if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
  if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
- if(['eat','cook'].includes(kind)&&state.stores.food<1)return false;
+ if(['eat','cook'].includes(kind)&&state.stores.food<1&&(state.stores.preserved||0)<1)return false;
+ if(kind==='preserve'&&(state.stores.food<SURPLUS.preserveInput||
+  state.stores.fuel<SURPLUS.preserveFuel||
+  (state.stores.preserved||0)+SURPLUS.preserveOutput>SURPLUS.maxPreserved))return false;
  if(['tea','cook'].includes(kind)&&(state.stores.water<1||state.stores.fuel<1))return false;
  if(kind==='tea'&&state.stores.tea<1)return false;
  if(kind==='prepare'&&!state.commitments.some(c=>!c.done&&(c.status===undefined||c.status==='open')&&(c.action===undefined||c.action==='prepare')))return false;
@@ -80,6 +86,7 @@ function scores(state){const enabled=state.debugSwitches||{};
      score+=bonus;commitmentFactors.push({id:c.id,deadline:c.deadline,bonus});}
   }
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
+  if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;
   score+=supplyScore(state,key);
   if(key==='converse'){
     const trust=state.people.visitor_01.trust||0;
@@ -121,7 +128,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   score-=Math.min(20,contextualFailures*5);
   const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
-  const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):OBJECTS[a.target].room;
+  const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):(state.beliefs?.[a.target]?.room||OBJECTS[a.target].room);
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
     failures:contextualFailures,contextKey,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}

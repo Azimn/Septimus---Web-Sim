@@ -67,7 +67,6 @@ function preserve(s,log){
  return receipt;
 }
 function tradeOffer(s){
- batches(s);
  const p=s.people?.visitor_01;
  if(!p?.present||p.manuallyIntroduced)return null;
  const payment=s.stores.preserved>=SURPLUS.tradeInputPreserved?'preserved':

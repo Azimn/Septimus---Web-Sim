@@ -39,7 +39,7 @@ function scheduled(s,log){
 function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false}={}){
  const p=person(s,id);if(!p.present||p.room!==s.location)throw Error('Shared social event requires physical co-presence');
  const prior=p.events.map(x=>x.kind);
- const delta=kind==='gift'?(prior.includes('insult')?5:20):kind==='insult'?(prior.includes('gift')?-35:-15):kind==='greeting'?2:kind==='conversation'?3:0;
+ const delta=kind==='gift'?(prior.includes('insult')?5:20):kind==='insult'?(prior.includes('gift')?-35:-15):kind==='greeting'?2:kind==='conversation'?3:kind==='trade'?(prior.includes('insult')?1:4):0;
  p.trust+=delta;p.affinity+=kind==='gift'?7:kind==='insult'?-5:0;p.grievance+=kind==='insult'?1:0;
  const witnesses=privateToVisitor?[id,'pretorius']:[id,'pretorius','player'];
  const e=log(s,'social',`I recorded a shared ${kind} with ${id}.`,{kind,personId:id,delta,trust:p.trust,witnesses,privateToVisitor});
