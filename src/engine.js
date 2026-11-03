@@ -121,7 +121,17 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  Cognition.matureQuirk(s,completion,a.kind,log);
  s.activity=null;Voice.flush(s,log);
 }
-function tick(s,archive){ensureHooks(s);if(s.dead)return s;const n=s.needs,a=s.activity,now=s.clock.centibeats;
+function tick(s,archive){ensureHooks(s);
+ // The world calendar can advance while the inhabitant is dead; no agency returns.
+ // Missed duties remain real even without a living actor to discharge them.
+ if(s.dead){
+  s.clock.centibeats+=STEP;s.clock.day=Math.floor(s.clock.centibeats/DAY);
+  if(s.clock.day>s.completedDays){s.completedDays=s.clock.day;
+   Commitments.nextDay(s,log);}
+  Commitments.scheduleMonth(s,log);Commitments.deadlines(s,log);
+  return s;
+ }
+ const n=s.needs,a=s.activity,now=s.clock.centibeats;
  s.clock.centibeats+=STEP;s.clock.day=Math.floor(s.clock.centibeats/DAY);
  n.hunger=clip(n.hunger+.06);n.stimulation=clip(n.stimulation-.027);n.comfort=clip(n.comfort-.013);
  if(a?.kind==='sleep'&&a.status==='active')n.energy=clip(n.energy+.18);else n.energy=clip(n.energy-.038);

@@ -34,8 +34,13 @@ function observe(s,log){
 function selfSheet(s){
  const low=v=>v<30?'urgent':v<60?'noticeable':'settled';
  const high=v=>v>=70?'urgent':v>=40?'noticeable':'settled';
+ const failedSeries=Object.values(s.series||{}).filter(x=>x.brokenStreak>0)
+  .map(x=>({id:x.id,brokenStreak:x.brokenStreak,level:x.brokenStreak>=2?'persistent':'recent',
+   lastOutcomeEventId:x.lastOutcomeEventId}));
  return {room:s.location,needs:Object.fromEntries(Object.entries(s.needs).map(([k,v])=>[k,k==='hunger'?high(v):low(v)])),
- mood:s.mood.map(x=>({tag:x.tag,value:x.value})),open:s.commitments.filter(x=>!x.done).map(x=>({id:x.id,title:x.title})),
+ mood:s.mood.map(x=>({tag:x.tag,value:x.value})),
+ failedSeries,urgentSeries:failedSeries.filter(x=>x.brokenStreak>=2),
+ open:s.commitments.filter(x=>!x.done&&(x.status===undefined||x.status==='open')).map(x=>({id:x.id,title:x.title})),
  duskSoon:s.clock.centibeats%100000>=50000,visible:s.perception.map(x=>x.id),quirks:s.quirks.map(x=>({...x})),memory:s.folioReads.slice(-2).map(x=>x.id),
  hidden:['residue','numeric needs','unperceived room state']};}
 function predictedAction(s){
@@ -111,8 +116,18 @@ function explainChoice(s,choice){
 }
 function ruminate(s,log){if(s.activity?.kind==='sleep')return null;
  if(s.clock.centibeats%4500>=100)return null;
- const commitment=s.commitments.find(x=>!x.done),source=commitment?.id||s.events.filter(x=>x.type==='completed').at(-1)?.id;
- if(!source)return null;const e=log(s,'rumination','I found myself returning to an unfinished matter.',{sourceId:source,private:true});
+ const failures=Object.values(s.series||{}).filter(x=>x.brokenStreak>0)
+  .sort((a,b)=>b.brokenStreak-a.brokenStreak||a.id.localeCompare(b.id));
+ const turn=Math.floor(s.clock.centibeats/4500);
+ const concerning=failures.find(x=>turn%(x.brokenStreak>=2?2:4)===0);
+ const commitment=s.commitments.find(x=>!x.done&&(x.status===undefined||x.status==='open'));
+ const source=concerning?.id||commitment?.id||s.events.filter(x=>x.type==='completed').at(-1)?.id;
+ if(!source)return null;
+ const e=log(s,'rumination',concerning?
+  'I returned to a recurring obligation that I have failed to keep.':
+  'I found myself returning to an unfinished matter.',
+  {sourceId:source,seriesId:concerning?.id||null,
+   seriesBrokenStreak:concerning?.brokenStreak||0,private:true});
  s.thoughts.push({id:e.id,sourceId:source,t:s.clock.centibeats});s.thoughts=s.thoughts.slice(-80);return e;}
 function lesion(s,name,enabled,log){if(!(name in s.debugSwitches)||typeof enabled!=='boolean')throw Error('Unknown named state switch');s.debugSwitches[name]=enabled;return log(s,'state_switch','I was subjected to a controlled state intervention.',{name,enabled,operatorOnly:true});}
 function moveUnseen(s,id,room,log){if(!(id in OBJECTS)||!(room in ROOMS))throw Error('Unknown object or room');
