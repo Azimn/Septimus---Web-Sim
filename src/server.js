@@ -2,12 +2,12 @@
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
 const {readCanon,externalIdentity,findFolios}=require('./history');
 const {advance,direct,speak,view,log}=require('./engine');
-const {save,load}=require('./store');
+const {save,resume}=require('./store');
 const root=path.resolve(__dirname,'..'),port=Number(process.env.PORT||8765);
 const identity=externalIdentity(path.join(root,'identity.json'));
 const archive=readCanon(path.join(root,'canon/Pretorius_v12_450_Events_Complete.jsonl'));
 const savePath=process.env.TOWER_SAVE||path.join(root,'data/tower-save.json');
-let state=load(savePath,identity,archive);state.running??=false;state.wallMs??=Date.now();
+let state=resume(savePath,identity,archive);state.running=false;state.wallMs=Date.now();
 const persist=()=>save(savePath,state);
 function progress(){if(!state.running)return;const now=Date.now(),due=Math.floor((now-state.wallMs)/1000);if(due<=0)return;
  const n=Math.min(1000,due);advance(state,archive,n);state.wallMs+=n*1000;
