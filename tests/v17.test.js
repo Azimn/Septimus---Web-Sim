@@ -84,3 +84,22 @@ test('v1.7 commitments: source-linked pressure begins at opening and rises near 
  const ranks=scores(s),inspect=ranks.find(x=>x.kind==='inspect');
  assert.ok(inspect.commitmentFactors.some(x=>x.id===c.id&&x.bonus===late));
 });
+
+test('v1.7 garden: a ripe crop is preserved physically when storage cannot hold the full yield',()=>{
+ const s=fresh(11),Economy=require('../src/economy'),Actions=require('../src/actions');
+ s.stores.food=20;
+ s.garden.ripeAt=s.clock.centibeats-1;s.garden.plantedAt=s.clock.centibeats-140000;
+ const before=s.stores.food;
+ assert.equal(Economy.availableGarden(s),false);
+ assert.equal(Actions.available(s,'tend'),false);
+ Economy.harvestOrPlant(s,log);
+ assert.equal(s.stores.food,before);
+ assert.ok(s.events.some(x=>x.type==='harvest_deferred'&&x.food===before));
+ assert.ok(s.garden.ripeAt!==null);
+ s.stores.food=16;
+ assert.equal(Economy.availableGarden(s),true);
+ Economy.harvestOrPlant(s,log);
+ assert.equal(s.stores.food,24);
+ const harvest=s.events.find(x=>x.type==='harvest');
+ assert.equal(harvest.amount,8);assert.equal(harvest.wasted,0);
+});

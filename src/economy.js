@@ -121,7 +121,12 @@ function spoil(s,log){
  }
 }
 function ensureGarden(s){if(!s.garden)s.garden={plantedAt:null,ripeAt:null,harvests:0};return s.garden;}
-function availableGarden(s){const g=ensureGarden(s);return g.ripeAt===null||s.clock.centibeats>=g.ripeAt;}
+function availableGarden(s){
+ const g=ensureGarden(s);
+ if(g.ripeAt===null)return true;
+ if(s.clock.centibeats<g.ripeAt)return false;
+ return ECONOMY.maxFood-s.stores.food>=ECONOMY.harvestFood;
+}
 function supplyScore(s,kind){
  const f=s.stores.food,w=s.stores.water,u=s.stores.fuel;
  if(kind==='tend')return (f<=8?(8-f)*13:0)+(availableGarden(s)?(f<5?40:18):0);
@@ -141,6 +146,12 @@ function supplyScore(s,kind){
 function harvestOrPlant(s,log){
  const g=ensureGarden(s),now=s.clock.centibeats;
  if(g.ripeAt!==null&&now>=g.ripeAt){
+  // No partial harvest: leave ripe food in the plot until all eight
+  // physical portions fit in stores. This changes neither growth nor yield.
+  if(ECONOMY.maxFood-s.stores.food<ECONOMY.harvestFood)
+   return log(s,'harvest_deferred','I left the ripe crop on the plot until the stores had enough room.',{
+    target:'plot',cropRipeAt:g.ripeAt,food:s.stores.food,
+    capacity:ECONOMY.maxFood,requiredSpace:ECONOMY.harvestFood});
   const before=s.stores.food,yielded=putFresh(s,ECONOMY.harvestFood,now),wasted=ECONOMY.harvestFood-yielded;
   g.harvests++;
   log(s,'harvest','I gathered a crop from the garden plot.',{
