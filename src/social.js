@@ -4,7 +4,7 @@ const {STEP,distance}=require('./world');
 const VISITOR='visitor_01';
 function person(s,id=VISITOR){return s.people[id]??(s.people[id]={id,marker:id,present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]});}
 function arrive(s,log,scheduledVisit=false){const p=person(s);if(p.present)return null;p.present=true;
- p.room='library';p.targetRoom=null;p.travelRemaining=0;
+ p.room='library';p.targetRoom=null;p.travelRemaining=0;p.manuallyIntroduced=!scheduledVisit;
  const event=log(s,'visitor_arrival',s.location==='library'?'I noticed a familiar caller arrive at the tower.':'A caller arrived while I was elsewhere in the tower.',{personId:VISITOR,marker:p.marker,perceived:s.location==='library'});
  if(s.location==='library'){if(scheduledVisit)meet(s,log);else address(s,log);}
  return event;
@@ -27,7 +27,7 @@ function scheduled(s,log){
  const phase=s.clock.centibeats%100000,day=s.clock.day,p=person(s);
  if(phase>=44000&&phase<60000&&!p.present&&p.lastVisitDay!==day){p.lastVisitDay=day;arrive(s,log,true);}
  if(phase>=60000&&p.present){depart(s,log);return;}
- if(!p.present)return;
+ if(!p.present||p.manuallyIntroduced)return;
  if(!p.room)p.room='library';
  if(p.room!==s.location){
   if(p.targetRoom!==s.location){p.targetRoom=s.location;p.travelRemaining=distance(p.room,s.location)*300;}

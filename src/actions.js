@@ -36,7 +36,7 @@ function memoryCue(record){
 }
 function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OBJECTS||a.target==='visitor_01'))return false;
  if(state.dead)return false;
- if(kind==='converse')return !!state.people?.visitor_01?.present;
+ if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
  if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
  if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
  if(['eat','cook'].includes(kind)&&state.stores.food<1)return false;
