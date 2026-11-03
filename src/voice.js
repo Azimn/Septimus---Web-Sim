@@ -1,27 +1,98 @@
 'use strict';
-function stateCard(s){return {visible:(s.perception||[]).map(x=>x.id),open:(s.commitments||[]).filter(x=>!x.done).map(x=>x.id),
- sourceEvents:(s.events||[]).slice(-50).map(x=>x.id),readFolios:(s.folioReads||[]).map(x=>x.id),room:s.location};}
-function claimsCheck(utterance,card,{trustedTemplate=false,sourceIds=[]}={}){
- const text=String(utterance),claims=/\bI (remember|did|felt|own|have|was|know)\b/i.test(text);
- const valid=sourceIds.every(x=>card.sourceEvents.includes(x)||card.readFolios.includes(x)||card.open.includes(x));
- const ok=valid&&(!claims||trustedTemplate&&sourceIds.length>0);
- return {ok,claimDetected:claims,sourceIds,reason:ok?'template_sources_verified':'unsupported_claim'};
+// Speech and diary share one fail-closed ingress. No provider or network client.
+const Gate=require('./proposal_gateway');
+const POLICY=Object.freeze({maxDeferredCentibeats:100000,fallback:'sourced_template'});
+function stateCard(s,opts){return Gate.buildCard(s,opts);}
+function claimsCheck(proposal,card){return Gate.check(proposal,card);}
+function compose(s,text,card=stateCard(s)){
+ const current=card.source.find(x=>x.predicate==='open_commitment');
+ if(/resolve|finished|forget (about|it)|all done|close (it|this)/i.test(text)&&current)
+  return Gate.fromFact(card,current,{id:'TEMPLATE-COMMIT-'+card.revision});
+ const decision=card.source.filter(x=>x.predicate==='decision_receipt').at(-1);
+ if(/why did you|why (did|choose)/i.test(text)&&decision)
+  return Gate.fromFact(card,decision,{id:'TEMPLATE-DECISION-'+card.revision});
+ return Gate.envelope(card,{id:'TEMPLATE-NEUTRAL-'+card.revision,
+  utterance:Gate.NEUTRAL[0]});
 }
-function compose(s,text){const open=s.commitments.find(x=>!x.done);
- if(/resolve|finished|forget (about|it)|all done|close (it|this)/i.test(text)&&open)return {text:'I have not finished that matter. It remains unresolved.',sourceIds:[open.id]};
- if(/why did you|why (did|choose)/i.test(text)&&s.decisions.length){const d=s.decisions.at(-1);return {text:`I chose ${d.chosen} with score ${d.candidates[0]?.score}, ahead of ${d.runnerUp?.kind||'no alternative'}.`,sourceIds:[d.sourceEventId].filter(Boolean)};}
- if(/funny|joke|remember that/i.test(text)&&s.humor.some(x=>!x.used))return {text:'I recall that earlier absurdity, but I shall not make a performance of it.',sourceIds:s.humor.filter(x=>!x.used).slice(0,1).map(x=>x.sourceEventId)};
- return {text:'I am occupied with the tower and my investigations. Speak plainly.',sourceIds:[]};
+function metadata(s,kind,fields){
+ s.operatorMetadata??=[];
+ const entry={id:'O'+(s.operatorMetadata.length+1),tick:s.clock.centibeats,
+  provenance:'operator_metadata',memoryEligible:false,kind,...fields};
+ s.operatorMetadata.push(entry);return entry;
 }
-function deliver(s,message,log){const output=compose(s,message.text),card=stateCard(s),check=claimsCheck(output.text,card,{trustedTemplate:true,sourceIds:output.sourceIds});
- log(s,'claims_check','I checked the template against my accessible records.',{ok:check.ok,reason:check.reason,sourceIds:check.sourceIds});
- const value=check.ok?output.text:'I cannot substantiate that account.';
- s.surface.lastWords=value;const e=log(s,'reply_delivered','I answered after attending to the matter at hand.',{messageId:message.id,reply:value,delay:s.clock.centibeats-message.receivedAt});
- s.deliveredReplies.push({messageId:message.id,reply:value,eventId:e.id});return value;}
-function receive(s,text,log){const e=log(s,'speech_received','I received a question at the tower.',{source:'player',messageText:String(text).slice(0,200)});
- const message={id:e.id,text:String(text).slice(0,300),receivedAt:s.clock.centibeats};
- if(s.activity){s.replyQueue.push(message);log(s,'reply_queued','I could not answer while occupied or asleep.',{messageId:e.id,busy:s.activity.kind});return s.surface.lastWords;}
+function fallback(s,message,card,reason,log){
+ let safe=compose(s,message.text,card),check=Gate.check(safe,card);
+ if(!check.ok){safe=Gate.envelope(card,{id:'FALLBACK-'+message.id,
+  utterance:Gate.NEUTRAL[2]});check=Gate.check(safe,card);}
+ metadata(s,'proposal_fallback',{messageId:message.id,reason});
+ log(s,'reply_fallback','The unavailable proposal was replaced by sourced template speech.',{
+  messageId:message.id,reason,sourceIds:check.verified?.map(x=>x.sourceId)||[],
+  provenance:'operator_metadata',memoryEligible:false});
+ return {safe,check};
+}
+function consume(s,message,proposal,log,{mode='ok',card=null}={}){
+ s.proposalResults??={};
+ if(proposal?.proposalId&&s.proposalResults[proposal.proposalId])
+  return {...s.proposalResults[proposal.proposalId],duplicate:true};
+ const deliveryCard=card||stateCard(s,{audience:message.audience||'player',
+  contextKey:message.contextKey||'speech:player'});
+ let check=mode==='ok'?Gate.check(proposal,deliveryCard):
+  {ok:false,reason:mode==='refuse'?'source_refusal':mode==='timeout'?'source_timeout':'source_garbled'};
+ if(mode==='garble')check={ok:false,reason:'malformed_envelope'};
+ let used=proposal,fallbackUsed=false;
+ if(!check.ok){
+  if(mode==='ok'&&proposal){
+   metadata(s,'model_rejected',{proposalId:proposal.proposalId||null,messageId:message.id,
+    reason:check.reason,rejectedTextPreview:String(proposal.utterance||'').slice(0,90)});
+  }
+  const f=fallback(s,message,deliveryCard,check.reason,log);
+  used=f.safe;fallbackUsed=true;
+ }
+ log(s,'claims_check','The source-bound proposal was checked before rendering.',{
+  messageId:message.id,proposalId:proposal?.proposalId||null,ok:check.ok,
+  reason:check.reason,fallbackUsed,sourceIds:used.claims.map(c=>c.sourceId),
+  provenance:'operator_metadata',memoryEligible:false});
+ const reply=used.utterance;s.surface.lastWords=reply;
+ const e=log(s,'reply_delivered','I answered only with bounded source-checked language.',{
+  messageId:message.id,proposalId:proposal?.proposalId||null,reply,
+  sourceIds:used.claims.map(c=>c.sourceId),fallbackUsed,
+  delay:s.clock.centibeats-message.receivedAt});
+ const result={reply,check,fallbackUsed,eventId:e.id,messageId:message.id};
+ if(proposal?.proposalId)s.proposalResults[proposal.proposalId]=result;
+ s.deliveredReplies.push({messageId:message.id,reply,eventId:e.id,fallbackUsed});
+ return result;
+}
+function deliver(s,message,log){
+ const card=stateCard(s,{audience:message.audience||'player',
+  contextKey:message.contextKey||'speech:player'});
+ const fixture=message.fixture||{};
+ const mode=fixture.mode||'ok';
+ const proposal=fixture.proposal??compose(s,message.text,card);
+ // Delayed requests may not borrow an earlier state card. Always recheck at
+ // delivery. Templates are constructed at delivery and never become stale.
+ const result=consume(s,message,proposal,log,{mode,card});
+ return result.reply;
+}
+function receive(s,text,log,fixture=null){
+ const e=log(s,'speech_received','I received a question at the tower.',{
+  source:'player',messageText:String(text).slice(0,200)});
+ const message={id:e.id,text:String(text).slice(0,300),receivedAt:s.clock.centibeats,
+  audience:'player',contextKey:'speech:player'};
+ if(s.activity){
+  s.replyQueue.push(message);
+  log(s,'reply_queued','I could not answer while occupied or asleep.',{
+   messageId:e.id,busy:s.activity.kind});
+ } 
+ // The caller may provide a fixture proposal or failure mode, never a client.
+ // The proposal is stamped only after all receipt writes at submission.
+ if(fixture&&typeof fixture==='object'){
+  const card=stateCard(s);
+  const proposal=typeof fixture.factory==='function'?fixture.factory(card):fixture.proposal;
+  message.fixture={mode:fixture.mode||'ok',proposal:proposal||null};
+ }
+ if(s.activity)return s.surface.lastWords;
  return deliver(s,message,log);
 }
-function flush(s,log){if(s.activity)return;const next=s.replyQueue.shift();if(next)return deliver(s,next,log);return null;}
-module.exports={stateCard,claimsCheck,compose,receive,flush,deliver};
+function flush(s,log){if(s.activity)return null;
+ const next=s.replyQueue.shift();if(next)return deliver(s,next,log);return null;}
+module.exports={POLICY,stateCard,claimsCheck,compose,consume,receive,flush,deliver,metadata};

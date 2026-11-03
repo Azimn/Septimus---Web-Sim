@@ -6,6 +6,7 @@ const Cognition=require('./cognition');
 const Social=require('./social');
 const Post=require('./post');
 const Voice=require('./voice');
+const Diary=require('./diary');
 const Economy=require('./economy');
 const Commitments=require('./commitments');
 const Skill=require('./skill_growth');
@@ -119,6 +120,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  Commitments.completed(s,a,log);
   s.surface.lastWords=description;
  const completion=log(s,'completed',description,{kind:a.kind,controller:a.controller,object:a.target});
+ if(a.kind==='diary')Diary.render(s,completion);
  Cognition.matureQuirk(s,completion,a.kind,log);
  s.activity=null;Voice.flush(s,log);
 }
@@ -212,14 +214,14 @@ function tick(s,archive){ensureHooks(s);
 function advance(s,archive,steps=1){if(!Number.isSafeInteger(steps)||steps<1||steps>1000)throw Error('Steps must be integer 1..1000');for(let i=0;i<steps;i++)tick(s,archive);return s;}
 function direct(s,kind,query=''){ensureHooks(s);if(s.dead)throw Error('The inhabitant is deceased');if(!available(s,kind))throw Error(`Unavailable: ${kind}`);if(s.activity){Commitments.interrupted(s,s.activity,log);log(s,'interrupted',`I was interrupted while attempting ${s.activity.kind}.`,{controller:'player',interrupted:s.activity.kind});s.activity=null;}
  const result=start(s,kind,'player',query);return result;}
-function speak(s,text){ensureHooks(s);if(s.dead)throw Error('No reply can be given');const topics=perceiveTopic(s,text);
- const response=Voice.receive(s,text,log);
+function speak(s,text,fixture=null){ensureHooks(s);if(s.dead)throw Error('No reply can be given');const topics=perceiveTopic(s,text);
+ const response=Voice.receive(s,text,log,fixture);
  const heard=log(s,'heard',`I heard someone speak${topics.length?' of '+topics.join(', '):''}.`,{source:'player',topics});for(const topic of topics)s.residueSources[topic].eventId=heard.id;
  return response;}
 function view(s){ensureHooks(s);return {clock:s.clock,day:s.clock.day+1,room:s.location,objects:ROOMS[s.location].objects.map(id=>({id,...OBJECTS[id]})),needs:s.needs,stores:s.stores,activity:s.activity,commitments:s.commitments,diary:s.diary.slice(-8),folioReads:s.folioReads.slice(-8),events:s.events.slice(-25),words:s.surface.lastWords,perception:context(s),choices:scores(s).slice(0,8),
  people:s.people,mail:s.mail,customs:s.customs,humor:s.humor,replyQueue:s.replyQueue,thoughts:s.thoughts.slice(-8),health:s.health,dead:s.dead,garden:s.garden,
  predictionAccuracy:{count:s.predictions.length,hits:s.predictions.filter(x=>x.hit).length,rate:s.predictions.length?s.predictions.filter(x=>x.hit).length/s.predictions.length:0},
- deliberation:s.deliberation,quirks:s.quirks,claimsCheck:'template-only socket',
+ deliberation:s.deliberation,quirks:s.quirks,renderedDiary:s.renderedDiary||[],claimsCheck:'source-bound fixture gateway, no model',
  selfSheet:{location:s.location,energy:s.needs.energy<30?'exhausted':s.needs.energy<65?'weary':'capable',concern:s.commitments.find(x=>!x.done)?.title||'none',lastDecision:s.decisions.at(-1)?.chosen||'none'}};}
 module.exports={advance,direct,speak,view,log,tick,start,
  social:Social,cognition:Cognition,voice:Voice,commitments:Commitments,economy:Economy,fail};

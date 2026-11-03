@@ -44,7 +44,7 @@ function initialState(identitySha,archiveSha){return {
   schema:1,owner:'simple-tower',identitySha,archiveSha,clock:{centibeats:START,step:STEP,day:0},
   location:'bedchamber', needs:{energy:78,hunger:42,comfort:70,stimulation:49,company:45},
   stores:{food:7,water:9,fuel:5,tea:4,preserved:0},freshBatches:[{quantity:7,createdAt:25000}],preservedBatches:[],surplusAgeDay:0, health:100,dead:false,garden:{plantedAt:null,ripeAt:null,harvests:0},skills:{science:2,household:1},
-  traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],folioReads:[],
+  traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],renderedDiary:[],operatorMetadata:[],proposalResults:{},folioReads:[],
   commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false,
    action:'prepare',origin:'calendar_bootstrap',seriesId:'DAILY-HEARTH',seriesOrdinal:1,
    openedAt:START,requiredProgress:1,progressCount:0}],series:{},
@@ -70,7 +70,7 @@ function ensureHooks(s){
  const defaults=initialState(s.identitySha||'',s.archiveSha||'');
  for(const key of ['people','customs','humor','replyQueue','deliveredReplies','thoughts','predictions',
  'beliefs','objectPositions','perception','seenObjects','lastPerceptionIds','deliberation',
- 'debugSwitches','habitProfiles','quirks','worldLosses','mail'])
+ 'debugSwitches','habitProfiles','quirks','worldLosses','mail','renderedDiary','operatorMetadata','proposalResults'])
   if(s[key]===undefined)s[key]=structuredClone(defaults[key]);
  if(s.health===undefined)s.health=100;
  if(s.dead===undefined)s.dead=false;
