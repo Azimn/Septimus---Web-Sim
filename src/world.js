@@ -17,7 +17,7 @@ const OBJECTS = Object.freeze({
   bench:{label:'Work bench',room:'laboratory',actions:['work']},
   instrument:{label:'Instrument',room:'laboratory',actions:['inspect']},
   specimens:{label:'Specimen jars',room:'laboratory',actions:['study']},
-  path:{label:'Garden path',room:'garden',actions:['walk']},
+  path:{label:'Garden path',room:'garden',actions:['walk','gather_fuel','draw_water']},
   plot:{label:'Garden plot',room:'garden',actions:['tend']}
 });
 const TRAITS=Object.freeze({curious:1.5,industrious:1.4,stubborn:1.3,nervous:.7,gentle:.8,sociable:.6});
@@ -26,7 +26,7 @@ const START=25000, DAY=100000, STEP=100;
 function initialState(identitySha,archiveSha){return {
   schema:1,owner:'simple-tower',identitySha,archiveSha,clock:{centibeats:START,step:STEP,day:0},
   location:'bedchamber', needs:{energy:78,hunger:42,comfort:70,stimulation:49,company:45},
-  stores:{food:7,water:9,fuel:5,tea:4}, skills:{science:2,household:1},
+  stores:{food:7,water:9,fuel:5,tea:4}, health:100,dead:false,garden:{plantedAt:null,ripeAt:null,harvests:0},skills:{science:2,household:1},
   traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],folioReads:[],
   commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false}],
   activity:null,proposed:null,decisions:[],seed:1729,sequence:0,completedDays:0,
@@ -34,7 +34,7 @@ function initialState(identitySha,archiveSha){return {
   customs:{greeting:{observations:0,sourceEventIds:[],learned:false}},humor:[],replyQueue:[],deliveredReplies:[],
   thoughts:[],predictions:[],beliefs:{},objectPositions:{},perception:[],seenObjects:[],lastPerceptionIds:[],
   deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true},
-  habitProfiles:{},quirks:[],worldLosses:{},
+  habitProfiles:{},quirks:[],worldLosses:{},utilityWeights:{},residueSources:{},commitmentProgress:{},
   surface:{lastObservation:[],lastWords:'I have work to do.'},
   calendar:{date:'1899-07-01',upcoming:'Dusk inspection',triggeredDays:[]}
 };}
@@ -46,6 +46,10 @@ function ensureHooks(s){
  'beliefs','objectPositions','perception','seenObjects','lastPerceptionIds','deliberation',
  'debugSwitches','habitProfiles','quirks','worldLosses'])
   if(s[key]===undefined)s[key]=structuredClone(defaults[key]);
+ if(s.health===undefined)s.health=100;
+ if(s.dead===undefined)s.dead=false;
+ if(!s.garden)s.garden=structuredClone(defaults.garden);
+ for(const key of ['utilityWeights','residueSources','commitmentProgress'])if(!s[key])s[key]={};
  if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
  if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
  for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;
