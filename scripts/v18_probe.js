@@ -56,7 +56,11 @@ function snapshot(s,elapsed){
   trust:{rosa:round(s.people.visitor_01.trust||0),mcfeely:round(s.people.mcfeely?.trust||0)},
   relationshipEncounters:{rosa:s.people.visitor_01.liveEncounters||0,
    mcfeely:s.people.mcfeely?.liveEncounters||0},
-  eventLogEntries:s.events.length,diaryEntries:s.diary.length,
+  eventLogEntries:s.events.length,eventLogBytes:Buffer.byteLength(JSON.stringify(s.events),'utf8'),
+  diaryEntries:s.diary.length,diaryBytes:Buffer.byteLength(JSON.stringify(s.diary),'utf8'),
+  renderedDiaryEntries:(s.renderedDiary||[]).length,
+  renderedDiaryBytes:Buffer.byteLength(JSON.stringify(s.renderedDiary||[]),'utf8'),
+  operatorMetadataEntries:(s.operatorMetadata||[]).length,
   folioReadEntries:s.folioReads.length,
   series:summarySeries(s).map(r=>({id:r.id,opened:r.opened,kept:r.kept,broken:r.broken,
    keptStreak:r.keptStreak,brokenStreak:r.brokenStreak,avgCompletionTicks:r.avgCompletionTicks})),
@@ -175,6 +179,22 @@ function life(seed,horizon){
   })};
  const recentDecisions=s.decisions.slice(-25).map(x=>({tick:x.t,chosen:x.chosen,margin:x.margin,
   quirkFactors:x.candidates?.[0]?.quirkFactors?.length||0}));
+ const trustComposition=Object.fromEntries(['visitor_01','mcfeely'].map(id=>{
+  const actor=s.people[id]||{trust:0,events:[]},kinds={};
+  for(const event of actor.events||[]){
+   const kind=event.kind||'unspecified';
+   const item=kinds[kind]??(kinds[kind]={count:0,netDelta:0,positive:0,negative:0});
+   item.count++;item.netDelta+=event.delta||0;
+   if(event.delta>0)item.positive+=event.delta;
+   if(event.delta<0)item.negative+=event.delta;
+  }
+  for(const item of Object.values(kinds)){
+   item.netDelta=round(item.netDelta);item.positive=round(item.positive);
+   item.negative=round(item.negative);
+  }
+  return [id,{name:actor.name||id,trust:round(actor.trust||0),
+   kindBreakdown:kinds,eventCount:(actor.events||[]).length}];
+ }));
  const result={schema:'v1.8-life-v1',seed,horizon,sourceHead:process.env.GITHUB_SHA||'unknown',
   physicalDaysAdvanced:days.length,finalDead:s.dead,firstDeath,flags,invariants,
   firstSlowFailure:([
@@ -183,6 +203,7 @@ function life(seed,horizon){
    ...collapse.map(day=>({type:'two_action_collapse',day})),
    ...Object.entries(flags).filter(([k,v])=>v&&k!=='skillInflation').map(([k,v])=>({type:k,...v}))
   ].sort((a,b)=>a.day-b.day)[0]||null),
+  trustComposition,
   monthly:monthly.map(({failedSeriesRuminations,...r})=>({...r,
    failedSeriesRuminationCount:failedSeriesRuminations.length,
    failedSeriesRuminationSources:failedSeriesRuminations.slice(0,10)})),
