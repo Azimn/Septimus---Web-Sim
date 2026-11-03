@@ -29,6 +29,12 @@ function probe01(){
    if(e.chosen==='diary'&&card.reasons.includes('unfinished daily record')&&
     s.events.filter(x=>x.type==='completed'&&x.day===e.day&&x.t<=e.t).length>=2)
     trueKnown.add('unfinished daily record');
+   if(card.reasons.includes('known provisions')&&selected.supplyFactor>0)trueKnown.add('known provisions');
+   if(card.reasons.includes('visitor present')&&['converse','trade'].includes(e.chosen)){
+    const arrived=s.events.filter(z=>z.type==='visitor_arrival'&&z.t<=e.t).at(-1);
+    if(arrived&&!s.events.some(z=>z.type==='visitor_departure'&&z.t>arrived.t&&z.t<=e.t))
+      trueKnown.add('visitor present');
+   }
    if(card.reasons.includes('learned preference')&&
     s.events.some(x=>x.type==='habit_formed'&&x.kind===e.chosen&&x.t<=e.t))
     trueKnown.add('learned preference');
