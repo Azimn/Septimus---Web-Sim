@@ -1,10 +1,10 @@
-# Simple Tower v1.2: discrimination and endurance evidence ledger
+# Simple Tower v1.3: consequence and endurance evidence ledger
 
 **Track:** `feature/simple-tower-v1-20261102` / draft PR #7. **Scope:** no-model, five-room, twelve-object, single-visitor tower. Preserve the 450 archived records byte-identically. The historical simulator remains under `old sim/`.
 
 **Grade semantics:** *Demonstrated (bounded scenario)* means a named discriminating scenario passed, not broad scientific qualification. *Partial* means the hook exists without the stronger test. *Unassessable (socket present)* means its necessary runtime prerequisite is intentionally absent. No row is silently promoted to a scientific qualification. This ledger reports in-repository deterministic tests and GitHub Actions when green; it does not claim a new independent long-run evaluation.
 
-**Test counts:** v1.1 had 35 passing tests. v1.2 added a unique-receipt regression and six matched/longitudinal tests, **42 passed, 0 failed**, on code head `cfb1b7b9e03675bd7bd8c7862031a19d241a21f3` in [GitHub Actions 41578010529](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41578010529). The evidence runner also executed all twelve discriminating probes, including seven negative findings.
+**Latest verified run:** [v1.3 Actions 41581300405](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41581300405), 53 passing, 0 failing (42 preserved and 11 new). **Previous evidence:** v1.1 had 35 passing tests. v1.2 added a unique-receipt regression and six matched/longitudinal tests, **42 passed, 0 failed**, on code head `cfb1b7b9e03675bd7bd8c7862031a19d241a21f3` in [GitHub Actions 41578010529](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41578010529). The evidence runner also executed all twelve discriminating probes, including seven negative findings.
 
 ## 34-Article hook register
 
@@ -12,22 +12,22 @@
 |---|---|---|---|
 | 01 Self & introspection | Banded self-sheet, `prediction` event with forecast/choice/hit, accessible accuracy | Partial | Self-explanation matches hidden causal factors across held-out decisions |
 | 02 Spontaneous thought | Hourly unprompted `rumination` with commitment or event source ID | Demonstrated (bounded scenario) | Silent-hour seeded comparison and recurring thought quality |
-| 03 Temporal continuity | Integer clock, persisted activities, commitments, history | Partial | Explicit process-downtime pause interval and independent long-delay restart |
-| 04 Memory | Folio source IDs, diary/event provenance, winner and foregone action with margin | Partial | Source-memory ablation changes action with matched alternatives |
+| 03 Temporal continuity | Integer clock, persisted activities, commitments, history | Demonstrated (bounded scenario) | Test actual long offline restarts and persistent writer custody. |
+| 04 Memory | Folio source IDs, diary/event provenance, winner and foregone action with margin | Demonstrated (bounded scenario) | Test delayed memory ablation across several source folios and novel decisions. |
 | 05 Relationships | Single physically co-present visitor record, order-sensitive trust, recognized scripted greeting | Partial | Different treatment of two independently encountered people |
 | 06 Social cognition | Co-presence-gated witness lists; visitor-only statement stays visitor-only | Partial | Multi-person false-belief intervention beyond one visitor |
 | 07 Motivation | Bodily need gradients change legal-action utility | Partial | Multi-seed resource conflict against simple alternative controller |
 | 08 Habits | Contextual cues, formed counts, score bonus and real broken-cue misfire receipt | Demonstrated (bounded scenario) | Autonomous misfire after cue relocation, without directed task |
-| 09 Carryover | Topic-based residue and mood retained in state | Partial | Hidden delayed residue ablation with no reminder |
+| 09 Carryover | Topic-based residue and mood retained in state | Demonstrated (bounded scenario) | Test delayed source interventions without manually chosen near-tie needs. |
 | 10 Affect | Timed mood stack changes utility; lesion switch | Demonstrated (bounded scenario) | Mood intervention changes choices across matched seeds |
 | 11 Embodiment | Room travel, object arrival, duration, finite food and fatigue | Partial | Diverse unseen environments and action restriction under deprivation |
-| 12 Attention | Salience-ranked top-four room observations with noise, movement, novelty, relevance | Partial | Long-scenario low-salience object never used, recalled or named |
+| 12 Attention | Salience-ranked top-four room observations with noise, movement, novelty, relevance | Demonstrated (bounded scenario) | Test cross-room perception with untagged low-salience objects. |
 | 13 Cognitive rhythm | Deliberation/reflex events, tiredness-dependent deliberation rate | Partial | Attention/conflict ablation and energy-matched controls |
-| 14 Decision-making | Utility scores, bounded noise, winner/runner-up and score margin | Partial | Parameter-only intervention changes choice as predicted |
+| 14 Decision-making | Utility scores, bounded noise, winner/runner-up and score margin | Demonstrated (bounded scenario) | Test alternative weights over independent long-run seeds. |
 | 15 Learning | Action outcome success/failure counters, retry penalty and observed failures | Partial | Repeated natural failures generalize contextually without overgeneralizing |
 | 16 Personality | Six original Pretorius trait multipliers in utility | Demonstrated (bounded scenario) | Matched trait-set swap changes distribution, not just dialogue |
-| 17 Goals | Hearth commitment survives interruption/restart and completion | Partial | Multiple competing, resuming commitments over days |
-| 18 Prospection | Deadline-driven preparation action bonus and dusk event | Partial | Held-out deadline changes independent preparation |
+| 17 Goals | Hearth commitment survives interruption/restart and completion | Demonstrated (bounded scenario) | Test three competing unprompted obligations with missed deadlines across a full week. |
+| 18 Prospection | Deadline-driven preparation action bonus and dusk event | Demonstrated (bounded scenario) | Test novel due dates that change real preparation timing across days. |
 | 19 Agency | Independent autonomous action starts and controller attribution | Partial | Unprompted initiative across varied seeds, conditions and interruptions |
 | 20 Environmental coupling | Room/object constraints, supply costs, local physical movement and known location | Partial | Long-term learned object preferences under changed environments |
 | 21 Error | Unseen move leads stale location, failed attempt, `belief_correction`, score penalty | Partial | Long-delay independent false-belief scenarios |
@@ -37,7 +37,7 @@
 | 25 Excessive responsiveness | Busy/asleep incoming messages queue; later reply logs actual delay | Partial | Interruption and replay under real asynchronous conversations |
 | 26 State reset | Single hash-checked save/load, v1-to-v1.1 hook migration | Partial | Restart without any conversational context and same action distribution |
 | 27 Development | Skill increment and history-linked quirk creation | Partial | Matched day-one/day-thirty skill and response comparison |
-| 28 Path dependence | Gift/insult order-swap produces distinct trust, both sequences tested | Partial | History-shuffle with matching event multiset and later autonomous conduct |
+| 28 Path dependence | Gift/insult order-swap produces distinct trust, both sequences tested | Demonstrated (bounded scenario) | Test downstream conduct across longer histories, varied personalities and another visitor in a later phase. |
 | 29 Idiosyncrasy | Generated quirks cite read canonical folio ID and observation receipt | Partial | Emergent quirks from in-world experience beyond inherited folios |
 | 30 Friction | Physical travel, elapsed activities, finite stocks, actual failures | Partial | Multi-task interruptions and recovery cost under real load |
 | 31 Vulnerability | `world_loss` disables instrument/room; timed `world_restored` reverses it | Partial | Unanticipated real setbacks change future autonomous plans |
@@ -111,3 +111,33 @@ Five rows advanced to **Demonstrated (bounded scenario)**: 02, 08, 10, 16 and 22
 **Seven negative findings stay open:** Article 14 has no declared utility-weight intervention interface; Article 04 cannot trace action-score influence to a retrieved folio; Article 09 retains topic residue over two days but a residue ablation does not change the decision scores; Articles 17 and 18 currently consult only the first commitment and overwrite the list at day boundaries; Article 03 has no PAUSED event; Article 12's low-salience object was eventually perceived in the three-day scenario. The full negative traces appear in `evidence/v1.2/discriminations.json`.
 
 **Out-of-scope constraints maintained:** no model, new room, organ, old-sim runtime import, canon change, 30-day developmental comparison, or parallel tower history was introduced. The existing timing contract (100 centibeats per game step) is unchanged. Since 1 centibeat = 864 milliseconds, a nominal one-minute macro step cannot be exactly represented by 69 centibeats (59.616 seconds); any clock convergence requires a separate explicit decision.
+
+
+## v1.3: what the consequences round showed
+
+**Reproducible source head:** `00ef3ae1c8416ab7055f562b0df20d56187c57d5`; [Actions 41581300405](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41581300405) ran **53/53 tests** and all five seven-day endurance runs. No LLM or clock conversion was introduced. The 450 historical records and external identity remain unchanged. Per-seed raw evidence and negative starvation control are committed under `evidence/v1.3/`.
+
+Five unattended seeds each reached 7,000 steps without death or a full-day soft-lock. Food finished at 18, 20, 19, 11 and 19, each backed by three or four `harvest` receipts of up to eight food units. All five experienced seven witnessed visitor conversations, learned customs, social trust events, and one humor source event. Seed 13's two mid-action restarts preserved state and emitted `paused` operator-metadata intervals without invented world time.
+
+In the production-disabled control the actor died of sustained starvation at tick 554600 after 5296 steps. Exactly one death event occurred, no harvest was made, and later ticks/actions could not proceed. The game balance constants were declared before testing and not modified to force these outcomes.
+
+**Unexpected negative:** seed 14 had two natural `visitor_departed` failures: the caller left before an intended conversation finished. Both receipts remain in the committed evidence. Gathering wood is a working tested action but did not occur in these five standard runs because fuel was not depleted. Endurance involved one recurring open obligation at a time; the three-commitment test is a separate two-day intervention. Seven-day sustainability is not indefinite survival.
+
+### Eight named bounded-grade promotions
+
+| Article | Previous | Current | Passing discriminator |
+|---|---|---|---|
+| 12 | Partial | Demonstrated (bounded scenario) | `Article 12: low-salience object stays unselected for three days, new movement is noticed` |
+| 14 | Partial | Demonstrated (bounded scenario) | `Article 14: declared single utility-weight intervention flips chosen action with exact arithmetic` |
+| 17 | Partial | Demonstrated (bounded scenario) | `Articles 17 and 18: separate commitments persist, resume and alter a timed choice` |
+| 18 | Partial | Demonstrated (bounded scenario) | `Articles 17 and 18: separate commitments persist, resume and alter a timed choice` |
+| 28 | Partial | Demonstrated (bounded scenario) | `Article 28: gift and insult order cause distinct subsequent autonomous social conduct` |
+| 03 | Partial | Demonstrated (bounded scenario) | `Article 03: explicit resume records real downtime without fictional game ticks` |
+| 04 | Partial | Demonstrated (bounded scenario) | `Article 04: real consulted folio becomes a cited utility factor and withholding it can flip action` |
+| 09 | Partial | Demonstrated (bounded scenario) | `Article 09: two days after a witnessed trigger, residue affects a matched choice` |
+
+The v1.3 ledger therefore stands at **13 Demonstrated (bounded scenario), 20 Partial, and 1 Unassessable (Article 23)**. Social Articles 05 and 06 remain Partial because only one visitor exists. Article 31 remains Partial despite the new deprivation death control because its varied-unanticipated-loss test is still open. Article 27's 30-day development comparison remains out of scope.
+
+The economy uses fixed source constants in `src/economy.js`: crop maturity 140000 centibeats (1.4 fictional days), eight food per harvested crop, one water to plant, six water per draw and four fuel per gathering action, capped stocks, starvation-health loss 0.065 per game step when hungry at least 90 and food empty, plus 0.018 additional loss under severe exhaustion. These are fictional game values, not physiological claims.
+
+**Scope boundary:** A passing causal scenario is not an assertion of consciousness or complete philosophical Article qualification. The generic backup specification and v1.2 negative evidence remain intact. No model, extra room, extra organ, historical runtime import or 30-day study was added.
