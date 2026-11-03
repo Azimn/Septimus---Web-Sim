@@ -10,11 +10,13 @@ function began(s,activity,log){
  const e=log(s,resuming?'commitment_resumed':'commitment_progress',
   resuming?'I resumed an interrupted obligation.':'I began the next part of an obligation.',
   {commitmentId:c.id,action:activity.kind,deadline:c.deadline,controller:activity.controller});
- s.commitmentProgress[c.id]={interrupted:false,lastEventId:e.id,activityKind:activity.kind};
+ s.commitmentProgress[c.id]={...previous,interrupted:false,lastEventId:e.id,activityKind:activity.kind};
 }
 function interrupted(s,activity,log){
  if(!activity?.commitmentId)return;
- s.commitmentProgress??={};s.commitmentProgress[activity.commitmentId]={interrupted:true,lastTick:s.clock.centibeats,activityKind:activity.kind};
+ s.commitmentProgress??={};const prior=s.commitmentProgress[activity.commitmentId]||{};
+ s.commitmentProgress[activity.commitmentId]={...prior,interrupted:true,lastTick:s.clock.centibeats,
+   activityKind:activity.kind,interruptCount:(prior.interruptCount||0)+1};
  log(s,'commitment_interrupted','I left an obligation unfinished, intending to resume it.',{commitmentId:activity.commitmentId,action:activity.kind});
 }
 function completed(s,activity,log){
