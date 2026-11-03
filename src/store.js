@@ -45,6 +45,8 @@ function readV2(file,value){
  if(snapshot.format!=='simple-tower-snapshot-v2'||snapshot.generation!==value.generation||
   stringHash(snapshot.state)!==value.snapshotHash||snapshot.hash!==value.snapshotHash)
   throw Error('Compact snapshot integrity failure');
+ if(value.worldRoom!==snapshot.state.location)
+  throw Error('Save integrity failure: manifest room mismatch');
  const events=[];
  let prior='GENESIS';
  for(let i=1;i<value.activeIndex;i++){
@@ -144,6 +146,7 @@ function append(file,state,prior,savedAtMs){
  atomic(snapFile(file,generation),JSON.stringify(snapshotPayload));
  const manifest={format:FORMAT,version:2,generation,savedAt:new Date(savedAtMs).toISOString(),
   eventCount:state.events.length,lastEventId:state.events.at(-1)?.id||null,
+  worldRoom:state.location,
   snapshotHash,activeIndex:index,activeCount:count,activeBytes,activeHash,
   lastSealedHash:sealedHash,segmentSize:SEGMENT_EVENTS,
   integrity:'compact_state_sha256_plus_append_only_hash_chained_event_segments'};
