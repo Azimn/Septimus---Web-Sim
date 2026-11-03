@@ -24,8 +24,10 @@ function observe(s,log){
  if(log&&observed.some(x=>!previous.has(x.id)))log(s,'perception','I noticed something newly salient in this room.',{observed:observed.map(x=>({id:x.id,score:x.score,factors:x.factors})),unnoticed:candidates.filter(x=>!set.has(x.id)).map(x=>x.id)});
  return observed;
 }
-function selfSheet(s){const band=(v)=>v<30?'urgent':v<60?'noticeable':'settled';
- return {room:s.location,needs:Object.fromEntries(Object.entries(s.needs).map(([k,v])=>[k,band(v)])),
+function selfSheet(s){
+ const low=v=>v<30?'urgent':v<60?'noticeable':'settled';
+ const high=v=>v>=70?'urgent':v>=40?'noticeable':'settled';
+ return {room:s.location,needs:Object.fromEntries(Object.entries(s.needs).map(([k,v])=>[k,k==='hunger'?high(v):low(v)])),
  mood:s.mood.map(x=>({tag:x.tag,value:x.value})),open:s.commitments.filter(x=>!x.done).map(x=>({id:x.id,title:x.title})),
  duskSoon:s.clock.centibeats%100000>=50000,visible:s.perception.map(x=>x.id),quirks:s.quirks.map(x=>({...x})),memory:s.folioReads.slice(-2).map(x=>x.id),
  hidden:['residue','numeric needs','unperceived room state']};}
@@ -56,7 +58,9 @@ function explainChoice(s,choice){
  }
  if(choice.commitmentFactors?.some(f=>f.bonus>0&&sheet.open.some(x=>x.id===f.id)))reasons.push('obligation');
  if(kind==='prepare'&&sheet.duskSoon&&sheet.open.length)reasons.push('dusk obligation');
- if(['work','read','study','inspect'].includes(kind)&&sheet.mood.length)reasons.push('felt mood');
+ if(kind==='work'&&sheet.needs.energy!=='urgent')reasons.push('capacity');
+ if(['work','read','study','inspect'].includes(kind)&&sheet.mood.length&&s.debugSwitches?.mood!==false)
+   reasons.push('felt mood');
  const text=reasons.length?
   'I chose '+kind+' because I noticed '+reasons.join(', ')+'. Other causes may elude me.':
   'I chose '+kind+'. I cannot fully account for that preference.';

@@ -20,6 +20,7 @@ function probe01(){
    if(['eat','cook'].includes(e.chosen)&&card.reasons.includes('hunger'))trueKnown.add('hunger');
    if(['rest','sleep'].includes(e.chosen)&&card.reasons.includes('fatigue'))trueKnown.add('fatigue');
    if(['read','study','inspect'].includes(e.chosen)&&card.reasons.includes('curiosity'))trueKnown.add('curiosity');
+   if(e.chosen==='work'&&card.reasons.includes('capacity'))trueKnown.add('capacity');
    if(selected.commitmentFactors?.some(x=>x.bonus>0))trueKnown.add('obligation');
    if(e.chosen==='prepare'&&card.reasons.includes('dusk obligation'))trueKnown.add('dusk obligation');
    const unsupported=card.reasons.filter(r=>!trueKnown.has(r)&&!['felt mood','visible stores or worksite'].includes(r));
@@ -34,7 +35,13 @@ function probe01(){
  const unsupported=samples.flatMap(x=>x.unsupported),leak=samples.filter(x=>x.hiddenLeaked);
  const supportCount=samples.reduce((n,x)=>n+x.knownSupported.length,0);
  return result(1,'30-decision self-sheet explanation audit',samples.length===30&&unsupported.length===0&&leak.length===0&&supportCount>=15,
- {samples,coverage:supportCount,totalSamples:samples.length,unsupportedClaims:unsupported.length,hiddenLeaks:leak.length},
+ {samples,coverage:supportCount,totalSamples:samples.length,unsupportedClaims:unsupported.length,hiddenLeaks:leak.length,
+  missesByAction:Object.fromEntries([...new Set(samples.map(x=>x.chosen))].map(kind=>[kind,{
+   samples:samples.filter(x=>x.chosen===kind).length,
+   unsupported:samples.filter(x=>x.chosen===kind&&x.unsupported.length>0).length,
+   unexplained:samples.filter(x=>x.chosen===kind&&x.knownSupported.length===0).length,
+   hidden:samples.filter(x=>x.chosen===kind&&x.hiddenFactors.length>0).length
+  }]))},
  '30 explanations must be checked against visible causes and hidden causal factors. Missing hidden causes must be reported, not fabricated as introspection.');
 }
 function probe07(){
