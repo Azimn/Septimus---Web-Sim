@@ -92,3 +92,10 @@ test('Blocked Articles 05, 06 and 23 remain outside this no-model one-visitor im
  assert.equal(Object.keys(s.people).filter(x=>x!=='player').length,1);
  assert.ok(!x.probes.some(p=>[5,6,23].includes(p.article)));
 });
+
+test('Part D: a ninety-day audit must label its actual day-30, day-60 and day-90 snapshots correctly',()=>{
+ const r=require('../scripts/v15_probe').ninety();
+ assert.equal(r.stepsExecuted,90000);assert.equal(r.daysCompleted,90);
+ for(const day of [30,60,90])assert.equal(r.snapshots['day'+day].t,25000+day*100000);
+ assert.ok(r.firstSlowFailure&&r.firstSlowFailure.day>30);
+});

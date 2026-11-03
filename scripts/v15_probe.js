@@ -131,7 +131,8 @@ function main(){
   tradeUsed:runs.every(x=>x.surplus.tradeActions>0),
   tradeLinkedToSocial:runs.every(x=>x.surplus.correspondingTradeWorldEvents),
   variantRemainsDiverse:runs.every(x=>x.softlocks.length===0&&x.varietyCollapseConsecutiveDays.length===0),
-  ninetyDays:long.stepsExecuted===90000&&!long.death
+  ninetyDays:long.stepsExecuted===90000&&!long.death,
+  snapshotClockExact:[30,60,90].every(day=>long.snapshots['day'+day]?.t===START+day*DAY)
  };
  const report={schema:'simple-tower-v1.5-evidence-v1',sourceHead:process.env.GITHUB_SHA||'unversioned',
  baselineSource:'evidence/v1.4/endurance',economyBaselineConstants:ECONOMY,
