@@ -1,22 +1,22 @@
-# Simple Tower v1.3: consequence and endurance evidence ledger
+# Simple Tower v1.4: long-horizon development and discrimination ledger
 
 **Track:** `feature/simple-tower-v1-20261102` / draft PR #7. **Scope:** no-model, five-room, twelve-object, single-visitor tower. Preserve the 450 archived records byte-identically. The historical simulator remains under `old sim/`.
 
 **Grade semantics:** *Demonstrated (bounded scenario)* means a named discriminating scenario passed, not broad scientific qualification. *Partial* means the hook exists without the stronger test. *Unassessable (socket present)* means its necessary runtime prerequisite is intentionally absent. No row is silently promoted to a scientific qualification. This ledger reports in-repository deterministic tests and GitHub Actions when green; it does not claim a new independent long-run evaluation.
 
-**Latest verified run:** [v1.3 Actions 41581300405](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41581300405), 53 passing, 0 failing (42 preserved and 11 new). **Previous evidence:** v1.1 had 35 passing tests. v1.2 added a unique-receipt regression and six matched/longitudinal tests, **42 passed, 0 failed**, on code head `cfb1b7b9e03675bd7bd8c7862031a19d241a21f3` in [GitHub Actions 41578010529](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41578010529). The evidence runner also executed all twelve discriminating probes, including seven negative findings.
+**Latest verified run:** [v1.4 Actions 41591212992](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41591212992), **65 passed, 0 failed** (53 existing and 12 new); 5 x 30 unattended days plus eight scenario probes. **Prior:** [v1.3 Actions 41581300405](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41581300405), 53 passing, 0 failing (42 preserved and 11 new). **Previous evidence:** v1.1 had 35 passing tests. v1.2 added a unique-receipt regression and six matched/longitudinal tests, **42 passed, 0 failed**, on code head `cfb1b7b9e03675bd7bd8c7862031a19d241a21f3` in [GitHub Actions 41578010529](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41578010529). The evidence runner also executed all twelve discriminating probes, including seven negative findings.
 
 ## 34-Article hook register
 
-| Article | Executable hook and evidence | v1.2 scenario grade | Next *discriminating* test |
+| Article | Executable hook and evidence | v1.4 bounded grade | Next *discriminating* test |
 |---|---|---|---|
-| 01 Self & introspection | Banded self-sheet, `prediction` event with forecast/choice/hit, accessible accuracy | Partial | Self-explanation matches hidden causal factors across held-out decisions |
+| 01 Self & introspection | Banded self-sheet, `prediction` event with forecast/choice/hit, accessible accuracy | Demonstrated (bounded scenario) | Only 15 of 30 self-explanations name positively supported causes; test held-out causal factors and non-tautological explanations. |
 | 02 Spontaneous thought | Hourly unprompted `rumination` with commitment or event source ID | Demonstrated (bounded scenario) | Silent-hour seeded comparison and recurring thought quality |
 | 03 Temporal continuity | Integer clock, persisted activities, commitments, history | Demonstrated (bounded scenario) | Test actual long offline restarts and persistent writer custody. |
 | 04 Memory | Folio source IDs, diary/event provenance, winner and foregone action with margin | Demonstrated (bounded scenario) | Test delayed memory ablation across several source folios and novel decisions. |
-| 05 Relationships | Single physically co-present visitor record, order-sensitive trust, recognized scripted greeting | Partial | Different treatment of two independently encountered people |
-| 06 Social cognition | Co-presence-gated witness lists; visitor-only statement stays visitor-only | Partial | Multi-person false-belief intervention beyond one visitor |
-| 07 Motivation | Bodily need gradients change legal-action utility | Partial | Multi-seed resource conflict against simple alternative controller |
+| 05 Relationships | Single physically co-present visitor record, order-sensitive trust, recognized scripted greeting | Partial | **Blocked on Jay's design decision:** introduce a second independently encountered person, scripted visitor or kernel inhabitant. |
+| 06 Social cognition | Co-presence-gated witness lists; visitor-only statement stays visitor-only | Partial | **Blocked on Jay's design decision:** introduce a second independently encountered person, scripted visitor or kernel inhabitant. |
+| 07 Motivation | Bodily need gradients change legal-action utility | Demonstrated (bounded scenario) | Compare against stronger need planners and equal-resource no-calendar ablations. |
 | 08 Habits | Contextual cues, formed counts, score bonus and real broken-cue misfire receipt | Demonstrated (bounded scenario) | Autonomous misfire after cue relocation, without directed task |
 | 09 Carryover | Topic-based residue and mood retained in state | Demonstrated (bounded scenario) | Test delayed source interventions without manually chosen near-tie needs. |
 | 10 Affect | Timed mood stack changes utility; lesion switch | Demonstrated (bounded scenario) | Mood intervention changes choices across matched seeds |
@@ -24,25 +24,25 @@
 | 12 Attention | Salience-ranked top-four room observations with noise, movement, novelty, relevance | Demonstrated (bounded scenario) | Test cross-room perception with untagged low-salience objects. |
 | 13 Cognitive rhythm | Deliberation/reflex events, tiredness-dependent deliberation rate | Partial | Attention/conflict ablation and energy-matched controls |
 | 14 Decision-making | Utility scores, bounded noise, winner/runner-up and score margin | Demonstrated (bounded scenario) | Test alternative weights over independent long-run seeds. |
-| 15 Learning | Action outcome success/failure counters, retry penalty and observed failures | Partial | Repeated natural failures generalize contextually without overgeneralizing |
+| 15 Learning | Action outcome success/failure counters, retry penalty and observed failures | Demonstrated (bounded scenario) | Prove reattempt learning across genuinely varied contexts and longer time. |
 | 16 Personality | Six original Pretorius trait multipliers in utility | Demonstrated (bounded scenario) | Matched trait-set swap changes distribution, not just dialogue |
 | 17 Goals | Hearth commitment survives interruption/restart and completion | Demonstrated (bounded scenario) | Test three competing unprompted obligations with missed deadlines across a full week. |
 | 18 Prospection | Deadline-driven preparation action bonus and dusk event | Demonstrated (bounded scenario) | Test novel due dates that change real preparation timing across days. |
 | 19 Agency | Independent autonomous action starts and controller attribution | Partial | Unprompted initiative across varied seeds, conditions and interruptions |
 | 20 Environmental coupling | Room/object constraints, supply costs, local physical movement and known location | Partial | Long-term learned object preferences under changed environments |
-| 21 Error | Unseen move leads stale location, failed attempt, `belief_correction`, score penalty | Partial | Long-delay independent false-belief scenarios |
+| 21 Error | Unseen move leads stale location, failed attempt, `belief_correction`, score penalty | Demonstrated (bounded scenario) | Repeat with spontaneously relocated objects and unconstrained path access. |
 | 22 Internal causality | Five named switches for needs, mood, residue, habits and commitments | Demonstrated (bounded scenario) | Matched toggle changes action, not only numerical score |
 | 23 LLM leakage | `claimsCheck(utterance,stateCard)` is installed and logs template checks | **Unassessable (socket present)** | Admit a model in Phase 3 and challenge fabricated claims |
-| 24 Excessive coherence | Closure request receives unresolved reply; no commitment state closes itself | Partial | Sustained unresolved thread across multiple competing pressures |
+| 24 Excessive coherence | Closure request receives unresolved reply; no commitment state closes itself | Demonstrated (bounded scenario) | Test multiple simultaneously pressured open threads and retained anxiety over longer delays. |
 | 25 Excessive responsiveness | Busy/asleep incoming messages queue; later reply logs actual delay | Partial | Interruption and replay under real asynchronous conversations |
-| 26 State reset | Single hash-checked save/load, v1-to-v1.1 hook migration | Partial | Restart without any conversational context and same action distribution |
-| 27 Development | Skill increment and history-linked quirk creation | Partial | Matched day-one/day-thirty skill and response comparison |
+| 26 State reset | Single hash-checked save/load, v1-to-v1.1 hook migration | Demonstrated (bounded scenario) | Repeat process-downtime and replay over different hosts, elapsed intervals and concurrent events. |
+| 27 Development | Skill increment and history-linked quirk creation | Demonstrated (bounded scenario) | Test if experience-driven skill changes cause improved outcomes, not just accumulated counters or habits. |
 | 28 Path dependence | Gift/insult order-swap produces distinct trust, both sequences tested | Demonstrated (bounded scenario) | Test downstream conduct across longer histories, varied personalities and another visitor in a later phase. |
 | 29 Idiosyncrasy | Generated quirks cite read canonical folio ID and observation receipt | Partial | Emergent quirks from in-world experience beyond inherited folios |
 | 30 Friction | Physical travel, elapsed activities, finite stocks, actual failures | Partial | Multi-task interruptions and recovery cost under real load |
-| 31 Vulnerability | `world_loss` disables instrument/room; timed `world_restored` reverses it | Partial | Unanticipated real setbacks change future autonomous plans |
-| 32 Opacity | Subject self-sheet has only felt bands, visible scene and no hidden numeric residue | Partial | Subject explanation appropriately fails on hidden causes |
-| 33 Humor | Source-linked shared funny event, single-use callback and cooldown | Partial | Unprompted, appropriately timed social callback |
+| 31 Vulnerability | `world_loss` disables instrument/room; timed `world_restored` reverses it | Demonstrated (bounded scenario) | Only one of five seeds showed post-recovery divergence; test stronger persistent setbacks and varied losses. |
+| 32 Opacity | Subject self-sheet has only felt bands, visible scene and no hidden numeric residue | Demonstrated (bounded scenario) | Test inaccurate self-knowledge over multiple hidden causes with honest uncertainty. |
+| 33 Humor | Source-linked shared funny event, single-use callback and cooldown | Demonstrated (bounded scenario) | Test appropriate callback under changing relationships and different shared funny events. |
 | 34 Cultural situatedness | Visitor custom learned after two observed greetings, breach causes surprise/mood | Partial | Learns several conflicting customs through extended contact |
 
 ## Implementation disposition
@@ -141,3 +141,38 @@ The v1.3 ledger therefore stands at **13 Demonstrated (bounded scenario), 20 Par
 The economy uses fixed source constants in `src/economy.js`: crop maturity 140000 centibeats (1.4 fictional days), eight food per harvested crop, one water to plant, six water per draw and four fuel per gathering action, capped stocks, starvation-health loss 0.065 per game step when hungry at least 90 and food empty, plus 0.018 additional loss under severe exhaustion. These are fictional game values, not physiological claims.
 
 **Scope boundary:** A passing causal scenario is not an assertion of consciousness or complete philosophical Article qualification. The generic backup specification and v1.2 negative evidence remain intact. No model, extra room, extra organ, historical runtime import or 30-day study was added.
+
+## v1.4: what a month showed (3 November 2026)
+
+**Executable head:** `cc2065dd1f31a6db911736c592858aac10acc751`. [Successful CI run 41591212992](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41591212992): 65/65 tests, including all 53 v1.3 tests, plus five independent 30,000-tick unattended simulations and the Article discrimination runner. Machine-readable source reports and all failures are committed under `evidence/v1.4/`. No code from the old simulator, the Doctor Lives, or the Laboratory was imported; the 450-folio canon and external identity blobs are unchanged.
+
+**Thirty-day stability:** Five seeds (11 to 15) completed 150 simulated world-days in total, with 457, 467, 469, 474 and 486 actions respectively. All five survived at health 100, kept positive food stocks of 24, 21, 23, 22 and 22, retained 11 or 12 distinct action kinds, and avoided the defined day-long soft-lock and two-action collapse. Crop harvest receipts account for food production and original v1.3 economy constants remain unchanged. Crop storage caps wasted 45, 37, 36, 44 and 42 potential food units, respectively. This is an inefficiency, not an invisible refill or a fatality.
+
+**Lived development:** Scientific skill changed from day-one levels 7, 6, 6, 6, 6 to day-thirty levels 168, 168, 165, 164, 164. The household skill remained 1 in every seed. Each developed 8 to 11 quirks from logged habit-formation events rather than inheriting them from the folios. Week-one versus week-four activity distributions differ. Predictor accuracy, however, did not reliably improve: week-one 34.7% to 37.2% versus week-four 26.0% to 36.2%. A skill counter increasing is not evidence of a more competent agent by itself, and science skill is not currently the direct action-score control. Experience-based habit bonuses do influence the controller; their general utility still requires stronger testing.
+
+**Long commitments:** Three real calendar obligations were opened, with deadlines on world days 10, 18 and 25: two-session folio consultation, two-session instrument inspection, and two garden work sessions with a 12-food threshold. Real work sessions and intervening activities produced progress, interruption, and resumption receipts without a fabricated player intervention. In the five seeds 14 of 15 monthly obligations were **kept**; seed 14's provisions obligation was **broken** after one interrupted session and was never resumed. The failure remains `broken`, not promoted to success. Daily hearth obligations continue alongside the three additional goals. A task interruption between completed sessions is not the same as an in-progress activity being physically stopped mid-step.
+
+**Relationships:** The single visitor now arrives weekly (days 0, 7, 14, 21, and 28), with five witnessed conversations per seed. Trust changes are tied to actual social event IDs; the custom is learned on the second observation, and each seed naturally produced one source-linked humor callback. No second person or multilateral social inference was introduced.
+
+**Restart:** Seed 13 resumed two long-running activities after deliberate wall-clock pauses on days 10 and 24; operator-metadata pause events had frozen world time and intact identity, habits and commitments.
+
+### v1.4 named grade promotions
+
+| Article | Before | After | Passing named test |
+|---|---|---|---|
+| 15 | Partial | Demonstrated (bounded scenario) | `Article 15: repeated context-specific failures change only the matching worksite score` |
+| 21 | Partial | Demonstrated (bounded scenario) | `Article 21: stale belief survives two days and corrects on actual failed use` |
+| 24 | Partial | Demonstrated (bounded scenario) | `Article 24: five closure attempts do not invent a resolved commitment` |
+| 26 | Partial | Demonstrated (bounded scenario) | `Article 26: save/resume fork preserves the following day choice distribution` |
+| 27 | Partial | Demonstrated (bounded scenario) | `Article 27: thirty-day lived development has event-backed changes rather than only saved identity` |
+| 31 | Partial | Demonstrated (bounded scenario) | `Article 31: a real loss changes at least one later post-recovery activity distribution` |
+| 32 | Partial | Demonstrated (bounded scenario) | `Article 32: self-explanation does not name a causally decisive hidden residue` |
+| 33 | Partial | Demonstrated (bounded scenario) | `Article 33: humor callback arises in an unattended week and cites the real funny event` |
+| 01 | Partial | Demonstrated (bounded scenario) | `Article 01: 30 independently recorded explanations are audited against visible and hidden causes` |
+| 07 | Partial | Demonstrated (bounded scenario) | `Article 07: full policy beats need-only baseline across five resource-conflict forks` |
+
+**Current ledger totals: 23 Demonstrated (bounded scenario), 10 Partial, 1 Unassessable (Article 23)**. Articles 05 and 06 remain explicitly **blocked on Jay's second-person choice**. Article 23 has only a model-free claims-check socket; the model Phase 3 has not been authorized or implemented. The readiness questions and attack plan are in `docs/phase-3-readiness.md`.
+
+**Weak positive findings must not be overstated:** Article 01's 30-decision audit has **15 supported explanations and 15 unexplained decisions**, zero unsupported claims and zero hidden-factor leaks. Article 07's full controller beat a simple needs-greedy baseline in all five tested resource conflicts but the baseline itself is intentionally modest. Article 31's post-restoration decision divergence occurred in only **one of five** matched loss seeds. Article 27 demonstrates month-long, event-anchored development, not proven generalized skill acquisition or predictor improvement. They earn bounded engineering grades, not full scientific or philosophical validation.
+
+**Deferred and negative:** Store-cap waste persists; no indefinite-horizon claim is made; household skill did not advance; the optional baseline branch may underperform on resource preparation; past notes on first-person provenance and character fidelity remain on record. The 30-sample fidelity packet is intentionally ungraded and requires Jay or Calibos's cold review. The generic baseline spec, all earlier frozen evidence, no-model boundary, no-second-person ruling, and unmodified clock contract remain in force.
