@@ -4,7 +4,23 @@ const open=c=>!c.done&&(c.status===undefined||c.status==='open');
 const actionFor=c=>c.action||'prepare';
 function matching(s,kind){return s.commitments.filter(c=>open(c)&&actionFor(c)===kind).sort((a,b)=>a.deadline-b.deadline);}
 function began(s,activity,log){
- const c=matching(s,activity.kind)[0];if(!c)return;
+ const c=matching(s,activity.kind)[0];
+ if(!c){
+  // A different, genuinely begun activity interrupts a partially finished
+  // multi-session undertaking. Do not invent an interruption without work.
+  for(const outstanding of s.commitments.filter(x=>open(x)&&(x.progressCount||0)>0&&
+    (x.progressCount||0)<(x.requiredProgress||1))){
+   const prior=s.commitmentProgress?.[outstanding.id]||{};
+   if(prior.interrupted)continue;
+   s.commitmentProgress[outstanding.id]={...prior,interrupted:true,
+     interruptCount:(prior.interruptCount||0)+1,interveningAction:activity.kind};
+   log(s,'commitment_interrupted','I set unfinished work aside for another obligation or ordinary need.',
+     {commitmentId:outstanding.id,interveningAction:activity.kind,
+      stage:outstanding.progressCount,requiredProgress:outstanding.requiredProgress,
+      reason:'competing_real_activity'});
+  }
+  return;
+ }
  activity.commitmentId=c.id;s.commitmentProgress??={};
  const previous=s.commitmentProgress[c.id],resuming=previous?.interrupted;
  const e=log(s,resuming?'commitment_resumed':'commitment_progress',
@@ -23,8 +39,14 @@ function completed(s,activity,log){
  if(!activity.commitmentId)return;
  const c=s.commitments.find(x=>x.id===activity.commitmentId);
  if(!c||!open(c))return;
- if(c.stockTarget&&s.stores[c.stockTarget.item]<c.stockTarget.minimum){
-  log(s,'commitment_progress','I worked toward the stored-provisions target but have not reached it.',{commitmentId:c.id,action:activity.kind,stockItem:c.stockTarget.item,current:s.stores[c.stockTarget.item],minimum:c.stockTarget.minimum});
+ c.progressCount=(c.progressCount||0)+1;
+ const targetReached=!c.stockTarget||s.stores[c.stockTarget.item]>=c.stockTarget.minimum;
+ const stagesFinished=c.progressCount>=(c.requiredProgress||1);
+ if(!targetReached||!stagesFinished){
+  log(s,'commitment_progress','I completed one real work session, but the undertaking remains open.',
+   {commitmentId:c.id,action:activity.kind,stage:c.progressCount,
+    requiredProgress:c.requiredProgress||1,stockTarget:c.stockTarget||null,
+    targetReached,sourceActionTick:s.clock.centibeats});
   return;
  }
  c.done=true;c.status='kept';c.keptAt=s.clock.centibeats;c.sourceAction=activity.kind;
@@ -43,23 +65,23 @@ function nextDay(s,log){
  s.commitments.push(c);
  log(s,'commitment_opened','I undertook the next hearth preparation.',{commitmentId:id,deadline:c.deadline});
 }
-function add(s,{id,title,deadline,action,stockTarget=null,origin='chosen'},log){
+function add(s,{id,title,deadline,action,stockTarget=null,origin='chosen',requiredProgress=1},log){
  if(!id||!title||!Number.isSafeInteger(deadline)||!action||s.commitments.some(c=>c.id===id))throw Error('Invalid or repeated commitment');
- const c={id,title,deadline,action,stockTarget,origin,status:'open',done:false};s.commitments.push(c);
- log(s,'commitment_opened','I accepted a new obligation.',{commitmentId:id,deadline,action,origin,stockTarget});
+ const c={id,title,deadline,action,stockTarget,origin,requiredProgress,progressCount:0,status:'open',done:false};s.commitments.push(c);
+ log(s,'commitment_opened','I accepted a new obligation.',{commitmentId:id,deadline,action,origin,stockTarget,requiredProgress});
  return c;
 }
 const MONTH_SCHEDULE=Object.freeze([
- {openDay:8,id:'MONTH-FOLIO',title:'Consult a folio before the tenth day closes',action:'read',dueDay:10},
- {openDay:16,id:'MONTH-INSTRUMENT',title:'Inspect the instrument before the eighteenth day closes',action:'inspect',dueDay:18},
- {openDay:23,id:'MONTH-PROVISIONS',title:'Store at least twelve units of food before the twenty-fifth day closes',action:'tend',dueDay:25,stockTarget:{item:'food',minimum:12}}
+ {openDay:8,id:'MONTH-FOLIO',title:'Consult folios in two sessions before the tenth day closes',action:'read',dueDay:10,requiredProgress:2},
+ {openDay:16,id:'MONTH-INSTRUMENT',title:'Inspect the instrument in two sessions before the eighteenth day closes',action:'inspect',dueDay:18,requiredProgress:2},
+ {openDay:23,id:'MONTH-PROVISIONS',title:'Tend two sessions and store at least twelve food before the twenty-fifth day closes',action:'tend',dueDay:25,requiredProgress:2,stockTarget:{item:'food',minimum:12}}
 ]);
 function scheduleMonth(s,log){
  for(const scheduled of MONTH_SCHEDULE){
   if(s.clock.day<scheduled.openDay||s.commitments.some(c=>c.id===scheduled.id))continue;
   const c=add(s,{id:scheduled.id,title:scheduled.title,
    deadline:scheduled.dueDay*100000+65000,action:scheduled.action,
-   stockTarget:scheduled.stockTarget||null,origin:'calendar'},log);
+   stockTarget:scheduled.stockTarget||null,origin:'calendar',requiredProgress:scheduled.requiredProgress||1},log);
   c.scheduledDay=scheduled.openDay;
  }
 }
