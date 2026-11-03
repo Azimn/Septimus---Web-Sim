@@ -128,7 +128,12 @@ function threeMind(){
  Post.writeReply(s,log,{letterId:l.id,privateToCarrier:true,fact:'The west jar contains a corrected measure'});
  s.location='garden';Post.postReply(s,log);
  const openBefore=s.commitments.find(x=>x.id==='POST-'+l.id)?.status;
+ // Posting after this carrier's arrival cannot be retroactively collected.
  Post.collectOutgoing(s,log);
+ const premature=s.mail.outgoing.some(x=>x.collectedAt);
+ Post.depart(s,log);
+ s.clock.day=5;s.clock.centibeats=542000;
+ Post.arrive(s,log);
  const openAfter=s.commitments.find(x=>x.id==='POST-'+l.id)?.status;
  const factKnownByCarrier=p.knowledge.some(x=>x.fact==='The west jar contains a corrected measure'),
   factKnownByRosa=rosa.knowledge.some(x=>x.fact==='The west jar contains a corrected measure');
@@ -142,7 +147,7 @@ function threeMind(){
   factKnownByCarrier,factKnownByRosa,hearsay:relay,correctedOnDirectVisit:!!correction,
   correctionSource:correction?.priorClaimId||null,
   passed:unread&&known&&openBefore==='open'&&openAfter==='kept'&&
-   factKnownByCarrier&&!factKnownByRosa&&!beforehand&&!!correction};
+   factKnownByCarrier&&!factKnownByRosa&&!beforehand&&!premature&&!!correction};
 }
 function SocialReturn(s,log){
  const Soc=require('../src/social');

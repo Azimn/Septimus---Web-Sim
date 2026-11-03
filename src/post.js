@@ -94,7 +94,9 @@ function stageDelivery(s,log,day,kind,record,handed){
 }
 function collectOutgoing(s,log){
  const mail=ensure(s);
- for(const x of mail.outgoing.filter(x=>x.postedAt&&!x.collectedAt)){
+ const carrier=carrierRecord(s);
+ if(!carrier.present||carrier.arrivalTick===undefined)return;
+ for(const x of mail.outgoing.filter(x=>x.postedAt&&!x.collectedAt&&carrier.arrivalTick>=x.postedAt)){
   x.collectedAt=s.clock.centibeats;
   const e=log(s,'reply_collected','The carrier collected a sealed reply from the box.',
    {replyId:x.id,letterId:x.letterId,personId:CARRIER,
