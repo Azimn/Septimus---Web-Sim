@@ -8,8 +8,19 @@ function month(day){const d=new Date(Date.UTC(1899,6,1)+(day-1)*86400000);return
 function winter(day){return [11,12,1,2,3].includes(month(day))}
 function price(base,day,kind){if(kind==='staples')return Math.ceil(price(12,day,'groceries')*13/6);const m=month(day);const factor=kind==='coal'?(winter(day)?1.35:1):kind==='groceries'?([12,1,2].includes(m)?1.20:1):kind==='science'?(winter(day)?1.10:1):1;return Math.ceil(base*factor)}
 function forecast(seed,day){return {rain:hash(seed,day,13)%100<(winter(day)?38:26),season:winter(day)?'cold':'mild'};}
-function create(){return {coal:{dry:3,wet:0,storage:'coal_pile'},heat:{fuelledUntil:0,room:'kitchen',warmth:0},fabric:{roof:62,floor:53,roofRepaired:0,floorRepaired:0,leaking:false,dryRooms:{bedroom:true,library:true,kitchen:true},roomGoods:{library:{paper:3}}},garden:{pathTendedTick:0,nettles:0,lastEncroachDay:0},lastFabricDay:0,lastWeatherDay:0,weather:{rain:false,season:'mild'},observed:{coal:null,roof:null,floor:null,nettles:null}};}
-function migrate(state){state.household??=create();const h=state.household;h.observed??={coal:null,roof:null,floor:null,nettles:null};return h}
+function create(){return {coal:{dry:3,wet:0,storage:'coal_pile'},heat:{fuelledUntil:0,room:'kitchen',warmth:0},fabric:{roof:62,floor:53,roofRepaired:0,floorRepaired:0,leaking:false,dryRooms:{bedroom:true,library:true,kitchen:true},roomGoods:{library:{paper:3}}},garden:{pathTendedTick:0,nettles:0,lastEncroachDay:0},lastFabricDay:0,lastWeatherDay:0,weather:{rain:false,season:'mild'},observed:{coal:null,roof:null,floor:null,nettles:null},water:{capacity:120,stored:80,captured:0,consumed:0,lastRainDay:null}};}
+function migrate(state){state.household??=create();const h=state.household;h.observed??={coal:null,roof:null,floor:null,nettles:null};h.water??={capacity:120,stored:80,captured:0,consumed:0,lastRainDay:null};return h}
+// The tower cistern is its only household water supply. Old valid saves acquire a
+// single initial cistern on first native state migration; past genesis stays untouched.
+// Only applyDay's receipted rain may increase stored water.
+function hasWater(state,units=1){return migrate(state).water.stored>=units;}
+function drawWater(state,units,action){
+ if(!Number.isSafeInteger(units)||units<=0)throw Error('Invalid water draw');
+ const w=migrate(state).water;
+ if(w.stored<units)throw Error(`Insufficient cistern water for ${action}`);
+ const before=w.stored;w.stored-=units;w.consumed+=units;
+ return {source:'tower_cistern',purpose:action,units,storedBefore:before,storedAfter:w.stored};
+}
 function comfort(state,room){const h=migrate(state),cold=winter(state.day),heated=room==='kitchen'&&h.heat.fuelledUntil>=state.tick;
  const dry=h.fabric.dryRooms[room]!==false;
  const pipeBoost=heated?60:h.heat.fuelledUntil>=state.tick?(room==='bedroom'?34:room==='library'?24:8):0;
@@ -18,7 +29,14 @@ function comfort(state,room){const h=migrate(state),cold=winter(state.day),heate
 function transit(seed,orderId){const n=hash(seed,orderId,41);return {late:1+(n%9),wet:(hash(seed,orderId,42)%100)<37};}
 function applyDay(state,emit){const h=migrate(state);if(h.lastFabricDay===state.day)return;
  const weather=forecast(state.seed,state.day);h.weather=weather;h.lastFabricDay=state.day;
- const rain=weather.rain;h.fabric.floor=clamp(h.fabric.floor-(state.day%3===0?.27:.11));
+ const rain=weather.rain;
+ if(rain&&h.water.lastRainDay!==state.day){
+  const before=h.water.stored,added=Math.min(36,h.water.capacity-before);
+  h.water.stored+=added;h.water.captured+=added;h.water.lastRainDay=state.day;
+  emit('rain_captured','Rainwater ran from the tower roof into its finite cistern',
+   {source:'receipted_rain',day:state.day,capacity:h.water.capacity,storedBefore:before,added,storedAfter:h.water.stored},false);
+ }
+ h.fabric.floor=clamp(h.fabric.floor-(state.day%3===0?.27:.11));
  h.fabric.roof=clamp(h.fabric.roof-(rain?.50:.16));
  const leaking=rain&&h.fabric.roof<47;
  if(leaking){h.fabric.dryRooms.library=false;h.fabric.leaking=true;
@@ -33,4 +51,4 @@ function applyDay(state,emit){const h=migrate(state);if(h.lastFabricDay===state.
 }
 function traffic(state,emit){const h=migrate(state);h.fabric.floor=clamp(h.fabric.floor-.012);if(h.fabric.floor<12&&hash(state.seed,state.tick,68)%23===0){state.health=clamp(state.health-3);emit('floor_hazard','The stair boards shifted underfoot',{floor:'hall',healthLost:3},true);}}
 function exposure(state,room,emit){const c=comfort(state,room);if(c.warmth<34){if(room==='bedroom'&&state.tick%4===0)state.health=clamp(state.health-.65);if(state.tick%18===0)emit('cold_exposure','The chamber was cold enough to disturb rest and strength',{room},true);}return c}
-module.exports={create,migrate,month,winter,price,forecast,transit,applyDay,traffic,comfort,exposure,hash};
+module.exports={create,migrate,month,winter,price,forecast,transit,applyDay,traffic,comfort,exposure,hasWater,drawWater,hash};

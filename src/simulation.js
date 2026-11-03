@@ -80,9 +80,9 @@ function choose(state,evidence={}){
  const n=state.needs,p=state.stock,g=state.garden,options=[],h=Household.migrate(state);
  const add=(kind,score,reason,target,detail={})=>options.push({kind,score,reason,target,detail,memoryIds:(evidence[kind]||[]).slice(-3)});
  // Survival pressure is defined over needs, not the text generated about those needs.
- if(n.thirst>=38)add('drink',(n.thirst>=87?350:50)+n.thirst*1.5,`Thirst pressure ${n.thirst.toFixed(1)}`,'sink');
+ if(n.thirst>=38&&Household.hasWater(state,1))add('drink',(n.thirst>=87?350:50)+n.thirst*1.5,`Thirst pressure ${n.thirst.toFixed(1)}`,'sink');
  if(n.hunger>=44&&p.meals>0)add('eat',(n.hunger>=91?345:46)+n.hunger*1.5,`Hunger ${n.hunger.toFixed(1)}; prepared food exists`,'table');
- if(n.hunger>=40&&p.meals<1&&(p.vegetables>0||p.milk>0&&p.grain>0))add('cook',(n.hunger>=91?340:47)+n.hunger*1.4,`No prepared meal; ingredients stored in pantry`,'stove');
+ if(n.hunger>=40&&p.meals<1&&Household.hasWater(state,2)&&(p.vegetables>0||p.milk>0&&p.grain>0))add('cook',(n.hunger>=91?340:47)+n.hunger*1.4,`No prepared meal; ingredients stored in pantry`,'stove');
  // Sustained work cannot outrank every rest opportunity until fatigue reaches 100.
  if(n.fatigue>=66)add('sleep',40+n.fatigue+(n.fatigue>=85?230+4*(n.fatigue-85):n.fatigue>=75?90:0),`Physical fatigue ${n.fatigue.toFixed(1)}`,'bed');
  if(n.bladder>=66)add('toilet',46+n.bladder+(n.bladder>=85?225+4*(n.bladder-85):n.bladder>=75?85:0),'Water closet needed','toilet');
@@ -90,8 +90,8 @@ function choose(state,evidence={}){
  if(!state.carried&&state.orders.some(o=>o.arrived&&!o.collected))add('collect',195,'A real delivery is at the letter box','mailbox');
  if(g.vegetables.stage==='ripe')add('harvest_vegetables',130+n.hunger*.25,'Ripe vegetables in the garden','vegetable_plot');
  if(g.tea.stage==='ripe')add('harvest_tea',76,'Ripe leaves on the tea bushes','tea_plot');
- if(g.vegetables.stage==='growing'&&!g.vegetables.watered)add('water_vegetables',80,'Vegetable soil needs watering','vegetable_plot');
- if(g.tea.stage==='growing'&&!g.tea.watered)add('water_tea',65,'Tea bushes need watering','tea_plot');
+ if(g.vegetables.stage==='growing'&&!g.vegetables.watered&&Household.hasWater(state,2))add('water_vegetables',80,'Vegetable soil needs watering','vegetable_plot');
+ if(g.tea.stage==='growing'&&!g.tea.watered&&Household.hasWater(state,2))add('water_tea',65,'Tea bushes need watering','tea_plot');
  if(g.vegetables.stage==='empty'&&p.vegetable_seeds>0)add('plant_vegetables',67,'Unused vegetable seeds and a free plot','vegetable_plot');
  if(g.tea.stage==='empty'&&p.tea_seeds>0)add('plant_tea',72,'Unused tea seeds and a free plot','tea_plot');
  const pantry=Pantry.plan(state);
@@ -132,14 +132,14 @@ function choose(state,evidence={}){
  // Earned receivables should not sit unposted while the pantry is being depleted.
  if(state.researchReports>0)add('post_report',state.wallet<90?242:110,'Post a completed report so earned payment can reach the household','mailbox');
  if(p.tea_cups>0&&n.thirst>=16)add('sip_tea',75+n.thirst*.8,'Freshly brewed tea','table');
- if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48)add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
+ if(p.tea_leaves>0&&p.tea_cups<1&&n.thirst>=12&&n.thirst<48&&Household.hasWater(state,1))add('brew_tea',54+n.thirst,'Dried tea leaves and a working kitchen range','stove');
  if(state.booksRead.length<BOOKS.length&&n.boredom>=34)
   add('read',36+n.boredom*.9+(n.boredom>=85?190+3*(n.boredom-85):0),'Curiosity and an unread book on the shelf','bookshelf');
  if((evidence.__pendingJournal||[]).length>0&&state.minute>=1080&&state.minute<1380&&(state.journal?.lastWrittenDay??0)<state.day)add('write_journal',125,'At evening I ought to examine the most consequential events of the day','journal',{sourceEventId:evidence.__pendingJournal[0],sourceEventIds:evidence.__pendingJournal.slice(0,5)});
  const notebook=notebookChoice(state,evidence);
  if(notebook)add('read_journal',notebook.score+(n.boredom>=85?200+3*(n.boredom-85):0),notebook.reason,'journal',notebook.detail);
  if((state.lab.damage>0&&p.spares>0)||(p.reagents>0))
-  add('work',((state.wallet<55||(state.wallet<90&&n.boredom<65))&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
+  if(state.lab.clutter===0||Household.hasWater(state,1))add('work',((state.wallet<55||(state.wallet<90&&n.boredom<65))&&p.reagents>0?206:46+n.boredom*.35),'A verifiable physical repair or experiment is possible','bench');
  if(n.boredom>50&&state.booksRead.length===BOOKS.length)
   add('reflect',20+n.boredom*.2+(n.boredom>=85?210+3*(n.boredom-85):0),'Unhurried thought about verified experiences','table');
  if(!options.length)add('wait',1,'No currently workable intention','bed');
@@ -195,13 +195,13 @@ function stableChoiceNoise(seed,tick,kind){
 function stockChange(state,delta){for(const [key,value] of Object.entries(delta)){if(!(key in state.stock))throw Error(`Unknown stock ${key}`);const after=state.stock[key]+value;if(after<0)throw Error(`Insufficient ${key}`);state.stock[key]=after}}
 function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.lab,garden=state.garden,kind=goal.kind;
  switch(kind){
- case 'drink':n.thirst=cap(n.thirst-78);n.bladder=cap(n.bladder+9);state.counters.drinks++;receipt(state,events,'drink_sink','Drank potable water from the kitchen water point',{source:'scenario water service; historical mechanism unverified',finiteBottledStock:false});break;
+ case 'drink':{const water=Household.drawWater(state,1,'drink');n.thirst=cap(n.thirst-78);n.bladder=cap(n.bladder+9);state.counters.drinks++;receipt(state,events,'drink_sink','Drank collected rainwater from the tower cistern',{water});break;}
  case 'eat':stockChange(state,{meals:-1});n.hunger=cap(n.hunger-75);state.counters.meals++;receipt(state,events,'eat_meal','Sat at the table and ate a cooked meal',{mealsRemaining:p.meals});break;
- case 'cook':{let recipe;if(p.vegetables>=1){stockChange(state,{vegetables:-1});recipe='vegetable soup'}else if(p.milk>=1&&p.grain>=1){stockChange(state,{milk:-1,grain:-1});recipe='milk porridge'}else throw Error('No recipe available');stockChange(state,{meals:1});receipt(state,events,'cook',`Cooked ${recipe} on the kitchen range`,{recipe,mealsPrepared:1});break}
+ case 'cook':{const water=Household.drawWater(state,2,'cook');let recipe;if(p.vegetables>=1){stockChange(state,{vegetables:-1});recipe='vegetable soup'}else if(p.milk>=1&&p.grain>=1){stockChange(state,{milk:-1,grain:-1});recipe='milk porridge'}else throw Error('No recipe available');stockChange(state,{meals:1});receipt(state,events,'cook',`Cooked ${recipe} on the kitchen range`,{recipe,mealsPrepared:1,water});break}
  case 'sip_tea':stockChange(state,{tea_cups:-1});n.thirst=cap(n.thirst-43);n.bladder=cap(n.bladder+8);state.counters.tea++;receipt(state,events,'drink_tea','Drank a freshly brewed cup of tea',{source:'prepared tea'});break;
- case 'brew_tea':stockChange(state,{tea_leaves:-1,tea_cups:1});receipt(state,events,'brew_tea','Boiled tap water and steeped dried tea leaves',{teaLeavesRemaining:p.tea_leaves});break;
+ case 'brew_tea':{const water=Household.drawWater(state,1,'brew_tea');stockChange(state,{tea_leaves:-1,tea_cups:1});receipt(state,events,'brew_tea','Boiled stored rainwater and steeped dried tea leaves',{teaLeavesRemaining:p.tea_leaves,water});break;}
  case 'sleep':{const c=Household.comfort(state,'bedroom');const relief=c.warmth<35?44:76; /* A03/E03: 159 cold rests/60d repay 116.6 >112.32 fatigue/day */n.fatigue=cap(n.fatigue-relief);state.health=cap(state.health+10); /* A07/E07: sleep is a bounded health recovery action */ if(c.warmth<35)state.health=cap(state.health-.8);receipt(state,events,'sleep','Slept on the iron bedstead',{energyRestored:true,restRelief:relief,coldRoom:c.warmth<35});break;}
- case 'toilet':n.bladder=cap(n.bladder-90);receipt(state,events,'toilet','Used the plumbed water closet');break;
+ case 'toilet':{n.bladder=cap(n.bladder-90);const water=Household.hasWater(state,1)?Household.drawWater(state,1,'wash'):null;receipt(state,events,'toilet',water?'Used the washroom and washed with stored water':'Used the washroom without water for washing',{water,washed:Boolean(water)});break;}
  case 'write_journal':{const sourceEventId=goal.detail?.sourceEventId;if(!sourceEventId)throw Error('No grounded journal entry to write');state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};state.journal.lastWriteTick=state.tick;state.journal.lastWrittenDay=state.day;state.journal.entries++;receipt(state,events,'journal_write','Wrote an evening retrospective in the private scientific diary',{sourceEventId,sourceEventIds:goal.detail.sourceEventIds||[sourceEventId]});break;}
  case 'read_journal':{state.journal??={lastReadTick:-999,lastWriteTick:-999,folioCursor:0,entries:0};
  const folioIndex=goal.detail?.folioIndex??state.journal.folioCursor,before=n.boredom;
@@ -211,13 +211,13 @@ function action(state,events,goal){const n=state.needs,p=state.stock,lab=state.l
  receipt(state,events,'journal_read','Consulted an older passage in the private notebook',{folioIndex,mechanism:goal.detail?.mechanism||'chair',cueType:goal.detail?.cueType||null,cueValue:goal.detail?.cueValue||null,boredomBefore:before,boredomAfter:n.boredom});break;}
  case 'read':{const title=BOOKS.find(x=>!state.booksRead.includes(x));if(!title){receipt(state,events,'read_unavailable','No unread books remain');break;}const page=(state.bookProgress[title]||0)+1;state.bookProgress[title]=page;n.boredom=cap(n.boredom-33);receipt(state,events,'read_section',`Read section ${page} of ${title}`,{title,page});if(page>=2){state.booksRead.push(title);receipt(state,events,'book_completed',`Finished ${title}`,{title,sections:2});}break}
  case 'work':{if(!lab.lampLit){if(p.lamp_oil<1)throw Error('Lamp has no oil');stockChange(state,{lamp_oil:-1});lab.lampLit=true;receipt(state,events,'light_lamp','Lit the Laboratory oil lamp',{oilRemaining:p.lamp_oil});return false}
- if(lab.clutter>0){lab.clutter--;receipt(state,events,'clean_bench','Cleared clutter from the physical workbench',{remainingClutter:lab.clutter});return false}
+ if(lab.clutter>0){if(!Household.hasWater(state,1)){receipt(state,events,'wash_denied','Cannot wash the workbench with an empty cistern',{waterAvailable:0});return true}const water=Household.drawWater(state,1,'wash_bench');lab.clutter--;receipt(state,events,'clean_bench','Washed and cleared the physical workbench',{remainingClutter:lab.clutter,water});return false}
  if(lab.damage>0&&p.spares>0){stockChange(state,{spares:-1});lab.damage--;lab.repairs++;state.counters.work++;receipt(state,events,'repair','Repaired the Laboratory instrument',{damageRemaining:lab.damage,sparesRemaining:p.spares});}
  else if(p.reagents>0){stockChange(state,{reagents:-1});lab.experiments++;state.counters.work++;state.researchReports++;receipt(state,events,'experiment','Completed a documented chemical observation',{experiments:lab.experiments,reportsToPost:state.researchReports});}else throw Error('No work materials remain');n.boredom=cap(n.boredom-31);n.fatigue=cap(n.fatigue+11);break}
  case 'plant_vegetables':stockChange(state,{vegetable_seeds:-1});garden.vegetables={stage:'growing',plantedTick:state.tick,watered:false};receipt(state,events,'plant','Planted vegetable seeds in garden plot',{crop:'vegetables'});break;
  case 'plant_tea':stockChange(state,{tea_seeds:-1});garden.tea={stage:'growing',plantedTick:state.tick,watered:false};receipt(state,events,'plant','Planted tea seedlings in garden plot',{crop:'tea'});break;
- case 'water_vegetables':garden.vegetables.watered=true;receipt(state,events,'water_garden','Watered the vegetable plot using tap water',{crop:'vegetables'});break;
- case 'water_tea':garden.tea.watered=true;receipt(state,events,'water_garden','Watered the tea bushes using tap water',{crop:'tea'});break;
+ case 'water_vegetables':{const water=Household.drawWater(state,2,'garden_vegetables');garden.vegetables.watered=true;receipt(state,events,'water_garden','Watered the vegetable plot from the cistern',{crop:'vegetables',water});break;}
+ case 'water_tea':{const water=Household.drawWater(state,2,'garden_tea');garden.tea.watered=true;receipt(state,events,'water_garden','Watered the tea bushes from the cistern',{crop:'tea',water});break;}
  case 'harvest_vegetables':if(garden.vegetables.stage!=='ripe')throw Error('Vegetables not ripe');state.carried={vegetables:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.vegetables={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Harvested homegrown vegetables',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'harvest_tea':if(garden.tea.stage!=='ripe')throw Error('Tea not ripe');state.carried={tea_leaves:Math.max(1,3-Math.floor(Household.migrate(state).garden.nettles/34))};garden.tea={stage:'empty',plantedTick:null,watered:false};state.counters.harvests++;receipt(state,events,'harvest','Picked and dried homegrown tea leaves',{carried:clone(state.carried),nettles:Household.migrate(state).garden.nettles});break;
  case 'put_away':if(!state.carried)throw Error('Nothing to put away');stockChange(state,state.carried);receipt(state,events,'put_away','Put a physical parcel or harvest into pantry storage',{goods:state.carried});state.carried=null;break;
@@ -244,15 +244,16 @@ function goalStillPossible(state,goal){
  if(k==='collect')return !state.carried&&state.orders.some(o=>o.arrived&&!o.collected);
  if(k==='put_away')return Boolean(state.carried);
  if(k==='eat')return p.meals>0;
- if(k==='cook')return p.vegetables>0||(p.milk>0&&p.grain>0);
- if(k==='brew_tea')return p.tea_leaves>0;
+ if(k==='drink')return Household.hasWater(state,1);
+ if(k==='cook')return Household.hasWater(state,2)&&(p.vegetables>0||(p.milk>0&&p.grain>0));
+ if(k==='brew_tea')return p.tea_leaves>0&&Household.hasWater(state,1);
  if(k==='sip_tea')return p.tea_cups>0;
  if(k==='harvest_vegetables')return g.vegetables.stage==='ripe';
  if(k==='harvest_tea')return g.tea.stage==='ripe';
  if(k==='plant_vegetables')return g.vegetables.stage==='empty'&&p.vegetable_seeds>0;
  if(k==='plant_tea')return g.tea.stage==='empty'&&p.tea_seeds>0;
- if(k==='water_vegetables')return g.vegetables.stage==='growing'&&!g.vegetables.watered;
- if(k==='water_tea')return g.tea.stage==='growing'&&!g.tea.watered;
+ if(k==='water_vegetables')return g.vegetables.stage==='growing'&&!g.vegetables.watered&&Household.hasWater(state,2);
+ if(k==='water_tea')return g.tea.stage==='growing'&&!g.tea.watered&&Household.hasWater(state,2);
  if(k==='post_report')return state.researchReports>0;
  if(k.startsWith('order_')){const c=CATALOG[k.slice(6)];return Boolean(c)&&state.wallet>=Household.price(c.price,state.day,k.slice(6))}
  if(k==='read')return state.booksRead.length<BOOKS.length;
@@ -261,7 +262,7 @@ function goalStillPossible(state,goal){
  if(k==='repair_roof')return state.stock.roofing>0;
  if(k==='repair_floor')return state.stock.boards>0;
  if(k==='stoke_hearth')return Household.migrate(state).coal.dry+Household.migrate(state).coal.wet>0;
- if(k==='work')return (state.lab.damage>0&&p.spares>0)||p.reagents>0;
+ if(k==='work')return (state.lab.clutter===0||Household.hasWater(state,1))&&((state.lab.damage>0&&p.spares>0)||p.reagents>0);
  return true;
 }
 
