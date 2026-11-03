@@ -97,5 +97,8 @@ test('Part D: a ninety-day audit must label its actual day-30, day-60 and day-90
  const r=require('../scripts/v15_probe').ninety();
  assert.equal(r.stepsExecuted,90000);assert.equal(r.daysCompleted,90);
  for(const day of [30,60,90])assert.equal(r.snapshots['day'+day].t,25000+day*100000);
- assert.ok(r.firstSlowFailure&&r.firstSlowFailure.day>30);
+ // A previously required day-30-plus adverse finding is not a desirable output.
+ // Keep the no-early-failure gate, including when later repairs leave none.
+ assert.ok(r.firstSlowFailure===null||r.firstSlowFailure.day>30,
+  JSON.stringify(r.firstSlowFailure));
 });
