@@ -1,0 +1,48 @@
+{
+  "codeHead": "cc2065dd1f31a6db911736c592858aac10acc751",
+  "ciRun": 41591212992,
+  "archiveGitBlob": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "identityDigest": "d581eeb2fd4eb985b705a318eb1bd76a12f1c42895839b2f77b64d6d2056f098",
+  "balanceConstants": {
+    "growth": 140000,
+    "harvestFood": 8,
+    "plantWater": 1,
+    "gatherFuel": 4,
+    "drawWater": 6,
+    "maxFood": 24,
+    "maxFuel": 12,
+    "maxWater": 18,
+    "hungerPenaltyFrom": 75,
+    "workFailureHunger": 92,
+    "workFailureEnergy": 22,
+    "starvingFrom": 90,
+    "exhaustedFrom": 12,
+    "healthLossStarving": 0.065,
+    "healthLossExhausted": 0.018,
+    "healthRecoveryPerRest": 0.013,
+    "deathThreshold": 0,
+    "companyDecay": 0.019
+  },
+  "acceptance": {
+    "monthCompletes": true,
+    "fiveSurvive": true,
+    "producedFood": true,
+    "visitorsMet": true,
+    "pauses": true,
+    "variety": true,
+    "starvationControl": true,
+    "scheduledMonthTasks": true,
+    "monthCommitmentResolution": true,
+    "naturalMonthInterruption": true,
+    "naturalHumorCallback": true,
+    "livedQuirkDevelopment": true
+  },
+  "stepsPerSeed": 30000,
+  "seeds": [
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}

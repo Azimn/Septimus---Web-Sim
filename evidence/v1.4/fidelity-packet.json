@@ -1,0 +1,988 @@
+[
+  {
+    "seed": 11,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "read",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 77.96,
+      "hunger": 42.06,
+      "comfort": 69.99,
+      "stimulation": 48.97,
+      "company": 44.98
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [
+      "C1"
+    ],
+    "sourceFolioIds": [],
+    "decisionScore": 56.43,
+    "decisionMargin": 2.8
+  },
+  {
+    "seed": 11,
+    "tick": 527000,
+    "day": 5,
+    "eventId": "L553",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 86.36,
+      "hunger": 4.86,
+      "comfort": 98.84,
+      "stimulation": 99.28,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C6"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 11,
+    "tick": 1027800,
+    "day": 10,
+    "eventId": "L1137",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 51.08,
+      "hunger": 15.78,
+      "comfort": 99.16,
+      "stimulation": 100,
+      "company": 17.28
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C11"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 11,
+    "tick": 1526100,
+    "day": 15,
+    "eventId": "L1678",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 60.6,
+      "hunger": 11.64,
+      "comfort": 96.9,
+      "stimulation": 100,
+      "company": 57.62
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C16"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 11,
+    "tick": 2025600,
+    "day": 20,
+    "eventId": "L2221",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 69.28,
+      "hunger": 7.14,
+      "comfort": 97.65,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C21"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 11,
+    "tick": 2525400,
+    "day": 25,
+    "eventId": "L2771",
+    "kind": "tend",
+    "type": "completed",
+    "text": "I tended the patch beside the tower.",
+    "room": "garden",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 80.36,
+      "hunger": 23.88,
+      "comfort": 100,
+      "stimulation": 97.84,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "garden",
+    "perceived": [
+      "path",
+      "plot"
+    ],
+    "pendingCommitments": [
+      "C26"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 12,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "eat",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 77.96,
+      "hunger": 42.06,
+      "comfort": 69.99,
+      "stimulation": 48.97,
+      "company": 44.98
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [
+      "C1"
+    ],
+    "sourceFolioIds": [],
+    "decisionScore": 54.63,
+    "decisionMargin": 2.2
+  },
+  {
+    "seed": 12,
+    "tick": 525700,
+    "day": 5,
+    "eventId": "L551",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 86.36,
+      "hunger": 6.8,
+      "comfort": 98.84,
+      "stimulation": 99.28,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C6"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 12,
+    "tick": 1027700,
+    "day": 10,
+    "eventId": "L1137",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 51.08,
+      "hunger": 15.78,
+      "comfort": 99.16,
+      "stimulation": 100,
+      "company": 17.3
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C11"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 12,
+    "tick": 1525400,
+    "day": 15,
+    "eventId": "L1692",
+    "kind": "diary",
+    "type": "completed",
+    "text": "I returned to the notebook after sleep. The work remains mine to judge.",
+    "room": "library",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 99.16,
+      "hunger": 38.94,
+      "comfort": 99.79,
+      "stimulation": 84.13,
+      "company": 85.76
+    },
+    "healthOperatorOnly": 100,
+    "position": "library",
+    "perceived": [
+      "folios",
+      "notebook"
+    ],
+    "pendingCommitments": [
+      "C16"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 12,
+    "tick": 2025000,
+    "day": 20,
+    "eventId": "L2231",
+    "kind": "diary",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 99.96,
+      "hunger": 15.48,
+      "comfort": 99.99,
+      "stimulation": 84.04,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [
+      "C21"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": 61.3,
+    "decisionMargin": 11.01
+  },
+  {
+    "seed": 12,
+    "tick": 2525700,
+    "day": 25,
+    "eventId": "L2816",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 87.04,
+      "hunger": 21.36,
+      "comfort": 99.01,
+      "stimulation": 99.1,
+      "company": 25.7
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "MONTH-PROVISIONS",
+      "C26"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 13,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "eat",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 77.96,
+      "hunger": 42.06,
+      "comfort": 69.99,
+      "stimulation": 48.97,
+      "company": 44.98
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [
+      "C1"
+    ],
+    "sourceFolioIds": [],
+    "decisionScore": 55.63,
+    "decisionMargin": 2.2
+  },
+  {
+    "seed": 13,
+    "tick": 529900,
+    "day": 5,
+    "eventId": "L605",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 47.96,
+      "hunger": 9.84,
+      "comfort": 99.16,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C6"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 13,
+    "tick": 1027200,
+    "day": 10,
+    "eventId": "L1164",
+    "kind": "read",
+    "type": "completed",
+    "text": "I consulted folio E09-001: The Magistrate's Waiting Room. Its account belongs to my earlier life, not to this morning.",
+    "room": "library",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 84.72,
+      "hunger": 9.26,
+      "comfort": 98.43,
+      "stimulation": 98.05,
+      "company": 45.4
+    },
+    "healthOperatorOnly": 100,
+    "position": "library",
+    "perceived": [
+      "folios",
+      "notebook"
+    ],
+    "pendingCommitments": [
+      "C11"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 13,
+    "tick": 1525300,
+    "day": 15,
+    "eventId": "L1738",
+    "kind": "draw_water",
+    "type": "completed",
+    "text": "I drew a measured supply of water.",
+    "room": "garden",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 59.96,
+      "hunger": 10.68,
+      "comfort": 99.83,
+      "stimulation": 98.23,
+      "company": 57.78
+    },
+    "healthOperatorOnly": 100,
+    "position": "garden",
+    "perceived": [
+      "path",
+      "plot"
+    ],
+    "pendingCommitments": [
+      "C16"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 13,
+    "tick": 2032300,
+    "day": 20,
+    "eventId": "L2278",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 56.8,
+      "hunger": 11.64,
+      "comfort": 96.38,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C21"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 13,
+    "tick": 2529500,
+    "day": 25,
+    "eventId": "L2869",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 51.32,
+      "hunger": 9.48,
+      "comfort": 98.78,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C26"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 14,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "read",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 77.96,
+      "hunger": 42.06,
+      "comfort": 69.99,
+      "stimulation": 48.97,
+      "company": 44.98
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [
+      "C1"
+    ],
+    "sourceFolioIds": [],
+    "decisionScore": 54.43,
+    "decisionMargin": 2.8
+  },
+  {
+    "seed": 14,
+    "tick": 531400,
+    "day": 5,
+    "eventId": "L604",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 47.96,
+      "hunger": 9.84,
+      "comfort": 99.16,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C6"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 14,
+    "tick": 1026300,
+    "day": 10,
+    "eventId": "L1202",
+    "kind": "rest",
+    "type": "completed",
+    "text": "I sat awhile to recover my strength.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 54.2,
+      "hunger": 10.92,
+      "comfort": 99.63,
+      "stimulation": 96.97,
+      "company": 17.58
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 14,
+    "tick": 1531300,
+    "day": 15,
+    "eventId": "L1744",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 57.44,
+      "hunger": 19.32,
+      "comfort": 96.61,
+      "stimulation": 100,
+      "company": 56.58
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C16"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 14,
+    "tick": 2032000,
+    "day": 20,
+    "eventId": "L2321",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 57.24,
+      "hunger": 11.64,
+      "comfort": 96.9,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C21"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 14,
+    "tick": 2529100,
+    "day": 25,
+    "eventId": "L2913",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 60.28,
+      "hunger": 9.36,
+      "comfort": 96.9,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "MONTH-PROVISIONS",
+      "C26"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 15,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "read",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 77.96,
+      "hunger": 42.06,
+      "comfort": 69.99,
+      "stimulation": 48.97,
+      "company": 44.98
+    },
+    "healthOperatorOnly": 100,
+    "position": "bedchamber",
+    "perceived": [
+      "bed"
+    ],
+    "pendingCommitments": [
+      "C1"
+    ],
+    "sourceFolioIds": [],
+    "decisionScore": 55.43,
+    "decisionMargin": 2.8
+  },
+  {
+    "seed": 15,
+    "tick": 530900,
+    "day": 5,
+    "eventId": "L609",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 45.24,
+      "hunger": 9.84,
+      "comfort": 99.16,
+      "stimulation": 100,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C6"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 15,
+    "tick": 1032600,
+    "day": 10,
+    "eventId": "L1185",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 59.68,
+      "hunger": 4.86,
+      "comfort": 96.67,
+      "stimulation": 100,
+      "company": 16.32
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C11"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 15,
+    "tick": 1525000,
+    "day": 15,
+    "eventId": "L1733",
+    "kind": "eat",
+    "type": "decision",
+    "text": "I selected the strongest available course of action.",
+    "room": "library",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 99.12,
+      "hunger": 36.66,
+      "comfort": 99.78,
+      "stimulation": 84.1,
+      "company": 57.84
+    },
+    "healthOperatorOnly": 100,
+    "position": "library",
+    "perceived": [
+      "folios",
+      "notebook"
+    ],
+    "pendingCommitments": [
+      "C16"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": 53.76,
+    "decisionMargin": 2.65
+  },
+  {
+    "seed": 15,
+    "tick": 2032300,
+    "day": 20,
+    "eventId": "L2324",
+    "kind": "work",
+    "type": "completed",
+    "text": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 87.04,
+      "hunger": 41.28,
+      "comfort": 99.01,
+      "stimulation": 99.79,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "laboratory",
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "pendingCommitments": [
+      "C21"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  },
+  {
+    "seed": 15,
+    "tick": 2525200,
+    "day": 25,
+    "eventId": "L2923",
+    "kind": "diary",
+    "type": "completed",
+    "text": "I returned to the notebook after sleep. The work remains mine to judge.",
+    "room": "library",
+    "controller": "autonomous",
+    "needsOperatorOnly": {
+      "energy": 99.16,
+      "hunger": 37.8,
+      "comfort": 99.79,
+      "stimulation": 84.13,
+      "company": 0
+    },
+    "healthOperatorOnly": 100,
+    "position": "library",
+    "perceived": [
+      "folios",
+      "notebook"
+    ],
+    "pendingCommitments": [
+      "MONTH-PROVISIONS",
+      "C26"
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "decisionScore": null,
+    "decisionMargin": null
+  }
+]

@@ -1,0 +1,1070 @@
+{
+  "seed": 14,
+  "codeHead": "cc2065dd1f31a6db911736c592858aac10acc751",
+  "development": {
+    "day1": {
+      "tick": 125000,
+      "skills": {
+        "science": 6,
+        "household": 1
+      },
+      "habits": {
+        "read": 2,
+        "eat": 3,
+        "diary": 2,
+        "tend": 1,
+        "study": 3,
+        "prepare": 1,
+        "work": 4,
+        "converse": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "quirks": [
+        {
+          "description": "This account bears on my private intellectual preferences.",
+          "originEventId": "E09-001",
+          "observedEventId": "L8"
+        }
+      ]
+    },
+    "day30": {
+      "tick": 3025000,
+      "skills": {
+        "science": 164,
+        "household": 1
+      },
+      "habits": {
+        "read": 31,
+        "eat": 85,
+        "diary": 31,
+        "tend": 19,
+        "study": 16,
+        "prepare": 30,
+        "work": 162,
+        "converse": 10,
+        "rest": 47,
+        "sleep": 38,
+        "draw_water": 3,
+        "inspect": 2
+      },
+      "quirks": [
+        {
+          "description": "This account bears on my private intellectual preferences.",
+          "originEventId": "E09-001",
+          "observedEventId": "L8"
+        },
+        {
+          "description": "I have come to return habitually to work through my days in the tower.",
+          "originEventId": "L149",
+          "observedEventId": "L150",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "work"
+        },
+        {
+          "description": "I have come to return habitually to eat through my days in the tower.",
+          "originEventId": "L204",
+          "observedEventId": "L205",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "eat"
+        },
+        {
+          "description": "I have come to return habitually to rest through my days in the tower.",
+          "originEventId": "L419",
+          "observedEventId": "L420",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "rest"
+        },
+        {
+          "description": "I have come to return habitually to sleep through my days in the tower.",
+          "originEventId": "L437",
+          "observedEventId": "L438",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "sleep"
+        },
+        {
+          "description": "I have come to return habitually to diary through my days in the tower.",
+          "originEventId": "L445",
+          "observedEventId": "L446",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "diary"
+        },
+        {
+          "description": "I have come to return habitually to read through my days in the tower.",
+          "originEventId": "L468",
+          "observedEventId": "L469",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "read"
+        },
+        {
+          "description": "I have come to return habitually to prepare through my days in the tower.",
+          "originEventId": "L491",
+          "observedEventId": "L492",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "prepare"
+        },
+        {
+          "description": "I have come to return habitually to tend through my days in the tower.",
+          "originEventId": "L762",
+          "observedEventId": "L763",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "tend"
+        },
+        {
+          "description": "I have come to return habitually to study through my days in the tower.",
+          "originEventId": "L1134",
+          "observedEventId": "L1135",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "study"
+        }
+      ]
+    },
+    "skillDelta": {
+      "science": 158,
+      "household": 0
+    },
+    "allLivedQuirks": [
+      {
+        "description": "I have come to return habitually to work through my days in the tower.",
+        "originEventId": "L149",
+        "observedEventId": "L150",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "work",
+        "sourceEvent": {
+          "id": "L149",
+          "t": 130000,
+          "day": 1,
+          "type": "habit_formed",
+          "room": "laboratory",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "work",
+          "cue": "bench@laboratory",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to eat through my days in the tower.",
+        "originEventId": "L204",
+        "observedEventId": "L205",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "eat",
+        "sourceEvent": {
+          "id": "L204",
+          "t": 166100,
+          "day": 1,
+          "type": "habit_formed",
+          "room": "kitchen",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "eat",
+          "cue": "stores@kitchen",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to rest through my days in the tower.",
+        "originEventId": "L419",
+        "observedEventId": "L420",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "rest",
+        "sourceEvent": {
+          "id": "L419",
+          "t": 367800,
+          "day": 3,
+          "type": "habit_formed",
+          "room": "bedchamber",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "rest",
+          "cue": "bed@bedchamber",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to sleep through my days in the tower.",
+        "originEventId": "L437",
+        "observedEventId": "L438",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "sleep",
+        "sourceEvent": {
+          "id": "L437",
+          "t": 401600,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "bedchamber",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "sleep",
+          "cue": "bed@bedchamber",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to diary through my days in the tower.",
+        "originEventId": "L445",
+        "observedEventId": "L446",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "diary",
+        "sourceEvent": {
+          "id": "L445",
+          "t": 403700,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "library",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "diary",
+          "cue": "notebook@library",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to read through my days in the tower.",
+        "originEventId": "L468",
+        "observedEventId": "L469",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "read",
+        "sourceEvent": {
+          "id": "L468",
+          "t": 417300,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "library",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "read",
+          "cue": "folios@library",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to prepare through my days in the tower.",
+        "originEventId": "L491",
+        "observedEventId": "L492",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "prepare",
+        "sourceEvent": {
+          "id": "L491",
+          "t": 435100,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "kitchen",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "prepare",
+          "cue": "hearth@kitchen",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to tend through my days in the tower.",
+        "originEventId": "L762",
+        "observedEventId": "L763",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "tend",
+        "sourceEvent": {
+          "id": "L762",
+          "t": 673300,
+          "day": 6,
+          "type": "habit_formed",
+          "room": "garden",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "tend",
+          "cue": "plot@garden",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to study through my days in the tower.",
+        "originEventId": "L1134",
+        "observedEventId": "L1135",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "study",
+        "sourceEvent": {
+          "id": "L1134",
+          "t": 967000,
+          "day": 9,
+          "type": "habit_formed",
+          "room": "laboratory",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "study",
+          "cue": "specimens@laboratory",
+          "count": 5
+        }
+      }
+    ],
+    "allInheritedQuirks": [
+      {
+        "description": "This account bears on my private intellectual preferences.",
+        "originEventId": "E09-001",
+        "observedEventId": "L8",
+        "sourceEvent": null
+      }
+    ],
+    "predictorWeek1": {
+      "count": 98,
+      "hits": 34,
+      "rate": 0.3469387755102041
+    },
+    "predictorWeek4": {
+      "count": 104,
+      "hits": 27,
+      "rate": 0.25961538461538464
+    },
+    "week1ActivityDistribution": {
+      "read": 8,
+      "eat": 19,
+      "diary": 8,
+      "tend": 5,
+      "study": 4,
+      "prepare": 7,
+      "work": 37,
+      "converse": 1,
+      "rest": 10,
+      "sleep": 9,
+      "draw_water": 1
+    },
+    "week4ActivityDistribution": {
+      "work": 38,
+      "prepare": 7,
+      "eat": 21,
+      "rest": 11,
+      "converse": 2,
+      "sleep": 9,
+      "diary": 7,
+      "read": 7,
+      "study": 4,
+      "tend": 4,
+      "draw_water": 1
+    },
+    "habitFormations": [
+      {
+        "id": "L149",
+        "kind": "work",
+        "tick": 130000,
+        "day": 1
+      },
+      {
+        "id": "L204",
+        "kind": "eat",
+        "tick": 166100,
+        "day": 1
+      },
+      {
+        "id": "L419",
+        "kind": "rest",
+        "tick": 367800,
+        "day": 3
+      },
+      {
+        "id": "L437",
+        "kind": "sleep",
+        "tick": 401600,
+        "day": 4
+      },
+      {
+        "id": "L445",
+        "kind": "diary",
+        "tick": 403700,
+        "day": 4
+      },
+      {
+        "id": "L468",
+        "kind": "read",
+        "tick": 417300,
+        "day": 4
+      },
+      {
+        "id": "L491",
+        "kind": "prepare",
+        "tick": 435100,
+        "day": 4
+      },
+      {
+        "id": "L762",
+        "kind": "tend",
+        "tick": 673300,
+        "day": 6
+      },
+      {
+        "id": "L1134",
+        "kind": "study",
+        "tick": 967000,
+        "day": 9
+      }
+    ],
+    "habitCountsDay1": {
+      "read": 2,
+      "eat": 3,
+      "diary": 2,
+      "tend": 1,
+      "study": 3,
+      "prepare": 1,
+      "work": 4,
+      "converse": 1,
+      "rest": 1,
+      "sleep": 1
+    },
+    "habitCountsDay30": {
+      "read": 31,
+      "eat": 85,
+      "diary": 31,
+      "tend": 19,
+      "study": 16,
+      "prepare": 30,
+      "work": 162,
+      "converse": 10,
+      "rest": 47,
+      "sleep": 38,
+      "draw_water": 3,
+      "inspect": 2
+    }
+  },
+  "monthlyCommitments": [
+    {
+      "id": "MONTH-FOLIO",
+      "title": "Consult folios in two sessions before the tenth day closes",
+      "action": "read",
+      "status": "kept",
+      "opened": 8,
+      "deadline": 1065000,
+      "sourceAction": "read",
+      "keptAt": 917600,
+      "brokenAt": null,
+      "stockTarget": null,
+      "progressEvents": [
+        "L932",
+        "L936"
+      ],
+      "interrupts": [
+        "L941"
+      ],
+      "resumes": [
+        "L1056"
+      ]
+    },
+    {
+      "id": "MONTH-INSTRUMENT",
+      "title": "Inspect the instrument in two sessions before the eighteenth day closes",
+      "action": "inspect",
+      "status": "kept",
+      "opened": 16,
+      "deadline": 1865000,
+      "sourceAction": "inspect",
+      "keptAt": 1832700,
+      "brokenAt": null,
+      "stockTarget": null,
+      "progressEvents": [
+        "L2107",
+        "L2109"
+      ],
+      "interrupts": [
+        "L2114"
+      ],
+      "resumes": [
+        "L2121"
+      ]
+    },
+    {
+      "id": "MONTH-PROVISIONS",
+      "title": "Tend two sessions and store at least twelve food before the twenty-fifth day closes",
+      "action": "tend",
+      "status": "broken",
+      "opened": 23,
+      "deadline": 2565000,
+      "sourceAction": null,
+      "keptAt": null,
+      "brokenAt": 2565100,
+      "stockTarget": {
+        "item": "food",
+        "minimum": 12
+      },
+      "progressEvents": [
+        "L2830",
+        "L2836"
+      ],
+      "interrupts": [
+        "L2841"
+      ],
+      "resumes": []
+    }
+  ],
+  "monthlyDynamics": {
+    "dailyActivityDistribution": {
+      "0": {
+        "read": 1,
+        "eat": 2,
+        "diary": 1,
+        "tend": 1,
+        "study": 3,
+        "prepare": 1,
+        "work": 2,
+        "converse": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "1": {
+        "work": 7,
+        "eat": 3,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "study": 1,
+        "tend": 1
+      },
+      "2": {
+        "sleep": 2,
+        "work": 5,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "3": {
+        "sleep": 1,
+        "work": 5,
+        "diary": 1,
+        "tend": 1,
+        "eat": 2,
+        "prepare": 1,
+        "read": 1,
+        "rest": 1
+      },
+      "4": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 7,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "5": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "tend": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "6": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1
+      },
+      "7": {
+        "eat": 3,
+        "diary": 1,
+        "work": 6,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "converse": 2,
+        "sleep": 1
+      },
+      "8": {
+        "work": 7,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "tend": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "9": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "study": 1
+      },
+      "10": {
+        "work": 6,
+        "diary": 1,
+        "read": 1,
+        "eat": 3,
+        "tend": 1,
+        "prepare": 1,
+        "rest": 3,
+        "study": 1,
+        "sleep": 1
+      },
+      "11": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1
+      },
+      "12": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "study": 1
+      },
+      "13": {
+        "work": 6,
+        "diary": 1,
+        "eat": 4,
+        "read": 1,
+        "tend": 1,
+        "prepare": 1,
+        "rest": 2,
+        "sleep": 1
+      },
+      "14": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "eat": 2,
+        "converse": 2,
+        "tend": 1
+      },
+      "15": {
+        "work": 7,
+        "diary": 1,
+        "read": 1,
+        "draw_water": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 2
+      },
+      "16": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "eat": 3,
+        "read": 1,
+        "tend": 1,
+        "prepare": 1,
+        "study": 3,
+        "rest": 2
+      },
+      "17": {
+        "work": 6,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "study": 2,
+        "rest": 2,
+        "sleep": 1
+      },
+      "18": {
+        "eat": 3,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "tend": 1,
+        "inspect": 2,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "19": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 5,
+        "eat": 2,
+        "read": 1,
+        "prepare": 1,
+        "tend": 1,
+        "rest": 1
+      },
+      "20": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 7,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "21": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "tend": 1,
+        "prepare": 1,
+        "rest": 3,
+        "converse": 2
+      },
+      "22": {
+        "eat": 4,
+        "diary": 1,
+        "work": 6,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "study": 1,
+        "tend": 1
+      },
+      "23": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "eat": 4,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "study": 2
+      },
+      "24": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "eat": 2,
+        "read": 1,
+        "prepare": 1,
+        "tend": 1,
+        "draw_water": 1
+      },
+      "25": {
+        "work": 7,
+        "diary": 1,
+        "read": 1,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 2
+      },
+      "26": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "tend": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "27": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "study": 1,
+        "rest": 1,
+        "tend": 1
+      },
+      "28": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 4,
+        "read": 1,
+        "prepare": 1,
+        "converse": 3,
+        "rest": 2
+      },
+      "29": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "eat": 2,
+        "tend": 1
+      },
+      "30": {
+        "work": 2,
+        "diary": 1,
+        "eat": 1,
+        "read": 1
+      }
+    },
+    "healthTrajectory": [
+      {
+        "tick": 25000,
+        "health": 100
+      },
+      {
+        "tick": 100000,
+        "health": 100
+      },
+      {
+        "tick": 200000,
+        "health": 100
+      },
+      {
+        "tick": 300000,
+        "health": 100
+      },
+      {
+        "tick": 400000,
+        "health": 100
+      },
+      {
+        "tick": 500000,
+        "health": 100
+      },
+      {
+        "tick": 600000,
+        "health": 100
+      },
+      {
+        "tick": 700000,
+        "health": 100
+      },
+      {
+        "tick": 800000,
+        "health": 100
+      },
+      {
+        "tick": 900000,
+        "health": 100
+      },
+      {
+        "tick": 1000000,
+        "health": 100
+      },
+      {
+        "tick": 1100000,
+        "health": 100
+      },
+      {
+        "tick": 1200000,
+        "health": 100
+      },
+      {
+        "tick": 1300000,
+        "health": 100
+      },
+      {
+        "tick": 1400000,
+        "health": 100
+      },
+      {
+        "tick": 1500000,
+        "health": 100
+      },
+      {
+        "tick": 1600000,
+        "health": 100
+      },
+      {
+        "tick": 1700000,
+        "health": 100
+      },
+      {
+        "tick": 1800000,
+        "health": 100
+      },
+      {
+        "tick": 1900000,
+        "health": 100
+      },
+      {
+        "tick": 2000000,
+        "health": 100
+      },
+      {
+        "tick": 2100000,
+        "health": 100
+      },
+      {
+        "tick": 2200000,
+        "health": 100
+      },
+      {
+        "tick": 2300000,
+        "health": 100
+      },
+      {
+        "tick": 2400000,
+        "health": 100
+      },
+      {
+        "tick": 2500000,
+        "health": 100
+      },
+      {
+        "tick": 2600000,
+        "health": 100
+      },
+      {
+        "tick": 2700000,
+        "health": 100
+      },
+      {
+        "tick": 2800000,
+        "health": 100
+      },
+      {
+        "tick": 2900000,
+        "health": 100
+      },
+      {
+        "tick": 3000000,
+        "health": 100
+      }
+    ],
+    "harvestCapWasteUnits": 44,
+    "trustTrajectory": [
+      {
+        "id": "L55",
+        "tick": 44300,
+        "kind": "greeting",
+        "trust": 2,
+        "delta": 2
+      },
+      {
+        "id": "L63",
+        "tick": 52400,
+        "kind": "conversation",
+        "trust": 5,
+        "delta": 3
+      },
+      {
+        "id": "L848",
+        "tick": 744200,
+        "kind": "greeting",
+        "trust": 7,
+        "delta": 2
+      },
+      {
+        "id": "L855",
+        "tick": 747900,
+        "kind": "conversation",
+        "trust": 10,
+        "delta": 3
+      },
+      {
+        "id": "L856",
+        "tick": 747900,
+        "kind": "funny",
+        "trust": 10,
+        "delta": 0
+      },
+      {
+        "id": "L861",
+        "tick": 748900,
+        "kind": "conversation",
+        "trust": 13,
+        "delta": 3
+      },
+      {
+        "id": "L1652",
+        "tick": 1444200,
+        "kind": "greeting",
+        "trust": 15,
+        "delta": 2
+      },
+      {
+        "id": "L1660",
+        "tick": 1451200,
+        "kind": "conversation",
+        "trust": 18,
+        "delta": 3
+      },
+      {
+        "id": "L1665",
+        "tick": 1452200,
+        "kind": "conversation",
+        "trust": 21,
+        "delta": 3
+      },
+      {
+        "id": "L2469",
+        "tick": 2144200,
+        "kind": "greeting",
+        "trust": 23,
+        "delta": 2
+      },
+      {
+        "id": "L2476",
+        "tick": 2147200,
+        "kind": "conversation",
+        "trust": 26,
+        "delta": 3
+      },
+      {
+        "id": "L2481",
+        "tick": 2148200,
+        "kind": "conversation",
+        "trust": 29,
+        "delta": 3
+      },
+      {
+        "id": "L3268",
+        "tick": 2844200,
+        "kind": "greeting",
+        "trust": 31,
+        "delta": 2
+      },
+      {
+        "id": "L3274",
+        "tick": 2845300,
+        "kind": "conversation",
+        "trust": 34,
+        "delta": 3
+      },
+      {
+        "id": "L3279",
+        "tick": 2846300,
+        "kind": "conversation",
+        "trust": 37,
+        "delta": 3
+      },
+      {
+        "id": "L3303",
+        "tick": 2858800,
+        "kind": "conversation",
+        "trust": 40,
+        "delta": 3
+      }
+    ],
+    "customLearnedAt": {
+      "id": "L847",
+      "tick": 744200
+    },
+    "customObservedAfterLearning": 3,
+    "humorousCallbacks": [
+      {
+        "id": "L862",
+        "tick": 748900,
+        "sourceEventId": "L856"
+      }
+    ],
+    "unresolvedMonthTasks": [],
+    "monthTasksProgressed": 3,
+    "monthTasksInterrupted": 3,
+    "monthTasksResumed": 2,
+    "monthTasksResolved": 3
+  },
+  "finalStores": {
+    "food": 22,
+    "water": 8,
+    "fuel": 5,
+    "tea": 4
+  },
+  "finalHealth": 100
+}
