@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - name: Run v1.2 no-model endurance and discrimination evidence
+        run: node scripts/v12_probe.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
