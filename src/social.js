@@ -25,7 +25,7 @@ function meet(s,log){
 }
 function scheduled(s,log){
  const phase=s.clock.centibeats%100000,day=s.clock.day,p=person(s);
- if(phase>=44000&&phase<60000&&!p.present&&p.lastVisitDay!==day){p.lastVisitDay=day;arrive(s,log,true);}
+ if(day%7===0&&phase>=44000&&phase<60000&&!p.present&&p.lastVisitDay!==day){p.lastVisitDay=day;arrive(s,log,true);}
  if(phase>=60000&&p.present){depart(s,log);return;}
  if(!p.present||p.manuallyIntroduced)return;
  if(!p.room)p.room='library';

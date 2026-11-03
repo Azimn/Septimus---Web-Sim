@@ -58,8 +58,18 @@ function moveUnseen(s,id,room,log){if(!(id in OBJECTS)||!(room in ROOMS))throw E
 function impair(s,id,until,log){if(!((id in OBJECTS)||id.startsWith('room:')&&id.slice(5) in ROOMS))throw Error('Unknown loss target');
  if(!Number.isSafeInteger(until)||until<=s.clock.centibeats)throw Error('Invalid recovery time');
  s.worldLosses[id]=until;return log(s,'world_loss','An object or room became temporarily unusable.',{target:id,recoversTick:until,perceived:false});}
+function livedQuirk(s,sourceEventId,kind,log){
+ const source=s.events.find(e=>e.id===sourceEventId&&e.type==='habit_formed');
+ if(!source)return null;
+ if(s.quirks.some(q=>q.originEventId===sourceEventId))return null;
+ const description='I have come to return habitually to '+kind+' through my days in the tower.';
+ const e=log(s,'quirk_origin','I observed a habit acquired through repeated lived activity.',{sourceEventId,kind,memoryClass:'lived_runtime_memory'});
+ const q={description,originEventId:sourceEventId,observedEventId:e.id,
+   memoryClass:'lived_runtime_memory',kind};
+ s.quirks.push(q);return q;
+}
 function originQuirk(s,sourceEventId,description,log){if(!sourceEventId||!s.folioReads.some(x=>x.id===sourceEventId))throw Error('Quirk lacks consulted origin');
  if(s.quirks.some(x=>x.originEventId===sourceEventId))return null;
  const e=log(s,'quirk_origin','I recognized a preference in my earlier account.',{sourceEventId,description});
  const q={description,originEventId:sourceEventId,observedEventId:e.id};s.quirks.push(q);return q;}
-module.exports={observe,selfSheet,predictedAction,deliberate,ruminate,lesion,moveUnseen,impair,originQuirk};
+module.exports={observe,selfSheet,predictedAction,deliberate,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk};

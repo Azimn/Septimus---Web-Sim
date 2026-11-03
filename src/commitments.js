@@ -21,6 +21,10 @@ function completed(s,activity,log){
  if(!activity.commitmentId)return;
  const c=s.commitments.find(x=>x.id===activity.commitmentId);
  if(!c||!open(c))return;
+ if(c.stockTarget&&s.stores[c.stockTarget.item]<c.stockTarget.minimum){
+  log(s,'commitment_progress','I worked toward the stored-provisions target but have not reached it.',{commitmentId:c.id,action:activity.kind,stockItem:c.stockTarget.item,current:s.stores[c.stockTarget.item],minimum:c.stockTarget.minimum});
+  return;
+ }
  c.done=true;c.status='kept';c.keptAt=s.clock.centibeats;c.sourceAction=activity.kind;
  log(s,'commitment_kept','I fulfilled an obligation through actual work.',{commitmentId:c.id,action:activity.kind,deadline:c.deadline});
 }
@@ -37,10 +41,24 @@ function nextDay(s,log){
  s.commitments.push(c);
  log(s,'commitment_opened','I undertook the next hearth preparation.',{commitmentId:id,deadline:c.deadline});
 }
-function add(s,{id,title,deadline,action},log){
+function add(s,{id,title,deadline,action,stockTarget=null,origin='chosen'},log){
  if(!id||!title||!Number.isSafeInteger(deadline)||!action||s.commitments.some(c=>c.id===id))throw Error('Invalid or repeated commitment');
- const c={id,title,deadline,action,status:'open',done:false};s.commitments.push(c);
- log(s,'commitment_opened','I accepted a new obligation.',{commitmentId:id,deadline,action});
+ const c={id,title,deadline,action,stockTarget,origin,status:'open',done:false};s.commitments.push(c);
+ log(s,'commitment_opened','I accepted a new obligation.',{commitmentId:id,deadline,action,origin,stockTarget});
  return c;
 }
-module.exports={open,matching,began,interrupted,completed,deadlines,nextDay,add};
+const MONTH_SCHEDULE=Object.freeze([
+ {openDay:8,id:'MONTH-FOLIO',title:'Consult a folio before the tenth day closes',action:'read',dueDay:10},
+ {openDay:16,id:'MONTH-INSTRUMENT',title:'Inspect the instrument before the eighteenth day closes',action:'inspect',dueDay:18},
+ {openDay:23,id:'MONTH-PROVISIONS',title:'Store at least twelve units of food before the twenty-fifth day closes',action:'tend',dueDay:25,stockTarget:{item:'food',minimum:12}}
+]);
+function scheduleMonth(s,log){
+ for(const scheduled of MONTH_SCHEDULE){
+  if(s.clock.day<scheduled.openDay||s.commitments.some(c=>c.id===scheduled.id))continue;
+  const c=add(s,{id:scheduled.id,title:scheduled.title,
+   deadline:scheduled.dueDay*100000+65000,action:scheduled.action,
+   stockTarget:scheduled.stockTarget||null,origin:'calendar'},log);
+  c.scheduledDay=scheduled.openDay;
+ }
+}
+module.exports={open,matching,began,interrupted,completed,deadlines,nextDay,add,scheduleMonth,MONTH_SCHEDULE};
