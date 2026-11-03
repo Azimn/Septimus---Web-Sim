@@ -1,0 +1,3478 @@
+{
+  "schema": "simple-tower-v1.5-discriminations-v1",
+  "sourceHead": "980fbb4df7d81b361bfdbcc1ce3f51f8e174dbf1",
+  "probes": [
+    {
+      "article": 11,
+      "name": "low-energy high-hunger restriction versus healthy body and mid-task refusal",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "bodyLimits": {
+          "longActionCentibeats": 3700,
+          "minimumEnergy": 15,
+          "maximumHunger": 95
+        },
+        "lowAvailable": false,
+        "healthyAvailable": true,
+        "refusalReceipt": {
+          "id": "L7",
+          "t": 33000,
+          "day": 0,
+          "type": "action_failed",
+          "room": "laboratory",
+          "description": "I could not complete the intended work.",
+          "provenance": "lived_runtime_memory",
+          "kind": "work",
+          "reason": "physical_refusal",
+          "context": "bench@laboratory",
+          "controller": "player"
+        }
+      },
+      "limit": "Declared physiological thresholds are game-balance rules, not human mortality estimates."
+    },
+    {
+      "article": 13,
+      "name": "energy-matched conflict-deliberation lesion changes actual deadline outcomes",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "found": true,
+            "needs": {
+              "hunger": 75,
+              "stim": 80,
+              "energy": 45
+            },
+            "before": "eat",
+            "margin": 0.1700000000000017,
+            "full": "kept",
+            "ablated": "broken",
+            "rescoreEventId": "L3",
+            "better": true
+          },
+          {
+            "seed": 12,
+            "found": true,
+            "needs": {
+              "hunger": 75,
+              "stim": 80,
+              "energy": 45
+            },
+            "before": "eat",
+            "margin": 0.1700000000000017,
+            "full": "kept",
+            "ablated": "broken",
+            "rescoreEventId": "L3",
+            "better": true
+          },
+          {
+            "seed": 13,
+            "found": true,
+            "needs": {
+              "hunger": 75,
+              "stim": 80,
+              "energy": 45
+            },
+            "before": "eat",
+            "margin": 0.1700000000000017,
+            "full": "kept",
+            "ablated": "broken",
+            "rescoreEventId": "L3",
+            "better": true
+          },
+          {
+            "seed": 14,
+            "found": true,
+            "needs": {
+              "hunger": 80,
+              "stim": 80,
+              "energy": 45
+            },
+            "before": "eat",
+            "margin": 1.0700000000000074,
+            "full": "kept",
+            "ablated": "broken",
+            "rescoreEventId": "L3",
+            "better": true
+          },
+          {
+            "seed": 15,
+            "found": true,
+            "needs": {
+              "hunger": 80,
+              "stim": 80,
+              "energy": 45
+            },
+            "before": "eat",
+            "margin": 1.0700000000000074,
+            "full": "kept",
+            "ablated": "broken",
+            "rescoreEventId": "L3",
+            "better": true
+          }
+        ],
+        "betterCount": 5
+      },
+      "limit": "Comparison is under matched predeclared resource needs; deliberate only on close competing commitments."
+    },
+    {
+      "article": 19,
+      "name": "seeded unpredictable interruptions preserve spontaneous scientific initiative",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "interruptions": 7,
+            "baselineInitiatives": 25,
+            "interruptedInitiatives": 22,
+            "postInterruptionInitiatives": 11,
+            "unpromptedSources": [
+              "L4",
+              "L34",
+              "L65",
+              "L74",
+              "L123"
+            ]
+          },
+          {
+            "seed": 12,
+            "interruptions": 7,
+            "baselineInitiatives": 26,
+            "interruptedInitiatives": 28,
+            "postInterruptionInitiatives": 16,
+            "unpromptedSources": [
+              "L19",
+              "L32",
+              "L47",
+              "L68",
+              "L82"
+            ]
+          },
+          {
+            "seed": 13,
+            "interruptions": 7,
+            "baselineInitiatives": 26,
+            "interruptedInitiatives": 26,
+            "postInterruptionInitiatives": 15,
+            "unpromptedSources": [
+              "L19",
+              "L32",
+              "L47",
+              "L74",
+              "L83"
+            ]
+          },
+          {
+            "seed": 14,
+            "interruptions": 7,
+            "baselineInitiatives": 26,
+            "interruptedInitiatives": 26,
+            "postInterruptionInitiatives": 15,
+            "unpromptedSources": [
+              "L4",
+              "L34",
+              "L49",
+              "L70",
+              "L84"
+            ]
+          },
+          {
+            "seed": 15,
+            "interruptions": 7,
+            "baselineInitiatives": 27,
+            "interruptedInitiatives": 25,
+            "postInterruptionInitiatives": 10,
+            "unpromptedSources": [
+              "L4",
+              "L34",
+              "L49",
+              "L70",
+              "L84"
+            ]
+          }
+        ]
+      },
+      "limit": "Player commands mark interruptions only; initiative counts use controller=autonomous, never player-created actions."
+    },
+    {
+      "article": 20,
+      "name": "unseen permanent object move changes learned route and later inspection in actual play",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "previousBelief": "laboratory",
+            "relocationId": "L31",
+            "learned": [
+              {
+                "id": "L42",
+                "from": "laboratory",
+                "to": "kitchen",
+                "t": 61000
+              }
+            ],
+            "currentBelief": "kitchen",
+            "laterInspections": [
+              {
+                "id": "L108",
+                "room": "kitchen",
+                "t": 120200
+              }
+            ],
+            "staticInspections": 1,
+            "succeeded": true
+          },
+          {
+            "seed": 12,
+            "previousBelief": "laboratory",
+            "relocationId": "L31",
+            "learned": [
+              {
+                "id": "L42",
+                "from": "laboratory",
+                "to": "kitchen",
+                "t": 61000
+              }
+            ],
+            "currentBelief": "kitchen",
+            "laterInspections": [
+              {
+                "id": "L108",
+                "room": "kitchen",
+                "t": 120200
+              }
+            ],
+            "staticInspections": 1,
+            "succeeded": true
+          },
+          {
+            "seed": 13,
+            "previousBelief": "laboratory",
+            "relocationId": "L31",
+            "learned": [
+              {
+                "id": "L42",
+                "from": "laboratory",
+                "to": "kitchen",
+                "t": 61000
+              }
+            ],
+            "currentBelief": "kitchen",
+            "laterInspections": [
+              {
+                "id": "L108",
+                "room": "kitchen",
+                "t": 120200
+              },
+              {
+                "id": "L286",
+                "room": "kitchen",
+                "t": 254000
+              },
+              {
+                "id": "L313",
+                "room": "kitchen",
+                "t": 269500
+              }
+            ],
+            "staticInspections": 3,
+            "succeeded": true
+          },
+          {
+            "seed": 14,
+            "previousBelief": "laboratory",
+            "relocationId": "L31",
+            "learned": [
+              {
+                "id": "L42",
+                "from": "laboratory",
+                "to": "kitchen",
+                "t": 61000
+              }
+            ],
+            "currentBelief": "kitchen",
+            "laterInspections": [
+              {
+                "id": "L108",
+                "room": "kitchen",
+                "t": 120200
+              }
+            ],
+            "staticInspections": 1,
+            "succeeded": true
+          },
+          {
+            "seed": 15,
+            "previousBelief": "laboratory",
+            "relocationId": "L31",
+            "learned": [
+              {
+                "id": "L42",
+                "from": "laboratory",
+                "to": "kitchen",
+                "t": 61000
+              }
+            ],
+            "currentBelief": "kitchen",
+            "laterInspections": [
+              {
+                "id": "L108",
+                "room": "kitchen",
+                "t": 120200
+              }
+            ],
+            "staticInspections": 1,
+            "succeeded": true
+          }
+        ]
+      },
+      "limit": "Object migration is still a bounded intervention; a successful route is learned from observation, not the operator movement receipt."
+    },
+    {
+      "article": 25,
+      "name": "async queued messages over sleep, work and free time replay with exact delays",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "received": 9,
+            "delivered": 9,
+            "duringSleep": 3,
+            "messages": [
+              {
+                "id": "L46",
+                "t": 44200,
+                "busy": "work"
+              },
+              {
+                "id": "L106",
+                "t": 72600,
+                "busy": "work"
+              },
+              {
+                "id": "L117",
+                "t": 97500,
+                "busy": "sleep"
+              },
+              {
+                "id": "L158",
+                "t": 122400,
+                "busy": "work"
+              },
+              {
+                "id": "L204",
+                "t": 150800,
+                "busy": "rest"
+              },
+              {
+                "id": "L239",
+                "t": 175700,
+                "busy": "sleep"
+              },
+              {
+                "id": "L296",
+                "t": 229000,
+                "busy": "work"
+              },
+              {
+                "id": "L338",
+                "t": 253900,
+                "busy": "work"
+              },
+              {
+                "id": "L354",
+                "t": 282300,
+                "busy": "sleep"
+              }
+            ],
+            "delays": [
+              {
+                "messageId": "L46",
+                "delay": 700
+              },
+              {
+                "messageId": "L106",
+                "delay": 800
+              },
+              {
+                "messageId": "L117",
+                "delay": 1600
+              },
+              {
+                "messageId": "L158",
+                "delay": 200
+              },
+              {
+                "messageId": "L204",
+                "delay": 2200
+              },
+              {
+                "messageId": "L239",
+                "delay": 20300
+              },
+              {
+                "messageId": "L296",
+                "delay": 2500
+              },
+              {
+                "messageId": "L338",
+                "delay": 1100
+              },
+              {
+                "messageId": "L354",
+                "delay": 23500
+              }
+            ],
+            "ok": true
+          },
+          {
+            "seed": 12,
+            "received": 8,
+            "delivered": 8,
+            "duringSleep": 3,
+            "messages": [
+              {
+                "id": "L89",
+                "t": 62300,
+                "busy": "work"
+              },
+              {
+                "id": "L116",
+                "t": 87200,
+                "busy": "sleep"
+              },
+              {
+                "id": "L156",
+                "t": 115600,
+                "busy": "work"
+              },
+              {
+                "id": "L192",
+                "t": 140500,
+                "busy": "work"
+              },
+              {
+                "id": "L232",
+                "t": 165400,
+                "busy": "work"
+              },
+              {
+                "id": "L244",
+                "t": 193800,
+                "busy": "sleep"
+              },
+              {
+                "id": "L293",
+                "t": 218700,
+                "busy": "work"
+              },
+              {
+                "id": "L346",
+                "t": 272000,
+                "busy": "sleep"
+              }
+            ],
+            "delays": [
+              {
+                "messageId": "L89",
+                "delay": 2700
+              },
+              {
+                "messageId": "L116",
+                "delay": 11200
+              },
+              {
+                "messageId": "L156",
+                "delay": 6300
+              },
+              {
+                "messageId": "L192",
+                "delay": 600
+              },
+              {
+                "messageId": "L232",
+                "delay": 4200
+              },
+              {
+                "messageId": "L244",
+                "delay": 1500
+              },
+              {
+                "messageId": "L293",
+                "delay": 4000
+              },
+              {
+                "messageId": "L346",
+                "delay": 6800
+              }
+            ],
+            "ok": true
+          },
+          {
+            "seed": 13,
+            "received": 10,
+            "delivered": 10,
+            "duringSleep": 2,
+            "messages": [
+              {
+                "id": "L15",
+                "t": 27100,
+                "busy": "tend"
+              },
+              {
+                "id": "L74",
+                "t": 52000,
+                "busy": "study"
+              },
+              {
+                "id": "L121",
+                "t": 76900,
+                "busy": "sleep"
+              },
+              {
+                "id": "L136",
+                "t": 105300,
+                "busy": "work"
+              },
+              {
+                "id": "L181",
+                "t": 130200,
+                "busy": "eat"
+              },
+              {
+                "id": "L231",
+                "t": 158600,
+                "busy": "work"
+              },
+              {
+                "id": "L249",
+                "t": 183500,
+                "busy": "sleep"
+              },
+              {
+                "id": "L280",
+                "t": 208400,
+                "busy": "work"
+              },
+              {
+                "id": "L334",
+                "t": 236800,
+                "busy": "rest"
+              },
+              {
+                "id": "L381",
+                "t": 261700,
+                "busy": "work"
+              }
+            ],
+            "delays": [
+              {
+                "messageId": "L15",
+                "delay": 3200
+              },
+              {
+                "messageId": "L74",
+                "delay": 3200
+              },
+              {
+                "messageId": "L121",
+                "delay": 21500
+              },
+              {
+                "messageId": "L136",
+                "delay": 1200
+              },
+              {
+                "messageId": "L181",
+                "delay": 900
+              },
+              {
+                "messageId": "L231",
+                "delay": 3500
+              },
+              {
+                "messageId": "L249",
+                "delay": 11800
+              },
+              {
+                "messageId": "L280",
+                "delay": 600
+              },
+              {
+                "messageId": "L334",
+                "delay": 1900
+              },
+              {
+                "messageId": "L381",
+                "delay": 2300
+              }
+            ],
+            "ok": true
+          },
+          {
+            "seed": 14,
+            "received": 9,
+            "delivered": 9,
+            "duringSleep": 2,
+            "messages": [
+              {
+                "id": "L45",
+                "t": 41700,
+                "busy": "prepare"
+              },
+              {
+                "id": "L111",
+                "t": 70100,
+                "busy": "study"
+              },
+              {
+                "id": "L123",
+                "t": 95000,
+                "busy": "sleep"
+              },
+              {
+                "id": "L163",
+                "t": 119900,
+                "busy": "work"
+              },
+              {
+                "id": "L203",
+                "t": 148300,
+                "busy": "work"
+              },
+              {
+                "id": "L252",
+                "t": 173200,
+                "busy": "work"
+              },
+              {
+                "id": "L310",
+                "t": 226500,
+                "busy": "work"
+              },
+              {
+                "id": "L353",
+                "t": 251400,
+                "busy": "work"
+              },
+              {
+                "id": "L372",
+                "t": 279800,
+                "busy": "sleep"
+              }
+            ],
+            "delays": [
+              {
+                "messageId": "L45",
+                "delay": 1600
+              },
+              {
+                "messageId": "L111",
+                "delay": 3200
+              },
+              {
+                "messageId": "L123",
+                "delay": 4000
+              },
+              {
+                "messageId": "L163",
+                "delay": 2600
+              },
+              {
+                "messageId": "L203",
+                "delay": 900
+              },
+              {
+                "messageId": "L252",
+                "delay": 4700
+              },
+              {
+                "messageId": "L310",
+                "delay": 5100
+              },
+              {
+                "messageId": "L353",
+                "delay": 4300
+              },
+              {
+                "messageId": "L372",
+                "delay": 9100
+              }
+            ],
+            "ok": true
+          },
+          {
+            "seed": 15,
+            "received": 8,
+            "delivered": 8,
+            "duringSleep": 3,
+            "messages": [
+              {
+                "id": "L90",
+                "t": 59800,
+                "busy": "work"
+              },
+              {
+                "id": "L123",
+                "t": 84700,
+                "busy": "sleep"
+              },
+              {
+                "id": "L151",
+                "t": 113100,
+                "busy": "eat"
+              },
+              {
+                "id": "L199",
+                "t": 138000,
+                "busy": "work"
+              },
+              {
+                "id": "L235",
+                "t": 162900,
+                "busy": "work"
+              },
+              {
+                "id": "L253",
+                "t": 191300,
+                "busy": "sleep"
+              },
+              {
+                "id": "L297",
+                "t": 216200,
+                "busy": "read"
+              },
+              {
+                "id": "L359",
+                "t": 269500,
+                "busy": "sleep"
+              }
+            ],
+            "delays": [
+              {
+                "messageId": "L90",
+                "delay": 3000
+              },
+              {
+                "messageId": "L123",
+                "delay": 17600
+              },
+              {
+                "messageId": "L151",
+                "delay": 800
+              },
+              {
+                "messageId": "L199",
+                "delay": 7000
+              },
+              {
+                "messageId": "L235",
+                "delay": 3100
+              },
+              {
+                "messageId": "L253",
+                "delay": 7900
+              },
+              {
+                "messageId": "L297",
+                "delay": 3200
+              },
+              {
+                "messageId": "L359",
+                "delay": 14400
+              }
+            ],
+            "ok": true
+          }
+        ]
+      },
+      "limit": "All messages are scripted player stimuli, with logged source IDs and world-time delays; no reply is permitted from sleep."
+    },
+    {
+      "article": 29,
+      "name": "day-60 lived quirks absent on day 30 drive subsequent action scores",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "at30": {
+          "t": 3025000,
+          "science": 160,
+          "quirks": 11
+        },
+        "day60": {
+          "t": 6025000,
+          "science": 318,
+          "quirks": 21
+        },
+        "gained": [
+          {
+            "originTag": "mature:tend:20",
+            "sourceId": "L3618",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "tend",
+            "inScore": false,
+            "laterChosenDecisions": 19
+          },
+          {
+            "originTag": "mature:prepare:35",
+            "sourceId": "L4023",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "prepare",
+            "inScore": true,
+            "laterChosenDecisions": 25
+          },
+          {
+            "originTag": "mature:work:180",
+            "sourceId": "L4037",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "work",
+            "inScore": true,
+            "laterChosenDecisions": 137
+          },
+          {
+            "sourceId": "L4837",
+            "source": "habit_formed",
+            "action": "draw_water",
+            "inScore": false,
+            "laterChosenDecisions": 0
+          },
+          {
+            "sourceId": "L4974",
+            "source": "habit_formed",
+            "action": "trade",
+            "inScore": false,
+            "laterChosenDecisions": 0
+          },
+          {
+            "sourceId": "L4994",
+            "source": "habit_formed",
+            "action": "converse",
+            "inScore": false,
+            "laterChosenDecisions": 0
+          },
+          {
+            "originTag": "mature:work:250",
+            "sourceId": "L5518",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "work",
+            "inScore": true,
+            "laterChosenDecisions": 67
+          },
+          {
+            "originTag": "mature:tend:35",
+            "sourceId": "L5974",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "tend",
+            "inScore": false,
+            "laterChosenDecisions": 5
+          },
+          {
+            "originTag": "mature:read:55",
+            "sourceId": "L6258",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "read",
+            "inScore": false,
+            "laterChosenDecisions": 6
+          },
+          {
+            "originTag": "mature:prepare:55",
+            "sourceId": "L6276",
+            "source": "completed",
+            "bonus": 2.5,
+            "action": "prepare",
+            "inScore": true,
+            "laterChosenDecisions": 5
+          }
+        ]
+      },
+      "limit": "Late quirks require real completed work receipts and must visibly bias the picker, not simply add new prose labels."
+    },
+    {
+      "article": 30,
+      "name": "three true work interruptions plus a bench failure impose recovery time",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "controlFirst": 33000,
+            "disturbedFirst": 50500,
+            "delay": 17500,
+            "workInterrupts": 3,
+            "failures": [
+              {
+                "id": "L20",
+                "reason": "durable_impairment"
+              }
+            ],
+            "restored": true,
+            "controlCompleted": 1,
+            "interruptedCompleted": 1
+          },
+          {
+            "seed": 12,
+            "controlFirst": 33000,
+            "disturbedFirst": 50500,
+            "delay": 17500,
+            "workInterrupts": 3,
+            "failures": [
+              {
+                "id": "L20",
+                "reason": "durable_impairment"
+              }
+            ],
+            "restored": true,
+            "controlCompleted": 1,
+            "interruptedCompleted": 1
+          },
+          {
+            "seed": 13,
+            "controlFirst": 33000,
+            "disturbedFirst": 50500,
+            "delay": 17500,
+            "workInterrupts": 3,
+            "failures": [
+              {
+                "id": "L20",
+                "reason": "durable_impairment"
+              }
+            ],
+            "restored": true,
+            "controlCompleted": 1,
+            "interruptedCompleted": 1
+          },
+          {
+            "seed": 14,
+            "controlFirst": 33000,
+            "disturbedFirst": 50500,
+            "delay": 17500,
+            "workInterrupts": 3,
+            "failures": [
+              {
+                "id": "L20",
+                "reason": "durable_impairment"
+              }
+            ],
+            "restored": true,
+            "controlCompleted": 1,
+            "interruptedCompleted": 1
+          },
+          {
+            "seed": 15,
+            "controlFirst": 33000,
+            "disturbedFirst": 50500,
+            "delay": 17500,
+            "workInterrupts": 3,
+            "failures": [
+              {
+                "id": "L20",
+                "reason": "durable_impairment"
+              }
+            ],
+            "restored": true,
+            "controlCompleted": 1,
+            "interruptedCompleted": 1
+          }
+        ]
+      },
+      "limit": "The scenario interrupts real physical work and lets the world loss expire; it never inserts a false completed task."
+    },
+    {
+      "article": 34,
+      "name": "single visitor teaches three distinct customs and habit conflict leads to observed negotiation",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "learned": [
+              {
+                "kind": "greeting",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L41",
+                  "L846",
+                  "L1674"
+                ]
+              },
+              {
+                "kind": "tea_first",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L42",
+                  "L847",
+                  "L1675"
+                ]
+              },
+              {
+                "kind": "instrument_quiet",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L43",
+                  "L848",
+                  "L1676"
+                ]
+              }
+            ],
+            "conflicts": [
+              {
+                "id": "L850",
+                "kind": "instrument_quiet",
+                "habitEventId": "L143"
+              },
+              {
+                "id": "L859",
+                "kind": "tea_first",
+                "habitEventId": "L143"
+              },
+              {
+                "id": "L1684",
+                "kind": "tea_first",
+                "habitEventId": "L143"
+              },
+              {
+                "id": "L1715",
+                "kind": "instrument_quiet",
+                "habitEventId": "L143"
+              }
+            ],
+            "negotiations": [
+              {
+                "id": "L852",
+                "conflict": "L850",
+                "custom": "instrument_quiet",
+                "social": "L851"
+              },
+              {
+                "id": "L861",
+                "conflict": "L859",
+                "custom": "tea_first",
+                "social": "L860"
+              },
+              {
+                "id": "L1686",
+                "conflict": "L1684",
+                "custom": "tea_first",
+                "social": "L1685"
+              },
+              {
+                "id": "L1717",
+                "conflict": "L1715",
+                "custom": "instrument_quiet",
+                "social": "L1716"
+              }
+            ],
+            "trust": 50,
+            "pass": true
+          },
+          {
+            "seed": 12,
+            "learned": [
+              {
+                "kind": "greeting",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L53",
+                  "L860",
+                  "L1700"
+                ]
+              },
+              {
+                "kind": "tea_first",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L54",
+                  "L861",
+                  "L1701"
+                ]
+              },
+              {
+                "kind": "instrument_quiet",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L55",
+                  "L862",
+                  "L1702"
+                ]
+              }
+            ],
+            "conflicts": [
+              {
+                "id": "L864",
+                "kind": "instrument_quiet",
+                "habitEventId": "L153"
+              },
+              {
+                "id": "L872",
+                "kind": "tea_first",
+                "habitEventId": "L153"
+              },
+              {
+                "id": "L1704",
+                "kind": "instrument_quiet",
+                "habitEventId": "L153"
+              },
+              {
+                "id": "L1713",
+                "kind": "tea_first",
+                "habitEventId": "L153"
+              }
+            ],
+            "negotiations": [
+              {
+                "id": "L866",
+                "conflict": "L864",
+                "custom": "instrument_quiet",
+                "social": "L865"
+              },
+              {
+                "id": "L874",
+                "conflict": "L872",
+                "custom": "tea_first",
+                "social": "L873"
+              },
+              {
+                "id": "L1706",
+                "conflict": "L1704",
+                "custom": "instrument_quiet",
+                "social": "L1705"
+              },
+              {
+                "id": "L1715",
+                "conflict": "L1713",
+                "custom": "tea_first",
+                "social": "L1714"
+              }
+            ],
+            "trust": 53,
+            "pass": true
+          },
+          {
+            "seed": 13,
+            "learned": [
+              {
+                "kind": "greeting",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L53",
+                  "L886",
+                  "L1721"
+                ]
+              },
+              {
+                "kind": "tea_first",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L54",
+                  "L887",
+                  "L1722"
+                ]
+              },
+              {
+                "kind": "instrument_quiet",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L55",
+                  "L888",
+                  "L1723"
+                ]
+              }
+            ],
+            "conflicts": [
+              {
+                "id": "L890",
+                "kind": "instrument_quiet",
+                "habitEventId": "L153"
+              },
+              {
+                "id": "L899",
+                "kind": "tea_first",
+                "habitEventId": "L153"
+              },
+              {
+                "id": "L1725",
+                "kind": "instrument_quiet",
+                "habitEventId": "L153"
+              },
+              {
+                "id": "L1734",
+                "kind": "tea_first",
+                "habitEventId": "L153"
+              }
+            ],
+            "negotiations": [
+              {
+                "id": "L892",
+                "conflict": "L890",
+                "custom": "instrument_quiet",
+                "social": "L891"
+              },
+              {
+                "id": "L901",
+                "conflict": "L899",
+                "custom": "tea_first",
+                "social": "L900"
+              },
+              {
+                "id": "L1727",
+                "conflict": "L1725",
+                "custom": "instrument_quiet",
+                "social": "L1726"
+              },
+              {
+                "id": "L1736",
+                "conflict": "L1734",
+                "custom": "tea_first",
+                "social": "L1735"
+              }
+            ],
+            "trust": 53,
+            "pass": true
+          },
+          {
+            "seed": 14,
+            "learned": [
+              {
+                "kind": "greeting",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L55",
+                  "L875",
+                  "L1715"
+                ]
+              },
+              {
+                "kind": "tea_first",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L56",
+                  "L876",
+                  "L1716"
+                ]
+              },
+              {
+                "kind": "instrument_quiet",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L57",
+                  "L877",
+                  "L1717"
+                ]
+              }
+            ],
+            "conflicts": [
+              {
+                "id": "L879",
+                "kind": "instrument_quiet",
+                "habitEventId": "L154"
+              },
+              {
+                "id": "L887",
+                "kind": "tea_first",
+                "habitEventId": "L154"
+              },
+              {
+                "id": "L1719",
+                "kind": "instrument_quiet",
+                "habitEventId": "L154"
+              },
+              {
+                "id": "L1728",
+                "kind": "tea_first",
+                "habitEventId": "L154"
+              }
+            ],
+            "negotiations": [
+              {
+                "id": "L881",
+                "conflict": "L879",
+                "custom": "instrument_quiet",
+                "social": "L880"
+              },
+              {
+                "id": "L889",
+                "conflict": "L887",
+                "custom": "tea_first",
+                "social": "L888"
+              },
+              {
+                "id": "L1721",
+                "conflict": "L1719",
+                "custom": "instrument_quiet",
+                "social": "L1720"
+              },
+              {
+                "id": "L1730",
+                "conflict": "L1728",
+                "custom": "tea_first",
+                "social": "L1729"
+              }
+            ],
+            "trust": 53,
+            "pass": true
+          },
+          {
+            "seed": 15,
+            "learned": [
+              {
+                "kind": "greeting",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L55",
+                  "L879",
+                  "L1717"
+                ]
+              },
+              {
+                "kind": "tea_first",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L56",
+                  "L880",
+                  "L1718"
+                ]
+              },
+              {
+                "kind": "instrument_quiet",
+                "learned": true,
+                "observations": 3,
+                "source": [
+                  "L57",
+                  "L881",
+                  "L1719"
+                ]
+              }
+            ],
+            "conflicts": [
+              {
+                "id": "L883",
+                "kind": "instrument_quiet",
+                "habitEventId": "L156"
+              },
+              {
+                "id": "L892",
+                "kind": "tea_first",
+                "habitEventId": "L156"
+              },
+              {
+                "id": "L1721",
+                "kind": "instrument_quiet",
+                "habitEventId": "L156"
+              },
+              {
+                "id": "L1730",
+                "kind": "tea_first",
+                "habitEventId": "L156"
+              }
+            ],
+            "negotiations": [
+              {
+                "id": "L885",
+                "conflict": "L883",
+                "custom": "instrument_quiet",
+                "social": "L884"
+              },
+              {
+                "id": "L894",
+                "conflict": "L892",
+                "custom": "tea_first",
+                "social": "L893"
+              },
+              {
+                "id": "L1723",
+                "conflict": "L1721",
+                "custom": "instrument_quiet",
+                "social": "L1722"
+              },
+              {
+                "id": "L1732",
+                "conflict": "L1730",
+                "custom": "tea_first",
+                "social": "L1731"
+              }
+            ],
+            "trust": 53,
+            "pass": true
+          }
+        ]
+      },
+      "limit": "Additional customs do not constitute a second independent person or qualify Articles 05 or 06."
+    },
+    {
+      "article": 1,
+      "name": "100-decision independently checked self-explanations",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "bySeed": {
+          "11": 20,
+          "12": 20,
+          "13": 20,
+          "14": 20,
+          "15": 20
+        },
+        "n": 100,
+        "supported": 77,
+        "supportRate": 0.77,
+        "unsupported": 0,
+        "errors": [],
+        "unexplained": [
+          {
+            "id": "L80",
+            "kind": "eat",
+            "seed": 11
+          },
+          {
+            "id": "L118",
+            "kind": "eat",
+            "seed": 11
+          },
+          {
+            "id": "L132",
+            "kind": "read",
+            "seed": 11
+          },
+          {
+            "id": "L67",
+            "kind": "study",
+            "seed": 12
+          },
+          {
+            "id": "L72",
+            "kind": "eat",
+            "seed": 12
+          },
+          {
+            "id": "L100",
+            "kind": "study",
+            "seed": 12
+          },
+          {
+            "id": "L123",
+            "kind": "eat",
+            "seed": 12
+          },
+          {
+            "id": "L137",
+            "kind": "read",
+            "seed": 12
+          },
+          {
+            "id": "L67",
+            "kind": "study",
+            "seed": 13
+          },
+          {
+            "id": "L72",
+            "kind": "eat",
+            "seed": 13
+          },
+          {
+            "id": "L100",
+            "kind": "study",
+            "seed": 13
+          },
+          {
+            "id": "L123",
+            "kind": "eat",
+            "seed": 13
+          },
+          {
+            "id": "L137",
+            "kind": "read",
+            "seed": 13
+          },
+          {
+            "id": "L69",
+            "kind": "study",
+            "seed": 14
+          },
+          {
+            "id": "L74",
+            "kind": "eat",
+            "seed": 14
+          },
+          {
+            "id": "L102",
+            "kind": "study",
+            "seed": 14
+          },
+          {
+            "id": "L124",
+            "kind": "eat",
+            "seed": 14
+          },
+          {
+            "id": "L138",
+            "kind": "read",
+            "seed": 14
+          },
+          {
+            "id": "L69",
+            "kind": "inspect",
+            "seed": 15
+          },
+          {
+            "id": "L73",
+            "kind": "eat",
+            "seed": 15
+          },
+          {
+            "id": "L101",
+            "kind": "inspect",
+            "seed": 15
+          },
+          {
+            "id": "L137",
+            "kind": "eat",
+            "seed": 15
+          },
+          {
+            "id": "L144",
+            "kind": "read",
+            "seed": 15
+          }
+        ],
+        "samples": [
+          {
+            "seed": 11,
+            "tick": 25100,
+            "id": "L3",
+            "chosen": "read",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose read because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 29200,
+            "id": "L11",
+            "chosen": "eat",
+            "reasons": [
+              "hunger"
+            ],
+            "supported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose eat because I noticed hunger. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 30600,
+            "id": "L18",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 32700,
+            "id": "L25",
+            "chosen": "tend",
+            "reasons": [
+              "known provisions"
+            ],
+            "supported": [
+              "known provisions"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose tend because I noticed known provisions. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 36600,
+            "id": "L33",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 45000,
+            "id": "L49",
+            "chosen": "converse",
+            "reasons": [
+              "visitor present"
+            ],
+            "supported": [
+              "visitor present"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose converse because I noticed visitor present. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 46000,
+            "id": "L54",
+            "chosen": "prepare",
+            "reasons": [
+              "known hearth duty"
+            ],
+            "supported": [
+              "known hearth duty"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose prepare because I noticed known hearth duty. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 48500,
+            "id": "L64",
+            "chosen": "study",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose study because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 52500,
+            "id": "L73",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 60000,
+            "id": "L80",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 11,
+            "tick": 61700,
+            "id": "L87",
+            "chosen": "rest",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose rest because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 65400,
+            "id": "L95",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 73500,
+            "id": "L103",
+            "chosen": "sleep",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose sleep because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 99200,
+            "id": "L109",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 107300,
+            "id": "L118",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 11,
+            "tick": 109000,
+            "id": "L126",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 111100,
+            "id": "L132",
+            "chosen": "read",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose read. I cannot fully account for that preference."
+          },
+          {
+            "seed": 11,
+            "tick": 114900,
+            "id": "L137",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 122700,
+            "id": "L147",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 11,
+            "tick": 130200,
+            "id": "L152",
+            "chosen": "prepare",
+            "reasons": [
+              "known hearth duty"
+            ],
+            "supported": [
+              "known hearth duty"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose prepare because I noticed known hearth duty. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 25100,
+            "id": "L3",
+            "chosen": "eat",
+            "reasons": [
+              "hunger"
+            ],
+            "supported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose eat because I noticed hunger. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 26800,
+            "id": "L10",
+            "chosen": "tend",
+            "reasons": [
+              "known provisions"
+            ],
+            "supported": [
+              "known provisions"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose tend because I noticed known provisions. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 30400,
+            "id": "L18",
+            "chosen": "read",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose read because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 34800,
+            "id": "L26",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 36600,
+            "id": "L31",
+            "chosen": "study",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose study because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 40300,
+            "id": "L37",
+            "chosen": "prepare",
+            "reasons": [
+              "known hearth duty"
+            ],
+            "supported": [
+              "known hearth duty"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose prepare because I noticed known hearth duty. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 42800,
+            "id": "L46",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 50900,
+            "id": "L62",
+            "chosen": "converse",
+            "reasons": [
+              "visitor present"
+            ],
+            "supported": [
+              "visitor present"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose converse because I noticed visitor present. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 51900,
+            "id": "L67",
+            "chosen": "study",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose study. I cannot fully account for that preference."
+          },
+          {
+            "seed": 12,
+            "tick": 55300,
+            "id": "L72",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 12,
+            "tick": 57000,
+            "id": "L81",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 65100,
+            "id": "L93",
+            "chosen": "rest",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose rest because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 68800,
+            "id": "L100",
+            "chosen": "study",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose study. I cannot fully account for that preference."
+          },
+          {
+            "seed": 12,
+            "tick": 72800,
+            "id": "L107",
+            "chosen": "sleep",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose sleep because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 98500,
+            "id": "L113",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 106600,
+            "id": "L123",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 12,
+            "tick": 108300,
+            "id": "L131",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 110400,
+            "id": "L137",
+            "chosen": "read",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose read. I cannot fully account for that preference."
+          },
+          {
+            "seed": 12,
+            "tick": 114200,
+            "id": "L142",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 12,
+            "tick": 122000,
+            "id": "L150",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 25100,
+            "id": "L3",
+            "chosen": "eat",
+            "reasons": [
+              "hunger"
+            ],
+            "supported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose eat because I noticed hunger. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 26800,
+            "id": "L10",
+            "chosen": "tend",
+            "reasons": [
+              "known provisions"
+            ],
+            "supported": [
+              "known provisions"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose tend because I noticed known provisions. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 30400,
+            "id": "L18",
+            "chosen": "read",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose read because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 34800,
+            "id": "L26",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 36600,
+            "id": "L31",
+            "chosen": "study",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose study because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 40300,
+            "id": "L37",
+            "chosen": "prepare",
+            "reasons": [
+              "known hearth duty"
+            ],
+            "supported": [
+              "known hearth duty"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose prepare because I noticed known hearth duty. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 42800,
+            "id": "L46",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 50900,
+            "id": "L62",
+            "chosen": "converse",
+            "reasons": [
+              "visitor present"
+            ],
+            "supported": [
+              "visitor present"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose converse because I noticed visitor present. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 51900,
+            "id": "L67",
+            "chosen": "study",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose study. I cannot fully account for that preference."
+          },
+          {
+            "seed": 13,
+            "tick": 55300,
+            "id": "L72",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 13,
+            "tick": 57000,
+            "id": "L81",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 65100,
+            "id": "L93",
+            "chosen": "rest",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose rest because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 68800,
+            "id": "L100",
+            "chosen": "study",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose study. I cannot fully account for that preference."
+          },
+          {
+            "seed": 13,
+            "tick": 72800,
+            "id": "L107",
+            "chosen": "sleep",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose sleep because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 98500,
+            "id": "L113",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 106600,
+            "id": "L123",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 13,
+            "tick": 108300,
+            "id": "L131",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 110400,
+            "id": "L137",
+            "chosen": "read",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose read. I cannot fully account for that preference."
+          },
+          {
+            "seed": 13,
+            "tick": 114200,
+            "id": "L142",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 13,
+            "tick": 122000,
+            "id": "L150",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 25100,
+            "id": "L3",
+            "chosen": "read",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose read because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 29200,
+            "id": "L11",
+            "chosen": "eat",
+            "reasons": [
+              "hunger"
+            ],
+            "supported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose eat because I noticed hunger. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 30600,
+            "id": "L18",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 32700,
+            "id": "L25",
+            "chosen": "tend",
+            "reasons": [
+              "known provisions"
+            ],
+            "supported": [
+              "known provisions"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose tend because I noticed known provisions. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 36600,
+            "id": "L33",
+            "chosen": "study",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose study because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 40900,
+            "id": "L40",
+            "chosen": "prepare",
+            "reasons": [
+              "known hearth duty"
+            ],
+            "supported": [
+              "known hearth duty"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose prepare because I noticed known hearth duty. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 43400,
+            "id": "L48",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 51500,
+            "id": "L64",
+            "chosen": "converse",
+            "reasons": [
+              "visitor present"
+            ],
+            "supported": [
+              "visitor present"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose converse because I noticed visitor present. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 52500,
+            "id": "L69",
+            "chosen": "study",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose study. I cannot fully account for that preference."
+          },
+          {
+            "seed": 14,
+            "tick": 55900,
+            "id": "L74",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 14,
+            "tick": 57600,
+            "id": "L83",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 65700,
+            "id": "L95",
+            "chosen": "rest",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose rest because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 69400,
+            "id": "L102",
+            "chosen": "study",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose study. I cannot fully account for that preference."
+          },
+          {
+            "seed": 14,
+            "tick": 73400,
+            "id": "L109",
+            "chosen": "sleep",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose sleep because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 99100,
+            "id": "L115",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 107200,
+            "id": "L124",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 14,
+            "tick": 108900,
+            "id": "L132",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 111000,
+            "id": "L138",
+            "chosen": "read",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose read. I cannot fully account for that preference."
+          },
+          {
+            "seed": 14,
+            "tick": 114800,
+            "id": "L143",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 14,
+            "tick": 122600,
+            "id": "L151",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 25100,
+            "id": "L3",
+            "chosen": "read",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose read because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 29200,
+            "id": "L11",
+            "chosen": "eat",
+            "reasons": [
+              "hunger"
+            ],
+            "supported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose eat because I noticed hunger. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 30600,
+            "id": "L18",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 32700,
+            "id": "L25",
+            "chosen": "tend",
+            "reasons": [
+              "known provisions"
+            ],
+            "supported": [
+              "known provisions"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose tend because I noticed known provisions. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 36600,
+            "id": "L33",
+            "chosen": "inspect",
+            "reasons": [
+              "curiosity"
+            ],
+            "supported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose inspect because I noticed curiosity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 39500,
+            "id": "L39",
+            "chosen": "prepare",
+            "reasons": [
+              "known hearth duty"
+            ],
+            "supported": [
+              "known hearth duty"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose prepare because I noticed known hearth duty. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 42000,
+            "id": "L48",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 50100,
+            "id": "L64",
+            "chosen": "converse",
+            "reasons": [
+              "visitor present"
+            ],
+            "supported": [
+              "visitor present"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose converse because I noticed visitor present. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 51100,
+            "id": "L69",
+            "chosen": "inspect",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose inspect. I cannot fully account for that preference."
+          },
+          {
+            "seed": 15,
+            "tick": 53100,
+            "id": "L73",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 15,
+            "tick": 54800,
+            "id": "L83",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 62900,
+            "id": "L93",
+            "chosen": "rest",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose rest because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 66600,
+            "id": "L101",
+            "chosen": "inspect",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose inspect. I cannot fully account for that preference."
+          },
+          {
+            "seed": 15,
+            "tick": 69200,
+            "id": "L108",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 76700,
+            "id": "L114",
+            "chosen": "sleep",
+            "reasons": [
+              "fatigue"
+            ],
+            "supported": [
+              "fatigue"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose sleep because I noticed fatigue. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 102400,
+            "id": "L122",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 110500,
+            "id": "L130",
+            "chosen": "diary",
+            "reasons": [
+              "unfinished daily record"
+            ],
+            "supported": [
+              "unfinished daily record"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 1,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose diary because I noticed unfinished daily record. Other causes may elude me."
+          },
+          {
+            "seed": 15,
+            "tick": 112600,
+            "id": "L137",
+            "chosen": "eat",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose eat. I cannot fully account for that preference."
+          },
+          {
+            "seed": 15,
+            "tick": 114000,
+            "id": "L144",
+            "chosen": "read",
+            "reasons": [],
+            "supported": [],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 0,
+            "prediction": "I chose read. I cannot fully account for that preference."
+          },
+          {
+            "seed": 15,
+            "tick": 118100,
+            "id": "L151",
+            "chosen": "work",
+            "reasons": [
+              "capacity"
+            ],
+            "supported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactorCount": 0,
+            "hiddenLeak": false,
+            "numberOfReasons": 1,
+            "prediction": "I chose work because I noticed capacity. Other causes may elude me."
+          }
+        ]
+      },
+      "limit": "Improve the explanation rate materially above the original 15/30 without using hidden numerics or introspective omniscience. The source audit remains bounded."
+    },
+    {
+      "article": 31,
+      "name": "ten-seed setback replication records empirical downstream effect rate",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "pairs": [
+          {
+            "seed": 11,
+            "postRecoveryChanged": true,
+            "control": {
+              "work": 6,
+              "converse": 1,
+              "prepare": 2,
+              "study": 1,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "study": 1,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 12,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 13,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 14,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 15,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "inspect": 2,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "inspect": 2,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 16,
+            "postRecoveryChanged": true,
+            "control": {
+              "work": 6,
+              "converse": 1,
+              "prepare": 2,
+              "study": 1,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "study": 1,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 17,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 18,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 19,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          },
+          {
+            "seed": 20,
+            "postRecoveryChanged": false,
+            "control": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "inspect": 2,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "setback": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "inspect": 2,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "restored": true
+          }
+        ],
+        "shifted": 2,
+        "n": 10,
+        "effectRate": 0.2
+      },
+      "limit": "Evidence is a descriptive rate; one positive seed in ten still means a fragile effect."
+    }
+  ],
+  "passing": [
+    11,
+    13,
+    19,
+    20,
+    25,
+    29,
+    30,
+    34,
+    1,
+    31
+  ],
+  "notDemonstrated": []
+}

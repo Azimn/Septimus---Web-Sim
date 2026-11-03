@@ -1,0 +1,86 @@
+{
+  "grades": [
+    {
+      "article": 12,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Article 12: low-salience object stays unselected for three days, new movement is noticed",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test cross-room perception with untagged low-salience objects."
+    },
+    {
+      "article": 14,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Article 14: declared single utility-weight intervention flips chosen action with exact arithmetic",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test alternative weights over independent long-run seeds."
+    },
+    {
+      "article": 17,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Articles 17 and 18: separate commitments persist, resume and alter a timed choice",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test three competing unprompted obligations with missed deadlines across a full week."
+    },
+    {
+      "article": 18,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Articles 17 and 18: separate commitments persist, resume and alter a timed choice",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test novel due dates that change real preparation timing across days."
+    },
+    {
+      "article": 28,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Article 28: gift and insult order cause distinct subsequent autonomous social conduct",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test downstream conduct across longer histories, varied personalities and another visitor in a later phase."
+    },
+    {
+      "article": 3,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Article 03: explicit resume records real downtime without fictional game ticks",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test actual long offline restarts and persistent writer custody."
+    },
+    {
+      "article": 4,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Article 04: real consulted folio becomes a cited utility factor and withholding it can flip action",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test delayed memory ablation across several source folios and novel decisions."
+    },
+    {
+      "article": 9,
+      "before": "Partial",
+      "after": "Demonstrated (bounded scenario)",
+      "namedTest": "Article 09: two days after a witnessed trigger, residue affects a matched choice",
+      "source": "tests/v13.test.js",
+      "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+      "ciRun": 41581300405,
+      "nextDiscrimination": "Test delayed source interventions without manually chosen near-tie needs."
+    }
+  ],
+  "sourceHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+  "ciRun": 41581300405
+}

@@ -1,0 +1,204 @@
+'use strict';
+const {OBJECTS,TRIGGERS,distance}=require('./world');
+const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
+const {POST}=require('./post_contract');
+const Commitments=require('./commitments');
+const Skill=require('./skill_growth');
+const {rotationPolicy}=require('./economy');
+const post=()=>require('./post');
+const DEFINITIONS={
+ sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
+ rest:{target:'bed',duration:3000,base:6,trait:'gentle'},
+ diary:{target:'notebook',duration:1700,base:8,trait:'curious'},
+ read:{target:'folios',duration:3700,base:10,trait:'curious'},
+ prepare:{target:'hearth',duration:1800,base:3,trait:'industrious'},
+ cook:{target:'stove',duration:2400,base:5,trait:'industrious'},
+ tea:{target:'kettle',duration:1200,base:5,trait:'gentle'},
+ eat:{target:'stores',duration:1000,base:5,trait:'gentle'},
+ work:{target:'bench',duration:7400,base:17,trait:'industrious'},
+ inspect:{target:'instrument',duration:1900,base:9,trait:'curious'},
+ study:{target:'specimens',duration:3300,base:10,trait:'curious'},
+ walk:{target:'path',duration:1800,base:5,trait:'curious'},
+ tend:{target:'plot',duration:3200,base:7,trait:'industrious'},
+ gather_fuel:{target:'path',duration:1800,base:4,trait:'industrious'},
+ draw_water:{target:'path',duration:1600,base:5,trait:'industrious'},
+ converse:{target:'visitor_01',duration:900,base:9,trait:'sociable'},
+ preserve:{target:'stove',duration:SURPLUS.preserveDuration,base:8,trait:'industrious'},
+ trade:{target:'visitor_01',duration:SURPLUS.tradeDuration,base:8,trait:'sociable'},
+ meet_carrier:{target:'mcfeely',duration:650,base:10,trait:'sociable'},
+ check_mail:{target:'path',duration:POST.mailCheckDuration,base:8,trait:'curious'},
+ read_letter:{target:'notebook',duration:POST.letterReadDuration,base:12,trait:'curious'},
+ write_reply:{target:'notebook',duration:POST.replyWriteDuration,base:9,trait:'industrious'},
+ post_reply:{target:'path',duration:POST.replyPostDuration,base:9,trait:'industrious'},
+ open_parcel:{target:'stores',duration:POST.parcelOpenDuration,base:10,trait:'curious'}
+};
+const clip=n=>Math.max(0,Math.min(100,Math.round(n*100)/100));
+const ACTION_WEIGHTS=Object.freeze(Object.fromEntries(Object.keys(DEFINITIONS).map(k=>[k,1])));
+const topicAction=Object.freeze({henry:'work',victor:'inspect',bride:'study',university:'diary',homunculi:'study'});
+function setUtilityWeight(s,kind,value){
+ if(!(kind in ACTION_WEIGHTS)||typeof value!=='number'||!Number.isFinite(value)||value<0||value>6)throw Error('Unknown utility weight or invalid value');
+ s.utilityWeights??={};s.utilityWeights[kind]=value;return {kind,value};
+}
+function memoryCue(record){
+ const lower=[record.title||'',...(record.recall_cues||[]),...(record.participants||[])].join(' ').toLowerCase();
+ if(/homuncul|bride|specimen/.test(lower))return 'study';
+ if(/frankenstein|experiment|apparatus|scientif|research/.test(lower))return 'work';
+ if(/magistrate|university|letter|father|debate/.test(lower))return 'diary';
+ if(/instrument|measurement|inquiry|observ/.test(lower))return 'inspect';
+ return 'read';
+}
+function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OBJECTS||a.target in (state.people||{})))return false;
+ if(state.dead)return false;
+ // A body can refuse lengthy work even when a utility score would favor it.
+ if(a.duration>=BODY_LIMITS.longActionCentibeats&&kind!=='sleep'&&
+  (state.needs.energy<=BODY_LIMITS.minimumEnergy||state.needs.hunger>=BODY_LIMITS.maximumHunger))return false;
+ if(state.productionDisabled&&['tend','gather_fuel','draw_water'].includes(kind))return false;
+ if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
+ if(kind==='meet_carrier')return !!state.people?.mcfeely?.present&&state.clock.day!==state.people.mcfeely.lastMetDay;
+ if(kind==='check_mail')return post().canCheck(state);
+ if(kind==='read_letter')return post().canRead(state);
+ if(kind==='write_reply')return post().canWrite(state);
+ if(kind==='post_reply')return post().canPost(state);
+ if(kind==='open_parcel')return post().canOpen(state);
+ if(kind==='trade')return !!tradeOffer(state);
+ if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
+ if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
+ if(['eat','cook'].includes(kind)&&state.stores.food<1&&(state.stores.preserved||0)<1)return false;
+ if(kind==='preserve'&&(state.stores.food<SURPLUS.preserveInput||
+  state.stores.fuel<SURPLUS.preserveFuel||
+  (state.stores.preserved||0)+SURPLUS.preserveOutput>SURPLUS.maxPreserved))return false;
+ if(['tea','cook'].includes(kind)&&(state.stores.water<1||state.stores.fuel<1))return false;
+ if(kind==='tea'&&state.stores.tea<1)return false;
+ if(kind==='prepare'&&!state.commitments.some(c=>!c.done&&(c.status===undefined||c.status==='open')&&(c.action===undefined||c.action==='prepare')))return false;
+ if(kind==='tend'&&(!availableGarden(state)||(state.garden?.ripeAt===null&&state.stores.water<ECONOMY.plantWater)))return false;
+ if(kind==='gather_fuel'&&state.stores.fuel>=ECONOMY.maxFuel)return false;
+ if(kind==='draw_water'&&state.stores.water>=ECONOMY.maxWater)return false;
+ if(kind==='read'&&state.folioReads.some(x=>x.day===state.clock.day))return false;
+ if(kind==='diary'&&state.diary.some(x=>x.day===state.clock.day))return false;
+ return true;}
+function scores(state){const enabled=state.debugSwitches||{};
+ const n=enabled.needs===false?{energy:50,hunger:50,comfort:50,stimulation:50,company:50}:state.needs;
+ const deadline=enabled.commitments===false?{...state.commitments[0],done:true}:
+  (state.commitments.find(c=>!c.done&&(c.status===undefined||c.status==='open')&&(c.action===undefined||c.action==='prepare'))||{done:true});
+ const time=state.clock.centibeats%100000;
+ return Object.entries(DEFINITIONS).filter(([key,a])=>available(state,key)&&(key!=='sleep'||time>=70000||n.energy<20)&&
+  !(a.target in OBJECTS&&(state.objectPositions?.[a.target]||OBJECTS[a.target].room)===state.location&&state.perception?.length&&
+   !state.perception.some(x=>x.id===a.target))&&
+  !(a.target in OBJECTS&&(state.objectSalience?.[a.target]||0)<=-20&&!state.seenObjects?.includes(a.target))).map(([key,a])=>{
+  let score=a.base*(state.traits[a.trait]||1);
+  if(key==='sleep')score+=(100-n.energy)*.72+(time>=70000?30:0);
+  if(key==='rest')score+=(100-n.energy)*.23;
+  if(key==='eat')score+=n.hunger*1.18;
+  if(key==='cook')score+=n.hunger*.36;
+  if(key==='tea')score+=n.hunger*.16+(100-n.comfort)*.18;
+  if(['read','study','inspect'].includes(key))score+=(100-n.stimulation)*.42;
+  if(key==='work')score+=n.energy*.22;
+  if(key==='read')score+=18;
+  if(key==='diary'&&state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).length>=2)score+=36;
+  if(key==='prepare'&&!deadline.done){
+   const rem=deadline.deadline-state.clock.centibeats;
+   score+=rem<=0?1:Math.min(95,15+65*Math.max(0,1-rem/36000));
+  }
+  const commitmentFactors=[];
+  if(enabled.commitments!==false)for(const c of state.commitments){
+   if(!c.done&&(c.status===undefined||c.status==='open')&&c.action===key&&key!=='prepare')
+    {const bonus=Commitments.obligationPressure(state,c);
+     score+=bonus;commitmentFactors.push({id:c.id,deadline:c.deadline,bonus,
+      remainingStages:Math.max(0,(c.requiredProgress||1)-(c.progressCount||0)),
+      stockShortfall:c.stockTarget?Math.max(0,c.stockTarget.minimum-
+       Commitments.heldStock(state,c.stockTarget)):0});}
+  }
+  if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
+  if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;
+  const rotationFactor=key==='eat'?rotationPolicy(state):null;
+  if(rotationFactor?.factor)score+=rotationFactor.factor;
+  const skillFactor=Skill.choiceFactor(state,key);score+=skillFactor.bonus;
+  const supplyFactor=supplyScore(state,key);score+=supplyFactor;
+  if(key==='check_mail')score+=70+(state.mail?.box?.length||0)*6;
+  if(key==='read_letter')score+=85;
+  if(key==='write_reply')score+=92;
+  if(key==='post_reply')score+=100;
+  if(key==='open_parcel')score+=68;
+  if(key==='meet_carrier'){
+   const policy=require('./social').treatment(state.people.mcfeely);
+   score+=Math.max(0,85-n.company)*.6+(policy.greet==='greet'?42:-65);
+  }
+  if(key==='converse'){
+    const trust=state.people.visitor_01.trust||0;
+    score+=Math.max(0,90-n.company)*.9+(trust>-12?26:-70);
+  }
+  if(enabled.habits!==false){
+   score+=Math.min(5,(state.habits[key]||0))*.5;
+   const profile=state.habitProfiles?.[key];
+   if(profile?.formed&&a.target in OBJECTS&&(state.objectPositions?.[a.target]||OBJECTS[a.target].room)===OBJECTS[a.target].room)score+=3;
+  }
+  const recent=state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).slice(-3);
+  score-=recent.filter(e=>e.kind===key).length*16;
+  const residueFactors=[];
+  if(enabled.residue!==false){
+   score+=(state.residue[key]||0);
+   for(const [topic,action] of Object.entries(topicAction)){
+    if(action!==key||!(state.residue[topic]>0))continue;
+    const age=Math.max(0,state.clock.centibeats-(state.residueSources?.[topic]?.tick??state.clock.centibeats));
+    const bonus=Math.round(state.residue[topic]*Math.max(.15,1-age/(12*100000))*100)/100;
+    score+=bonus;residueFactors.push({topic,sourceEventId:state.residueSources?.[topic]?.eventId||null,bonus});
+   }
+  }
+  const quirkFactors=[];
+  for(const q of state.quirks||[])if(q.bonus>0&&q.kind===key&&q.memoryClass==='lived_runtime_memory'){
+   score+=q.bonus;quirkFactors.push({originEventId:q.originEventId,bonus:q.bonus,originTag:q.originTag});
+  }
+  const memoryFactors=[];
+  for(const r of state.folioReads||[]){
+   if(r.actionCue!==key||r.day>state.clock.day||state.clock.day-r.day>4)continue;
+   const bonus=Math.max(0,15-(state.clock.day-r.day)*2);
+   score+=bonus;memoryFactors.push({folioId:r.id,bonus,actionCue:r.actionCue});
+  }
+  if(['rest','inspect'].includes(key))score+=state.traits.nervous*3;
+  if(['diary','walk'].includes(key))score+=state.traits.sociable*3;
+  const mood=enabled.mood===false?0:state.mood.reduce((sum,m)=>sum+m.value,0);
+  if(['read','inspect','study','work'].includes(key))score+=mood*.36;
+  if(['tea','rest','walk'].includes(key))score-=mood*.22;
+  // Bounded deterministic tie-breaking, not an LLM or unrecorded randomness.
+  const noise=((Math.imul(state.clock.centibeats+13,key.length*7919)+state.seed)>>>0)%5-2;
+  const targetBeliefRoom=state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target]?.room||state.people?.[a.target]?.room||'library';
+  const contextKey=a.target+'@'+targetBeliefRoom;
+  const contextualFailures=state.outcomeContexts?.[contextKey]||0;
+  score-=Math.min(20,contextualFailures*5);
+  const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
+  score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
+  const targetRoom=a.target in (state.people||{})?(state.people[a.target].room||'garden'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
+  return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
+    failures:contextualFailures,contextKey,quirkFactors,supplyFactor,rotationFactor,skillFactor,distance:distance(state.location,targetRoom)};
+ }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
+function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
+function perceiveTopic(state,text,source='visitor'){
+ const lower=String(text).slice(0,300).toLowerCase(),hits=[];
+ for(const [key,v] of Object.entries(TRIGGERS)){if(lower.includes(key)){hits.push(key);
+    state.residue[key]=(state.residue[key]||0)+v.salience;
+    state.residueSources??={};state.residueSources[key]={tick:state.clock.centibeats,source};
+    applyMood(state,key,v.mood);}}
+ if(hits.length){state.surface.lastWords=`That name is not without consequence: ${hits.join(', ')}.`;}
+ return hits;
+}
+function needsGreedy(s){
+ const base=scores(s);
+ const hunger=s.needs.hunger,energy=s.needs.energy;
+ const priorities={
+  eat:hunger>=50?120:0,
+  rest:energy<30?105:0,sleep:energy<22?130:0,
+  tend:s.stores.food<3?112:0,draw_water:s.stores.water<2?112:0,
+  gather_fuel:s.stores.fuel<2?105:0,
+  prepare:s.commitments.some(c=>!c.done&&c.action==='prepare'&&c.deadline-s.clock.centibeats<12000)?100:0,
+  work:25,read:15
+ };
+ return base.map(x=>({...x,utilityScore:x.score,policy:'needs_greedy',
+  policyReason:'fixed need threshold and legal action',
+  score:Math.round(((priorities[x.kind]||5)+x.score*.001)*100)/100}))
+  .sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));
+}
+function scoresForController(s){
+ return s.controllerMode==='needs_greedy'?needsGreedy(s):scores(s);
+}
+module.exports={DEFINITIONS,ACTION_WEIGHTS,setUtilityWeight,topicAction,memoryCue,clip,available,scores,
+ needsGreedy,scoresForController,applyMood,perceiveTopic};

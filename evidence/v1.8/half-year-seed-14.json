@@ -1,0 +1,6995 @@
+{
+  "schema": "v1.8-life-v1",
+  "seed": 14,
+  "horizon": 180,
+  "sourceHead": "af899b25212df4c55f55e9a9758b4a94d33f6079",
+  "physicalDaysAdvanced": 180,
+  "finalDead": false,
+  "firstDeath": null,
+  "flags": {
+    "negativeStock": null,
+    "batchMismatch": null,
+    "healthOutside": null,
+    "trustOutside": null,
+    "silentTopup": null,
+    "skillInflation": {
+      "day": 120,
+      "value": 629,
+      "rule": "science greater than 600 after 120 days"
+    }
+  },
+  "invariants": {
+    "noDeath": true,
+    "noFullDaySoftlock": true,
+    "noSustainedTwoActionCollapse": true,
+    "healthWithinBounds": true,
+    "nonnegativeStores": true,
+    "noSilentTopups": true,
+    "seriesAllAccounted": true,
+    "relationshipBounds": true,
+    "monthlyHarvestWasteReported": true,
+    "stateGrowthReported": true,
+    "settlementReconciles": true,
+    "scienceSkillSoftCeiling": false
+  },
+  "firstSlowFailure": {
+    "type": "skillInflation",
+    "day": 120,
+    "value": 629,
+    "rule": "science greater than 600 after 120 days"
+  },
+  "monthly": [
+    {
+      "period": 1,
+      "days": 30,
+      "elapsedStart": 1,
+      "elapsedEnd": 30,
+      "harvestWaste": 0,
+      "harvestDeferrals": 0,
+      "expiredFresh": 0,
+      "expiredPreserved": 0,
+      "preservedEaten": 0,
+      "settlementEvents": [],
+      "statementIssuedEvents": [],
+      "accountFrictionEvents": [],
+      "generatedSeries": [
+        {
+          "id": "C2",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L126"
+        },
+        {
+          "id": "C3",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L255"
+        },
+        {
+          "id": "C4",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L365"
+        },
+        {
+          "id": "C5",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L506"
+        },
+        {
+          "id": "C6",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L635"
+        },
+        {
+          "id": "C7",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L790"
+        },
+        {
+          "id": "C8",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L895"
+        },
+        {
+          "id": "C9",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1032"
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "rule": {
+            "templateId": "MONTH-FOLIO",
+            "intervalDays": 30,
+            "openOffset": 8,
+            "dueOffset": 10,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1034"
+        },
+        {
+          "id": "C10",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1173"
+        },
+        {
+          "id": "C11",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1285"
+        },
+        {
+          "id": "C12",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1434"
+        },
+        {
+          "id": "C13",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1525"
+        },
+        {
+          "id": "C14",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1669"
+        },
+        {
+          "id": "C15",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1789"
+        },
+        {
+          "id": "C16",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L1938"
+        },
+        {
+          "id": "C17",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2060"
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "rule": {
+            "templateId": "MONTH-INSTRUMENT",
+            "intervalDays": 30,
+            "openOffset": 16,
+            "dueOffset": 18,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2062"
+        },
+        {
+          "id": "C18",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2179"
+        },
+        {
+          "id": "C19",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2311"
+        },
+        {
+          "id": "C20",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2431"
+        },
+        {
+          "id": "C21",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2566"
+        },
+        {
+          "id": "C22",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2668"
+        },
+        {
+          "id": "C23",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2819"
+        },
+        {
+          "id": "C24",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2932"
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "rule": {
+            "templateId": "MONTH-PROVISIONS",
+            "intervalDays": 30,
+            "openOffset": 23,
+            "dueOffset": 25,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L2934"
+        },
+        {
+          "id": "C25",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3053"
+        },
+        {
+          "id": "C26",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3208"
+        },
+        {
+          "id": "C27",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3340"
+        },
+        {
+          "id": "C28",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3444"
+        },
+        {
+          "id": "C29",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3566"
+        },
+        {
+          "id": "C30",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3710"
+        },
+        {
+          "id": "C31",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3831"
+        }
+      ],
+      "brokenSeries": [],
+      "ruminations": 440,
+      "actionCounts": {
+        "read": 31,
+        "eat": 71,
+        "diary": 31,
+        "tend": 20,
+        "study": 3,
+        "prepare": 30,
+        "work": 154,
+        "converse": 8,
+        "rest": 34,
+        "sleep": 40,
+        "check_mail": 13,
+        "read_letter": 13,
+        "preserve": 15,
+        "write_reply": 2,
+        "post_reply": 2,
+        "draw_water": 3,
+        "meet_carrier": 2,
+        "gather_fuel": 1,
+        "trade": 8,
+        "open_parcel": 3,
+        "inspect": 2
+      },
+      "softlockedDays": [],
+      "sustainedNarrowDays": [],
+      "predicted": 410,
+      "predictionHits": 127,
+      "firstHealth": 100,
+      "lastHealth": 100,
+      "minHealth": 100,
+      "maxHealth": 100,
+      "minStores": {
+        "food": 2,
+        "water": 5,
+        "fuel": 4,
+        "tea": 4,
+        "preserved": 0
+      },
+      "trustBand": {
+        "rosa": [
+          4.94,
+          34.31
+        ],
+        "mcfeely": [
+          0,
+          23.09
+        ]
+      },
+      "skillDelta": 150,
+      "failedSeriesRuminationCount": 0,
+      "failedSeriesRuminationSources": []
+    },
+    {
+      "period": 2,
+      "days": 30,
+      "elapsedStart": 31,
+      "elapsedEnd": 60,
+      "harvestWaste": 0,
+      "harvestDeferrals": 0,
+      "expiredFresh": 0,
+      "expiredPreserved": 0,
+      "preservedEaten": 0,
+      "settlementEvents": [
+        "L3913"
+      ],
+      "statementIssuedEvents": [
+        "L3909"
+      ],
+      "accountFrictionEvents": [],
+      "generatedSeries": [
+        {
+          "id": "C32",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L3979"
+        },
+        {
+          "id": "C33",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4100"
+        },
+        {
+          "id": "C34",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4216"
+        },
+        {
+          "id": "C35",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4362"
+        },
+        {
+          "id": "C36",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4455"
+        },
+        {
+          "id": "C37",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4599"
+        },
+        {
+          "id": "C38",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4726"
+        },
+        {
+          "id": "C39",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4840"
+        },
+        {
+          "id": "MONTH-FOLIO@02",
+          "rule": {
+            "templateId": "MONTH-FOLIO",
+            "intervalDays": 30,
+            "openOffset": 8,
+            "dueOffset": 10,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4842"
+        },
+        {
+          "id": "C40",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L4975"
+        },
+        {
+          "id": "C41",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5099"
+        },
+        {
+          "id": "C42",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5219"
+        },
+        {
+          "id": "C43",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5331"
+        },
+        {
+          "id": "C44",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5480"
+        },
+        {
+          "id": "C45",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5607"
+        },
+        {
+          "id": "C46",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5721"
+        },
+        {
+          "id": "C47",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5828"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@02",
+          "rule": {
+            "templateId": "MONTH-INSTRUMENT",
+            "intervalDays": 30,
+            "openOffset": 16,
+            "dueOffset": 18,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5830"
+        },
+        {
+          "id": "C48",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L5958"
+        },
+        {
+          "id": "C49",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6069"
+        },
+        {
+          "id": "C50",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6186"
+        },
+        {
+          "id": "C51",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6326"
+        },
+        {
+          "id": "C52",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6453"
+        },
+        {
+          "id": "C53",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6567"
+        },
+        {
+          "id": "C54",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6696"
+        },
+        {
+          "id": "MONTH-PROVISIONS@02",
+          "rule": {
+            "templateId": "MONTH-PROVISIONS",
+            "intervalDays": 30,
+            "openOffset": 23,
+            "dueOffset": 25,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6698"
+        },
+        {
+          "id": "C55",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6819"
+        },
+        {
+          "id": "C56",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L6948"
+        },
+        {
+          "id": "C57",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7059"
+        },
+        {
+          "id": "C58",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7172"
+        },
+        {
+          "id": "C59",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7318"
+        },
+        {
+          "id": "C60",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7413"
+        },
+        {
+          "id": "C61",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7538"
+        }
+      ],
+      "brokenSeries": [],
+      "ruminations": 429,
+      "actionCounts": {
+        "work": 156,
+        "prepare": 30,
+        "eat": 71,
+        "converse": 9,
+        "rest": 28,
+        "sleep": 42,
+        "diary": 30,
+        "read": 30,
+        "check_mail": 13,
+        "read_letter": 13,
+        "tend": 20,
+        "preserve": 17,
+        "draw_water": 3,
+        "meet_carrier": 3,
+        "trade": 2,
+        "inspect": 2
+      },
+      "softlockedDays": [],
+      "sustainedNarrowDays": [],
+      "predicted": 383,
+      "predictionHits": 130,
+      "firstHealth": 100,
+      "lastHealth": 100,
+      "minHealth": 100,
+      "maxHealth": 100,
+      "minStores": {
+        "food": 3,
+        "water": 5,
+        "fuel": 7,
+        "tea": 16,
+        "preserved": 15,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "trustBand": {
+        "rosa": [
+          35,
+          43.39
+        ],
+        "mcfeely": [
+          23.09,
+          40.87
+        ]
+      },
+      "skillDelta": 151,
+      "failedSeriesRuminationCount": 0,
+      "failedSeriesRuminationSources": []
+    },
+    {
+      "period": 3,
+      "days": 30,
+      "elapsedStart": 61,
+      "elapsedEnd": 90,
+      "harvestWaste": 0,
+      "harvestDeferrals": 0,
+      "expiredFresh": 0,
+      "expiredPreserved": 0,
+      "preservedEaten": 0,
+      "settlementEvents": [
+        "L7622"
+      ],
+      "statementIssuedEvents": [
+        "L7618"
+      ],
+      "accountFrictionEvents": [],
+      "generatedSeries": [
+        {
+          "id": "C62",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7687"
+        },
+        {
+          "id": "C63",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7814"
+        },
+        {
+          "id": "C64",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L7928"
+        },
+        {
+          "id": "C65",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8083"
+        },
+        {
+          "id": "C66",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8198"
+        },
+        {
+          "id": "C67",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8305"
+        },
+        {
+          "id": "C68",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8417"
+        },
+        {
+          "id": "C69",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8527"
+        },
+        {
+          "id": "MONTH-FOLIO@03",
+          "rule": {
+            "templateId": "MONTH-FOLIO",
+            "intervalDays": 30,
+            "openOffset": 8,
+            "dueOffset": 10,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8529"
+        },
+        {
+          "id": "C70",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8648"
+        },
+        {
+          "id": "C71",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8779"
+        },
+        {
+          "id": "C72",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L8921"
+        },
+        {
+          "id": "C73",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9050"
+        },
+        {
+          "id": "C74",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9153"
+        },
+        {
+          "id": "C75",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9281"
+        },
+        {
+          "id": "C76",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9394"
+        },
+        {
+          "id": "C77",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9540"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@03",
+          "rule": {
+            "templateId": "MONTH-INSTRUMENT",
+            "intervalDays": 30,
+            "openOffset": 16,
+            "dueOffset": 18,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9542"
+        },
+        {
+          "id": "C78",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9649"
+        },
+        {
+          "id": "C79",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9799"
+        },
+        {
+          "id": "C80",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L9939"
+        },
+        {
+          "id": "C81",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10034"
+        },
+        {
+          "id": "C82",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10163"
+        },
+        {
+          "id": "C83",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10275"
+        },
+        {
+          "id": "C84",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10400"
+        },
+        {
+          "id": "MONTH-PROVISIONS@03",
+          "rule": {
+            "templateId": "MONTH-PROVISIONS",
+            "intervalDays": 30,
+            "openOffset": 23,
+            "dueOffset": 25,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10402"
+        },
+        {
+          "id": "C85",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10517"
+        },
+        {
+          "id": "C86",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10649"
+        },
+        {
+          "id": "C87",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10784"
+        },
+        {
+          "id": "C88",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L10875"
+        },
+        {
+          "id": "C89",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11019"
+        },
+        {
+          "id": "C90",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11133"
+        },
+        {
+          "id": "C91",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11252"
+        }
+      ],
+      "brokenSeries": [],
+      "ruminations": 426,
+      "actionCounts": {
+        "work": 154,
+        "draw_water": 4,
+        "prepare": 30,
+        "rest": 30,
+        "trade": 3,
+        "converse": 10,
+        "sleep": 42,
+        "eat": 69,
+        "diary": 30,
+        "read": 30,
+        "check_mail": 13,
+        "read_letter": 13,
+        "tend": 20,
+        "preserve": 16,
+        "meet_carrier": 3,
+        "inspect": 3
+      },
+      "softlockedDays": [],
+      "sustainedNarrowDays": [],
+      "predicted": 386,
+      "predictionHits": 131,
+      "firstHealth": 100,
+      "lastHealth": 100,
+      "minHealth": 100,
+      "maxHealth": 100,
+      "minStores": {
+        "food": 3,
+        "water": 6,
+        "fuel": 6,
+        "tea": 16,
+        "preserved": 65,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "trustBand": {
+        "rosa": [
+          44.87,
+          48.61
+        ],
+        "mcfeely": [
+          40.87,
+          53.62
+        ]
+      },
+      "skillDelta": 150,
+      "failedSeriesRuminationCount": 0,
+      "failedSeriesRuminationSources": []
+    },
+    {
+      "period": 4,
+      "days": 30,
+      "elapsedStart": 91,
+      "elapsedEnd": 120,
+      "harvestWaste": 0,
+      "harvestDeferrals": 0,
+      "expiredFresh": 0,
+      "expiredPreserved": 0,
+      "preservedEaten": 0,
+      "settlementEvents": [
+        "L11324"
+      ],
+      "statementIssuedEvents": [
+        "L11320"
+      ],
+      "accountFrictionEvents": [],
+      "generatedSeries": [
+        {
+          "id": "C92",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11389"
+        },
+        {
+          "id": "C93",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11526"
+        },
+        {
+          "id": "C94",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11660"
+        },
+        {
+          "id": "C95",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11766"
+        },
+        {
+          "id": "C96",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L11896"
+        },
+        {
+          "id": "C97",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12014"
+        },
+        {
+          "id": "C98",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12126"
+        },
+        {
+          "id": "C99",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12242"
+        },
+        {
+          "id": "MONTH-FOLIO@04",
+          "rule": {
+            "templateId": "MONTH-FOLIO",
+            "intervalDays": 30,
+            "openOffset": 8,
+            "dueOffset": 10,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12244"
+        },
+        {
+          "id": "C100",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12374"
+        },
+        {
+          "id": "C101",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12511"
+        },
+        {
+          "id": "C102",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12634"
+        },
+        {
+          "id": "C103",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12739"
+        },
+        {
+          "id": "C104",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12846"
+        },
+        {
+          "id": "C105",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L12967"
+        },
+        {
+          "id": "C106",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13081"
+        },
+        {
+          "id": "C107",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13225"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@04",
+          "rule": {
+            "templateId": "MONTH-INSTRUMENT",
+            "intervalDays": 30,
+            "openOffset": 16,
+            "dueOffset": 18,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13227"
+        },
+        {
+          "id": "C108",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13353"
+        },
+        {
+          "id": "C109",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13474"
+        },
+        {
+          "id": "C110",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13592"
+        },
+        {
+          "id": "C111",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13689"
+        },
+        {
+          "id": "C112",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13832"
+        },
+        {
+          "id": "C113",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L13918"
+        },
+        {
+          "id": "C114",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14068"
+        },
+        {
+          "id": "MONTH-PROVISIONS@04",
+          "rule": {
+            "templateId": "MONTH-PROVISIONS",
+            "intervalDays": 30,
+            "openOffset": 23,
+            "dueOffset": 25,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14070"
+        },
+        {
+          "id": "C115",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14203"
+        },
+        {
+          "id": "C116",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14325"
+        },
+        {
+          "id": "C117",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14432"
+        },
+        {
+          "id": "C118",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14534"
+        },
+        {
+          "id": "C119",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14646"
+        },
+        {
+          "id": "C120",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14757"
+        },
+        {
+          "id": "C121",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L14879"
+        }
+      ],
+      "brokenSeries": [
+        {
+          "id": "MONTH-PROVISIONS@04",
+          "cause": "deadline_missed"
+        }
+      ],
+      "ruminations": 426,
+      "actionCounts": {
+        "work": 163,
+        "prepare": 30,
+        "preserve": 6,
+        "trade": 1,
+        "converse": 12,
+        "sleep": 42,
+        "eat": 67,
+        "diary": 30,
+        "read": 30,
+        "tend": 13,
+        "rest": 31,
+        "check_mail": 12,
+        "read_letter": 12,
+        "draw_water": 2,
+        "inspect": 8,
+        "meet_carrier": 2
+      },
+      "softlockedDays": [],
+      "sustainedNarrowDays": [],
+      "predicted": 400,
+      "predictionHits": 141,
+      "firstHealth": 100,
+      "lastHealth": 100,
+      "minHealth": 100,
+      "maxHealth": 100,
+      "minStores": {
+        "food": 4,
+        "water": 5,
+        "fuel": 8,
+        "tea": 16,
+        "preserved": 115,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "trustBand": {
+        "rosa": [
+          48.97,
+          54.52
+        ],
+        "mcfeely": [
+          53.62,
+          63.61
+        ]
+      },
+      "skillDelta": 158,
+      "failedSeriesRuminationCount": 15,
+      "failedSeriesRuminationSources": [
+        {
+          "id": "L14449",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14473",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14493",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14520",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14570",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14609",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14658",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14679",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14706",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L14737",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        }
+      ]
+    },
+    {
+      "period": 5,
+      "days": 30,
+      "elapsedStart": 121,
+      "elapsedEnd": 150,
+      "harvestWaste": 0,
+      "harvestDeferrals": 0,
+      "expiredFresh": 0,
+      "expiredPreserved": 5,
+      "preservedEaten": 0,
+      "settlementEvents": [
+        "L14949"
+      ],
+      "statementIssuedEvents": [
+        "L14945"
+      ],
+      "accountFrictionEvents": [],
+      "generatedSeries": [
+        {
+          "id": "C122",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15050"
+        },
+        {
+          "id": "C123",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15137"
+        },
+        {
+          "id": "C124",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15276"
+        },
+        {
+          "id": "C125",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15400"
+        },
+        {
+          "id": "C126",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15531"
+        },
+        {
+          "id": "C127",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15629"
+        },
+        {
+          "id": "C128",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15776"
+        },
+        {
+          "id": "C129",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15903"
+        },
+        {
+          "id": "MONTH-FOLIO@05",
+          "rule": {
+            "templateId": "MONTH-FOLIO",
+            "intervalDays": 30,
+            "openOffset": 8,
+            "dueOffset": 10,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L15905"
+        },
+        {
+          "id": "C130",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16008"
+        },
+        {
+          "id": "C131",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16133"
+        },
+        {
+          "id": "C132",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16239"
+        },
+        {
+          "id": "C133",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16355"
+        },
+        {
+          "id": "C134",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16469"
+        },
+        {
+          "id": "C135",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16589"
+        },
+        {
+          "id": "C136",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16717"
+        },
+        {
+          "id": "C137",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16840"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@05",
+          "rule": {
+            "templateId": "MONTH-INSTRUMENT",
+            "intervalDays": 30,
+            "openOffset": 16,
+            "dueOffset": 18,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16842"
+        },
+        {
+          "id": "C138",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L16979"
+        },
+        {
+          "id": "C139",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17074"
+        },
+        {
+          "id": "C140",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17218"
+        },
+        {
+          "id": "C141",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17308"
+        },
+        {
+          "id": "C142",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17449"
+        },
+        {
+          "id": "C143",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17577"
+        },
+        {
+          "id": "C144",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17676"
+        },
+        {
+          "id": "MONTH-PROVISIONS@05",
+          "rule": {
+            "templateId": "MONTH-PROVISIONS",
+            "intervalDays": 30,
+            "openOffset": 23,
+            "dueOffset": 25,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17678"
+        },
+        {
+          "id": "C145",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17812"
+        },
+        {
+          "id": "C146",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L17918"
+        },
+        {
+          "id": "C147",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18040"
+        },
+        {
+          "id": "C148",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18156"
+        },
+        {
+          "id": "C149",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18278"
+        },
+        {
+          "id": "C150",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18413"
+        },
+        {
+          "id": "C151",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18520"
+        }
+      ],
+      "brokenSeries": [
+        {
+          "id": "MONTH-PROVISIONS@05",
+          "cause": "deadline_missed"
+        }
+      ],
+      "ruminations": 432,
+      "actionCounts": {
+        "work": 167,
+        "prepare": 30,
+        "eat": 72,
+        "preserve": 5,
+        "check_mail": 13,
+        "read_letter": 13,
+        "converse": 11,
+        "tend": 11,
+        "sleep": 41,
+        "diary": 30,
+        "read": 29,
+        "rest": 32,
+        "draw_water": 2,
+        "inspect": 4,
+        "meet_carrier": 1
+      },
+      "softlockedDays": [],
+      "sustainedNarrowDays": [],
+      "predicted": 461,
+      "predictionHits": 180,
+      "firstHealth": 100,
+      "lastHealth": 100,
+      "minHealth": 100,
+      "maxHealth": 100,
+      "minStores": {
+        "food": 6,
+        "water": 6,
+        "fuel": 8,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "trustBand": {
+        "rosa": [
+          53.83,
+          58.29
+        ],
+        "mcfeely": [
+          63.61,
+          71.44
+        ]
+      },
+      "skillDelta": 162,
+      "failedSeriesRuminationCount": 144,
+      "failedSeriesRuminationSources": [
+        {
+          "id": "L14943",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15016",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15047",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15079",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15100",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15123",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15151",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15181",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15205",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        },
+        {
+          "id": "L15244",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 1
+        }
+      ]
+    },
+    {
+      "period": 6,
+      "days": 30,
+      "elapsedStart": 151,
+      "elapsedEnd": 180,
+      "harvestWaste": 0,
+      "harvestDeferrals": 0,
+      "expiredFresh": 0,
+      "expiredPreserved": 56,
+      "preservedEaten": 0,
+      "settlementEvents": [
+        "L18587"
+      ],
+      "statementIssuedEvents": [
+        "L18583"
+      ],
+      "accountFrictionEvents": [],
+      "generatedSeries": [
+        {
+          "id": "C152",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18689"
+        },
+        {
+          "id": "C153",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18799"
+        },
+        {
+          "id": "C154",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L18916"
+        },
+        {
+          "id": "C155",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19028"
+        },
+        {
+          "id": "C156",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19167"
+        },
+        {
+          "id": "C157",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19293"
+        },
+        {
+          "id": "C158",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19410"
+        },
+        {
+          "id": "C159",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19524"
+        },
+        {
+          "id": "MONTH-FOLIO@06",
+          "rule": {
+            "templateId": "MONTH-FOLIO",
+            "intervalDays": 30,
+            "openOffset": 8,
+            "dueOffset": 10,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19526"
+        },
+        {
+          "id": "C160",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19658"
+        },
+        {
+          "id": "C161",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19798"
+        },
+        {
+          "id": "C162",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L19905"
+        },
+        {
+          "id": "C163",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20056"
+        },
+        {
+          "id": "C164",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20175"
+        },
+        {
+          "id": "C165",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20284"
+        },
+        {
+          "id": "C166",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20421"
+        },
+        {
+          "id": "C167",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20522"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@06",
+          "rule": {
+            "templateId": "MONTH-INSTRUMENT",
+            "intervalDays": 30,
+            "openOffset": 16,
+            "dueOffset": 18,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20524"
+        },
+        {
+          "id": "C168",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20667"
+        },
+        {
+          "id": "C169",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20784"
+        },
+        {
+          "id": "C170",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L20912"
+        },
+        {
+          "id": "C171",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21049"
+        },
+        {
+          "id": "C172",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21163"
+        },
+        {
+          "id": "C173",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21279"
+        },
+        {
+          "id": "C174",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21408"
+        },
+        {
+          "id": "MONTH-PROVISIONS@06",
+          "rule": {
+            "templateId": "MONTH-PROVISIONS",
+            "intervalDays": 30,
+            "openOffset": 23,
+            "dueOffset": 25,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21410"
+        },
+        {
+          "id": "C175",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21527"
+        },
+        {
+          "id": "C176",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21644"
+        },
+        {
+          "id": "C177",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21782"
+        },
+        {
+          "id": "C178",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L21913"
+        },
+        {
+          "id": "C179",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L22008"
+        },
+        {
+          "id": "C180",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L22141"
+        },
+        {
+          "id": "C181",
+          "rule": {
+            "templateId": "DAILY-HEARTH",
+            "intervalDays": 1,
+            "openOffset": 0,
+            "dueOffset": 0,
+            "duePhase": 65000
+          },
+          "sourceEventId": "L22254"
+        }
+      ],
+      "brokenSeries": [],
+      "ruminations": 429,
+      "actionCounts": {
+        "read": 30,
+        "work": 157,
+        "prepare": 30,
+        "check_mail": 13,
+        "preserve": 17,
+        "read_letter": 13,
+        "converse": 8,
+        "eat": 66,
+        "rest": 26,
+        "tend": 19,
+        "sleep": 42,
+        "diary": 30,
+        "draw_water": 3,
+        "inspect": 3,
+        "meet_carrier": 4,
+        "trade": 3
+      },
+      "softlockedDays": [],
+      "sustainedNarrowDays": [],
+      "predicted": 465,
+      "predictionHits": 167,
+      "firstHealth": 100,
+      "lastHealth": 100,
+      "minHealth": 100,
+      "maxHealth": 100,
+      "minStores": {
+        "food": 6,
+        "water": 5,
+        "fuel": 6,
+        "tea": 16,
+        "preserved": 135,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "trustBand": {
+        "rosa": [
+          56.99,
+          57.66
+        ],
+        "mcfeely": [
+          72.01,
+          78.07
+        ]
+      },
+      "skillDelta": 153,
+      "failedSeriesRuminationCount": 272,
+      "failedSeriesRuminationSources": [
+        {
+          "id": "L18556",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18564",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18573",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18611",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18631",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18650",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18665",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18674",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18692",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        },
+        {
+          "id": "L18706",
+          "seriesId": "MONTH-PROVISIONS",
+          "brokenStreak": 2
+        }
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "elapsedDay": 0,
+      "worldDay": 0,
+      "tick": 25000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 7,
+        "water": 9,
+        "fuel": 5,
+        "tea": 4,
+        "preserved": 0
+      },
+      "garden": {
+        "plantedAt": null,
+        "ripeAt": null,
+        "harvests": 0
+      },
+      "skills": {
+        "science": 2,
+        "household": 1
+      },
+      "habitsFormed": 0,
+      "habitCounts": 0,
+      "quirks": 0,
+      "activeQuirkBonuses": 0,
+      "predictions": 0,
+      "predictorAccuracy": null,
+      "trust": {
+        "rosa": 0,
+        "mcfeely": 0
+      },
+      "relationshipEncounters": {
+        "rosa": 0,
+        "mcfeely": 0
+      },
+      "eventLogEntries": 0,
+      "diaryEntries": 0,
+      "folioReadEntries": 0,
+      "series": [],
+      "serializedSaveBytes": 6163
+    },
+    {
+      "elapsedDay": 1,
+      "worldDay": 1,
+      "tick": 125000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 6,
+        "water": 8,
+        "fuel": 7,
+        "tea": 4,
+        "preserved": 0
+      },
+      "garden": {
+        "plantedAt": 36500,
+        "ripeAt": 176500,
+        "harvests": 0
+      },
+      "skills": {
+        "science": 6,
+        "household": 1
+      },
+      "habitsFormed": 0,
+      "habitCounts": 10,
+      "quirks": 1,
+      "activeQuirkBonuses": 0,
+      "predictions": 17,
+      "predictorAccuracy": 0,
+      "trust": {
+        "rosa": 4.94,
+        "mcfeely": 0
+      },
+      "relationshipEncounters": {
+        "rosa": 1,
+        "mcfeely": 0
+      },
+      "eventLogEntries": 158,
+      "diaryEntries": 2,
+      "folioReadEntries": 2,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 2,
+          "kept": 1,
+          "broken": 0,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 18300
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        }
+      ],
+      "serializedSaveBytes": 208595
+    },
+    {
+      "elapsedDay": 30,
+      "worldDay": 30,
+      "tick": 3025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 8,
+        "water": 7,
+        "fuel": 10,
+        "tea": 16,
+        "preserved": 35,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 3001400,
+        "ripeAt": 3141400,
+        "harvests": 19
+      },
+      "skills": {
+        "science": 156,
+        "household": 16
+      },
+      "habitsFormed": 11,
+      "habitCounts": 21,
+      "quirks": 14,
+      "activeQuirkBonuses": 2,
+      "predictions": 200,
+      "predictorAccuracy": 0.36,
+      "trust": {
+        "rosa": 34.31,
+        "mcfeely": 23.09
+      },
+      "relationshipEncounters": {
+        "rosa": 5,
+        "mcfeely": 13
+      },
+      "eventLogEntries": 3879,
+      "diaryEntries": 31,
+      "folioReadEntries": 31,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 31,
+          "kept": 30,
+          "broken": 0,
+          "keptStreak": 30,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36040
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 1,
+          "kept": 1,
+          "broken": 0,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 110300
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 1,
+          "kept": 1,
+          "broken": 0,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 21100
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 1,
+          "kept": 1,
+          "broken": 0,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 254800
+        }
+      ],
+      "serializedSaveBytes": 3693397
+    },
+    {
+      "elapsedDay": 60,
+      "worldDay": 60,
+      "tick": 6025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 5,
+        "water": 5,
+        "fuel": 7,
+        "tea": 16,
+        "preserved": 90,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 6004000,
+        "ripeAt": 6144000,
+        "harvests": 39
+      },
+      "skills": {
+        "science": 312,
+        "household": 33
+      },
+      "habitsFormed": 13,
+      "habitCounts": 21,
+      "quirks": 23,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.35,
+      "trust": {
+        "rosa": 43.39,
+        "mcfeely": 40.87
+      },
+      "relationshipEncounters": {
+        "rosa": 10,
+        "mcfeely": 26
+      },
+      "eventLogEntries": 7583,
+      "diaryEntries": 61,
+      "folioReadEntries": 61,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 61,
+          "kept": 60,
+          "broken": 0,
+          "keptStreak": 60,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36020
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 2,
+          "kept": 2,
+          "broken": 0,
+          "keptStreak": 2,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 107550
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 2,
+          "kept": 2,
+          "broken": 0,
+          "keptStreak": 2,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 21750
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 2,
+          "kept": 2,
+          "broken": 0,
+          "keptStreak": 2,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 252250
+        }
+      ],
+      "serializedSaveBytes": 7144177
+    },
+    {
+      "elapsedDay": 90,
+      "worldDay": 90,
+      "tick": 9025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 10,
+        "water": 9,
+        "fuel": 7,
+        "tea": 16,
+        "preserved": 135,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 9001900,
+        "ripeAt": 9141900,
+        "harvests": 59
+      },
+      "skills": {
+        "science": 466,
+        "household": 49
+      },
+      "habitsFormed": 14,
+      "habitCounts": 21,
+      "quirks": 24,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.35,
+      "trust": {
+        "rosa": 48.61,
+        "mcfeely": 53.62
+      },
+      "relationshipEncounters": {
+        "rosa": 15,
+        "mcfeely": 38
+      },
+      "eventLogEntries": 11290,
+      "diaryEntries": 91,
+      "folioReadEntries": 91,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 91,
+          "kept": 90,
+          "broken": 0,
+          "keptStreak": 90,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36406
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 3,
+          "kept": 3,
+          "broken": 0,
+          "keptStreak": 3,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 106500
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 3,
+          "kept": 3,
+          "broken": 0,
+          "keptStreak": 3,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 26267
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 3,
+          "kept": 3,
+          "broken": 0,
+          "keptStreak": 3,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 249833
+        }
+      ],
+      "serializedSaveBytes": 10649756
+    },
+    {
+      "elapsedDay": 120,
+      "worldDay": 120,
+      "tick": 12025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 22,
+        "water": 8,
+        "fuel": 12,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 11851900,
+        "ripeAt": 11991900,
+        "harvests": 72
+      },
+      "skills": {
+        "science": 629,
+        "household": 55
+      },
+      "habitsFormed": 14,
+      "habitCounts": 21,
+      "quirks": 25,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.36,
+      "trust": {
+        "rosa": 54.52,
+        "mcfeely": 63.61
+      },
+      "relationshipEncounters": {
+        "rosa": 21,
+        "mcfeely": 50
+      },
+      "eventLogEntries": 14912,
+      "diaryEntries": 121,
+      "folioReadEntries": 121,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 121,
+          "kept": 120,
+          "broken": 0,
+          "keptStreak": 120,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36269
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 4,
+          "kept": 4,
+          "broken": 0,
+          "keptStreak": 4,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 106450
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 4,
+          "kept": 4,
+          "broken": 0,
+          "keptStreak": 4,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 30625
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 4,
+          "kept": 3,
+          "broken": 1,
+          "keptStreak": 0,
+          "brokenStreak": 1,
+          "avgCompletionTicks": 249833
+        }
+      ],
+      "serializedSaveBytes": 14128229
+    },
+    {
+      "elapsedDay": 150,
+      "worldDay": 150,
+      "tick": 15025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 18,
+        "water": 9,
+        "fuel": 11,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 14926300,
+        "ripeAt": 15066300,
+        "harvests": 83
+      },
+      "skills": {
+        "science": 796,
+        "household": 60
+      },
+      "habitsFormed": 14,
+      "habitCounts": 21,
+      "quirks": 26,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.4,
+      "trust": {
+        "rosa": 58.29,
+        "mcfeely": 71.44
+      },
+      "relationshipEncounters": {
+        "rosa": 26,
+        "mcfeely": 62
+      },
+      "eventLogEntries": 18548,
+      "diaryEntries": 151,
+      "folioReadEntries": 150,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 151,
+          "kept": 150,
+          "broken": 0,
+          "keptStreak": 150,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36021
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 5,
+          "kept": 5,
+          "broken": 0,
+          "keptStreak": 5,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 107880
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 5,
+          "kept": 5,
+          "broken": 0,
+          "keptStreak": 5,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 28080
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 5,
+          "kept": 3,
+          "broken": 2,
+          "keptStreak": 0,
+          "brokenStreak": 2,
+          "avgCompletionTicks": 249833
+        }
+      ],
+      "serializedSaveBytes": 17623617
+    },
+    {
+      "elapsedDay": 180,
+      "worldDay": 180,
+      "tick": 18025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 12,
+        "water": 8,
+        "fuel": 9,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 17968100,
+        "ripeAt": 18108100,
+        "harvests": 102
+      },
+      "skills": {
+        "science": 953,
+        "household": 77
+      },
+      "habitsFormed": 14,
+      "habitCounts": 21,
+      "quirks": 26,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.38,
+      "trust": {
+        "rosa": 57.06,
+        "mcfeely": 78.07
+      },
+      "relationshipEncounters": {
+        "rosa": 31,
+        "mcfeely": 75
+      },
+      "eventLogEntries": 22274,
+      "diaryEntries": 181,
+      "folioReadEntries": 180,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 181,
+          "kept": 180,
+          "broken": 0,
+          "keptStreak": 180,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36137
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 6,
+          "kept": 6,
+          "broken": 0,
+          "keptStreak": 6,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 108133
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 6,
+          "kept": 6,
+          "broken": 0,
+          "keptStreak": 6,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 25317
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 6,
+          "kept": 4,
+          "broken": 2,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 236850
+        }
+      ],
+      "serializedSaveBytes": 21232808
+    }
+  ],
+  "series": [
+    {
+      "id": "DAILY-HEARTH",
+      "opened": 181,
+      "kept": 180,
+      "broken": 0,
+      "keptStreak": 180,
+      "brokenStreak": 0,
+      "avgCompletionTicks": 36137,
+      "instances": [
+        {
+          "id": "C1",
+          "ordinal": 1,
+          "status": "kept",
+          "openedAt": 25000,
+          "deadline": 65000,
+          "keptAt": 43300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": null,
+          "resolutionEventId": "L45"
+        },
+        {
+          "id": "C2",
+          "ordinal": 2,
+          "status": "kept",
+          "openedAt": 100000,
+          "deadline": 165000,
+          "keptAt": 132500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L126",
+          "resolutionEventId": "L170"
+        },
+        {
+          "id": "C3",
+          "ordinal": 3,
+          "status": "kept",
+          "openedAt": 200000,
+          "deadline": 265000,
+          "keptAt": 235300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L255",
+          "resolutionEventId": "L320"
+        },
+        {
+          "id": "C4",
+          "ordinal": 4,
+          "status": "kept",
+          "openedAt": 300000,
+          "deadline": 365000,
+          "keptAt": 334800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L365",
+          "resolutionEventId": "L415"
+        },
+        {
+          "id": "C5",
+          "ordinal": 5,
+          "status": "kept",
+          "openedAt": 400000,
+          "deadline": 465000,
+          "keptAt": 435100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L506",
+          "resolutionEventId": "L564"
+        },
+        {
+          "id": "C6",
+          "ordinal": 6,
+          "status": "kept",
+          "openedAt": 500000,
+          "deadline": 565000,
+          "keptAt": 543600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L635",
+          "resolutionEventId": "L714"
+        },
+        {
+          "id": "C7",
+          "ordinal": 7,
+          "status": "kept",
+          "openedAt": 600000,
+          "deadline": 665000,
+          "keptAt": 642800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L790",
+          "resolutionEventId": "L828"
+        },
+        {
+          "id": "C8",
+          "ordinal": 8,
+          "status": "kept",
+          "openedAt": 700000,
+          "deadline": 765000,
+          "keptAt": 741400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L895",
+          "resolutionEventId": "L949"
+        },
+        {
+          "id": "C9",
+          "ordinal": 9,
+          "status": "kept",
+          "openedAt": 800000,
+          "deadline": 865000,
+          "keptAt": 839800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1032",
+          "resolutionEventId": "L1097"
+        },
+        {
+          "id": "C10",
+          "ordinal": 10,
+          "status": "kept",
+          "openedAt": 900000,
+          "deadline": 965000,
+          "keptAt": 931600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1173",
+          "resolutionEventId": "L1218"
+        },
+        {
+          "id": "C11",
+          "ordinal": 11,
+          "status": "kept",
+          "openedAt": 1000000,
+          "deadline": 1065000,
+          "keptAt": 1039300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1285",
+          "resolutionEventId": "L1345"
+        },
+        {
+          "id": "C12",
+          "ordinal": 12,
+          "status": "kept",
+          "openedAt": 1100000,
+          "deadline": 1165000,
+          "keptAt": 1142700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1434",
+          "resolutionEventId": "L1472"
+        },
+        {
+          "id": "C13",
+          "ordinal": 13,
+          "status": "kept",
+          "openedAt": 1200000,
+          "deadline": 1265000,
+          "keptAt": 1234100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1525",
+          "resolutionEventId": "L1576"
+        },
+        {
+          "id": "C14",
+          "ordinal": 14,
+          "status": "kept",
+          "openedAt": 1300000,
+          "deadline": 1365000,
+          "keptAt": 1334800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1669",
+          "resolutionEventId": "L1719"
+        },
+        {
+          "id": "C15",
+          "ordinal": 15,
+          "status": "kept",
+          "openedAt": 1400000,
+          "deadline": 1465000,
+          "keptAt": 1441900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1789",
+          "resolutionEventId": "L1829"
+        },
+        {
+          "id": "C16",
+          "ordinal": 16,
+          "status": "kept",
+          "openedAt": 1500000,
+          "deadline": 1565000,
+          "keptAt": 1531400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L1938",
+          "resolutionEventId": "L1978"
+        },
+        {
+          "id": "C17",
+          "ordinal": 17,
+          "status": "kept",
+          "openedAt": 1600000,
+          "deadline": 1665000,
+          "keptAt": 1637200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2060",
+          "resolutionEventId": "L2134"
+        },
+        {
+          "id": "C18",
+          "ordinal": 18,
+          "status": "kept",
+          "openedAt": 1700000,
+          "deadline": 1765000,
+          "keptAt": 1735600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2179",
+          "resolutionEventId": "L2224"
+        },
+        {
+          "id": "C19",
+          "ordinal": 19,
+          "status": "kept",
+          "openedAt": 1800000,
+          "deadline": 1865000,
+          "keptAt": 1836200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2311",
+          "resolutionEventId": "L2362"
+        },
+        {
+          "id": "C20",
+          "ordinal": 20,
+          "status": "kept",
+          "openedAt": 1900000,
+          "deadline": 1965000,
+          "keptAt": 1935000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2431",
+          "resolutionEventId": "L2484"
+        },
+        {
+          "id": "C21",
+          "ordinal": 21,
+          "status": "kept",
+          "openedAt": 2000000,
+          "deadline": 2065000,
+          "keptAt": 2043300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2566",
+          "resolutionEventId": "L2611"
+        },
+        {
+          "id": "C22",
+          "ordinal": 22,
+          "status": "kept",
+          "openedAt": 2100000,
+          "deadline": 2165000,
+          "keptAt": 2136100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2668",
+          "resolutionEventId": "L2718"
+        },
+        {
+          "id": "C23",
+          "ordinal": 23,
+          "status": "kept",
+          "openedAt": 2200000,
+          "deadline": 2265000,
+          "keptAt": 2242600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2819",
+          "resolutionEventId": "L2867"
+        },
+        {
+          "id": "C24",
+          "ordinal": 24,
+          "status": "kept",
+          "openedAt": 2300000,
+          "deadline": 2365000,
+          "keptAt": 2334500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L2932",
+          "resolutionEventId": "L2984"
+        },
+        {
+          "id": "C25",
+          "ordinal": 25,
+          "status": "kept",
+          "openedAt": 2400000,
+          "deadline": 2465000,
+          "keptAt": 2430600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3053",
+          "resolutionEventId": "L3116"
+        },
+        {
+          "id": "C26",
+          "ordinal": 26,
+          "status": "kept",
+          "openedAt": 2500000,
+          "deadline": 2565000,
+          "keptAt": 2537100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3208",
+          "resolutionEventId": "L3258"
+        },
+        {
+          "id": "C27",
+          "ordinal": 27,
+          "status": "kept",
+          "openedAt": 2600000,
+          "deadline": 2665000,
+          "keptAt": 2639900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3340",
+          "resolutionEventId": "L3369"
+        },
+        {
+          "id": "C28",
+          "ordinal": 28,
+          "status": "kept",
+          "openedAt": 2700000,
+          "deadline": 2765000,
+          "keptAt": 2727100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3444",
+          "resolutionEventId": "L3491"
+        },
+        {
+          "id": "C29",
+          "ordinal": 29,
+          "status": "kept",
+          "openedAt": 2800000,
+          "deadline": 2865000,
+          "keptAt": 2828900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3566",
+          "resolutionEventId": "L3609"
+        },
+        {
+          "id": "C30",
+          "ordinal": 30,
+          "status": "kept",
+          "openedAt": 2900000,
+          "deadline": 2965000,
+          "keptAt": 2937700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3710",
+          "resolutionEventId": "L3754"
+        },
+        {
+          "id": "C31",
+          "ordinal": 31,
+          "status": "kept",
+          "openedAt": 3000000,
+          "deadline": 3065000,
+          "keptAt": 3030800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3831",
+          "resolutionEventId": "L3888"
+        },
+        {
+          "id": "C32",
+          "ordinal": 32,
+          "status": "kept",
+          "openedAt": 3100000,
+          "deadline": 3165000,
+          "keptAt": 3138200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L3979",
+          "resolutionEventId": "L4016"
+        },
+        {
+          "id": "C33",
+          "ordinal": 33,
+          "status": "kept",
+          "openedAt": 3200000,
+          "deadline": 3265000,
+          "keptAt": 3230100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4100",
+          "resolutionEventId": "L4141"
+        },
+        {
+          "id": "C34",
+          "ordinal": 34,
+          "status": "kept",
+          "openedAt": 3300000,
+          "deadline": 3365000,
+          "keptAt": 3336100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4216",
+          "resolutionEventId": "L4281"
+        },
+        {
+          "id": "C35",
+          "ordinal": 35,
+          "status": "kept",
+          "openedAt": 3400000,
+          "deadline": 3465000,
+          "keptAt": 3442300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4362",
+          "resolutionEventId": "L4399"
+        },
+        {
+          "id": "C36",
+          "ordinal": 36,
+          "status": "kept",
+          "openedAt": 3500000,
+          "deadline": 3565000,
+          "keptAt": 3533900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4455",
+          "resolutionEventId": "L4507"
+        },
+        {
+          "id": "C37",
+          "ordinal": 37,
+          "status": "kept",
+          "openedAt": 3600000,
+          "deadline": 3665000,
+          "keptAt": 3626000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4599",
+          "resolutionEventId": "L4651"
+        },
+        {
+          "id": "C38",
+          "ordinal": 38,
+          "status": "kept",
+          "openedAt": 3700000,
+          "deadline": 3765000,
+          "keptAt": 3736600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4726",
+          "resolutionEventId": "L4771"
+        },
+        {
+          "id": "C39",
+          "ordinal": 39,
+          "status": "kept",
+          "openedAt": 3800000,
+          "deadline": 3865000,
+          "keptAt": 3824400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4840",
+          "resolutionEventId": "L4879"
+        },
+        {
+          "id": "C40",
+          "ordinal": 40,
+          "status": "kept",
+          "openedAt": 3900000,
+          "deadline": 3965000,
+          "keptAt": 3926700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L4975",
+          "resolutionEventId": "L5023"
+        },
+        {
+          "id": "C41",
+          "ordinal": 41,
+          "status": "kept",
+          "openedAt": 4000000,
+          "deadline": 4065000,
+          "keptAt": 4038600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5099",
+          "resolutionEventId": "L5134"
+        },
+        {
+          "id": "C42",
+          "ordinal": 42,
+          "status": "kept",
+          "openedAt": 4100000,
+          "deadline": 4165000,
+          "keptAt": 4136300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5219",
+          "resolutionEventId": "L5270"
+        },
+        {
+          "id": "C43",
+          "ordinal": 43,
+          "status": "kept",
+          "openedAt": 4200000,
+          "deadline": 4265000,
+          "keptAt": 4233100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5331",
+          "resolutionEventId": "L5390"
+        },
+        {
+          "id": "C44",
+          "ordinal": 44,
+          "status": "kept",
+          "openedAt": 4300000,
+          "deadline": 4365000,
+          "keptAt": 4338000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5480",
+          "resolutionEventId": "L5525"
+        },
+        {
+          "id": "C45",
+          "ordinal": 45,
+          "status": "kept",
+          "openedAt": 4400000,
+          "deadline": 4465000,
+          "keptAt": 4429300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5607",
+          "resolutionEventId": "L5649"
+        },
+        {
+          "id": "C46",
+          "ordinal": 46,
+          "status": "kept",
+          "openedAt": 4500000,
+          "deadline": 4565000,
+          "keptAt": 4540800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5721",
+          "resolutionEventId": "L5758"
+        },
+        {
+          "id": "C47",
+          "ordinal": 47,
+          "status": "kept",
+          "openedAt": 4600000,
+          "deadline": 4665000,
+          "keptAt": 4634700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5828",
+          "resolutionEventId": "L5888"
+        },
+        {
+          "id": "C48",
+          "ordinal": 48,
+          "status": "kept",
+          "openedAt": 4700000,
+          "deadline": 4765000,
+          "keptAt": 4740700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L5958",
+          "resolutionEventId": "L5995"
+        },
+        {
+          "id": "C49",
+          "ordinal": 49,
+          "status": "kept",
+          "openedAt": 4800000,
+          "deadline": 4865000,
+          "keptAt": 4838400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6069",
+          "resolutionEventId": "L6130"
+        },
+        {
+          "id": "C50",
+          "ordinal": 50,
+          "status": "kept",
+          "openedAt": 4900000,
+          "deadline": 4965000,
+          "keptAt": 4954800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6186",
+          "resolutionEventId": "L6275"
+        },
+        {
+          "id": "C51",
+          "ordinal": 51,
+          "status": "kept",
+          "openedAt": 5000000,
+          "deadline": 5065000,
+          "keptAt": 5032900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6326",
+          "resolutionEventId": "L6372"
+        },
+        {
+          "id": "C52",
+          "ordinal": 52,
+          "status": "kept",
+          "openedAt": 5100000,
+          "deadline": 5165000,
+          "keptAt": 5137500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6453",
+          "resolutionEventId": "L6522"
+        },
+        {
+          "id": "C53",
+          "ordinal": 53,
+          "status": "kept",
+          "openedAt": 5200000,
+          "deadline": 5265000,
+          "keptAt": 5243400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6567",
+          "resolutionEventId": "L6621"
+        },
+        {
+          "id": "C54",
+          "ordinal": 54,
+          "status": "kept",
+          "openedAt": 5300000,
+          "deadline": 5365000,
+          "keptAt": 5335300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6696",
+          "resolutionEventId": "L6748"
+        },
+        {
+          "id": "C55",
+          "ordinal": 55,
+          "status": "kept",
+          "openedAt": 5400000,
+          "deadline": 5465000,
+          "keptAt": 5434100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6819",
+          "resolutionEventId": "L6874"
+        },
+        {
+          "id": "C56",
+          "ordinal": 56,
+          "status": "kept",
+          "openedAt": 5500000,
+          "deadline": 5565000,
+          "keptAt": 5537400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L6948",
+          "resolutionEventId": "L6993"
+        },
+        {
+          "id": "C57",
+          "ordinal": 57,
+          "status": "kept",
+          "openedAt": 5600000,
+          "deadline": 5665000,
+          "keptAt": 5639700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7059",
+          "resolutionEventId": "L7096"
+        },
+        {
+          "id": "C58",
+          "ordinal": 58,
+          "status": "kept",
+          "openedAt": 5700000,
+          "deadline": 5765000,
+          "keptAt": 5737000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7172",
+          "resolutionEventId": "L7234"
+        },
+        {
+          "id": "C59",
+          "ordinal": 59,
+          "status": "kept",
+          "openedAt": 5800000,
+          "deadline": 5865000,
+          "keptAt": 5840100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7318",
+          "resolutionEventId": "L7347"
+        },
+        {
+          "id": "C60",
+          "ordinal": 60,
+          "status": "kept",
+          "openedAt": 5900000,
+          "deadline": 5965000,
+          "keptAt": 5932800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7413",
+          "resolutionEventId": "L7458"
+        },
+        {
+          "id": "C61",
+          "ordinal": 61,
+          "status": "kept",
+          "openedAt": 6000000,
+          "deadline": 6065000,
+          "keptAt": 6035700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7538",
+          "resolutionEventId": "L7601"
+        },
+        {
+          "id": "C62",
+          "ordinal": 62,
+          "status": "kept",
+          "openedAt": 6100000,
+          "deadline": 6165000,
+          "keptAt": 6136900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7687",
+          "resolutionEventId": "L7729"
+        },
+        {
+          "id": "C63",
+          "ordinal": 63,
+          "status": "kept",
+          "openedAt": 6200000,
+          "deadline": 6265000,
+          "keptAt": 6229400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7814",
+          "resolutionEventId": "L7858"
+        },
+        {
+          "id": "C64",
+          "ordinal": 64,
+          "status": "kept",
+          "openedAt": 6300000,
+          "deadline": 6365000,
+          "keptAt": 6330800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L7928",
+          "resolutionEventId": "L7982"
+        },
+        {
+          "id": "C65",
+          "ordinal": 65,
+          "status": "kept",
+          "openedAt": 6400000,
+          "deadline": 6465000,
+          "keptAt": 6451000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8083",
+          "resolutionEventId": "L8148"
+        },
+        {
+          "id": "C66",
+          "ordinal": 66,
+          "status": "kept",
+          "openedAt": 6500000,
+          "deadline": 6565000,
+          "keptAt": 6531100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8198",
+          "resolutionEventId": "L8238"
+        },
+        {
+          "id": "C67",
+          "ordinal": 67,
+          "status": "kept",
+          "openedAt": 6600000,
+          "deadline": 6665000,
+          "keptAt": 6641500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8305",
+          "resolutionEventId": "L8342"
+        },
+        {
+          "id": "C68",
+          "ordinal": 68,
+          "status": "kept",
+          "openedAt": 6700000,
+          "deadline": 6765000,
+          "keptAt": 6731300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8417",
+          "resolutionEventId": "L8457"
+        },
+        {
+          "id": "C69",
+          "ordinal": 69,
+          "status": "kept",
+          "openedAt": 6800000,
+          "deadline": 6865000,
+          "keptAt": 6849100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8527",
+          "resolutionEventId": "L8602"
+        },
+        {
+          "id": "C70",
+          "ordinal": 70,
+          "status": "kept",
+          "openedAt": 6900000,
+          "deadline": 6965000,
+          "keptAt": 6932300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8648",
+          "resolutionEventId": "L8711"
+        },
+        {
+          "id": "C71",
+          "ordinal": 71,
+          "status": "kept",
+          "openedAt": 7000000,
+          "deadline": 7065000,
+          "keptAt": 7040500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8779",
+          "resolutionEventId": "L8816"
+        },
+        {
+          "id": "C72",
+          "ordinal": 72,
+          "status": "kept",
+          "openedAt": 7100000,
+          "deadline": 7165000,
+          "keptAt": 7131100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L8921",
+          "resolutionEventId": "L8963"
+        },
+        {
+          "id": "C73",
+          "ordinal": 73,
+          "status": "kept",
+          "openedAt": 7200000,
+          "deadline": 7265000,
+          "keptAt": 7233400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9050",
+          "resolutionEventId": "L9107"
+        },
+        {
+          "id": "C74",
+          "ordinal": 74,
+          "status": "kept",
+          "openedAt": 7300000,
+          "deadline": 7365000,
+          "keptAt": 7340500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9153",
+          "resolutionEventId": "L9204"
+        },
+        {
+          "id": "C75",
+          "ordinal": 75,
+          "status": "kept",
+          "openedAt": 7400000,
+          "deadline": 7465000,
+          "keptAt": 7431200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9281",
+          "resolutionEventId": "L9323"
+        },
+        {
+          "id": "C76",
+          "ordinal": 76,
+          "status": "kept",
+          "openedAt": 7500000,
+          "deadline": 7565000,
+          "keptAt": 7538100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9394",
+          "resolutionEventId": "L9454"
+        },
+        {
+          "id": "C77",
+          "ordinal": 77,
+          "status": "kept",
+          "openedAt": 7600000,
+          "deadline": 7665000,
+          "keptAt": 7641600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9540",
+          "resolutionEventId": "L9591"
+        },
+        {
+          "id": "C78",
+          "ordinal": 78,
+          "status": "kept",
+          "openedAt": 7700000,
+          "deadline": 7765000,
+          "keptAt": 7725700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9649",
+          "resolutionEventId": "L9689"
+        },
+        {
+          "id": "C79",
+          "ordinal": 79,
+          "status": "kept",
+          "openedAt": 7800000,
+          "deadline": 7865000,
+          "keptAt": 7831900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9799",
+          "resolutionEventId": "L9855"
+        },
+        {
+          "id": "C80",
+          "ordinal": 80,
+          "status": "kept",
+          "openedAt": 7900000,
+          "deadline": 7965000,
+          "keptAt": 7950100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L9939",
+          "resolutionEventId": "L9989"
+        },
+        {
+          "id": "C81",
+          "ordinal": 81,
+          "status": "kept",
+          "openedAt": 8000000,
+          "deadline": 8065000,
+          "keptAt": 8030300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10034",
+          "resolutionEventId": "L10076"
+        },
+        {
+          "id": "C82",
+          "ordinal": 82,
+          "status": "kept",
+          "openedAt": 8100000,
+          "deadline": 8165000,
+          "keptAt": 8137200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10163",
+          "resolutionEventId": "L10225"
+        },
+        {
+          "id": "C83",
+          "ordinal": 83,
+          "status": "kept",
+          "openedAt": 8200000,
+          "deadline": 8265000,
+          "keptAt": 8243100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10275",
+          "resolutionEventId": "L10322"
+        },
+        {
+          "id": "C84",
+          "ordinal": 84,
+          "status": "kept",
+          "openedAt": 8300000,
+          "deadline": 8365000,
+          "keptAt": 8332100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10400",
+          "resolutionEventId": "L10444"
+        },
+        {
+          "id": "C85",
+          "ordinal": 85,
+          "status": "kept",
+          "openedAt": 8400000,
+          "deadline": 8465000,
+          "keptAt": 8439800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10517",
+          "resolutionEventId": "L10549"
+        },
+        {
+          "id": "C86",
+          "ordinal": 86,
+          "status": "kept",
+          "openedAt": 8500000,
+          "deadline": 8565000,
+          "keptAt": 8532700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10649",
+          "resolutionEventId": "L10692"
+        },
+        {
+          "id": "C87",
+          "ordinal": 87,
+          "status": "kept",
+          "openedAt": 8600000,
+          "deadline": 8665000,
+          "keptAt": 8650300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10784",
+          "resolutionEventId": "L10829"
+        },
+        {
+          "id": "C88",
+          "ordinal": 88,
+          "status": "kept",
+          "openedAt": 8700000,
+          "deadline": 8765000,
+          "keptAt": 8741000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L10875",
+          "resolutionEventId": "L10943"
+        },
+        {
+          "id": "C89",
+          "ordinal": 89,
+          "status": "kept",
+          "openedAt": 8800000,
+          "deadline": 8865000,
+          "keptAt": 8834500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11019",
+          "resolutionEventId": "L11070"
+        },
+        {
+          "id": "C90",
+          "ordinal": 90,
+          "status": "kept",
+          "openedAt": 8900000,
+          "deadline": 8965000,
+          "keptAt": 8941100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11133",
+          "resolutionEventId": "L11177"
+        },
+        {
+          "id": "C91",
+          "ordinal": 91,
+          "status": "kept",
+          "openedAt": 9000000,
+          "deadline": 9065000,
+          "keptAt": 9035700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11252",
+          "resolutionEventId": "L11304"
+        },
+        {
+          "id": "C92",
+          "ordinal": 92,
+          "status": "kept",
+          "openedAt": 9100000,
+          "deadline": 9165000,
+          "keptAt": 9136900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11389",
+          "resolutionEventId": "L11434"
+        },
+        {
+          "id": "C93",
+          "ordinal": 93,
+          "status": "kept",
+          "openedAt": 9200000,
+          "deadline": 9265000,
+          "keptAt": 9234400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11526",
+          "resolutionEventId": "L11577"
+        },
+        {
+          "id": "C94",
+          "ordinal": 94,
+          "status": "kept",
+          "openedAt": 9300000,
+          "deadline": 9365000,
+          "keptAt": 9338700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11660",
+          "resolutionEventId": "L11721"
+        },
+        {
+          "id": "C95",
+          "ordinal": 95,
+          "status": "kept",
+          "openedAt": 9400000,
+          "deadline": 9465000,
+          "keptAt": 9437100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11766",
+          "resolutionEventId": "L11811"
+        },
+        {
+          "id": "C96",
+          "ordinal": 96,
+          "status": "kept",
+          "openedAt": 9500000,
+          "deadline": 9565000,
+          "keptAt": 9537100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L11896",
+          "resolutionEventId": "L11947"
+        },
+        {
+          "id": "C97",
+          "ordinal": 97,
+          "status": "kept",
+          "openedAt": 9600000,
+          "deadline": 9665000,
+          "keptAt": 9641100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12014",
+          "resolutionEventId": "L12051"
+        },
+        {
+          "id": "C98",
+          "ordinal": 98,
+          "status": "kept",
+          "openedAt": 9700000,
+          "deadline": 9765000,
+          "keptAt": 9733300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12126",
+          "resolutionEventId": "L12170"
+        },
+        {
+          "id": "C99",
+          "ordinal": 99,
+          "status": "kept",
+          "openedAt": 9800000,
+          "deadline": 9865000,
+          "keptAt": 9840900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12242",
+          "resolutionEventId": "L12290"
+        },
+        {
+          "id": "C100",
+          "ordinal": 100,
+          "status": "kept",
+          "openedAt": 9900000,
+          "deadline": 9965000,
+          "keptAt": 9928200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12374",
+          "resolutionEventId": "L12422"
+        },
+        {
+          "id": "C101",
+          "ordinal": 101,
+          "status": "kept",
+          "openedAt": 10000000,
+          "deadline": 10065000,
+          "keptAt": 10033000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12511",
+          "resolutionEventId": "L12557"
+        },
+        {
+          "id": "C102",
+          "ordinal": 102,
+          "status": "kept",
+          "openedAt": 10100000,
+          "deadline": 10165000,
+          "keptAt": 10139600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12634",
+          "resolutionEventId": "L12662"
+        },
+        {
+          "id": "C103",
+          "ordinal": 103,
+          "status": "kept",
+          "openedAt": 10200000,
+          "deadline": 10265000,
+          "keptAt": 10236500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12739",
+          "resolutionEventId": "L12787"
+        },
+        {
+          "id": "C104",
+          "ordinal": 104,
+          "status": "kept",
+          "openedAt": 10300000,
+          "deadline": 10365000,
+          "keptAt": 10333400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12846",
+          "resolutionEventId": "L12896"
+        },
+        {
+          "id": "C105",
+          "ordinal": 105,
+          "status": "kept",
+          "openedAt": 10400000,
+          "deadline": 10465000,
+          "keptAt": 10436700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L12967",
+          "resolutionEventId": "L13012"
+        },
+        {
+          "id": "C106",
+          "ordinal": 106,
+          "status": "kept",
+          "openedAt": 10500000,
+          "deadline": 10565000,
+          "keptAt": 10530000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13081",
+          "resolutionEventId": "L13123"
+        },
+        {
+          "id": "C107",
+          "ordinal": 107,
+          "status": "kept",
+          "openedAt": 10600000,
+          "deadline": 10665000,
+          "keptAt": 10641100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13225",
+          "resolutionEventId": "L13273"
+        },
+        {
+          "id": "C108",
+          "ordinal": 108,
+          "status": "kept",
+          "openedAt": 10700000,
+          "deadline": 10765000,
+          "keptAt": 10743600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13353",
+          "resolutionEventId": "L13418"
+        },
+        {
+          "id": "C109",
+          "ordinal": 109,
+          "status": "kept",
+          "openedAt": 10800000,
+          "deadline": 10865000,
+          "keptAt": 10825000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13474",
+          "resolutionEventId": "L13512"
+        },
+        {
+          "id": "C110",
+          "ordinal": 110,
+          "status": "kept",
+          "openedAt": 10900000,
+          "deadline": 10965000,
+          "keptAt": 10943100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13592",
+          "resolutionEventId": "L13636"
+        },
+        {
+          "id": "C111",
+          "ordinal": 111,
+          "status": "kept",
+          "openedAt": 11000000,
+          "deadline": 11065000,
+          "keptAt": 11025300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13689",
+          "resolutionEventId": "L13730"
+        },
+        {
+          "id": "C112",
+          "ordinal": 112,
+          "status": "kept",
+          "openedAt": 11100000,
+          "deadline": 11165000,
+          "keptAt": 11142300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13832",
+          "resolutionEventId": "L13869"
+        },
+        {
+          "id": "C113",
+          "ordinal": 113,
+          "status": "kept",
+          "openedAt": 11200000,
+          "deadline": 11265000,
+          "keptAt": 11236400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L13918",
+          "resolutionEventId": "L13968"
+        },
+        {
+          "id": "C114",
+          "ordinal": 114,
+          "status": "kept",
+          "openedAt": 11300000,
+          "deadline": 11365000,
+          "keptAt": 11331900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14068",
+          "resolutionEventId": "L14112"
+        },
+        {
+          "id": "C115",
+          "ordinal": 115,
+          "status": "kept",
+          "openedAt": 11400000,
+          "deadline": 11465000,
+          "keptAt": 11430300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14203",
+          "resolutionEventId": "L14245"
+        },
+        {
+          "id": "C116",
+          "ordinal": 116,
+          "status": "kept",
+          "openedAt": 11500000,
+          "deadline": 11565000,
+          "keptAt": 11549100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14325",
+          "resolutionEventId": "L14383"
+        },
+        {
+          "id": "C117",
+          "ordinal": 117,
+          "status": "kept",
+          "openedAt": 11600000,
+          "deadline": 11665000,
+          "keptAt": 11629300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14432",
+          "resolutionEventId": "L14474"
+        },
+        {
+          "id": "C118",
+          "ordinal": 118,
+          "status": "kept",
+          "openedAt": 11700000,
+          "deadline": 11765000,
+          "keptAt": 11736600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14534",
+          "resolutionEventId": "L14571"
+        },
+        {
+          "id": "C119",
+          "ordinal": 119,
+          "status": "kept",
+          "openedAt": 11800000,
+          "deadline": 11865000,
+          "keptAt": 11829000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14646",
+          "resolutionEventId": "L14687"
+        },
+        {
+          "id": "C120",
+          "ordinal": 120,
+          "status": "kept",
+          "openedAt": 11900000,
+          "deadline": 11965000,
+          "keptAt": 11940200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14757",
+          "resolutionEventId": "L14794"
+        },
+        {
+          "id": "C121",
+          "ordinal": 121,
+          "status": "kept",
+          "openedAt": 12000000,
+          "deadline": 12065000,
+          "keptAt": 12030900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L14879",
+          "resolutionEventId": "L14921"
+        },
+        {
+          "id": "C122",
+          "ordinal": 122,
+          "status": "kept",
+          "openedAt": 12100000,
+          "deadline": 12165000,
+          "keptAt": 12134800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15050",
+          "resolutionEventId": "L15108"
+        },
+        {
+          "id": "C123",
+          "ordinal": 123,
+          "status": "kept",
+          "openedAt": 12200000,
+          "deadline": 12265000,
+          "keptAt": 12241500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15137",
+          "resolutionEventId": "L15206"
+        },
+        {
+          "id": "C124",
+          "ordinal": 124,
+          "status": "kept",
+          "openedAt": 12300000,
+          "deadline": 12365000,
+          "keptAt": 12334500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15276",
+          "resolutionEventId": "L15327"
+        },
+        {
+          "id": "C125",
+          "ordinal": 125,
+          "status": "kept",
+          "openedAt": 12400000,
+          "deadline": 12465000,
+          "keptAt": 12425800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15400",
+          "resolutionEventId": "L15441"
+        },
+        {
+          "id": "C126",
+          "ordinal": 126,
+          "status": "kept",
+          "openedAt": 12500000,
+          "deadline": 12565000,
+          "keptAt": 12540700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15531",
+          "resolutionEventId": "L15568"
+        },
+        {
+          "id": "C127",
+          "ordinal": 127,
+          "status": "kept",
+          "openedAt": 12600000,
+          "deadline": 12665000,
+          "keptAt": 12634000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15629",
+          "resolutionEventId": "L15679"
+        },
+        {
+          "id": "C128",
+          "ordinal": 128,
+          "status": "kept",
+          "openedAt": 12700000,
+          "deadline": 12765000,
+          "keptAt": 12737100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15776",
+          "resolutionEventId": "L15826"
+        },
+        {
+          "id": "C129",
+          "ordinal": 129,
+          "status": "kept",
+          "openedAt": 12800000,
+          "deadline": 12865000,
+          "keptAt": 12837700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L15903",
+          "resolutionEventId": "L15965"
+        },
+        {
+          "id": "C130",
+          "ordinal": 130,
+          "status": "kept",
+          "openedAt": 12900000,
+          "deadline": 12965000,
+          "keptAt": 12934900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16008",
+          "resolutionEventId": "L16052"
+        },
+        {
+          "id": "C131",
+          "ordinal": 131,
+          "status": "kept",
+          "openedAt": 13000000,
+          "deadline": 13065000,
+          "keptAt": 13036500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16133",
+          "resolutionEventId": "L16184"
+        },
+        {
+          "id": "C132",
+          "ordinal": 132,
+          "status": "kept",
+          "openedAt": 13100000,
+          "deadline": 13165000,
+          "keptAt": 13135400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16239",
+          "resolutionEventId": "L16275"
+        },
+        {
+          "id": "C133",
+          "ordinal": 133,
+          "status": "kept",
+          "openedAt": 13200000,
+          "deadline": 13265000,
+          "keptAt": 13229200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16355",
+          "resolutionEventId": "L16396"
+        },
+        {
+          "id": "C134",
+          "ordinal": 134,
+          "status": "kept",
+          "openedAt": 13300000,
+          "deadline": 13365000,
+          "keptAt": 13349500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16469",
+          "resolutionEventId": "L16541"
+        },
+        {
+          "id": "C135",
+          "ordinal": 135,
+          "status": "kept",
+          "openedAt": 13400000,
+          "deadline": 13465000,
+          "keptAt": 13435100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16589",
+          "resolutionEventId": "L16637"
+        },
+        {
+          "id": "C136",
+          "ordinal": 136,
+          "status": "kept",
+          "openedAt": 13500000,
+          "deadline": 13565000,
+          "keptAt": 13530600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16717",
+          "resolutionEventId": "L16760"
+        },
+        {
+          "id": "C137",
+          "ordinal": 137,
+          "status": "kept",
+          "openedAt": 13600000,
+          "deadline": 13665000,
+          "keptAt": 13634000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16840",
+          "resolutionEventId": "L16904"
+        },
+        {
+          "id": "C138",
+          "ordinal": 138,
+          "status": "kept",
+          "openedAt": 13700000,
+          "deadline": 13765000,
+          "keptAt": 13736500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L16979",
+          "resolutionEventId": "L17016"
+        },
+        {
+          "id": "C139",
+          "ordinal": 139,
+          "status": "kept",
+          "openedAt": 13800000,
+          "deadline": 13865000,
+          "keptAt": 13824800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17074",
+          "resolutionEventId": "L17113"
+        },
+        {
+          "id": "C140",
+          "ordinal": 140,
+          "status": "kept",
+          "openedAt": 13900000,
+          "deadline": 13965000,
+          "keptAt": 13937800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17218",
+          "resolutionEventId": "L17243"
+        },
+        {
+          "id": "C141",
+          "ordinal": 141,
+          "status": "kept",
+          "openedAt": 14000000,
+          "deadline": 14065000,
+          "keptAt": 14029900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17308",
+          "resolutionEventId": "L17349"
+        },
+        {
+          "id": "C142",
+          "ordinal": 142,
+          "status": "kept",
+          "openedAt": 14100000,
+          "deadline": 14165000,
+          "keptAt": 14124500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17449",
+          "resolutionEventId": "L17487"
+        },
+        {
+          "id": "C143",
+          "ordinal": 143,
+          "status": "kept",
+          "openedAt": 14200000,
+          "deadline": 14265000,
+          "keptAt": 14244900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17577",
+          "resolutionEventId": "L17622"
+        },
+        {
+          "id": "C144",
+          "ordinal": 144,
+          "status": "kept",
+          "openedAt": 14300000,
+          "deadline": 14365000,
+          "keptAt": 14335100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17676",
+          "resolutionEventId": "L17728"
+        },
+        {
+          "id": "C145",
+          "ordinal": 145,
+          "status": "kept",
+          "openedAt": 14400000,
+          "deadline": 14465000,
+          "keptAt": 14424300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17812",
+          "resolutionEventId": "L17850"
+        },
+        {
+          "id": "C146",
+          "ordinal": 146,
+          "status": "kept",
+          "openedAt": 14500000,
+          "deadline": 14565000,
+          "keptAt": 14540600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L17918",
+          "resolutionEventId": "L17963"
+        },
+        {
+          "id": "C147",
+          "ordinal": 147,
+          "status": "kept",
+          "openedAt": 14600000,
+          "deadline": 14665000,
+          "keptAt": 14635800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18040",
+          "resolutionEventId": "L18093"
+        },
+        {
+          "id": "C148",
+          "ordinal": 148,
+          "status": "kept",
+          "openedAt": 14700000,
+          "deadline": 14765000,
+          "keptAt": 14742900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18156",
+          "resolutionEventId": "L18194"
+        },
+        {
+          "id": "C149",
+          "ordinal": 149,
+          "status": "kept",
+          "openedAt": 14800000,
+          "deadline": 14865000,
+          "keptAt": 14834300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18278",
+          "resolutionEventId": "L18328"
+        },
+        {
+          "id": "C150",
+          "ordinal": 150,
+          "status": "kept",
+          "openedAt": 14900000,
+          "deadline": 14965000,
+          "keptAt": 14937200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18413",
+          "resolutionEventId": "L18475"
+        },
+        {
+          "id": "C151",
+          "ordinal": 151,
+          "status": "kept",
+          "openedAt": 15000000,
+          "deadline": 15065000,
+          "keptAt": 15035600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18520",
+          "resolutionEventId": "L18565"
+        },
+        {
+          "id": "C152",
+          "ordinal": 152,
+          "status": "kept",
+          "openedAt": 15100000,
+          "deadline": 15165000,
+          "keptAt": 15136500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18689",
+          "resolutionEventId": "L18743"
+        },
+        {
+          "id": "C153",
+          "ordinal": 153,
+          "status": "kept",
+          "openedAt": 15200000,
+          "deadline": 15265000,
+          "keptAt": 15239900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18799",
+          "resolutionEventId": "L18845"
+        },
+        {
+          "id": "C154",
+          "ordinal": 154,
+          "status": "kept",
+          "openedAt": 15300000,
+          "deadline": 15365000,
+          "keptAt": 15329200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L18916",
+          "resolutionEventId": "L18957"
+        },
+        {
+          "id": "C155",
+          "ordinal": 155,
+          "status": "kept",
+          "openedAt": 15400000,
+          "deadline": 15465000,
+          "keptAt": 15433800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19028",
+          "resolutionEventId": "L19078"
+        },
+        {
+          "id": "C156",
+          "ordinal": 156,
+          "status": "kept",
+          "openedAt": 15500000,
+          "deadline": 15565000,
+          "keptAt": 15538500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19167",
+          "resolutionEventId": "L19212"
+        },
+        {
+          "id": "C157",
+          "ordinal": 157,
+          "status": "kept",
+          "openedAt": 15600000,
+          "deadline": 15665000,
+          "keptAt": 15624700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19293",
+          "resolutionEventId": "L19332"
+        },
+        {
+          "id": "C158",
+          "ordinal": 158,
+          "status": "kept",
+          "openedAt": 15700000,
+          "deadline": 15765000,
+          "keptAt": 15732200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19410",
+          "resolutionEventId": "L19464"
+        },
+        {
+          "id": "C159",
+          "ordinal": 159,
+          "status": "kept",
+          "openedAt": 15800000,
+          "deadline": 15865000,
+          "keptAt": 15833700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19524",
+          "resolutionEventId": "L19585"
+        },
+        {
+          "id": "C160",
+          "ordinal": 160,
+          "status": "kept",
+          "openedAt": 15900000,
+          "deadline": 15965000,
+          "keptAt": 15930700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19658",
+          "resolutionEventId": "L19703"
+        },
+        {
+          "id": "C161",
+          "ordinal": 161,
+          "status": "kept",
+          "openedAt": 16000000,
+          "deadline": 16065000,
+          "keptAt": 16035800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19798",
+          "resolutionEventId": "L19859"
+        },
+        {
+          "id": "C162",
+          "ordinal": 162,
+          "status": "kept",
+          "openedAt": 16100000,
+          "deadline": 16165000,
+          "keptAt": 16137900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L19905",
+          "resolutionEventId": "L19958"
+        },
+        {
+          "id": "C163",
+          "ordinal": 163,
+          "status": "kept",
+          "openedAt": 16200000,
+          "deadline": 16265000,
+          "keptAt": 16234700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20056",
+          "resolutionEventId": "L20108"
+        },
+        {
+          "id": "C164",
+          "ordinal": 164,
+          "status": "kept",
+          "openedAt": 16300000,
+          "deadline": 16365000,
+          "keptAt": 16337200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20175",
+          "resolutionEventId": "L20220"
+        },
+        {
+          "id": "C165",
+          "ordinal": 165,
+          "status": "kept",
+          "openedAt": 16400000,
+          "deadline": 16465000,
+          "keptAt": 16434300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20284",
+          "resolutionEventId": "L20338"
+        },
+        {
+          "id": "C166",
+          "ordinal": 166,
+          "status": "kept",
+          "openedAt": 16500000,
+          "deadline": 16565000,
+          "keptAt": 16551100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20421",
+          "resolutionEventId": "L20475"
+        },
+        {
+          "id": "C167",
+          "ordinal": 167,
+          "status": "kept",
+          "openedAt": 16600000,
+          "deadline": 16665000,
+          "keptAt": 16635100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20522",
+          "resolutionEventId": "L20585"
+        },
+        {
+          "id": "C168",
+          "ordinal": 168,
+          "status": "kept",
+          "openedAt": 16700000,
+          "deadline": 16765000,
+          "keptAt": 16737100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20667",
+          "resolutionEventId": "L20729"
+        },
+        {
+          "id": "C169",
+          "ordinal": 169,
+          "status": "kept",
+          "openedAt": 16800000,
+          "deadline": 16865000,
+          "keptAt": 16844200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20784",
+          "resolutionEventId": "L20840"
+        },
+        {
+          "id": "C170",
+          "ordinal": 170,
+          "status": "kept",
+          "openedAt": 16900000,
+          "deadline": 16965000,
+          "keptAt": 16938400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L20912",
+          "resolutionEventId": "L20971"
+        },
+        {
+          "id": "C171",
+          "ordinal": 171,
+          "status": "kept",
+          "openedAt": 17000000,
+          "deadline": 17065000,
+          "keptAt": 17035800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21049",
+          "resolutionEventId": "L21110"
+        },
+        {
+          "id": "C172",
+          "ordinal": 172,
+          "status": "kept",
+          "openedAt": 17100000,
+          "deadline": 17165000,
+          "keptAt": 17142300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21163",
+          "resolutionEventId": "L21211"
+        },
+        {
+          "id": "C173",
+          "ordinal": 173,
+          "status": "kept",
+          "openedAt": 17200000,
+          "deadline": 17265000,
+          "keptAt": 17238000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21279",
+          "resolutionEventId": "L21337"
+        },
+        {
+          "id": "C174",
+          "ordinal": 174,
+          "status": "kept",
+          "openedAt": 17300000,
+          "deadline": 17365000,
+          "keptAt": 17349400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21408",
+          "resolutionEventId": "L21478"
+        },
+        {
+          "id": "C175",
+          "ordinal": 175,
+          "status": "kept",
+          "openedAt": 17400000,
+          "deadline": 17465000,
+          "keptAt": 17430300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21527",
+          "resolutionEventId": "L21569"
+        },
+        {
+          "id": "C176",
+          "ordinal": 176,
+          "status": "kept",
+          "openedAt": 17500000,
+          "deadline": 17565000,
+          "keptAt": 17541800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21644",
+          "resolutionEventId": "L21681"
+        },
+        {
+          "id": "C177",
+          "ordinal": 177,
+          "status": "kept",
+          "openedAt": 17600000,
+          "deadline": 17665000,
+          "keptAt": 17636800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21782",
+          "resolutionEventId": "L21833"
+        },
+        {
+          "id": "C178",
+          "ordinal": 178,
+          "status": "kept",
+          "openedAt": 17700000,
+          "deadline": 17765000,
+          "keptAt": 17735000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L21913",
+          "resolutionEventId": "L21964"
+        },
+        {
+          "id": "C179",
+          "ordinal": 179,
+          "status": "kept",
+          "openedAt": 17800000,
+          "deadline": 17865000,
+          "keptAt": 17837300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L22008",
+          "resolutionEventId": "L22061"
+        },
+        {
+          "id": "C180",
+          "ordinal": 180,
+          "status": "kept",
+          "openedAt": 17900000,
+          "deadline": 17965000,
+          "keptAt": 17934200,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 1,
+          "required": 1,
+          "generationEventId": "L22141",
+          "resolutionEventId": "L22193"
+        },
+        {
+          "id": "C181",
+          "ordinal": 181,
+          "status": "open",
+          "openedAt": 18000000,
+          "deadline": 18065000,
+          "keptAt": null,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 0,
+          "required": 1,
+          "generationEventId": "L22254",
+          "resolutionEventId": null
+        }
+      ]
+    },
+    {
+      "id": "MONTH-FOLIO",
+      "opened": 6,
+      "kept": 6,
+      "broken": 0,
+      "keptStreak": 6,
+      "brokenStreak": 0,
+      "avgCompletionTicks": 108133,
+      "instances": [
+        {
+          "id": "MONTH-FOLIO",
+          "ordinal": 1,
+          "status": "kept",
+          "openedAt": 800000,
+          "deadline": 1065000,
+          "keptAt": 910300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L1034",
+          "resolutionEventId": "L1183"
+        },
+        {
+          "id": "MONTH-FOLIO@02",
+          "ordinal": 2,
+          "status": "kept",
+          "openedAt": 3800000,
+          "deadline": 4065000,
+          "keptAt": 3904800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L4842",
+          "resolutionEventId": "L4986"
+        },
+        {
+          "id": "MONTH-FOLIO@03",
+          "ordinal": 3,
+          "status": "kept",
+          "openedAt": 6800000,
+          "deadline": 7065000,
+          "keptAt": 6904400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L8529",
+          "resolutionEventId": "L8659"
+        },
+        {
+          "id": "MONTH-FOLIO@04",
+          "ordinal": 4,
+          "status": "kept",
+          "openedAt": 9800000,
+          "deadline": 10065000,
+          "keptAt": 9906300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L12244",
+          "resolutionEventId": "L12385"
+        },
+        {
+          "id": "MONTH-FOLIO@05",
+          "ordinal": 5,
+          "status": "kept",
+          "openedAt": 12800000,
+          "deadline": 13065000,
+          "keptAt": 12913600,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L15905",
+          "resolutionEventId": "L16017"
+        },
+        {
+          "id": "MONTH-FOLIO@06",
+          "ordinal": 6,
+          "status": "kept",
+          "openedAt": 15800000,
+          "deadline": 16065000,
+          "keptAt": 15909400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L19526",
+          "resolutionEventId": "L19668"
+        }
+      ]
+    },
+    {
+      "id": "MONTH-INSTRUMENT",
+      "opened": 6,
+      "kept": 6,
+      "broken": 0,
+      "keptStreak": 6,
+      "brokenStreak": 0,
+      "avgCompletionTicks": 25317,
+      "instances": [
+        {
+          "id": "MONTH-INSTRUMENT",
+          "ordinal": 1,
+          "status": "kept",
+          "openedAt": 1600000,
+          "deadline": 1865000,
+          "keptAt": 1621100,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L2062",
+          "resolutionEventId": "L2103"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@02",
+          "ordinal": 2,
+          "status": "kept",
+          "openedAt": 4600000,
+          "deadline": 4865000,
+          "keptAt": 4622400,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L5830",
+          "resolutionEventId": "L5864"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@03",
+          "ordinal": 3,
+          "status": "kept",
+          "openedAt": 7600000,
+          "deadline": 7865000,
+          "keptAt": 7635300,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L9542",
+          "resolutionEventId": "L9574"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@04",
+          "ordinal": 4,
+          "status": "kept",
+          "openedAt": 10600000,
+          "deadline": 10865000,
+          "keptAt": 10643700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L13227",
+          "resolutionEventId": "L13286"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@05",
+          "ordinal": 5,
+          "status": "kept",
+          "openedAt": 13600000,
+          "deadline": 13865000,
+          "keptAt": 13617900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L16842",
+          "resolutionEventId": "L16873"
+        },
+        {
+          "id": "MONTH-INSTRUMENT@06",
+          "ordinal": 6,
+          "status": "kept",
+          "openedAt": 16600000,
+          "deadline": 16865000,
+          "keptAt": 16611500,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L20524",
+          "resolutionEventId": "L20548"
+        }
+      ]
+    },
+    {
+      "id": "MONTH-PROVISIONS",
+      "opened": 6,
+      "kept": 4,
+      "broken": 2,
+      "keptStreak": 1,
+      "brokenStreak": 0,
+      "avgCompletionTicks": 236850,
+      "instances": [
+        {
+          "id": "MONTH-PROVISIONS",
+          "ordinal": 1,
+          "status": "kept",
+          "openedAt": 2300000,
+          "deadline": 2565000,
+          "keptAt": 2554800,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L2934",
+          "resolutionEventId": "L3292"
+        },
+        {
+          "id": "MONTH-PROVISIONS@02",
+          "ordinal": 2,
+          "status": "kept",
+          "openedAt": 5300000,
+          "deadline": 5565000,
+          "keptAt": 5549700,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L6698",
+          "resolutionEventId": "L7013"
+        },
+        {
+          "id": "MONTH-PROVISIONS@03",
+          "ordinal": 3,
+          "status": "kept",
+          "openedAt": 8300000,
+          "deadline": 8565000,
+          "keptAt": 8545000,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L10402",
+          "resolutionEventId": "L10714"
+        },
+        {
+          "id": "MONTH-PROVISIONS@04",
+          "ordinal": 4,
+          "status": "broken",
+          "openedAt": 11300000,
+          "deadline": 11565000,
+          "keptAt": null,
+          "brokenAt": 11565100,
+          "cause": "deadline_missed",
+          "progress": 1,
+          "required": 2,
+          "generationEventId": "L14070",
+          "resolutionEventId": "L14410"
+        },
+        {
+          "id": "MONTH-PROVISIONS@05",
+          "ordinal": 5,
+          "status": "broken",
+          "openedAt": 14300000,
+          "deadline": 14565000,
+          "keptAt": null,
+          "brokenAt": 14565100,
+          "cause": "deadline_missed",
+          "progress": 0,
+          "required": 2,
+          "generationEventId": "L17678",
+          "resolutionEventId": "L18021"
+        },
+        {
+          "id": "MONTH-PROVISIONS@06",
+          "ordinal": 6,
+          "status": "kept",
+          "openedAt": 17300000,
+          "deadline": 17565000,
+          "keptAt": 17497900,
+          "brokenAt": null,
+          "cause": null,
+          "progress": 2,
+          "required": 2,
+          "generationEventId": "L21410",
+          "resolutionEventId": "L21634"
+        }
+      ]
+    }
+  ],
+  "account": {
+    "balance": 19,
+    "creditLimit": 90,
+    "statements": [
+      {
+        "period": 0,
+        "openingBalance": 0,
+        "charges": 20,
+        "dueBalance": 20,
+        "paid": 20,
+        "closingBalance": 0,
+        "status": "settled",
+        "chargeEventIds": [
+          "L53",
+          "L964",
+          "L1843",
+          "L2734",
+          "L3633"
+        ],
+        "tradeIds": [
+          "L989",
+          "L996",
+          "L1003",
+          "L1861",
+          "L1869",
+          "L1882",
+          "L2762",
+          "L3669"
+        ],
+        "settlementEventId": "L3913",
+        "frictionEventId": null,
+        "carriedFrom": null
+      },
+      {
+        "period": 1,
+        "openingBalance": 0,
+        "charges": 20,
+        "dueBalance": 20,
+        "paid": 20,
+        "closingBalance": 0,
+        "status": "settled",
+        "chargeEventIds": [
+          "L3910",
+          "L4527",
+          "L5413",
+          "L6230",
+          "L7106"
+        ],
+        "tradeIds": [
+          "L5436",
+          "L6266"
+        ],
+        "settlementEventId": "L7622",
+        "frictionEventId": null,
+        "carriedFrom": null
+      },
+      {
+        "period": 2,
+        "openingBalance": 0,
+        "charges": 20,
+        "dueBalance": 20,
+        "paid": 20,
+        "closingBalance": 0,
+        "status": "settled",
+        "chargeEventIds": [
+          "L7619",
+          "L8006",
+          "L8826",
+          "L9719",
+          "L10560"
+        ],
+        "tradeIds": [
+          "L7643",
+          "L8865",
+          "L10576"
+        ],
+        "settlementEventId": "L11324",
+        "frictionEventId": null,
+        "carriedFrom": null
+      },
+      {
+        "period": 3,
+        "openingBalance": 0,
+        "charges": 20,
+        "dueBalance": 20,
+        "paid": 20,
+        "closingBalance": 0,
+        "status": "settled",
+        "chargeEventIds": [
+          "L11321",
+          "L11444",
+          "L12300",
+          "L13152",
+          "L13984",
+          "L14804"
+        ],
+        "tradeIds": [
+          "L11345"
+        ],
+        "settlementEventId": "L14949",
+        "frictionEventId": null,
+        "carriedFrom": null
+      },
+      {
+        "period": 4,
+        "openingBalance": 0,
+        "charges": 14,
+        "dueBalance": 14,
+        "paid": 14,
+        "closingBalance": 0,
+        "status": "settled",
+        "chargeEventIds": [
+          "L14946",
+          "L15696",
+          "L16507",
+          "L17371",
+          "L18201"
+        ],
+        "tradeIds": [],
+        "settlementEventId": "L18587",
+        "frictionEventId": null,
+        "carriedFrom": null
+      }
+    ]
+  },
+  "anomalies": {
+    "invalidInstances": [],
+    "ungenerated": [],
+    "statementMismatch": [],
+    "softlockDays": [],
+    "narrowDays": []
+  },
+  "development": {
+    "initialState": {
+      "elapsedDay": 0,
+      "worldDay": 0,
+      "tick": 25000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 7,
+        "water": 9,
+        "fuel": 5,
+        "tea": 4,
+        "preserved": 0
+      },
+      "garden": {
+        "plantedAt": null,
+        "ripeAt": null,
+        "harvests": 0
+      },
+      "skills": {
+        "science": 2,
+        "household": 1
+      },
+      "habitsFormed": 0,
+      "habitCounts": 0,
+      "quirks": 0,
+      "activeQuirkBonuses": 0,
+      "predictions": 0,
+      "predictorAccuracy": null,
+      "trust": {
+        "rosa": 0,
+        "mcfeely": 0
+      },
+      "relationshipEncounters": {
+        "rosa": 0,
+        "mcfeely": 0
+      },
+      "eventLogEntries": 0,
+      "diaryEntries": 0,
+      "folioReadEntries": 0,
+      "series": [],
+      "serializedSaveBytes": 6163
+    },
+    "day1": {
+      "elapsedDay": 1,
+      "worldDay": 1,
+      "tick": 125000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 6,
+        "water": 8,
+        "fuel": 7,
+        "tea": 4,
+        "preserved": 0
+      },
+      "garden": {
+        "plantedAt": 36500,
+        "ripeAt": 176500,
+        "harvests": 0
+      },
+      "skills": {
+        "science": 6,
+        "household": 1
+      },
+      "habitsFormed": 0,
+      "habitCounts": 10,
+      "quirks": 1,
+      "activeQuirkBonuses": 0,
+      "predictions": 17,
+      "predictorAccuracy": 0,
+      "trust": {
+        "rosa": 4.94,
+        "mcfeely": 0
+      },
+      "relationshipEncounters": {
+        "rosa": 1,
+        "mcfeely": 0
+      },
+      "eventLogEntries": 158,
+      "diaryEntries": 2,
+      "folioReadEntries": 2,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 2,
+          "kept": 1,
+          "broken": 0,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 18300
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        }
+      ],
+      "serializedSaveBytes": 208595
+    },
+    "dayEnd": {
+      "elapsedDay": 180,
+      "worldDay": 180,
+      "tick": 18025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 12,
+        "water": 8,
+        "fuel": 9,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 17968100,
+        "ripeAt": 18108100,
+        "harvests": 102
+      },
+      "skills": {
+        "science": 953,
+        "household": 77
+      },
+      "habitsFormed": 14,
+      "habitCounts": 21,
+      "quirks": 26,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.38,
+      "trust": {
+        "rosa": 57.06,
+        "mcfeely": 78.07
+      },
+      "relationshipEncounters": {
+        "rosa": 31,
+        "mcfeely": 75
+      },
+      "eventLogEntries": 22274,
+      "diaryEntries": 181,
+      "folioReadEntries": 180,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 181,
+          "kept": 180,
+          "broken": 0,
+          "keptStreak": 180,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36137
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 6,
+          "kept": 6,
+          "broken": 0,
+          "keptStreak": 6,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 108133
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 6,
+          "kept": 6,
+          "broken": 0,
+          "keptStreak": 6,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 25317
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 6,
+          "kept": 4,
+          "broken": 2,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 236850
+        }
+      ],
+      "serializedSaveBytes": 21232808
+    },
+    "start": {
+      "elapsedDay": 1,
+      "worldDay": 1,
+      "tick": 125000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 6,
+        "water": 8,
+        "fuel": 7,
+        "tea": 4,
+        "preserved": 0
+      },
+      "garden": {
+        "plantedAt": 36500,
+        "ripeAt": 176500,
+        "harvests": 0
+      },
+      "skills": {
+        "science": 6,
+        "household": 1
+      },
+      "habitsFormed": 0,
+      "habitCounts": 10,
+      "quirks": 1,
+      "activeQuirkBonuses": 0,
+      "predictions": 17,
+      "predictorAccuracy": 0,
+      "trust": {
+        "rosa": 4.94,
+        "mcfeely": 0
+      },
+      "relationshipEncounters": {
+        "rosa": 1,
+        "mcfeely": 0
+      },
+      "eventLogEntries": 158,
+      "diaryEntries": 2,
+      "folioReadEntries": 2,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 2,
+          "kept": 1,
+          "broken": 0,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 18300
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 0,
+          "kept": 0,
+          "broken": 0,
+          "keptStreak": 0,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 0
+        }
+      ],
+      "serializedSaveBytes": 208595
+    },
+    "end": {
+      "elapsedDay": 180,
+      "worldDay": 180,
+      "tick": 18025000,
+      "health": 100,
+      "dead": false,
+      "stores": {
+        "food": 12,
+        "water": 8,
+        "fuel": 9,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      },
+      "garden": {
+        "plantedAt": 17968100,
+        "ripeAt": 18108100,
+        "harvests": 102
+      },
+      "skills": {
+        "science": 953,
+        "household": 77
+      },
+      "habitsFormed": 14,
+      "habitCounts": 21,
+      "quirks": 26,
+      "activeQuirkBonuses": 8,
+      "predictions": 200,
+      "predictorAccuracy": 0.38,
+      "trust": {
+        "rosa": 57.06,
+        "mcfeely": 78.07
+      },
+      "relationshipEncounters": {
+        "rosa": 31,
+        "mcfeely": 75
+      },
+      "eventLogEntries": 22274,
+      "diaryEntries": 181,
+      "folioReadEntries": 180,
+      "series": [
+        {
+          "id": "DAILY-HEARTH",
+          "opened": 181,
+          "kept": 180,
+          "broken": 0,
+          "keptStreak": 180,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 36137
+        },
+        {
+          "id": "MONTH-FOLIO",
+          "opened": 6,
+          "kept": 6,
+          "broken": 0,
+          "keptStreak": 6,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 108133
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "opened": 6,
+          "kept": 6,
+          "broken": 0,
+          "keptStreak": 6,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 25317
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "opened": 6,
+          "kept": 4,
+          "broken": 2,
+          "keptStreak": 1,
+          "brokenStreak": 0,
+          "avgCompletionTicks": 236850
+        }
+      ],
+      "serializedSaveBytes": 21232808
+    },
+    "quarterPredictions": [
+      {
+        "quarter": 1,
+        "days": [
+          1,
+          90
+        ],
+        "count": 1179,
+        "hits": 388,
+        "accuracy": 0.33
+      },
+      {
+        "quarter": 2,
+        "days": [
+          91,
+          180
+        ],
+        "count": 1326,
+        "hits": 488,
+        "accuracy": 0.37
+      }
+    ]
+  },
+  "quirkInfluence": {
+    "finalQuirkCount": 26,
+    "earnedBonusQuirks": 8,
+    "recentDecisions": [
+      {
+        "tick": 17848200,
+        "chosen": "read_letter",
+        "margin": 73.61,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17850700,
+        "chosen": "work",
+        "margin": 11.59,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17858500,
+        "chosen": "eat",
+        "margin": 12.6,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17860200,
+        "chosen": "work",
+        "margin": 1.74,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17868300,
+        "chosen": "rest",
+        "margin": 6.39,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17872000,
+        "chosen": "sleep",
+        "margin": 62.66,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17897100,
+        "chosen": "work",
+        "margin": 4.33,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17905200,
+        "chosen": "diary",
+        "margin": 1.6,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17907300,
+        "chosen": "preserve",
+        "margin": 17.78,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17910700,
+        "chosen": "eat",
+        "margin": 2.11,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17911800,
+        "chosen": "work",
+        "margin": 8.53,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17919900,
+        "chosen": "read",
+        "margin": 9.33,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17924000,
+        "chosen": "work",
+        "margin": 2.12,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17931800,
+        "chosen": "prepare",
+        "margin": 12.03,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17934300,
+        "chosen": "work",
+        "margin": 4.43,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17942400,
+        "chosen": "eat",
+        "margin": 5.35,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17944100,
+        "chosen": "work",
+        "margin": 1.04,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17952200,
+        "chosen": "rest",
+        "margin": 6.75,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17955900,
+        "chosen": "work",
+        "margin": 3.25,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17964000,
+        "chosen": "tend",
+        "margin": 3.21,
+        "quirkFactors": 2
+      },
+      {
+        "tick": 17968200,
+        "chosen": "sleep",
+        "margin": 51.96,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 17994200,
+        "chosen": "sleep",
+        "margin": 2.48,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 18019300,
+        "chosen": "eat",
+        "margin": 1.51,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 18021000,
+        "chosen": "diary",
+        "margin": 40.36,
+        "quirkFactors": 0
+      },
+      {
+        "tick": 18023100,
+        "chosen": "work",
+        "margin": 6.8,
+        "quirkFactors": 2
+      }
+    ]
+  },
+  "preservedRotation": {
+    "expired": 61,
+    "eaten": 0,
+    "sampleExpiryEvents": [
+      {
+        "id": "L18410",
+        "day": 149,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L19025",
+        "day": 154,
+        "amount": 1,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L19164",
+        "day": 155,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L19521",
+        "day": 158,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L19795",
+        "day": 160,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L19902",
+        "day": 161,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L20281",
+        "day": 164,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L20664",
+        "day": 167,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L20909",
+        "day": 169,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L21046",
+        "day": 170,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L21276",
+        "day": 172,
+        "amount": 5,
+        "shelfLifeDays": 90
+      },
+      {
+        "id": "L21405",
+        "day": 173,
+        "amount": 5,
+        "shelfLifeDays": 90
+      }
+    ]
+  }
+}

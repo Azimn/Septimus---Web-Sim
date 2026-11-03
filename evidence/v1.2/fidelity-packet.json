@@ -1,0 +1,1001 @@
+[
+  {
+    "seed": 11,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "read",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 78,
+      "hunger": 42.1,
+      "comfort": 70,
+      "stimulation": 49,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C1",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [],
+    "chosenScore": 56.43,
+    "margin": 2.8
+  },
+  {
+    "seed": 11,
+    "tick": 145800,
+    "day": 1,
+    "eventId": "L149",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 34.9,
+      "hunger": 9.4,
+      "comfort": 79.9,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C2",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 11,
+    "tick": 265900,
+    "day": 2,
+    "eventId": "L267",
+    "kind": "study",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 53.6,
+      "hunger": 18.4,
+      "comfort": 87.9,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C3",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 17.51,
+    "margin": 1.4
+  },
+  {
+    "seed": 11,
+    "tick": 376200,
+    "day": 3,
+    "eventId": "L370",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 23.5,
+      "hunger": 84.5,
+      "comfort": 90.9,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C4",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 11,
+    "tick": 497600,
+    "day": 4,
+    "eventId": "L482",
+    "kind": "work",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 90.9,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 91.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C5",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 48.3,
+    "margin": 15.76
+  },
+  {
+    "seed": 11,
+    "tick": 609000,
+    "day": 6,
+    "eventId": "L609",
+    "kind": "read",
+    "eventType": "completed",
+    "firstPersonText": "I consulted folio E09-001: The Magistrate's Waiting Room. Its account belongs to my earlier life, not to this morning.",
+    "room": "library",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 80.4,
+      "hunger": 100,
+      "comfort": 98.8,
+      "stimulation": 98.8,
+      "company": 45
+    },
+    "perceived": [
+      "folios",
+      "notebook"
+    ],
+    "commitments": [
+      {
+        "id": "C7",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 12,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "eat",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 78,
+      "hunger": 42.1,
+      "comfort": 70,
+      "stimulation": 49,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C1",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [],
+    "chosenScore": 54.63,
+    "margin": 2.2
+  },
+  {
+    "seed": 12,
+    "tick": 142300,
+    "day": 1,
+    "eventId": "L147",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 46.9,
+      "hunger": 6,
+      "comfort": 80.3,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C2",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 12,
+    "tick": 261800,
+    "day": 2,
+    "eventId": "L262",
+    "kind": "work",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 65.8,
+      "hunger": 13.5,
+      "comfort": 88.3,
+      "stimulation": 98.9,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C3",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 29.78,
+    "margin": 12.2
+  },
+  {
+    "seed": 12,
+    "tick": 397000,
+    "day": 3,
+    "eventId": "L375",
+    "kind": "sleep",
+    "eventType": "completed",
+    "firstPersonText": "I slept, though the tower did not sleep with me.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 86.2,
+      "hunger": 94.6,
+      "comfort": 94.8,
+      "stimulation": 92.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C4",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 12,
+    "tick": 500900,
+    "day": 5,
+    "eventId": "L461",
+    "kind": "work",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 100,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 92.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C6",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 51.29,
+    "margin": 9.54
+  },
+  {
+    "seed": 12,
+    "tick": 623900,
+    "day": 6,
+    "eventId": "L559",
+    "kind": "sleep",
+    "eventType": "completed",
+    "firstPersonText": "I slept, though the tower did not sleep with me.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 100,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 84.8,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C7",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 13,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "eat",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 78,
+      "hunger": 42.1,
+      "comfort": 70,
+      "stimulation": 49,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C1",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [],
+    "chosenScore": 55.63,
+    "margin": 2.2
+  },
+  {
+    "seed": 13,
+    "tick": 142300,
+    "day": 1,
+    "eventId": "L147",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 46.9,
+      "hunger": 6,
+      "comfort": 80.3,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C2",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 13,
+    "tick": 259500,
+    "day": 2,
+    "eventId": "L258",
+    "kind": "work",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 58.8,
+      "hunger": 14.4,
+      "comfort": 88.6,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C3",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 24.23,
+    "margin": 8.84
+  },
+  {
+    "seed": 13,
+    "tick": 395700,
+    "day": 3,
+    "eventId": "L378",
+    "kind": "sleep",
+    "eventType": "completed",
+    "firstPersonText": "I slept, though the tower did not sleep with me.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 86,
+      "hunger": 96.1,
+      "comfort": 100,
+      "stimulation": 91.7,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C4",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 13,
+    "tick": 493800,
+    "day": 4,
+    "eventId": "L480",
+    "kind": "sleep",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 72.8,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 92.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C5",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 47.61,
+    "margin": 26.36
+  },
+  {
+    "seed": 13,
+    "tick": 610900,
+    "day": 6,
+    "eventId": "L577",
+    "kind": "read",
+    "eventType": "completed",
+    "firstPersonText": "I consulted folio E09-001: The Magistrate's Waiting Room. Its account belongs to my earlier life, not to this morning.",
+    "room": "library",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 86.1,
+      "hunger": 100,
+      "comfort": 98.8,
+      "stimulation": 98.8,
+      "company": 45
+    },
+    "perceived": [
+      "folios",
+      "notebook"
+    ],
+    "commitments": [
+      {
+        "id": "C7",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 14,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "read",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 78,
+      "hunger": 42.1,
+      "comfort": 70,
+      "stimulation": 49,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C1",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [],
+    "chosenScore": 54.43,
+    "margin": 2.8
+  },
+  {
+    "seed": 14,
+    "tick": 142300,
+    "day": 1,
+    "eventId": "L149",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 46.9,
+      "hunger": 6,
+      "comfort": 80.3,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C2",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 14,
+    "tick": 261800,
+    "day": 2,
+    "eventId": "L266",
+    "kind": "work",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 65.8,
+      "hunger": 15.8,
+      "comfort": 88.3,
+      "stimulation": 98.9,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C3",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 26.78,
+    "margin": 10.3
+  },
+  {
+    "seed": 14,
+    "tick": 396000,
+    "day": 3,
+    "eventId": "L391",
+    "kind": "sleep",
+    "eventType": "completed",
+    "firstPersonText": "I slept, though the tower did not sleep with me.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 96.2,
+      "hunger": 96.3,
+      "comfort": 100,
+      "stimulation": 92.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C4",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 14,
+    "tick": 497200,
+    "day": 4,
+    "eventId": "L496",
+    "kind": "work",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 89.7,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 91.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C5",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 35.03,
+    "margin": 3.6
+  },
+  {
+    "seed": 14,
+    "tick": 620200,
+    "day": 6,
+    "eventId": "L595",
+    "kind": "sleep",
+    "eventType": "completed",
+    "firstPersonText": "I slept, though the tower did not sleep with me.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 100,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 84.8,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C7",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 15,
+    "tick": 25100,
+    "day": 0,
+    "eventId": "L3",
+    "kind": "read",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 78,
+      "hunger": 42.1,
+      "comfort": 70,
+      "stimulation": 49,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C1",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [],
+    "chosenScore": 55.43,
+    "margin": 2.8
+  },
+  {
+    "seed": 15,
+    "tick": 148400,
+    "day": 1,
+    "eventId": "L156",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 34.9,
+      "hunger": 10.5,
+      "comfort": 79.7,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C2",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 15,
+    "tick": 264200,
+    "day": 2,
+    "eventId": "L265",
+    "kind": "rest",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 46.4,
+      "hunger": 4.9,
+      "comfort": 88.1,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C3",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 20.23,
+    "margin": 3.72
+  },
+  {
+    "seed": 15,
+    "tick": 375400,
+    "day": 3,
+    "eventId": "L374",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 23.5,
+      "hunger": 71.6,
+      "comfort": 91,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C4",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  },
+  {
+    "seed": 15,
+    "tick": 496800,
+    "day": 4,
+    "eventId": "L491",
+    "kind": "sleep",
+    "eventType": "decision",
+    "firstPersonText": "I selected the strongest available course of action.",
+    "room": "bedchamber",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 82.9,
+      "hunger": 100,
+      "comfort": 100,
+      "stimulation": 92.3,
+      "company": 45
+    },
+    "perceived": [
+      "bed"
+    ],
+    "commitments": [
+      {
+        "id": "C5",
+        "done": true
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": 37.3,
+    "margin": 7.76
+  },
+  {
+    "seed": 15,
+    "tick": 608600,
+    "day": 6,
+    "eventId": "L578",
+    "kind": "work",
+    "eventType": "completed",
+    "firstPersonText": "I worked at my bench and learned something of the apparatus.",
+    "room": "laboratory",
+    "controller": "autonomous",
+    "operatorNeeds": {
+      "energy": 87.8,
+      "hunger": 100,
+      "comfort": 99.2,
+      "stimulation": 100,
+      "company": 45
+    },
+    "perceived": [
+      "bench",
+      "instrument",
+      "specimens"
+    ],
+    "commitments": [
+      {
+        "id": "C7",
+        "done": false
+      }
+    ],
+    "sourceFolioIds": [
+      "E09-001",
+      "E09-001"
+    ],
+    "chosenScore": null,
+    "margin": null
+  }
+]

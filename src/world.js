@@ -1,106 +1,88 @@
 'use strict';
-// Septimus v0.1: no model is allowed to change physical state. Coordinates are physical.
-const WIDTH=16,HEIGHT=10;
-// This compact map is a navigational projection of a multi-storey tower, not an architectural claim.
-const rooms={bedroom:'Tower sleeping chamber',library:'Tower library and study',workshop:'Tower laboratory',hall:'Tower stairs and landings',kitchen:'Tower kitchen and pantry',bathroom:'Utility washroom (scenario)',garden:'Tower garden',porch:'Tower entrance and road'};
-// Stable game-facing historical references. These are NOT live NPCs or imported memories.
-const HISTORY_ARCHIVE=Object.freeze({
- repository:'Azimn/Pretorius-Connectome',
- path:'memories/current/Pretorius_v12_450_Events_Complete.jsonl',
- edition:'v12',recordCount:450,episodeCount:27,
- kind:'reconstructed_autobiography',importStatus:'not_imported',
- lastMemoryId:'E05-021',lastMemoryDate:'1899-06',
- note:'Source material only. Never assert these 450 stories were lived inside the game.'
+const ROOMS = Object.freeze({
+  bedchamber: {label:'Bedchamber', exits:['library'], objects:['bed']},
+  library: {label:'Library', exits:['bedchamber','kitchen','laboratory'], objects:['notebook','folios']},
+  kitchen: {label:'Kitchen and Hearth', exits:['library','garden'], objects:['hearth','stove','kettle','stores']},
+  laboratory: {label:'Laboratory', exits:['library'], objects:['bench','instrument','specimens']},
+  garden: {label:'Garden Path', exits:['kitchen'], objects:['path','plot']}
 });
-// Current 2-D map deliberately projects the real tower's multiple levels. Floor IDs are
-// architectural hints, not teleportable simulation coordinates or claimed exact plans.
-const RESIDENCE=Object.freeze({
- label:'The ruined tower outside Ingolstadt',properNameEstablished:false,
- locality:'Outskirts of Ingolstadt, Bavaria',occupiedSince:'1868-09',
- settingBegins:'1899-07-01',settingDateStatus:'simulation_assumption',
- futureDestination:'Frankenstein Village',departureDate:null,
- mapRepresentation:'compressed_two_dimensional_projection',
- spaces:{
- bedroom:{level:'upper',historical:['E03-001','E26-014'],status:'attested_sleeping_chamber'},
- library:{level:'upper',historical:['E05-014','E08-011'],status:'attested_library_study'},
- workshop:{level:'lower',historical:['E03-005','E05-019'],status:'attested_laboratory'},
- hall:{level:'stairwell',historical:['E03-003','E03-020'],status:'attested_damaged_and_repaired_stairs'},
- kitchen:{level:'ground',historical:['E22-001','E22-003','E22-012'],status:'attested_kitchen_pantry'},
- bathroom:{level:'ground',historical:[],status:'gameplay_convenience_not_attested'},
- garden:{level:'grounds',historical:['E18-010'],status:'attested_garden_cultivation_details_unverified'},
- porch:{level:'grounds',historical:['E03-003','E03-020'],status:'attested_entrance_road_mailbox_gameplay_convenience'}
+const OBJECTS = Object.freeze({
+  bed:{label:'Bed',room:'bedchamber',actions:['sleep','rest']},
+  notebook:{label:'Private notebook',room:'library',actions:['diary']},
+  folios:{label:'Historical folios',room:'library',actions:['read']},
+  hearth:{label:'Hearth',room:'kitchen',actions:['prepare']},
+  stove:{label:'Stove',room:'kitchen',actions:['cook']},
+  kettle:{label:'Kettle',room:'kitchen',actions:['tea']},
+  stores:{label:'Stores shelf',room:'kitchen',actions:['eat']},
+  bench:{label:'Work bench',room:'laboratory',actions:['work']},
+  instrument:{label:'Instrument',room:'laboratory',actions:['inspect']},
+  specimens:{label:'Specimen jars',room:'laboratory',actions:['study']},
+  path:{label:'Garden path',room:'garden',actions:['walk','gather_fuel','draw_water']},
+  plot:{label:'Garden plot',room:'garden',actions:['tend']}
+});
+const TRAITS=Object.freeze({curious:1.5,industrious:1.4,stubborn:1.3,nervous:.7,gentle:.8,sociable:.6});
+const TRIGGERS=Object.freeze({henry:{salience:12,mood:3},victor:{salience:7,mood:-2},bride:{salience:10,mood:3},university:{salience:8,mood:-4},homunculi:{salience:12,mood:4}});
+// Starting relationship is reconstructed content, not newly lived history.
+const ROSA_PRIOR=Object.freeze({
+ prior_source:'reconstructed_archive',sourceEventIds:['E22-001','E22-003'],
+ knownSinceYear:1869,asOfYear:1899,initialFacetWeight:24,decayPerLivedEncounter:0.55,
+ facets:{
+  commercialReliability:{value:8,sourceEventIds:['E22-001'],claim:'Rosa Brandl measures supplies by weight'},
+  frictionTolerance:{value:6,sourceEventIds:['E22-001'],claim:'The dispute about scales was survived'},
+  personalRegister:{value:4,sourceEventIds:['E22-001'],claim:'She does not defer to scientific titles'},
+  knownHabits:{value:3,sourceEventIds:['E22-003'],claim:'She has seen him forget a meal while working'},
+  standingAccount:{value:3,sourceEventIds:['E22-001','E22-003'],claim:'The tower has established delivery conventions'}
  },
- unmodeledSpaces:['archive','glass chambers','guest room','music room','roof terrace','photographic darkroom'],
- physicalContinuity:['roof leaks','fuel deliveries','narrow stair turns','uneven floors'],
- source:'Pretorius-Connectome:v12'
+ knownToRosa:[
+  {fact:'tower_residence',sourceEventId:'E22-001',provenance:'reconstructed_archive'},
+  {fact:'title_no_priority_over_scales',sourceEventId:'E22-001',provenance:'reconstructed_archive'},
+  {fact:'forgets_meals_at_bench',sourceEventId:'E22-003',provenance:'reconstructed_archive'}
+ ]
 });
-const KNOWN_PEOPLE=Object.freeze([
- {id:'jakob_lenz',name:'Jakob Lenz',role:'glassworker and equipment collaborator',memoryIds:['E03-001','E03-015'],livePresence:'not_simulated'},
- {id:'clara_weiss',name:'Clara Weiss',role:'longtime friend and dispensary owner',memoryIds:['E03-001','E18-010'],livePresence:'not_simulated'},
- {id:'rosa_brandl',name:'Rosa Brandl',role:'historical coal and household supplier',memoryIds:['E22-001','E22-003'],livePresence:'not_simulated'},
- {id:'mathilde',name:'Mathilde',role:'printer and correspondent',memoryIds:['E12-011','E08-011'],livePresence:'not_simulated'},
- {id:'anna',name:'Anna',role:'scientific collaborator and record keeper',memoryIds:['E05-012','E21-017'],livePresence:'not_simulated'},
- {id:'voss',name:'Voss',role:'collaborator and skeptical observer',memoryIds:['E05-015','E21-017'],livePresence:'not_simulated'},
- {id:'julian_adler',name:'Julian Adler',role:'art restorer and acquaintance',memoryIds:['E18-010','E21-017'],livePresence:'not_simulated'},
- {id:'marta',name:'Marta',role:'household and recordkeeping associate',memoryIds:['E27-019','E27-020'],livePresence:'not_simulated'}
-]);
-const OBJECTS=[
-{id:'bed',name:'Iron bedstead',x:2,y:2,kind:'rest'},
-{id:'bookshelf',name:'Library shelves',x:6,y:2,kind:'read'},
-{id:'journal',name:'Private notebook and historical folios',x:7,y:2,kind:'journal'},
-{id:'bench',name:'Laboratory workbench',x:11,y:2,kind:'work'},
-{id:'lamp',name:'Oil lamp',x:12,y:2,kind:'light'},
-{id:'sink',name:'Kitchen water point (scenario)',x:2,y:5,kind:'drink'},
-{id:'stove',name:'Kitchen range',x:4,y:5,kind:'cook'},
-{id:'hearth',name:'Coal-burning kitchen hearth',x:5,y:5,kind:'heat'},
-{id:'coal_pile',name:'Coal store beside cart entrance',x:14,y:8,kind:'fuel'},
-{id:'roof_access',name:'Roof inspection access',x:3,y:1,kind:'inspect'},
-{id:'floorboards',name:'Old stair boards',x:3,y:4,kind:'inspect'},
-{id:'garden_path',name:'Overgrown garden path',x:7,y:8,kind:'tend'},
-{id:'pantry',name:'Pantry cupboard',x:6,y:5,kind:'store'},
-{id:'table',name:'Dining table',x:7,y:5,kind:'eat'},
-{id:'toilet',name:'Washroom fixture (scenario)',x:10,y:5,kind:'toilet'},
-{id:'vegetable_plot',name:'Vegetable plot',x:3,y:8,kind:'grow'},
-{id:'tea_plot',name:'Tea bushes',x:6,y:8,kind:'grow'},
-{id:'mailbox',name:'Letter box',x:12,y:7,kind:'mail'},
-{id:'catalog',name:'Mail-order catalogs',x:13,y:7,kind:'order'}
-];
-const BY_ID=Object.fromEntries(OBJECTS.map(x=>[x.id,x]));
-const CATALOG={
-  groceries:{name:'Grocer delivery',source:'grocer',price:12,delay:9,goods:{vegetables:4,grain:4,milk:2}},
-  // Week-sized delivery of 13 meal equivalents at unchanged per-portion grocery price.
-  staples:{name:'Weekly pantry staples',source:'grocer',price:26,delay:9,goods:{vegetables:9,grain:4,milk:4}},
-  tea:{name:'Tea merchant parcel',source:'tea merchant',price:5,delay:18,goods:{tea_leaves:3}},
-  seeds:{name:'Seed catalog',source:'seed house',price:7,delay:24,goods:{vegetable_seeds:4,tea_seeds:2}},
-  science:{name:'Scientific instrument supplier',source:'scientific catalog',price:16,delay:36,goods:{spares:2,reagents:2,lamp_oil:2}},
-  coal:{name:'Rosa Brandl coal cart',source:'Rosa Brandl firm',supplierId:'rosa_brandl',price:9,delay:24,goods:{coal:7}},
-  maintenance:{name:'Joiner and roofer',source:'building supplier',price:11,delay:32,goods:{boards:2,roofing:2}}
-};
-const BOOKS=['The Atlas of Quiet Machines','An Inquiry into Ash','The Astronomer\'s Garden','Small Experiments in Light','A History of Copper','The Clockmaker\'s Notes','On Dreams of Rain','A Dictionary of Night'];
-function roomAt(x,y){
- if(x<1||x>14||y<1||y>8)return null;
- if(y<=3)return x<=4?'bedroom':x<=8?'library':'workshop';
- if(y===4)return 'hall';
- if(y<=6)return x<=8?'kitchen':x<=11?'bathroom':'hall';
- return x<=8?'garden':'porch';
-}
-// Inter-room movement is only possible through actual doorways, not through drawn walls.
-const DOORS=new Set(['bedroom:hall:2,3:2,4','library:hall:6,3:6,4','workshop:hall:11,3:11,4','hall:kitchen:4,4:4,5','hall:bathroom:10,4:10,5','hall:porch:13,6:13,7','kitchen:garden:4,6:4,7','garden:porch:8,7:9,7']);
-function canCross(a,b){const ar=roomAt(a.x,a.y),br=roomAt(b.x,b.y);if(!ar||!br)return false;if(ar===br)return true;
- const k=`${ar}:${br}:${a.x},${a.y}:${b.x},${b.y}`,rev=`${br}:${ar}:${b.x},${b.y}:${a.x},${a.y}`;return DOORS.has(k)||DOORS.has(rev);
-}
-function pathBetween(from,to,avoid=[]){if(from.x===to.x&&from.y===to.y)return [];
- const todo=[[from]],seen=new Set([`${from.x},${from.y}`]);for(let i=0;i<todo.length;i++){const path=todo[i],current=path[path.length-1];for(const [dx,dy] of [[0,1],[1,0],[0,-1],[-1,0]]){const next={x:current.x+dx,y:current.y+dy},key=`${next.x},${next.y}`;if(seen.has(key)||avoid.some(p=>p.x===next.x&&p.y===next.y)||!canCross(current,next))continue;const candidate=path.concat([next]);if(next.x===to.x&&next.y===to.y)return candidate.slice(1);seen.add(key);todo.push(candidate)}}return null;
-}
-function fresh(seed=1729){return {
- version:1,seed,tick:0,minute:420,day:1,alive:true,deathCause:null,
- position:{x:2,y:2},needs:{hunger:24,thirst:26,fatigue:24,bladder:14,boredom:28},health:100,wallet:72,
- stock:{vegetables:2,grain:3,milk:1,tea_leaves:1,meals:1,tea_cups:0,vegetable_seeds:2,tea_seeds:1,spares:2,reagents:1,lamp_oil:2,boards:0,roofing:0},
- carried:null,orders:[],nextOrder:1,researchReports:0,unpaidLetters:0,
- garden:{vegetables:{stage:'empty',plantedTick:null,watered:false},tea:{stage:'empty',plantedTick:null,watered:false}},
- lab:{lampLit:false,clutter:2,damage:2,repairs:0,experiments:0},booksRead:[],bookProgress:{},
- goal:null,suspendedGoal:null,nextGoal:1,completed:[],recentKinds:[],lastDecision:null,lastAction:'The day begins in the sleeping chamber of the tower.',
- counters:{drinks:0,meals:0,tea:0,harvests:0,orders:0,deliveries:0,work:0},
- household:require('./household').create(),nextReceipt:1
+const START=25000, DAY=100000, STEP=100;
+function initialState(identitySha,archiveSha){return {
+  schema:1,owner:'simple-tower',identitySha,archiveSha,clock:{centibeats:START,step:STEP,day:0},
+  location:'bedchamber', needs:{energy:78,hunger:42,comfort:70,stimulation:49,company:45},
+  stores:{food:7,water:9,fuel:5,tea:4,preserved:0},freshBatches:[{quantity:7,createdAt:25000}],preservedBatches:[],surplusAgeDay:0, health:100,dead:false,garden:{plantedAt:null,ripeAt:null,harvests:0},skills:{science:2,household:1},
+  traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],renderedDiary:[],operatorMetadata:[],proposalResults:{},folioReads:[],
+  commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false,
+   action:'prepare',origin:'calendar_bootstrap',seriesId:'DAILY-HEARTH',seriesOrdinal:1,
+   openedAt:START,requiredProgress:1,progressCount:0}],series:{},
+  activity:null,proposed:null,decisions:[],seed:1729,sequence:0,completedDays:0,
+  people:{visitor_01:{id:'visitor_01',name:'Rosa Brandl',firm:"Rosa Brandl's firm",role:'coal and provisions merchant',marker:'known supplier of the tower since 1869',present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[],
+ prior:structuredClone(ROSA_PRIOR),liveEncounters:0,account:{balance:0,creditLimit:90,deliveryPoint:'kitchen',basis:'weight'}},
+ player:{id:'player',witnessed:[],knowledge:[]}},
+  mail:{letters:[],parcels:[],box:[],carried:[],outgoing:[],knowledge:[],hearsay:[],mailDays:[],pendingParcelNotices:[],henryLetters:0},
+  customs:{
+   greeting:{observations:0,sourceEventIds:[],learned:false},
+   tea_first:{observations:0,sourceEventIds:[],learned:false},
+   instrument_quiet:{observations:0,sourceEventIds:[],learned:false}
+  },humor:[],replyQueue:[],deliveredReplies:[],
+  thoughts:[],predictions:[],beliefs:{},objectPositions:{},perception:[],seenObjects:[],lastPerceptionIds:[],
+  deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true,conflictDeliberation:true},
+  habitProfiles:{},quirks:[],worldLosses:{},utilityWeights:{},residueSources:{},commitmentProgress:{},outcomeContexts:{},controllerMode:'full',pendingNeedAction:null,
+  surface:{lastObservation:[],lastWords:'I have work to do.'},
+  calendar:{date:'1899-07-01',upcoming:'Dusk inspection',triggeredDays:[]}
 };}
-module.exports={WIDTH,HEIGHT,rooms,OBJECTS,BY_ID,CATALOG,BOOKS,RESIDENCE,KNOWN_PEOPLE,HISTORY_ARCHIVE,roomAt,pathBetween,fresh};
+function distance(from,to){if(from===to)return 0;let q=[[from,0]],visited=new Set([from]);while(q.length){const [r,d]=q.shift();for(const n of ROOMS[r].exits){if(n===to)return d+1;if(!visited.has(n)){visited.add(n);q.push([n,d+1]);}}}throw Error('Disconnected tower');}
+function context(state){const nearby=ROOMS[state.location].objects.map(id=>OBJECTS[id].label);return {room:ROOMS[state.location].label,objects:(state.perception?.length?state.perception.map(p=>p.label):nearby.slice(0,4)),needs:Object.fromEntries(Object.entries(state.needs).map(([k,v])=>[k,v<25?'urgent':v<55?'noticeable':'settled']))};}
+function ensureHooks(s){
+ const defaults=initialState(s.identitySha||'',s.archiveSha||'');
+ for(const key of ['people','customs','humor','replyQueue','deliveredReplies','thoughts','predictions',
+ 'beliefs','objectPositions','perception','seenObjects','lastPerceptionIds','deliberation',
+ 'debugSwitches','habitProfiles','quirks','worldLosses','mail','renderedDiary','operatorMetadata','proposalResults'])
+  if(s[key]===undefined)s[key]=structuredClone(defaults[key]);
+ if(s.health===undefined)s.health=100;
+ if(s.dead===undefined)s.dead=false;
+ if(!s.garden)s.garden=structuredClone(defaults.garden);
+ if(s.stores.preserved===undefined)s.stores.preserved=0;
+ for(const key of ['utilityWeights','residueSources','commitmentProgress','outcomeContexts'])if(!s[key])s[key]={};
+ if(!s.controllerMode)s.controllerMode='full';
+ for(const [name,record] of Object.entries(defaults.customs))if(!s.customs[name])s.customs[name]=structuredClone(record);
+ if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
+ if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
+ if(s.people.visitor_01.prior===undefined)s.people.visitor_01.prior=structuredClone(ROSA_PRIOR);
+ for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;
+ return s;
+}
+module.exports={ROOMS,OBJECTS,TRAITS,TRIGGERS,ROSA_PRIOR,DAY,STEP,START,initialState,ensureHooks,distance,context};

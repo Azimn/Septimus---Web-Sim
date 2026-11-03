@@ -1,0 +1,55 @@
+name: Simple Tower mechanical tests
+on:
+  push:
+    branches: ['feature/simple-tower-v1-20261102']
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'canon/**'
+      - 'identity.json'
+      - 'package.json'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - name: Run v1.2 no-model endurance and discrimination evidence
+        run: node scripts/v12_probe.js
+      - name: Run v1.3 five-seed endurance and starvation control
+        run: node scripts/v13_probe.js
+      - name: Run v1.4 30-day unattended endurance and development audit
+        run: node scripts/v14_probe.js
+      - name: Run v1.4 eight Article discriminators and preserve negative findings
+        run: node scripts/v14_discriminations.js
+      - name: V1.5 fixed-economy 5 by 30 days and 90-day slow failure audit
+        run: node scripts/v15_probe.js
+      - name: V1.5 remaining Article and 100 decision/10 seed depth discriminations
+        run: node scripts/v15_discriminations.js
+      - name: Run v1.6 two-person postal endurance and adversarial controls
+        run: node scripts/v16_probe.js
+      - name: Run v1.7 longitudinal social, commitment and harvest acceptance
+        run: node scripts/v17_probe.js
+      - name: V1.8 matched three-month recurrence and forced-break proof
+        run: node scripts/v18_probe.js --scenario
+      - name: V1.8 365-day seed 11 and 180-day seed 14 horizon audit
+        timeout-minutes: 40
+        run: node scripts/v18_probe.js --year
+      - name: V1.9 hostile and legitimate proposal fixtures plus bounded card accounting
+        run: node scripts/v19_fixtures.js
+      - name: V1.9 matched 180-day repair probes, seeds 11 and 14
+        timeout-minutes: 40
+        run: node scripts/v19_probe.js
+      - name: Verify exact frozen source and identity
+        run: |
+          node - <<'NODE'
+          const h=require('./src/history'); const p=require('node:path');
+          const a=h.readCanon(p.join(process.cwd(),'canon/Pretorius_v12_450_Events_Complete.jsonl'));
+          const i=h.externalIdentity(p.join(process.cwd(),'identity.json'));
+          if(a.records.length!==450||i.record.name!=='Septimus Pretorius')process.exit(1);
+          console.log('Verified',a.records.length,'archive records',a.sha);
+          NODE

@@ -1,5 +1,1 @@
-{
- "name":"septimus-web-sim", "private":true, "version":"0.1.0",
- "description":"A small persistent-life simulation grounded in a physical Victorian house, postal catalogs, survival and memory.",
- "engines":{"node":">=20"}, "scripts":{"start":"node server.js","test":"node --test tests/*.test.js","experiment":"node tests/experiment.js","folio-experiment":"node tests/folio_experiment.js"}, "dependencies":{}
-}
+{"name":"simple-tower","private":true,"version":"0.1.0","description":"The Simple Tower: a no-model Pretorius inhabitant baseline","engines":{"node":">=20"},"scripts":{"start":"node src/server.js","test":"node --test tests/*.test.js"},"dependencies":{}}

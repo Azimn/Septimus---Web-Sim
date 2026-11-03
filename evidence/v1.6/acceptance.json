@@ -1,0 +1,25 @@
+{
+  "schema": "simple-tower-v1.6-evidence-v1",
+  "sourceHead": "e502bc51ca60078fc9c1d4d2bc68c0b4cc5683f2",
+  "workflowRunId": 41642932805,
+  "tests": {
+    "total": 100,
+    "passed": 100,
+    "failed": 0
+  },
+  "archiveBlobSha": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "identityBlobSha": "239d876a44bd0b641698b867d938d0489615d6ed",
+  "oldSimTreeSha": "f56d0612452dcfeebaafc51861a313a6c486a399",
+  "criteria": {
+    "thirtyDays": true,
+    "twoPresent": true,
+    "twoWitnessed": true,
+    "distinctTrajectories": true,
+    "mailPhysical": true,
+    "henryOnce": true,
+    "carrierNeverInside": true,
+    "swapControl": true,
+    "knowledgeControl": true,
+    "priorDifferenceAndConvergence": true
+  }
+}

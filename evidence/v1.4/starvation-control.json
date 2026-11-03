@@ -1,0 +1,14 @@
+{
+  "seed": 11,
+  "productionDisabled": true,
+  "steps": 5494,
+  "dead": true,
+  "deathCause": "sustained starvation",
+  "deathTick": 574400,
+  "terminalTick": 574400,
+  "oneDeath": true,
+  "noPostDeathActions": true,
+  "finalFood": 0,
+  "finalHealth": 0,
+  "harvestReceipts": 0
+}

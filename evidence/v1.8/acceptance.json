@@ -1,0 +1,97 @@
+{
+  "schema": "v1.8-evidence-custody-v1",
+  "sourceHead": "af899b25212df4c55f55e9a9758b4a94d33f6079",
+  "workflowRunId": 41665810298,
+  "tests": {
+    "total": 119,
+    "passed": 119,
+    "failed": 0
+  },
+  "custody": {
+    "canonicalArchive": {
+      "path": "canon/Pretorius_v12_450_Events_Complete.jsonl",
+      "sha": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+      "recordCount": 450
+    },
+    "identity": {
+      "path": "identity.json",
+      "sha": "239d876a44bd0b641698b867d938d0489615d6ed"
+    },
+    "oldSimTree": {
+      "path": "old sim",
+      "sha": "f56d0612452dcfeebaafc51861a313a6c486a399"
+    }
+  },
+  "pr": {
+    "number": 7,
+    "draft": true,
+    "merged": false
+  },
+  "invariants": {
+    "year": {
+      "noDeath": true,
+      "noFullDaySoftlock": true,
+      "noSustainedTwoActionCollapse": true,
+      "healthWithinBounds": true,
+      "nonnegativeStores": true,
+      "noSilentTopups": true,
+      "seriesAllAccounted": true,
+      "relationshipBounds": true,
+      "monthlyHarvestWasteReported": true,
+      "stateGrowthReported": true,
+      "settlementReconciles": true,
+      "scienceSkillSoftCeiling": false
+    },
+    "halfYear": {
+      "noDeath": true,
+      "noFullDaySoftlock": true,
+      "noSustainedTwoActionCollapse": true,
+      "healthWithinBounds": true,
+      "nonnegativeStores": true,
+      "noSilentTopups": true,
+      "seriesAllAccounted": true,
+      "relationshipBounds": true,
+      "monthlyHarvestWasteReported": true,
+      "stateGrowthReported": true,
+      "settlementReconciles": true,
+      "scienceSkillSoftCeiling": false
+    }
+  },
+  "firstSlowFailure": {
+    "year": {
+      "type": "skillInflation",
+      "day": 120,
+      "value": 637,
+      "rule": "science greater than 600 after 120 days"
+    },
+    "halfYear": {
+      "type": "skillInflation",
+      "day": 120,
+      "value": 629,
+      "rule": "science greater than 600 after 120 days"
+    }
+  },
+  "observed": {
+    "yearDays": 365,
+    "halfYearDays": 180,
+    "settlement": {
+      "yearStatements": 12,
+      "charges": 203,
+      "paid": 203,
+      "spotTradeReceipts": 25,
+      "unsettled": 0
+    },
+    "preservation": {
+      "yearExpired": 208,
+      "yearEaten": 0,
+      "halfExpired": 61,
+      "halfEaten": 0
+    }
+  },
+  "forcedFork": {
+    "baselineMonth2": "kept",
+    "blockedMonth2": "broken",
+    "month3": "broken",
+    "ruminationDelta": 24
+  }
+}

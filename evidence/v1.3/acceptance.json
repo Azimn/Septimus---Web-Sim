@@ -1,0 +1,36 @@
+{
+  "schema": "simple-tower-v1.3-evidence-v1",
+  "codeHead": "00ef3ae1c8416ab7055f562b0df20d56187c57d5",
+  "archiveGitBlob": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "identityDigest": "d581eeb2fd4eb985b705a318eb1bd76a12f1c42895839b2f77b64d6d2056f098",
+  "constants": {
+    "growth": 140000,
+    "harvestFood": 8,
+    "plantWater": 1,
+    "gatherFuel": 4,
+    "drawWater": 6,
+    "maxFood": 24,
+    "maxFuel": 12,
+    "maxWater": 18,
+    "hungerPenaltyFrom": 75,
+    "workFailureHunger": 92,
+    "workFailureEnergy": 22,
+    "starvingFrom": 90,
+    "exhaustedFrom": 12,
+    "healthLossStarving": 0.065,
+    "healthLossExhausted": 0.018,
+    "healthRecoveryPerRest": 0.013,
+    "deathThreshold": 0,
+    "companyDecay": 0.019
+  },
+  "acceptance": {
+    "sevenDays": true,
+    "fiveSurvive": true,
+    "producedFood": true,
+    "visitorsMet": true,
+    "pauses": true,
+    "variety": true,
+    "starvationControl": true
+  },
+  "runId": 41581300405
+}

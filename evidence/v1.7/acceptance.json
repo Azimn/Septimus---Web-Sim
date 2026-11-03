@@ -1,0 +1,51 @@
+{
+  "schema": "simple-tower-v1.7-evidence-v1",
+  "sourceHead": "c19a821335943d17251aecbc8a08f96b2576e067",
+  "workflowRunId": 41645735288,
+  "tests": {
+    "total": 111,
+    "passed": 111,
+    "failed": 0
+  },
+  "invariants": {
+    "archive": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+    "identity": "239d876a44bd0b641698b867d938d0489615d6ed",
+    "oldSim": "f56d0612452dcfeebaafc51861a313a6c486a399"
+  },
+  "criteria": {
+    "oldAndNewTestsPreserved": true,
+    "fiveHealthyMonths": true,
+    "fiveMonthsThreeActualCommitments": true,
+    "distinctNonMonotonicRelationships": true,
+    "noTradeReputationExplosion": true,
+    "noNinetyDayBrokenMonthlyTasks": true,
+    "fullNinetyDays": true,
+    "noRipeCropWaste": true,
+    "physicalConservation": true,
+    "historicalArchiveUntouched": true
+  },
+  "baseline": {
+    "source": "frozen evidence/v1.5/ninety-days/seed-11.json",
+    "lastTrust": 240,
+    "firstFailure": {
+      "t": 3600000,
+      "day": 35,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    "monthly": [
+      {
+        "id": "MONTH-FOLIO",
+        "status": "kept"
+      },
+      {
+        "id": "MONTH-INSTRUMENT",
+        "status": "kept"
+      },
+      {
+        "id": "MONTH-PROVISIONS",
+        "status": "broken"
+      }
+    ]
+  }
+}

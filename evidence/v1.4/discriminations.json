@@ -1,0 +1,1049 @@
+{
+  "schema": "simple-tower-v1.4-discriminations-v1",
+  "sourceHead": "cc2065dd1f31a6db911736c592858aac10acc751",
+  "probes": [
+    {
+      "article": 1,
+      "name": "30-decision self-sheet explanation audit",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "samples": [
+          {
+            "seed": 11,
+            "tick": 25100,
+            "eventId": "L3",
+            "chosen": "read",
+            "claim": "I chose read because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 11,
+            "tick": 29200,
+            "eventId": "L11",
+            "chosen": "eat",
+            "claim": "I chose eat because I noticed hunger. Other causes may elude me.",
+            "claims": [
+              "hunger"
+            ],
+            "knownSupported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 11,
+            "tick": 30600,
+            "eventId": "L17",
+            "chosen": "diary",
+            "claim": "I chose diary. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [
+              {
+                "kind": "historical_memory",
+                "folioId": "E09-001",
+                "bonus": 15
+              }
+            ],
+            "hiddenLeaked": false,
+            "operatorNoise": -1
+          },
+          {
+            "seed": 11,
+            "tick": 32700,
+            "eventId": "L24",
+            "chosen": "tend",
+            "claim": "I chose tend. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 11,
+            "tick": 36600,
+            "eventId": "L32",
+            "chosen": "work",
+            "claim": "I chose work because I noticed capacity. Other causes may elude me.",
+            "claims": [
+              "capacity"
+            ],
+            "knownSupported": [
+              "capacity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 11,
+            "tick": 45000,
+            "eventId": "L46",
+            "chosen": "converse",
+            "claim": "I chose converse. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 12,
+            "tick": 25100,
+            "eventId": "L3",
+            "chosen": "eat",
+            "claim": "I chose eat because I noticed hunger. Other causes may elude me.",
+            "claims": [
+              "hunger"
+            ],
+            "knownSupported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 1
+          },
+          {
+            "seed": 12,
+            "tick": 26800,
+            "eventId": "L9",
+            "chosen": "tend",
+            "claim": "I chose tend. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -2
+          },
+          {
+            "seed": 12,
+            "tick": 30400,
+            "eventId": "L17",
+            "chosen": "read",
+            "claim": "I chose read because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -2
+          },
+          {
+            "seed": 12,
+            "tick": 34800,
+            "eventId": "L25",
+            "chosen": "diary",
+            "claim": "I chose diary. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [
+              {
+                "kind": "historical_memory",
+                "folioId": "E09-001",
+                "bonus": 15
+              }
+            ],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 12,
+            "tick": 36600,
+            "eventId": "L30",
+            "chosen": "study",
+            "claim": "I chose study because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 12,
+            "tick": 40300,
+            "eventId": "L36",
+            "chosen": "prepare",
+            "claim": "I chose prepare. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -1
+          },
+          {
+            "seed": 13,
+            "tick": 25100,
+            "eventId": "L3",
+            "chosen": "eat",
+            "claim": "I chose eat because I noticed hunger. Other causes may elude me.",
+            "claims": [
+              "hunger"
+            ],
+            "knownSupported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 13,
+            "tick": 26800,
+            "eventId": "L9",
+            "chosen": "tend",
+            "claim": "I chose tend. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -1
+          },
+          {
+            "seed": 13,
+            "tick": 30400,
+            "eventId": "L17",
+            "chosen": "read",
+            "claim": "I chose read because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -1
+          },
+          {
+            "seed": 13,
+            "tick": 34800,
+            "eventId": "L25",
+            "chosen": "diary",
+            "claim": "I chose diary. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [
+              {
+                "kind": "historical_memory",
+                "folioId": "E09-001",
+                "bonus": 15
+              }
+            ],
+            "hiddenLeaked": false,
+            "operatorNoise": 1
+          },
+          {
+            "seed": 13,
+            "tick": 36600,
+            "eventId": "L30",
+            "chosen": "study",
+            "claim": "I chose study because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 1
+          },
+          {
+            "seed": 13,
+            "tick": 40300,
+            "eventId": "L36",
+            "chosen": "prepare",
+            "claim": "I chose prepare. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 14,
+            "tick": 25100,
+            "eventId": "L3",
+            "chosen": "read",
+            "claim": "I chose read because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 14,
+            "tick": 29200,
+            "eventId": "L11",
+            "chosen": "eat",
+            "claim": "I chose eat because I noticed hunger. Other causes may elude me.",
+            "claims": [
+              "hunger"
+            ],
+            "knownSupported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -2
+          },
+          {
+            "seed": 14,
+            "tick": 30600,
+            "eventId": "L17",
+            "chosen": "diary",
+            "claim": "I chose diary. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [
+              {
+                "kind": "historical_memory",
+                "folioId": "E09-001",
+                "bonus": 15
+              }
+            ],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 14,
+            "tick": 32700,
+            "eventId": "L24",
+            "chosen": "tend",
+            "claim": "I chose tend. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 0
+          },
+          {
+            "seed": 14,
+            "tick": 36600,
+            "eventId": "L32",
+            "chosen": "study",
+            "claim": "I chose study because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 14,
+            "tick": 40900,
+            "eventId": "L39",
+            "chosen": "prepare",
+            "claim": "I chose prepare. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 1
+          },
+          {
+            "seed": 15,
+            "tick": 25100,
+            "eventId": "L3",
+            "chosen": "read",
+            "claim": "I chose read because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 1
+          },
+          {
+            "seed": 15,
+            "tick": 29200,
+            "eventId": "L11",
+            "chosen": "eat",
+            "claim": "I chose eat because I noticed hunger. Other causes may elude me.",
+            "claims": [
+              "hunger"
+            ],
+            "knownSupported": [
+              "hunger"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": -1
+          },
+          {
+            "seed": 15,
+            "tick": 30600,
+            "eventId": "L17",
+            "chosen": "diary",
+            "claim": "I chose diary. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [
+              {
+                "kind": "historical_memory",
+                "folioId": "E09-001",
+                "bonus": 15
+              }
+            ],
+            "hiddenLeaked": false,
+            "operatorNoise": -2
+          },
+          {
+            "seed": 15,
+            "tick": 32700,
+            "eventId": "L24",
+            "chosen": "tend",
+            "claim": "I chose tend. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 1
+          },
+          {
+            "seed": 15,
+            "tick": 36600,
+            "eventId": "L32",
+            "chosen": "inspect",
+            "claim": "I chose inspect because I noticed curiosity. Other causes may elude me.",
+            "claims": [
+              "curiosity"
+            ],
+            "knownSupported": [
+              "curiosity"
+            ],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          },
+          {
+            "seed": 15,
+            "tick": 39500,
+            "eventId": "L38",
+            "chosen": "prepare",
+            "claim": "I chose prepare. I cannot fully account for that preference.",
+            "claims": [],
+            "knownSupported": [],
+            "unsupported": [],
+            "hiddenFactors": [],
+            "hiddenLeaked": false,
+            "operatorNoise": 2
+          }
+        ],
+        "coverage": 15,
+        "totalSamples": 30,
+        "unsupportedClaims": 0,
+        "hiddenLeaks": 0,
+        "missesByAction": {
+          "read": {
+            "samples": 5,
+            "unsupported": 0,
+            "unexplained": 0,
+            "hidden": 0
+          },
+          "eat": {
+            "samples": 5,
+            "unsupported": 0,
+            "unexplained": 0,
+            "hidden": 0
+          },
+          "diary": {
+            "samples": 5,
+            "unsupported": 0,
+            "unexplained": 5,
+            "hidden": 5
+          },
+          "tend": {
+            "samples": 5,
+            "unsupported": 0,
+            "unexplained": 5,
+            "hidden": 0
+          },
+          "work": {
+            "samples": 1,
+            "unsupported": 0,
+            "unexplained": 0,
+            "hidden": 0
+          },
+          "converse": {
+            "samples": 1,
+            "unsupported": 0,
+            "unexplained": 1,
+            "hidden": 0
+          },
+          "study": {
+            "samples": 3,
+            "unsupported": 0,
+            "unexplained": 0,
+            "hidden": 0
+          },
+          "prepare": {
+            "samples": 4,
+            "unsupported": 0,
+            "unexplained": 4,
+            "hidden": 0
+          },
+          "inspect": {
+            "samples": 1,
+            "unsupported": 0,
+            "unexplained": 0,
+            "hidden": 0
+          }
+        }
+      },
+      "limit": "30 explanations must be checked against visible causes and hidden causal factors. Missing hidden causes must be reported, not fabricated as introspection."
+    },
+    {
+      "article": 7,
+      "name": "resource-conflict full-controller versus needs-greedy matched comparison",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "full": {
+              "dead": false,
+              "health": 100,
+              "food": 15,
+              "water": 9,
+              "kept": 7,
+              "production": 4,
+              "completed": 113
+            },
+            "baseline": {
+              "dead": false,
+              "health": 100,
+              "food": 8,
+              "water": 5,
+              "kept": 6,
+              "production": 2,
+              "completed": 98
+            },
+            "fullWins": true
+          },
+          {
+            "seed": 12,
+            "full": {
+              "dead": false,
+              "health": 100,
+              "food": 17,
+              "water": 9,
+              "kept": 7,
+              "production": 4,
+              "completed": 105
+            },
+            "baseline": {
+              "dead": false,
+              "health": 100,
+              "food": 8,
+              "water": 5,
+              "kept": 6,
+              "production": 2,
+              "completed": 98
+            },
+            "fullWins": true
+          },
+          {
+            "seed": 13,
+            "full": {
+              "dead": false,
+              "health": 100,
+              "food": 17,
+              "water": 9,
+              "kept": 7,
+              "production": 4,
+              "completed": 107
+            },
+            "baseline": {
+              "dead": false,
+              "health": 100,
+              "food": 8,
+              "water": 5,
+              "kept": 6,
+              "production": 2,
+              "completed": 98
+            },
+            "fullWins": true
+          },
+          {
+            "seed": 14,
+            "full": {
+              "dead": false,
+              "health": 100,
+              "food": 17,
+              "water": 9,
+              "kept": 7,
+              "production": 4,
+              "completed": 105
+            },
+            "baseline": {
+              "dead": false,
+              "health": 100,
+              "food": 8,
+              "water": 5,
+              "kept": 6,
+              "production": 2,
+              "completed": 98
+            },
+            "fullWins": true
+          },
+          {
+            "seed": 15,
+            "full": {
+              "dead": false,
+              "health": 100,
+              "food": 16,
+              "water": 9,
+              "kept": 7,
+              "production": 4,
+              "completed": 108
+            },
+            "baseline": {
+              "dead": false,
+              "health": 100,
+              "food": 8,
+              "water": 5,
+              "kept": 6,
+              "production": 2,
+              "completed": 98
+            },
+            "fullWins": true
+          }
+        ],
+        "fullWins": 5
+      },
+      "limit": "Compare health, stocks and deadlines. A tie does not qualify the full policy or prove superiority."
+    },
+    {
+      "article": 15,
+      "name": "three contextual failures penalize only the failed worksite",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "before": 42.96,
+        "after": 27.96,
+        "otherContext": 42.96,
+        "otherClean": 42.96,
+        "failureReceiptIds": [
+          "L1",
+          "L3",
+          "L5"
+        ],
+        "contextTable": {
+          "bench@laboratory": 3
+        }
+      },
+      "limit": "Context-specific action-score generalization, not independent transfer learning across unrelated jobs."
+    },
+    {
+      "article": 21,
+      "name": "two-day unseen relocation remains stale until an attempted action",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "movedEventId": "L1",
+        "staleAfter2000Steps": true,
+        "attempted": true,
+        "failure": {
+          "id": "L371",
+          "tick": 227800,
+          "reason": "stale_object_location"
+        },
+        "correction": {
+          "id": "L370",
+          "tick": 227800
+        }
+      },
+      "limit": "Room access was blocked by an actual timed world loss during the delay; the delayed failure itself was not scripted."
+    },
+    {
+      "article": 24,
+      "name": "five days of closure pressure do not silently close an obstructed concern",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "commitment": {
+          "id": "LONG-OPEN",
+          "title": "Resolve an outstanding physical instrument inquiry",
+          "deadline": 825000,
+          "action": "inspect",
+          "stockTarget": null,
+          "origin": "chosen",
+          "requiredProgress": 1,
+          "progressCount": 0,
+          "status": "open",
+          "done": false
+        },
+        "requests": [
+          {
+            "day": 0,
+            "at": 25000,
+            "text": "I have not finished that matter. It remains unresolved."
+          },
+          {
+            "day": 1,
+            "at": 125000,
+            "text": "I worked at my bench and learned something of the apparatus."
+          },
+          {
+            "day": 2,
+            "at": 225000,
+            "text": "I worked at my bench and learned something of the apparatus."
+          },
+          {
+            "day": 3,
+            "at": 325000,
+            "text": "I ate from the finite provisions."
+          },
+          {
+            "day": 4,
+            "at": 425000,
+            "text": "I ate from the finite provisions."
+          }
+        ],
+        "replies": [
+          {
+            "id": "L5",
+            "tick": 25000,
+            "reply": "I have not finished that matter. It remains unresolved."
+          },
+          {
+            "id": "L161",
+            "tick": 129400,
+            "reply": "I have not finished that matter. It remains unresolved."
+          },
+          {
+            "id": "L278",
+            "tick": 230200,
+            "reply": "I have not finished that matter. It remains unresolved."
+          },
+          {
+            "id": "L371",
+            "tick": 329700,
+            "reply": "I have not finished that matter. It remains unresolved."
+          },
+          {
+            "id": "L497",
+            "tick": 431700,
+            "reply": "I have not finished that matter. It remains unresolved."
+          }
+        ],
+        "competingDeadlines": 6
+      },
+      "limit": "Prompts are directed scenario stimuli, unlike unattended monthly endurance."
+    },
+    {
+      "article": 26,
+      "name": "matched uninterrupted and restarted next-day activity distribution",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "identicalDistributions": true,
+        "uninterrupted": {
+          "work": 6,
+          "eat": 4,
+          "rest": 2,
+          "sleep": 1,
+          "tend": 1,
+          "diary": 1,
+          "read": 1,
+          "prepare": 1
+        },
+        "resumed": {
+          "work": 6,
+          "eat": 4,
+          "rest": 2,
+          "sleep": 1,
+          "tend": 1,
+          "diary": 1,
+          "read": 1,
+          "prepare": 1
+        },
+        "pauseEvent": {
+          "id": "L176",
+          "t": 145000,
+          "day": 1,
+          "type": "paused",
+          "room": "laboratory",
+          "description": "The tower clock did not advance during this saved interval.",
+          "provenance": "operator_metadata",
+          "operatorOnly": true,
+          "interval": {
+            "startedAt": "1970-01-01T00:00:01.000Z",
+            "endedAt": "1970-01-02T00:00:01.000Z",
+            "elapsedMilliseconds": 86400000,
+            "startTick": 145000,
+            "endTick": 145000
+          }
+        },
+        "worldTicks": [
+          245000,
+          245000
+        ]
+      },
+      "limit": "An explicit operator pause should not silently alter simulated behavior; exact equality under this deterministic baseline is stronger than required."
+    },
+    {
+      "article": 31,
+      "name": "temporary bench loss shifts subsequent post-restoration planning",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "cases": [
+          {
+            "seed": 11,
+            "lossId": "L1",
+            "recovered": true,
+            "differentLater": true,
+            "afterRecoveryBase": {
+              "work": 6,
+              "converse": 1,
+              "prepare": 2,
+              "study": 1,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "afterRecoveryLoss": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "study": 1,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            }
+          },
+          {
+            "seed": 12,
+            "lossId": "L1",
+            "recovered": true,
+            "differentLater": false,
+            "afterRecoveryBase": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "afterRecoveryLoss": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            }
+          },
+          {
+            "seed": 13,
+            "lossId": "L1",
+            "recovered": true,
+            "differentLater": false,
+            "afterRecoveryBase": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "afterRecoveryLoss": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            }
+          },
+          {
+            "seed": 14,
+            "lossId": "L1",
+            "recovered": true,
+            "differentLater": false,
+            "afterRecoveryBase": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "afterRecoveryLoss": {
+              "prepare": 2,
+              "work": 5,
+              "converse": 1,
+              "study": 2,
+              "eat": 3,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            }
+          },
+          {
+            "seed": 15,
+            "lossId": "L1",
+            "recovered": true,
+            "differentLater": false,
+            "afterRecoveryBase": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "inspect": 2,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            },
+            "afterRecoveryLoss": {
+              "prepare": 1,
+              "work": 6,
+              "converse": 1,
+              "inspect": 2,
+              "eat": 2,
+              "rest": 1,
+              "sleep": 1,
+              "diary": 1,
+              "read": 1
+            }
+          }
+        ]
+      },
+      "limit": "Requires a different autonomous outcome after restoration, not merely an action being unavailable during impairment."
+    },
+    {
+      "article": 32,
+      "name": "hidden residue changes action but is absent from bounded self-explanation",
+      "pass": true,
+      "status": "observed",
+      "evidence": {
+        "witness": {
+          "seed": 11,
+          "hunger": 10,
+          "energy": 70,
+          "stim": 75,
+          "sourceId": "L1",
+          "baselineAction": "tend",
+          "hiddenCauseAction": "work",
+          "factor": [
+            {
+              "topic": "henry",
+              "sourceEventId": "L1",
+              "bonus": 12
+            }
+          ],
+          "explanation": {
+            "text": "I chose work because I noticed capacity. Other causes may elude me.",
+            "reasons": [
+              "capacity"
+            ],
+            "availableFrom": "self_sheet",
+            "certain": false,
+            "concealed": [
+              "residue",
+              "numeric utility score",
+              "unperceived room state",
+              "random tie-breaking"
+            ]
+          }
+        }
+      },
+      "limit": "Explaining the choice must neither reveal hidden causes nor falsely claim certainty."
+    }
+  ],
+  "passing": [
+    1,
+    7,
+    15,
+    21,
+    24,
+    26,
+    31,
+    32
+  ],
+  "notDemonstrated": []
+}
