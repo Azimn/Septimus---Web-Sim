@@ -116,10 +116,13 @@ function explainChoice(s,choice){
 }
 function ruminate(s,log){if(s.activity?.kind==='sleep')return null;
  if(s.clock.centibeats%4500>=100)return null;
- const failures=Object.values(s.series||{}).filter(x=>x.brokenStreak>0)
+ const failures=Object.values(s.series||{}).filter(x=>x.brokenStreak>0&&x.id!=='DAILY-HEARTH')
   .sort((a,b)=>b.brokenStreak-a.brokenStreak||a.id.localeCompare(b.id));
  const turn=Math.floor(s.clock.centibeats/4500);
- const concerning=failures.find(x=>turn%(x.brokenStreak>=2?2:4)===0);
+ // An unrepaired single failure occupies one in four eligible thoughts.
+ // Consecutive failures occupy three in four; rotate fairly among sources.
+ const eligible=failures.filter(x=>turn%4<(x.brokenStreak>=2?3:1));
+ const concerning=eligible.length?eligible[Math.floor(turn/4)%eligible.length]:null;
  const commitment=s.commitments.find(x=>!x.done&&(x.status===undefined||x.status==='open'));
  const source=concerning?.id||commitment?.id||s.events.filter(x=>x.type==='completed').at(-1)?.id;
  if(!source)return null;

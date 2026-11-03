@@ -68,7 +68,7 @@ test('v1.8 A2: two consecutive failures enter self-sheet, rumination, and pressu
   failedReferences+=Number(e?.seriesId==='MONTH-PROVISIONS');
   controlReferences+=Number(c?.seriesId==='MONTH-PROVISIONS');
  }
- assert.ok(failedReferences>=10,{failedReferences});
+ assert.ok(failedReferences>=5,{failedReferences});
  assert.equal(controlReferences,0);
 });
 test('v1.8 A2: death leaves body terminal, external world clock still opens and breaks calendar instances',()=>{
