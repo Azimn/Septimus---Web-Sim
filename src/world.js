@@ -31,7 +31,11 @@ function initialState(identitySha,archiveSha){return {
   commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false}],
   activity:null,proposed:null,decisions:[],seed:1729,sequence:0,completedDays:0,
   people:{visitor_01:{id:'visitor_01',marker:'regular caller at the tower',present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]},player:{id:'player',witnessed:[],knowledge:[]}},
-  customs:{greeting:{observations:0,sourceEventIds:[],learned:false}},humor:[],replyQueue:[],deliveredReplies:[],
+  customs:{
+   greeting:{observations:0,sourceEventIds:[],learned:false},
+   tea_first:{observations:0,sourceEventIds:[],learned:false},
+   instrument_quiet:{observations:0,sourceEventIds:[],learned:false}
+  },humor:[],replyQueue:[],deliveredReplies:[],
   thoughts:[],predictions:[],beliefs:{},objectPositions:{},perception:[],seenObjects:[],lastPerceptionIds:[],
   deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true,conflictDeliberation:true},
   habitProfiles:{},quirks:[],worldLosses:{},utilityWeights:{},residueSources:{},commitmentProgress:{},outcomeContexts:{},controllerMode:'full',pendingNeedAction:null,
@@ -52,6 +56,7 @@ function ensureHooks(s){
  if(s.stores.preserved===undefined)s.stores.preserved=0;
  for(const key of ['utilityWeights','residueSources','commitmentProgress','outcomeContexts'])if(!s[key])s[key]={};
  if(!s.controllerMode)s.controllerMode='full';
+ for(const [name,record] of Object.entries(defaults.customs))if(!s.customs[name])s.customs[name]=structuredClone(record);
  if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
  if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
  for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;

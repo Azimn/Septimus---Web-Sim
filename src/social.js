@@ -4,7 +4,7 @@ const {STEP,distance}=require('./world');
 const VISITOR='visitor_01';
 function person(s,id=VISITOR){return s.people[id]??(s.people[id]={id,marker:id,present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]});}
 function arrive(s,log,scheduledVisit=false){const p=person(s);if(p.present)return null;p.present=true;
- p.room='library';p.targetRoom=null;p.travelRemaining=0;p.manuallyIntroduced=!scheduledVisit;
+ p.room='library';p.targetRoom=null;p.travelRemaining=0;p.manuallyIntroduced=!scheduledVisit;p.arrivalTick=s.clock.centibeats;
  const event=log(s,'visitor_arrival',s.location==='library'?'I noticed a familiar caller arrive at the tower.':'A caller arrived while I was elsewhere in the tower.',{personId:VISITOR,marker:p.marker,perceived:s.location==='library'});
  if(s.location==='library'){if(scheduledVisit)meet(s,log);else address(s,log);}
  return event;
@@ -20,6 +20,8 @@ function meet(s,log){
  if(p.trust<-12){log(s,'visitor_avoided','I chose to withhold a greeting from that caller.',{personId:VISITOR,trust:p.trust,decision:'avoid',sourceSocialEvents:p.events.map(x=>x.id)});return;}
  address(s,log);
  observeCustom(s,log);
+ observeCustom(s,log,VISITOR,'tea_first');
+ observeCustom(s,log,VISITOR,'instrument_quiet');
  shared(s,log,'greeting');
  s.needs.company=clip(s.needs.company+18);
 }
@@ -35,11 +37,12 @@ function scheduled(s,log){
   if(p.travelRemaining<=0){p.room=p.targetRoom;log(s,'visitor_moved','A caller walked through the tower to find me.',{personId:VISITOR,visitorRoom:p.room,perceived:p.room===s.location});}
  }
  meet(s,log);
+ checkCustoms(s,log);
 }
 function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false}={}){
  const p=person(s,id);if(!p.present||p.room!==s.location)throw Error('Shared social event requires physical co-presence');
  const prior=p.events.map(x=>x.kind);
- const delta=kind==='gift'?(prior.includes('insult')?5:20):kind==='insult'?(prior.includes('gift')?-35:-15):kind==='greeting'?2:kind==='conversation'?3:kind==='trade'?(prior.includes('insult')?1:4):0;
+ const delta=kind==='gift'?(prior.includes('insult')?5:20):kind==='insult'?(prior.includes('gift')?-35:-15):kind==='greeting'?2:kind==='conversation'?3:kind==='trade'?(prior.includes('insult')?1:4):kind==='negotiation'?2:0;
  p.trust+=delta;p.affinity+=kind==='gift'?7:kind==='insult'?-5:0;p.grievance+=kind==='insult'?1:0;
  const witnesses=privateToVisitor?[id,'pretorius']:[id,'pretorius','player'];
  const e=log(s,'social',`I recorded a shared ${kind} with ${id}.`,{kind,personId:id,delta,trust:p.trust,witnesses,privateToVisitor});
@@ -48,9 +51,43 @@ function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false}={}){
  else s.people.player.witnessed.push(e.id);
  return e;
 }
-function observeCustom(s,log,id=VISITOR){if(!person(s,id).present||person(s,id).room!==s.location)throw Error('Custom observation requires co-presence');
- const c=s.customs.greeting;c.observations++;const e=log(s,'custom_observed','I noticed the caller perform the same formal greeting.',{personId:id,observation:c.observations});c.sourceEventIds.push(e.id);if(c.observations>=2)c.learned=true;return e;}
+function observeCustom(s,log,id=VISITOR,kind='greeting'){
+ if(!person(s,id).present||person(s,id).room!==s.location)throw Error('Custom observation requires co-presence');
+ const c=s.customs[kind];if(!c)throw Error('Unknown visitor custom');
+ c.observations++;
+ const description=kind==='greeting'?'I noticed the caller perform the same formal greeting.':
+  kind==='tea_first'?'The caller prefers tea before discussing tower business.':
+  'The caller favors silence around the laboratory instruments.';
+ const e=log(s,'custom_observed',description,{personId:id,custom:kind,
+  observation:c.observations,learned:c.observations>=2});
+ c.sourceEventIds.push(e.id);if(c.observations>=2)c.learned=true;return e;
+}
+function negotiateCustom(s,log,kind){
+ const p=person(s),c=s.customs[kind];if(!p.present||p.room!==s.location||!c?.learned)return null;
+ p.negotiatedCustoms??={};const visit=String(s.clock.day)+':'+kind;
+ if(p.negotiatedCustoms[visit])return null;
+ p.negotiatedCustoms[visit]=true;
+ const conflict=log(s,'custom_conflict','A learned social custom conflicted with a tower habit or immediate errand.',
+  {personId:VISITOR,custom:kind,habitEventId:s.habitProfiles.work?.formed?
+    s.events.findLast(e=>e.type==='habit_formed'&&e.kind==='work')?.id:null,
+   learnedFrom:[...c.sourceEventIds]});
+ applyMood(s,'visitor custom conflict',-2,4500);
+ const negotiation=shared(s,log,'negotiation');
+ return log(s,'custom_negotiation','I acknowledged the custom without relinquishing my independence.',
+  {personId:VISITOR,custom:kind,conflictEventId:conflict.id,
+   socialEventId:negotiation.id,sourceIds:[...c.sourceEventIds]});
+}
+function checkCustoms(s,log){
+ const p=person(s);
+ if(!p.present||p.room!==s.location||p.manuallyIntroduced)return null;
+ if(s.activity?.kind==='work'&&s.habitProfiles.work?.formed&&s.customs.instrument_quiet?.learned)
+  return negotiateCustom(s,log,'instrument_quiet');
+ if(s.activity?.kind==='trade'&&s.customs.tea_first?.learned&&
+  !s.events.some(e=>e.type==='completed'&&e.kind==='tea'&&e.t>=p.arrivalTick))
+  return negotiateCustom(s,log,'tea_first');
+ return null;
+}
 function violateCustom(s,log){const c=s.customs.greeting;if(!c.learned||!person(s).present||person(s).room!==s.location)return null;const e=log(s,'surprise','I was surprised by the breach of a greeting I had learned.',{custom:'greeting',sourceIds:[...c.sourceEventIds],moodDelta:-3});applyMood(s,'custom breached',-3);return e;}
 function markFunny(s,log,id=VISITOR){const e=shared(s,log,'funny',{id});s.humor.push({sourceEventId:e.id,personId:id,used:false,cooldownUntil:0});return e;}
 function callback(s,log,id=VISITOR){const h=s.humor.find(x=>x.personId===id&&!x.used&&s.clock.centibeats>=x.cooldownUntil);if(!h)return null;h.used=true;h.cooldownUntil=s.clock.centibeats+5000;return log(s,'humor_callback','I recalled our earlier absurd mishap, once.',{sourceEventId:h.sourceEventId,personId:id,cooldownUntil:h.cooldownUntil});}
-module.exports={VISITOR,person,arrive,depart,address,meet,scheduled,shared,observeCustom,violateCustom,markFunny,callback};
+module.exports={VISITOR,person,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateCustom,markFunny,callback};
