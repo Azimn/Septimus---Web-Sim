@@ -45,6 +45,7 @@ function arrive(s,log,scheduledVisit=false){const p=person(s);if(p.present)retur
  p.room='library';p.targetRoom=null;p.travelRemaining=0;p.manuallyIntroduced=!scheduledVisit;p.arrivalTick=s.clock.centibeats;
  const event=log(s,'visitor_arrival',s.location==='library'?'I noticed a familiar caller arrive at the tower.':'A caller arrived while I was elsewhere in the tower.',{personId:VISITOR,marker:p.marker,perceived:s.location==='library'});
  if(scheduledVisit){
+   if(s.clock.day>0&&s.clock.day%30===0)issueStatement(s,log);
    if(!p.reunionSeen&&p.prior){p.reunionSeen=true;log(s,'prior_reunion',
     'I recognized Rosa Brandl from the account of our long supply arrangements.',
     {personId:VISITOR,prior_source:'reconstructed_archive',
@@ -80,6 +81,79 @@ function deliverGoods(s,log){
     fuel:DELIVERY.fuel-addedFuel},accountBalance:p.account.balance,
    price:actualPrice,creditLimit:p.account.creditLimit});
 }
+
+// Billing follows actual delivery invoices. Goods-for-goods trades already pay
+// on the spot, but are listed in the monthly statement as matched debit/credit.
+function issueStatement(s,log){
+ const p=person(s),a=p.account,period=Math.floor(s.clock.day/30)-1;
+ a.statements??=[];
+ if(period<0||a.statements.some(x=>x.period===period))return null;
+ const start=period*30*100000,end=(period+1)*30*100000;
+ const charges=s.events.filter(e=>e.type==='merchant_delivery'&&e.personId===VISITOR&&e.t>=start&&e.t<end);
+ const trades=s.events.filter(e=>e.type==='trade_receipt'&&e.personId===VISITOR&&e.t>=start&&e.t<end);
+ const previous=a.statements.at(-1);
+ const priorBalance=previous?(previous.status==='settled'?previous.closingBalance:previous.dueBalance):0;
+ const chargeTotal=charges.reduce((n,e)=>n+e.price,0);
+ // A previous statement may be overdue when this month's bill is issued.
+ // It remains in the ledger with an explicit carry-forward reference.
+ if(previous&&previous.status==='due'){
+  previous.status='carried';previous.rolledInto=period;
+  log(s,'merchant_statement_carried','The previous unpaid statement was carried forward to this month.',{
+   personId:VISITOR,fromPeriod:previous.period,toPeriod:period,
+   outstanding:previous.dueBalance,sourceStatementId:previous.issueEventId});
+ }
+ const due=priorBalance+chargeTotal;
+ const spotItems=trades.map(e=>({id:e.id,given:{stock:e.payment,units:e.unitsGiven},
+  received:{stock:e.received,units:e.unitsReceived},accountCharge:0}));
+ const ev=log(s,'merchant_statement_issued','Rosa presented an account calculated from actual weighed deliveries.',{
+  personId:VISITOR,period,start,end,openingBalance:priorBalance,
+  charges:chargeTotal,chargeEventIds:charges.map(e=>e.id),spotTradeReceipts:spotItems,
+  dueBalance:due,accountBalance:a.balance,perceived:p.room===s.location,
+  provenance:'lived_runtime_economic_receipts'});
+ if(a.balance!==due){
+  log(s,'merchant_statement_discrepancy','The merchant invoice and the live account failed to reconcile.',{
+   personId:VISITOR,period,expected:due,actual:a.balance,sourceStatementId:ev.id});
+ }
+ const st={period,start,end,openingBalance:priorBalance,charges:chargeTotal,
+  chargeEventIds:charges.map(e=>e.id),spotTradeReceipts:spotItems,
+  dueBalance:due,issueEventId:ev.id,issuedAt:s.clock.centibeats,status:'due'};
+ a.statements.push(st);
+ return st;
+}
+function settleAccount(s,log){
+ const p=person(s),a=p.account,st=a?.statements?.findLast(x=>x.status==='due');
+ if(!st||!p.present||p.room!==s.location)return null;
+ const Economy=require('./economy'),before={food:s.stores.food,preserved:s.stores.preserved};
+ let left=st.dueBalance,paidPreserved=Math.min(s.stores.preserved||0,left);
+ if(paidPreserved>0){Economy.drawStock(s,'preserved',paidPreserved);left-=paidPreserved;}
+ // Reserve at least five fresh meal portions. No money or food is created.
+ const paidFresh=Math.min(Math.max(0,s.stores.food-5),left);
+ if(paidFresh>0){Economy.drawStock(s,'food',paidFresh);left-=paidFresh;}
+ const paid=paidPreserved+paidFresh;
+ a.balance-=paid;st.closingBalance=left;st.paid=paid;st.paidPreserved=paidPreserved;
+ st.paidFresh=paidFresh;st.settledAt=s.clock.centibeats;st.status='settled';
+ const payment=log(s,'merchant_settlement','I paid the merchant using real household provisions, with any shortfall carried as credit.',{
+  personId:VISITOR,period:st.period,statementEventId:st.issueEventId,
+  invoiceStart:st.start,invoiceEnd:st.end,openingBalance:st.openingBalance,
+  chargeEventIds:st.chargeEventIds,charges:st.charges,
+  spotTradeReceiptIds:st.spotTradeReceipts.map(x=>x.id),
+  dueBalance:st.dueBalance,paid,paidPreserved,paidFresh,closingBalance:left,
+  beforeStores:before,afterStores:{food:s.stores.food,preserved:s.stores.preserved},
+  accountBalance:a.balance,coPresent:true,witnesses:[VISITOR,'pretorius'],
+  accountedBy:'actual_delivery_receipts_and_in_kind_payment'});
+ st.settlementEventId=payment.id;
+ if(left>0){
+  const friction=shared(s,log,'friction',{sourceEventId:payment.id});
+  st.frictionEventId=friction.id;
+  const policy=treatment(p);
+  const credit=log(s,'merchant_credit_carried','The merchant allowed an unsettled account to continue under known terms.',{
+   personId:VISITOR,period:st.period,unpaid:left,policySource:policy.factors,
+   creditPermitted:policy.extendCredit,sourceStatementId:st.issueEventId,
+   frictionEventId:friction.id});
+  st.creditEventId=credit.id;
+ }
+ return payment;
+}
 function address(s,log){const p=person(s);if(!p.present||p.room!==s.location)throw Error('Visitor conversation requires shared presence');
  const policy=treatment(p),established=policy.trust>=15;
  const historical=established&&!!p.prior&&policy.priorWeight>0.10;
@@ -106,6 +180,7 @@ function meet(s,log){
  p.metVisitDay=s.clock.day;
  if(treatment(p).greet==='withhold'){log(s,'visitor_avoided','I chose to withhold a greeting from that caller.',{personId:VISITOR,trust:p.trust,decision:'avoid',sourceSocialEvents:p.events.map(x=>x.id)});return;}
  const encounter=recordEncounter(s,log,VISITOR,'greeting',{coPresent:true});
+ settleAccount(s,log);
  if(p.prior&&p.prior.knownToRosa.length){
   const seen=s.habits.work||0,observed=(seen>=5?'I see the bench still claims your hours.':
     'The path needs attention. Put the baskets on sound boards.');
@@ -133,7 +208,7 @@ function meet(s,log){
 }
 function scheduled(s,log){
  const phase=s.clock.centibeats%100000,day=s.clock.day,p=person(s);
- if(day%7===0&&phase>=44000&&phase<60000&&!p.present&&p.lastVisitDay!==day){p.lastVisitDay=day;arrive(s,log,true);}
+ if((day%7===0||day>0&&day%30===0)&&phase>=44000&&phase<60000&&!p.present&&p.lastVisitDay!==day){p.lastVisitDay=day;arrive(s,log,true);}
  if(phase>=60000&&p.present){depart(s,log);return;}
  if(!p.present||p.manuallyIntroduced)return;
  if(!p.room)p.room='library';
@@ -229,4 +304,4 @@ function SocialNoteForCurrentOnly(s,log,source){
 function violateCustom(s,log){const c=s.customs.greeting;if(!c.learned||!person(s).present||person(s).room!==s.location)return null;const e=log(s,'surprise','I was surprised by the breach of a greeting I had learned.',{custom:'greeting',sourceIds:[...c.sourceEventIds],moodDelta:-3});applyMood(s,'custom breached',-3);return e;}
 function markFunny(s,log,id=VISITOR){const e=shared(s,log,'funny',{id});s.humor.push({sourceEventId:e.id,personId:id,used:false,cooldownUntil:0});return e;}
 function callback(s,log,id=VISITOR){const h=s.humor.find(x=>x.personId===id&&!x.used&&s.clock.centibeats>=x.cooldownUntil);if(!h)return null;h.used=true;h.cooldownUntil=s.clock.centibeats+5000;return log(s,'humor_callback','I recalled our earlier absurd mishap, once.',{sourceEventId:h.sourceEventId,personId:id,cooldownUntil:h.cooldownUntil});}
-module.exports={VISITOR,DELIVERY,RELATIONSHIP,changeTrust,person,priorWeight,effectiveTrust,treatment,recordEncounter,deliverGoods,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateMerchantCustom,violateCustom,markFunny,callback};
+module.exports={VISITOR,DELIVERY,RELATIONSHIP,changeTrust,issueStatement,settleAccount,person,priorWeight,effectiveTrust,treatment,recordEncounter,deliverGoods,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateMerchantCustom,violateCustom,markFunny,callback};
