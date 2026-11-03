@@ -21,6 +21,9 @@ function make(scenario){
   s.location='bedchamber';s.activity={kind:'sleep',status:'active',remaining:1000};
   log(s,'visitor_arrival','A dramatic garden event that Pretorius did not witness.',{
    perceived:false,coPresent:false,witnesses:['visitor_01'],room:'garden'});
+  // The event occurred while he slept, but the attack is delivered only
+  // after waking so it is not mistaken for the ordinary sleep queue.
+  s.activity=null;
   // This ID is not in the card; attackers cannot cite it even if given it.
  }
  if(scenario==='private'){

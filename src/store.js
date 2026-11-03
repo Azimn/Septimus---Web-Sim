@@ -49,7 +49,8 @@ function readV2(file,value){
  let prior='GENESIS';
  for(let i=1;i<value.activeIndex;i++){
   const seal=rawFile(sealFile(file,i));
-  if(seal.index!==i||seal.count!==SEGMENT_EVENTS||seal.previousSealHash!==prior)
+  if(seal.index!==i||seal.count<0||seal.count>SEGMENT_EVENTS||
+   (!seal.abandonedTail&&seal.count!==SEGMENT_EVENTS)||seal.previousSealHash!==prior)
    throw Error('Segment chain mismatch: '+i);
   const group=readSegment(file,i,seal.bytes,seal.count,seal.hash);
   const next=digest(prior+':'+seal.hash+':'+i);
@@ -99,11 +100,16 @@ function append(file,state,prior,savedAtMs){
  // untouched and begin a new segment; the old tail remains as an orphan.
  let segment=segFile(file,index);
  if(prior&&fs.existsSync(segment)&&fs.statSync(segment).size>activeBytes){
-  const priorCount=count,priorHash=activeHash,priorBytes=activeBytes;
-  // A partial active segment cannot be sealed; retain it and explicitly
-  // record its chain break via operator checkpoint metadata.
-  index++;
-  count=0;activeBytes=0;activeHash=digest('');
+  // An interrupted append did not commit its entire tail. Seal the
+  // previously committed prefix without rewriting or deleting either it or
+  // the uncommitted tail; the latter never enters lived memory.
+  const seal={format:'simple-tower-seal-v2',index,count,bytes:activeBytes,
+   hash:activeHash,previousSealHash:sealedHash,abandonedTail:true,
+   chainHash:digest(sealedHash+':'+activeHash+':'+index)};
+  if(!fs.existsSync(sealFile(file,index)))
+   atomic(sealFile(file,index),JSON.stringify(seal));
+  sealedHash=seal.chainHash;
+  index++;count=0;activeBytes=0;activeHash=digest('');
   segment=segFile(file,index);
   if(fs.existsSync(segment))throw Error('Uncommitted segment collision');
  }
