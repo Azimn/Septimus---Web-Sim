@@ -2,7 +2,7 @@
 const {DAY,STEP,ROOMS,OBJECTS,context,distance}=require('./world');
 const {DEFINITIONS,scores,available,clip,applyMood,perceiveTopic}=require('./actions');
 const {findFolios}=require('./history');
-function log(s,type,description,extra={}){const event={id:`L${++s.sequence}`,t:s.clock.centibeats,day:s.clock.day,type,room:s.location,description,...extra};s.events.push(event);return event;}
+function log(s,type,description,extra={}){const event={id:`L${++s.sequence}`,t:s.clock.centibeats,day:s.clock.day,type,room:s.location,description,provenance:'lived_runtime_memory',...extra};s.events.push(event);return event;}
 function start(s,kind,controller='autonomous',query=''){
  if(s.activity)throw Error('Current activity must finish or be interrupted');
  if(!available(s,kind))throw Error(`Unavailable: ${kind}`);
@@ -21,7 +21,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  case 'work':s.skills.science++;n.energy=clip(n.energy-9);n.stimulation=clip(n.stimulation+18);description='I worked at my bench and learned something of the apparatus.';break;
  case 'inspect':n.stimulation=clip(n.stimulation+8);description='I inspected the instrument before making any claims.';break;
  case 'study':n.stimulation=clip(n.stimulation+12);description='I studied the specimens, with several questions unanswered.';break;
- case 'read':{const results=findFolios(archive,a.query,1),r=results[0];if(r){s.folioReads.push({day:s.clock.day,t:s.clock.centibeats,id:r.event_id,query:a.query,provenance:r.provenance});perceiveTopic(s,[r.title,...(r.participants||[])].join(' '),'folio');description=`I consulted folio ${r.event_id}: ${r.title}. Its account belongs to my earlier life, not to this morning.`;}else description='I searched the folios but found no matching record.';break;}
+ case 'read':{const results=findFolios(archive,a.query,1),r=results[0];if(r){s.folioReads.push({day:s.clock.day,t:s.clock.centibeats,id:r.event_id,query:a.query,provenance:r.provenance,memoryClass:'pre_awakened_'+r.provenance});perceiveTopic(s,[r.title,...(r.participants||[])].join(' '),'folio');description=`I consulted folio ${r.event_id}: ${r.title}. Its account belongs to my earlier life, not to this morning.`;}else description='I searched the folios but found no matching record.';break;}
  case 'diary':{const last=s.events.filter(e=>e.type==='completed'&&e.kind!=='diary').at(-1);const line=last?`I returned to the notebook after ${last.kind}. The work remains mine to judge.`:'I wrote what I could verify, leaving my uncertainties intact.';s.diary.push({day:s.clock.day,t:s.clock.centibeats,text:line,sourceEventId:last?.id||null});description=line;break;}
  case 'walk':n.comfort=clip(n.comfort+7);description='I walked along the garden path.';break;
  case 'tend':n.comfort=clip(n.comfort+10);n.energy=clip(n.energy-5);description='I tended the patch beside the tower.';break;
@@ -39,7 +39,7 @@ function tick(s,archive){const n=s.needs,a=s.activity,now=s.clock.centibeats;
   const prepared=s.commitments[0].done;if(!prepared)applyMood(s,'unprepared dusk',-7);
   log(s,'calendar',prepared?'I met the dusk prepared.':'I reached dusk without securing the hearth.',{prepared});
  }
- if(s.clock.day>s.completedDays){s.completedDays=s.clock.day;log(s,'day',`I have lived another day in the tower.`);
+ if(s.clock.day>s.completedDays){s.completedDays=s.clock.day;s.calendar.date=new Date(Date.UTC(1899,6,1)+s.clock.day*86400000).toISOString().slice(0,10);log(s,'day',`I have lived another day in the tower.`);
  s.commitments=[{id:`C${s.clock.day+1}`,title:'Secure the hearth before dusk',deadline:s.clock.day*DAY+65000,done:false}];}
  if(!s.activity){const ranked=scores(s);if(ranked.length){s.decisions.push({t:s.clock.centibeats,candidates:ranked.slice(0,5),chosen:ranked[0].kind});s.decisions=s.decisions.slice(-100);start(s,ranked[0].kind);}}
  else if(a.status==='traveling'){a.travelRemaining-=STEP;if(a.travelRemaining<=0){s.location=a.room;a.status='active';log(s,'arrived',`I reached the ${ROOMS[s.location].label.toLowerCase()}.`,{target:a.target});}}

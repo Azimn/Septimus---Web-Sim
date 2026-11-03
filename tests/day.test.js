@@ -18,7 +18,7 @@ test('a complete directed July tower day retains origin, interruption, diary, sl
  direct(s,'diary');untilCompleted(s,'diary');assert.match(s.diary[0].text,/^I /);
  direct(s,'sleep');untilCompleted(s,'sleep');
  const before=s.clock.centibeats;advance(s,archive,Math.floor((100000-before)/100)+1);
- assert.equal(s.clock.day,1);assert.equal(s.calendar.triggeredDays[0],0);
+ assert.equal(s.clock.day,1);assert.equal(s.calendar.date,'1899-07-02');assert.equal(s.calendar.triggeredDays[0],0);
  assert.ok(s.events.some(e=>e.type==='calendar'&&e.prepared===true));
  assert.ok(s.events.some(e=>e.type==='interrupted'));
  assert.ok(s.events.filter(e=>e.type==='completed').every(e=>e.description.startsWith('I ')));

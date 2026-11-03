@@ -25,7 +25,7 @@ http.createServer((req,res)=>{
  if(req.method==='GET'&&req.url?.startsWith('/api/folio?')){const url=new URL(req.url,'http://localhost'),id=url.searchParams.get('id')||'';
   if(!state.folioReads.some(e=>e.id===id))return json(res,{error:'Folio has not been physically consulted.'},403);
   const record=archive.records.find(r=>r.event_id===id);if(!record)return json(res,{error:'Missing folio'},404);
-  json(res,{id:record.event_id,title:record.title,provenance:record.provenance,account:record.memory_text,classification:'reconstructed pre-awakening record'});return;}
+  json(res,{id:record.event_id,title:record.title,provenance:record.provenance,account:record.memory_text,classification:String(record.provenance)+' pre-awakening record'});return;}
  if(req.method!=='POST'||req.url!=='/api/command')return json(res,{error:'Not found'},404);
  let body='';req.on('data',chunk=>{body+=chunk;if(body.length>4096)req.destroy();});req.on('end',()=>{
   try{const input=JSON.parse(body||'{}');switch(input.command){

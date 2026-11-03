@@ -38,6 +38,8 @@ function scores(state){const n=state.needs,deadline=state.commitments[0],time=st
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   score+=(state.habits[key]||0)*.7;
   score+=(state.residue[key]||0);
+  if(['rest','inspect'].includes(key))score+=state.traits.nervous*3;
+  if(['diary','walk'].includes(key))score+=state.traits.sociable*3;
   const mood=state.mood.reduce((sum,m)=>sum+m.value,0);
   if(['read','inspect','study','work'].includes(key))score+=mood*.36;
   if(['tea','rest','walk'].includes(key))score-=mood*.22;

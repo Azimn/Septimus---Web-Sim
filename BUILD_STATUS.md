@@ -4,7 +4,7 @@ Status: new branch working prototype, not full 34-Article completion.
 
 ## Present and locally checked
 
-Five rooms and twelve object affordances; finite food, water, fuel; integer centibeat day clock; actor-local travel; multi-step duration for tasks; deterministic decision scoring; source-labeled first-person diary and events; saved in-progress tasks and commitments; explicit player/autonomous action attribution; 450-file archive format checksum verification; curated topic residue; narrow renderer; restart/save checks. Node 22 local deterministic tests: 11/11 pass, including a scripted full tower day with a restart during work. Production canonical corpus is attached by Git blob SHA, not downloaded to this machine for local testing.
+Five rooms and twelve object affordances; finite food, water, fuel; integer centibeat day clock; actor-local travel; multi-step duration for tasks; deterministic decision scoring; source-labeled first-person diary and events; saved in-progress tasks and commitments; explicit player/autonomous action attribution; 450-file archive format checksum verification; curated topic residue; narrow renderer; restart/save checks. Node 22 local deterministic tests: 12/12 pass, including a scripted full tower day with a restart during work. Production canonical corpus is attached by Git blob SHA, not downloaded to this machine for local testing.
 
 ## Article audit status (smoke-test candidates, not qualification grades)
 
