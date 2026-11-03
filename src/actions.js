@@ -1,6 +1,7 @@
 'use strict';
 const {OBJECTS,TRIGGERS,distance}=require('./world');
 const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
+const Post=require('./post');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
  rest:{target:'bed',duration:3000,base:6,trait:'gentle'},
@@ -19,7 +20,13 @@ const DEFINITIONS={
  draw_water:{target:'path',duration:1600,base:5,trait:'industrious'},
  converse:{target:'visitor_01',duration:900,base:9,trait:'sociable'},
  preserve:{target:'stove',duration:SURPLUS.preserveDuration,base:8,trait:'industrious'},
- trade:{target:'visitor_01',duration:SURPLUS.tradeDuration,base:8,trait:'sociable'}
+ trade:{target:'visitor_01',duration:SURPLUS.tradeDuration,base:8,trait:'sociable'},
+ meet_carrier:{target:'mcfeely',duration:650,base:10,trait:'sociable'},
+ check_mail:{target:'path',duration:Post.POST.mailCheckDuration,base:8,trait:'curious'},
+ read_letter:{target:'notebook',duration:Post.POST.letterReadDuration,base:12,trait:'curious'},
+ write_reply:{target:'notebook',duration:Post.POST.replyWriteDuration,base:9,trait:'industrious'},
+ post_reply:{target:'path',duration:Post.POST.replyPostDuration,base:9,trait:'industrious'},
+ open_parcel:{target:'stores',duration:Post.POST.parcelOpenDuration,base:10,trait:'curious'}
 };
 const clip=n=>Math.max(0,Math.min(100,Math.round(n*100)/100));
 const ACTION_WEIGHTS=Object.freeze(Object.fromEntries(Object.keys(DEFINITIONS).map(k=>[k,1])));
@@ -36,13 +43,19 @@ function memoryCue(record){
  if(/instrument|measurement|inquiry|observ/.test(lower))return 'inspect';
  return 'read';
 }
-function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OBJECTS||a.target==='visitor_01'))return false;
+function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OBJECTS||a.target in (state.people||{})))return false;
  if(state.dead)return false;
  // A body can refuse lengthy work even when a utility score would favor it.
  if(a.duration>=BODY_LIMITS.longActionCentibeats&&kind!=='sleep'&&
   (state.needs.energy<=BODY_LIMITS.minimumEnergy||state.needs.hunger>=BODY_LIMITS.maximumHunger))return false;
  if(state.productionDisabled&&['tend','gather_fuel','draw_water'].includes(kind))return false;
  if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
+ if(kind==='meet_carrier')return !!state.people?.mcfeely?.present&&state.clock.day!==state.people.mcfeely.lastMetDay;
+ if(kind==='check_mail')return Post.canCheck(state);
+ if(kind==='read_letter')return Post.canRead(state);
+ if(kind==='write_reply')return Post.canWrite(state);
+ if(kind==='post_reply')return Post.canPost(state);
+ if(kind==='open_parcel')return Post.canOpen(state);
  if(kind==='trade')return !!tradeOffer(state);
  if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
  if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
@@ -91,6 +104,15 @@ function scores(state){const enabled=state.debugSwitches||{};
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;
   const supplyFactor=supplyScore(state,key);score+=supplyFactor;
+  if(key==='check_mail')score+=70+(state.mail?.box?.length||0)*6;
+  if(key==='read_letter')score+=85;
+  if(key==='write_reply')score+=92;
+  if(key==='post_reply')score+=100;
+  if(key==='open_parcel')score+=68;
+  if(key==='meet_carrier'){
+   const policy=require('./social').treatment(state.people.mcfeely);
+   score+=Math.max(0,85-n.company)*.6+(policy.greet==='greet'?42:-65);
+  }
   if(key==='converse'){
     const trust=state.people.visitor_01.trust||0;
     score+=Math.max(0,90-n.company)*.9+(trust>-12?26:-70);
@@ -129,13 +151,13 @@ function scores(state){const enabled=state.debugSwitches||{};
   if(['tea','rest','walk'].includes(key))score-=mood*.22;
   // Bounded deterministic tie-breaking, not an LLM or unrecorded randomness.
   const noise=((Math.imul(state.clock.centibeats+13,key.length*7919)+state.seed)>>>0)%5-2;
-  const targetBeliefRoom=state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target]?.room||state.people?.visitor_01?.room||'library';
+  const targetBeliefRoom=state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target]?.room||state.people?.[a.target]?.room||'library';
   const contextKey=a.target+'@'+targetBeliefRoom;
   const contextualFailures=state.outcomeContexts?.[contextKey]||0;
   score-=Math.min(20,contextualFailures*5);
   const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
-  const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
+  const targetRoom=a.target in (state.people||{})?(state.people[a.target].room||'garden'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
     failures:contextualFailures,contextKey,quirkFactors,supplyFactor,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}

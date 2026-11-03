@@ -147,7 +147,7 @@ function scheduled(s,log){
  const phase=s.clock.centibeats%DAY,day=s.clock.day,p=carrierRecord(s);
  if(POST.days.includes(day%7)&&phase>=POST.arrivalPhase&&phase<POST.departurePhase&&!p.present&&!ensure(s).mailDays.includes(day))arrive(s,log);
  if(p.present&&phase>=POST.departurePhase)depart(s,log);
- if(p.present&&s.location==='garden'&&s.activity?.kind!=='sleep')socialMeet(s,log);
+ if(p.present&&s.location==='garden'&&!s.activity)socialMeet(s,log);
 }
 function canCheck(s){return ensure(s).box.length>0;}
 function canRead(s){const mail=ensure(s);

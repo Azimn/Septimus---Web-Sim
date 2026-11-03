@@ -4,6 +4,7 @@ const {DEFINITIONS,scores,scoresForController,available,clip,applyMood,perceiveT
 const {findFolios}=require('./history');
 const Cognition=require('./cognition');
 const Social=require('./social');
+const Post=require('./post');
 const Voice=require('./voice');
 const Economy=require('./economy');
 const Commitments=require('./commitments');
@@ -12,8 +13,8 @@ function start(s,kind,controller='autonomous',query=''){
  ensureHooks(s);
  if(s.activity)throw Error('Current activity must finish or be interrupted');
  if(!available(s,kind))throw Error(`Unavailable: ${kind}`);
- const a=DEFINITIONS[kind],destination=a.target==='visitor_01'?
-  (s.people.visitor_01.room||'library'):(s.beliefs?.[a.target]?.room||OBJECTS[a.target].room);
+ const a=DEFINITIONS[kind],destination=a.target in (s.people||{})?
+  (s.people[a.target].room||'garden'):(s.beliefs?.[a.target]?.room||s.objectPositions?.[a.target]||OBJECTS[a.target].room);
  s.activity={kind,controller,query,target:a.target,room:destination,status:s.location===destination?'active':'traveling',remaining:a.duration,travelRemaining:distance(s.location,destination)*300,started:s.clock.centibeats};
  log(s,'started',`I set out to ${kind}.`,{kind,controller});Commitments.began(s,s.activity,log);return s.activity;
 }
@@ -30,7 +31,7 @@ function fail(s,a,reason){
  s.activity=null;Voice.flush(s,log);
 }
 function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
- const actualRoom=a.target==='visitor_01'?(s.people.visitor_01.room||'library'):(s.objectPositions[a.target]||OBJECTS[a.target].room);
+ const actualRoom=a.target in (s.people||{})?(s.people[a.target].room||'garden'):(s.objectPositions[a.target]||OBJECTS[a.target].room);
  if(actualRoom!==a.room&&s.habitProfiles[a.kind]?.formed)return fail(s,a,'habit_cue_missing');
  if(actualRoom!==a.room)return fail(s,a,'stale_object_location');
  if((s.worldLosses[a.target]||0)>s.clock.centibeats||(s.worldLosses['room:'+a.room]||0)>s.clock.centibeats)return fail(s,a,'durable_impairment');
@@ -43,6 +44,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  if(a.kind==='work'&&n.hunger>=Economy.ECONOMY.workFailureHunger&&n.energy<Economy.ECONOMY.workFailureEnergy)
   return fail(s,a,'deprivation_reduced_work_success');
  if(['converse','trade'].includes(a.kind)&&!s.people.visitor_01.present)return fail(s,a,'visitor_departed');
+ if(a.kind==='meet_carrier'&&!s.people.mcfeely?.present)return fail(s,a,'carrier_departed');
  if(['cook','tea'].includes(a.kind)&&(st.water<1||st.fuel<1))return fail(s,a,'supplies_exhausted');
  if(a.kind==='tea'&&st.tea<1)return fail(s,a,'tea_exhausted');
  const habit=s.habitProfiles[a.kind];if(habit?.formed&&habit.cue===a.target+'@'+a.room&&s.objectPositions[a.target]&&s.objectPositions[a.target]!==a.room)return fail(s,a,'habit_cue_missing');
@@ -52,6 +54,24 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  case 'eat':{const source=Economy.consumeMeal(s,log,'eat');n.hunger=clip(n.hunger-40);description='I ate from the '+(source==='food'?'fresh':'preserved')+' provisions.';break;}
  case 'cook':{Economy.consumeMeal(s,log,'cook');st.water--;st.fuel--;n.hunger=clip(n.hunger-32);description='I cooked a modest meal from finite stores.';break;}
  case 'tea':st.water--;st.fuel--;st.tea--;n.comfort=clip(n.comfort+13);description='I brewed tea at the kettle.';break;
+ case 'meet_carrier':{
+   const event=Post.socialMeet(s,log);
+   description=event?'I met the carrier at the garden path.':'The mail carrier was occupied elsewhere.';
+   break;
+ }
+ case 'check_mail':Post.check(s,log);description='I brought in the unopened post.';break;
+ case 'read_letter':{
+   const receipt=Post.read(s,log);
+   if(receipt.senderId==='henry_frankenstein'){
+    const heard=perceiveTopic(s,'Henry Frankenstein','by_letter:'+receipt.letterId);
+    log(s,'letter_topic','A correspondent's letter drew my attention to an old subject.',
+      {sourceLetterEventId:receipt.id,topics:heard,notArchive:true});
+   }
+   description='I read a letter and judged it as correspondence, not a memory.';break;
+ }
+ case 'write_reply':Post.writeReply(s,log);description='I wrote a reply which has yet to travel.';break;
+ case 'post_reply':Post.postReply(s,log);description='I put my reply into the path-side box.';break;
+ case 'open_parcel':Post.openParcel(s,log);description='I opened a package delivered through the post.';break;
  case 'preserve':{
   const e=Economy.preserve(s,log);s.skills.household++;
   n.energy=clip(n.energy-4);description='I sealed a batch of provisions for later use.';
@@ -110,6 +130,7 @@ function tick(s,archive){ensureHooks(s);if(s.dead)return s;const n=s.needs,a=s.a
  s.mood=s.mood.filter(x=>x.until>s.clock.centibeats);
  for(const [id,until] of Object.entries(s.worldLosses||{}))if(until<=s.clock.centibeats){delete s.worldLosses[id];log(s,'world_restored','I found an earlier obstruction had cleared.',{target:id});}
  Social.scheduled(s,log);
+ Post.scheduled(s,log);
  Commitments.deadlines(s,log);
  // A noticeable bodily need can interrupt a scheduled long-term obligation exactly
  // once. The displaced task retains its commitment ID and must later win a new choice.
@@ -182,7 +203,7 @@ function speak(s,text){ensureHooks(s);if(s.dead)throw Error('No reply can be giv
  const heard=log(s,'heard',`I heard someone speak${topics.length?' of '+topics.join(', '):''}.`,{source:'player',topics});for(const topic of topics)s.residueSources[topic].eventId=heard.id;
  return response;}
 function view(s){ensureHooks(s);return {clock:s.clock,day:s.clock.day+1,room:s.location,objects:ROOMS[s.location].objects.map(id=>({id,...OBJECTS[id]})),needs:s.needs,stores:s.stores,activity:s.activity,commitments:s.commitments,diary:s.diary.slice(-8),folioReads:s.folioReads.slice(-8),events:s.events.slice(-25),words:s.surface.lastWords,perception:context(s),choices:scores(s).slice(0,8),
- people:s.people,customs:s.customs,humor:s.humor,replyQueue:s.replyQueue,thoughts:s.thoughts.slice(-8),health:s.health,dead:s.dead,garden:s.garden,
+ people:s.people,mail:s.mail,customs:s.customs,humor:s.humor,replyQueue:s.replyQueue,thoughts:s.thoughts.slice(-8),health:s.health,dead:s.dead,garden:s.garden,
  predictionAccuracy:{count:s.predictions.length,hits:s.predictions.filter(x=>x.hit).length,rate:s.predictions.length?s.predictions.filter(x=>x.hit).length/s.predictions.length:0},
  deliberation:s.deliberation,quirks:s.quirks,claimsCheck:'template-only socket',
  selfSheet:{location:s.location,energy:s.needs.energy<30?'exhausted':s.needs.energy<65?'weary':'capable',concern:s.commitments.find(x=>!x.done)?.title||'none',lastDecision:s.decisions.at(-1)?.chosen||'none'}};}
