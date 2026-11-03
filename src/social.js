@@ -71,7 +71,7 @@ function deliverGoods(s,log){
    price:actualPrice,creditLimit:p.account.creditLimit});
 }
 function address(s,log){const p=person(s);if(!p.present||p.room!==s.location)throw Error('Visitor conversation requires shared presence');
- const policy=treatment(p),established=policy.trust>=16;
+ const policy=treatment(p),established=policy.trust>=15;
  const historical=established&&!!p.prior&&policy.priorWeight>0.10;
  const text=historical?
   'Coal by weight, Doctor. The old account needs no ceremony.':

@@ -154,3 +154,13 @@ test('Article 06: unrelated hearsay stays unconfirmed after Rosa is physically e
  assert.equal(belief.epistemicStatus,'disconfirmed_by_direct_witness');
  assert.equal(belief.correctionEventId,absence.correctionEventId);
 });
+
+test('F5: sample packets contain actual witnessed Rosa exchanges and archive-cited noticings',()=>{
+ for(const r of packet.runs){
+  const rosa=r.fidelitySamples.filter(x=>x.personId==='visitor_01');
+  assert.ok(rosa.filter(x=>x.type==='visitor_conversation').length>=4,'Rosa sample missing seed '+r.seed);
+  assert.ok(rosa.some(x=>x.type==='noticed_by_person'&&x.sourceIds.includes('E22-001')));
+  assert.ok(rosa.every(x=>!x.words.join(' ').includes('I can arrange delivery')));
+  assert.ok(r.fidelitySamples.some(x=>x.personId==='mcfeely'&&x.type==='carrier_conversation'));
+ }
+});

@@ -43,7 +43,14 @@ function monthSeed(seed){
  const early=s.events.find(e=>e.type==='merchant_delivery');
  const loud=s.events.filter(e=>e.type==='carrier_knock');
  const word=s.events.find(e=>e.type==='letter_read'&&e.senderId==='henry_frankenstein');
- return {seed,steps:30000,days:30,dead:s.dead,health:s.health,
+ const fidelitySamples=s.events.filter(e=>['visitor_conversation','noticed_by_person',
+  'carrier_conversation'].includes(e.type)).map(e=>({
+   eventId:e.id,day:e.day,tick:e.t,type:e.type,personId:e.personId,
+   description:e.description,words:[e.visitorText,e.additionalLine].filter(Boolean),
+   register:e.register||null,sourceIds:e.sourceIds||e.archiveReferences||[],
+   witnesses:e.witnesses||[]
+  }));
+ return {seed,steps:30000,days:30,dead:s.dead,health:s.health,fidelitySamples,
   completedActivities:completed.length,activityDistribution:completed.reduce((m,e)=>(m[e.kind]=(m[e.kind]||0)+1,m),{}),
   resources:{...s.stores},rosa:trace(s,'visitor_01'),mcfeely:trace(s,'mcfeely'),
   mail:{letters,parcels,received:letters.length,read:letters.filter(x=>x.read).length,
