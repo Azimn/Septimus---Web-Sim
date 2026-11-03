@@ -26,7 +26,10 @@ function run(){
  const ninety={
   days:long.daysCompleted,health:long.terminalHealth,dead:long.death,
   firstDetectedFailure:long.firstSlowFailure,slowFailures:long.allDeclaredFailures,
-  monthly:long.monthlyCommitments.map(c=>({id:c.id,status:c.status,
+  // v1.7's historical contract measures only its first-month obligations.
+  // Later recurring periods are independently audited by v1.8.
+  monthly:long.monthlyCommitments.filter(c=>!c.seriesOrdinal||c.seriesOrdinal===1)
+   .map(c=>({id:c.id,status:c.status,
    progress:c.progressCount,required:c.requiredProgress,
    stockTarget:c.stockTarget,keptAt:c.keptAt})),
   checkpoints:[30,60,90].map(day=>({day,tick:long.snapshots['day'+day].t,

@@ -125,6 +125,9 @@ function tick(s,archive){ensureHooks(s);
  // The world calendar can advance while the inhabitant is dead; no agency returns.
  // Missed duties remain real even without a living actor to discharge them.
  if(s.dead){
+  // Legacy death control freezes actor time. An explicit external world-clock
+  // drive continues calendar obligations without resurrecting the resident.
+  if(!s.calendarContinuesAfterDeath)return s;
   s.clock.centibeats+=STEP;s.clock.day=Math.floor(s.clock.centibeats/DAY);
   if(s.clock.day>s.completedDays){s.completedDays=s.clock.day;
    Commitments.nextDay(s,log);}
