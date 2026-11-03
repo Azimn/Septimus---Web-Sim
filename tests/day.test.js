@@ -25,3 +25,5 @@ test('a complete directed July tower day retains origin, interruption, diary, sl
  assert.equal(s.events.filter(e=>e.type==='completed'&&e.kind==='read').length,1);
  save(file,s);assert.deepEqual(load(file,identity,archive),s);
 });
+
+test('one unattended authored-seed day contains a varied autonomous routine',()=>{const s=initialState(identity.sha,archive.sha);advance(s,archive,1000);const kinds=new Set(s.events.filter(e=>e.type==='completed'&&e.controller==='autonomous').map(e=>e.kind));for(const k of ['eat','read','diary','work','prepare','sleep'])assert.ok(kinds.has(k),'missing '+k);assert.ok(s.events.some(e=>e.type==='calendar'&&e.prepared===true));});

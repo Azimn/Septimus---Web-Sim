@@ -25,18 +25,22 @@ function available(state,kind){const a=DEFINITIONS[kind];if(!a||!OBJECTS[a.targe
  if(kind==='diary'&&state.diary.some(x=>x.day===state.clock.day))return false;
  return true;}
 function scores(state){const n=state.needs,deadline=state.commitments[0],time=state.clock.centibeats%100000;
- return Object.entries(DEFINITIONS).filter(([key])=>available(state,key)).map(([key,a])=>{
+ return Object.entries(DEFINITIONS).filter(([key])=>available(state,key)&&(key!=='sleep'||time>=70000||n.energy<20)).map(([key,a])=>{
   let score=a.base*(state.traits[a.trait]||1);
-  if(key==='sleep')score+=(100-n.energy)*.72+(time>75000?20:0);
+  if(key==='sleep')score+=(100-n.energy)*.72+(time>=70000?30:0);
   if(key==='rest')score+=(100-n.energy)*.23;
   if(key==='eat')score+=n.hunger*1.18;
   if(key==='cook')score+=n.hunger*.36;
   if(key==='tea')score+=n.hunger*.16+(100-n.comfort)*.18;
   if(['read','study','inspect'].includes(key))score+=(100-n.stimulation)*.42;
   if(key==='work')score+=n.energy*.22;
+  if(key==='read')score+=18;
+  if(key==='diary'&&state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).length>=2)score+=36;
   if(key==='prepare'&&!deadline.done)score+=time<65000?Math.min(95,15+65*Math.max(0,1-(65000-time)/36000)):1;
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
-  score+=(state.habits[key]||0)*.7;
+  score+=Math.min(5,(state.habits[key]||0))*.5;
+  const recent=state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).slice(-3);
+  score-=recent.filter(e=>e.kind===key).length*16;
   score+=(state.residue[key]||0);
   if(['rest','inspect'].includes(key))score+=state.traits.nervous*3;
   if(['diary','walk'].includes(key))score+=state.traits.sociable*3;
