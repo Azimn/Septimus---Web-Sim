@@ -1,0 +1,439 @@
+{
+  "seed": 15,
+  "startTick": 25000,
+  "endTick": 725000,
+  "elapsedWorldDays": 7,
+  "worldDayIndices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ticksExecuted": 7000,
+  "totalEvents": 676,
+  "decisions": 98,
+  "activitiesTotal": 97,
+  "activityDistribution": {
+    "read": 7,
+    "eat": 7,
+    "diary": 7,
+    "work": 40,
+    "prepare": 7,
+    "inspect": 3,
+    "study": 2,
+    "rest": 10,
+    "sleep": 10,
+    "tea": 4
+  },
+  "activitiesByWorldDay": {
+    "0": {
+      "activities": {
+        "read": 1,
+        "eat": 3,
+        "diary": 1,
+        "work": 3,
+        "prepare": 1,
+        "inspect": 2,
+        "study": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 12,
+      "decisionCount": 14,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "1": {
+      "activities": {
+        "work": 7,
+        "read": 1,
+        "diary": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 15,
+      "decisionCount": 15,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "2": {
+      "activities": {
+        "sleep": 1,
+        "eat": 2,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 13,
+      "decisionCount": 12,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "3": {
+      "activities": {
+        "sleep": 1,
+        "work": 7,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "study": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 16,
+      "decisionCount": 14,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "4": {
+      "activities": {
+        "sleep": 2,
+        "work": 6,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "tea": 2,
+        "inspect": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 15,
+      "decisionCount": 16,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "5": {
+      "activities": {
+        "sleep": 1,
+        "work": 5,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "tea": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 12,
+      "decisionCount": 11,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "6": {
+      "activities": {
+        "sleep": 2,
+        "work": 7,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "tea": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 0,
+      "ruminations": 16,
+      "decisionCount": 15,
+      "diaryWrites": 1,
+      "preparedDusk": 1,
+      "unpreparedDusk": 0,
+      "failures": 0
+    },
+    "7": {
+      "activities": {
+        "sleep": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "ruminations": 1,
+      "decisionCount": 1,
+      "diaryWrites": 0,
+      "preparedDusk": 0,
+      "unpreparedDusk": 0,
+      "failures": 0
+    }
+  },
+  "elapsedDayWindows": [
+    {
+      "elapsedDay": 1,
+      "completed": 18,
+      "distinctActions": 9,
+      "kinds": [
+        "read",
+        "eat",
+        "diary",
+        "work",
+        "prepare",
+        "inspect",
+        "study",
+        "rest",
+        "sleep"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    },
+    {
+      "elapsedDay": 2,
+      "completed": 13,
+      "distinctActions": 6,
+      "kinds": [
+        "work",
+        "eat",
+        "prepare",
+        "rest",
+        "sleep",
+        "diary"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    },
+    {
+      "elapsedDay": 3,
+      "completed": 14,
+      "distinctActions": 7,
+      "kinds": [
+        "work",
+        "read",
+        "prepare",
+        "eat",
+        "rest",
+        "sleep",
+        "diary"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    },
+    {
+      "elapsedDay": 4,
+      "completed": 14,
+      "distinctActions": 7,
+      "kinds": [
+        "work",
+        "prepare",
+        "rest",
+        "study",
+        "sleep",
+        "diary",
+        "read"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    },
+    {
+      "elapsedDay": 5,
+      "completed": 12,
+      "distinctActions": 6,
+      "kinds": [
+        "work",
+        "prepare",
+        "rest",
+        "tea",
+        "inspect",
+        "sleep"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    },
+    {
+      "elapsedDay": 6,
+      "completed": 15,
+      "distinctActions": 7,
+      "kinds": [
+        "work",
+        "diary",
+        "read",
+        "prepare",
+        "rest",
+        "tea",
+        "sleep"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    },
+    {
+      "elapsedDay": 7,
+      "completed": 11,
+      "distinctActions": 5,
+      "kinds": [
+        "work",
+        "prepare",
+        "rest",
+        "tea",
+        "sleep"
+      ],
+      "noUsefulCompletion": false,
+      "narrowLoop": false
+    }
+  ],
+  "varietyCollapseConsecutiveDays": [],
+  "declaredCommitmentsOpened": 8,
+  "commitmentsKept": 7,
+  "commitmentsBroken": 0,
+  "commitmentsReleased": 0,
+  "commitmentOpenedCountIsInferred": true,
+  "storesTrajectory": [
+    {
+      "tick": 25000,
+      "food": 7,
+      "water": 9,
+      "fuel": 5,
+      "tea": 4
+    },
+    {
+      "tick": 100000,
+      "food": 4,
+      "water": 9,
+      "fuel": 5,
+      "tea": 4
+    },
+    {
+      "tick": 200000,
+      "food": 2,
+      "water": 9,
+      "fuel": 5,
+      "tea": 4
+    },
+    {
+      "tick": 300000,
+      "food": 0,
+      "water": 9,
+      "fuel": 5,
+      "tea": 4
+    },
+    {
+      "tick": 400000,
+      "food": 0,
+      "water": 9,
+      "fuel": 5,
+      "tea": 4
+    },
+    {
+      "tick": 500000,
+      "food": 0,
+      "water": 7,
+      "fuel": 3,
+      "tea": 2
+    },
+    {
+      "tick": 600000,
+      "food": 0,
+      "water": 6,
+      "fuel": 2,
+      "tea": 1
+    },
+    {
+      "tick": 700000,
+      "food": 0,
+      "water": 5,
+      "fuel": 1,
+      "tea": 0
+    },
+    {
+      "tick": 725000,
+      "food": 0,
+      "water": 5,
+      "fuel": 1,
+      "tea": 0
+    }
+  ],
+  "finalStores": {
+    "food": 0,
+    "water": 5,
+    "fuel": 1,
+    "tea": 0
+  },
+  "finalNeeds": {
+    "energy": 99.44,
+    "hunger": 100,
+    "comfort": 99.86,
+    "stimulation": 84.34,
+    "company": 45
+  },
+  "finalLocation": "laboratory",
+  "diaryEntries": 7,
+  "folioReads": 7,
+  "visitorArrivals": 7,
+  "visitorWitnessedConversations": 0,
+  "formedHabits": [
+    {
+      "tick": 121700,
+      "kind": "work",
+      "cue": "bench@laboratory",
+      "eventId": "L125"
+    },
+    {
+      "tick": 153800,
+      "kind": "eat",
+      "cue": "stores@kitchen",
+      "eventId": "L170"
+    },
+    {
+      "tick": 359800,
+      "kind": "rest",
+      "cue": "bed@bedchamber",
+      "eventId": "L357"
+    },
+    {
+      "tick": 401100,
+      "kind": "sleep",
+      "cue": "bed@bedchamber",
+      "eventId": "L381"
+    },
+    {
+      "tick": 411300,
+      "kind": "diary",
+      "cue": "notebook@library",
+      "eventId": "L396"
+    },
+    {
+      "tick": 415100,
+      "kind": "read",
+      "cue": "folios@library",
+      "eventId": "L402"
+    },
+    {
+      "tick": 432900,
+      "kind": "prepare",
+      "cue": "hearth@kitchen",
+      "eventId": "L423"
+    }
+  ],
+  "habitMisfires": [],
+  "worldLosses": 0,
+  "actionFailures": 0,
+  "deathStateModeled": false,
+  "deathObserved": false,
+  "softlocks": [],
+  "restartCheckpoints": [],
+  "pausedEventRequirementMet": true,
+  "eventLogFirstId": "L1",
+  "eventLogLastId": "L676",
+  "samplingNote": "Seven elapsed 24-hour windows from 1899-07-01 at @250; world-day 0 and day 7 are partial. No outside stimuli or scripted player commands."
+}

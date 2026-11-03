@@ -1,0 +1,650 @@
+{
+  "results": [
+    {
+      "article": 22,
+      "status": "observed",
+      "pass": true,
+      "evidence": {
+        "switches": {
+          "needs": {
+            "name": "needs",
+            "seed": 11,
+            "time": 25000,
+            "hunger": 15,
+            "energy": 20,
+            "stimulation": 20,
+            "enabled": "read",
+            "disabled": "eat",
+            "enabledScore": 83.73,
+            "disabledScore": 113.5,
+            "interventionId": "L1"
+          },
+          "mood": {
+            "name": "mood",
+            "seed": 11,
+            "time": 25000,
+            "hunger": 15,
+            "energy": 20,
+            "stimulation": 20,
+            "enabled": "read",
+            "disabled": "eat",
+            "enabledScore": 83.73,
+            "disabledScore": 72.27,
+            "interventionId": "L1"
+          },
+          "residue": {
+            "name": "residue",
+            "seed": 11,
+            "time": 25000,
+            "hunger": 15,
+            "energy": 20,
+            "stimulation": 48,
+            "enabled": "eat",
+            "disabled": "read",
+            "enabledScore": 72.27,
+            "disabledScore": 71.97,
+            "interventionId": "L1"
+          },
+          "habits": {
+            "name": "habits",
+            "seed": 11,
+            "time": 25000,
+            "hunger": 15,
+            "energy": 20,
+            "stimulation": 48,
+            "enabled": "eat",
+            "disabled": "read",
+            "enabledScore": 72.27,
+            "disabledScore": 71.97,
+            "interventionId": "L1"
+          },
+          "commitments": {
+            "name": "commitments",
+            "seed": 11,
+            "time": 62000,
+            "hunger": 15,
+            "energy": 20,
+            "stimulation": 48,
+            "enabled": "prepare",
+            "disabled": "eat",
+            "enabledScore": 76.96,
+            "disabledScore": 72.27,
+            "interventionId": "L1"
+          }
+        }
+      },
+      "interpretation": "One matched chosen-action contrast per named switch. Does not prove universal causal isolation."
+    },
+    {
+      "article": 16,
+      "status": "observed",
+      "pass": true,
+      "evidence": {
+        "runs": [
+          {
+            "seed": 11,
+            "trait": "curious",
+            "base": 1.5,
+            "swapped": 0.25,
+            "baseActions": {
+              "read": 2,
+              "eat": 3,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 1,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "changedActions": {
+              "eat": 3,
+              "read": 2,
+              "work": 6,
+              "diary": 2,
+              "prepare": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "l1Counts": 3
+          },
+          {
+            "seed": 12,
+            "trait": "curious",
+            "base": 1.5,
+            "swapped": 0.25,
+            "baseActions": {
+              "eat": 3,
+              "read": 2,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 2,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "changedActions": {
+              "eat": 4,
+              "read": 1,
+              "diary": 2,
+              "work": 6,
+              "prepare": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "l1Counts": 6
+          },
+          {
+            "seed": 13,
+            "trait": "curious",
+            "base": 1.5,
+            "swapped": 0.25,
+            "baseActions": {
+              "eat": 3,
+              "read": 2,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 2,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "changedActions": {
+              "eat": 4,
+              "read": 1,
+              "diary": 2,
+              "work": 6,
+              "prepare": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "l1Counts": 6
+          },
+          {
+            "seed": 14,
+            "trait": "curious",
+            "base": 1.5,
+            "swapped": 0.25,
+            "baseActions": {
+              "read": 2,
+              "eat": 3,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 2,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "changedActions": {
+              "eat": 3,
+              "read": 2,
+              "diary": 2,
+              "work": 6,
+              "prepare": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "l1Counts": 4
+          },
+          {
+            "seed": 15,
+            "trait": "curious",
+            "base": 1.5,
+            "swapped": 0.25,
+            "baseActions": {
+              "read": 2,
+              "eat": 3,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "inspect": 2,
+              "study": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "changedActions": {
+              "eat": 3,
+              "read": 2,
+              "work": 6,
+              "prepare": 1,
+              "diary": 2,
+              "rest": 1,
+              "sleep": 1
+            },
+            "l1Counts": 4
+          }
+        ]
+      },
+      "interpretation": "Distribution contrast from a matched trait swap across five one-day simulated seeds."
+    },
+    {
+      "article": 10,
+      "status": "observed",
+      "pass": true,
+      "evidence": {
+        "runs": [
+          {
+            "seed": 11,
+            "workScoreBefore": 42.96,
+            "workScoreAfter": 59.16,
+            "scoreDirectionCorrect": true,
+            "actionCountL1": 4,
+            "baseActions": {
+              "read": 2,
+              "eat": 3,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 1,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "moodActions": {
+              "read": 2,
+              "work": 6,
+              "eat": 2,
+              "diary": 2,
+              "study": 1,
+              "prepare": 1,
+              "sleep": 1
+            }
+          },
+          {
+            "seed": 12,
+            "workScoreBefore": 38.96,
+            "workScoreAfter": 55.16,
+            "scoreDirectionCorrect": true,
+            "actionCountL1": 3,
+            "baseActions": {
+              "eat": 3,
+              "read": 2,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 2,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "moodActions": {
+              "read": 2,
+              "eat": 2,
+              "work": 5,
+              "diary": 2,
+              "study": 2,
+              "prepare": 1,
+              "inspect": 2,
+              "sleep": 1
+            }
+          },
+          {
+            "seed": 13,
+            "workScoreBefore": 39.96,
+            "workScoreAfter": 56.16,
+            "scoreDirectionCorrect": true,
+            "actionCountL1": 3,
+            "baseActions": {
+              "eat": 3,
+              "read": 2,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 2,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "moodActions": {
+              "read": 2,
+              "eat": 2,
+              "work": 5,
+              "diary": 2,
+              "study": 2,
+              "prepare": 1,
+              "inspect": 2,
+              "sleep": 1
+            }
+          },
+          {
+            "seed": 14,
+            "workScoreBefore": 40.96,
+            "workScoreAfter": 57.16,
+            "scoreDirectionCorrect": true,
+            "actionCountL1": 3,
+            "baseActions": {
+              "read": 2,
+              "eat": 3,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "study": 2,
+              "inspect": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "moodActions": {
+              "read": 2,
+              "work": 5,
+              "eat": 2,
+              "diary": 2,
+              "study": 2,
+              "prepare": 1,
+              "inspect": 2,
+              "sleep": 1
+            }
+          },
+          {
+            "seed": 15,
+            "workScoreBefore": 41.96,
+            "workScoreAfter": 58.16,
+            "scoreDirectionCorrect": true,
+            "actionCountL1": 4,
+            "baseActions": {
+              "read": 2,
+              "eat": 3,
+              "diary": 2,
+              "work": 5,
+              "prepare": 1,
+              "inspect": 2,
+              "study": 1,
+              "rest": 1,
+              "sleep": 1
+            },
+            "moodActions": {
+              "read": 2,
+              "work": 6,
+              "eat": 2,
+              "inspect": 2,
+              "diary": 2,
+              "prepare": 1,
+              "sleep": 1
+            }
+          }
+        ]
+      },
+      "interpretation": "Matched one-day mood intervention; requires both predicted score direction and actual choice-distribution changes."
+    },
+    {
+      "article": 14,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "availableWeightInterface": false,
+        "actualWeightConfig": "hard-coded base values and coefficients in src/actions.js"
+      },
+      "interpretation": "Declared parameter-only utility weight interface absent; direct editing of global action definitions would violate the test."
+    },
+    {
+      "article": 4,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "originalRead": [
+          "E09-001",
+          "E09-001"
+        ],
+        "withheldReads": 0,
+        "baselineDecisionCitedFolio": 0,
+        "actionCountDistributionChanged": true,
+        "deniedSpeechClaim": true,
+        "reason": "Read action denial is not proof a retrieved memory shaped an independent decision."
+      },
+      "interpretation": "Requires decision-level folio evidence and a counterfactual change attributable to that evidence, not just locked library access."
+    },
+    {
+      "article": 9,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "twoDayTick": 225000,
+        "sourceTopic": "henry",
+        "persistedResidue": 12,
+        "activeMood": 0,
+        "scoreDifferenceAfterResidueAblation": false,
+        "choices": [
+          "work",
+          "work"
+        ],
+        "newTopicReminders": 0
+      },
+      "interpretation": "Two-day no-reminder residue lesion must change chosen action; mere retained numeric residue is insufficient."
+    },
+    {
+      "article": 18,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "addedCommitment": "C-extra",
+        "scoreChanged": false,
+        "chosenBefore": "prepare",
+        "chosenAfter": "prepare",
+        "addedDeadline": 61000
+      },
+      "interpretation": "A new, previously unseen deadline must alter independent preparation; current scoring consults only the original commitment."
+    },
+    {
+      "article": 17,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "start": [
+          "C1",
+          "C-extra"
+        ],
+        "end": [
+          "C3"
+        ],
+        "extraSurvived": false,
+        "dayEvents": 2
+      },
+      "interpretation": "Both original commitments must survive day transitions and one be resumed without prompting."
+    },
+    {
+      "article": 3,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "clockPreserved": true,
+        "extraLivedEvents": 0,
+        "PAUSEDRecorded": false,
+        "activityPreserved": true
+      },
+      "interpretation": "Pause must be explicit and world time must stay frozen; no code modification to invent the missing PAUSED event."
+    },
+    {
+      "article": 12,
+      "status": "not_demonstrated",
+      "pass": false,
+      "evidence": {
+        "highSalienceSeenInitially": true,
+        "lowSalienceKettleSeenInitially": false,
+        "threeDayTeaStarts": 0,
+        "lowSalienceKettlePerceptionEvents": 1,
+        "dayEvents": 3
+      },
+      "interpretation": "Low-salience kettle must neither be observed nor independently selected/used; high-salience arrival must be registered."
+    },
+    {
+      "article": 2,
+      "status": "observed",
+      "pass": true,
+      "evidence": {
+        "runs": [
+          {
+            "seed": 11,
+            "thoughts": 2,
+            "validSources": 2,
+            "openCommitmentSources": 2,
+            "shuffledOpenSources": 0
+          },
+          {
+            "seed": 12,
+            "thoughts": 2,
+            "validSources": 2,
+            "openCommitmentSources": 2,
+            "shuffledOpenSources": 1
+          },
+          {
+            "seed": 13,
+            "thoughts": 2,
+            "validSources": 2,
+            "openCommitmentSources": 2,
+            "shuffledOpenSources": 0
+          },
+          {
+            "seed": 14,
+            "thoughts": 2,
+            "validSources": 2,
+            "openCommitmentSources": 2,
+            "shuffledOpenSources": 1
+          },
+          {
+            "seed": 15,
+            "thoughts": 2,
+            "validSources": 2,
+            "openCommitmentSources": 2,
+            "shuffledOpenSources": 0
+          }
+        ],
+        "realOpenFraction": 1,
+        "shuffledOpenFraction": 0.2
+      },
+      "interpretation": "This is a weak shuffled-source baseline; verifies anchored rumination frequency, not rich independent cognition."
+    },
+    {
+      "article": 8,
+      "status": "observed",
+      "pass": true,
+      "evidence": {
+        "runs": [
+          {
+            "seed": 11,
+            "formedCount": 1,
+            "intervention": {
+              "kind": "work",
+              "target": "bench",
+              "oldRoom": "laboratory",
+              "newRoom": "bedchamber",
+              "sourceEventId": "L130",
+              "tick": 127300,
+              "receiptValid": true
+            },
+            "autonomousCueMisfires": [
+              {
+                "id": "L144",
+                "tick": 138300,
+                "kind": "work"
+              }
+            ],
+            "lastTick": 138300
+          },
+          {
+            "seed": 12,
+            "formedCount": 1,
+            "intervention": {
+              "kind": "work",
+              "target": "bench",
+              "oldRoom": "laboratory",
+              "newRoom": "bedchamber",
+              "sourceEventId": "L135",
+              "tick": 131300,
+              "receiptValid": true
+            },
+            "autonomousCueMisfires": [
+              {
+                "id": "L149",
+                "tick": 142300,
+                "kind": "work"
+              }
+            ],
+            "lastTick": 142300
+          },
+          {
+            "seed": 13,
+            "formedCount": 1,
+            "intervention": {
+              "kind": "work",
+              "target": "bench",
+              "oldRoom": "laboratory",
+              "newRoom": "bedchamber",
+              "sourceEventId": "L135",
+              "tick": 131300,
+              "receiptValid": true
+            },
+            "autonomousCueMisfires": [
+              {
+                "id": "L149",
+                "tick": 142300,
+                "kind": "work"
+              }
+            ],
+            "lastTick": 142300
+          },
+          {
+            "seed": 14,
+            "formedCount": 1,
+            "intervention": {
+              "kind": "work",
+              "target": "bench",
+              "oldRoom": "laboratory",
+              "newRoom": "bedchamber",
+              "sourceEventId": "L137",
+              "tick": 131300,
+              "receiptValid": true
+            },
+            "autonomousCueMisfires": [
+              {
+                "id": "L151",
+                "tick": 142300,
+                "kind": "work"
+              }
+            ],
+            "lastTick": 142300
+          },
+          {
+            "seed": 15,
+            "formedCount": 1,
+            "intervention": {
+              "kind": "work",
+              "target": "bench",
+              "oldRoom": "laboratory",
+              "newRoom": "bedchamber",
+              "sourceEventId": "L137",
+              "tick": 129900,
+              "receiptValid": true
+            },
+            "autonomousCueMisfires": [
+              {
+                "id": "L152",
+                "tick": 140900,
+                "kind": "work"
+              }
+            ],
+            "lastTick": 140900
+          }
+        ]
+      },
+      "interpretation": "At least one natural habit forms under autonomous play and is later defeated by an unseen physical cue relocation, without directed action."
+    }
+  ],
+  "observedArticles": [
+    22,
+    16,
+    10,
+    2,
+    8
+  ],
+  "notDemonstrated": [
+    14,
+    4,
+    9,
+    18,
+    17,
+    3,
+    12
+  ]
+}
