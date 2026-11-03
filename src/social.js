@@ -2,8 +2,8 @@
 const {applyMood}=require('./actions');
 const VISITOR='visitor_01';
 function person(s,id=VISITOR){return s.people[id]??(s.people[id]={id,marker:id,present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]});}
-function arrive(s,log){const p=person(s);if(p.present)return null;p.present=true;return log(s,'visitor_arrival','I noticed a familiar caller arrive at the tower.',{personId:VISITOR,marker:p.marker});}
-function depart(s,log){const p=person(s);if(!p.present)return null;p.present=false;return log(s,'visitor_departure','I saw the caller depart.',{personId:VISITOR});}
+function arrive(s,log){const p=person(s);if(p.present)return null;p.present=true;return log(s,'visitor_arrival',s.location==='library'?'I noticed a familiar caller arrive at the tower.':'A caller arrived while I was elsewhere in the tower.',{personId:VISITOR,marker:p.marker,perceived:s.location==='library'});}
+function depart(s,log){const p=person(s);if(!p.present)return null;p.present=false;return log(s,'visitor_departure',s.location==='library'?'I saw the caller depart.':'The caller departed without my witnessing it.',{personId:VISITOR,perceived:s.location==='library'});}
 function scheduled(s,log){const phase=s.clock.centibeats%100000,day=s.clock.day;const p=person(s);if(phase>=44000&&phase<60000&&!p.present&&p.lastVisitDay!==day){p.lastVisitDay=day;arrive(s,log);}
  if(phase>=60000&&p.present)depart(s,log);}
 function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false}={}){

@@ -9,6 +9,11 @@ function observe(s,log){
  return {id,label:obj.label,room:s.location,score:10+novel+relevance+moving+noise+trigger,factors:{novel,relevance,moving,noise,trigger}};
  });
  if(s.people?.visitor_01?.present&&s.location==='library')candidates.push({id:'visitor_01',label:'The visiting caller',room:'library',score:28,factors:{movement:10,novel:8}});
+ for(const signal of (s.roomSignals||[]).filter(x=>x.room===s.location&&s.events.some(e=>e.id===x.sourceEventId))){
+  candidates.push({id:'signal:'+signal.sourceEventId,label:signal.label||'An observable disturbance',
+    room:s.location,score:10+(signal.movement?20:0)+(signal.noise?15:0)+(signal.needRelevance||0),
+    factors:{movement:signal.movement?20:0,noise:signal.noise?15:0,relevance:signal.needRelevance||0,sourceEventId:signal.sourceEventId}});
+ }
  candidates.sort((a,b)=>b.score-a.score||a.id.localeCompare(b.id));
  const observed=candidates.slice(0,4),set=new Set(observed.map(x=>x.id));
  const previous=new Set(s.lastPerceptionIds||[]);

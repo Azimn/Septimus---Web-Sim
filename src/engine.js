@@ -26,6 +26,7 @@ function fail(s,a,reason){
 }
 function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  const actualRoom=s.objectPositions[a.target]||OBJECTS[a.target].room;
+ if(actualRoom!==a.room&&s.habitProfiles[a.kind]?.formed)return fail(s,a,'habit_cue_missing');
  if(actualRoom!==a.room)return fail(s,a,'stale_object_location');
  if((s.worldLosses[a.target]||0)>s.clock.centibeats||(s.worldLosses['room:'+a.room]||0)>s.clock.centibeats)return fail(s,a,'durable_impairment');
  if(['eat','cook'].includes(a.kind)&&st.food<1)return fail(s,a,'food_exhausted');
