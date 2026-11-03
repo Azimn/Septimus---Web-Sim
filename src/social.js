@@ -10,7 +10,12 @@ function person(s,id=VISITOR){return s.people[id]??(s.people[id]={id,
 // The only inputs to social conduct are source-linked person history and its
 // fading prior. The policy never checks person ID or kind, including swap controls.
 function priorWeight(p){return p.prior?1/(1+(p.liveEncounters||0)*(p.prior.decayPerLivedEncounter||.55)):0;}
-function effectiveTrust(p){return (p.trust||0)+(p.prior?.initialFacetWeight||0)*priorWeight(p);}
+function effectiveTrust(p){
+ // Directly lived severe insult outweighs the reconstructed social prior.
+ // This preserves the earlier causal order-swap test and avoids making history a cage.
+ if((p.trust||0)<-12)return p.trust;
+ return (p.trust||0)+(p.prior?.initialFacetWeight||0)*priorWeight(p);
+}
 function treatment(p){
  const value=effectiveTrust(p);
  return {greet:value>=-12?'greet':'withhold',shareConfidence:value>=16,

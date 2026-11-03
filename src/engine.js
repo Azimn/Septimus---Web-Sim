@@ -64,7 +64,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
    const receipt=Post.read(s,log);
    if(receipt.senderId==='henry_frankenstein'){
     const heard=perceiveTopic(s,'Henry Frankenstein','by_letter:'+receipt.letterId);
-    log(s,'letter_topic','A correspondent's letter drew my attention to an old subject.',
+    log(s,'letter_topic','A correspondent letter drew my attention to an old subject.',
       {sourceLetterEventId:receipt.id,topics:heard,notArchive:true});
    }
    description='I read a letter and judged it as correspondence, not a memory.';break;

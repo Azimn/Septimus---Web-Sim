@@ -1,7 +1,8 @@
 'use strict';
 const {OBJECTS,TRIGGERS,distance}=require('./world');
 const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
-const Post=require('./post');
+const {POST}=require('./post_contract');
+const post=()=>require('./post');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
  rest:{target:'bed',duration:3000,base:6,trait:'gentle'},
@@ -22,11 +23,11 @@ const DEFINITIONS={
  preserve:{target:'stove',duration:SURPLUS.preserveDuration,base:8,trait:'industrious'},
  trade:{target:'visitor_01',duration:SURPLUS.tradeDuration,base:8,trait:'sociable'},
  meet_carrier:{target:'mcfeely',duration:650,base:10,trait:'sociable'},
- check_mail:{target:'path',duration:Post.POST.mailCheckDuration,base:8,trait:'curious'},
- read_letter:{target:'notebook',duration:Post.POST.letterReadDuration,base:12,trait:'curious'},
- write_reply:{target:'notebook',duration:Post.POST.replyWriteDuration,base:9,trait:'industrious'},
- post_reply:{target:'path',duration:Post.POST.replyPostDuration,base:9,trait:'industrious'},
- open_parcel:{target:'stores',duration:Post.POST.parcelOpenDuration,base:10,trait:'curious'}
+ check_mail:{target:'path',duration:POST.mailCheckDuration,base:8,trait:'curious'},
+ read_letter:{target:'notebook',duration:POST.letterReadDuration,base:12,trait:'curious'},
+ write_reply:{target:'notebook',duration:POST.replyWriteDuration,base:9,trait:'industrious'},
+ post_reply:{target:'path',duration:POST.replyPostDuration,base:9,trait:'industrious'},
+ open_parcel:{target:'stores',duration:POST.parcelOpenDuration,base:10,trait:'curious'}
 };
 const clip=n=>Math.max(0,Math.min(100,Math.round(n*100)/100));
 const ACTION_WEIGHTS=Object.freeze(Object.fromEntries(Object.keys(DEFINITIONS).map(k=>[k,1])));
@@ -51,11 +52,11 @@ function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OB
  if(state.productionDisabled&&['tend','gather_fuel','draw_water'].includes(kind))return false;
  if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
  if(kind==='meet_carrier')return !!state.people?.mcfeely?.present&&state.clock.day!==state.people.mcfeely.lastMetDay;
- if(kind==='check_mail')return Post.canCheck(state);
- if(kind==='read_letter')return Post.canRead(state);
- if(kind==='write_reply')return Post.canWrite(state);
- if(kind==='post_reply')return Post.canPost(state);
- if(kind==='open_parcel')return Post.canOpen(state);
+ if(kind==='check_mail')return post().canCheck(state);
+ if(kind==='read_letter')return post().canRead(state);
+ if(kind==='write_reply')return post().canWrite(state);
+ if(kind==='post_reply')return post().canPost(state);
+ if(kind==='open_parcel')return post().canOpen(state);
  if(kind==='trade')return !!tradeOffer(state);
  if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
  if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
