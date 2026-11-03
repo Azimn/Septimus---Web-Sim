@@ -103,3 +103,25 @@ test('v1.7 garden: a ripe crop is preserved physically when storage cannot hold 
  const harvest=s.events.find(x=>x.type==='harvest');
  assert.equal(harvest.amount,8);assert.equal(harvest.wasted,0);
 });
+
+const v17=require('../scripts/v17_probe').run();
+test('v1.7 longitudinal: all five lived months complete three physical commitments',()=>{
+ assert.equal(v17.acceptance.fiveHealthyMonths,true);
+ assert.equal(v17.acceptance.fiveMonthsThreeActualCommitments,true,
+  JSON.stringify(v17.seeds.map(x=>({seed:x.seed,monthly:x.monthly}))));
+});
+test('v1.7 longitudinal: real witnessed friction makes Rosa nonmonotonic while carrier remains a distinct routine',()=>{
+ assert.equal(v17.acceptance.distinctNonMonotonicRelationships,true);
+ assert.ok(v17.seeds.every(x=>x.rosa.trustTrajectory.some(e=>e.delta<0)));
+});
+test('v1.7 longitudinal: the 90-day life avoids prior trust inflation and fulfills obligations',()=>{
+ assert.equal(v17.acceptance.fullNinetyDays,true);
+ assert.equal(v17.acceptance.noTradeReputationExplosion,true);
+ assert.equal(v17.acceptance.noNinetyDayBrokenMonthlyTasks,true);
+ assert.equal(v17.baseline.lastTrust,240);
+});
+test('v1.7 longitudinal: actual harvest receipts conserve every crop without hidden capacity loss',()=>{
+ assert.equal(v17.acceptance.noRipeCropWaste,true);
+ assert.equal(v17.acceptance.physicalConservation,true);
+ assert.ok(v17.ninety.trustDaily.every(x=>x.harvestWaste===0));
+});

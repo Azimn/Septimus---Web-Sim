@@ -32,6 +32,8 @@ jobs:
         run: node scripts/v15_discriminations.js
       - name: Run v1.6 two-person postal endurance and adversarial controls
         run: node scripts/v16_probe.js
+      - name: Run v1.7 longitudinal social, commitment and harvest acceptance
+        run: node scripts/v17_probe.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
