@@ -158,3 +158,16 @@ test('visitor claims require co-presence and real scripted greeting only where w
  social.shared(s,log,'gift');assert.equal(s.people.visitor_01.trust,20);
  s.location='bedchamber';assert.throws(()=>social.shared(s,log,'insult'),/co-presence/);
 });
+
+test('Article 08 and 21: unseen movement receipt retains an immutable unique event ID',()=>{
+ const s=make();
+ const initialEvents=s.events.length;
+ const e=cognition.moveUnseen(s,'instrument','kitchen',log);
+ assert.match(e.id,/^L\d+$/);
+ assert.equal(e.objectId,'instrument');
+ assert.equal(e.room,'bedchamber');
+ assert.equal(e.destinationRoom,'kitchen');
+ assert.equal(e.perceived,false);
+ assert.equal(s.events.length,initialEvents+1);
+ assert.equal(new Set(s.events.map(x=>x.id)).size,s.events.length);
+});

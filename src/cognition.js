@@ -54,7 +54,7 @@ function ruminate(s,log){if(s.activity?.kind==='sleep')return null;
 function lesion(s,name,enabled,log){if(!(name in s.debugSwitches)||typeof enabled!=='boolean')throw Error('Unknown named state switch');s.debugSwitches[name]=enabled;return log(s,'state_switch','I was subjected to a controlled state intervention.',{name,enabled,operatorOnly:true});}
 function moveUnseen(s,id,room,log){if(!(id in OBJECTS)||!(room in ROOMS))throw Error('Unknown object or room');
  if(s.location===OBJECTS[id].room||s.location===room)throw Error('Object change must be unperceived');
- s.objectPositions[id]=room;return log(s,'world_movement','An unseen object was moved by the environment.',{id,room,perceived:false,operatorOnly:true});}
+ s.objectPositions[id]=room;return log(s,'world_movement','An unseen object was moved by the environment.',{objectId:id,destinationRoom:room,perceived:false,operatorOnly:true});}
 function impair(s,id,until,log){if(!((id in OBJECTS)||id.startsWith('room:')&&id.slice(5) in ROOMS))throw Error('Unknown loss target');
  if(!Number.isSafeInteger(until)||until<=s.clock.centibeats)throw Error('Invalid recovery time');
  s.worldLosses[id]=until;return log(s,'world_loss','An object or room became temporarily unusable.',{target:id,recoversTick:until,perceived:false});}
