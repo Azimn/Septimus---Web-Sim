@@ -112,6 +112,10 @@ function scores(state){const enabled=state.debugSwitches||{};
     score+=bonus;residueFactors.push({topic,sourceEventId:state.residueSources?.[topic]?.eventId||null,bonus});
    }
   }
+  const quirkFactors=[];
+  for(const q of state.quirks||[])if(q.bonus>0&&q.kind===key&&q.memoryClass==='lived_runtime_memory'){
+   score+=q.bonus;quirkFactors.push({originEventId:q.originEventId,bonus:q.bonus,originTag:q.originTag});
+  }
   const memoryFactors=[];
   for(const r of state.folioReads||[]){
    if(r.actionCue!==key||r.day>state.clock.day||state.clock.day-r.day>4)continue;
@@ -133,7 +137,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
   const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
-    failures:contextualFailures,contextKey,distance:distance(state.location,targetRoom)};
+    failures:contextualFailures,contextKey,quirkFactors,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
 function perceiveTopic(state,text,source='visitor'){

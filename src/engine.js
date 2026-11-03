@@ -96,7 +96,9 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  }
  s.habitProfiles[a.kind]=profile;
  Commitments.completed(s,a,log);
- s.surface.lastWords=description;log(s,'completed',description,{kind:a.kind,controller:a.controller,object:a.target});
+  s.surface.lastWords=description;
+ const completion=log(s,'completed',description,{kind:a.kind,controller:a.controller,object:a.target});
+ Cognition.matureQuirk(s,completion,a.kind,log);
  s.activity=null;Voice.flush(s,log);
 }
 function tick(s,archive){ensureHooks(s);if(s.dead)return s;const n=s.needs,a=s.activity,now=s.clock.centibeats;

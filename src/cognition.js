@@ -85,6 +85,10 @@ function explainChoice(s,choice){
  if(choice.commitmentFactors?.some(f=>f.bonus>0&&sheet.open.some(x=>x.id===f.id)))reasons.push('obligation');
  if(kind==='prepare'&&sheet.duskSoon&&sheet.open.length)reasons.push('dusk obligation');
  if(kind==='work'&&sheet.needs.energy!=='urgent')reasons.push('capacity');
+ if(s.habitProfiles?.[kind]?.formed&&choice.quirkFactors?.length)reasons.push('learned preference');
+ if(kind==='diary'&&s.events.filter(e=>e.type==='completed'&&e.day===s.clock.day).length>=2)
+   reasons.push('unfinished daily record');
+ if(kind==='prepare'&&sheet.open.some(x=>x.id.startsWith('C')))reasons.push('known hearth duty');
  if(['work','read','study','inspect'].includes(kind)&&sheet.mood.length&&s.debugSwitches?.mood!==false)
    reasons.push('felt mood');
  const text=reasons.length?
@@ -115,8 +119,21 @@ function livedQuirk(s,sourceEventId,kind,log){
    memoryClass:'lived_runtime_memory',kind};
  s.quirks.push(q);return q;
 }
+const MATURITY=Object.freeze({work:[180,250],read:[30,55],prepare:[35,55],tend:[20,35]});
+function matureQuirk(s,source,kind,log){
+ if(s.clock.day<30||source?.type!=='completed')return null;
+ const threshold=(MATURITY[kind]||[]).find(count=>(s.habits[kind]||0)>=count&&
+   !s.quirks.some(q=>q.originTag==='mature:'+kind+':'+count));
+ if(!threshold)return null;
+ const originTag='mature:'+kind+':'+threshold;
+ const e=log(s,'quirk_matured','Repeated lived work has altered what I readily choose.',
+   {sourceEventId:source.id,kind,threshold,memoryClass:'lived_runtime_memory'});
+ const q={originTag,kind,threshold,description:'I have developed a lasting inclination toward '+kind+'.',
+   memoryClass:'lived_runtime_memory',originEventId:source.id,observedEventId:e.id,bonus:2.5};
+ s.quirks.push(q);return q;
+}
 function originQuirk(s,sourceEventId,description,log){if(!sourceEventId||!s.folioReads.some(x=>x.id===sourceEventId))throw Error('Quirk lacks consulted origin');
  if(s.quirks.some(x=>x.originEventId===sourceEventId))return null;
  const e=log(s,'quirk_origin','I recognized a preference in my earlier account.',{sourceEventId,description});
  const q={description,originEventId:sourceEventId,observedEventId:e.id};s.quirks.push(q);return q;}
-module.exports={observe,selfSheet,predictedAction,deliberate,resolveConflict,CONFLICT,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk,explainChoice};
+module.exports={observe,selfSheet,predictedAction,deliberate,resolveConflict,CONFLICT,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk,matureQuirk,explainChoice};
