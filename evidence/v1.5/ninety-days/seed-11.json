@@ -1,0 +1,7271 @@
+{
+  "seed": 11,
+  "targetDays": 90,
+  "daysCompleted": 90,
+  "stepsExecuted": 90000,
+  "terminalHealth": 100,
+  "death": false,
+  "terminalStores": {
+    "food": 4,
+    "water": 9,
+    "fuel": 8,
+    "tea": 14,
+    "preserved": 80
+  },
+  "firstSlowFailure": {
+    "t": 3600000,
+    "day": 35,
+    "type": "relationship_saturation",
+    "detail": 108
+  },
+  "allDeclaredFailures": [
+    {
+      "t": 3600000,
+      "day": 35,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 3700000,
+      "day": 36,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 3800000,
+      "day": 37,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 3900000,
+      "day": 38,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 4000000,
+      "day": 39,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 4100000,
+      "day": 40,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 4200000,
+      "day": 41,
+      "type": "relationship_saturation",
+      "detail": 108
+    },
+    {
+      "t": 4300000,
+      "day": 42,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 4400000,
+      "day": 43,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 4500000,
+      "day": 44,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 4600000,
+      "day": 45,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 4700000,
+      "day": 46,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 4800000,
+      "day": 47,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 4900000,
+      "day": 48,
+      "type": "relationship_saturation",
+      "detail": 128
+    },
+    {
+      "t": 5000000,
+      "day": 49,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5100000,
+      "day": 50,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5200000,
+      "day": 51,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5300000,
+      "day": 52,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5400000,
+      "day": 53,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5500000,
+      "day": 54,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5600000,
+      "day": 55,
+      "type": "relationship_saturation",
+      "detail": 145
+    },
+    {
+      "t": 5700000,
+      "day": 56,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 5800000,
+      "day": 57,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 5900000,
+      "day": 58,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 6000000,
+      "day": 59,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 6100000,
+      "day": 60,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 6200000,
+      "day": 61,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 6300000,
+      "day": 62,
+      "type": "relationship_saturation",
+      "detail": 161
+    },
+    {
+      "t": 6400000,
+      "day": 63,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 6500000,
+      "day": 64,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 6600000,
+      "day": 65,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 6700000,
+      "day": 66,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 6800000,
+      "day": 67,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 6900000,
+      "day": 68,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 7000000,
+      "day": 69,
+      "type": "relationship_saturation",
+      "detail": 181
+    },
+    {
+      "t": 7100000,
+      "day": 70,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7200000,
+      "day": 71,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7300000,
+      "day": 72,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7400000,
+      "day": 73,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7500000,
+      "day": 74,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7600000,
+      "day": 75,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7700000,
+      "day": 76,
+      "type": "relationship_saturation",
+      "detail": 201
+    },
+    {
+      "t": 7800000,
+      "day": 77,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 7900000,
+      "day": 78,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 8000000,
+      "day": 79,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 8100000,
+      "day": 80,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 8200000,
+      "day": 81,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 8300000,
+      "day": 82,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 8400000,
+      "day": 83,
+      "type": "relationship_saturation",
+      "detail": 220
+    },
+    {
+      "t": 8500000,
+      "day": 84,
+      "type": "relationship_saturation",
+      "detail": 240
+    },
+    {
+      "t": 8600000,
+      "day": 85,
+      "type": "relationship_saturation",
+      "detail": 240
+    },
+    {
+      "t": 8700000,
+      "day": 86,
+      "type": "relationship_saturation",
+      "detail": 240
+    },
+    {
+      "t": 8800000,
+      "day": 87,
+      "type": "relationship_saturation",
+      "detail": 240
+    },
+    {
+      "t": 8900000,
+      "day": 88,
+      "type": "relationship_saturation",
+      "detail": 240
+    },
+    {
+      "t": 9000000,
+      "day": 89,
+      "type": "relationship_saturation",
+      "detail": 240
+    }
+  ],
+  "dayByDay": [
+    {
+      "day": 0,
+      "finishTick": 100000,
+      "completed": 13,
+      "actionKinds": [
+        "read",
+        "eat",
+        "diary",
+        "tend",
+        "work",
+        "converse",
+        "prepare",
+        "study",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 0,
+      "tea": 4,
+      "fuel": 5,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 0,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 1,
+      "finishTick": 200000,
+      "completed": 15,
+      "actionKinds": [
+        "work",
+        "eat",
+        "diary",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 2,
+      "preserved": 0,
+      "tea": 4,
+      "fuel": 5,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 2,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 2,
+      "finishTick": 300000,
+      "completed": 13,
+      "actionKinds": [
+        "tend",
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 0,
+      "tea": 4,
+      "fuel": 5,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 2,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 3,
+      "finishTick": 400000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "eat",
+        "diary",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "gather_fuel",
+        "rest"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 5,
+      "tea": 4,
+      "fuel": 8,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 3,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 4,
+      "finishTick": 500000,
+      "completed": 12,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 5,
+      "tea": 4,
+      "fuel": 8,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 7,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 5,
+      "finishTick": 600000,
+      "completed": 17,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "preserve",
+        "work",
+        "eat",
+        "read",
+        "draw_water",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 10,
+      "tea": 4,
+      "fuel": 7,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 7,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 6,
+      "finishTick": 700000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "tend",
+        "preserve"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 15,
+      "tea": 4,
+      "fuel": 6,
+      "trust": 5,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 8,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 7,
+      "finishTick": 800000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "trade",
+        "converse"
+      ],
+      "health": 100,
+      "food": 1,
+      "preserved": 0,
+      "tea": 6,
+      "fuel": 10,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 3,
+      "earnedQuirks": 8,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 8,
+      "finishTick": 900000,
+      "completed": 16,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 0,
+      "tea": 6,
+      "fuel": 10,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 8,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 9,
+      "finishTick": 1000000,
+      "completed": 14,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "tend",
+        "preserve"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 5,
+      "tea": 6,
+      "fuel": 9,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 8,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 10,
+      "finishTick": 1100000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 5,
+      "tea": 6,
+      "fuel": 9,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 8,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 11,
+      "finishTick": 1200000,
+      "completed": 16,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 5,
+      "tea": 6,
+      "fuel": 9,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 8,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 12,
+      "finishTick": 1300000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 10,
+      "tea": 6,
+      "fuel": 8,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 13,
+      "finishTick": 1400000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 10,
+      "tea": 6,
+      "fuel": 8,
+      "trust": 26,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 14,
+      "finishTick": 1500000,
+      "completed": 22,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "preserve",
+        "work",
+        "eat",
+        "read",
+        "draw_water",
+        "prepare",
+        "rest",
+        "trade",
+        "converse",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 0,
+      "tea": 8,
+      "fuel": 11,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 3,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 15,
+      "finishTick": 1600000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "eat",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 5,
+      "tea": 8,
+      "fuel": 10,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 16,
+      "finishTick": 1700000,
+      "completed": 15,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 2,
+      "preserved": 5,
+      "tea": 8,
+      "fuel": 10,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 17,
+      "finishTick": 1800000,
+      "completed": 14,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 5,
+      "tea": 8,
+      "fuel": 10,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 18,
+      "finishTick": 1900000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "inspect",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 10,
+      "tea": 8,
+      "fuel": 9,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 19,
+      "finishTick": 2000000,
+      "completed": 16,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 10,
+      "tea": 8,
+      "fuel": 9,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 20,
+      "finishTick": 2100000,
+      "completed": 17,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "preserve",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 2,
+      "preserved": 15,
+      "tea": 8,
+      "fuel": 8,
+      "trust": 50,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 21,
+      "finishTick": 2200000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "trade",
+        "converse",
+        "rest"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 0,
+      "tea": 12,
+      "fuel": 10,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 3,
+      "earnedQuirks": 9,
+      "failures": [
+        {
+          "id": "L2552",
+          "reason": "visitor_departed",
+          "kind": "converse"
+        }
+      ],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 22,
+      "finishTick": 2300000,
+      "completed": 15,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 0,
+      "tea": 12,
+      "fuel": 10,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 23,
+      "finishTick": 2400000,
+      "completed": 18,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "preserve",
+        "eat",
+        "work",
+        "read",
+        "draw_water",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 5,
+      "tea": 12,
+      "fuel": 9,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 24,
+      "finishTick": 2500000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 10,
+      "tea": 12,
+      "fuel": 8,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 25,
+      "finishTick": 2600000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "tend"
+      ],
+      "health": 100,
+      "food": 9,
+      "preserved": 10,
+      "tea": 12,
+      "fuel": 8,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": [
+        "MONTH-PROVISIONS"
+      ]
+    },
+    {
+      "day": 26,
+      "finishTick": 2700000,
+      "completed": 14,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 10,
+      "tea": 12,
+      "fuel": 8,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 27,
+      "finishTick": 2800000,
+      "completed": 14,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 15,
+      "tea": 12,
+      "fuel": 7,
+      "trust": 71,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 28,
+      "finishTick": 2900000,
+      "completed": 18,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "trade",
+        "converse"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 0,
+      "tea": 14,
+      "fuel": 11,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 3,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 29,
+      "finishTick": 3000000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "work",
+        "preserve",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 5,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 9,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 30,
+      "finishTick": 3100000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "rest",
+        "prepare",
+        "tend"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 5,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 11,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 31,
+      "finishTick": 3200000,
+      "completed": 12,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 5,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 11,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 32,
+      "finishTick": 3300000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "preserve",
+        "work",
+        "eat",
+        "read",
+        "draw_water",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 10,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 11,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 33,
+      "finishTick": 3400000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 15,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 11,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 34,
+      "finishTick": 3500000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 2,
+      "preserved": 15,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 92,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 35,
+      "finishTick": 3600000,
+      "completed": 16,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "trade",
+        "converse",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 10,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 1,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 36,
+      "finishTick": 3700000,
+      "completed": 14,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 15,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 37,
+      "finishTick": 3800000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "tend",
+        "preserve"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 20,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 38,
+      "finishTick": 3900000,
+      "completed": 14,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 20,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 39,
+      "finishTick": 4000000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 40,
+      "finishTick": 4100000,
+      "completed": 15,
+      "actionKinds": [
+        "eat",
+        "diary",
+        "work",
+        "read",
+        "prepare",
+        "rest",
+        "sleep",
+        "tend"
+      ],
+      "health": 100,
+      "food": 9,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 13,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 41,
+      "finishTick": 4200000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "draw_water"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 108,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 14,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 42,
+      "finishTick": 4300000,
+      "completed": 18,
+      "actionKinds": [
+        "eat",
+        "diary",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "trade",
+        "converse",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 20,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 2,
+      "earnedQuirks": 16,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 43,
+      "finishTick": 4400000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 20,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 16,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 44,
+      "finishTick": 4500000,
+      "completed": 16,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "preserve",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 16,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 45,
+      "finishTick": 4600000,
+      "completed": 13,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "rest"
+      ],
+      "health": 100,
+      "food": 9,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 16,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 46,
+      "finishTick": 4700000,
+      "completed": 16,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep",
+        "tend"
+      ],
+      "health": 100,
+      "food": 14,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 16,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 47,
+      "finishTick": 4800000,
+      "completed": 13,
+      "actionKinds": [
+        "preserve",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 30,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 17,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 48,
+      "finishTick": 4900000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 35,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 128,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 17,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 49,
+      "finishTick": 5000000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "trade",
+        "converse",
+        "tend"
+      ],
+      "health": 100,
+      "food": 10,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 11,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 2,
+      "earnedQuirks": 17,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 50,
+      "finishTick": 5100000,
+      "completed": 16,
+      "actionKinds": [
+        "diary",
+        "work",
+        "read",
+        "draw_water",
+        "eat",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 25,
+      "tea": 14,
+      "fuel": 11,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 17,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 51,
+      "finishTick": 5200000,
+      "completed": 14,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "tend",
+        "preserve",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 30,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 18,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 52,
+      "finishTick": 5300000,
+      "completed": 14,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 30,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 18,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 53,
+      "finishTick": 5400000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "preserve",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 35,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 18,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 54,
+      "finishTick": 5500000,
+      "completed": 12,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "prepare",
+        "eat",
+        "tend",
+        "rest"
+      ],
+      "health": 100,
+      "food": 10,
+      "preserved": 35,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 55,
+      "finishTick": 5600000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 35,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 145,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 56,
+      "finishTick": 5700000,
+      "completed": 16,
+      "actionKinds": [
+        "tend",
+        "preserve",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "trade",
+        "converse",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 35,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 1,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 57,
+      "finishTick": 5800000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 40,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 58,
+      "finishTick": 5900000,
+      "completed": 16,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 40,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 59,
+      "finishTick": 6000000,
+      "completed": 14,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "draw_water",
+        "prepare",
+        "preserve",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 45,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 60,
+      "finishTick": 6100000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "rest"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 45,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 61,
+      "finishTick": 6200000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "tend"
+      ],
+      "health": 100,
+      "food": 14,
+      "preserved": 45,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 62,
+      "finishTick": 6300000,
+      "completed": 13,
+      "actionKinds": [
+        "preserve",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 50,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 161,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 63,
+      "finishTick": 6400000,
+      "completed": 18,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "eat",
+        "work",
+        "read",
+        "prepare",
+        "tend",
+        "trade",
+        "converse",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 45,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 2,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 64,
+      "finishTick": 6500000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 45,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 65,
+      "finishTick": 6600000,
+      "completed": 14,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 50,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 66,
+      "finishTick": 6700000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend",
+        "rest"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 50,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 67,
+      "finishTick": 6800000,
+      "completed": 15,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 50,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 68,
+      "finishTick": 6900000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "preserve",
+        "work",
+        "eat",
+        "read",
+        "draw_water",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 55,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 69,
+      "finishTick": 7000000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 60,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 181,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 70,
+      "finishTick": 7100000,
+      "completed": 16,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "trade",
+        "converse",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 2,
+      "preserved": 50,
+      "tea": 14,
+      "fuel": 11,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 2,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 71,
+      "finishTick": 7200000,
+      "completed": 15,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 50,
+      "tea": 14,
+      "fuel": 11,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 72,
+      "finishTick": 7300000,
+      "completed": 15,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "tend",
+        "sleep",
+        "preserve"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 55,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 73,
+      "finishTick": 7400000,
+      "completed": 13,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 55,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 74,
+      "finishTick": 7500000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "tend",
+        "work",
+        "preserve",
+        "read",
+        "eat",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 4,
+      "preserved": 60,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 75,
+      "finishTick": 7600000,
+      "completed": 17,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "tend",
+        "preserve",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 65,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 76,
+      "finishTick": 7700000,
+      "completed": 13,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "prepare",
+        "eat",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 1,
+      "preserved": 65,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 201,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 77,
+      "finishTick": 7800000,
+      "completed": 18,
+      "actionKinds": [
+        "sleep",
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "draw_water",
+        "prepare",
+        "trade",
+        "converse",
+        "rest"
+      ],
+      "health": 100,
+      "food": 7,
+      "preserved": 60,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 1,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 78,
+      "finishTick": 7900000,
+      "completed": 16,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "tend",
+        "preserve",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 6,
+      "preserved": 65,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 79,
+      "finishTick": 8000000,
+      "completed": 13,
+      "actionKinds": [
+        "work",
+        "diary",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 65,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 80,
+      "finishTick": 8100000,
+      "completed": 17,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "tend",
+        "eat",
+        "read",
+        "prepare",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 2,
+      "preserved": 70,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 81,
+      "finishTick": 8200000,
+      "completed": 12,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "tend"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 70,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 82,
+      "finishTick": 8300000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 70,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 83,
+      "finishTick": 8400000,
+      "completed": 14,
+      "actionKinds": [
+        "work",
+        "tend",
+        "diary",
+        "preserve",
+        "eat",
+        "read",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 75,
+      "tea": 14,
+      "fuel": 7,
+      "trust": 220,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 84,
+      "finishTick": 8500000,
+      "completed": 18,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "trade",
+        "converse",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 70,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 240,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 2,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 85,
+      "finishTick": 8600000,
+      "completed": 15,
+      "actionKinds": [
+        "work",
+        "diary",
+        "read",
+        "eat",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 3,
+      "preserved": 70,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 240,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 86,
+      "finishTick": 8700000,
+      "completed": 15,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "draw_water",
+        "prepare",
+        "rest",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 70,
+      "tea": 14,
+      "fuel": 10,
+      "trust": 240,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 87,
+      "finishTick": 8800000,
+      "completed": 14,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "read",
+        "eat",
+        "prepare",
+        "tend",
+        "preserve",
+        "rest"
+      ],
+      "health": 100,
+      "food": 8,
+      "preserved": 75,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 240,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 88,
+      "finishTick": 8900000,
+      "completed": 16,
+      "actionKinds": [
+        "sleep",
+        "diary",
+        "work",
+        "eat",
+        "read",
+        "prepare",
+        "rest"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 75,
+      "tea": 14,
+      "fuel": 9,
+      "trust": 240,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 0,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    },
+    {
+      "day": 89,
+      "finishTick": 9000000,
+      "completed": 14,
+      "actionKinds": [
+        "tend",
+        "diary",
+        "preserve",
+        "read",
+        "eat",
+        "work",
+        "rest",
+        "prepare",
+        "sleep"
+      ],
+      "health": 100,
+      "food": 5,
+      "preserved": 80,
+      "tea": 14,
+      "fuel": 8,
+      "trust": 240,
+      "harvestWaste": 0,
+      "spoilage": 0,
+      "preservedActions": 1,
+      "trades": 0,
+      "earnedQuirks": 20,
+      "failures": [],
+      "deadlinesBroken": []
+    }
+  ],
+  "snapshots": {
+    "day30": {
+      "t": 3025000,
+      "day": 30,
+      "stores": {
+        "food": 2,
+        "water": 7,
+        "fuel": 10,
+        "tea": 14,
+        "preserved": 5
+      },
+      "skills": {
+        "science": 160,
+        "household": 14
+      },
+      "health": 100,
+      "habits": {
+        "read": {
+          "cue": "folios@library",
+          "count": 31,
+          "formed": true
+        },
+        "eat": {
+          "cue": "stores@kitchen",
+          "count": 79,
+          "formed": true
+        },
+        "diary": {
+          "cue": "notebook@library",
+          "count": 31,
+          "formed": true
+        },
+        "tend": {
+          "cue": "plot@garden",
+          "count": 20,
+          "formed": true
+        },
+        "work": {
+          "cue": "bench@laboratory",
+          "count": 158,
+          "formed": true
+        },
+        "converse": {
+          "cue": "visitor_01@laboratory",
+          "count": 1,
+          "formed": false
+        },
+        "prepare": {
+          "cue": "hearth@kitchen",
+          "count": 30,
+          "formed": true
+        },
+        "study": {
+          "cue": "specimens@laboratory",
+          "count": 1,
+          "formed": false
+        },
+        "rest": {
+          "cue": "bed@bedchamber",
+          "count": 43,
+          "formed": true
+        },
+        "sleep": {
+          "cue": "bed@bedchamber",
+          "count": 40,
+          "formed": true
+        },
+        "preserve": {
+          "cue": "stove@kitchen",
+          "count": 13,
+          "formed": true
+        },
+        "gather_fuel": {
+          "cue": "path@garden",
+          "count": 1,
+          "formed": false
+        },
+        "draw_water": {
+          "cue": "path@garden",
+          "count": 3,
+          "formed": false
+        },
+        "trade": {
+          "cue": "visitor_01@laboratory",
+          "count": 3,
+          "formed": false
+        },
+        "inspect": {
+          "cue": "instrument@laboratory",
+          "count": 2,
+          "formed": false
+        }
+      },
+      "quirks": [
+        {
+          "description": "I have come to return habitually to work through my days in the tower.",
+          "originEventId": "L143",
+          "observedEventId": "L144",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "work"
+        },
+        {
+          "description": "I have come to return habitually to eat through my days in the tower.",
+          "originEventId": "L192",
+          "observedEventId": "L193",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "eat"
+        },
+        {
+          "description": "I have come to return habitually to sleep through my days in the tower.",
+          "originEventId": "L437",
+          "observedEventId": "L438",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "sleep"
+        },
+        {
+          "description": "I have come to return habitually to diary through my days in the tower.",
+          "originEventId": "L451",
+          "observedEventId": "L452",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "diary"
+        },
+        {
+          "description": "I have come to return habitually to read through my days in the tower.",
+          "originEventId": "L475",
+          "observedEventId": "L476",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "read"
+        },
+        {
+          "description": "I have come to return habitually to prepare through my days in the tower.",
+          "originEventId": "L485",
+          "observedEventId": "L486",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "prepare"
+        },
+        {
+          "description": "I have come to return habitually to rest through my days in the tower.",
+          "originEventId": "L515",
+          "observedEventId": "L516",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "rest"
+        },
+        {
+          "description": "I have come to return habitually to tend through my days in the tower.",
+          "originEventId": "L746",
+          "observedEventId": "L747",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "tend"
+        },
+        {
+          "description": "I have come to return habitually to preserve through my days in the tower.",
+          "originEventId": "L1443",
+          "observedEventId": "L1444",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "preserve"
+        },
+        {
+          "originTag": "mature:read:30",
+          "kind": "read",
+          "threshold": 30,
+          "description": "I have developed a lasting inclination toward read.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L3563",
+          "observedEventId": "L3564",
+          "bonus": 2.5
+        }
+      ],
+      "trust": 92,
+      "actionCounts": {
+        "read": 31,
+        "eat": 79,
+        "diary": 31,
+        "tend": 20,
+        "work": 158,
+        "converse": 6,
+        "prepare": 30,
+        "study": 1,
+        "rest": 43,
+        "sleep": 40,
+        "preserve": 13,
+        "gather_fuel": 1,
+        "draw_water": 3,
+        "trade": 12,
+        "inspect": 2
+      },
+      "commitments": [
+        {
+          "id": "MONTH-FOLIO",
+          "status": "kept"
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "status": "kept"
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "status": "broken"
+        }
+      ]
+    },
+    "day60": {
+      "t": 6025000,
+      "day": 60,
+      "stores": {
+        "food": 2,
+        "water": 11,
+        "fuel": 8,
+        "tea": 14,
+        "preserved": 45
+      },
+      "skills": {
+        "science": 318,
+        "household": 28
+      },
+      "health": 100,
+      "habits": {
+        "read": {
+          "cue": "folios@library",
+          "count": 61,
+          "formed": true
+        },
+        "eat": {
+          "cue": "stores@kitchen",
+          "count": 155,
+          "formed": true
+        },
+        "diary": {
+          "cue": "notebook@library",
+          "count": 61,
+          "formed": true
+        },
+        "tend": {
+          "cue": "plot@garden",
+          "count": 40,
+          "formed": true
+        },
+        "work": {
+          "cue": "bench@laboratory",
+          "count": 316,
+          "formed": true
+        },
+        "converse": {
+          "cue": "visitor_01@kitchen",
+          "count": 2,
+          "formed": false
+        },
+        "prepare": {
+          "cue": "hearth@kitchen",
+          "count": 60,
+          "formed": true
+        },
+        "study": {
+          "cue": "specimens@laboratory",
+          "count": 1,
+          "formed": false
+        },
+        "rest": {
+          "cue": "bed@bedchamber",
+          "count": 75,
+          "formed": true
+        },
+        "sleep": {
+          "cue": "bed@bedchamber",
+          "count": 83,
+          "formed": true
+        },
+        "preserve": {
+          "cue": "stove@kitchen",
+          "count": 27,
+          "formed": true
+        },
+        "gather_fuel": {
+          "cue": "path@garden",
+          "count": 1,
+          "formed": false
+        },
+        "draw_water": {
+          "cue": "path@garden",
+          "count": 7,
+          "formed": true
+        },
+        "trade": {
+          "cue": "visitor_01@kitchen",
+          "count": 1,
+          "formed": false
+        },
+        "inspect": {
+          "cue": "instrument@laboratory",
+          "count": 2,
+          "formed": false
+        }
+      },
+      "quirks": [
+        {
+          "description": "I have come to return habitually to work through my days in the tower.",
+          "originEventId": "L143",
+          "observedEventId": "L144",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "work"
+        },
+        {
+          "description": "I have come to return habitually to eat through my days in the tower.",
+          "originEventId": "L192",
+          "observedEventId": "L193",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "eat"
+        },
+        {
+          "description": "I have come to return habitually to sleep through my days in the tower.",
+          "originEventId": "L437",
+          "observedEventId": "L438",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "sleep"
+        },
+        {
+          "description": "I have come to return habitually to diary through my days in the tower.",
+          "originEventId": "L451",
+          "observedEventId": "L452",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "diary"
+        },
+        {
+          "description": "I have come to return habitually to read through my days in the tower.",
+          "originEventId": "L475",
+          "observedEventId": "L476",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "read"
+        },
+        {
+          "description": "I have come to return habitually to prepare through my days in the tower.",
+          "originEventId": "L485",
+          "observedEventId": "L486",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "prepare"
+        },
+        {
+          "description": "I have come to return habitually to rest through my days in the tower.",
+          "originEventId": "L515",
+          "observedEventId": "L516",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "rest"
+        },
+        {
+          "description": "I have come to return habitually to tend through my days in the tower.",
+          "originEventId": "L746",
+          "observedEventId": "L747",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "tend"
+        },
+        {
+          "description": "I have come to return habitually to preserve through my days in the tower.",
+          "originEventId": "L1443",
+          "observedEventId": "L1444",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "preserve"
+        },
+        {
+          "originTag": "mature:read:30",
+          "kind": "read",
+          "threshold": 30,
+          "description": "I have developed a lasting inclination toward read.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L3563",
+          "observedEventId": "L3564",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:tend:20",
+          "kind": "tend",
+          "threshold": 20,
+          "description": "I have developed a lasting inclination toward tend.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L3618",
+          "observedEventId": "L3619",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:prepare:35",
+          "kind": "prepare",
+          "threshold": 35,
+          "description": "I have developed a lasting inclination toward prepare.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L4023",
+          "observedEventId": "L4024",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:work:180",
+          "kind": "work",
+          "threshold": 180,
+          "description": "I have developed a lasting inclination toward work.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L4037",
+          "observedEventId": "L4038",
+          "bonus": 2.5
+        },
+        {
+          "description": "I have come to return habitually to draw_water through my days in the tower.",
+          "originEventId": "L4837",
+          "observedEventId": "L4838",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "draw_water"
+        },
+        {
+          "description": "I have come to return habitually to trade through my days in the tower.",
+          "originEventId": "L4974",
+          "observedEventId": "L4975",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "trade"
+        },
+        {
+          "description": "I have come to return habitually to converse through my days in the tower.",
+          "originEventId": "L4994",
+          "observedEventId": "L4995",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "converse"
+        },
+        {
+          "originTag": "mature:work:250",
+          "kind": "work",
+          "threshold": 250,
+          "description": "I have developed a lasting inclination toward work.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L5518",
+          "observedEventId": "L5519",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:tend:35",
+          "kind": "tend",
+          "threshold": 35,
+          "description": "I have developed a lasting inclination toward tend.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L5974",
+          "observedEventId": "L5975",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:read:55",
+          "kind": "read",
+          "threshold": 55,
+          "description": "I have developed a lasting inclination toward read.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L6258",
+          "observedEventId": "L6259",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:prepare:55",
+          "kind": "prepare",
+          "threshold": 55,
+          "description": "I have developed a lasting inclination toward prepare.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L6276",
+          "observedEventId": "L6277",
+          "bonus": 2.5
+        }
+      ],
+      "trust": 161,
+      "actionCounts": {
+        "read": 61,
+        "eat": 155,
+        "diary": 61,
+        "tend": 40,
+        "work": 316,
+        "converse": 13,
+        "prepare": 60,
+        "study": 1,
+        "rest": 75,
+        "sleep": 83,
+        "preserve": 27,
+        "gather_fuel": 1,
+        "draw_water": 7,
+        "trade": 18,
+        "inspect": 2
+      },
+      "commitments": [
+        {
+          "id": "MONTH-FOLIO",
+          "status": "kept"
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "status": "kept"
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "status": "broken"
+        }
+      ]
+    },
+    "day90": {
+      "t": 9025000,
+      "day": 90,
+      "stores": {
+        "food": 4,
+        "water": 9,
+        "fuel": 8,
+        "tea": 14,
+        "preserved": 80
+      },
+      "skills": {
+        "science": 480,
+        "household": 42
+      },
+      "health": 100,
+      "habits": {
+        "read": {
+          "cue": "folios@library",
+          "count": 91,
+          "formed": true
+        },
+        "eat": {
+          "cue": "stores@kitchen",
+          "count": 229,
+          "formed": true
+        },
+        "diary": {
+          "cue": "notebook@library",
+          "count": 91,
+          "formed": true
+        },
+        "tend": {
+          "cue": "plot@garden",
+          "count": 60,
+          "formed": true
+        },
+        "work": {
+          "cue": "bench@laboratory",
+          "count": 478,
+          "formed": true
+        },
+        "converse": {
+          "cue": "visitor_01@kitchen",
+          "count": 1,
+          "formed": false
+        },
+        "prepare": {
+          "cue": "hearth@kitchen",
+          "count": 90,
+          "formed": true
+        },
+        "study": {
+          "cue": "specimens@laboratory",
+          "count": 1,
+          "formed": false
+        },
+        "rest": {
+          "cue": "bed@bedchamber",
+          "count": 111,
+          "formed": true
+        },
+        "sleep": {
+          "cue": "bed@bedchamber",
+          "count": 124,
+          "formed": true
+        },
+        "preserve": {
+          "cue": "stove@kitchen",
+          "count": 41,
+          "formed": true
+        },
+        "gather_fuel": {
+          "cue": "path@garden",
+          "count": 1,
+          "formed": false
+        },
+        "draw_water": {
+          "cue": "path@garden",
+          "count": 10,
+          "formed": true
+        },
+        "trade": {
+          "cue": "visitor_01@laboratory",
+          "count": 2,
+          "formed": false
+        },
+        "inspect": {
+          "cue": "instrument@laboratory",
+          "count": 2,
+          "formed": false
+        }
+      },
+      "quirks": [
+        {
+          "description": "I have come to return habitually to work through my days in the tower.",
+          "originEventId": "L143",
+          "observedEventId": "L144",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "work"
+        },
+        {
+          "description": "I have come to return habitually to eat through my days in the tower.",
+          "originEventId": "L192",
+          "observedEventId": "L193",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "eat"
+        },
+        {
+          "description": "I have come to return habitually to sleep through my days in the tower.",
+          "originEventId": "L437",
+          "observedEventId": "L438",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "sleep"
+        },
+        {
+          "description": "I have come to return habitually to diary through my days in the tower.",
+          "originEventId": "L451",
+          "observedEventId": "L452",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "diary"
+        },
+        {
+          "description": "I have come to return habitually to read through my days in the tower.",
+          "originEventId": "L475",
+          "observedEventId": "L476",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "read"
+        },
+        {
+          "description": "I have come to return habitually to prepare through my days in the tower.",
+          "originEventId": "L485",
+          "observedEventId": "L486",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "prepare"
+        },
+        {
+          "description": "I have come to return habitually to rest through my days in the tower.",
+          "originEventId": "L515",
+          "observedEventId": "L516",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "rest"
+        },
+        {
+          "description": "I have come to return habitually to tend through my days in the tower.",
+          "originEventId": "L746",
+          "observedEventId": "L747",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "tend"
+        },
+        {
+          "description": "I have come to return habitually to preserve through my days in the tower.",
+          "originEventId": "L1443",
+          "observedEventId": "L1444",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "preserve"
+        },
+        {
+          "originTag": "mature:read:30",
+          "kind": "read",
+          "threshold": 30,
+          "description": "I have developed a lasting inclination toward read.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L3563",
+          "observedEventId": "L3564",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:tend:20",
+          "kind": "tend",
+          "threshold": 20,
+          "description": "I have developed a lasting inclination toward tend.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L3618",
+          "observedEventId": "L3619",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:prepare:35",
+          "kind": "prepare",
+          "threshold": 35,
+          "description": "I have developed a lasting inclination toward prepare.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L4023",
+          "observedEventId": "L4024",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:work:180",
+          "kind": "work",
+          "threshold": 180,
+          "description": "I have developed a lasting inclination toward work.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L4037",
+          "observedEventId": "L4038",
+          "bonus": 2.5
+        },
+        {
+          "description": "I have come to return habitually to draw_water through my days in the tower.",
+          "originEventId": "L4837",
+          "observedEventId": "L4838",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "draw_water"
+        },
+        {
+          "description": "I have come to return habitually to trade through my days in the tower.",
+          "originEventId": "L4974",
+          "observedEventId": "L4975",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "trade"
+        },
+        {
+          "description": "I have come to return habitually to converse through my days in the tower.",
+          "originEventId": "L4994",
+          "observedEventId": "L4995",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "converse"
+        },
+        {
+          "originTag": "mature:work:250",
+          "kind": "work",
+          "threshold": 250,
+          "description": "I have developed a lasting inclination toward work.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L5518",
+          "observedEventId": "L5519",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:tend:35",
+          "kind": "tend",
+          "threshold": 35,
+          "description": "I have developed a lasting inclination toward tend.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L5974",
+          "observedEventId": "L5975",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:read:55",
+          "kind": "read",
+          "threshold": 55,
+          "description": "I have developed a lasting inclination toward read.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L6258",
+          "observedEventId": "L6259",
+          "bonus": 2.5
+        },
+        {
+          "originTag": "mature:prepare:55",
+          "kind": "prepare",
+          "threshold": 55,
+          "description": "I have developed a lasting inclination toward prepare.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L6276",
+          "observedEventId": "L6277",
+          "bonus": 2.5
+        }
+      ],
+      "trust": 240,
+      "actionCounts": {
+        "read": 91,
+        "eat": 229,
+        "diary": 91,
+        "tend": 60,
+        "work": 478,
+        "converse": 22,
+        "prepare": 90,
+        "study": 1,
+        "rest": 111,
+        "sleep": 124,
+        "preserve": 41,
+        "gather_fuel": 1,
+        "draw_water": 10,
+        "trade": 25,
+        "inspect": 2
+      },
+      "commitments": [
+        {
+          "id": "MONTH-FOLIO",
+          "status": "kept"
+        },
+        {
+          "id": "MONTH-INSTRUMENT",
+          "status": "kept"
+        },
+        {
+          "id": "MONTH-PROVISIONS",
+          "status": "broken"
+        }
+      ]
+    }
+  },
+  "worldEvents": [
+    {
+      "id": "L392",
+      "t": 348600,
+      "day": 3,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 14,
+        "preserved": 0,
+        "fuel": 5
+      },
+      "after": {
+        "food": 8,
+        "preserved": 5,
+        "fuel": 4
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L556",
+      "t": 506200,
+      "day": 5,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 5,
+        "fuel": 8
+      },
+      "after": {
+        "food": 7,
+        "preserved": 10,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L763",
+      "t": 657400,
+      "day": 6,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 10,
+        "preserved": 10,
+        "fuel": 7
+      },
+      "after": {
+        "food": 4,
+        "preserved": 15,
+        "fuel": 6
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L850",
+      "t": 744200,
+      "day": 7,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848"
+      ]
+    },
+    {
+      "id": "L852",
+      "t": 744200,
+      "day": 7,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L850",
+      "socialEventId": "L851",
+      "sourceIds": [
+        "L43",
+        "L848"
+      ]
+    },
+    {
+      "id": "L859",
+      "t": 747900,
+      "day": 7,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847"
+      ]
+    },
+    {
+      "id": "L861",
+      "t": 747900,
+      "day": 7,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L859",
+      "socialEventId": "L860",
+      "sourceIds": [
+        "L42",
+        "L847"
+      ]
+    },
+    {
+      "id": "L862",
+      "t": 749100,
+      "day": 7,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 2,
+        "preserved": 15,
+        "fuel": 6,
+        "tea": 4
+      },
+      "after": {
+        "food": 2,
+        "preserved": 10,
+        "fuel": 8,
+        "tea": 4
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L876",
+      "t": 751500,
+      "day": 7,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 2,
+        "preserved": 10,
+        "fuel": 8,
+        "tea": 4
+      },
+      "after": {
+        "food": 2,
+        "preserved": 5,
+        "fuel": 10,
+        "tea": 4
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L883",
+      "t": 752900,
+      "day": 7,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "tea",
+      "unitsReceived": 2,
+      "before": {
+        "food": 2,
+        "preserved": 5,
+        "fuel": 10,
+        "tea": 4
+      },
+      "after": {
+        "food": 2,
+        "preserved": 0,
+        "fuel": 10,
+        "tea": 6
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1124",
+      "t": 947600,
+      "day": 9,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 0,
+        "fuel": 10
+      },
+      "after": {
+        "food": 7,
+        "preserved": 5,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1442",
+      "t": 1256300,
+      "day": 12,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 15,
+        "preserved": 5,
+        "fuel": 9
+      },
+      "after": {
+        "food": 9,
+        "preserved": 10,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1610",
+      "t": 1406100,
+      "day": 14,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 10,
+        "fuel": 8
+      },
+      "after": {
+        "food": 7,
+        "preserved": 15,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1684",
+      "t": 1444600,
+      "day": 14,
+      "type": "custom_conflict",
+      "room": "bedchamber",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675"
+      ]
+    },
+    {
+      "id": "L1686",
+      "t": 1444600,
+      "day": 14,
+      "type": "custom_negotiation",
+      "room": "bedchamber",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L1684",
+      "socialEventId": "L1685",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675"
+      ]
+    },
+    {
+      "id": "L1687",
+      "t": 1445800,
+      "day": 14,
+      "type": "trade_receipt",
+      "room": "bedchamber",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 6,
+        "preserved": 15,
+        "fuel": 7,
+        "tea": 6
+      },
+      "after": {
+        "food": 6,
+        "preserved": 10,
+        "fuel": 9,
+        "tea": 6
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1700",
+      "t": 1448200,
+      "day": 14,
+      "type": "trade_receipt",
+      "room": "bedchamber",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 6,
+        "preserved": 10,
+        "fuel": 9,
+        "tea": 6
+      },
+      "after": {
+        "food": 6,
+        "preserved": 5,
+        "fuel": 11,
+        "tea": 6
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1708",
+      "t": 1449600,
+      "day": 14,
+      "type": "trade_receipt",
+      "room": "bedchamber",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "tea",
+      "unitsReceived": 2,
+      "before": {
+        "food": 6,
+        "preserved": 5,
+        "fuel": 11,
+        "tea": 6
+      },
+      "after": {
+        "food": 6,
+        "preserved": 0,
+        "fuel": 11,
+        "tea": 8
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L1715",
+      "t": 1449800,
+      "day": 14,
+      "type": "custom_conflict",
+      "room": "bedchamber",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676"
+      ]
+    },
+    {
+      "id": "L1717",
+      "t": 1449800,
+      "day": 14,
+      "type": "custom_negotiation",
+      "room": "bedchamber",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L1715",
+      "socialEventId": "L1716",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676"
+      ]
+    },
+    {
+      "id": "L1821",
+      "t": 1548500,
+      "day": 15,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 0,
+        "fuel": 11
+      },
+      "after": {
+        "food": 6,
+        "preserved": 5,
+        "fuel": 10
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2166",
+      "t": 1848400,
+      "day": 18,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 5,
+        "fuel": 10
+      },
+      "after": {
+        "food": 7,
+        "preserved": 10,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2366",
+      "t": 2021100,
+      "day": 20,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 10,
+        "preserved": 10,
+        "fuel": 9
+      },
+      "after": {
+        "food": 4,
+        "preserved": 15,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2507",
+      "t": 2145600,
+      "day": 21,
+      "type": "custom_conflict",
+      "room": "garden",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497"
+      ]
+    },
+    {
+      "id": "L2509",
+      "t": 2145600,
+      "day": 21,
+      "type": "custom_negotiation",
+      "room": "garden",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L2507",
+      "socialEventId": "L2508",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497"
+      ]
+    },
+    {
+      "id": "L2511",
+      "t": 2146800,
+      "day": 21,
+      "type": "trade_receipt",
+      "room": "garden",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 9,
+        "preserved": 15,
+        "fuel": 8,
+        "tea": 8
+      },
+      "after": {
+        "food": 9,
+        "preserved": 10,
+        "fuel": 10,
+        "tea": 8
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2518",
+      "t": 2148200,
+      "day": 21,
+      "type": "trade_receipt",
+      "room": "garden",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "tea",
+      "unitsReceived": 2,
+      "before": {
+        "food": 9,
+        "preserved": 10,
+        "fuel": 10,
+        "tea": 8
+      },
+      "after": {
+        "food": 9,
+        "preserved": 5,
+        "fuel": 10,
+        "tea": 10
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2530",
+      "t": 2150600,
+      "day": 21,
+      "type": "trade_receipt",
+      "room": "garden",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "tea",
+      "unitsReceived": 2,
+      "before": {
+        "food": 9,
+        "preserved": 5,
+        "fuel": 10,
+        "tea": 10
+      },
+      "after": {
+        "food": 9,
+        "preserved": 0,
+        "fuel": 10,
+        "tea": 12
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2537",
+      "t": 2150800,
+      "day": 21,
+      "type": "custom_conflict",
+      "room": "garden",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498"
+      ]
+    },
+    {
+      "id": "L2539",
+      "t": 2150800,
+      "day": 21,
+      "type": "custom_negotiation",
+      "room": "garden",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L2537",
+      "socialEventId": "L2538",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498"
+      ]
+    },
+    {
+      "id": "L2725",
+      "t": 2310400,
+      "day": 23,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 0,
+        "fuel": 10
+      },
+      "after": {
+        "food": 7,
+        "preserved": 5,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L2895",
+      "t": 2455800,
+      "day": 24,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 11,
+        "preserved": 5,
+        "fuel": 9
+      },
+      "after": {
+        "food": 5,
+        "preserved": 10,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3027",
+      "t": 2565100,
+      "day": 25,
+      "type": "commitment_broken",
+      "room": "laboratory",
+      "description": "An obligation passed without fulfillment.",
+      "provenance": "lived_runtime_memory",
+      "commitmentId": "MONTH-PROVISIONS",
+      "deadline": 2565000
+    },
+    {
+      "id": "L3217",
+      "t": 2748200,
+      "day": 27,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 10,
+        "fuel": 8
+      },
+      "after": {
+        "food": 7,
+        "preserved": 15,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3335",
+      "t": 2844200,
+      "day": 28,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333"
+      ]
+    },
+    {
+      "id": "L3337",
+      "t": 2844200,
+      "day": 28,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L3335",
+      "socialEventId": "L3336",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333"
+      ]
+    },
+    {
+      "id": "L3343",
+      "t": 2848500,
+      "day": 28,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332"
+      ]
+    },
+    {
+      "id": "L3345",
+      "t": 2848500,
+      "day": 28,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L3343",
+      "socialEventId": "L3344",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332"
+      ]
+    },
+    {
+      "id": "L3347",
+      "t": 2849700,
+      "day": 28,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 5,
+        "preserved": 15,
+        "fuel": 7,
+        "tea": 12
+      },
+      "after": {
+        "food": 5,
+        "preserved": 10,
+        "fuel": 9,
+        "tea": 12
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3359",
+      "t": 2852100,
+      "day": 28,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 5,
+        "preserved": 10,
+        "fuel": 9,
+        "tea": 12
+      },
+      "after": {
+        "food": 5,
+        "preserved": 5,
+        "fuel": 11,
+        "tea": 12
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3367",
+      "t": 2853500,
+      "day": 28,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "tea",
+      "unitsReceived": 2,
+      "before": {
+        "food": 5,
+        "preserved": 5,
+        "fuel": 11,
+        "tea": 12
+      },
+      "after": {
+        "food": 5,
+        "preserved": 0,
+        "fuel": 11,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3437",
+      "t": 2918300,
+      "day": 29,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 0,
+        "fuel": 11
+      },
+      "after": {
+        "food": 6,
+        "preserved": 5,
+        "fuel": 10
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3564",
+      "t": 3018400,
+      "day": 30,
+      "type": "quirk_matured",
+      "room": "library",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L3563",
+      "kind": "read",
+      "threshold": 30,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L3619",
+      "t": 3050100,
+      "day": 30,
+      "type": "quirk_matured",
+      "room": "garden",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L3618",
+      "kind": "tend",
+      "threshold": 20,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L3773",
+      "t": 3213000,
+      "day": 32,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 14,
+        "preserved": 5,
+        "fuel": 10
+      },
+      "after": {
+        "food": 8,
+        "preserved": 10,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L3935",
+      "t": 3355300,
+      "day": 33,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 10,
+        "fuel": 9
+      },
+      "after": {
+        "food": 6,
+        "preserved": 15,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4024",
+      "t": 3435500,
+      "day": 34,
+      "type": "quirk_matured",
+      "room": "kitchen",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L4023",
+      "kind": "prepare",
+      "threshold": 35,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L4038",
+      "t": 3444700,
+      "day": 34,
+      "type": "quirk_matured",
+      "room": "laboratory",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L4037",
+      "kind": "work",
+      "threshold": 180,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L4167",
+      "t": 3544200,
+      "day": 35,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165"
+      ]
+    },
+    {
+      "id": "L4169",
+      "t": 3544200,
+      "day": 35,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L4167",
+      "socialEventId": "L4168",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165"
+      ]
+    },
+    {
+      "id": "L4177",
+      "t": 3550600,
+      "day": 35,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164"
+      ]
+    },
+    {
+      "id": "L4179",
+      "t": 3550600,
+      "day": 35,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L4177",
+      "socialEventId": "L4178",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164"
+      ]
+    },
+    {
+      "id": "L4180",
+      "t": 3551800,
+      "day": 35,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 8,
+        "preserved": 15,
+        "fuel": 8,
+        "tea": 14
+      },
+      "after": {
+        "food": 8,
+        "preserved": 10,
+        "fuel": 10,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4281",
+      "t": 3653800,
+      "day": 36,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 15,
+        "preserved": 10,
+        "fuel": 10
+      },
+      "after": {
+        "food": 9,
+        "preserved": 15,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4435",
+      "t": 3798100,
+      "day": 37,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 15,
+        "fuel": 9
+      },
+      "after": {
+        "food": 7,
+        "preserved": 20,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4610",
+      "t": 3943600,
+      "day": 39,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 11,
+        "preserved": 20,
+        "fuel": 8
+      },
+      "after": {
+        "food": 5,
+        "preserved": 25,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4944",
+      "t": 4242000,
+      "day": 42,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 25,
+        "fuel": 7
+      },
+      "after": {
+        "food": 7,
+        "preserved": 30,
+        "fuel": 6
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4959",
+      "t": 4244200,
+      "day": 42,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957"
+      ]
+    },
+    {
+      "id": "L4961",
+      "t": 4244200,
+      "day": 42,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L4959",
+      "socialEventId": "L4960",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957"
+      ]
+    },
+    {
+      "id": "L4968",
+      "t": 4250300,
+      "day": 42,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956"
+      ]
+    },
+    {
+      "id": "L4970",
+      "t": 4250300,
+      "day": 42,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L4968",
+      "socialEventId": "L4969",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956"
+      ]
+    },
+    {
+      "id": "L4971",
+      "t": 4251500,
+      "day": 42,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 7,
+        "preserved": 30,
+        "fuel": 6,
+        "tea": 14
+      },
+      "after": {
+        "food": 7,
+        "preserved": 25,
+        "fuel": 8,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L4981",
+      "t": 4252900,
+      "day": 42,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 7,
+        "preserved": 25,
+        "fuel": 8,
+        "tea": 14
+      },
+      "after": {
+        "food": 7,
+        "preserved": 20,
+        "fuel": 10,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L5161",
+      "t": 4420500,
+      "day": 44,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 11,
+        "preserved": 20,
+        "fuel": 10
+      },
+      "after": {
+        "food": 5,
+        "preserved": 25,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L5452",
+      "t": 4701900,
+      "day": 47,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 14,
+        "preserved": 25,
+        "fuel": 9
+      },
+      "after": {
+        "food": 8,
+        "preserved": 30,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L5519",
+      "t": 4740800,
+      "day": 47,
+      "type": "quirk_matured",
+      "room": "laboratory",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L5518",
+      "kind": "work",
+      "threshold": 250,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L5625",
+      "t": 4851100,
+      "day": 48,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 11,
+        "preserved": 30,
+        "fuel": 8
+      },
+      "after": {
+        "food": 5,
+        "preserved": 35,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L5718",
+      "t": 4944200,
+      "day": 49,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716"
+      ]
+    },
+    {
+      "id": "L5720",
+      "t": 4944200,
+      "day": 49,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L5718",
+      "socialEventId": "L5719",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716"
+      ]
+    },
+    {
+      "id": "L5727",
+      "t": 4949700,
+      "day": 49,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715"
+      ]
+    },
+    {
+      "id": "L5729",
+      "t": 4949700,
+      "day": 49,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L5727",
+      "socialEventId": "L5728",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715"
+      ]
+    },
+    {
+      "id": "L5731",
+      "t": 4950900,
+      "day": 49,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 3,
+        "preserved": 35,
+        "fuel": 7,
+        "tea": 14
+      },
+      "after": {
+        "food": 3,
+        "preserved": 30,
+        "fuel": 9,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L5743",
+      "t": 4953300,
+      "day": 49,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 3,
+        "preserved": 30,
+        "fuel": 9,
+        "tea": 14
+      },
+      "after": {
+        "food": 3,
+        "preserved": 25,
+        "fuel": 11,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L5975",
+      "t": 5146300,
+      "day": 51,
+      "type": "quirk_matured",
+      "room": "garden",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L5974",
+      "kind": "tend",
+      "threshold": 35,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L5982",
+      "t": 5149700,
+      "day": 51,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 14,
+        "preserved": 25,
+        "fuel": 11
+      },
+      "after": {
+        "food": 8,
+        "preserved": 30,
+        "fuel": 10
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L6139",
+      "t": 5310900,
+      "day": 53,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 30,
+        "fuel": 10
+      },
+      "after": {
+        "food": 6,
+        "preserved": 35,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L6259",
+      "t": 5431300,
+      "day": 54,
+      "type": "quirk_matured",
+      "room": "library",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L6258",
+      "kind": "read",
+      "threshold": 55,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L6277",
+      "t": 5441600,
+      "day": 54,
+      "type": "quirk_matured",
+      "room": "kitchen",
+      "description": "Repeated lived work has altered what I readily choose.",
+      "provenance": "lived_runtime_memory",
+      "sourceEventId": "L6276",
+      "kind": "prepare",
+      "threshold": 55,
+      "memoryClass": "lived_runtime_memory"
+    },
+    {
+      "id": "L6452",
+      "t": 5605400,
+      "day": 56,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 15,
+        "preserved": 35,
+        "fuel": 9
+      },
+      "after": {
+        "food": 9,
+        "preserved": 40,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L6532",
+      "t": 5645100,
+      "day": 56,
+      "type": "custom_conflict",
+      "room": "kitchen",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523"
+      ]
+    },
+    {
+      "id": "L6534",
+      "t": 5645100,
+      "day": 56,
+      "type": "custom_negotiation",
+      "room": "kitchen",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L6532",
+      "socialEventId": "L6533",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523"
+      ]
+    },
+    {
+      "id": "L6535",
+      "t": 5646300,
+      "day": 56,
+      "type": "trade_receipt",
+      "room": "kitchen",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 7,
+        "preserved": 40,
+        "fuel": 8,
+        "tea": 14
+      },
+      "after": {
+        "food": 7,
+        "preserved": 35,
+        "fuel": 10,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L6553",
+      "t": 5648500,
+      "day": 56,
+      "type": "custom_conflict",
+      "room": "kitchen",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524"
+      ]
+    },
+    {
+      "id": "L6555",
+      "t": 5648500,
+      "day": 56,
+      "type": "custom_negotiation",
+      "room": "kitchen",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L6553",
+      "socialEventId": "L6554",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524"
+      ]
+    },
+    {
+      "id": "L6657",
+      "t": 5757500,
+      "day": 57,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 35,
+        "fuel": 10
+      },
+      "after": {
+        "food": 7,
+        "preserved": 40,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L6872",
+      "t": 5935000,
+      "day": 59,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 10,
+        "preserved": 40,
+        "fuel": 9
+      },
+      "after": {
+        "food": 4,
+        "preserved": 45,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L7150",
+      "t": 6202100,
+      "day": 62,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 14,
+        "preserved": 45,
+        "fuel": 8
+      },
+      "after": {
+        "food": 8,
+        "preserved": 50,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L7316",
+      "t": 6345900,
+      "day": 63,
+      "type": "custom_conflict",
+      "room": "garden",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305"
+      ]
+    },
+    {
+      "id": "L7318",
+      "t": 6345900,
+      "day": 63,
+      "type": "custom_negotiation",
+      "room": "garden",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L7316",
+      "socialEventId": "L7317",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305"
+      ]
+    },
+    {
+      "id": "L7319",
+      "t": 6347100,
+      "day": 63,
+      "type": "trade_receipt",
+      "room": "garden",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 13,
+        "preserved": 50,
+        "fuel": 7,
+        "tea": 14
+      },
+      "after": {
+        "food": 13,
+        "preserved": 45,
+        "fuel": 9,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L7326",
+      "t": 6348500,
+      "day": 63,
+      "type": "trade_receipt",
+      "room": "garden",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 13,
+        "preserved": 45,
+        "fuel": 9,
+        "tea": 14
+      },
+      "after": {
+        "food": 13,
+        "preserved": 40,
+        "fuel": 11,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L7343",
+      "t": 6352900,
+      "day": 63,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 40,
+        "fuel": 11
+      },
+      "after": {
+        "food": 7,
+        "preserved": 45,
+        "fuel": 10
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L7354",
+      "t": 6354100,
+      "day": 63,
+      "type": "custom_conflict",
+      "room": "kitchen",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306"
+      ]
+    },
+    {
+      "id": "L7356",
+      "t": 6354100,
+      "day": 63,
+      "type": "custom_negotiation",
+      "room": "kitchen",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L7354",
+      "socialEventId": "L7355",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306"
+      ]
+    },
+    {
+      "id": "L7571",
+      "t": 6537200,
+      "day": 65,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 10,
+        "preserved": 45,
+        "fuel": 10
+      },
+      "after": {
+        "food": 4,
+        "preserved": 50,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L7864",
+      "t": 6810200,
+      "day": 68,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 50,
+        "fuel": 9
+      },
+      "after": {
+        "food": 7,
+        "preserved": 55,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8030",
+      "t": 6952500,
+      "day": 69,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 11,
+        "preserved": 55,
+        "fuel": 8
+      },
+      "after": {
+        "food": 5,
+        "preserved": 60,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8135",
+      "t": 7044200,
+      "day": 70,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306",
+        "L8133"
+      ]
+    },
+    {
+      "id": "L8137",
+      "t": 7044200,
+      "day": 70,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L8135",
+      "socialEventId": "L8136",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306",
+        "L8133"
+      ]
+    },
+    {
+      "id": "L8144",
+      "t": 7048500,
+      "day": 70,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305",
+        "L8132"
+      ]
+    },
+    {
+      "id": "L8146",
+      "t": 7048500,
+      "day": 70,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L8144",
+      "socialEventId": "L8145",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305",
+        "L8132"
+      ]
+    },
+    {
+      "id": "L8147",
+      "t": 7049700,
+      "day": 70,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 3,
+        "preserved": 60,
+        "fuel": 7,
+        "tea": 14
+      },
+      "after": {
+        "food": 3,
+        "preserved": 55,
+        "fuel": 9,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8154",
+      "t": 7051100,
+      "day": 70,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 3,
+        "preserved": 55,
+        "fuel": 9,
+        "tea": 14
+      },
+      "after": {
+        "food": 3,
+        "preserved": 50,
+        "fuel": 11,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8404",
+      "t": 7295400,
+      "day": 72,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 50,
+        "fuel": 11
+      },
+      "after": {
+        "food": 7,
+        "preserved": 55,
+        "fuel": 10
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8539",
+      "t": 7421700,
+      "day": 74,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 55,
+        "fuel": 10
+      },
+      "after": {
+        "food": 6,
+        "preserved": 60,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8730",
+      "t": 7570200,
+      "day": 75,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 10,
+        "preserved": 60,
+        "fuel": 9
+      },
+      "after": {
+        "food": 4,
+        "preserved": 65,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8919",
+      "t": 7744600,
+      "day": 77,
+      "type": "custom_conflict",
+      "room": "kitchen",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305",
+        "L8132",
+        "L8909"
+      ]
+    },
+    {
+      "id": "L8921",
+      "t": 7744600,
+      "day": 77,
+      "type": "custom_negotiation",
+      "room": "kitchen",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L8919",
+      "socialEventId": "L8920",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305",
+        "L8132",
+        "L8909"
+      ]
+    },
+    {
+      "id": "L8922",
+      "t": 7745800,
+      "day": 77,
+      "type": "trade_receipt",
+      "room": "kitchen",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 8,
+        "preserved": 65,
+        "fuel": 8,
+        "tea": 14
+      },
+      "after": {
+        "food": 8,
+        "preserved": 60,
+        "fuel": 10,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L8939",
+      "t": 7748000,
+      "day": 77,
+      "type": "custom_conflict",
+      "room": "kitchen",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306",
+        "L8133",
+        "L8910"
+      ]
+    },
+    {
+      "id": "L8941",
+      "t": 7748000,
+      "day": 77,
+      "type": "custom_negotiation",
+      "room": "kitchen",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L8939",
+      "socialEventId": "L8940",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306",
+        "L8133",
+        "L8910"
+      ]
+    },
+    {
+      "id": "L9095",
+      "t": 7866800,
+      "day": 78,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 60,
+        "fuel": 10
+      },
+      "after": {
+        "food": 6,
+        "preserved": 65,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L9269",
+      "t": 8040600,
+      "day": 80,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 10,
+        "preserved": 65,
+        "fuel": 9
+      },
+      "after": {
+        "food": 4,
+        "preserved": 70,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L9558",
+      "t": 8315000,
+      "day": 83,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 70,
+        "fuel": 8
+      },
+      "after": {
+        "food": 7,
+        "preserved": 75,
+        "fuel": 7
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L9699",
+      "t": 8444200,
+      "day": 84,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306",
+        "L8133",
+        "L8910",
+        "L9697"
+      ]
+    },
+    {
+      "id": "L9701",
+      "t": 8444200,
+      "day": 84,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "instrument_quiet",
+      "conflictEventId": "L9699",
+      "socialEventId": "L9700",
+      "sourceIds": [
+        "L43",
+        "L848",
+        "L1676",
+        "L2498",
+        "L3333",
+        "L4165",
+        "L4957",
+        "L5716",
+        "L6524",
+        "L7306",
+        "L8133",
+        "L8910",
+        "L9697"
+      ]
+    },
+    {
+      "id": "L9707",
+      "t": 8445900,
+      "day": 84,
+      "type": "custom_conflict",
+      "room": "laboratory",
+      "description": "A learned social custom conflicted with a tower habit or immediate errand.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "habitEventId": "L143",
+      "learnedFrom": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305",
+        "L8132",
+        "L8909",
+        "L9696"
+      ]
+    },
+    {
+      "id": "L9709",
+      "t": 8445900,
+      "day": 84,
+      "type": "custom_negotiation",
+      "room": "laboratory",
+      "description": "I acknowledged the custom without relinquishing my independence.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "custom": "tea_first",
+      "conflictEventId": "L9707",
+      "socialEventId": "L9708",
+      "sourceIds": [
+        "L42",
+        "L847",
+        "L1675",
+        "L2497",
+        "L3332",
+        "L4164",
+        "L4956",
+        "L5715",
+        "L6523",
+        "L7305",
+        "L8132",
+        "L8909",
+        "L9696"
+      ]
+    },
+    {
+      "id": "L9711",
+      "t": 8447100,
+      "day": 84,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 4,
+        "preserved": 75,
+        "fuel": 7,
+        "tea": 14
+      },
+      "after": {
+        "food": 4,
+        "preserved": 70,
+        "fuel": 9,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L9718",
+      "t": 8448500,
+      "day": 84,
+      "type": "trade_receipt",
+      "room": "laboratory",
+      "description": "I exchanged actual surplus provisions for another finite household good.",
+      "provenance": "lived_runtime_memory",
+      "personId": "visitor_01",
+      "target": "visitor_01",
+      "payment": "preserved",
+      "unitsGiven": 5,
+      "received": "fuel",
+      "unitsReceived": 2,
+      "before": {
+        "food": 4,
+        "preserved": 70,
+        "fuel": 9,
+        "tea": 14
+      },
+      "after": {
+        "food": 4,
+        "preserved": 65,
+        "fuel": 11,
+        "tea": 14
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L9746",
+      "t": 8457100,
+      "day": 84,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 12,
+        "preserved": 65,
+        "fuel": 11
+      },
+      "after": {
+        "food": 6,
+        "preserved": 70,
+        "fuel": 10
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L10078",
+      "t": 8753500,
+      "day": 87,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 15,
+        "preserved": 70,
+        "fuel": 10
+      },
+      "after": {
+        "food": 9,
+        "preserved": 75,
+        "fuel": 9
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    },
+    {
+      "id": "L10243",
+      "t": 8907100,
+      "day": 89,
+      "type": "preservation",
+      "room": "kitchen",
+      "description": "I put fresh produce into preserved stores using fuel and time.",
+      "provenance": "lived_runtime_memory",
+      "target": "stove",
+      "before": {
+        "food": 13,
+        "preserved": 75,
+        "fuel": 9
+      },
+      "after": {
+        "food": 7,
+        "preserved": 80,
+        "fuel": 8
+      },
+      "inputs": {
+        "food": 6,
+        "fuel": 1
+      },
+      "output": {
+        "preserved": 5
+      },
+      "controller": "autonomous",
+      "economyContract": "v1.5-surplus-v1"
+    }
+  ],
+  "monthlyCommitments": [
+    {
+      "id": "MONTH-FOLIO",
+      "title": "Consult folios in two sessions before the tenth day closes",
+      "deadline": 1065000,
+      "action": "read",
+      "stockTarget": null,
+      "origin": "calendar",
+      "requiredProgress": 2,
+      "progressCount": 2,
+      "status": "kept",
+      "done": true,
+      "scheduledDay": 8,
+      "keptAt": 917900,
+      "sourceAction": "read"
+    },
+    {
+      "id": "MONTH-INSTRUMENT",
+      "title": "Inspect the instrument in two sessions before the eighteenth day closes",
+      "deadline": 1865000,
+      "action": "inspect",
+      "stockTarget": null,
+      "origin": "calendar",
+      "requiredProgress": 2,
+      "progressCount": 2,
+      "status": "kept",
+      "done": true,
+      "scheduledDay": 16,
+      "keptAt": 1839700,
+      "sourceAction": "inspect"
+    },
+    {
+      "id": "MONTH-PROVISIONS",
+      "title": "Tend two sessions and store at least twelve food before the twenty-fifth day closes",
+      "deadline": 2565000,
+      "action": "tend",
+      "stockTarget": {
+        "item": "food",
+        "minimum": 12
+      },
+      "origin": "calendar",
+      "requiredProgress": 2,
+      "progressCount": 2,
+      "status": "broken",
+      "done": false,
+      "scheduledDay": 23,
+      "brokenAt": 2565100
+    }
+  ],
+  "finalHabits": {
+    "read": {
+      "cue": "folios@library",
+      "count": 91,
+      "formed": true
+    },
+    "eat": {
+      "cue": "stores@kitchen",
+      "count": 229,
+      "formed": true
+    },
+    "diary": {
+      "cue": "notebook@library",
+      "count": 91,
+      "formed": true
+    },
+    "tend": {
+      "cue": "plot@garden",
+      "count": 60,
+      "formed": true
+    },
+    "work": {
+      "cue": "bench@laboratory",
+      "count": 478,
+      "formed": true
+    },
+    "converse": {
+      "cue": "visitor_01@kitchen",
+      "count": 1,
+      "formed": false
+    },
+    "prepare": {
+      "cue": "hearth@kitchen",
+      "count": 90,
+      "formed": true
+    },
+    "study": {
+      "cue": "specimens@laboratory",
+      "count": 1,
+      "formed": false
+    },
+    "rest": {
+      "cue": "bed@bedchamber",
+      "count": 111,
+      "formed": true
+    },
+    "sleep": {
+      "cue": "bed@bedchamber",
+      "count": 124,
+      "formed": true
+    },
+    "preserve": {
+      "cue": "stove@kitchen",
+      "count": 41,
+      "formed": true
+    },
+    "gather_fuel": {
+      "cue": "path@garden",
+      "count": 1,
+      "formed": false
+    },
+    "draw_water": {
+      "cue": "path@garden",
+      "count": 10,
+      "formed": true
+    },
+    "trade": {
+      "cue": "visitor_01@laboratory",
+      "count": 2,
+      "formed": false
+    },
+    "inspect": {
+      "cue": "instrument@laboratory",
+      "count": 2,
+      "formed": false
+    }
+  },
+  "quirkOrigins": [
+    {
+      "description": "I have come to return habitually to work through my days in the tower.",
+      "originEventId": "L143",
+      "observedEventId": "L144",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "work"
+    },
+    {
+      "description": "I have come to return habitually to eat through my days in the tower.",
+      "originEventId": "L192",
+      "observedEventId": "L193",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "eat"
+    },
+    {
+      "description": "I have come to return habitually to sleep through my days in the tower.",
+      "originEventId": "L437",
+      "observedEventId": "L438",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "sleep"
+    },
+    {
+      "description": "I have come to return habitually to diary through my days in the tower.",
+      "originEventId": "L451",
+      "observedEventId": "L452",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "diary"
+    },
+    {
+      "description": "I have come to return habitually to read through my days in the tower.",
+      "originEventId": "L475",
+      "observedEventId": "L476",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "read"
+    },
+    {
+      "description": "I have come to return habitually to prepare through my days in the tower.",
+      "originEventId": "L485",
+      "observedEventId": "L486",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "prepare"
+    },
+    {
+      "description": "I have come to return habitually to rest through my days in the tower.",
+      "originEventId": "L515",
+      "observedEventId": "L516",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "rest"
+    },
+    {
+      "description": "I have come to return habitually to tend through my days in the tower.",
+      "originEventId": "L746",
+      "observedEventId": "L747",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "tend"
+    },
+    {
+      "description": "I have come to return habitually to preserve through my days in the tower.",
+      "originEventId": "L1443",
+      "observedEventId": "L1444",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "preserve"
+    },
+    {
+      "originTag": "mature:read:30",
+      "kind": "read",
+      "threshold": 30,
+      "description": "I have developed a lasting inclination toward read.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L3563",
+      "observedEventId": "L3564",
+      "bonus": 2.5
+    },
+    {
+      "originTag": "mature:tend:20",
+      "kind": "tend",
+      "threshold": 20,
+      "description": "I have developed a lasting inclination toward tend.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L3618",
+      "observedEventId": "L3619",
+      "bonus": 2.5
+    },
+    {
+      "originTag": "mature:prepare:35",
+      "kind": "prepare",
+      "threshold": 35,
+      "description": "I have developed a lasting inclination toward prepare.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L4023",
+      "observedEventId": "L4024",
+      "bonus": 2.5
+    },
+    {
+      "originTag": "mature:work:180",
+      "kind": "work",
+      "threshold": 180,
+      "description": "I have developed a lasting inclination toward work.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L4037",
+      "observedEventId": "L4038",
+      "bonus": 2.5
+    },
+    {
+      "description": "I have come to return habitually to draw_water through my days in the tower.",
+      "originEventId": "L4837",
+      "observedEventId": "L4838",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "draw_water"
+    },
+    {
+      "description": "I have come to return habitually to trade through my days in the tower.",
+      "originEventId": "L4974",
+      "observedEventId": "L4975",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "trade"
+    },
+    {
+      "description": "I have come to return habitually to converse through my days in the tower.",
+      "originEventId": "L4994",
+      "observedEventId": "L4995",
+      "memoryClass": "lived_runtime_memory",
+      "kind": "converse"
+    },
+    {
+      "originTag": "mature:work:250",
+      "kind": "work",
+      "threshold": 250,
+      "description": "I have developed a lasting inclination toward work.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L5518",
+      "observedEventId": "L5519",
+      "bonus": 2.5
+    },
+    {
+      "originTag": "mature:tend:35",
+      "kind": "tend",
+      "threshold": 35,
+      "description": "I have developed a lasting inclination toward tend.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L5974",
+      "observedEventId": "L5975",
+      "bonus": 2.5
+    },
+    {
+      "originTag": "mature:read:55",
+      "kind": "read",
+      "threshold": 55,
+      "description": "I have developed a lasting inclination toward read.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L6258",
+      "observedEventId": "L6259",
+      "bonus": 2.5
+    },
+    {
+      "originTag": "mature:prepare:55",
+      "kind": "prepare",
+      "threshold": 55,
+      "description": "I have developed a lasting inclination toward prepare.",
+      "memoryClass": "lived_runtime_memory",
+      "originEventId": "L6276",
+      "observedEventId": "L6277",
+      "bonus": 2.5
+    }
+  ],
+  "predictorAccuracy": 0.385,
+  "surplus": {
+    "baselineWaste": null,
+    "actualWaste": 0,
+    "wasteSaved": 0,
+    "wasteReductionRate": null,
+    "preserved": 80,
+    "food": 4,
+    "tea": 14,
+    "fuel": 8,
+    "preservationActions": 41,
+    "tradeActions": 25,
+    "spoilageEvents": 0,
+    "preservedProduced": 205,
+    "freshUsedForPreservation": 246,
+    "preservedConsumed": 0,
+    "expiredFood": 0,
+    "expiredPreserved": 0,
+    "tradeFoodGiven": 125,
+    "tradeFuelReceived": 40,
+    "tradeTeaReceived": 10,
+    "correspondingTradeWorldEvents": true,
+    "conservation": {
+      "allPreservesDebited": true,
+      "allTradesBalanced": true
+    },
+    "receiptCounts": {
+      "harvest": 59,
+      "preservation": 41,
+      "trade": 25,
+      "meal": 229,
+      "spoilage": 0
+    },
+    "socialTradeEvents": [
+      {
+        "id": "L863",
+        "t": 749100,
+        "delta": 4,
+        "trust": 15
+      },
+      {
+        "id": "L877",
+        "t": 751500,
+        "delta": 4,
+        "trust": 22
+      },
+      {
+        "id": "L884",
+        "t": 752900,
+        "delta": 4,
+        "trust": 26
+      },
+      {
+        "id": "L1688",
+        "t": 1445800,
+        "delta": 4,
+        "trust": 34
+      },
+      {
+        "id": "L1701",
+        "t": 1448200,
+        "delta": 4,
+        "trust": 41
+      },
+      {
+        "id": "L1709",
+        "t": 1449600,
+        "delta": 4,
+        "trust": 45
+      },
+      {
+        "id": "L2512",
+        "t": 2146800,
+        "delta": 4,
+        "trust": 58
+      },
+      {
+        "id": "L2519",
+        "t": 2148200,
+        "delta": 4,
+        "trust": 62
+      },
+      {
+        "id": "L2531",
+        "t": 2150600,
+        "delta": 4,
+        "trust": 69
+      },
+      {
+        "id": "L3348",
+        "t": 2849700,
+        "delta": 4,
+        "trust": 81
+      },
+      {
+        "id": "L3360",
+        "t": 2852100,
+        "delta": 4,
+        "trust": 88
+      },
+      {
+        "id": "L3368",
+        "t": 2853500,
+        "delta": 4,
+        "trust": 92
+      },
+      {
+        "id": "L4181",
+        "t": 3551800,
+        "delta": 4,
+        "trust": 102
+      },
+      {
+        "id": "L4972",
+        "t": 4251500,
+        "delta": 4,
+        "trust": 118
+      },
+      {
+        "id": "L4982",
+        "t": 4252900,
+        "delta": 4,
+        "trust": 122
+      },
+      {
+        "id": "L5732",
+        "t": 4950900,
+        "delta": 4,
+        "trust": 138
+      },
+      {
+        "id": "L5744",
+        "t": 4953300,
+        "delta": 4,
+        "trust": 145
+      },
+      {
+        "id": "L6536",
+        "t": 5646300,
+        "delta": 4,
+        "trust": 153
+      },
+      {
+        "id": "L7320",
+        "t": 6347100,
+        "delta": 4,
+        "trust": 169
+      },
+      {
+        "id": "L7327",
+        "t": 6348500,
+        "delta": 4,
+        "trust": 173
+      },
+      {
+        "id": "L8148",
+        "t": 7049700,
+        "delta": 4,
+        "trust": 191
+      },
+      {
+        "id": "L8155",
+        "t": 7051100,
+        "delta": 4,
+        "trust": 195
+      },
+      {
+        "id": "L8923",
+        "t": 7745800,
+        "delta": 4,
+        "trust": 209
+      },
+      {
+        "id": "L9712",
+        "t": 8447100,
+        "delta": 4,
+        "trust": 230
+      },
+      {
+        "id": "L9719",
+        "t": 8448500,
+        "delta": 4,
+        "trust": 234
+      }
+    ]
+  }
+}

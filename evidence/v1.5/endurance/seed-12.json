@@ -1,0 +1,5664 @@
+{
+  "seed": 12,
+  "startTick": 25000,
+  "endTick": 3025000,
+  "targetTick": 3025000,
+  "elapsedWorldDays": 30,
+  "ticksExecuted": 30000,
+  "totalEvents": 3606,
+  "decisions": 476,
+  "activitiesTotal": 475,
+  "activityDistribution": {
+    "eat": 78,
+    "tend": 20,
+    "read": 31,
+    "diary": 31,
+    "study": 3,
+    "prepare": 30,
+    "work": 161,
+    "converse": 8,
+    "rest": 42,
+    "sleep": 39,
+    "preserve": 13,
+    "gather_fuel": 1,
+    "draw_water": 3,
+    "trade": 12,
+    "inspect": 3
+  },
+  "activitiesByWorldDay": {
+    "0": {
+      "activities": {
+        "eat": 2,
+        "tend": 1,
+        "read": 1,
+        "diary": 1,
+        "study": 3,
+        "prepare": 1,
+        "work": 2,
+        "converse": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 1,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "1": {
+      "activities": {
+        "work": 7,
+        "eat": 3,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "tend": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "2": {
+      "activities": {
+        "eat": 3,
+        "work": 5,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "3": {
+      "activities": {
+        "sleep": 2,
+        "work": 5,
+        "diary": 1,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "gather_fuel": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "4": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "5": {
+      "activities": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "preserve": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "6": {
+      "activities": {
+        "work": 6,
+        "diary": 1,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 2,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "7": {
+      "activities": {
+        "eat": 3,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "trade": 3,
+        "converse": 2,
+        "sleep": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 1,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "8": {
+      "activities": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "9": {
+      "activities": {
+        "work": 6,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1,
+        "sleep": 1,
+        "preserve": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "10": {
+      "activities": {
+        "work": 6,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "sleep": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "11": {
+      "activities": {
+        "sleep": 1,
+        "tend": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "12": {
+      "activities": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "13": {
+      "activities": {
+        "preserve": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 3,
+        "inspect": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "14": {
+      "activities": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "tend": 1,
+        "preserve": 1,
+        "eat": 2,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "trade": 3,
+        "converse": 2
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 1,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "15": {
+      "activities": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1,
+        "preserve": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "16": {
+      "activities": {
+        "diary": 1,
+        "work": 7,
+        "read": 1,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 2
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "17": {
+      "activities": {
+        "sleep": 2,
+        "diary": 1,
+        "tend": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "18": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 4,
+        "inspect": 2,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "19": {
+      "activities": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "tend": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "20": {
+      "activities": {
+        "preserve": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "sleep": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "21": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "tend": 1,
+        "trade": 3,
+        "converse": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 1,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "22": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 7,
+        "read": 1,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 2
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "23": {
+      "activities": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "preserve": 1,
+        "work": 5,
+        "eat": 2,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "24": {
+      "activities": {
+        "eat": 3,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "rest": 3,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "25": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 5,
+        "eat": 2,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "26": {
+      "activities": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "27": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "rest": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "28": {
+      "activities": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "trade": 3,
+        "converse": 2,
+        "rest": 1
+      },
+      "visitorArrivals": 1,
+      "visitorConversations": 1,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "29": {
+      "activities": {
+        "tend": 1,
+        "preserve": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 1
+    },
+    "30": {
+      "activities": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 2,
+        "eat": 1,
+        "read": 1
+      },
+      "visitorArrivals": 0,
+      "visitorConversations": 0,
+      "diaryWrites": 1,
+      "preparations": 0
+    }
+  },
+  "elapsedDayWindows": [
+    {
+      "elapsedDay": 1,
+      "completed": 19,
+      "actions": {
+        "eat": 3,
+        "tend": 1,
+        "read": 2,
+        "diary": 2,
+        "study": 3,
+        "prepare": 1,
+        "work": 4,
+        "converse": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "distinctActions": 10,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 2,
+      "completed": 16,
+      "actions": {
+        "work": 7,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "tend": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 3,
+      "completed": 13,
+      "actions": {
+        "work": 4,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 2,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 7,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 4,
+      "completed": 13,
+      "actions": {
+        "work": 4,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "gather_fuel": 1,
+        "eat": 1,
+        "rest": 1,
+        "sleep": 2,
+        "diary": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 5,
+      "completed": 16,
+      "actions": {
+        "eat": 3,
+        "work": 6,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "tend": 1,
+        "diary": 1,
+        "preserve": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 6,
+      "completed": 17,
+      "actions": {
+        "read": 2,
+        "draw_water": 1,
+        "work": 6,
+        "prepare": 1,
+        "eat": 3,
+        "rest": 2,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 7,
+      "completed": 16,
+      "actions": {
+        "work": 6,
+        "prepare": 1,
+        "rest": 2,
+        "eat": 2,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 8,
+      "completed": 16,
+      "actions": {
+        "prepare": 1,
+        "eat": 2,
+        "work": 3,
+        "rest": 1,
+        "trade": 3,
+        "converse": 2,
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 9,
+      "completed": 16,
+      "actions": {
+        "work": 7,
+        "read": 2,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 7,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 10,
+      "completed": 17,
+      "actions": {
+        "work": 6,
+        "prepare": 2,
+        "eat": 3,
+        "rest": 1,
+        "tend": 1,
+        "sleep": 1,
+        "preserve": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 11,
+      "completed": 12,
+      "actions": {
+        "rest": 2,
+        "work": 4,
+        "eat": 2,
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1
+      },
+      "distinctActions": 6,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 12,
+      "completed": 15,
+      "actions": {
+        "eat": 3,
+        "work": 6,
+        "read": 2,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 7,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 13,
+      "completed": 17,
+      "actions": {
+        "work": 7,
+        "prepare": 1,
+        "eat": 3,
+        "rest": 1,
+        "tend": 1,
+        "sleep": 1,
+        "preserve": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 14,
+      "completed": 17,
+      "actions": {
+        "prepare": 1,
+        "rest": 3,
+        "work": 5,
+        "eat": 3,
+        "inspect": 1,
+        "sleep": 1,
+        "diary": 1,
+        "tend": 1,
+        "preserve": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 15,
+      "completed": 16,
+      "actions": {
+        "work": 4,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "trade": 3,
+        "converse": 2,
+        "sleep": 2,
+        "eat": 1,
+        "diary": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 16,
+      "completed": 17,
+      "actions": {
+        "read": 2,
+        "eat": 3,
+        "work": 6,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 17,
+      "completed": 17,
+      "actions": {
+        "work": 6,
+        "prepare": 2,
+        "rest": 2,
+        "eat": 3,
+        "sleep": 1,
+        "diary": 1,
+        "tend": 1,
+        "read": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 18,
+      "completed": 11,
+      "actions": {
+        "work": 4,
+        "rest": 2,
+        "eat": 2,
+        "sleep": 2,
+        "diary": 1
+      },
+      "distinctActions": 5,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 19,
+      "completed": 18,
+      "actions": {
+        "work": 5,
+        "inspect": 2,
+        "read": 2,
+        "eat": 3,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "rest": 1,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 10,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 20,
+      "completed": 17,
+      "actions": {
+        "work": 6,
+        "prepare": 1,
+        "eat": 3,
+        "rest": 2,
+        "sleep": 1,
+        "tend": 1,
+        "preserve": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 21,
+      "completed": 14,
+      "actions": {
+        "work": 5,
+        "prepare": 1,
+        "eat": 3,
+        "rest": 2,
+        "sleep": 2,
+        "diary": 1
+      },
+      "distinctActions": 6,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 22,
+      "completed": 18,
+      "actions": {
+        "work": 6,
+        "read": 2,
+        "prepare": 1,
+        "tend": 1,
+        "trade": 3,
+        "converse": 1,
+        "eat": 2,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 23,
+      "completed": 16,
+      "actions": {
+        "work": 6,
+        "prepare": 1,
+        "rest": 2,
+        "eat": 3,
+        "sleep": 1,
+        "tend": 1,
+        "diary": 1,
+        "preserve": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 24,
+      "completed": 16,
+      "actions": {
+        "read": 2,
+        "draw_water": 1,
+        "work": 6,
+        "prepare": 1,
+        "rest": 2,
+        "eat": 2,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 25,
+      "completed": 14,
+      "actions": {
+        "rest": 3,
+        "work": 3,
+        "prepare": 1,
+        "eat": 2,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 2,
+        "diary": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 26,
+      "completed": 16,
+      "actions": {
+        "work": 6,
+        "eat": 3,
+        "read": 2,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "tend": 1,
+        "diary": 1
+      },
+      "distinctActions": 8,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 27,
+      "completed": 12,
+      "actions": {
+        "work": 5,
+        "prepare": 1,
+        "eat": 2,
+        "rest": 1,
+        "sleep": 2,
+        "diary": 1
+      },
+      "distinctActions": 6,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 28,
+      "completed": 16,
+      "actions": {
+        "eat": 3,
+        "work": 5,
+        "read": 2,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "rest": 1,
+        "sleep": 1,
+        "diary": 1
+      },
+      "distinctActions": 9,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 29,
+      "completed": 21,
+      "actions": {
+        "work": 6,
+        "prepare": 1,
+        "eat": 3,
+        "trade": 3,
+        "converse": 2,
+        "rest": 1,
+        "sleep": 1,
+        "tend": 1,
+        "preserve": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 11,
+      "softlocked": false
+    },
+    {
+      "elapsedDay": 30,
+      "completed": 16,
+      "actions": {
+        "work": 7,
+        "prepare": 1,
+        "rest": 2,
+        "eat": 3,
+        "sleep": 1,
+        "diary": 1,
+        "read": 1
+      },
+      "distinctActions": 7,
+      "softlocked": false
+    }
+  ],
+  "varietyCollapseConsecutiveDays": [],
+  "storesTrajectory": [
+    {
+      "tick": 25000,
+      "food": 7,
+      "water": 9,
+      "fuel": 5,
+      "tea": 4,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 100000,
+      "food": 5,
+      "water": 8,
+      "fuel": 5,
+      "tea": 4,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 200000,
+      "food": 10,
+      "water": 7,
+      "fuel": 5,
+      "tea": 4,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 300000,
+      "food": 7,
+      "water": 7,
+      "fuel": 5,
+      "tea": 4,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 400000,
+      "food": 7,
+      "water": 6,
+      "fuel": 8,
+      "tea": 4,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 500000,
+      "food": 5,
+      "water": 6,
+      "fuel": 8,
+      "tea": 4,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 600000,
+      "food": 4,
+      "water": 11,
+      "fuel": 7,
+      "tea": 4,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 700000,
+      "food": 4,
+      "water": 10,
+      "fuel": 6,
+      "tea": 4,
+      "preserved": 15,
+      "health": 100
+    },
+    {
+      "tick": 800000,
+      "food": 1,
+      "water": 10,
+      "fuel": 10,
+      "tea": 6,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 900000,
+      "food": 7,
+      "water": 9,
+      "fuel": 10,
+      "tea": 6,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 1000000,
+      "food": 6,
+      "water": 8,
+      "fuel": 9,
+      "tea": 6,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1100000,
+      "food": 3,
+      "water": 8,
+      "fuel": 9,
+      "tea": 6,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1200000,
+      "food": 9,
+      "water": 7,
+      "fuel": 9,
+      "tea": 6,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1300000,
+      "food": 14,
+      "water": 6,
+      "fuel": 9,
+      "tea": 6,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1400000,
+      "food": 5,
+      "water": 6,
+      "fuel": 8,
+      "tea": 6,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 1500000,
+      "food": 5,
+      "water": 11,
+      "fuel": 11,
+      "tea": 8,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 1600000,
+      "food": 5,
+      "water": 10,
+      "fuel": 10,
+      "tea": 8,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1700000,
+      "food": 2,
+      "water": 10,
+      "fuel": 10,
+      "tea": 8,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1800000,
+      "food": 7,
+      "water": 9,
+      "fuel": 10,
+      "tea": 8,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 1900000,
+      "food": 7,
+      "water": 8,
+      "fuel": 9,
+      "tea": 8,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 2000000,
+      "food": 12,
+      "water": 7,
+      "fuel": 9,
+      "tea": 8,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 2100000,
+      "food": 3,
+      "water": 7,
+      "fuel": 8,
+      "tea": 8,
+      "preserved": 15,
+      "health": 100
+    },
+    {
+      "tick": 2200000,
+      "food": 9,
+      "water": 6,
+      "fuel": 10,
+      "tea": 12,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 2300000,
+      "food": 6,
+      "water": 6,
+      "fuel": 10,
+      "tea": 12,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 2400000,
+      "food": 6,
+      "water": 11,
+      "fuel": 9,
+      "tea": 12,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 2500000,
+      "food": 5,
+      "water": 10,
+      "fuel": 8,
+      "tea": 12,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 2600000,
+      "food": 3,
+      "water": 10,
+      "fuel": 8,
+      "tea": 12,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 2700000,
+      "food": 8,
+      "water": 9,
+      "fuel": 8,
+      "tea": 12,
+      "preserved": 10,
+      "health": 100
+    },
+    {
+      "tick": 2800000,
+      "food": 8,
+      "water": 8,
+      "fuel": 7,
+      "tea": 12,
+      "preserved": 15,
+      "health": 100
+    },
+    {
+      "tick": 2900000,
+      "food": 5,
+      "water": 8,
+      "fuel": 11,
+      "tea": 14,
+      "preserved": 0,
+      "health": 100
+    },
+    {
+      "tick": 3000000,
+      "food": 4,
+      "water": 7,
+      "fuel": 10,
+      "tea": 14,
+      "preserved": 5,
+      "health": 100
+    },
+    {
+      "tick": 3025000,
+      "food": 3,
+      "water": 7,
+      "fuel": 10,
+      "tea": 14,
+      "preserved": 5,
+      "health": 100
+    }
+  ],
+  "finalStores": {
+    "food": 3,
+    "water": 7,
+    "fuel": 10,
+    "tea": 14,
+    "preserved": 5
+  },
+  "finalHealth": 100,
+  "finalNeeds": {
+    "energy": 46.24,
+    "hunger": 7.32,
+    "comfort": 96.73,
+    "stimulation": 99.91,
+    "company": 58.84
+  },
+  "productionReceipts": [
+    {
+      "eventId": "L15",
+      "tick": 30300,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 170300
+    },
+    {
+      "eventId": "L226",
+      "tick": 199500,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 2,
+      "after": 10,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L227",
+      "tick": 199500,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 339500
+    },
+    {
+      "eventId": "L382",
+      "tick": 343300,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 6,
+      "after": 14,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L383",
+      "tick": 343300,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 483300
+    },
+    {
+      "eventId": "L406",
+      "tick": 357600,
+      "type": "production",
+      "kind": "gather_fuel",
+      "amount": null,
+      "stock": "fuel",
+      "delta": 4,
+      "before": 4,
+      "after": 8,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L546",
+      "tick": 506000,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 5,
+      "after": 13,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L547",
+      "tick": 506000,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 646000
+    },
+    {
+      "eventId": "L591",
+      "tick": 528000,
+      "type": "production",
+      "kind": "draw_water",
+      "amount": null,
+      "stock": "water",
+      "delta": 6,
+      "before": 5,
+      "after": 11,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L750",
+      "tick": 657800,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 2,
+      "after": 10,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L751",
+      "tick": 657800,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 797800
+    },
+    {
+      "eventId": "L943",
+      "tick": 817300,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 1,
+      "after": 9,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L944",
+      "tick": 817300,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 957300
+    },
+    {
+      "eventId": "L1144",
+      "tick": 967500,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 4,
+      "after": 12,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L1145",
+      "tick": 967500,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1107500
+    },
+    {
+      "eventId": "L1287",
+      "tick": 1121400,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 3,
+      "after": 11,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L1288",
+      "tick": 1121400,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1261400
+    },
+    {
+      "eventId": "L1477",
+      "tick": 1270400,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 6,
+      "after": 14,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L1478",
+      "tick": 1270400,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1410400
+    },
+    {
+      "eventId": "L1644",
+      "tick": 1415400,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 5,
+      "after": 13,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L1645",
+      "tick": 1415400,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1555400
+    },
+    {
+      "eventId": "L1680",
+      "tick": 1434400,
+      "type": "production",
+      "kind": "draw_water",
+      "amount": null,
+      "stock": "water",
+      "delta": 6,
+      "before": 5,
+      "after": 11,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L1855",
+      "tick": 1561600,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 4,
+      "after": 12,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L1856",
+      "tick": 1561600,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1701600
+    },
+    {
+      "eventId": "L2015",
+      "tick": 1707100,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 2,
+      "after": 10,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2016",
+      "tick": 1707100,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1847100
+    },
+    {
+      "eventId": "L2188",
+      "tick": 1851700,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 6,
+      "after": 14,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2189",
+      "tick": 1851700,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 1991700
+    },
+    {
+      "eventId": "L2349",
+      "tick": 1999700,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 4,
+      "after": 12,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2350",
+      "tick": 1999700,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 2139700
+    },
+    {
+      "eventId": "L2537",
+      "tick": 2151500,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 2,
+      "after": 10,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2538",
+      "tick": 2151500,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 2291500
+    },
+    {
+      "eventId": "L2732",
+      "tick": 2307200,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 6,
+      "after": 14,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2733",
+      "tick": 2307200,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 2447200
+    },
+    {
+      "eventId": "L2779",
+      "tick": 2329200,
+      "type": "production",
+      "kind": "draw_water",
+      "amount": null,
+      "stock": "water",
+      "delta": 6,
+      "before": 5,
+      "after": 11,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2937",
+      "tick": 2454100,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 4,
+      "after": 12,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L2938",
+      "tick": 2454100,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 2594100
+    },
+    {
+      "eventId": "L3077",
+      "tick": 2606200,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 3,
+      "after": 11,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L3078",
+      "tick": 2606200,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 2746200
+    },
+    {
+      "eventId": "L3240",
+      "tick": 2753000,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 7,
+      "after": 15,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L3241",
+      "tick": 2753000,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 2893000
+    },
+    {
+      "eventId": "L3442",
+      "tick": 2902900,
+      "type": "harvest",
+      "kind": null,
+      "amount": 8,
+      "stock": null,
+      "delta": null,
+      "before": 5,
+      "after": 13,
+      "ripeAt": null
+    },
+    {
+      "eventId": "L3443",
+      "tick": 2902900,
+      "type": "planted",
+      "kind": null,
+      "amount": null,
+      "stock": null,
+      "delta": null,
+      "before": null,
+      "after": null,
+      "ripeAt": 3042900
+    }
+  ],
+  "harvests": 19,
+  "harvestFoodProduced": 152,
+  "waterProduced": 18,
+  "fuelProduced": 4,
+  "foodConsumption": 78,
+  "diaryEntries": 31,
+  "folioReads": 31,
+  "visitorArrivals": 5,
+  "visitorWitnessedConversations": 5,
+  "trustEvents": [
+    {
+      "id": "L56",
+      "tick": 44200,
+      "kind": "greeting",
+      "delta": 2,
+      "trust": 2
+    },
+    {
+      "id": "L64",
+      "tick": 51800,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 5
+    },
+    {
+      "id": "L863",
+      "tick": 744200,
+      "kind": "greeting",
+      "delta": 2,
+      "trust": 7
+    },
+    {
+      "id": "L865",
+      "tick": 744200,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 9
+    },
+    {
+      "id": "L873",
+      "tick": 746500,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 11
+    },
+    {
+      "id": "L877",
+      "tick": 747700,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 15
+    },
+    {
+      "id": "L883",
+      "tick": 748700,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 18
+    },
+    {
+      "id": "L884",
+      "tick": 748700,
+      "kind": "funny",
+      "delta": 0,
+      "trust": 18
+    },
+    {
+      "id": "L890",
+      "tick": 750100,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 22
+    },
+    {
+      "id": "L898",
+      "tick": 751500,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 26
+    },
+    {
+      "id": "L904",
+      "tick": 752500,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 29
+    },
+    {
+      "id": "L1703",
+      "tick": 1444200,
+      "kind": "greeting",
+      "delta": 2,
+      "trust": 31
+    },
+    {
+      "id": "L1705",
+      "tick": 1444200,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 33
+    },
+    {
+      "id": "L1714",
+      "tick": 1444900,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 35
+    },
+    {
+      "id": "L1717",
+      "tick": 1446100,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 39
+    },
+    {
+      "id": "L1723",
+      "tick": 1447100,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 42
+    },
+    {
+      "id": "L1729",
+      "tick": 1448500,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 46
+    },
+    {
+      "id": "L1739",
+      "tick": 1449900,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 50
+    },
+    {
+      "id": "L1745",
+      "tick": 1450900,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 53
+    },
+    {
+      "id": "L2522",
+      "tick": 2144200,
+      "kind": "greeting",
+      "delta": 2,
+      "trust": 55
+    },
+    {
+      "id": "L2524",
+      "tick": 2144200,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 57
+    },
+    {
+      "id": "L2544",
+      "tick": 2151700,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 59
+    },
+    {
+      "id": "L2547",
+      "tick": 2152900,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 63
+    },
+    {
+      "id": "L2554",
+      "tick": 2154300,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 67
+    },
+    {
+      "id": "L2560",
+      "tick": 2155300,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 70
+    },
+    {
+      "id": "L2567",
+      "tick": 2156700,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 74
+    },
+    {
+      "id": "L3357",
+      "tick": 2844200,
+      "kind": "greeting",
+      "delta": 2,
+      "trust": 76
+    },
+    {
+      "id": "L3359",
+      "tick": 2844200,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 78
+    },
+    {
+      "id": "L3367",
+      "tick": 2846000,
+      "kind": "negotiation",
+      "delta": 2,
+      "trust": 80
+    },
+    {
+      "id": "L3370",
+      "tick": 2847200,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 84
+    },
+    {
+      "id": "L3376",
+      "tick": 2848200,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 87
+    },
+    {
+      "id": "L3383",
+      "tick": 2849600,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 91
+    },
+    {
+      "id": "L3390",
+      "tick": 2851000,
+      "kind": "trade",
+      "delta": 4,
+      "trust": 95
+    },
+    {
+      "id": "L3402",
+      "tick": 2859500,
+      "kind": "conversation",
+      "delta": 3,
+      "trust": 98
+    }
+  ],
+  "customObservations": 15,
+  "humorMaterial": 1,
+  "commitmentsOpened": 34,
+  "commitmentsKept": 33,
+  "commitmentsBroken": 0,
+  "commitmentsReleased": 0,
+  "commitmentEvents": [
+    {
+      "type": "commitment_progress",
+      "id": "C1",
+      "tick": 40300
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C1",
+      "tick": 42700
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C2",
+      "tick": 100000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C2",
+      "tick": 131200
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C2",
+      "tick": 133000
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C3",
+      "tick": 200000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C3",
+      "tick": 232000
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C3",
+      "tick": 233800
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C4",
+      "tick": 300000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C4",
+      "tick": 337300
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C4",
+      "tick": 339700
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C5",
+      "tick": 400000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C5",
+      "tick": 437400
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C5",
+      "tick": 439500
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C6",
+      "tick": 500000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C6",
+      "tick": 536500
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C6",
+      "tick": 538900
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C7",
+      "tick": 600000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C7",
+      "tick": 629600
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C7",
+      "tick": 632000
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C8",
+      "tick": 700000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C8",
+      "tick": 722900
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C8",
+      "tick": 725300
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C9",
+      "tick": 800000
+    },
+    {
+      "type": "commitment_opened",
+      "id": "MONTH-FOLIO",
+      "tick": 800000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "MONTH-FOLIO",
+      "tick": 827600
+    },
+    {
+      "type": "commitment_progress",
+      "id": "MONTH-FOLIO",
+      "tick": 831600
+    },
+    {
+      "type": "commitment_interrupted",
+      "id": "MONTH-FOLIO",
+      "tick": 831700
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C9",
+      "tick": 841200
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C9",
+      "tick": 843600
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C10",
+      "tick": 900000
+    },
+    {
+      "type": "commitment_resumed",
+      "id": "MONTH-FOLIO",
+      "tick": 910700
+    },
+    {
+      "type": "commitment_kept",
+      "id": "MONTH-FOLIO",
+      "tick": 914700
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C10",
+      "tick": 930100
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C10",
+      "tick": 932500
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C11",
+      "tick": 1000000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C11",
+      "tick": 1020800
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C11",
+      "tick": 1023200
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C12",
+      "tick": 1100000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C12",
+      "tick": 1137500
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C12",
+      "tick": 1139600
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C13",
+      "tick": 1200000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C13",
+      "tick": 1233000
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C13",
+      "tick": 1235400
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C14",
+      "tick": 1300000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C14",
+      "tick": 1323700
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C14",
+      "tick": 1326100
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C15",
+      "tick": 1400000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C15",
+      "tick": 1434500
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C15",
+      "tick": 1436600
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C16",
+      "tick": 1500000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C16",
+      "tick": 1535100
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C16",
+      "tick": 1537500
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C17",
+      "tick": 1600000
+    },
+    {
+      "type": "commitment_opened",
+      "id": "MONTH-INSTRUMENT",
+      "tick": 1600000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C17",
+      "tick": 1631000
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C17",
+      "tick": 1633400
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C18",
+      "tick": 1700000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C18",
+      "tick": 1721400
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C18",
+      "tick": 1723500
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C19",
+      "tick": 1800000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "MONTH-INSTRUMENT",
+      "tick": 1828100
+    },
+    {
+      "type": "commitment_progress",
+      "id": "MONTH-INSTRUMENT",
+      "tick": 1830000
+    },
+    {
+      "type": "commitment_interrupted",
+      "id": "MONTH-INSTRUMENT",
+      "tick": 1830100
+    },
+    {
+      "type": "commitment_resumed",
+      "id": "MONTH-INSTRUMENT",
+      "tick": 1843700
+    },
+    {
+      "type": "commitment_kept",
+      "id": "MONTH-INSTRUMENT",
+      "tick": 1845600
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C19",
+      "tick": 1845700
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C19",
+      "tick": 1848100
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C20",
+      "tick": 1900000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C20",
+      "tick": 1933500
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C20",
+      "tick": 1935900
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C21",
+      "tick": 2000000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C21",
+      "tick": 2034200
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C21",
+      "tick": 2036600
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C22",
+      "tick": 2100000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C22",
+      "tick": 2137100
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C22",
+      "tick": 2139200
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C23",
+      "tick": 2200000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C23",
+      "tick": 2231700
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C23",
+      "tick": 2234100
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C24",
+      "tick": 2300000
+    },
+    {
+      "type": "commitment_opened",
+      "id": "MONTH-PROVISIONS",
+      "tick": 2300000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "MONTH-PROVISIONS",
+      "tick": 2303100
+    },
+    {
+      "type": "commitment_progress",
+      "id": "MONTH-PROVISIONS",
+      "tick": 2307200
+    },
+    {
+      "type": "commitment_interrupted",
+      "id": "MONTH-PROVISIONS",
+      "tick": 2307300
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C24",
+      "tick": 2337700
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C24",
+      "tick": 2340100
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C25",
+      "tick": 2400000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C25",
+      "tick": 2434600
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C25",
+      "tick": 2437000
+    },
+    {
+      "type": "commitment_resumed",
+      "id": "MONTH-PROVISIONS",
+      "tick": 2450000
+    },
+    {
+      "type": "commitment_kept",
+      "id": "MONTH-PROVISIONS",
+      "tick": 2454100
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C26",
+      "tick": 2500000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C26",
+      "tick": 2537600
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C26",
+      "tick": 2539700
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C27",
+      "tick": 2600000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C27",
+      "tick": 2630100
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C27",
+      "tick": 2632500
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C28",
+      "tick": 2700000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C28",
+      "tick": 2738600
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C28",
+      "tick": 2740700
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C29",
+      "tick": 2800000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C29",
+      "tick": 2834200
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C29",
+      "tick": 2836600
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C30",
+      "tick": 2900000
+    },
+    {
+      "type": "commitment_progress",
+      "id": "C30",
+      "tick": 2929900
+    },
+    {
+      "type": "commitment_kept",
+      "id": "C30",
+      "tick": 2932300
+    },
+    {
+      "type": "commitment_opened",
+      "id": "C31",
+      "tick": 3000000
+    }
+  ],
+  "concurrentCommitmentPeak": 2,
+  "monthCommitments": [
+    {
+      "id": "MONTH-FOLIO",
+      "title": "Consult folios in two sessions before the tenth day closes",
+      "action": "read",
+      "status": "kept",
+      "opened": 8,
+      "deadline": 1065000,
+      "sourceAction": "read",
+      "keptAt": 914700,
+      "brokenAt": null,
+      "stockTarget": null,
+      "progressEvents": [
+        "L963",
+        "L967"
+      ],
+      "interrupts": [
+        "L972"
+      ],
+      "resumes": [
+        "L1066"
+      ]
+    },
+    {
+      "id": "MONTH-INSTRUMENT",
+      "title": "Inspect the instrument in two sessions before the eighteenth day closes",
+      "action": "inspect",
+      "status": "kept",
+      "opened": 16,
+      "deadline": 1865000,
+      "sourceAction": "inspect",
+      "keptAt": 1845600,
+      "brokenAt": null,
+      "stockTarget": null,
+      "progressEvents": [
+        "L2141",
+        "L2142"
+      ],
+      "interrupts": [
+        "L2147"
+      ],
+      "resumes": [
+        "L2170"
+      ]
+    },
+    {
+      "id": "MONTH-PROVISIONS",
+      "title": "Tend two sessions and store at least twelve food before the twenty-fifth day closes",
+      "action": "tend",
+      "status": "kept",
+      "opened": 23,
+      "deadline": 2565000,
+      "sourceAction": "tend",
+      "keptAt": 2454100,
+      "brokenAt": null,
+      "stockTarget": {
+        "item": "food",
+        "minimum": 12
+      },
+      "progressEvents": [
+        "L2728",
+        "L2734"
+      ],
+      "interrupts": [
+        "L2739"
+      ],
+      "resumes": [
+        "L2933"
+      ]
+    }
+  ],
+  "development": {
+    "day1": {
+      "tick": 125000,
+      "skills": {
+        "science": 6,
+        "household": 1
+      },
+      "habits": {
+        "eat": 3,
+        "tend": 1,
+        "read": 2,
+        "diary": 2,
+        "study": 3,
+        "prepare": 1,
+        "work": 4,
+        "converse": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "quirks": [
+        {
+          "description": "This account bears on my private intellectual preferences.",
+          "originEventId": "E09-001",
+          "observedEventId": "L23"
+        }
+      ]
+    },
+    "day30": {
+      "tick": 3025000,
+      "skills": {
+        "science": 163,
+        "household": 14
+      },
+      "habits": {
+        "eat": 78,
+        "tend": 20,
+        "read": 31,
+        "diary": 31,
+        "study": 3,
+        "prepare": 30,
+        "work": 161,
+        "converse": 8,
+        "rest": 42,
+        "sleep": 39,
+        "preserve": 13,
+        "gather_fuel": 1,
+        "draw_water": 3,
+        "trade": 12,
+        "inspect": 3
+      },
+      "quirks": [
+        {
+          "description": "This account bears on my private intellectual preferences.",
+          "originEventId": "E09-001",
+          "observedEventId": "L23"
+        },
+        {
+          "description": "I have come to return habitually to work through my days in the tower.",
+          "originEventId": "L153",
+          "observedEventId": "L154",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "work"
+        },
+        {
+          "description": "I have come to return habitually to eat through my days in the tower.",
+          "originEventId": "L197",
+          "observedEventId": "L198",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "eat"
+        },
+        {
+          "description": "I have come to return habitually to sleep through my days in the tower.",
+          "originEventId": "L436",
+          "observedEventId": "L437",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "sleep"
+        },
+        {
+          "description": "I have come to return habitually to diary through my days in the tower.",
+          "originEventId": "L451",
+          "observedEventId": "L452",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "diary"
+        },
+        {
+          "description": "I have come to return habitually to read through my days in the tower.",
+          "originEventId": "L475",
+          "observedEventId": "L476",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "read"
+        },
+        {
+          "description": "I have come to return habitually to prepare through my days in the tower.",
+          "originEventId": "L484",
+          "observedEventId": "L485",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "prepare"
+        },
+        {
+          "description": "I have come to return habitually to rest through my days in the tower.",
+          "originEventId": "L515",
+          "observedEventId": "L516",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "rest"
+        },
+        {
+          "description": "I have come to return habitually to tend through my days in the tower.",
+          "originEventId": "L752",
+          "observedEventId": "L753",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "tend"
+        },
+        {
+          "description": "I have come to return habitually to preserve through my days in the tower.",
+          "originEventId": "L1494",
+          "observedEventId": "L1495",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "preserve"
+        },
+        {
+          "description": "I have come to return habitually to trade through my days in the tower.",
+          "originEventId": "L1731",
+          "observedEventId": "L1732",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "trade"
+        },
+        {
+          "description": "I have come to return habitually to converse through my days in the tower.",
+          "originEventId": "L1746",
+          "observedEventId": "L1747",
+          "memoryClass": "lived_runtime_memory",
+          "kind": "converse"
+        },
+        {
+          "originTag": "mature:read:30",
+          "kind": "read",
+          "threshold": 30,
+          "description": "I have developed a lasting inclination toward read.",
+          "memoryClass": "lived_runtime_memory",
+          "originEventId": "L3594",
+          "observedEventId": "L3595",
+          "bonus": 2.5
+        }
+      ]
+    },
+    "skillDelta": {
+      "science": 157,
+      "household": 13
+    },
+    "allLivedQuirks": [
+      {
+        "description": "I have come to return habitually to work through my days in the tower.",
+        "originEventId": "L153",
+        "observedEventId": "L154",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "work",
+        "sourceEvent": {
+          "id": "L153",
+          "t": 129400,
+          "day": 1,
+          "type": "habit_formed",
+          "room": "laboratory",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "work",
+          "cue": "bench@laboratory",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to eat through my days in the tower.",
+        "originEventId": "L197",
+        "observedEventId": "L198",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "eat",
+        "sourceEvent": {
+          "id": "L197",
+          "t": 154000,
+          "day": 1,
+          "type": "habit_formed",
+          "room": "kitchen",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "eat",
+          "cue": "stores@kitchen",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to sleep through my days in the tower.",
+        "originEventId": "L436",
+        "observedEventId": "L437",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "sleep",
+        "sourceEvent": {
+          "id": "L436",
+          "t": 396500,
+          "day": 3,
+          "type": "habit_formed",
+          "room": "bedchamber",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "sleep",
+          "cue": "bed@bedchamber",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to diary through my days in the tower.",
+        "originEventId": "L451",
+        "observedEventId": "L452",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "diary",
+        "sourceEvent": {
+          "id": "L451",
+          "t": 423700,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "library",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "diary",
+          "cue": "notebook@library",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to read through my days in the tower.",
+        "originEventId": "L475",
+        "observedEventId": "L476",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "read",
+        "sourceEvent": {
+          "id": "L475",
+          "t": 437300,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "library",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "read",
+          "cue": "folios@library",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to prepare through my days in the tower.",
+        "originEventId": "L484",
+        "observedEventId": "L485",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "prepare",
+        "sourceEvent": {
+          "id": "L484",
+          "t": 439500,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "kitchen",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "prepare",
+          "cue": "hearth@kitchen",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to rest through my days in the tower.",
+        "originEventId": "L515",
+        "observedEventId": "L516",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "rest",
+        "sourceEvent": {
+          "id": "L515",
+          "t": 460500,
+          "day": 4,
+          "type": "habit_formed",
+          "room": "bedchamber",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "rest",
+          "cue": "bed@bedchamber",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to tend through my days in the tower.",
+        "originEventId": "L752",
+        "observedEventId": "L753",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "tend",
+        "sourceEvent": {
+          "id": "L752",
+          "t": 657800,
+          "day": 6,
+          "type": "habit_formed",
+          "room": "garden",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "tend",
+          "cue": "plot@garden",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to preserve through my days in the tower.",
+        "originEventId": "L1494",
+        "observedEventId": "L1495",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "preserve",
+        "sourceEvent": {
+          "id": "L1494",
+          "t": 1300100,
+          "day": 13,
+          "type": "habit_formed",
+          "room": "kitchen",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "preserve",
+          "cue": "stove@kitchen",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to trade through my days in the tower.",
+        "originEventId": "L1731",
+        "observedEventId": "L1732",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "trade",
+        "sourceEvent": {
+          "id": "L1731",
+          "t": 1448500,
+          "day": 14,
+          "type": "habit_formed",
+          "room": "laboratory",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "trade",
+          "cue": "visitor_01@laboratory",
+          "count": 5
+        }
+      },
+      {
+        "description": "I have come to return habitually to converse through my days in the tower.",
+        "originEventId": "L1746",
+        "observedEventId": "L1747",
+        "memoryClass": "lived_runtime_memory",
+        "kind": "converse",
+        "sourceEvent": {
+          "id": "L1746",
+          "t": 1450900,
+          "day": 14,
+          "type": "habit_formed",
+          "room": "laboratory",
+          "description": "I had begun to repeat that action without fresh deliberation.",
+          "provenance": "lived_runtime_memory",
+          "kind": "converse",
+          "cue": "visitor_01@laboratory",
+          "count": 5
+        }
+      },
+      {
+        "originTag": "mature:read:30",
+        "kind": "read",
+        "threshold": 30,
+        "description": "I have developed a lasting inclination toward read.",
+        "memoryClass": "lived_runtime_memory",
+        "originEventId": "L3594",
+        "observedEventId": "L3595",
+        "bonus": 2.5,
+        "sourceEvent": {
+          "id": "L3594",
+          "t": 3016900,
+          "day": 30,
+          "type": "completed",
+          "room": "library",
+          "description": "I consulted folio E09-001: The Magistrate's Waiting Room. Its account belongs to my earlier life, not to this morning.",
+          "provenance": "lived_runtime_memory",
+          "kind": "read",
+          "controller": "autonomous",
+          "object": "folios"
+        }
+      }
+    ],
+    "allInheritedQuirks": [
+      {
+        "description": "This account bears on my private intellectual preferences.",
+        "originEventId": "E09-001",
+        "observedEventId": "L23",
+        "sourceEvent": null
+      }
+    ],
+    "predictorWeek1": {
+      "count": 96,
+      "hits": 26,
+      "rate": 0.2708333333333333
+    },
+    "predictorWeek4": {
+      "count": 94,
+      "hits": 33,
+      "rate": 0.35106382978723405
+    },
+    "week1ActivityDistribution": {
+      "eat": 18,
+      "tend": 5,
+      "read": 8,
+      "diary": 8,
+      "study": 3,
+      "prepare": 7,
+      "work": 37,
+      "converse": 1,
+      "rest": 9,
+      "sleep": 9,
+      "preserve": 3,
+      "gather_fuel": 1,
+      "draw_water": 1
+    },
+    "week4ActivityDistribution": {
+      "work": 37,
+      "read": 8,
+      "prepare": 7,
+      "tend": 5,
+      "trade": 3,
+      "converse": 1,
+      "eat": 17,
+      "sleep": 9,
+      "diary": 7,
+      "rest": 10,
+      "preserve": 3,
+      "draw_water": 1
+    },
+    "habitFormations": [
+      {
+        "id": "L153",
+        "kind": "work",
+        "tick": 129400,
+        "day": 1
+      },
+      {
+        "id": "L197",
+        "kind": "eat",
+        "tick": 154000,
+        "day": 1
+      },
+      {
+        "id": "L436",
+        "kind": "sleep",
+        "tick": 396500,
+        "day": 3
+      },
+      {
+        "id": "L451",
+        "kind": "diary",
+        "tick": 423700,
+        "day": 4
+      },
+      {
+        "id": "L475",
+        "kind": "read",
+        "tick": 437300,
+        "day": 4
+      },
+      {
+        "id": "L484",
+        "kind": "prepare",
+        "tick": 439500,
+        "day": 4
+      },
+      {
+        "id": "L515",
+        "kind": "rest",
+        "tick": 460500,
+        "day": 4
+      },
+      {
+        "id": "L752",
+        "kind": "tend",
+        "tick": 657800,
+        "day": 6
+      },
+      {
+        "id": "L1494",
+        "kind": "preserve",
+        "tick": 1300100,
+        "day": 13
+      },
+      {
+        "id": "L1731",
+        "kind": "trade",
+        "tick": 1448500,
+        "day": 14
+      },
+      {
+        "id": "L1746",
+        "kind": "converse",
+        "tick": 1450900,
+        "day": 14
+      }
+    ],
+    "habitCountsDay1": {
+      "eat": 3,
+      "tend": 1,
+      "read": 2,
+      "diary": 2,
+      "study": 3,
+      "prepare": 1,
+      "work": 4,
+      "converse": 1,
+      "rest": 1,
+      "sleep": 1
+    },
+    "habitCountsDay30": {
+      "eat": 78,
+      "tend": 20,
+      "read": 31,
+      "diary": 31,
+      "study": 3,
+      "prepare": 30,
+      "work": 161,
+      "converse": 8,
+      "rest": 42,
+      "sleep": 39,
+      "preserve": 13,
+      "gather_fuel": 1,
+      "draw_water": 3,
+      "trade": 12,
+      "inspect": 3
+    }
+  },
+  "monthDynamics": {
+    "dailyActivityDistribution": {
+      "0": {
+        "eat": 2,
+        "tend": 1,
+        "read": 1,
+        "diary": 1,
+        "study": 3,
+        "prepare": 1,
+        "work": 2,
+        "converse": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "1": {
+        "work": 7,
+        "eat": 3,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1,
+        "tend": 1
+      },
+      "2": {
+        "eat": 3,
+        "work": 5,
+        "diary": 1,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "sleep": 1
+      },
+      "3": {
+        "sleep": 2,
+        "work": 5,
+        "diary": 1,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "gather_fuel": 1,
+        "rest": 1
+      },
+      "4": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "5": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "preserve": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "6": {
+        "work": 6,
+        "diary": 1,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 2,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 1
+      },
+      "7": {
+        "eat": 3,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "trade": 3,
+        "converse": 2,
+        "sleep": 1
+      },
+      "8": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 1
+      },
+      "9": {
+        "work": 6,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1,
+        "sleep": 1,
+        "preserve": 1
+      },
+      "10": {
+        "work": 6,
+        "diary": 1,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "sleep": 1
+      },
+      "11": {
+        "sleep": 1,
+        "tend": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 5,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "12": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1
+      },
+      "13": {
+        "preserve": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 3,
+        "inspect": 1
+      },
+      "14": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 4,
+        "tend": 1,
+        "preserve": 1,
+        "eat": 2,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "trade": 3,
+        "converse": 2
+      },
+      "15": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "rest": 1,
+        "tend": 1,
+        "preserve": 1
+      },
+      "16": {
+        "diary": 1,
+        "work": 7,
+        "read": 1,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 2
+      },
+      "17": {
+        "sleep": 2,
+        "diary": 1,
+        "tend": 1,
+        "work": 5,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "18": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 4,
+        "inspect": 2,
+        "read": 1,
+        "eat": 2,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "rest": 1
+      },
+      "19": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "tend": 1
+      },
+      "20": {
+        "preserve": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2,
+        "sleep": 1
+      },
+      "21": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "tend": 1,
+        "trade": 3,
+        "converse": 1
+      },
+      "22": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 7,
+        "read": 1,
+        "eat": 3,
+        "prepare": 1,
+        "rest": 2
+      },
+      "23": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "preserve": 1,
+        "work": 5,
+        "eat": 2,
+        "read": 1,
+        "draw_water": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "24": {
+        "eat": 3,
+        "diary": 1,
+        "work": 5,
+        "read": 1,
+        "rest": 3,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "sleep": 1
+      },
+      "25": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 5,
+        "eat": 2,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "26": {
+        "sleep": 2,
+        "tend": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 1
+      },
+      "27": {
+        "sleep": 1,
+        "diary": 1,
+        "eat": 2,
+        "work": 4,
+        "read": 1,
+        "prepare": 1,
+        "tend": 1,
+        "preserve": 1,
+        "rest": 1
+      },
+      "28": {
+        "sleep": 2,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "trade": 3,
+        "converse": 2,
+        "rest": 1
+      },
+      "29": {
+        "tend": 1,
+        "preserve": 1,
+        "diary": 1,
+        "work": 6,
+        "eat": 3,
+        "read": 1,
+        "prepare": 1,
+        "rest": 2
+      },
+      "30": {
+        "sleep": 1,
+        "diary": 1,
+        "work": 2,
+        "eat": 1,
+        "read": 1
+      }
+    },
+    "healthTrajectory": [
+      {
+        "tick": 25000,
+        "health": 100
+      },
+      {
+        "tick": 100000,
+        "health": 100
+      },
+      {
+        "tick": 200000,
+        "health": 100
+      },
+      {
+        "tick": 300000,
+        "health": 100
+      },
+      {
+        "tick": 400000,
+        "health": 100
+      },
+      {
+        "tick": 500000,
+        "health": 100
+      },
+      {
+        "tick": 600000,
+        "health": 100
+      },
+      {
+        "tick": 700000,
+        "health": 100
+      },
+      {
+        "tick": 800000,
+        "health": 100
+      },
+      {
+        "tick": 900000,
+        "health": 100
+      },
+      {
+        "tick": 1000000,
+        "health": 100
+      },
+      {
+        "tick": 1100000,
+        "health": 100
+      },
+      {
+        "tick": 1200000,
+        "health": 100
+      },
+      {
+        "tick": 1300000,
+        "health": 100
+      },
+      {
+        "tick": 1400000,
+        "health": 100
+      },
+      {
+        "tick": 1500000,
+        "health": 100
+      },
+      {
+        "tick": 1600000,
+        "health": 100
+      },
+      {
+        "tick": 1700000,
+        "health": 100
+      },
+      {
+        "tick": 1800000,
+        "health": 100
+      },
+      {
+        "tick": 1900000,
+        "health": 100
+      },
+      {
+        "tick": 2000000,
+        "health": 100
+      },
+      {
+        "tick": 2100000,
+        "health": 100
+      },
+      {
+        "tick": 2200000,
+        "health": 100
+      },
+      {
+        "tick": 2300000,
+        "health": 100
+      },
+      {
+        "tick": 2400000,
+        "health": 100
+      },
+      {
+        "tick": 2500000,
+        "health": 100
+      },
+      {
+        "tick": 2600000,
+        "health": 100
+      },
+      {
+        "tick": 2700000,
+        "health": 100
+      },
+      {
+        "tick": 2800000,
+        "health": 100
+      },
+      {
+        "tick": 2900000,
+        "health": 100
+      },
+      {
+        "tick": 3000000,
+        "health": 100
+      }
+    ],
+    "harvestCapWasteUnits": 0,
+    "trustTrajectory": [
+      {
+        "id": "L56",
+        "tick": 44200,
+        "kind": "greeting",
+        "trust": 2,
+        "delta": 2
+      },
+      {
+        "id": "L64",
+        "tick": 51800,
+        "kind": "conversation",
+        "trust": 5,
+        "delta": 3
+      },
+      {
+        "id": "L863",
+        "tick": 744200,
+        "kind": "greeting",
+        "trust": 7,
+        "delta": 2
+      },
+      {
+        "id": "L865",
+        "tick": 744200,
+        "kind": "negotiation",
+        "trust": 9,
+        "delta": 2
+      },
+      {
+        "id": "L873",
+        "tick": 746500,
+        "kind": "negotiation",
+        "trust": 11,
+        "delta": 2
+      },
+      {
+        "id": "L877",
+        "tick": 747700,
+        "kind": "trade",
+        "trust": 15,
+        "delta": 4
+      },
+      {
+        "id": "L883",
+        "tick": 748700,
+        "kind": "conversation",
+        "trust": 18,
+        "delta": 3
+      },
+      {
+        "id": "L884",
+        "tick": 748700,
+        "kind": "funny",
+        "trust": 18,
+        "delta": 0
+      },
+      {
+        "id": "L890",
+        "tick": 750100,
+        "kind": "trade",
+        "trust": 22,
+        "delta": 4
+      },
+      {
+        "id": "L898",
+        "tick": 751500,
+        "kind": "trade",
+        "trust": 26,
+        "delta": 4
+      },
+      {
+        "id": "L904",
+        "tick": 752500,
+        "kind": "conversation",
+        "trust": 29,
+        "delta": 3
+      },
+      {
+        "id": "L1703",
+        "tick": 1444200,
+        "kind": "greeting",
+        "trust": 31,
+        "delta": 2
+      },
+      {
+        "id": "L1705",
+        "tick": 1444200,
+        "kind": "negotiation",
+        "trust": 33,
+        "delta": 2
+      },
+      {
+        "id": "L1714",
+        "tick": 1444900,
+        "kind": "negotiation",
+        "trust": 35,
+        "delta": 2
+      },
+      {
+        "id": "L1717",
+        "tick": 1446100,
+        "kind": "trade",
+        "trust": 39,
+        "delta": 4
+      },
+      {
+        "id": "L1723",
+        "tick": 1447100,
+        "kind": "conversation",
+        "trust": 42,
+        "delta": 3
+      },
+      {
+        "id": "L1729",
+        "tick": 1448500,
+        "kind": "trade",
+        "trust": 46,
+        "delta": 4
+      },
+      {
+        "id": "L1739",
+        "tick": 1449900,
+        "kind": "trade",
+        "trust": 50,
+        "delta": 4
+      },
+      {
+        "id": "L1745",
+        "tick": 1450900,
+        "kind": "conversation",
+        "trust": 53,
+        "delta": 3
+      },
+      {
+        "id": "L2522",
+        "tick": 2144200,
+        "kind": "greeting",
+        "trust": 55,
+        "delta": 2
+      },
+      {
+        "id": "L2524",
+        "tick": 2144200,
+        "kind": "negotiation",
+        "trust": 57,
+        "delta": 2
+      },
+      {
+        "id": "L2544",
+        "tick": 2151700,
+        "kind": "negotiation",
+        "trust": 59,
+        "delta": 2
+      },
+      {
+        "id": "L2547",
+        "tick": 2152900,
+        "kind": "trade",
+        "trust": 63,
+        "delta": 4
+      },
+      {
+        "id": "L2554",
+        "tick": 2154300,
+        "kind": "trade",
+        "trust": 67,
+        "delta": 4
+      },
+      {
+        "id": "L2560",
+        "tick": 2155300,
+        "kind": "conversation",
+        "trust": 70,
+        "delta": 3
+      },
+      {
+        "id": "L2567",
+        "tick": 2156700,
+        "kind": "trade",
+        "trust": 74,
+        "delta": 4
+      },
+      {
+        "id": "L3357",
+        "tick": 2844200,
+        "kind": "greeting",
+        "trust": 76,
+        "delta": 2
+      },
+      {
+        "id": "L3359",
+        "tick": 2844200,
+        "kind": "negotiation",
+        "trust": 78,
+        "delta": 2
+      },
+      {
+        "id": "L3367",
+        "tick": 2846000,
+        "kind": "negotiation",
+        "trust": 80,
+        "delta": 2
+      },
+      {
+        "id": "L3370",
+        "tick": 2847200,
+        "kind": "trade",
+        "trust": 84,
+        "delta": 4
+      },
+      {
+        "id": "L3376",
+        "tick": 2848200,
+        "kind": "conversation",
+        "trust": 87,
+        "delta": 3
+      },
+      {
+        "id": "L3383",
+        "tick": 2849600,
+        "kind": "trade",
+        "trust": 91,
+        "delta": 4
+      },
+      {
+        "id": "L3390",
+        "tick": 2851000,
+        "kind": "trade",
+        "trust": 95,
+        "delta": 4
+      },
+      {
+        "id": "L3402",
+        "tick": 2859500,
+        "kind": "conversation",
+        "trust": 98,
+        "delta": 3
+      }
+    ],
+    "customLearnedAt": {
+      "id": "L54",
+      "tick": 44200
+    },
+    "customObservedAfterLearning": 13,
+    "humorousCallbacks": [
+      {
+        "id": "L905",
+        "tick": 752500,
+        "sourceEventId": "L884"
+      }
+    ],
+    "unresolvedMonthTasks": [],
+    "monthTasksProgressed": 3,
+    "monthTasksInterrupted": 3,
+    "monthTasksResumed": 3,
+    "monthTasksResolved": 3
+  },
+  "formedHabits": [
+    {
+      "id": "L153",
+      "kind": "work",
+      "tick": 129400
+    },
+    {
+      "id": "L197",
+      "kind": "eat",
+      "tick": 154000
+    },
+    {
+      "id": "L436",
+      "kind": "sleep",
+      "tick": 396500
+    },
+    {
+      "id": "L451",
+      "kind": "diary",
+      "tick": 423700
+    },
+    {
+      "id": "L475",
+      "kind": "read",
+      "tick": 437300
+    },
+    {
+      "id": "L484",
+      "kind": "prepare",
+      "tick": 439500
+    },
+    {
+      "id": "L515",
+      "kind": "rest",
+      "tick": 460500
+    },
+    {
+      "id": "L752",
+      "kind": "tend",
+      "tick": 657800
+    },
+    {
+      "id": "L1494",
+      "kind": "preserve",
+      "tick": 1300100
+    },
+    {
+      "id": "L1731",
+      "kind": "trade",
+      "tick": 1448500
+    },
+    {
+      "id": "L1746",
+      "kind": "converse",
+      "tick": 1450900
+    }
+  ],
+  "habitMisfires": 0,
+  "worldLosses": 0,
+  "actionFailures": [],
+  "deathStateModeled": true,
+  "deathObserved": false,
+  "deathEvent": null,
+  "softlocks": [],
+  "restartCheckpoints": [],
+  "pausedEventRequirementMet": true,
+  "startGardenHealth": 100,
+  "endGardenHealth": 100,
+  "sourceRunNotes": "No player commands, frozen v1.3 economy constants, weekly visitor calendar, thirty elapsed 24-hour windows unless fatal.",
+  "finalEventId": "L3606",
+  "surplus": {
+    "baselineWaste": 37,
+    "actualWaste": 0,
+    "wasteSaved": 37,
+    "wasteReductionRate": 1,
+    "preserved": 5,
+    "food": 3,
+    "tea": 14,
+    "fuel": 10,
+    "preservationActions": 13,
+    "tradeActions": 12,
+    "spoilageEvents": 0,
+    "preservedProduced": 65,
+    "freshUsedForPreservation": 78,
+    "preservedConsumed": 0,
+    "expiredFood": 0,
+    "expiredPreserved": 0,
+    "tradeFoodGiven": 60,
+    "tradeFuelReceived": 14,
+    "tradeTeaReceived": 10,
+    "harvestReceipts": [
+      {
+        "id": "L226",
+        "t": 199500,
+        "before": 2,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 10
+      },
+      {
+        "id": "L382",
+        "t": 343300,
+        "before": 6,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 14
+      },
+      {
+        "id": "L546",
+        "t": 506000,
+        "before": 5,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 13
+      },
+      {
+        "id": "L750",
+        "t": 657800,
+        "before": 2,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 10
+      },
+      {
+        "id": "L943",
+        "t": 817300,
+        "before": 1,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 9
+      },
+      {
+        "id": "L1144",
+        "t": 967500,
+        "before": 4,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 12
+      },
+      {
+        "id": "L1287",
+        "t": 1121400,
+        "before": 3,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 11
+      },
+      {
+        "id": "L1477",
+        "t": 1270400,
+        "before": 6,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 14
+      },
+      {
+        "id": "L1644",
+        "t": 1415400,
+        "before": 5,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 13
+      },
+      {
+        "id": "L1855",
+        "t": 1561600,
+        "before": 4,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 12
+      },
+      {
+        "id": "L2015",
+        "t": 1707100,
+        "before": 2,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 10
+      },
+      {
+        "id": "L2188",
+        "t": 1851700,
+        "before": 6,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 14
+      },
+      {
+        "id": "L2349",
+        "t": 1999700,
+        "before": 4,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 12
+      },
+      {
+        "id": "L2537",
+        "t": 2151500,
+        "before": 2,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 10
+      },
+      {
+        "id": "L2732",
+        "t": 2307200,
+        "before": 6,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 14
+      },
+      {
+        "id": "L2937",
+        "t": 2454100,
+        "before": 4,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 12
+      },
+      {
+        "id": "L3077",
+        "t": 2606200,
+        "before": 3,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 11
+      },
+      {
+        "id": "L3240",
+        "t": 2753000,
+        "before": 7,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 15
+      },
+      {
+        "id": "L3442",
+        "t": 2902900,
+        "before": 5,
+        "amount": 8,
+        "potential": 8,
+        "wasted": 0,
+        "after": 13
+      }
+    ],
+    "preservationReceipts": [
+      {
+        "id": "L391",
+        "t": 346700,
+        "controller": "autonomous",
+        "before": {
+          "food": 14,
+          "preserved": 0,
+          "fuel": 5
+        },
+        "after": {
+          "food": 8,
+          "preserved": 5,
+          "fuel": 4
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L561",
+        "t": 511800,
+        "controller": "autonomous",
+        "before": {
+          "food": 13,
+          "preserved": 5,
+          "fuel": 8
+        },
+        "after": {
+          "food": 7,
+          "preserved": 10,
+          "fuel": 7
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L768",
+        "t": 665500,
+        "controller": "autonomous",
+        "before": {
+          "food": 10,
+          "preserved": 10,
+          "fuel": 7
+        },
+        "after": {
+          "food": 4,
+          "preserved": 15,
+          "fuel": 6
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L1159",
+        "t": 997200,
+        "controller": "autonomous",
+        "before": {
+          "food": 12,
+          "preserved": 0,
+          "fuel": 10
+        },
+        "after": {
+          "food": 6,
+          "preserved": 5,
+          "fuel": 9
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L1493",
+        "t": 1300100,
+        "controller": "autonomous",
+        "before": {
+          "food": 14,
+          "preserved": 5,
+          "fuel": 9
+        },
+        "after": {
+          "food": 8,
+          "preserved": 10,
+          "fuel": 8
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L1653",
+        "t": 1418800,
+        "controller": "autonomous",
+        "before": {
+          "food": 13,
+          "preserved": 10,
+          "fuel": 8
+        },
+        "after": {
+          "food": 7,
+          "preserved": 15,
+          "fuel": 7
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L1864",
+        "t": 1565000,
+        "controller": "autonomous",
+        "before": {
+          "food": 12,
+          "preserved": 0,
+          "fuel": 11
+        },
+        "after": {
+          "food": 6,
+          "preserved": 5,
+          "fuel": 10
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L2197",
+        "t": 1855100,
+        "controller": "autonomous",
+        "before": {
+          "food": 14,
+          "preserved": 5,
+          "fuel": 10
+        },
+        "after": {
+          "food": 8,
+          "preserved": 10,
+          "fuel": 9
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L2360",
+        "t": 2003100,
+        "controller": "autonomous",
+        "before": {
+          "food": 12,
+          "preserved": 10,
+          "fuel": 9
+        },
+        "after": {
+          "food": 6,
+          "preserved": 15,
+          "fuel": 8
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L2750",
+        "t": 2313000,
+        "controller": "autonomous",
+        "before": {
+          "food": 14,
+          "preserved": 0,
+          "fuel": 10
+        },
+        "after": {
+          "food": 8,
+          "preserved": 5,
+          "fuel": 9
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L2947",
+        "t": 2457500,
+        "controller": "autonomous",
+        "before": {
+          "food": 12,
+          "preserved": 5,
+          "fuel": 9
+        },
+        "after": {
+          "food": 6,
+          "preserved": 10,
+          "fuel": 8
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L3249",
+        "t": 2756400,
+        "controller": "autonomous",
+        "before": {
+          "food": 15,
+          "preserved": 10,
+          "fuel": 8
+        },
+        "after": {
+          "food": 9,
+          "preserved": 15,
+          "fuel": 7
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      },
+      {
+        "id": "L3450",
+        "t": 2906300,
+        "controller": "autonomous",
+        "before": {
+          "food": 13,
+          "preserved": 0,
+          "fuel": 11
+        },
+        "after": {
+          "food": 7,
+          "preserved": 5,
+          "fuel": 10
+        },
+        "inputs": {
+          "food": 6,
+          "fuel": 1
+        },
+        "output": {
+          "preserved": 5
+        },
+        "target": "stove"
+      }
+    ],
+    "tradeReceipts": [
+      {
+        "id": "L876",
+        "t": 747700,
+        "controller": "autonomous",
+        "before": {
+          "food": 2,
+          "preserved": 15,
+          "fuel": 6,
+          "tea": 4
+        },
+        "after": {
+          "food": 2,
+          "preserved": 10,
+          "fuel": 8,
+          "tea": 4
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L889",
+        "t": 750100,
+        "controller": "autonomous",
+        "before": {
+          "food": 2,
+          "preserved": 10,
+          "fuel": 8,
+          "tea": 4
+        },
+        "after": {
+          "food": 2,
+          "preserved": 5,
+          "fuel": 10,
+          "tea": 4
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L897",
+        "t": 751500,
+        "controller": "autonomous",
+        "before": {
+          "food": 2,
+          "preserved": 5,
+          "fuel": 10,
+          "tea": 4
+        },
+        "after": {
+          "food": 2,
+          "preserved": 0,
+          "fuel": 10,
+          "tea": 6
+        },
+        "received": "tea",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L1716",
+        "t": 1446100,
+        "controller": "autonomous",
+        "before": {
+          "food": 6,
+          "preserved": 15,
+          "fuel": 7,
+          "tea": 6
+        },
+        "after": {
+          "food": 6,
+          "preserved": 10,
+          "fuel": 9,
+          "tea": 6
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L1728",
+        "t": 1448500,
+        "controller": "autonomous",
+        "before": {
+          "food": 6,
+          "preserved": 10,
+          "fuel": 9,
+          "tea": 6
+        },
+        "after": {
+          "food": 6,
+          "preserved": 5,
+          "fuel": 11,
+          "tea": 6
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L1738",
+        "t": 1449900,
+        "controller": "autonomous",
+        "before": {
+          "food": 6,
+          "preserved": 5,
+          "fuel": 11,
+          "tea": 6
+        },
+        "after": {
+          "food": 6,
+          "preserved": 0,
+          "fuel": 11,
+          "tea": 8
+        },
+        "received": "tea",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L2546",
+        "t": 2152900,
+        "controller": "autonomous",
+        "before": {
+          "food": 10,
+          "preserved": 15,
+          "fuel": 8,
+          "tea": 8
+        },
+        "after": {
+          "food": 10,
+          "preserved": 10,
+          "fuel": 10,
+          "tea": 8
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L2553",
+        "t": 2154300,
+        "controller": "autonomous",
+        "before": {
+          "food": 10,
+          "preserved": 10,
+          "fuel": 10,
+          "tea": 8
+        },
+        "after": {
+          "food": 10,
+          "preserved": 5,
+          "fuel": 10,
+          "tea": 10
+        },
+        "received": "tea",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L2566",
+        "t": 2156700,
+        "controller": "autonomous",
+        "before": {
+          "food": 10,
+          "preserved": 5,
+          "fuel": 10,
+          "tea": 10
+        },
+        "after": {
+          "food": 10,
+          "preserved": 0,
+          "fuel": 10,
+          "tea": 12
+        },
+        "received": "tea",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L3369",
+        "t": 2847200,
+        "controller": "autonomous",
+        "before": {
+          "food": 6,
+          "preserved": 15,
+          "fuel": 7,
+          "tea": 12
+        },
+        "after": {
+          "food": 6,
+          "preserved": 10,
+          "fuel": 9,
+          "tea": 12
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L3382",
+        "t": 2849600,
+        "controller": "autonomous",
+        "before": {
+          "food": 6,
+          "preserved": 10,
+          "fuel": 9,
+          "tea": 12
+        },
+        "after": {
+          "food": 6,
+          "preserved": 5,
+          "fuel": 11,
+          "tea": 12
+        },
+        "received": "fuel",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L3389",
+        "t": 2851000,
+        "controller": "autonomous",
+        "before": {
+          "food": 6,
+          "preserved": 5,
+          "fuel": 11,
+          "tea": 12
+        },
+        "after": {
+          "food": 6,
+          "preserved": 0,
+          "fuel": 11,
+          "tea": 14
+        },
+        "received": "tea",
+        "payment": "preserved",
+        "unitsGiven": 5,
+        "unitsReceived": 2,
+        "target": "visitor_01",
+        "personId": "visitor_01"
+      }
+    ],
+    "mealReceipts": [
+      {
+        "id": "L7",
+        "t": 26700,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L78",
+        "t": 56900,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L128",
+        "t": 108200,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L162",
+        "t": 131100,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L196",
+        "t": 154000,
+        "controller": null,
+        "source": "food",
+        "before": 3,
+        "after": 2,
+        "amount": 1
+      },
+      {
+        "id": "L236",
+        "t": 200900,
+        "controller": null,
+        "source": "food",
+        "before": 10,
+        "after": 9,
+        "amount": 1
+      },
+      {
+        "id": "L276",
+        "t": 231900,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L318",
+        "t": 280500,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L352",
+        "t": 321600,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L413",
+        "t": 359000,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L459",
+        "t": 425100,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L507",
+        "t": 456800,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L576",
+        "t": 521600,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L622",
+        "t": 548700,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L651",
+        "t": 569700,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L690",
+        "t": 613900,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L734",
+        "t": 645500,
+        "controller": null,
+        "source": "food",
+        "before": 3,
+        "after": 2,
+        "amount": 1
+      },
+      {
+        "id": "L791",
+        "t": 701000,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L834",
+        "t": 726400,
+        "controller": null,
+        "source": "food",
+        "before": 3,
+        "after": 2,
+        "amount": 1
+      },
+      {
+        "id": "L925",
+        "t": 787400,
+        "controller": null,
+        "source": "food",
+        "before": 2,
+        "after": 1,
+        "amount": 1
+      },
+      {
+        "id": "L976",
+        "t": 833000,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L1023",
+        "t": 865200,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L1061",
+        "t": 910600,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L1097",
+        "t": 933600,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L1127",
+        "t": 955200,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L1183",
+        "t": 1008800,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L1228",
+        "t": 1036700,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L1258",
+        "t": 1058300,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L1302",
+        "t": 1125200,
+        "controller": null,
+        "source": "food",
+        "before": 11,
+        "after": 10,
+        "amount": 1
+      },
+      {
+        "id": "L1346",
+        "t": 1156900,
+        "controller": null,
+        "source": "food",
+        "before": 10,
+        "after": 9,
+        "amount": 1
+      },
+      {
+        "id": "L1396",
+        "t": 1213500,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L1430",
+        "t": 1236500,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L1460",
+        "t": 1258100,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L1517",
+        "t": 1311700,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L1562",
+        "t": 1339600,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L1592",
+        "t": 1361200,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L1658",
+        "t": 1419900,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L1771",
+        "t": 1485800,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L1808",
+        "t": 1526900,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L1870",
+        "t": 1566100,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L1914",
+        "t": 1615300,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L1951",
+        "t": 1638800,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L1978",
+        "t": 1659800,
+        "controller": null,
+        "source": "food",
+        "before": 3,
+        "after": 2,
+        "amount": 1
+      },
+      {
+        "id": "L2031",
+        "t": 1717200,
+        "controller": null,
+        "source": "food",
+        "before": 10,
+        "after": 9,
+        "amount": 1
+      },
+      {
+        "id": "L2076",
+        "t": 1745100,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L2114",
+        "t": 1792400,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L2157",
+        "t": 1835500,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L2212",
+        "t": 1864900,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L2258",
+        "t": 1914000,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L2292",
+        "t": 1937000,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L2322",
+        "t": 1958600,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L2381",
+        "t": 2014700,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L2415",
+        "t": 2037700,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L2443",
+        "t": 2058700,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L2485",
+        "t": 2124800,
+        "controller": null,
+        "source": "food",
+        "before": 3,
+        "after": 2,
+        "amount": 1
+      },
+      {
+        "id": "L2587",
+        "t": 2166800,
+        "controller": null,
+        "source": "food",
+        "before": 10,
+        "after": 9,
+        "amount": 1
+      },
+      {
+        "id": "L2631",
+        "t": 2216000,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L2675",
+        "t": 2247600,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L2706",
+        "t": 2269200,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L2765",
+        "t": 2322800,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L2818",
+        "t": 2353600,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L2856",
+        "t": 2400900,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L2913",
+        "t": 2438100,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L2970",
+        "t": 2471000,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L3003",
+        "t": 2533400,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L3040",
+        "t": 2557000,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      },
+      {
+        "id": "L3099",
+        "t": 2618100,
+        "controller": null,
+        "source": "food",
+        "before": 11,
+        "after": 10,
+        "amount": 1
+      },
+      {
+        "id": "L3138",
+        "t": 2642300,
+        "controller": null,
+        "source": "food",
+        "before": 10,
+        "after": 9,
+        "amount": 1
+      },
+      {
+        "id": "L3167",
+        "t": 2663900,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L3201",
+        "t": 2726300,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L3254",
+        "t": 2757500,
+        "controller": null,
+        "source": "food",
+        "before": 9,
+        "after": 8,
+        "amount": 1
+      },
+      {
+        "id": "L3308",
+        "t": 2814700,
+        "controller": null,
+        "source": "food",
+        "before": 8,
+        "after": 7,
+        "amount": 1
+      },
+      {
+        "id": "L3342",
+        "t": 2837700,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L3417",
+        "t": 2864900,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L3472",
+        "t": 2917900,
+        "controller": null,
+        "source": "food",
+        "before": 7,
+        "after": 6,
+        "amount": 1
+      },
+      {
+        "id": "L3517",
+        "t": 2945800,
+        "controller": null,
+        "source": "food",
+        "before": 6,
+        "after": 5,
+        "amount": 1
+      },
+      {
+        "id": "L3548",
+        "t": 2967400,
+        "controller": null,
+        "source": "food",
+        "before": 5,
+        "after": 4,
+        "amount": 1
+      },
+      {
+        "id": "L3586",
+        "t": 3012800,
+        "controller": null,
+        "source": "food",
+        "before": 4,
+        "after": 3,
+        "amount": 1
+      }
+    ],
+    "spoilageReceipts": [],
+    "tradeSocialLinks": [
+      {
+        "id": "L878",
+        "t": 747700,
+        "tradeEventId": "L876",
+        "socialEventId": "L877"
+      },
+      {
+        "id": "L891",
+        "t": 750100,
+        "tradeEventId": "L889",
+        "socialEventId": "L890"
+      },
+      {
+        "id": "L899",
+        "t": 751500,
+        "tradeEventId": "L897",
+        "socialEventId": "L898"
+      },
+      {
+        "id": "L1718",
+        "t": 1446100,
+        "tradeEventId": "L1716",
+        "socialEventId": "L1717"
+      },
+      {
+        "id": "L1730",
+        "t": 1448500,
+        "tradeEventId": "L1728",
+        "socialEventId": "L1729"
+      },
+      {
+        "id": "L1740",
+        "t": 1449900,
+        "tradeEventId": "L1738",
+        "socialEventId": "L1739"
+      },
+      {
+        "id": "L2548",
+        "t": 2152900,
+        "tradeEventId": "L2546",
+        "socialEventId": "L2547"
+      },
+      {
+        "id": "L2555",
+        "t": 2154300,
+        "tradeEventId": "L2553",
+        "socialEventId": "L2554"
+      },
+      {
+        "id": "L2568",
+        "t": 2156700,
+        "tradeEventId": "L2566",
+        "socialEventId": "L2567"
+      },
+      {
+        "id": "L3371",
+        "t": 2847200,
+        "tradeEventId": "L3369",
+        "socialEventId": "L3370"
+      },
+      {
+        "id": "L3384",
+        "t": 2849600,
+        "tradeEventId": "L3382",
+        "socialEventId": "L3383"
+      },
+      {
+        "id": "L3391",
+        "t": 2851000,
+        "tradeEventId": "L3389",
+        "socialEventId": "L3390"
+      }
+    ],
+    "relationshipTradeEffects": [
+      {
+        "id": "L877",
+        "t": 747700,
+        "delta": 4,
+        "trust": 15
+      },
+      {
+        "id": "L890",
+        "t": 750100,
+        "delta": 4,
+        "trust": 22
+      },
+      {
+        "id": "L898",
+        "t": 751500,
+        "delta": 4,
+        "trust": 26
+      },
+      {
+        "id": "L1717",
+        "t": 1446100,
+        "delta": 4,
+        "trust": 39
+      },
+      {
+        "id": "L1729",
+        "t": 1448500,
+        "delta": 4,
+        "trust": 46
+      },
+      {
+        "id": "L1739",
+        "t": 1449900,
+        "delta": 4,
+        "trust": 50
+      },
+      {
+        "id": "L2547",
+        "t": 2152900,
+        "delta": 4,
+        "trust": 63
+      },
+      {
+        "id": "L2554",
+        "t": 2154300,
+        "delta": 4,
+        "trust": 67
+      },
+      {
+        "id": "L2567",
+        "t": 2156700,
+        "delta": 4,
+        "trust": 74
+      },
+      {
+        "id": "L3370",
+        "t": 2847200,
+        "delta": 4,
+        "trust": 84
+      },
+      {
+        "id": "L3383",
+        "t": 2849600,
+        "delta": 4,
+        "trust": 91
+      },
+      {
+        "id": "L3390",
+        "t": 2851000,
+        "delta": 4,
+        "trust": 95
+      }
+    ],
+    "correspondingTradeWorldEvents": true,
+    "conservation": {
+      "allPreservesDebited": true,
+      "allTradesBalanced": true
+    }
+  },
+  "comparison": {
+    "previousHead": "cc2065dd1f31a6db911736c592858aac10acc751",
+    "previousEndFood": 21,
+    "previousEndHealth": 100,
+    "previousCompleted": 467,
+    "previousVisitorTrust": 46,
+    "previousWaste": 37,
+    "currentVisitorTrust": 98
+  }
+}
