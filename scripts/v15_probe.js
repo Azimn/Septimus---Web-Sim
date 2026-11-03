@@ -65,9 +65,9 @@ function ninety(){
  const snapshotsAt=new Set([30,60,90]);
  for(let i=0;i<90000&&!s.dead;i++){
   advance(s,archive,1);steps++;
-  if(s.clock.centibeats===START+30000*10)snapshots.day30=stateView(s);
-  if(s.clock.centibeats===START+60000*10)snapshots.day60=stateView(s);
-  if(s.clock.centibeats===START+90000*10)snapshots.day90=stateView(s);
+  if(s.clock.centibeats===START+30*DAY)snapshots.day30=stateView(s);
+  if(s.clock.centibeats===START+60*DAY)snapshots.day60=stateView(s);
+  if(s.clock.centibeats===START+90*DAY)snapshots.day90=stateView(s);
   if(s.clock.day!==previousDay){
    const end=s.clock.centibeats,begin=end-DAY;
    const segment=s.events.filter(x=>x.t>begin&&x.t<=end);
