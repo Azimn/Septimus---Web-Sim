@@ -27,6 +27,10 @@ function register(s,c){if(!c.seriesId)return;const r=ledger(s,c.seriesId);
  if(!r.instances.includes(c.id))r.instances.push(c.id);
 }
 function ensure(s){
+ // Existing series and generated instances are durable save-state records.
+ // Rebuilding all registrations at every 100-centibeat tick becomes
+ // superlinear over a year. Initialize once, then register only new instances.
+ if(s.seriesReady)return;
  s.series??={};
  for(const template of SERIES_TEMPLATES)ledger(s,template.id);
  // C1 predates the recurrence design and is the one preserved bootstrap instance.
@@ -34,6 +38,7 @@ function ensure(s){
  if(initial&&!initial.seriesId){initial.seriesId='DAILY-HEARTH';initial.seriesOrdinal=1;initial.openedAt=25000;
   initial.origin='calendar_bootstrap';initial.requiredProgress??=1;initial.progressCount??=0;}
  for(const c of s.commitments)register(s,c);
+ s.seriesReady=true;
 }
 function outcome(s,c,status,log,cause=''){
  if(!c.seriesId)return;
@@ -133,7 +138,7 @@ function instanceId(template,ordinal){
 function fire(s,template,ordinal,log){
  ensure(s);
  const id=instanceId(template,ordinal);
- if(s.commitments.some(c=>c.id===id))return null;
+ if(ledger(s,template.id).instances.includes(id))return null;
  const previousId=ordinal>1?instanceId(template,ordinal-1):null;
  const previous=s.commitments.find(c=>c.id===previousId);
  if(previous&&open(previous)){
@@ -158,12 +163,14 @@ function fire(s,template,ordinal,log){
  return c;
 }
 function nextDay(s,log){ensure(s);const template=SERIES_TEMPLATES[0];
- for(let ordinal=2;ordinal<=s.clock.day+1;ordinal++)fire(s,template,ordinal,log);}
+ const current=ledger(s,template.id).instances.length;
+ for(let ordinal=Math.max(2,current+1);ordinal<=s.clock.day+1;ordinal++)fire(s,template,ordinal,log);}
 function scheduleMonth(s,log){
  ensure(s);
  for(const template of SERIES_TEMPLATES.filter(t=>t.kind==='monthly')){
   const max=Math.floor((s.clock.day-template.openOffset)/template.intervalDays)+1;
-  for(let ordinal=1;ordinal<=max;ordinal++)fire(s,template,ordinal,log);
+  const next=ledger(s,template.id).instances.length+1;
+  for(let ordinal=next;ordinal<=max;ordinal++)fire(s,template,ordinal,log);
  }
 }
 // Compatibility export: first-month labels are retained, but subsequent instances
