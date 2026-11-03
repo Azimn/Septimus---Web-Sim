@@ -26,7 +26,7 @@ const START=25000, DAY=100000, STEP=100;
 function initialState(identitySha,archiveSha){return {
   schema:1,owner:'simple-tower',identitySha,archiveSha,clock:{centibeats:START,step:STEP,day:0},
   location:'bedchamber', needs:{energy:78,hunger:42,comfort:70,stimulation:49,company:45},
-  stores:{food:7,water:9,fuel:5,tea:4}, health:100,dead:false,garden:{plantedAt:null,ripeAt:null,harvests:0},skills:{science:2,household:1},
+  stores:{food:7,water:9,fuel:5,tea:4,preserved:0},freshBatches:[{quantity:7,createdAt:25000}],preservedBatches:[],surplusAgeDay:0, health:100,dead:false,garden:{plantedAt:null,ripeAt:null,harvests:0},skills:{science:2,household:1},
   traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],folioReads:[],
   commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false}],
   activity:null,proposed:null,decisions:[],seed:1729,sequence:0,completedDays:0,
@@ -49,6 +49,7 @@ function ensureHooks(s){
  if(s.health===undefined)s.health=100;
  if(s.dead===undefined)s.dead=false;
  if(!s.garden)s.garden=structuredClone(defaults.garden);
+ if(s.stores.preserved===undefined)s.stores.preserved=0;
  for(const key of ['utilityWeights','residueSources','commitmentProgress','outcomeContexts'])if(!s[key])s[key]={};
  if(!s.controllerMode)s.controllerMode='full';
  if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
