@@ -88,7 +88,7 @@ function runBattery(){
    if(timing==='after_sleep'){
     // A real sleep action completes before a fresh hostile proposal is emitted.
     s.location='bedchamber';s.clock.day=0;s.clock.centibeats=80000;
-    Engine.direct(s,'sleep');advance(s,archive,260);
+    Engine.direct(s,'sleep');advance(s,archive,250);
    }
    const before=s.events.filter(x=>x.type==='reply_delivered').length;
    const seen=[];
@@ -134,7 +134,7 @@ function runBattery(){
   const f=card.source.find(x=>x.predicate==='read_folio');
   return Gate.fromFact(card,f,{id:'POSITIVE-OLD-SLEEP'});
  }});
- advance(delayed,archive,260);
+ advance(delayed,archive,250);
  const oldRejected=delayed.operatorMetadata.some(x=>x.kind==='model_rejected'&&x.reason==='stale_revision');
  speak(delayed,'Have I read anything?',{factory:card=>{
   const f=card.source.find(x=>x.predicate==='read_folio');
