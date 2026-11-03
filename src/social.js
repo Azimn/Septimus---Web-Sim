@@ -103,8 +103,8 @@ function meet(s,log){
  observeCustom(s,log,VISITOR,'tea_first');
  observeCustom(s,log,VISITOR,'instrument_quiet');
  shared(s,log,'greeting');
- const hearsay=s.mail?.hearsay?.find(x=>!x.corrected&&x.aboutPerson===VISITOR);
- if(hearsay){
+ const staleReports=(s.mail?.hearsay||[]).filter(x=>!x.corrected&&x.aboutPerson===VISITOR);
+ for(const hearsay of staleReports){
   const witness=log(s,'belief_corrected','I saw Rosa Brandl here, contrary to a prior report of her prolonged absence.',
    {personId:VISITOR,priorClaimId:hearsay.sourceEventId,hearsayId:hearsay.id,
     directWitness:s.clock.centibeats,previousConfidence:'hearsay',correctedBy:'direct_encounter'});
