@@ -159,3 +159,12 @@ test('v1.9 B state card is bounded for a real month of speech events',()=>{
 test('v1.9 B three failure-mode drills retain progress and explicit fallbacks',()=>{
  assert.equal(require('../scripts/v19_fixtures').fallbackDrills().passed,true);
 });
+
+test('v1.9 B state revisions invalidate proposals after an unreceipted operator perturbation',()=>{
+ const s=fresh(11),card=Gate.buildCard(s);
+ const proposal=Gate.fromFact(card,fact(card,'open_commitment'));
+ s.stores.food+=1;
+ const changed=Gate.buildCard(s);
+ assert.notEqual(changed.revision,card.revision);
+ assert.equal(Gate.check(proposal,changed).reason,'stale_revision');
+});

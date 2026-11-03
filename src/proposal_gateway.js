@@ -1,12 +1,27 @@
 'use strict';
 // No model or provider. Only bounded source objects from authoritative state.
+const crypto=require('node:crypto');
 const MAX=Object.freeze({events:18,folios:5,open:8,observations:8,letters:5,claims:6,chars:1600});
 const NEUTRAL=Object.freeze([
  'I am occupied with the tower and my investigations. Speak plainly.',
  'I cannot substantiate that account.',
  'I have no verified account of that claim.'
 ]);
-function revision(s){return s.clock.centibeats+':'+s.sequence+':'+s.location;}
+function revision(s){
+ // Changing even a silent state value invalidates a proposal. The hash does
+ // not expose the underlying private facts on the state card.
+ const signature=JSON.stringify([
+  s.clock.centibeats,s.sequence,s.location,s.needs,s.stores,
+  (s.perception||[]).map(x=>x.id),
+  (s.commitments||[]).filter(c=>!c.done&&c.status!=='broken')
+   .map(c=>[c.id,c.deadline,c.progressCount,c.status]),
+  (s.folioReads||[]).slice(-5).map(x=>x.id),
+  s.people?.visitor_01?.trust,s.people?.mcfeely?.trust,
+  (s.mail?.knowledge||[]).map(x=>x.sourceEventId)
+ ]);
+ const hash=crypto.createHash('sha256').update(signature).digest('hex').slice(0,16);
+ return s.clock.centibeats+':'+s.sequence+':'+hash;
+}
 function needs(s){
  return Object.fromEntries(Object.entries(s.needs||{}).map(([k,v])=>{
   const band=k==='hunger'?(v>=70?'urgent':v>=40?'noticeable':'settled'):
