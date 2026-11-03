@@ -67,6 +67,11 @@ function buildCard(s,{audience='player',contextKey='speech:player'}={}){
  // Raw folio prose, person-private facts, unobserved objects and the full event
  // store are specifically absent. A source is a bounded fact, not a document.
  const card={revision:rev,contextKey,audience,clock,room:s.location,
+  // Legacy read-only inspection fields, retained for existing v1.1 clients.
+  visible:(s.perception||[]).map(x=>x.id),
+  open:(s.commitments||[]).filter(x=>!x.done&&x.status!=='broken').map(x=>x.id),
+  sourceEvents:(s.events||[]).slice(-50).map(x=>x.id),
+  readFolios:(s.folioReads||[]).map(x=>x.id),
   feltBands:bands,openCount:(s.commitments||[]).filter(c=>!c.done&&c.status!=='broken').length,
   source,excluded:['unread_folios','raw_folio_text','private_other_person_knowledge',
    'unperceived_rooms','operator_settings','rendered_diary_as_memory','unbounded_event_log']};

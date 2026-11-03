@@ -30,6 +30,9 @@ function daily(s,log){
  s.skillLastDecayDay=s.clock.day;
 }
 function choiceFactor(s,kind){
+ // Immediate physical triage must not be overridden by apprenticeship progress.
+ // Longer-lived competence becomes a separate, sourced utility signal.
+ if(s.clock.day<30)return {kind:null,bonus:0};
  const skill=['work','study','inspect'].includes(kind)?'science':
   ['preserve','cook'].includes(kind)?'household':null;
  if(!skill)return {kind:null,bonus:0};

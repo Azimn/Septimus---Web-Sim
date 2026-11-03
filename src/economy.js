@@ -20,7 +20,7 @@ const SURPLUS=Object.freeze({
 });
 const {DAY}=require('./world');
 // Oldest-preserved may be eaten before spoilage, with fresh-food expiry priority.
-const ROTATION=Object.freeze({freshLow:6,preservedAgeDays:45,freshUrgentDays:2,decisionBonus:22});
+const ROTATION=Object.freeze({freshLow:1,preservedAgeDays:45,freshUrgentDays:2,decisionBonus:10});
 function rotationPolicy(s){
  const preserved=(s.preservedBatches||[]).filter(b=>b.quantity>0)
   .reduce((m,b)=>Math.min(m,b.createdAt),Infinity);
