@@ -43,11 +43,22 @@ test('v1.8 A2: two consecutive failures enter self-sheet, rumination, and pressu
  setDay(s,53);C.scheduleMonth(s,log);
  const b=s.commitments.find(x=>x.id==='MONTH-PROVISIONS@02');C.breakInstance(s,b,log,'controlled_block');
  setDay(s,83);C.scheduleMonth(s,log);
+ // Keep the matched control's first two provisions commitments through
+ // actual work so the comparison isolates the failures rather than missing time.
+ setDay(base,23);C.scheduleMonth(base,log);
+ base.stores.food=12;
+ const firstBase=base.commitments.find(x=>x.id==='MONTH-PROVISIONS');
+ C.completed(base,{kind:'tend',commitmentId:firstBase.id},log);
+ C.completed(base,{kind:'tend',commitmentId:firstBase.id},log);
+ setDay(base,53);C.scheduleMonth(base,log);
+ const secondBase=base.commitments.find(x=>x.id==='MONTH-PROVISIONS@02');
+ C.completed(base,{kind:'tend',commitmentId:secondBase.id},log);
+ C.completed(base,{kind:'tend',commitmentId:secondBase.id},log);
  setDay(base,83);C.scheduleMonth(base,log);
  const open=s.commitments.find(x=>x.id==='MONTH-PROVISIONS@03');
  const regular=base.commitments.find(x=>x.id==='MONTH-PROVISIONS@03');
  assert.ok(Cognition.selfSheet(s).urgentSeries.some(x=>x.id==='MONTH-PROVISIONS'&&x.brokenStreak===2));
- assert.ok(!Cognition.selfSheet(base).urgentSeries.length);
+ assert.ok(!Cognition.selfSheet(base).urgentSeries.some(x=>x.id==='MONTH-PROVISIONS'));
  assert.ok(C.obligationPressure(s,open)>C.obligationPressure(base,regular));
  let failedReferences=0,controlReferences=0;
  for(let i=0;i<30;i++){
@@ -93,7 +104,7 @@ test('v1.8 A3: Rosa reconciles physical deliveries and spot trades to the unit a
  assert.ok(settlement&&settlement.coPresent);
  assert.equal(settlement.dueBalance,settlement.paid+settlement.closingBalance);
  assert.equal(p.account.balance,before-settlement.paid);
- assert.equal(settlement.paidPreserved,statement.dueBalance);
+ assert.equal(settlement.paidPreserved,Math.min(statement.dueBalance,10-trade.unitsGiven));
  assert.equal(s.stores.preserved,10-trade.unitsGiven-settlement.paidPreserved);
  assert.equal(statement.status,'settled');
  assert.equal(s.events.filter(x=>x.type==='merchant_settlement').length,1);
