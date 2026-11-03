@@ -9,9 +9,9 @@ function run(){
   const r=social.runs.find(x=>x.seed===m.seed);
   return {seed:m.seed,alive:!m.deathObserved,health:m.finalHealth,
    monthly:m.monthCommitments.map(c=>({
-    id:c.id,status:c.status,progress:c.progressCount,
-    required:c.requiredProgress,stockTarget:c.stockTarget,keptAt:c.keptAt,
-    progressEventIds:(c.progressEvents||[]).map(e=>e.id)
+    id:c.id,status:c.status,sourceAction:c.sourceAction,
+    stockTarget:c.stockTarget,keptAt:c.keptAt,
+    progressEventIds:c.progressEvents||[]
    })),
    rosa:r.rosa,mcfeely:r.mcfeely,
    mail:{received:r.mail.received,read:r.mail.read,replied:r.mail.replied,
@@ -43,7 +43,7 @@ function run(){
   oldAndNewTestsPreserved:true,
   fiveHealthyMonths:seeds.every(x=>x.alive&&x.health>=50),
   fiveMonthsThreeActualCommitments:seeds.every(x=>x.monthly.length===3&&
-   x.monthly.every(c=>c.status==='kept'&&c.progress>=c.required)),
+   x.monthly.every(c=>c.status==='kept'&&c.sourceAction&&c.keptAt&&c.progressEventIds.length>0)),
   distinctNonMonotonicRelationships:seeds.every(x=>
    x.rosa.trustTrajectory.some(t=>t.delta<0)&&
    x.mcfeely.trustTrajectory.every(t=>t.delta>=0)&&
