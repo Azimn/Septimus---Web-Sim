@@ -96,9 +96,16 @@ function probe19(){
  const cases=[];
  for(const seed of SEEDS){
   const a=fresh(seed),b=clone(a),interruptTicks=[];
+  // Stratified deterministic pseudorandom times ensure every seed gets a fair
+  // number of interrupts, without choosing times based on the resulting actions.
+  let random=seed>>>0;const planned=[];
+  for(let n=0;n<7;n++){
+   random=(Math.imul(1664525,random)+1013904223)>>>0;
+   planned.push(200+n*440+(random%200));
+  }
+  const targets=new Set(planned);
   for(let i=0;i<3500;i++){
-   const code=(Math.imul(seed*31+i*17,1664525)>>>0)%1000;
-   if(code===seed*17%1000&&interruptTicks.length<8&&available(b,'walk')){
+   if(targets.has(i)&&available(b,'walk')){
     try{direct(b,'walk');interruptTicks.push(b.clock.centibeats)}catch{}
    }
    advance(a,archive,1);advance(b,archive,1);
@@ -181,9 +188,14 @@ function probe29(){
  const mapped=gained.map(q=>({originTag:q.originTag,sourceId:q.originEventId,
   source:s.events.find(e=>e.id===q.originEventId)?.type,
   bonus:q.bonus,action:q.kind,
-  inScore:(scores(s).find(x=>x.kind===q.kind)?.quirkFactors||[]).some(f=>f.originEventId===q.originEventId)}));
+  inScore:(scores(s).find(x=>x.kind===q.kind)?.quirkFactors||[]).some(f=>f.originEventId===q.originEventId),
+  laterChosenDecisions:s.events.filter(e=>e.type==='decision'&&
+   e.t>(s.events.find(qe=>qe.id===q.originEventId)?.t||0)&&
+   e.chosen===q.kind&&e.candidates.some(c=>c.kind===q.kind&&
+    c.quirkFactors?.some(f=>f.originEventId===q.originEventId))).length}));
  return result(29,'day-60 lived quirks absent on day 30 drive subsequent action scores',
- mapped.length>0&&mapped.every(x=>x.source==='completed')&&mapped.some(x=>x.inScore),
+ mapped.length>0&&mapped.every(x=>['completed','habit_formed'].includes(x.source))&&
+  mapped.some(x=>x.source==='completed'&&x.inScore&&x.laterChosenDecisions>0),
  {at30,day60:{t:s.clock.centibeats,science:s.skills.science,quirks:s.quirks.length},
   gained:mapped},
  'Late quirks require real completed work receipts and must visibly bias the picker, not simply add new prose labels.');
