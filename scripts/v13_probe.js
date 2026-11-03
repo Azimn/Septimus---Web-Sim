@@ -8,6 +8,15 @@ const {save,resume}=require('../src/store');
 const {ECONOMY}=require('../src/economy');
 const START=25000,DAY=100000,SEVEN=7*DAY;
 function counts(rows,kind){const x={};for(const e of rows)if(e.type==='completed'){x[e.kind]=(x[e.kind]||0)+1;}return x;}
+function peakOpenCommitments(events){
+ let open=1,peak=1;
+ for(const e of events){
+  if(e.type==='commitment_opened')open++;
+  if(['commitment_kept','commitment_broken','commitment_released'].includes(e.type))open=Math.max(0,open-1);
+  peak=Math.max(peak,open);
+ }
+ return peak;
+}
 function snapshot(s,e){return {seed:s.seed,tick:e.t,day:e.day,eventId:e.id,kind:e.kind||e.chosen||null,
  type:e.type,text:e.description,room:e.room,controller:e.controller||null,
  needsOperatorOnly:{...s.needs},healthOperatorOnly:s.health,position:s.location,
@@ -88,7 +97,7 @@ function runSeed(seed,{restart=false}={}){
   commitmentsBroken:s.commitments.filter(c=>c.status==='broken').length,
   commitmentsReleased:s.commitments.filter(c=>c.status==='released').length,
   commitmentEvents:events.filter(e=>e.type.startsWith('commitment_')).map(e=>({type:e.type,id:e.commitmentId,tick:e.t})),
-  concurrentCommitmentPeak:Math.max(0,...events.map(e=>e.type==='commitment_opened'?s.commitments.length:0)),
+  concurrentCommitmentPeak:peakOpenCommitments(events),
   formedHabits:events.filter(e=>e.type==='habit_formed').map(e=>({id:e.id,kind:e.kind,tick:e.t})),
   habitMisfires:events.filter(e=>e.type==='action_failed'&&e.reason==='habit_cue_missing').length,
   worldLosses:events.filter(e=>e.type==='world_loss').length,

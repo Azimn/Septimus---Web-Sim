@@ -90,6 +90,7 @@ test('Article 09: two days after a witnessed trigger, residue affects a matched 
  ticks(basis,2000);assert.ok(basis.residue.henry>0);
  assert.equal(basis.events.filter(e=>e.type==='heard').length,1,'a second reminder contaminated the delay');
  assert.ok(basis.residueSources.henry.eventId,'source event was not recorded');
+ assert.equal(basis.residueSources.henry.source,'visitor','the historical folio secretly refreshed the topic');
  let witness=null;
  outer:for(const hunger of [5,15,25,35,45,55,65,75])for(const energy of [20,40,60,80])for(const stim of [20,40,60,80]){
   const a=copy(basis),b=copy(basis);
@@ -135,6 +136,8 @@ test('Article 12: low-salience object stays unselected for three days, new movem
  assert.equal(s.events.filter(e=>e.type==='started'&&e.kind==='tea').length,0);
  assert.ok(s.diary.every(x=>!/kettle/i.test(x.text)));
  assert.ok(s.thoughts.every(x=>!/kettle/i.test(JSON.stringify(x))));
+ const verbalized=speak(s,'What have you noticed today?');
+ assert.ok(!/kettle/i.test(verbalized),'a low-salience object leaked into speech');
 });
 test('Article 28: gift and insult order cause distinct subsequent autonomous social conduct',()=>{
  const a=fresh(11),b=fresh(11);
