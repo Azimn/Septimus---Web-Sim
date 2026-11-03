@@ -24,6 +24,8 @@ jobs:
         run: node scripts/v13_probe.js
       - name: Run v1.4 30-day unattended endurance and development audit
         run: node scripts/v14_probe.js
+      - name: Run v1.4 eight Article discriminators and preserve negative findings
+        run: node scripts/v14_discriminations.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
