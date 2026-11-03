@@ -164,7 +164,9 @@ function tick(s,archive){ensureHooks(s);if(s.dead)return s;const n=s.needs,a=s.a
   controller:s.controllerMode==='needs_greedy'?'needs_greedy':'autonomous',
   switches:{...s.debugSwitches}});
  s.decisions.push({t:s.clock.centibeats,candidates:ranked.slice(0,5),chosen:ranked[0].kind,
-  runnerUp,margin:event.margin,sourceEventId:event.id});
+  runnerUp,margin:event.margin,sourceEventId:event.id,
+  selfNeedSignature:JSON.stringify((()=>{const sheet=Cognition.selfSheet(s);
+   return [sheet.needs.energy,sheet.needs.hunger,sheet.needs.stimulation,sheet.duskSoon]})())});
  s.decisions=s.decisions.slice(-100);start(s,ranked[0].kind);}}
  else if(a.status==='traveling'){a.travelRemaining-=STEP;if(a.travelRemaining<=0){s.location=a.room;a.status='active';log(s,'arrived',`I reached the ${ROOMS[s.location].label.toLowerCase()}.`,{target:a.target});}}
  else if(a.status==='active'){a.remaining-=STEP;if(a.remaining<=0)finish(s,a,archive);}

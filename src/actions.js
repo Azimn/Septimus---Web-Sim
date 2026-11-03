@@ -90,7 +90,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   }
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;
-  score+=supplyScore(state,key);
+  const supplyFactor=supplyScore(state,key);score+=supplyFactor;
   if(key==='converse'){
     const trust=state.people.visitor_01.trust||0;
     score+=Math.max(0,90-n.company)*.9+(trust>-12?26:-70);
@@ -137,7 +137,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
   const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
-    failures:contextualFailures,contextKey,quirkFactors,distance:distance(state.location,targetRoom)};
+    failures:contextualFailures,contextKey,quirkFactors,supplyFactor,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
 function perceiveTopic(state,text,source='visitor'){

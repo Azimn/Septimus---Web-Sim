@@ -38,7 +38,15 @@ function selfSheet(s){
  mood:s.mood.map(x=>({tag:x.tag,value:x.value})),open:s.commitments.filter(x=>!x.done).map(x=>({id:x.id,title:x.title})),
  duskSoon:s.clock.centibeats%100000>=50000,visible:s.perception.map(x=>x.id),quirks:s.quirks.map(x=>({...x})),memory:s.folioReads.slice(-2).map(x=>x.id),
  hidden:['residue','numeric needs','unperceived room state']};}
-function predictedAction(s){const sheet=selfSheet(s);if(sheet.needs.energy==='urgent')return 'rest';
+function predictedAction(s){
+ const sheet=selfSheet(s),signature=JSON.stringify([sheet.needs.energy,sheet.needs.hunger,
+  sheet.needs.stimulation,sheet.duskSoon]);
+ const history=s.decisions.filter(x=>x.selfNeedSignature===signature).slice(-35);
+ if(history.length>=3){
+  const count=history.reduce((m,d)=>(m[d.chosen]=(m[d.chosen]||0)+1,m),{});
+  return Object.entries(count).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]))[0][0];
+ }
+ if(sheet.needs.energy==='urgent')return 'rest';
  if(sheet.needs.hunger==='urgent')return 'eat';if(sheet.open.length&&sheet.duskSoon)return 'prepare';
  return sheet.needs.stimulation==='urgent'?'read':'work';}
 const CONFLICT=Object.freeze({scoreGap:25,deadlineHorizon:18000,bonus:38,energyFloor:25});
@@ -82,6 +90,10 @@ function explainChoice(s,choice){
  if(['tend','gather_fuel','draw_water'].includes(kind)&&s.perception.some(x=>x.id===choice.target)){
   reasons.push('visible stores or worksite');
  }
+ if(choice.supplyFactor>0&&['tend','gather_fuel','draw_water','preserve','trade'].includes(kind))
+  reasons.push('known provisions');
+ if(['converse','trade'].includes(kind)&&sheet.visible.includes('visitor_01'))
+  reasons.push('visitor present');
  if(choice.commitmentFactors?.some(f=>f.bonus>0&&sheet.open.some(x=>x.id===f.id)))reasons.push('obligation');
  if(kind==='prepare'&&sheet.duskSoon&&sheet.open.length)reasons.push('dusk obligation');
  if(kind==='work'&&sheet.needs.energy!=='urgent')reasons.push('capacity');
