@@ -39,6 +39,11 @@ jobs:
       - name: V1.8 365-day seed 11 and 180-day seed 14 horizon audit
         timeout-minutes: 40
         run: node scripts/v18_probe.js --year
+      - name: V1.9 hostile and legitimate proposal fixtures plus bounded card accounting
+        run: node scripts/v19_fixtures.js
+      - name: V1.9 matched 180-day repair probes, seeds 11 and 14
+        timeout-minutes: 40
+        run: node scripts/v19_probe.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'

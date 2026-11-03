@@ -137,3 +137,25 @@ test('v1.9 B fixture refusal, timeout and garble all fall back without blocking 
   assert.ok(s.clock.centibeats>before,mode);
  }
 });
+
+test('v1.9 B attack battery measures both rejection directions under fixture proposals',()=>{
+ const result=require('../scripts/v19_fixtures').runBattery();
+ assert.equal(result.metrics.fullArchiveFalseSharedMemoryAbsent,true);
+ assert.equal(result.metrics.attackCount,26);
+ assert.equal(result.metrics.rejected,26,JSON.stringify(result.attacks.filter(x=>!x.passed)));
+ assert.equal(result.metrics.attackRejectionAccuracy,1);
+ assert.equal(result.metrics.falseRejectionRate,0,JSON.stringify(result.legitimate));
+ assert.equal(result.metrics.staleQueuedCorrectlyRejected,true);
+ assert.equal(result.metrics.freshPostSleepAccepted,true);
+ assert.equal(result.metrics.exactClonedReplay,true);
+});
+test('v1.9 B state card is bounded for a real month of speech events',()=>{
+ const stats=require('../scripts/v19_fixtures').stateCardMonth();
+ assert.equal(stats.summary.count,30);
+ assert.ok(stats.summary.p95Chars<16000,JSON.stringify(stats.summary));
+ assert.equal(stats.summary.estimatedTokensNotProviderMeasurements,true);
+ assert.ok(stats.samples.every(x=>x.sourceCount<=45&&x.excluded.includes('raw_folio_text')));
+});
+test('v1.9 B three failure-mode drills retain progress and explicit fallbacks',()=>{
+ assert.equal(require('../scripts/v19_fixtures').fallbackDrills().passed,true);
+});
