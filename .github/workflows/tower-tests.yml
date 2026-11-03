@@ -20,6 +20,8 @@ jobs:
       - run: npm test
       - name: Run v1.2 no-model endurance and discrimination evidence
         run: node scripts/v12_probe.js
+      - name: Run v1.3 five-seed endurance and starvation control
+        run: node scripts/v13_probe.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
