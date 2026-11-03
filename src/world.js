@@ -30,9 +30,14 @@ function initialState(identitySha,archiveSha){return {
   traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],folioReads:[],
   commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false}],
   activity:null,proposed:null,decisions:[],seed:1729,sequence:0,completedDays:0,
+  people:{visitor_01:{id:'visitor_01',marker:'regular caller at the tower',present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]},player:{id:'player',witnessed:[],knowledge:[]}},
+  customs:{greeting:{observations:0,sourceEventIds:[],learned:false}},humor:[],replyQueue:[],deliveredReplies:[],
+  thoughts:[],predictions:[],beliefs:{},objectPositions:{},perception:[],seenObjects:[],lastPerceptionIds:[],
+  deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true},
+  habitProfiles:{},quirks:[],worldLosses:{},
   surface:{lastObservation:[],lastWords:'I have work to do.'},
   calendar:{date:'1899-07-01',upcoming:'Dusk inspection',triggeredDays:[]}
 };}
 function distance(from,to){if(from===to)return 0;let q=[[from,0]],visited=new Set([from]);while(q.length){const [r,d]=q.shift();for(const n of ROOMS[r].exits){if(n===to)return d+1;if(!visited.has(n)){visited.add(n);q.push([n,d+1]);}}}throw Error('Disconnected tower');}
-function context(state){const nearby=ROOMS[state.location].objects.map(id=>OBJECTS[id].label);return {room:ROOMS[state.location].label,objects:nearby.slice(0,5),needs:Object.fromEntries(Object.entries(state.needs).map(([k,v])=>[k,v<25?'urgent':v<55?'noticeable':'settled']))};}
+function context(state){const nearby=ROOMS[state.location].objects.map(id=>OBJECTS[id].label);return {room:ROOMS[state.location].label,objects:(state.perception?.length?state.perception.map(p=>p.label):nearby.slice(0,4)),needs:Object.fromEntries(Object.entries(state.needs).map(([k,v])=>[k,v<25?'urgent':v<55?'noticeable':'settled']))};}
 module.exports={ROOMS,OBJECTS,TRAITS,TRIGGERS,DAY,STEP,START,initialState,distance,context};

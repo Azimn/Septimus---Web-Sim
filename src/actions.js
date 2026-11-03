@@ -17,6 +17,8 @@ const DEFINITIONS={
 };
 const clip=n=>Math.max(0,Math.min(100,Math.round(n*100)/100));
 function available(state,kind){const a=DEFINITIONS[kind];if(!a||!OBJECTS[a.target])return false;
+ if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
+ if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
  if(['eat','cook'].includes(kind)&&state.stores.food<1)return false;
  if(['tea','cook'].includes(kind)&&(state.stores.water<1||state.stores.fuel<1))return false;
  if(kind==='tea'&&state.stores.tea<1)return false;
@@ -24,7 +26,9 @@ function available(state,kind){const a=DEFINITIONS[kind];if(!a||!OBJECTS[a.targe
  if(kind==='read'&&state.folioReads.some(x=>x.day===state.clock.day))return false;
  if(kind==='diary'&&state.diary.some(x=>x.day===state.clock.day))return false;
  return true;}
-function scores(state){const n=state.needs,deadline=state.commitments[0],time=state.clock.centibeats%100000;
+function scores(state){const enabled=state.debugSwitches||{};
+ const n=enabled.needs===false?{energy:50,hunger:50,comfort:50,stimulation:50,company:50}:state.needs;
+ const deadline=enabled.commitments===false?{...state.commitments[0],done:true}:state.commitments[0],time=state.clock.centibeats%100000;
  return Object.entries(DEFINITIONS).filter(([key])=>available(state,key)&&(key!=='sleep'||time>=70000||n.energy<20)).map(([key,a])=>{
   let score=a.base*(state.traits[a.trait]||1);
   if(key==='sleep')score+=(100-n.energy)*.72+(time>=70000?30:0);
@@ -38,19 +42,24 @@ function scores(state){const n=state.needs,deadline=state.commitments[0],time=st
   if(key==='diary'&&state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).length>=2)score+=36;
   if(key==='prepare'&&!deadline.done)score+=time<65000?Math.min(95,15+65*Math.max(0,1-(65000-time)/36000)):1;
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
-  score+=Math.min(5,(state.habits[key]||0))*.5;
+  if(enabled.habits!==false){
+   score+=Math.min(5,(state.habits[key]||0))*.5;
+   const profile=state.habitProfiles?.[key];
+   if(profile?.formed&&(state.objectPositions?.[a.target]||OBJECTS[a.target].room)===OBJECTS[a.target].room)score+=3;
+  }
   const recent=state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).slice(-3);
   score-=recent.filter(e=>e.kind===key).length*16;
-  score+=(state.residue[key]||0);
+  if(enabled.residue!==false)score+=(state.residue[key]||0);
   if(['rest','inspect'].includes(key))score+=state.traits.nervous*3;
   if(['diary','walk'].includes(key))score+=state.traits.sociable*3;
-  const mood=state.mood.reduce((sum,m)=>sum+m.value,0);
+  const mood=enabled.mood===false?0:state.mood.reduce((sum,m)=>sum+m.value,0);
   if(['read','inspect','study','work'].includes(key))score+=mood*.36;
   if(['tea','rest','walk'].includes(key))score-=mood*.22;
   // Bounded deterministic tie-breaking, not an LLM or unrecorded randomness.
   const noise=((Math.imul(state.clock.centibeats+13,key.length*7919)+state.seed)>>>0)%5-2;
+  score-=Math.min(20,(state.outcomes?.[key]?.failure||0)*5);
   score=Math.round((score+noise)*100)/100;
-  return {kind:key,target:a.target,score,noise,distance:distance(state.location,OBJECTS[a.target].room)};
+  return {kind:key,target:a.target,score,noise,failures:state.outcomes?.[key]?.failure||0,distance:distance(state.location,OBJECTS[a.target].room)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
 function perceiveTopic(state,text,source='visitor'){
