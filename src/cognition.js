@@ -116,7 +116,7 @@ function explainChoice(s,choice){
 }
 function ruminate(s,log){if(s.activity?.kind==='sleep')return null;
  if(s.clock.centibeats%4500>=100)return null;
- const failures=Object.values(s.series||{}).filter(x=>x.brokenStreak>0&&x.id!=='DAILY-HEARTH')
+ const failures=Object.values(s.series||{}).filter(x=>x.brokenStreak>0)
   .sort((a,b)=>b.brokenStreak-a.brokenStreak||a.id.localeCompare(b.id));
  const turn=Math.floor(s.clock.centibeats/4500);
  // An unrepaired single failure occupies one in four eligible thoughts.

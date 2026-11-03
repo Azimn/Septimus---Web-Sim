@@ -132,3 +132,21 @@ test('v1.8 horizon: day-one development and exact save-envelope bytes are measur
  assert.ok(r.development.end.serializedSaveBytes>r.development.day1.serializedSaveBytes);
  assert.equal(r.invariants.stateGrowthReported,true);
 });
+
+test('v1.8 daily hearth shares the same failed-series salience contract as monthly obligations',()=>{
+ const s=fresh(11);
+ C.ensure(s);
+ const first=s.commitments.find(x=>x.id==='C1');
+ C.breakInstance(s,first,log,'controlled_missed_hearth');
+ setDay(s,1);C.nextDay(s,log);
+ const second=s.commitments.find(x=>x.id==='C2');
+ C.breakInstance(s,second,log,'controlled_missed_hearth');
+ assert.ok(Cognition.selfSheet(s).urgentSeries.some(x=>x.id==='DAILY-HEARTH'&&x.brokenStreak===2));
+ let cited=0;
+ for(let i=0;i<16;i++){
+  s.clock.centibeats=1800000+i*4500;
+  const r=Cognition.ruminate(s,log);
+  if(r?.seriesId==='DAILY-HEARTH')cited++;
+ }
+ assert.ok(cited>=6,{cited});
+});
