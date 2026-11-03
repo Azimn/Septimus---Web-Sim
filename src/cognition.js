@@ -46,6 +46,23 @@ function deliberate(s,ranked,log){
  }else{s.deliberation.skipped++;log(s,'reflex','I used a limited choice budget instead of deliberation.',{tired,pressure,novel,conflict});}
  s.deliberation.rate=s.deliberation.performed/s.deliberation.checks;
 }
+function explainChoice(s,choice){
+ const sheet=selfSheet(s),reasons=[],kind=choice.kind;
+ if(['eat','cook'].includes(kind)&&sheet.needs.hunger!=='settled')reasons.push('hunger');
+ if(['sleep','rest'].includes(kind)&&sheet.needs.energy!=='settled')reasons.push('fatigue');
+ if(['read','study','inspect'].includes(kind)&&sheet.needs.stimulation!=='settled')reasons.push('curiosity');
+ if(['tend','gather_fuel','draw_water'].includes(kind)&&s.perception.some(x=>x.id===choice.target)){
+  reasons.push('visible stores or worksite');
+ }
+ if(choice.commitmentFactors?.some(f=>f.bonus>0&&sheet.open.some(x=>x.id===f.id)))reasons.push('obligation');
+ if(kind==='prepare'&&sheet.duskSoon&&sheet.open.length)reasons.push('dusk obligation');
+ if(['work','read','study','inspect'].includes(kind)&&sheet.mood.length)reasons.push('felt mood');
+ const text=reasons.length?
+  'I chose '+kind+' because I noticed '+reasons.join(', ')+'. Other causes may elude me.':
+  'I chose '+kind+'. I cannot fully account for that preference.';
+ return {text,reasons,availableFrom:'self_sheet',certain:false,
+  concealed:['residue','numeric utility score','unperceived room state','random tie-breaking']};
+}
 function ruminate(s,log){if(s.activity?.kind==='sleep')return null;
  if(s.clock.centibeats%4500>=100)return null;
  const commitment=s.commitments.find(x=>!x.done),source=commitment?.id||s.events.filter(x=>x.type==='completed').at(-1)?.id;
@@ -72,4 +89,4 @@ function originQuirk(s,sourceEventId,description,log){if(!sourceEventId||!s.foli
  if(s.quirks.some(x=>x.originEventId===sourceEventId))return null;
  const e=log(s,'quirk_origin','I recognized a preference in my earlier account.',{sourceEventId,description});
  const q={description,originEventId:sourceEventId,observedEventId:e.id};s.quirks.push(q);return q;}
-module.exports={observe,selfSheet,predictedAction,deliberate,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk};
+module.exports={observe,selfSheet,predictedAction,deliberate,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk,explainChoice};

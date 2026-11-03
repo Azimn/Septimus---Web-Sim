@@ -34,7 +34,7 @@ function initialState(identitySha,archiveSha){return {
   customs:{greeting:{observations:0,sourceEventIds:[],learned:false}},humor:[],replyQueue:[],deliveredReplies:[],
   thoughts:[],predictions:[],beliefs:{},objectPositions:{},perception:[],seenObjects:[],lastPerceptionIds:[],
   deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true},
-  habitProfiles:{},quirks:[],worldLosses:{},utilityWeights:{},residueSources:{},commitmentProgress:{},
+  habitProfiles:{},quirks:[],worldLosses:{},utilityWeights:{},residueSources:{},commitmentProgress:{},outcomeContexts:{},controllerMode:'full',
   surface:{lastObservation:[],lastWords:'I have work to do.'},
   calendar:{date:'1899-07-01',upcoming:'Dusk inspection',triggeredDays:[]}
 };}
@@ -49,7 +49,8 @@ function ensureHooks(s){
  if(s.health===undefined)s.health=100;
  if(s.dead===undefined)s.dead=false;
  if(!s.garden)s.garden=structuredClone(defaults.garden);
- for(const key of ['utilityWeights','residueSources','commitmentProgress'])if(!s[key])s[key]={};
+ for(const key of ['utilityWeights','residueSources','commitmentProgress','outcomeContexts'])if(!s[key])s[key]={};
+ if(!s.controllerMode)s.controllerMode='full';
  if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
  if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
  for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;

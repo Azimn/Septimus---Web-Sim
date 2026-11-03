@@ -115,12 +115,15 @@ function scores(state){const enabled=state.debugSwitches||{};
   if(['tea','rest','walk'].includes(key))score-=mood*.22;
   // Bounded deterministic tie-breaking, not an LLM or unrecorded randomness.
   const noise=((Math.imul(state.clock.centibeats+13,key.length*7919)+state.seed)>>>0)%5-2;
-  score-=Math.min(20,(state.outcomes?.[key]?.failure||0)*5);
+  const targetBeliefRoom=state.beliefs?.[a.target]?.room||OBJECTS[a.target]?.room||state.people?.visitor_01?.room||'library';
+  const contextKey=a.target+'@'+targetBeliefRoom;
+  const contextualFailures=state.outcomeContexts?.[contextKey]||0;
+  score-=Math.min(20,contextualFailures*5);
   const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
   const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):OBJECTS[a.target].room;
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
-    failures:state.outcomes?.[key]?.failure||0,distance:distance(state.location,targetRoom)};
+    failures:contextualFailures,contextKey,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
 function perceiveTopic(state,text,source='visitor'){
@@ -132,4 +135,24 @@ function perceiveTopic(state,text,source='visitor'){
  if(hits.length){state.surface.lastWords=`That name is not without consequence: ${hits.join(', ')}.`;}
  return hits;
 }
-module.exports={DEFINITIONS,ACTION_WEIGHTS,setUtilityWeight,topicAction,memoryCue,clip,available,scores,applyMood,perceiveTopic};
+function needsGreedy(s){
+ const base=scores(s);
+ const hunger=s.needs.hunger,energy=s.needs.energy;
+ const priorities={
+  eat:hunger>=50?120:0,
+  rest:energy<30?105:0,sleep:energy<22?130:0,
+  tend:s.stores.food<3?112:0,draw_water:s.stores.water<2?112:0,
+  gather_fuel:s.stores.fuel<2?105:0,
+  prepare:s.commitments.some(c=>!c.done&&c.action==='prepare'&&c.deadline-s.clock.centibeats<12000)?100:0,
+  work:25,read:15
+ };
+ return base.map(x=>({...x,utilityScore:x.score,policy:'needs_greedy',
+  policyReason:'fixed need threshold and legal action',
+  score:Math.round(((priorities[x.kind]||5)+x.score*.001)*100)/100}))
+  .sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));
+}
+function scoresForController(s){
+ return s.controllerMode==='needs_greedy'?needsGreedy(s):scores(s);
+}
+module.exports={DEFINITIONS,ACTION_WEIGHTS,setUtilityWeight,topicAction,memoryCue,clip,available,scores,
+ needsGreedy,scoresForController,applyMood,perceiveTopic};
