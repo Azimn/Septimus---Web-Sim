@@ -150,6 +150,8 @@ function tick(s,archive){ensureHooks(s);if(s.dead)return s;const n=s.needs,a=s.a
  }
  s.pendingNeedAction=null;
  if(ranked.length){
+ const resolved=Cognition.resolveConflict(s,ranked,log);
+ ranked.splice(0,ranked.length,...resolved);
  const runnerUp=ranked[1]||null;
  Cognition.deliberate(s,ranked,log);
  const selfExplanation=Cognition.explainChoice(s,ranked[0]);

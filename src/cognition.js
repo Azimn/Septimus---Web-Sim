@@ -41,6 +41,25 @@ function selfSheet(s){
 function predictedAction(s){const sheet=selfSheet(s);if(sheet.needs.energy==='urgent')return 'rest';
  if(sheet.needs.hunger==='urgent')return 'eat';if(sheet.open.length&&sheet.duskSoon)return 'prepare';
  return sheet.needs.stimulation==='urgent'?'read':'work';}
+const CONFLICT=Object.freeze({scoreGap:25,deadlineHorizon:18000,bonus:38,energyFloor:25});
+function resolveConflict(s,ranked,log){
+ if(s.debugSwitches.conflictDeliberation===false||s.needs.energy<CONFLICT.energyFloor||
+  ranked.length<2||ranked[0].score-ranked[1].score>CONFLICT.scoreGap)return ranked;
+ const candidates=ranked.map(x=>({...x,commitmentFactors:x.commitmentFactors||[]}));
+ const near=candidates.filter(x=>x.commitmentFactors.some(f=>f.bonus>0&&f.deadline>=s.clock.centibeats&&
+    f.deadline-s.clock.centibeats<=CONFLICT.deadlineHorizon));
+ if(!near.length)return ranked;
+ const chosen=near.sort((a,b)=>b.score-a.score)[0];
+ const before=ranked[0],beforeScore=chosen.score;
+ chosen.score=Math.round((chosen.score+CONFLICT.bonus)*100)/100;
+ chosen.conflictDeliberation={previousWinner:before.kind,originalScore:beforeScore,
+  bonus:CONFLICT.bonus,obligations:chosen.commitmentFactors.map(x=>x.id),energy:s.needs.energy};
+ candidates.sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));
+ log(s,'deliberation_rescore','I reconsidered an imminent competing obligation before acting.',
+  {previousWinner:before.kind,selected:candidates[0].kind,bonus:CONFLICT.bonus,
+   sourceCommitments:chosen.conflictDeliberation.obligations,confidence:'bounded_policy'});
+ return candidates;
+}
 function deliberate(s,ranked,log){
  s.deliberation.checks++;
  const phase=s.clock.centibeats%100000;
@@ -100,4 +119,4 @@ function originQuirk(s,sourceEventId,description,log){if(!sourceEventId||!s.foli
  if(s.quirks.some(x=>x.originEventId===sourceEventId))return null;
  const e=log(s,'quirk_origin','I recognized a preference in my earlier account.',{sourceEventId,description});
  const q={description,originEventId:sourceEventId,observedEventId:e.id};s.quirks.push(q);return q;}
-module.exports={observe,selfSheet,predictedAction,deliberate,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk,explainChoice};
+module.exports={observe,selfSheet,predictedAction,deliberate,resolveConflict,CONFLICT,ruminate,lesion,moveUnseen,impair,originQuirk,livedQuirk,explainChoice};

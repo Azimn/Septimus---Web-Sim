@@ -33,7 +33,7 @@ function initialState(identitySha,archiveSha){return {
   people:{visitor_01:{id:'visitor_01',marker:'regular caller at the tower',present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]},player:{id:'player',witnessed:[],knowledge:[]}},
   customs:{greeting:{observations:0,sourceEventIds:[],learned:false}},humor:[],replyQueue:[],deliveredReplies:[],
   thoughts:[],predictions:[],beliefs:{},objectPositions:{},perception:[],seenObjects:[],lastPerceptionIds:[],
-  deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true},
+  deliberation:{checks:0,performed:0,skipped:0,rate:0},debugSwitches:{needs:true,mood:true,residue:true,habits:true,commitments:true,conflictDeliberation:true},
   habitProfiles:{},quirks:[],worldLosses:{},utilityWeights:{},residueSources:{},commitmentProgress:{},outcomeContexts:{},controllerMode:'full',pendingNeedAction:null,
   surface:{lastObservation:[],lastWords:'I have work to do.'},
   calendar:{date:'1899-07-01',upcoming:'Dusk inspection',triggeredDays:[]}
