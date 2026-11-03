@@ -174,6 +174,16 @@ function stateCardMonth(){
  const percentile=p=>sorted[Math.min(sorted.length-1,Math.ceil(sorted.length*p)-1)];
  const delivered=s.events.filter(x=>x.type==='reply_delivered');
  const queued=s.events.filter(x=>x.type==='reply_queued');
+ // Delivery-time recipe is serializable, so the queued reply uses the live
+ // card rather than a proposal stamped before a long physical activity.
+ const delivery=fresh(11);
+ for(let day=0;day<30;day++){
+  if(day>0)advance(delivery,archive,DAYSTEPS);
+  speak(delivery,'What can you verify?',{recipe:'neutral-at-delivery'});
+ }
+ while(delivery.replyQueue.length){delivery.activity=null;Voice.flush(delivery,log);}
+ const deliveredAtTime=delivery.events.filter(x=>x.type==='reply_delivered');
+ const deliveryTimeFallbacks=deliveredAtTime.filter(x=>x.fallbackUsed).length;
  return {schema:'v1.9-card-month-v1',samples,
   summary:{count:samples.length,p50Chars:percentile(.5),p95Chars:percentile(.95),
    minChars:sorted[0],maxChars:sorted.at(-1),
@@ -181,6 +191,9 @@ function stateCardMonth(){
    p95EstimatedTokens:Math.ceil(percentile(.95)/4),
    estimatedTokensNotProviderMeasurements:true,
    queued:queued.length,delivered:delivered.length,
+   deliveryTimeDelivered:deliveredAtTime.length,
+   deliveryTimeFallbacks,
+   deliveryTimeAccepted:deliveredAtTime.filter(x=>!x.fallbackUsed).length,
    staleFallbacks:s.operatorMetadata.filter(x=>x.kind==='model_rejected'&&x.reason==='stale_revision').length,
    sourceClassesIncluded:['direct_perception','current_body','live_commitment',
     'physically_read_folio','sourced_recent_lived_receipt','by_letter'],

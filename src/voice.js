@@ -68,7 +68,11 @@ function deliver(s,message,log){
  const fixture=message.fixture||{};
  const mode=s.clock.centibeats-message.receivedAt>POLICY.maxDeferredCentibeats?
   'timeout':fixture.mode||'ok';
- const proposal=fixture.proposal??compose(s,message.text,card);
+ let proposal=fixture.proposal||null;
+ if(!proposal&&fixture.recipe==='neutral-at-delivery')
+  proposal=Gate.envelope(card,{id:'DELIVERY-FIXTURE-'+message.id,
+   utterance:Gate.NEUTRAL[0]});
+ if(!proposal)proposal=compose(s,message.text,card);
  // Delayed requests may not borrow an earlier state card. Always recheck at
  // delivery. Templates are constructed at delivery and never become stale.
  const result=consume(s,message,proposal,log,{mode,card});
@@ -89,7 +93,8 @@ function receive(s,text,log,fixture=null){
  if(fixture&&typeof fixture==='object'){
   const card=stateCard(s,{audience:message.audience,contextKey:message.contextKey});
   const proposal=typeof fixture.factory==='function'?fixture.factory(card):fixture.proposal;
-  message.fixture={mode:fixture.mode||'ok',proposal:proposal||null};
+  message.fixture={mode:fixture.mode||'ok',proposal:proposal||null,
+   recipe:fixture.recipe||null};
  }
  if(s.activity)return s.surface.lastWords;
  return deliver(s,message,log);

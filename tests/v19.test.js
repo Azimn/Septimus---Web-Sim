@@ -168,3 +168,13 @@ test('v1.9 B state revisions invalidate proposals after an unreceipted operator 
  assert.notEqual(changed.revision,card.revision);
  assert.equal(Gate.check(proposal,changed).reason,'stale_revision');
 });
+
+test('v1.9 B delayed delivery-time fixture uses live state card and survives serialization',()=>{
+ const s=fresh(11);s.activity={kind:'sleep',status:'active',remaining:1000};
+ speak(s,'Can you reply?',{recipe:'neutral-at-delivery'});
+ assert.equal(s.replyQueue.length,1);
+ assert.equal(JSON.parse(JSON.stringify(s.replyQueue))[0].fixture.recipe,'neutral-at-delivery');
+ s.activity=null;s.clock.centibeats+=300;Voice.flush(s,log);
+ assert.equal(s.deliveredReplies.at(-1).fallbackUsed,false);
+ assert.ok(!s.operatorMetadata.some(x=>x.kind==='model_rejected'));
+});
