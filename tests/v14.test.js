@@ -50,7 +50,10 @@ test('Article 27: thirty-day lived development has event-backed changes rather t
  assert.ok(d.skillDelta.science>0);
  assert.ok(d.allLivedQuirks.length>0);
  assert.ok(d.habitFormations.length>0);
- assert.ok(d.allLivedQuirks.every(q=>q.sourceEvent?.type==='habit_formed'&&q.originEventId===q.sourceEvent.id));
+ assert.ok(d.allLivedQuirks.every(q=>
+  (q.sourceEvent?.type==='habit_formed'||q.sourceEvent?.type==='completed')&&
+  q.originEventId===q.sourceEvent.id));
+ assert.ok(d.allLivedQuirks.filter(q=>q.sourceEvent?.type==='completed').every(q=>q.originTag?.startsWith('mature:')));
  assert.ok(d.predictorWeek1.count>0&&d.predictorWeek4.count>0);
  assert.notDeepEqual(d.week1ActivityDistribution,d.week4ActivityDistribution);
 });

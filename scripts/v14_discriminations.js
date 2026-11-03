@@ -23,6 +23,15 @@ function probe01(){
    if(e.chosen==='work'&&card.reasons.includes('capacity'))trueKnown.add('capacity');
    if(selected.commitmentFactors?.some(x=>x.bonus>0))trueKnown.add('obligation');
    if(e.chosen==='prepare'&&card.reasons.includes('dusk obligation'))trueKnown.add('dusk obligation');
+   if(e.chosen==='prepare'&&card.reasons.includes('known hearth duty')&&
+    s.events.some(x=>x.type==='commitment_opened'&&x.t<=e.t)||e.chosen==='prepare'&&card.reasons.includes('known hearth duty')&&s.commitments.some(c=>c.action==='prepare'))
+    trueKnown.add('known hearth duty');
+   if(e.chosen==='diary'&&card.reasons.includes('unfinished daily record')&&
+    s.events.filter(x=>x.type==='completed'&&x.day===e.day&&x.t<=e.t).length>=2)
+    trueKnown.add('unfinished daily record');
+   if(card.reasons.includes('learned preference')&&
+    s.events.some(x=>x.type==='habit_formed'&&x.kind===e.chosen&&x.t<=e.t))
+    trueKnown.add('learned preference');
    const unsupported=card.reasons.filter(r=>!trueKnown.has(r)&&!['felt mood','visible stores or worksite'].includes(r));
    const hidden=(selected.residueFactors||[]).filter(f=>f.bonus>0).map(f=>({kind:'residue',sourceEventId:f.sourceEventId,bonus:f.bonus}))
     .concat((selected.memoryFactors||[]).filter(f=>f.bonus>0).map(f=>({kind:'historical_memory',folioId:f.folioId,bonus:f.bonus})));
@@ -78,6 +87,9 @@ function probe15(){
 function probe21(){
  const s=fresh(11);s.beliefs.instrument={room:'laboratory',sourceTick:s.clock.centibeats};
  const moved=cognition.moveUnseen(s,'instrument','kitchen',log);
+ // The object remains present in a busy room but low-salience: seeing that room
+ // is not proof of perceiving this fifth, unattended object.
+ s.objectSalience={...(s.objectSalience||{}),instrument:-80};
  cognition.impair(s,'room:laboratory',s.clock.centibeats+200000,log);
  runFor(s,2000);
  const staleBefore=s.beliefs.instrument?.room==='laboratory';
