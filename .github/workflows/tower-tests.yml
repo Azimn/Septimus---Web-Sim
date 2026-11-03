@@ -34,6 +34,11 @@ jobs:
         run: node scripts/v16_probe.js
       - name: Run v1.7 longitudinal social, commitment and harvest acceptance
         run: node scripts/v17_probe.js
+      - name: V1.8 matched three-month recurrence and forced-break proof
+        run: node scripts/v18_probe.js --scenario
+      - name: V1.8 365-day seed 11 and 180-day seed 14 horizon audit
+        timeout-minutes: 40
+        run: node scripts/v18_probe.js --year
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
