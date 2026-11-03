@@ -52,7 +52,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  case 'study':n.stimulation=clip(n.stimulation+12);description='I studied the specimens, with several questions unanswered.';break;
  case 'read':{const results=findFolios(archive,a.query,1),r=results[0];if(r){s.folioReads.push({day:s.clock.day,t:s.clock.centibeats,id:r.event_id,query:a.query,provenance:r.provenance,memoryClass:'pre_awakened_'+r.provenance,
   actionCue:require('./actions').memoryCue(r)});
- Cognition.originQuirk(s,r.event_id,'This account bears on my private intellectual preferences.',log);perceiveTopic(s,[r.title,...(r.participants||[])].join(' '),'folio');description=`I consulted folio ${r.event_id}: ${r.title}. Its account belongs to my earlier life, not to this morning.`;}else description='I searched the folios but found no matching record.';break;}
+ Cognition.originQuirk(s,r.event_id,'This account bears on my private intellectual preferences.',log);const hits=perceiveTopic(s,[r.title,...(r.participants||[])].join(' '),'folio');for(const topic of hits)s.residueSources[topic].eventId=r.event_id;description=`I consulted folio ${r.event_id}: ${r.title}. Its account belongs to my earlier life, not to this morning.`;}else description='I searched the folios but found no matching record.';break;}
  case 'diary':{const last=s.events.filter(e=>e.type==='completed'&&e.kind!=='diary').at(-1);const line=last?`I returned to the notebook after ${last.kind}. The work remains mine to judge.`:'I wrote what I could verify, leaving my uncertainties intact.';s.diary.push({day:s.clock.day,t:s.clock.centibeats,text:line,sourceEventId:last?.id||null});description=line;break;}
  case 'walk':n.comfort=clip(n.comfort+7);description='I walked along the garden path.';break;
  case 'draw_water':Economy.collect(s,a.kind,log);n.energy=clip(n.energy-2);description='I drew a measured supply of water.';break;
@@ -115,7 +115,7 @@ function direct(s,kind,query=''){ensureHooks(s);if(s.dead)throw Error('The inhab
  const result=start(s,kind,'player',query);return result;}
 function speak(s,text){ensureHooks(s);if(s.dead)throw Error('No reply can be given');const topics=perceiveTopic(s,text);
  const response=Voice.receive(s,text,log);
- log(s,'heard',`I heard someone speak${topics.length?' of '+topics.join(', '):''}.`,{source:'player',topics});
+ const heard=log(s,'heard',`I heard someone speak${topics.length?' of '+topics.join(', '):''}.`,{source:'player',topics});for(const topic of topics)s.residueSources[topic].eventId=heard.id;
  return response;}
 function view(s){ensureHooks(s);return {clock:s.clock,day:s.clock.day+1,room:s.location,objects:ROOMS[s.location].objects.map(id=>({id,...OBJECTS[id]})),needs:s.needs,stores:s.stores,activity:s.activity,commitments:s.commitments,diary:s.diary.slice(-8),folioReads:s.folioReads.slice(-8),events:s.events.slice(-25),words:s.surface.lastWords,perception:context(s),choices:scores(s).slice(0,8),
  people:s.people,customs:s.customs,humor:s.humor,replyQueue:s.replyQueue,thoughts:s.thoughts.slice(-8),health:s.health,dead:s.dead,garden:s.garden,
