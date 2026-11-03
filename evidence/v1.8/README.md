@@ -30,3 +30,8 @@ Each 30-day boundary records skills, formed habits, all quirks, active-bonus qui
 The ledger reports monthly harvest waste, preserved stock expiring at 90-day shelf life, and preserved stock eaten from oldest-first batches. Quirk influence is sampled from real choice receipts. Social-account events include source event IDs for deliveries, spot goods trades (whose account charges are zero), and in-kind settlement or recorded credit and friction.
 
 Caution: a healthy year does not imply indefinite viability. The simulation has a finite number of Article tests, simple scripted counterpart actors, and no language-model admissions. Article 23 stays Unassessable.
+
+
+## Completed exact-source evidence
+
+Run 41665810298 on source `af899b25212df4c55f55e9a9758b4a94d33f6079` completed the 119-test mechanical suite and both full horizon probes. All preregistered invariants passed except the science-skill ceiling, crossed on day 120 in both seeds. Read `REPORT.md` before treating the 365-day survival result as indefinite sustainability. The full day-1/day-365 and monthly records, including broken provisions and preserved-food expiry with zero meal consumption, are in the retained JSON evidence.

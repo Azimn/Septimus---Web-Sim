@@ -1,0 +1,566 @@
+{
+  "schema": "v1.8-scenario-v1",
+  "sourceHead": "af899b25212df4c55f55e9a9758b4a94d33f6079",
+  "threeMonths": {
+    "seed": 11,
+    "days": 90,
+    "monthly": [
+      {
+        "id": "MONTH-FOLIO",
+        "opened": 3,
+        "kept": 3,
+        "broken": 0,
+        "keptStreak": 3,
+        "brokenStreak": 0,
+        "avgCompletionTicks": 106000,
+        "instances": [
+          {
+            "id": "MONTH-FOLIO",
+            "ordinal": 1,
+            "status": "kept",
+            "openedAt": 800000,
+            "deadline": 1065000,
+            "keptAt": 908300,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L1038",
+            "resolutionEventId": "L1170"
+          },
+          {
+            "id": "MONTH-FOLIO@02",
+            "ordinal": 2,
+            "status": "kept",
+            "openedAt": 3800000,
+            "deadline": 4065000,
+            "keptAt": 3904400,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L4838",
+            "resolutionEventId": "L4979"
+          },
+          {
+            "id": "MONTH-FOLIO@03",
+            "ordinal": 3,
+            "status": "kept",
+            "openedAt": 6800000,
+            "deadline": 7065000,
+            "keptAt": 6905300,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L8576",
+            "resolutionEventId": "L8723"
+          }
+        ]
+      },
+      {
+        "id": "MONTH-INSTRUMENT",
+        "opened": 3,
+        "kept": 3,
+        "broken": 0,
+        "keptStreak": 3,
+        "brokenStreak": 0,
+        "avgCompletionTicks": 22933,
+        "instances": [
+          {
+            "id": "MONTH-INSTRUMENT",
+            "ordinal": 1,
+            "status": "kept",
+            "openedAt": 1600000,
+            "deadline": 1865000,
+            "keptAt": 1617600,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L2067",
+            "resolutionEventId": "L2108"
+          },
+          {
+            "id": "MONTH-INSTRUMENT@02",
+            "ordinal": 2,
+            "status": "kept",
+            "openedAt": 4600000,
+            "deadline": 4865000,
+            "keptAt": 4623100,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L5830",
+            "resolutionEventId": "L5864"
+          },
+          {
+            "id": "MONTH-INSTRUMENT@03",
+            "ordinal": 3,
+            "status": "kept",
+            "openedAt": 7600000,
+            "deadline": 7865000,
+            "keptAt": 7628100,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L9576",
+            "resolutionEventId": "L9609"
+          }
+        ]
+      },
+      {
+        "id": "MONTH-PROVISIONS",
+        "opened": 3,
+        "kept": 2,
+        "broken": 1,
+        "keptStreak": 0,
+        "brokenStreak": 1,
+        "avgCompletionTicks": 222900,
+        "instances": [
+          {
+            "id": "MONTH-PROVISIONS",
+            "ordinal": 1,
+            "status": "kept",
+            "openedAt": 2300000,
+            "deadline": 2565000,
+            "keptAt": 2501800,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L2973",
+            "resolutionEventId": "L3209"
+          },
+          {
+            "id": "MONTH-PROVISIONS@02",
+            "ordinal": 2,
+            "status": "kept",
+            "openedAt": 5300000,
+            "deadline": 5565000,
+            "keptAt": 5544000,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L6681",
+            "resolutionEventId": "L6985"
+          },
+          {
+            "id": "MONTH-PROVISIONS@03",
+            "ordinal": 3,
+            "status": "broken",
+            "openedAt": 8300000,
+            "deadline": 8565000,
+            "keptAt": null,
+            "brokenAt": 8565100,
+            "cause": "deadline_missed",
+            "progress": 1,
+            "required": 2,
+            "generationEventId": "L10451",
+            "resolutionEventId": "L10800"
+          }
+        ]
+      }
+    ],
+    "generated": [
+      {
+        "id": "L1038",
+        "instanceId": "MONTH-FOLIO",
+        "seriesId": "MONTH-FOLIO",
+        "ordinal": 1,
+        "rule": {
+          "templateId": "MONTH-FOLIO",
+          "intervalDays": 30,
+          "openOffset": 8,
+          "dueOffset": 10,
+          "duePhase": 65000
+        },
+        "scheduledDay": 8,
+        "deadline": 1065000
+      },
+      {
+        "id": "L2067",
+        "instanceId": "MONTH-INSTRUMENT",
+        "seriesId": "MONTH-INSTRUMENT",
+        "ordinal": 1,
+        "rule": {
+          "templateId": "MONTH-INSTRUMENT",
+          "intervalDays": 30,
+          "openOffset": 16,
+          "dueOffset": 18,
+          "duePhase": 65000
+        },
+        "scheduledDay": 16,
+        "deadline": 1865000
+      },
+      {
+        "id": "L2973",
+        "instanceId": "MONTH-PROVISIONS",
+        "seriesId": "MONTH-PROVISIONS",
+        "ordinal": 1,
+        "rule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "scheduledDay": 23,
+        "deadline": 2565000
+      },
+      {
+        "id": "L4838",
+        "instanceId": "MONTH-FOLIO@02",
+        "seriesId": "MONTH-FOLIO",
+        "ordinal": 2,
+        "rule": {
+          "templateId": "MONTH-FOLIO",
+          "intervalDays": 30,
+          "openOffset": 8,
+          "dueOffset": 10,
+          "duePhase": 65000
+        },
+        "scheduledDay": 38,
+        "deadline": 4065000
+      },
+      {
+        "id": "L5830",
+        "instanceId": "MONTH-INSTRUMENT@02",
+        "seriesId": "MONTH-INSTRUMENT",
+        "ordinal": 2,
+        "rule": {
+          "templateId": "MONTH-INSTRUMENT",
+          "intervalDays": 30,
+          "openOffset": 16,
+          "dueOffset": 18,
+          "duePhase": 65000
+        },
+        "scheduledDay": 46,
+        "deadline": 4865000
+      },
+      {
+        "id": "L6681",
+        "instanceId": "MONTH-PROVISIONS@02",
+        "seriesId": "MONTH-PROVISIONS",
+        "ordinal": 2,
+        "rule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "scheduledDay": 53,
+        "deadline": 5565000
+      },
+      {
+        "id": "L8576",
+        "instanceId": "MONTH-FOLIO@03",
+        "seriesId": "MONTH-FOLIO",
+        "ordinal": 3,
+        "rule": {
+          "templateId": "MONTH-FOLIO",
+          "intervalDays": 30,
+          "openOffset": 8,
+          "dueOffset": 10,
+          "duePhase": 65000
+        },
+        "scheduledDay": 68,
+        "deadline": 7065000
+      },
+      {
+        "id": "L9576",
+        "instanceId": "MONTH-INSTRUMENT@03",
+        "seriesId": "MONTH-INSTRUMENT",
+        "ordinal": 3,
+        "rule": {
+          "templateId": "MONTH-INSTRUMENT",
+          "intervalDays": 30,
+          "openOffset": 16,
+          "dueOffset": 18,
+          "duePhase": 65000
+        },
+        "scheduledDay": 76,
+        "deadline": 7865000
+      },
+      {
+        "id": "L10451",
+        "instanceId": "MONTH-PROVISIONS@03",
+        "seriesId": "MONTH-PROVISIONS",
+        "ordinal": 3,
+        "rule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "scheduledDay": 83,
+        "deadline": 8565000
+      }
+    ],
+    "dead": false
+  },
+  "forcedFork": {
+    "seed": 11,
+    "intervention": {
+      "target": "plot",
+      "startDay": 53,
+      "endDay": 57
+    },
+    "baseline": {
+      "month2": {
+        "id": "MONTH-PROVISIONS@02",
+        "title": "Tend twice and hold twelve edible portions before the twenty-fifth day closes",
+        "deadline": 5565000,
+        "action": "tend",
+        "stockTarget": {
+          "item": "food",
+          "minimum": 12,
+          "includePreserved": true
+        },
+        "origin": "calendar",
+        "requiredProgress": 2,
+        "progressCount": 2,
+        "status": "kept",
+        "done": true,
+        "openedAt": 5300000,
+        "seriesId": "MONTH-PROVISIONS",
+        "seriesOrdinal": 2,
+        "openEventId": "L6680",
+        "scheduledDay": 53,
+        "generationRule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "generationEventId": "L6681",
+        "keptAt": 5544000,
+        "sourceAction": "tend",
+        "resolutionEventId": "L6985",
+        "seriesRecorded": true,
+        "seriesOutcomeEventId": "L6986"
+      },
+      "month3": {
+        "id": "MONTH-PROVISIONS@03",
+        "title": "Tend twice and hold twelve edible portions before the twenty-fifth day closes",
+        "deadline": 8565000,
+        "action": "tend",
+        "stockTarget": {
+          "item": "food",
+          "minimum": 12,
+          "includePreserved": true
+        },
+        "origin": "calendar",
+        "requiredProgress": 2,
+        "progressCount": 1,
+        "status": "broken",
+        "done": false,
+        "openedAt": 8300000,
+        "seriesId": "MONTH-PROVISIONS",
+        "seriesOrdinal": 3,
+        "openEventId": "L10450",
+        "scheduledDay": 83,
+        "generationRule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "generationEventId": "L10451",
+        "brokenAt": 8565100,
+        "breakCause": "deadline_missed",
+        "resolutionEventId": "L10800",
+        "seriesRecorded": true,
+        "seriesOutcomeEventId": "L10801"
+      },
+      "series": {
+        "id": "MONTH-PROVISIONS",
+        "opened": 3,
+        "kept": 2,
+        "broken": 1,
+        "keptStreak": 0,
+        "brokenStreak": 1,
+        "avgCompletionTicks": 222900,
+        "instances": [
+          {
+            "id": "MONTH-PROVISIONS",
+            "ordinal": 1,
+            "status": "kept",
+            "openedAt": 2300000,
+            "deadline": 2565000,
+            "keptAt": 2501800,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L2973",
+            "resolutionEventId": "L3209"
+          },
+          {
+            "id": "MONTH-PROVISIONS@02",
+            "ordinal": 2,
+            "status": "kept",
+            "openedAt": 5300000,
+            "deadline": 5565000,
+            "keptAt": 5544000,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L6681",
+            "resolutionEventId": "L6985"
+          },
+          {
+            "id": "MONTH-PROVISIONS@03",
+            "ordinal": 3,
+            "status": "broken",
+            "openedAt": 8300000,
+            "deadline": 8565000,
+            "keptAt": null,
+            "brokenAt": 8565100,
+            "cause": "deadline_missed",
+            "progress": 1,
+            "required": 2,
+            "generationEventId": "L10451",
+            "resolutionEventId": "L10800"
+          }
+        ]
+      },
+      "afterFailureRuminations": 0,
+      "totalRuminations": 104
+    },
+    "forced": {
+      "month2": {
+        "id": "MONTH-PROVISIONS@02",
+        "title": "Tend twice and hold twelve edible portions before the twenty-fifth day closes",
+        "deadline": 5565000,
+        "action": "tend",
+        "stockTarget": {
+          "item": "food",
+          "minimum": 12,
+          "includePreserved": true
+        },
+        "origin": "calendar",
+        "requiredProgress": 2,
+        "progressCount": 0,
+        "status": "broken",
+        "done": false,
+        "openedAt": 5300000,
+        "seriesId": "MONTH-PROVISIONS",
+        "seriesOrdinal": 2,
+        "openEventId": "L6681",
+        "scheduledDay": 53,
+        "generationRule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "generationEventId": "L6682",
+        "brokenAt": 5565100,
+        "breakCause": "deadline_missed",
+        "resolutionEventId": "L6999",
+        "seriesRecorded": true,
+        "seriesOutcomeEventId": "L7000"
+      },
+      "month3": {
+        "id": "MONTH-PROVISIONS@03",
+        "title": "Tend twice and hold twelve edible portions before the twenty-fifth day closes",
+        "deadline": 8565000,
+        "action": "tend",
+        "stockTarget": {
+          "item": "food",
+          "minimum": 12,
+          "includePreserved": true
+        },
+        "origin": "calendar",
+        "requiredProgress": 2,
+        "progressCount": 1,
+        "status": "broken",
+        "done": false,
+        "openedAt": 8300000,
+        "seriesId": "MONTH-PROVISIONS",
+        "seriesOrdinal": 3,
+        "openEventId": "L10323",
+        "scheduledDay": 83,
+        "generationRule": {
+          "templateId": "MONTH-PROVISIONS",
+          "intervalDays": 30,
+          "openOffset": 23,
+          "dueOffset": 25,
+          "duePhase": 65000
+        },
+        "generationEventId": "L10324",
+        "brokenAt": 8565100,
+        "breakCause": "deadline_missed",
+        "resolutionEventId": "L10699",
+        "seriesRecorded": true,
+        "seriesOutcomeEventId": "L10700"
+      },
+      "series": {
+        "id": "MONTH-PROVISIONS",
+        "opened": 3,
+        "kept": 1,
+        "broken": 2,
+        "keptStreak": 0,
+        "brokenStreak": 2,
+        "avgCompletionTicks": 201800,
+        "instances": [
+          {
+            "id": "MONTH-PROVISIONS",
+            "ordinal": 1,
+            "status": "kept",
+            "openedAt": 2300000,
+            "deadline": 2565000,
+            "keptAt": 2501800,
+            "brokenAt": null,
+            "cause": null,
+            "progress": 2,
+            "required": 2,
+            "generationEventId": "L2973",
+            "resolutionEventId": "L3209"
+          },
+          {
+            "id": "MONTH-PROVISIONS@02",
+            "ordinal": 2,
+            "status": "broken",
+            "openedAt": 5300000,
+            "deadline": 5565000,
+            "keptAt": null,
+            "brokenAt": 5565100,
+            "cause": "deadline_missed",
+            "progress": 0,
+            "required": 2,
+            "generationEventId": "L6682",
+            "resolutionEventId": "L6999"
+          },
+          {
+            "id": "MONTH-PROVISIONS@03",
+            "ordinal": 3,
+            "status": "broken",
+            "openedAt": 8300000,
+            "deadline": 8565000,
+            "keptAt": null,
+            "brokenAt": 8565100,
+            "cause": "deadline_missed",
+            "progress": 1,
+            "required": 2,
+            "generationEventId": "L10324",
+            "resolutionEventId": "L10699"
+          }
+        ]
+      },
+      "afterFailureRuminations": 24,
+      "totalRuminations": 100
+    },
+    "deltaFailedRumination": 24
+  }
+}
