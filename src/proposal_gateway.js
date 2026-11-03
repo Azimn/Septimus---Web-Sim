@@ -28,6 +28,25 @@ function needs(s){
    v<30?'urgent':v<60?'noticeable':'settled';return [k,band];
  }));
 }
+// The card is the root of trust, not merely a summarization surface.
+// A global event ID is not proof the inhabitant knew its contents.
+const SELF_ACTION_TYPES=new Set(['completed','decision','letter_read']);
+const WITNESSED_TYPES=new Set(['visitor_conversation','carrier_conversation',
+ 'visitor_arrival','carrier_arrival','merchant_settlement']);
+function hasStanding(e){
+ if(!e||typeof e.id!=='string'||!/^L[0-9]+$/.test(e.id))return false;
+ if(SELF_ACTION_TYPES.has(e.type))return true;
+ if(WITNESSED_TYPES.has(e.type)){
+  if(e.perceived===false||e.coPresent===false)return false;
+  return e.perceived===true||e.coPresent===true||
+   Array.isArray(e.witnesses)&&e.witnesses.includes('pretorius');
+ }
+ return false;
+}
+function ownReceipt(s,id){
+ const e=(s.events||[]).find(e=>e.id===id);
+ return e&&hasStanding(e)?e:null;
+}
 function buildCard(s,{audience='player',contextKey='speech:player'}={}){
  const source=[],unique=new Set();
  const push=x=>{if(!x||unique.has(x.id))return;unique.add(x.id);source.push(x);};
@@ -48,23 +67,26 @@ function buildCard(s,{audience='player',contextKey='speech:player'}={}){
   push({id:read.id,predicate:'read_folio',text:'I consulted folio '+read.id+'.',
    provenance:read.provenance||'canonical',memoryClass:'pre_awakened_'+(read.provenance||'canonical')});
  }
- const salient=(s.events||[]).filter(e=>
-  ['completed','visitor_conversation','carrier_conversation','letter_read','reply_collected',
-   'merchant_settlement','visitor_arrival','carrier_arrival','decision'].includes(e.type))
-  .slice(-MAX.events);
+ // Walk backward and stop after eighteen eligible receipts. Unwitnessed
+ // global events are never placed on the card or its legacy inspection view.
+ const salient=[];
+ for(let i=(s.events||[]).length-1;i>=0&&salient.length<MAX.events;i--){
+  const e=s.events[i];if(hasStanding(e))salient.push(e);
+ }
+ salient.reverse();
  for(const e of salient){
   if(e.type==='completed')push({id:e.id,predicate:'completed_action',
    text:'I completed '+e.kind+'.',provenance:'lived_runtime_memory'});
-  if(e.type==='visitor_conversation'&&(e.perceived!==false))
+  if(e.type==='visitor_conversation')
    push({id:e.id,predicate:'witnessed_event',
     text:'I spoke with Rosa Brandl.',provenance:'lived_runtime_memory'});
-  if(e.type==='carrier_conversation'&&(e.coPresent!==false))
+  if(e.type==='carrier_conversation')
    push({id:e.id,predicate:'witnessed_event',
     text:'I spoke with Mr. McFeely.',provenance:'lived_runtime_memory'});
   if(e.type==='visitor_arrival'&&e.perceived===true)
    push({id:e.id,predicate:'witnessed_event',
     text:'I witnessed Rosa Brandl arrive.',provenance:'lived_runtime_memory'});
-  if(e.type==='merchant_settlement'&&e.coPresent===true)
+  if(e.type==='merchant_settlement')
    push({id:e.id,predicate:'witnessed_event',
     text:'I settled an account with Rosa Brandl.',provenance:'lived_runtime_memory'});
   if(e.type==='decision')push({id:e.id,predicate:'decision_receipt',
@@ -85,7 +107,7 @@ function buildCard(s,{audience='player',contextKey='speech:player'}={}){
   // Legacy read-only inspection fields, retained for existing v1.1 clients.
   visible:(s.perception||[]).map(x=>x.id),
   open:(s.commitments||[]).filter(x=>!x.done&&x.status!=='broken').map(x=>x.id),
-  sourceEvents:(s.events||[]).slice(-50).map(x=>x.id),
+  sourceEvents:source.filter(x=>/^L[0-9]+$/.test(x.id)).map(x=>x.id),
   readFolios:(s.folioReads||[]).map(x=>x.id),
   feltBands:bands,openCount:(s.commitments||[]).filter(c=>!c.done&&c.status!=='broken').length,
   source,excluded:['unread_folios','raw_folio_text','private_other_person_knowledge',
@@ -134,4 +156,4 @@ function fromFact(card,fact,{id='TEMPLATE-1'}={}){
  return envelope(card,{id,claims:[{sourceId:fact.id,predicate:fact.predicate,text:fact.text,
   provenance:fact.provenance}]});
 }
-module.exports={MAX,NEUTRAL,revision,buildCard,stateCard:buildCard,envelope,check,fromFact};
+module.exports={MAX,NEUTRAL,revision,hasStanding,ownReceipt,buildCard,stateCard:buildCard,envelope,check,fromFact};

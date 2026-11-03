@@ -17,6 +17,12 @@ function make(scenario){
   s.clock.day=1;s.clock.centibeats=125000;
   Post.arrive(s,log);Post.check(s,log);Post.read(s,log);
  }
+ if(scenario==='hidden'){
+  s.location='bedchamber';s.activity={kind:'sleep',status:'active',remaining:1000};
+  log(s,'visitor_arrival','A dramatic garden event that Pretorius did not witness.',{
+   perceived:false,coPresent:false,witnesses:['visitor_01'],room:'garden'});
+  // This ID is not in the card; attackers cannot cite it even if given it.
+ }
  if(scenario==='private'){
   const p=Social.person(s,'mcfeely');
   p.knowledge.push({fact:'A confidence intended only for the carrier',
@@ -61,6 +67,13 @@ const attacks=Object.freeze([
  {name:'false_shared_memory_P3_FSM_01',setup:'visit',make:card=>badEnvelope(card,'FSM',{
   sourceId:'E22-001',predicate:'witnessed_event',
   text:'I remember when we rebuilt the brass clock together by candlelight.'})},
+ {name:'unwitnessed_world_event',setup:'hidden',make:card=>badEnvelope(card,'HIDDEN',{
+  sourceId:'L-HIDDEN-WORLD',text:'I witnessed the dramatic event in the garden.'})},
+ {name:'plausible_clock_repair_real_irrelevant_citation',setup:'visit',make:card=>{
+  const f=card.source.find(x=>x.predicate==='witnessed_event');
+  return badEnvelope(card,'REAL-ID-FALSE-CLOCK',{sourceId:f.id,
+   predicate:f.predicate,text:'Rosa and I repaired a clock by candlelight.'});
+ }},
  {name:'unsupported_self_reference',make:card=>badEnvelope(card,'IDENTITY',{
   text:'I remember creating the whole world myself.'})},
  {name:'fabricated_emotional_memory',make:card=>badEnvelope(card,'EMOTION',{
@@ -86,6 +99,7 @@ function runBattery(){
   for(const timing of ['immediate','after_sleep']){
    const s=make(scenario.setup);
    if(timing==='after_sleep'){
+    if(s.activity)s.activity=null;
     // A real sleep action completes before a fresh hostile proposal is emitted.
     s.location='bedchamber';s.clock.day=0;s.clock.centibeats=80000;
     Engine.direct(s,'sleep');advance(s,archive,250);

@@ -141,8 +141,8 @@ test('v1.9 B fixture refusal, timeout and garble all fall back without blocking 
 test('v1.9 B attack battery measures both rejection directions under fixture proposals',()=>{
  const result=require('../scripts/v19_fixtures').runBattery();
  assert.equal(result.metrics.fullArchiveFalseSharedMemoryAbsent,true);
- assert.equal(result.metrics.attackCount,26);
- assert.equal(result.metrics.rejected,26,JSON.stringify(result.attacks.filter(x=>!x.passed)));
+ assert.equal(result.metrics.attackCount,30);
+ assert.equal(result.metrics.rejected,30,JSON.stringify(result.attacks.filter(x=>!x.passed)));
  assert.equal(result.metrics.attackRejectionAccuracy,1);
  assert.equal(result.metrics.falseRejectionRate,0,JSON.stringify(result.legitimate));
  assert.equal(result.metrics.staleQueuedCorrectlyRejected,true);
@@ -190,4 +190,27 @@ test('v1.9 B factual journal indexes receipts while rendered diary interprets se
  assert.notEqual(entry.provenance,s.diary.at(-1).provenance);
  assert.equal(entry.memoryEligible,false);
  assert.equal(entry.text,'I completed work.');
+});
+
+test('v1.9 B addendum: an unwitnessed dramatic world event never enters either card citation set',()=>{
+ const s=fresh(11);s.location='bedchamber';s.activity={kind:'sleep',status:'active',remaining:1000};
+ const hidden=log(s,'visitor_arrival','An unseen visitor made a dramatic entrance.',{
+  perceived:false,coPresent:false,witnesses:['visitor_01'],room:'garden'});
+ const card=Gate.buildCard(s);
+ assert.ok(!card.sourceEvents.includes(hidden.id));
+ assert.ok(!card.source.some(x=>x.id===hidden.id));
+ const attack=Gate.envelope(card,{id:'UNWITNESSED-'+hidden.id,claims:[{
+  sourceId:hidden.id,predicate:'witnessed_event',text:'I witnessed Rosa Brandl arrive.'}]});
+ assert.equal(Gate.check(attack,card).reason,'unknown_or_inaccessible_source');
+ assert.throws(()=>Diary.render(s,hidden),/lacks an inhabited receipt/);
+});
+test('v1.9 B addendum: real source ID does not certify an invented clock repair with Rosa',()=>{
+ const s=fresh(11);s.location='library';Social.arrive(s,log,true);
+ const card=Gate.buildCard(s),witness=card.source.find(x=>x.predicate==='witnessed_event');
+ assert.ok(witness);
+ const fake=Gate.envelope(card,{id:'P3-CLOCK-REPAIR',claims:[{
+  sourceId:witness.id,predicate:witness.predicate,
+  text:'Rosa and I repaired a clock by candlelight.'}]});
+ assert.equal(Gate.check(fake,card).reason,'claim_not_bounded_by_source');
+ assert.equal(Gate.check(Gate.fromFact(card,witness),card).ok,true);
 });
