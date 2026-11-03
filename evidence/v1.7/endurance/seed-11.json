@@ -1,0 +1,758 @@
+{
+  "schema": "simple-tower-v1.7-evidence-v1",
+  "sourceHead": "c19a821335943d17251aecbc8a08f96b2576e067",
+  "seed": 11,
+  "alive": true,
+  "health": 100,
+  "monthly": [
+    {
+      "id": "MONTH-FOLIO",
+      "status": "kept",
+      "sourceAction": "read",
+      "stockTarget": null,
+      "keptAt": 908300,
+      "progressEventIds": [
+        "L1026",
+        "L1030"
+      ]
+    },
+    {
+      "id": "MONTH-INSTRUMENT",
+      "status": "kept",
+      "sourceAction": "inspect",
+      "stockTarget": null,
+      "keptAt": 1617600,
+      "progressEventIds": [
+        "L2038",
+        "L2042"
+      ]
+    },
+    {
+      "id": "MONTH-PROVISIONS",
+      "status": "kept",
+      "sourceAction": "tend",
+      "stockTarget": {
+        "item": "food",
+        "minimum": 12,
+        "includePreserved": true
+      },
+      "keptAt": 2501800,
+      "progressEventIds": [
+        "L2972",
+        "L2978"
+      ]
+    }
+  ],
+  "rosa": {
+    "id": "visitor_01",
+    "name": "Rosa Brandl",
+    "marker": "known supplier of the tower since 1869",
+    "relationshipSource": "reconstructed_archive",
+    "priorRefs": [
+      "E22-001",
+      "E22-003"
+    ],
+    "livedEncounters": 5,
+    "trust": 33.12,
+    "effectiveTrust": 39.519999999999996,
+    "encountered": 5,
+    "witnessedConversations": 5,
+    "avoided": 0,
+    "eventHistory": [
+      {
+        "id": "L42",
+        "tick": 44200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.6451612903225806,
+        "trustAt": 15.483870967741936
+      },
+      {
+        "id": "L946",
+        "tick": 744200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.47619047619047616,
+        "trustAt": 16.36857142857143
+      },
+      {
+        "id": "L1799",
+        "tick": 1444200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.3773584905660377,
+        "trustAt": 25.596603773584903
+      },
+      {
+        "id": "L2698",
+        "tick": 2144200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.3125,
+        "trustAt": 33.43
+      },
+      {
+        "id": "L3549",
+        "tick": 2844000,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.26666666666666666,
+        "trustAt": 36.410000000000004
+      }
+    ],
+    "trustTrajectory": [
+      {
+        "id": "L48",
+        "tick": 44200,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 2
+      },
+      {
+        "id": "L55",
+        "tick": 45900,
+        "kind": "conversation",
+        "delta": 2.94,
+        "trust": 4.94
+      },
+      {
+        "id": "L952",
+        "tick": 744200,
+        "kind": "greeting",
+        "delta": 1.9,
+        "trust": 6.84
+      },
+      {
+        "id": "L955",
+        "tick": 744200,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 2.84
+      },
+      {
+        "id": "L956",
+        "tick": 744200,
+        "kind": "negotiation",
+        "delta": 1.94,
+        "trust": 4.78
+      },
+      {
+        "id": "L965",
+        "tick": 750400,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 0.78
+      },
+      {
+        "id": "L966",
+        "tick": 750400,
+        "kind": "negotiation",
+        "delta": 1.98,
+        "trust": 2.76
+      },
+      {
+        "id": "L970",
+        "tick": 751600,
+        "kind": "trade",
+        "delta": 3.89,
+        "trust": 6.65
+      },
+      {
+        "id": "L977",
+        "tick": 753000,
+        "kind": "trade",
+        "delta": 3.73,
+        "trust": 10.38
+      },
+      {
+        "id": "L984",
+        "tick": 754400,
+        "kind": "trade",
+        "delta": 3.58,
+        "trust": 13.96
+      },
+      {
+        "id": "L990",
+        "tick": 755400,
+        "kind": "conversation",
+        "delta": 2.58,
+        "trust": 16.54
+      },
+      {
+        "id": "L991",
+        "tick": 755400,
+        "kind": "funny",
+        "delta": 0,
+        "trust": 16.54
+      },
+      {
+        "id": "L1805",
+        "tick": 1444200,
+        "kind": "greeting",
+        "delta": 1.67,
+        "trust": 18.21
+      },
+      {
+        "id": "L1807",
+        "tick": 1444200,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 14.21
+      },
+      {
+        "id": "L1808",
+        "tick": 1444200,
+        "kind": "negotiation",
+        "delta": 1.72,
+        "trust": 15.93
+      },
+      {
+        "id": "L1818",
+        "tick": 1449500,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 11.93
+      },
+      {
+        "id": "L1819",
+        "tick": 1449500,
+        "kind": "negotiation",
+        "delta": 1.76,
+        "trust": 13.69
+      },
+      {
+        "id": "L1822",
+        "tick": 1450700,
+        "kind": "trade",
+        "delta": 3.45,
+        "trust": 17.14
+      },
+      {
+        "id": "L1829",
+        "tick": 1452100,
+        "kind": "trade",
+        "delta": 3.31,
+        "trust": 20.45
+      },
+      {
+        "id": "L1837",
+        "tick": 1453100,
+        "kind": "conversation",
+        "delta": 2.39,
+        "trust": 22.84
+      },
+      {
+        "id": "L1845",
+        "tick": 1454500,
+        "kind": "trade",
+        "delta": 3.09,
+        "trust": 25.93
+      },
+      {
+        "id": "L2704",
+        "tick": 2144200,
+        "kind": "greeting",
+        "delta": 1.48,
+        "trust": 27.41
+      },
+      {
+        "id": "L2706",
+        "tick": 2144200,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 23.41
+      },
+      {
+        "id": "L2707",
+        "tick": 2144200,
+        "kind": "negotiation",
+        "delta": 1.53,
+        "trust": 24.94
+      },
+      {
+        "id": "L2715",
+        "tick": 2144700,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 20.94
+      },
+      {
+        "id": "L2716",
+        "tick": 2144700,
+        "kind": "negotiation",
+        "delta": 1.58,
+        "trust": 22.52
+      },
+      {
+        "id": "L2719",
+        "tick": 2145900,
+        "kind": "trade",
+        "delta": 3.1,
+        "trust": 25.62
+      },
+      {
+        "id": "L2726",
+        "tick": 2146900,
+        "kind": "conversation",
+        "delta": 2.23,
+        "trust": 27.85
+      },
+      {
+        "id": "L2731",
+        "tick": 2147900,
+        "kind": "conversation",
+        "delta": 2.16,
+        "trust": 30.01
+      },
+      {
+        "id": "L3555",
+        "tick": 2844000,
+        "kind": "greeting",
+        "delta": 1.4,
+        "trust": 31.41
+      },
+      {
+        "id": "L3563",
+        "tick": 2846100,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 27.41
+      },
+      {
+        "id": "L3564",
+        "tick": 2846100,
+        "kind": "negotiation",
+        "delta": 1.45,
+        "trust": 28.86
+      },
+      {
+        "id": "L3567",
+        "tick": 2847300,
+        "kind": "trade",
+        "delta": 2.85,
+        "trust": 31.71
+      },
+      {
+        "id": "L3573",
+        "tick": 2848300,
+        "kind": "conversation",
+        "delta": 2.05,
+        "trust": 33.76
+      },
+      {
+        "id": "L3579",
+        "tick": 2849300,
+        "kind": "conversation",
+        "delta": 1.99,
+        "trust": 35.75
+      },
+      {
+        "id": "L3585",
+        "tick": 2849500,
+        "kind": "friction",
+        "delta": -4,
+        "trust": 31.75
+      },
+      {
+        "id": "L3586",
+        "tick": 2849500,
+        "kind": "negotiation",
+        "delta": 1.37,
+        "trust": 33.12
+      }
+    ],
+    "recognitionIds": [
+      "L39"
+    ],
+    "dealings": [
+      {
+        "id": "L40",
+        "type": "merchant_delivery",
+        "tick": 44000
+      },
+      {
+        "id": "L944",
+        "type": "merchant_delivery",
+        "tick": 744000
+      },
+      {
+        "id": "L969",
+        "type": "trade_receipt",
+        "tick": 751600
+      },
+      {
+        "id": "L976",
+        "type": "trade_receipt",
+        "tick": 753000
+      },
+      {
+        "id": "L983",
+        "type": "trade_receipt",
+        "tick": 754400
+      },
+      {
+        "id": "L1797",
+        "type": "merchant_delivery",
+        "tick": 1444000
+      },
+      {
+        "id": "L1821",
+        "type": "trade_receipt",
+        "tick": 1450700
+      },
+      {
+        "id": "L1828",
+        "type": "trade_receipt",
+        "tick": 1452100
+      },
+      {
+        "id": "L1844",
+        "type": "trade_receipt",
+        "tick": 1454500
+      },
+      {
+        "id": "L2696",
+        "type": "merchant_delivery",
+        "tick": 2144000
+      },
+      {
+        "id": "L2718",
+        "type": "trade_receipt",
+        "tick": 2145900
+      },
+      {
+        "id": "L3548",
+        "type": "merchant_delivery",
+        "tick": 2844000
+      },
+      {
+        "id": "L3566",
+        "type": "trade_receipt",
+        "tick": 2847300
+      }
+    ],
+    "knownFacts": []
+  },
+  "mcfeely": {
+    "id": "mcfeely",
+    "name": "Mr. McFeely",
+    "marker": "three knocks at the path and a pause",
+    "relationshipSource": "lived_only",
+    "priorRefs": [],
+    "livedEncounters": 13,
+    "trust": 23.09,
+    "effectiveTrust": 23.09,
+    "encountered": 13,
+    "witnessedConversations": 13,
+    "avoided": 0,
+    "eventHistory": [
+      {
+        "id": "L193",
+        "tick": 151300,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 0
+      },
+      {
+        "id": "L418",
+        "tick": 343300,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 2
+      },
+      {
+        "id": "L704",
+        "tick": 543700,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 3.96
+      },
+      {
+        "id": "L1087",
+        "tick": 848500,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 5.88
+      },
+      {
+        "id": "L1335",
+        "tick": 1044500,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 7.76
+      },
+      {
+        "id": "L1572",
+        "tick": 1248900,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 9.6
+      },
+      {
+        "id": "L1968",
+        "tick": 1543800,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 11.41
+      },
+      {
+        "id": "L2209",
+        "tick": 1745100,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 13.18
+      },
+      {
+        "id": "L2472",
+        "tick": 1944300,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 14.92
+      },
+      {
+        "id": "L2869",
+        "tick": 2250100,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 16.62
+      },
+      {
+        "id": "L3096",
+        "tick": 2448200,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 18.29
+      },
+      {
+        "id": "L3326",
+        "tick": 2648900,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 19.92
+      },
+      {
+        "id": "L3706",
+        "tick": 2947900,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 21.52
+      }
+    ],
+    "trustTrajectory": [
+      {
+        "id": "L195",
+        "tick": 151300,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 2
+      },
+      {
+        "id": "L420",
+        "tick": 343300,
+        "kind": "greeting",
+        "delta": 1.96,
+        "trust": 3.96
+      },
+      {
+        "id": "L706",
+        "tick": 543700,
+        "kind": "greeting",
+        "delta": 1.92,
+        "trust": 5.88
+      },
+      {
+        "id": "L1089",
+        "tick": 848500,
+        "kind": "greeting",
+        "delta": 1.88,
+        "trust": 7.76
+      },
+      {
+        "id": "L1337",
+        "tick": 1044500,
+        "kind": "greeting",
+        "delta": 1.84,
+        "trust": 9.6
+      },
+      {
+        "id": "L1574",
+        "tick": 1248900,
+        "kind": "greeting",
+        "delta": 1.81,
+        "trust": 11.41
+      },
+      {
+        "id": "L1970",
+        "tick": 1543800,
+        "kind": "greeting",
+        "delta": 1.77,
+        "trust": 13.18
+      },
+      {
+        "id": "L2211",
+        "tick": 1745100,
+        "kind": "greeting",
+        "delta": 1.74,
+        "trust": 14.92
+      },
+      {
+        "id": "L2474",
+        "tick": 1944300,
+        "kind": "greeting",
+        "delta": 1.7,
+        "trust": 16.62
+      },
+      {
+        "id": "L2871",
+        "tick": 2250100,
+        "kind": "greeting",
+        "delta": 1.67,
+        "trust": 18.29
+      },
+      {
+        "id": "L3098",
+        "tick": 2448200,
+        "kind": "greeting",
+        "delta": 1.63,
+        "trust": 19.92
+      },
+      {
+        "id": "L3328",
+        "tick": 2648900,
+        "kind": "greeting",
+        "delta": 1.6,
+        "trust": 21.52
+      },
+      {
+        "id": "L3708",
+        "tick": 2947900,
+        "kind": "greeting",
+        "delta": 1.57,
+        "trust": 23.09
+      }
+    ],
+    "recognitionIds": [
+      "L196"
+    ],
+    "dealings": [
+      {
+        "id": "L180",
+        "type": "carrier_arrival",
+        "tick": 142000
+      },
+      {
+        "id": "L407",
+        "type": "carrier_arrival",
+        "tick": 342000
+      },
+      {
+        "id": "L693",
+        "type": "carrier_arrival",
+        "tick": 542000
+      },
+      {
+        "id": "L696",
+        "type": "reply_collected",
+        "tick": 542000
+      },
+      {
+        "id": "L1073",
+        "type": "carrier_arrival",
+        "tick": 842000
+      },
+      {
+        "id": "L1076",
+        "type": "reply_collected",
+        "tick": 842000
+      },
+      {
+        "id": "L1325",
+        "type": "carrier_arrival",
+        "tick": 1042000
+      },
+      {
+        "id": "L1558",
+        "type": "carrier_arrival",
+        "tick": 1242000
+      },
+      {
+        "id": "L1955",
+        "type": "carrier_arrival",
+        "tick": 1542000
+      },
+      {
+        "id": "L2203",
+        "type": "carrier_arrival",
+        "tick": 1742000
+      },
+      {
+        "id": "L2461",
+        "type": "carrier_arrival",
+        "tick": 1942000
+      },
+      {
+        "id": "L2856",
+        "type": "carrier_arrival",
+        "tick": 2242000
+      },
+      {
+        "id": "L3083",
+        "type": "carrier_arrival",
+        "tick": 2442000
+      },
+      {
+        "id": "L3313",
+        "type": "carrier_arrival",
+        "tick": 2642000
+      },
+      {
+        "id": "L3693",
+        "type": "carrier_arrival",
+        "tick": 2942000
+      }
+    ],
+    "knownFacts": []
+  },
+  "mail": {
+    "received": 13,
+    "read": 13,
+    "replied": 2,
+    "repliesCollected": 2,
+    "henry": [
+      {
+        "id": "LETTER-05",
+        "sender": "Henry Frankenstein",
+        "contentClass": "personal",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 542000,
+        "deliveryEventId": "L695",
+        "readTick": 547200,
+        "read": true,
+        "replyWrittenAt": 549000,
+        "replyCollectedAt": 842000
+      }
+    ],
+    "parcels": 3
+  },
+  "harvestWaste": 0,
+  "resourceConservation": {
+    "allPreservesDebited": true,
+    "allTradesBalanced": true
+  },
+  "completedActivities": 487,
+  "restoredSave": []
+}

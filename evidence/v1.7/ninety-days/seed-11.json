@@ -1,0 +1,912 @@
+{
+  "schema": "simple-tower-v1.7-evidence-v1",
+  "sourceHead": "c19a821335943d17251aecbc8a08f96b2576e067",
+  "days": 90,
+  "health": 100,
+  "dead": false,
+  "firstDetectedFailure": null,
+  "slowFailures": [],
+  "monthly": [
+    {
+      "id": "MONTH-FOLIO",
+      "status": "kept",
+      "progress": 2,
+      "required": 2,
+      "stockTarget": null,
+      "keptAt": 908300
+    },
+    {
+      "id": "MONTH-INSTRUMENT",
+      "status": "kept",
+      "progress": 2,
+      "required": 2,
+      "stockTarget": null,
+      "keptAt": 1617600
+    },
+    {
+      "id": "MONTH-PROVISIONS",
+      "status": "kept",
+      "progress": 2,
+      "required": 2,
+      "stockTarget": {
+        "item": "food",
+        "minimum": 12,
+        "includePreserved": true
+      },
+      "keptAt": 2501800
+    }
+  ],
+  "checkpoints": [
+    {
+      "day": 30,
+      "tick": 3025000,
+      "trust": 33.12,
+      "stores": {
+        "food": 5,
+        "water": 7,
+        "fuel": 10,
+        "tea": 16,
+        "preserved": 35,
+        "lampSupplies": 2,
+        "books": 1
+      }
+    },
+    {
+      "day": 60,
+      "tick": 6025000,
+      "trust": 42.17,
+      "stores": {
+        "food": 8,
+        "water": 11,
+        "fuel": 8,
+        "tea": 16,
+        "preserved": 100,
+        "lampSupplies": 2,
+        "books": 1
+      }
+    },
+    {
+      "day": 90,
+      "tick": 9025000,
+      "trust": 47.37,
+      "stores": {
+        "food": 17,
+        "water": 6,
+        "fuel": 11,
+        "tea": 16,
+        "preserved": 140,
+        "lampSupplies": 2,
+        "books": 1
+      }
+    }
+  ],
+  "harvestWaste": 0,
+  "trustDaily": [
+    {
+      "day": 0,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 0,
+      "completed": 13
+    },
+    {
+      "day": 1,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 0,
+      "completed": 16
+    },
+    {
+      "day": 2,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 5,
+      "completed": 14
+    },
+    {
+      "day": 3,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 5,
+      "completed": 18
+    },
+    {
+      "day": 4,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 5,
+      "completed": 16
+    },
+    {
+      "day": 5,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 10,
+      "completed": 20
+    },
+    {
+      "day": 6,
+      "trust": 4.94,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 15,
+      "completed": 13
+    },
+    {
+      "day": 7,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 0,
+      "completed": 17
+    },
+    {
+      "day": 8,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 5,
+      "completed": 15
+    },
+    {
+      "day": 9,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 5,
+      "completed": 15
+    },
+    {
+      "day": 10,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 10,
+      "completed": 18
+    },
+    {
+      "day": 11,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 15,
+      "completed": 13
+    },
+    {
+      "day": 12,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 15,
+      "completed": 17
+    },
+    {
+      "day": 13,
+      "trust": 16.54,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 15,
+      "completed": 13
+    },
+    {
+      "day": 14,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 5,
+      "completed": 20
+    },
+    {
+      "day": 15,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 13,
+      "preserved": 5,
+      "completed": 18
+    },
+    {
+      "day": 16,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 10,
+      "completed": 17
+    },
+    {
+      "day": 17,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 15,
+      "completed": 15
+    },
+    {
+      "day": 18,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 1,
+      "preserved": 15,
+      "completed": 16
+    },
+    {
+      "day": 19,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 15,
+      "completed": 19
+    },
+    {
+      "day": 20,
+      "trust": 25.93,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 20,
+      "completed": 13
+    },
+    {
+      "day": 21,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 15,
+      "completed": 17
+    },
+    {
+      "day": 22,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 20,
+      "completed": 18
+    },
+    {
+      "day": 23,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 25,
+      "completed": 14
+    },
+    {
+      "day": 24,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 25,
+      "completed": 16
+    },
+    {
+      "day": 25,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 25,
+      "completed": 15
+    },
+    {
+      "day": 26,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 30,
+      "completed": 18
+    },
+    {
+      "day": 27,
+      "trust": 30.01,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 30,
+      "completed": 14
+    },
+    {
+      "day": 28,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 30,
+      "completed": 16
+    },
+    {
+      "day": 29,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 12,
+      "preserved": 30,
+      "completed": 17
+    },
+    {
+      "day": 30,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 35,
+      "completed": 15
+    },
+    {
+      "day": 31,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 40,
+      "completed": 17
+    },
+    {
+      "day": 32,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 40,
+      "completed": 15
+    },
+    {
+      "day": 33,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 40,
+      "completed": 16
+    },
+    {
+      "day": 34,
+      "trust": 33.12,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 45,
+      "completed": 15
+    },
+    {
+      "day": 35,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 50,
+      "completed": 17
+    },
+    {
+      "day": 36,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 50,
+      "completed": 14
+    },
+    {
+      "day": 37,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 55,
+      "completed": 15
+    },
+    {
+      "day": 38,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 60,
+      "completed": 14
+    },
+    {
+      "day": 39,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 2,
+      "preserved": 60,
+      "completed": 16
+    },
+    {
+      "day": 40,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 60,
+      "completed": 15
+    },
+    {
+      "day": 41,
+      "trust": 35.87,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 65,
+      "completed": 16
+    },
+    {
+      "day": 42,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 60,
+      "completed": 15
+    },
+    {
+      "day": 43,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 65,
+      "completed": 18
+    },
+    {
+      "day": 44,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 70,
+      "completed": 16
+    },
+    {
+      "day": 45,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 70,
+      "completed": 16
+    },
+    {
+      "day": 46,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 75,
+      "completed": 14
+    },
+    {
+      "day": 47,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 75,
+      "completed": 18
+    },
+    {
+      "day": 48,
+      "trust": 38.46,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 75,
+      "completed": 12
+    },
+    {
+      "day": 49,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 75,
+      "completed": 18
+    },
+    {
+      "day": 50,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 80,
+      "completed": 14
+    },
+    {
+      "day": 51,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 80,
+      "completed": 16
+    },
+    {
+      "day": 52,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 85,
+      "completed": 17
+    },
+    {
+      "day": 53,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 90,
+      "completed": 13
+    },
+    {
+      "day": 54,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 90,
+      "completed": 18
+    },
+    {
+      "day": 55,
+      "trust": 40.67,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 90,
+      "completed": 13
+    },
+    {
+      "day": 56,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 95,
+      "completed": 18
+    },
+    {
+      "day": 57,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 95,
+      "completed": 17
+    },
+    {
+      "day": 58,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 100,
+      "completed": 14
+    },
+    {
+      "day": 59,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 100,
+      "completed": 15
+    },
+    {
+      "day": 60,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 100,
+      "completed": 15
+    },
+    {
+      "day": 61,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 105,
+      "completed": 16
+    },
+    {
+      "day": 62,
+      "trust": 42.17,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 110,
+      "completed": 16
+    },
+    {
+      "day": 63,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 105,
+      "completed": 18
+    },
+    {
+      "day": 64,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 110,
+      "completed": 14
+    },
+    {
+      "day": 65,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 11,
+      "preserved": 110,
+      "completed": 16
+    },
+    {
+      "day": 66,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 110,
+      "completed": 13
+    },
+    {
+      "day": 67,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 3,
+      "preserved": 120,
+      "completed": 16
+    },
+    {
+      "day": 68,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 9,
+      "preserved": 120,
+      "completed": 15
+    },
+    {
+      "day": 69,
+      "trust": 43.44,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 6,
+      "preserved": 120,
+      "completed": 16
+    },
+    {
+      "day": 70,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 8,
+      "preserved": 120,
+      "completed": 15
+    },
+    {
+      "day": 71,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 120,
+      "completed": 17
+    },
+    {
+      "day": 72,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 125,
+      "completed": 13
+    },
+    {
+      "day": 73,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 4,
+      "preserved": 130,
+      "completed": 18
+    },
+    {
+      "day": 74,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 1,
+      "preserved": 130,
+      "completed": 16
+    },
+    {
+      "day": 75,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 130,
+      "completed": 16
+    },
+    {
+      "day": 76,
+      "trust": 44.53,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 135,
+      "completed": 14
+    },
+    {
+      "day": 77,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 130,
+      "completed": 16
+    },
+    {
+      "day": 78,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 7,
+      "preserved": 135,
+      "completed": 16
+    },
+    {
+      "day": 79,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 13,
+      "preserved": 135,
+      "completed": 15
+    },
+    {
+      "day": 80,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 5,
+      "preserved": 140,
+      "completed": 15
+    },
+    {
+      "day": 81,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 11,
+      "preserved": 140,
+      "completed": 14
+    },
+    {
+      "day": 82,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 16,
+      "preserved": 140,
+      "completed": 17
+    },
+    {
+      "day": 83,
+      "trust": 45.84,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 14,
+      "preserved": 140,
+      "completed": 13
+    },
+    {
+      "day": 84,
+      "trust": 47.37,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 22,
+      "preserved": 140,
+      "completed": 16
+    },
+    {
+      "day": 85,
+      "trust": 47.37,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 20,
+      "preserved": 140,
+      "completed": 15
+    },
+    {
+      "day": 86,
+      "trust": 47.37,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 17,
+      "preserved": 140,
+      "completed": 14
+    },
+    {
+      "day": 87,
+      "trust": 47.37,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 22,
+      "preserved": 140,
+      "completed": 17
+    },
+    {
+      "day": 88,
+      "trust": 47.37,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 20,
+      "preserved": 140,
+      "completed": 13
+    },
+    {
+      "day": 89,
+      "trust": 47.37,
+      "brokenCommitments": [],
+      "harvestWaste": 0,
+      "food": 18,
+      "preserved": 140,
+      "completed": 16
+    }
+  ],
+  "terminalStores": {
+    "food": 17,
+    "water": 6,
+    "fuel": 11,
+    "tea": 16,
+    "preserved": 140,
+    "lampSupplies": 2,
+    "books": 1
+  },
+  "preservationAndTrade": {
+    "harvest": 56,
+    "preservation": 42,
+    "trade": 14,
+    "meal": 212,
+    "spoilage": 0
+  }
+}
