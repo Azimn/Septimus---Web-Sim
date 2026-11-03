@@ -78,7 +78,7 @@ function address(s,log){const p=person(s);if(!p.present||p.room!==s.location)thr
  const e=log(s,'visitor_conversation',
   hasPrior?'Rosa spoke as a merchant whose familiarity never became deference.':
     'I heard the merchant introduce the terms of a possible delivery.',
-  {personId:VISITOR,visitorText:text,register:hasPrior?'familiar_non_deferential':'formal',
+  {personId:VISITOR,visitorText:'Good evening, Doctor Pretorius.',additionalLine:text,register:hasPrior?'familiar_non_deferential':'formal',
    greetingForm:hasPrior?'established_contract':'new_contact',
    timeOffered:policy.minutes,confidenceShared:policy.shareConfidence,
    priorWeight:policy.priorWeight,historyFactors:policy.factors,
