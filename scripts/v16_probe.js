@@ -140,11 +140,13 @@ function threeMind(){
  const relay=Post.relay(s,log,{sourcePerson:'visitor_01',
   fact:'Rosa has taken her cart away for the season'});
  const beforehand=relay.corrected;
- SocialReturn(s,log);
+ const visit=SocialReturn(s,log);
  const correction=s.events.find(x=>x.type==='belief_corrected'&&x.priorClaimId===relay.sourceEventId);
  return {letter:l.id,unreadUnknown:unread,readKnown:known,
   beforeCollection:openBefore,afterCollection:openAfter,
-  factKnownByCarrier,factKnownByRosa,hearsay:relay,correctedOnDirectVisit:!!correction,
+  factKnownByCarrier,factKnownByRosa,hearsay:relay,directVisit:visit,
+  tailEvents:s.events.slice(-18).map(e=>({id:e.id,type:e.type,personId:e.personId,priorClaimId:e.priorClaimId})),
+  correctedOnDirectVisit:!!correction,
   correctionSource:correction?.priorClaimId||null,
   passed:unread&&known&&openBefore==='open'&&openAfter==='kept'&&
    factKnownByCarrier&&!factKnownByRosa&&!beforehand&&!premature&&!!correction};
@@ -154,7 +156,11 @@ function SocialReturn(s,log){
  // A direct witnessed reunion, not a receipt appearing in the archive.
  const p=s.people.visitor_01;
  p.present=true;p.room='garden';p.lastVisitDay=8;s.clock.day=8;s.clock.centibeats=844000;
+ const before={location:s.location,personRoom:p.room,personPresent:p.present,
+  wasMetDay:p.metVisitDay,activity:s.activity?.kind||null,
+  hearsay:s.mail.hearsay.map(x=>({id:x.id,aboutPerson:x.aboutPerson,corrected:x.corrected}))};
  Soc.meet(s,log);
+ return {...before,afterMetDay:p.metVisitDay};
 }
 function run(){
  const runs=SEEDS.map(monthSeed),prior=priorAblation(),
