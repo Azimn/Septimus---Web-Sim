@@ -1,0 +1,423 @@
+{
+  "schema": "simple-tower-v1.6-discriminations-v1",
+  "sourceHead": "e502bc51ca60078fc9c1d4d2bc68c0b4cc5683f2",
+  "historySwap": {
+    "before": [
+      {
+        "greet": "greet",
+        "shareConfidence": true,
+        "extendCredit": true,
+        "minutes": 12,
+        "trust": 40,
+        "priorWeight": 0,
+        "factors": {
+          "livedTrust": 40,
+          "livedEncounters": 0,
+          "priorSource": null,
+          "sourceEventIds": [],
+          "livedSocialEvents": [
+            "L1",
+            "L2"
+          ]
+        }
+      },
+      {
+        "greet": "withhold",
+        "shareConfidence": false,
+        "extendCredit": false,
+        "minutes": 0,
+        "trust": -30,
+        "priorWeight": 0,
+        "factors": {
+          "livedTrust": -30,
+          "livedEncounters": 0,
+          "priorSource": null,
+          "sourceEventIds": [],
+          "livedSocialEvents": [
+            "L3",
+            "L4"
+          ]
+        }
+      }
+    ],
+    "after": [
+      {
+        "greet": "withhold",
+        "shareConfidence": false,
+        "extendCredit": false,
+        "minutes": 0,
+        "trust": -30,
+        "priorWeight": 0,
+        "factors": {
+          "livedTrust": -30,
+          "livedEncounters": 0,
+          "priorSource": null,
+          "sourceEventIds": [],
+          "livedSocialEvents": [
+            "L3",
+            "L4"
+          ]
+        }
+      },
+      {
+        "greet": "greet",
+        "shareConfidence": true,
+        "extendCredit": true,
+        "minutes": 12,
+        "trust": 40,
+        "priorWeight": 0,
+        "factors": {
+          "livedTrust": 40,
+          "livedEncounters": 0,
+          "priorSource": null,
+          "sourceEventIds": [],
+          "livedSocialEvents": [
+            "L1",
+            "L2"
+          ]
+        }
+      }
+    ],
+    "witnessedBefore": {
+      "rosaGreeted": true,
+      "rosaAvoided": false,
+      "carrierGreeted": false,
+      "carrierAvoided": true,
+      "sourceReceipts": [
+        {
+          "id": "L6",
+          "type": "visitor_conversation",
+          "personId": "visitor_01"
+        },
+        {
+          "id": "L12",
+          "type": "person_avoided",
+          "personId": "mcfeely"
+        }
+      ]
+    },
+    "witnessedAfter": {
+      "rosaGreeted": false,
+      "rosaAvoided": true,
+      "carrierGreeted": true,
+      "carrierAvoided": false,
+      "sourceReceipts": [
+        {
+          "id": "L5",
+          "type": "visitor_avoided",
+          "personId": "visitor_01"
+        },
+        {
+          "id": "L7",
+          "type": "carrier_conversation",
+          "personId": "mcfeely"
+        }
+      ]
+    },
+    "eventId": "L5",
+    "passed": true,
+    "sourceEventIds": [
+      "L1",
+      "L2",
+      "L3",
+      "L4"
+    ]
+  },
+  "threeMind": {
+    "letter": "LETTER-03",
+    "unreadUnknown": true,
+    "readKnown": true,
+    "beforeCollection": "open",
+    "afterCollection": "kept",
+    "factKnownByCarrier": true,
+    "factKnownByRosa": false,
+    "hearsay": {
+      "id": "HEARSAY-L20",
+      "fact": "Rosa has taken her cart away for the season",
+      "aboutPerson": "visitor_01",
+      "sourcePerson": "visitor_01",
+      "intermediary": "mcfeely",
+      "sourceEventId": "L20",
+      "epistemicStatus": "hearsay",
+      "corrected": true,
+      "laterDisconfirmedBy": "direct_visit",
+      "correctionEventId": "L29"
+    },
+    "directVisit": {
+      "location": "garden",
+      "personRoom": "garden",
+      "personPresent": true,
+      "activity": null,
+      "hearsay": [
+        {
+          "id": "HEARSAY-L16",
+          "aboutPerson": "visitor_01",
+          "corrected": false
+        },
+        {
+          "id": "HEARSAY-L20",
+          "aboutPerson": "visitor_01",
+          "corrected": false
+        }
+      ],
+      "afterMetDay": 8
+    },
+    "tailEvents": [
+      {
+        "id": "L12",
+        "type": "person_encounter",
+        "personId": "mcfeely"
+      },
+      {
+        "id": "L13",
+        "type": "carrier_conversation",
+        "personId": "mcfeely"
+      },
+      {
+        "id": "L14",
+        "type": "social",
+        "personId": "mcfeely"
+      },
+      {
+        "id": "L15",
+        "type": "person_recognized",
+        "personId": "mcfeely"
+      },
+      {
+        "id": "L16",
+        "type": "hearsay_source"
+      },
+      {
+        "id": "L17",
+        "type": "mail_handed",
+        "personId": "mcfeely"
+      },
+      {
+        "id": "L18",
+        "type": "reply_collected",
+        "personId": "mcfeely"
+      },
+      {
+        "id": "L19",
+        "type": "commitment_kept"
+      },
+      {
+        "id": "L20",
+        "type": "hearsay_source"
+      },
+      {
+        "id": "L21",
+        "type": "person_encounter",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L22",
+        "type": "noticed_by_person",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L23",
+        "type": "visitor_conversation",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L24",
+        "type": "custom_observed",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L25",
+        "type": "custom_observed",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L26",
+        "type": "custom_observed",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L27",
+        "type": "social",
+        "personId": "visitor_01"
+      },
+      {
+        "id": "L28",
+        "type": "belief_corrected",
+        "personId": "visitor_01",
+        "priorClaimId": "L16"
+      },
+      {
+        "id": "L29",
+        "type": "belief_corrected",
+        "personId": "visitor_01",
+        "priorClaimId": "L20"
+      }
+    ],
+    "correctedOnDirectVisit": true,
+    "correctionSource": "L20",
+    "passed": true
+  },
+  "priorAblation": {
+    "seed": 11,
+    "before": [
+      {
+        "greet": "greet",
+        "shareConfidence": true,
+        "extendCredit": true,
+        "minutes": 12,
+        "trust": 24,
+        "priorWeight": 1,
+        "factors": {
+          "livedTrust": 0,
+          "livedEncounters": 0,
+          "priorSource": "reconstructed_archive",
+          "sourceEventIds": [
+            "E22-001",
+            "E22-003"
+          ],
+          "livedSocialEvents": []
+        }
+      },
+      {
+        "greet": "greet",
+        "shareConfidence": false,
+        "extendCredit": false,
+        "minutes": 4,
+        "trust": 0,
+        "priorWeight": 0,
+        "factors": {
+          "livedTrust": 0,
+          "livedEncounters": 0,
+          "priorSource": null,
+          "sourceEventIds": [],
+          "livedSocialEvents": []
+        }
+      }
+    ],
+    "after": [
+      {
+        "greet": "greet",
+        "shareConfidence": true,
+        "extendCredit": true,
+        "minutes": 12,
+        "trust": 85.4,
+        "priorWeight": 0.26666666666666666,
+        "factors": {
+          "livedTrust": 79,
+          "livedEncounters": 5,
+          "priorSource": "reconstructed_archive",
+          "sourceEventIds": [
+            "E22-001",
+            "E22-003"
+          ],
+          "livedSocialEvents": [
+            "L48",
+            "L55",
+            "L952",
+            "L955",
+            "L964",
+            "L968",
+            "L975",
+            "L982",
+            "L988",
+            "L989",
+            "L1815",
+            "L1817",
+            "L1831",
+            "L1834",
+            "L1842",
+            "L1850",
+            "L1857",
+            "L2704",
+            "L2712",
+            "L2715",
+            "L2721",
+            "L2726",
+            "L2732",
+            "L3559",
+            "L3567",
+            "L3583",
+            "L3587",
+            "L3593",
+            "L3599"
+          ]
+        }
+      },
+      {
+        "greet": "greet",
+        "shareConfidence": true,
+        "extendCredit": true,
+        "minutes": 12,
+        "trust": 79,
+        "priorWeight": 0,
+        "factors": {
+          "livedTrust": 79,
+          "livedEncounters": 5,
+          "priorSource": null,
+          "sourceEventIds": [],
+          "livedSocialEvents": [
+            "L46",
+            "L53",
+            "L949",
+            "L952",
+            "L961",
+            "L965",
+            "L972",
+            "L979",
+            "L985",
+            "L986",
+            "L1811",
+            "L1813",
+            "L1827",
+            "L1830",
+            "L1838",
+            "L1846",
+            "L1853",
+            "L2699",
+            "L2707",
+            "L2710",
+            "L2716",
+            "L2721",
+            "L2727",
+            "L3553",
+            "L3561",
+            "L3577",
+            "L3581",
+            "L3587",
+            "L3593"
+          ]
+        }
+      }
+    ],
+    "openingForms": [
+      {
+        "id": "L44",
+        "greetingForm": "established_contract",
+        "timeOffered": 12,
+        "priorWeight": 0.6451612903225806,
+        "additionalLine": "Coal by weight, Doctor. The old account needs no ceremony."
+      },
+      {
+        "id": "L42",
+        "greetingForm": "new_contact",
+        "timeOffered": 4,
+        "priorWeight": 0,
+        "additionalLine": "Coal by weight, Doctor. Titles do not change the terms."
+      }
+    ],
+    "firstPriorReunionId": "L39",
+    "noPriorReunion": false,
+    "sourceRefs": [
+      "E22-001",
+      "E22-003"
+    ],
+    "differenceStart": 24,
+    "differenceEnd": 6.400000000000006,
+    "converged": true,
+    "mostlyLived": true,
+    "sameCalendar": true,
+    "sameMerchantDeliverySchedule": true,
+    "afterLivedTrust": 79,
+    "afterPriorContribution": 6.400000000000006
+  }
+}

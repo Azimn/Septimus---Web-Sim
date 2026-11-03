@@ -1,0 +1,1396 @@
+{
+  "schema": "simple-tower-v1.6-endurance-seed-v1",
+  "sourceHead": "e502bc51ca60078fc9c1d4d2bc68c0b4cc5683f2",
+  "seed": 15,
+  "steps": 30000,
+  "days": 30,
+  "dead": false,
+  "health": 100,
+  "fidelitySamples": [
+    {
+      "eventId": "L57",
+      "day": 0,
+      "tick": 44200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "The path needs attention. Put the baskets on sound boards.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "eventId": "L58",
+      "day": 0,
+      "tick": 44200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "eventId": "L202",
+      "day": 1,
+      "tick": 147000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L433",
+      "day": 3,
+      "tick": 350000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L721",
+      "day": 5,
+      "tick": 543600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L950",
+      "day": 7,
+      "tick": 744200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "eventId": "L951",
+      "day": 7,
+      "tick": 744200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "eventId": "L1126",
+      "day": 8,
+      "tick": 845300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L1361",
+      "day": 10,
+      "tick": 1051000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L1594",
+      "day": 12,
+      "tick": 1250500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L1820",
+      "day": 14,
+      "tick": 1444200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "eventId": "L1821",
+      "day": 14,
+      "tick": 1444200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "eventId": "L1996",
+      "day": 15,
+      "tick": 1549000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L2227",
+      "day": 17,
+      "tick": 1744900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L2504",
+      "day": 19,
+      "tick": 1951500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L2736",
+      "day": 21,
+      "tick": 2144200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "eventId": "L2737",
+      "day": 21,
+      "tick": 2144200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "eventId": "L2889",
+      "day": 22,
+      "tick": 2248200,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L3393",
+      "day": 26,
+      "tick": 2644300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "eventId": "L3620",
+      "day": 28,
+      "tick": 2844300,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "eventId": "L3621",
+      "day": 28,
+      "tick": 2844300,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "eventId": "L3774",
+      "day": 29,
+      "tick": 2945800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    }
+  ],
+  "completedActivities": 493,
+  "activityDistribution": {
+    "read": 30,
+    "eat": 75,
+    "diary": 31,
+    "tend": 20,
+    "inspect": 8,
+    "prepare": 30,
+    "work": 153,
+    "converse": 7,
+    "rest": 37,
+    "sleep": 40,
+    "check_mail": 13,
+    "read_letter": 13,
+    "preserve": 15,
+    "write_reply": 2,
+    "post_reply": 2,
+    "draw_water": 3,
+    "meet_carrier": 2,
+    "trade": 9,
+    "open_parcel": 3
+  },
+  "resources": {
+    "food": 4,
+    "water": 7,
+    "fuel": 10,
+    "tea": 14,
+    "preserved": 30,
+    "lampSupplies": 2,
+    "books": 1
+  },
+  "rosa": {
+    "id": "visitor_01",
+    "name": "Rosa Brandl",
+    "marker": "known supplier of the tower since 1869",
+    "relationshipSource": "reconstructed_archive",
+    "priorRefs": [
+      "E22-001",
+      "E22-003"
+    ],
+    "livedEncounters": 5,
+    "trust": 83,
+    "effectiveTrust": 89.4,
+    "encountered": 5,
+    "witnessedConversations": 5,
+    "avoided": 0,
+    "eventHistory": [
+      {
+        "id": "L56",
+        "tick": 44200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.6451612903225806,
+        "trustAt": 15.483870967741936
+      },
+      {
+        "id": "L949",
+        "tick": 744200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.47619047619047616,
+        "trustAt": 16.428571428571427
+      },
+      {
+        "id": "L1819",
+        "tick": 1444200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.3773584905660377,
+        "trustAt": 34.056603773584904
+      },
+      {
+        "id": "L2735",
+        "tick": 2144200,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.3125,
+        "trustAt": 61.5
+      },
+      {
+        "id": "L3619",
+        "tick": 2844300,
+        "personId": "visitor_01",
+        "form": "greet",
+        "priorWeight": 0.26666666666666666,
+        "trustAt": 73.4
+      }
+    ],
+    "trustTrajectory": [
+      {
+        "id": "L62",
+        "tick": 44200,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 2
+      },
+      {
+        "id": "L70",
+        "tick": 51000,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 5
+      },
+      {
+        "id": "L955",
+        "tick": 744200,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 7
+      },
+      {
+        "id": "L963",
+        "tick": 746600,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 9
+      },
+      {
+        "id": "L967",
+        "tick": 747800,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 13
+      },
+      {
+        "id": "L973",
+        "tick": 748800,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 16
+      },
+      {
+        "id": "L974",
+        "tick": 748800,
+        "kind": "funny",
+        "delta": 0,
+        "trust": 16
+      },
+      {
+        "id": "L980",
+        "tick": 750200,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 20
+      },
+      {
+        "id": "L987",
+        "tick": 750400,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 22
+      },
+      {
+        "id": "L999",
+        "tick": 759300,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 25
+      },
+      {
+        "id": "L1825",
+        "tick": 1444200,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 27
+      },
+      {
+        "id": "L1827",
+        "tick": 1444200,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 29
+      },
+      {
+        "id": "L1836",
+        "tick": 1448700,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 31
+      },
+      {
+        "id": "L1840",
+        "tick": 1449900,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 35
+      },
+      {
+        "id": "L1847",
+        "tick": 1451300,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 39
+      },
+      {
+        "id": "L1854",
+        "tick": 1452700,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 43
+      },
+      {
+        "id": "L1861",
+        "tick": 1453700,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 46
+      },
+      {
+        "id": "L1867",
+        "tick": 1455100,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 50
+      },
+      {
+        "id": "L1874",
+        "tick": 1456500,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 54
+      },
+      {
+        "id": "L2741",
+        "tick": 2144200,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 56
+      },
+      {
+        "id": "L2743",
+        "tick": 2144200,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 58
+      },
+      {
+        "id": "L2752",
+        "tick": 2151500,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 61
+      },
+      {
+        "id": "L2758",
+        "tick": 2151700,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 63
+      },
+      {
+        "id": "L2761",
+        "tick": 2152900,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 67
+      },
+      {
+        "id": "L3625",
+        "tick": 2844300,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 69
+      },
+      {
+        "id": "L3627",
+        "tick": 2844300,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 71
+      },
+      {
+        "id": "L3636",
+        "tick": 2851600,
+        "kind": "negotiation",
+        "delta": 2,
+        "trust": 73
+      },
+      {
+        "id": "L3639",
+        "tick": 2852800,
+        "kind": "trade",
+        "delta": 4,
+        "trust": 77
+      },
+      {
+        "id": "L3646",
+        "tick": 2853800,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 80
+      },
+      {
+        "id": "L3651",
+        "tick": 2854800,
+        "kind": "conversation",
+        "delta": 3,
+        "trust": 83
+      }
+    ],
+    "recognitionIds": [
+      "L53"
+    ],
+    "dealings": [
+      {
+        "id": "L54",
+        "type": "merchant_delivery",
+        "tick": 44000
+      },
+      {
+        "id": "L947",
+        "type": "merchant_delivery",
+        "tick": 744000
+      },
+      {
+        "id": "L966",
+        "type": "trade_receipt",
+        "tick": 747800
+      },
+      {
+        "id": "L979",
+        "type": "trade_receipt",
+        "tick": 750200
+      },
+      {
+        "id": "L1817",
+        "type": "merchant_delivery",
+        "tick": 1444000
+      },
+      {
+        "id": "L1839",
+        "type": "trade_receipt",
+        "tick": 1449900
+      },
+      {
+        "id": "L1846",
+        "type": "trade_receipt",
+        "tick": 1451300
+      },
+      {
+        "id": "L1853",
+        "type": "trade_receipt",
+        "tick": 1452700
+      },
+      {
+        "id": "L1866",
+        "type": "trade_receipt",
+        "tick": 1455100
+      },
+      {
+        "id": "L1873",
+        "type": "trade_receipt",
+        "tick": 1456500
+      },
+      {
+        "id": "L2733",
+        "type": "merchant_delivery",
+        "tick": 2144000
+      },
+      {
+        "id": "L2760",
+        "type": "trade_receipt",
+        "tick": 2152900
+      },
+      {
+        "id": "L3614",
+        "type": "merchant_delivery",
+        "tick": 2844000
+      },
+      {
+        "id": "L3638",
+        "type": "trade_receipt",
+        "tick": 2852800
+      }
+    ],
+    "knownFacts": []
+  },
+  "mcfeely": {
+    "id": "mcfeely",
+    "name": "Mr. McFeely",
+    "marker": "three knocks at the path and a pause",
+    "relationshipSource": "lived_only",
+    "priorRefs": [],
+    "livedEncounters": 12,
+    "trust": 24,
+    "effectiveTrust": 24,
+    "encountered": 12,
+    "witnessedConversations": 12,
+    "avoided": 0,
+    "eventHistory": [
+      {
+        "id": "L201",
+        "tick": 147000,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 0
+      },
+      {
+        "id": "L432",
+        "tick": 350000,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 2
+      },
+      {
+        "id": "L720",
+        "tick": 543600,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 4
+      },
+      {
+        "id": "L1125",
+        "tick": 845300,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 6
+      },
+      {
+        "id": "L1360",
+        "tick": 1051000,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 8
+      },
+      {
+        "id": "L1593",
+        "tick": 1250500,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 10
+      },
+      {
+        "id": "L1995",
+        "tick": 1549000,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 12
+      },
+      {
+        "id": "L2226",
+        "tick": 1744900,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 14
+      },
+      {
+        "id": "L2503",
+        "tick": 1951500,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 16
+      },
+      {
+        "id": "L2888",
+        "tick": 2248200,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 18
+      },
+      {
+        "id": "L3392",
+        "tick": 2644300,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 20
+      },
+      {
+        "id": "L3773",
+        "tick": 2945800,
+        "personId": "mcfeely",
+        "form": "greet",
+        "priorWeight": 0,
+        "trustAt": 22
+      }
+    ],
+    "trustTrajectory": [
+      {
+        "id": "L203",
+        "tick": 147000,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 2
+      },
+      {
+        "id": "L434",
+        "tick": 350000,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 4
+      },
+      {
+        "id": "L722",
+        "tick": 543600,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 6
+      },
+      {
+        "id": "L1127",
+        "tick": 845300,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 8
+      },
+      {
+        "id": "L1362",
+        "tick": 1051000,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 10
+      },
+      {
+        "id": "L1595",
+        "tick": 1250500,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 12
+      },
+      {
+        "id": "L1997",
+        "tick": 1549000,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 14
+      },
+      {
+        "id": "L2228",
+        "tick": 1744900,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 16
+      },
+      {
+        "id": "L2505",
+        "tick": 1951500,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 18
+      },
+      {
+        "id": "L2890",
+        "tick": 2248200,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 20
+      },
+      {
+        "id": "L3394",
+        "tick": 2644300,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 22
+      },
+      {
+        "id": "L3775",
+        "tick": 2945800,
+        "kind": "greeting",
+        "delta": 2,
+        "trust": 24
+      }
+    ],
+    "recognitionIds": [
+      "L204"
+    ],
+    "dealings": [
+      {
+        "id": "L189",
+        "type": "carrier_arrival",
+        "tick": 142000
+      },
+      {
+        "id": "L418",
+        "type": "carrier_arrival",
+        "tick": 342000
+      },
+      {
+        "id": "L710",
+        "type": "carrier_arrival",
+        "tick": 542000
+      },
+      {
+        "id": "L713",
+        "type": "reply_collected",
+        "tick": 542000
+      },
+      {
+        "id": "L1109",
+        "type": "carrier_arrival",
+        "tick": 842000
+      },
+      {
+        "id": "L1112",
+        "type": "reply_collected",
+        "tick": 842000
+      },
+      {
+        "id": "L1345",
+        "type": "carrier_arrival",
+        "tick": 1042000
+      },
+      {
+        "id": "L1579",
+        "type": "carrier_arrival",
+        "tick": 1242000
+      },
+      {
+        "id": "L1982",
+        "type": "carrier_arrival",
+        "tick": 1542000
+      },
+      {
+        "id": "L2212",
+        "type": "carrier_arrival",
+        "tick": 1742000
+      },
+      {
+        "id": "L2489",
+        "type": "carrier_arrival",
+        "tick": 1942000
+      },
+      {
+        "id": "L2876",
+        "type": "carrier_arrival",
+        "tick": 2242000
+      },
+      {
+        "id": "L3121",
+        "type": "carrier_arrival",
+        "tick": 2442000
+      },
+      {
+        "id": "L3379",
+        "type": "carrier_arrival",
+        "tick": 2642000
+      },
+      {
+        "id": "L3761",
+        "type": "carrier_arrival",
+        "tick": 2942000
+      }
+    ],
+    "knownFacts": []
+  },
+  "mail": {
+    "letters": [
+      {
+        "id": "LETTER-01",
+        "sender": "Rosa Brandl",
+        "contentClass": "bill_notice",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 142000,
+        "deliveryEventId": "L191",
+        "readTick": 149400,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-03",
+        "sender": "University Secretary",
+        "contentClass": "request",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 342000,
+        "deliveryEventId": "L420",
+        "readTick": 353400,
+        "read": true,
+        "replyWrittenAt": 355200,
+        "replyCollectedAt": 542000
+      },
+      {
+        "id": "LETTER-05",
+        "sender": "Henry Frankenstein",
+        "contentClass": "personal",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 542000,
+        "deliveryEventId": "L712",
+        "readTick": 547100,
+        "read": true,
+        "replyWrittenAt": 548900,
+        "replyCollectedAt": 842000
+      },
+      {
+        "id": "LETTER-08",
+        "sender": "Rosa Brandl",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 842000,
+        "deliveryEventId": "L1111",
+        "readTick": 847700,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-10",
+        "sender": "Village Dispatch",
+        "contentClass": "parcel_notice",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1042000,
+        "deliveryEventId": "L1347",
+        "readTick": 1053400,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-12",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1242000,
+        "deliveryEventId": "L1581",
+        "readTick": 1252900,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-15",
+        "sender": "Rosa Brandl",
+        "contentClass": "bill_notice",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1542000,
+        "deliveryEventId": "L1984",
+        "readTick": 1551400,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-17",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1742000,
+        "deliveryEventId": "L2214",
+        "readTick": 1747300,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-19",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1942000,
+        "deliveryEventId": "L2491",
+        "readTick": 1955000,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-22",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 2242000,
+        "deliveryEventId": "L2878",
+        "readTick": 2250600,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-24",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 2442000,
+        "deliveryEventId": "L3123",
+        "readTick": 2456300,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-26",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 2642000,
+        "deliveryEventId": "L3381",
+        "readTick": 2646700,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      },
+      {
+        "id": "LETTER-29",
+        "sender": "Local Postal Office",
+        "contentClass": "news",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 2942000,
+        "deliveryEventId": "L3763",
+        "readTick": 2948200,
+        "read": true,
+        "replyWrittenAt": null,
+        "replyCollectedAt": null
+      }
+    ],
+    "parcels": [
+      {
+        "id": "PARCEL-LAMP-12",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1242000,
+        "openedAt": 1254700,
+        "content": {
+          "lampSupplies": 2
+        },
+        "deliveryEventId": "L1582"
+      },
+      {
+        "id": "PARCEL-TEA-19",
+        "deliveryMode": "boxed",
+        "arrivalTick": 1942000,
+        "openedAt": 1956800,
+        "content": {
+          "tea": 2
+        },
+        "deliveryEventId": "L2492"
+      },
+      {
+        "id": "PARCEL-BOOK-26",
+        "deliveryMode": "boxed",
+        "arrivalTick": 2642000,
+        "openedAt": 2648500,
+        "content": {
+          "books": 1
+        },
+        "deliveryEventId": "L3382"
+      }
+    ],
+    "received": 13,
+    "read": 13,
+    "replied": 2,
+    "repliesCollected": 2,
+    "boxed": 13,
+    "handed": 0,
+    "pendingBox": [],
+    "stillUnanswered": [],
+    "unreadFactsExcluded": true,
+    "henryLetterCount": 1,
+    "henry": [
+      {
+        "id": "LETTER-05",
+        "sender": "Henry Frankenstein",
+        "contentClass": "personal",
+        "provenance": "synthesized_correspondence",
+        "deliveryMode": "boxed",
+        "arrivalTick": 542000,
+        "deliveryEventId": "L712",
+        "readTick": 547100,
+        "read": true,
+        "replyWrittenAt": 548900,
+        "replyCollectedAt": 842000
+      }
+    ],
+    "henryReadReceipt": {
+      "eventId": "L735",
+      "tick": 547100,
+      "beliefProvenance": "by_letter:LETTER-05",
+      "changedKnowledge": [
+        "A correspondent signing Henry asked about tower experiments"
+      ]
+    },
+    "hearings": [
+      {
+        "id": "HEARSAY-L205",
+        "fact": "Rosa intends to stay at market for the season",
+        "aboutPerson": "visitor_01",
+        "sourcePerson": "visitor_01",
+        "intermediary": "mcfeely",
+        "sourceEventId": "L205",
+        "epistemicStatus": "hearsay",
+        "corrected": true,
+        "laterDisconfirmedBy": "direct_visit",
+        "correctionEventId": "L956"
+      }
+    ],
+    "sourcedRumination": [
+      {
+        "id": "L7",
+        "tick": 27000,
+        "sourceId": "C1"
+      },
+      {
+        "id": "L22",
+        "tick": 31500,
+        "sourceId": "C1"
+      },
+      {
+        "id": "L29",
+        "tick": 36000,
+        "sourceId": "C1"
+      },
+      {
+        "id": "L44",
+        "tick": 40500,
+        "sourceId": "C1"
+      },
+      {
+        "id": "L64",
+        "tick": 45000,
+        "sourceId": "L46"
+      },
+      {
+        "id": "L65",
+        "tick": 49500,
+        "sourceId": "L46"
+      },
+      {
+        "id": "L81",
+        "tick": 54000,
+        "sourceId": "L75"
+      },
+      {
+        "id": "L93",
+        "tick": 58500,
+        "sourceId": "L85"
+      },
+      {
+        "id": "L99",
+        "tick": 63000,
+        "sourceId": "L95"
+      },
+      {
+        "id": "L109",
+        "tick": 67500,
+        "sourceId": "L103"
+      }
+    ]
+  },
+  "supplierReceipts": [
+    {
+      "id": "L54",
+      "t": 44000,
+      "food": 2,
+      "fuel": 2,
+      "creditLimit": 90,
+      "accountBalance": 4
+    },
+    {
+      "id": "L947",
+      "t": 744000,
+      "food": 2,
+      "fuel": 2,
+      "creditLimit": 90,
+      "accountBalance": 8
+    },
+    {
+      "id": "L1817",
+      "t": 1444000,
+      "food": 2,
+      "fuel": 2,
+      "creditLimit": 90,
+      "accountBalance": 12
+    },
+    {
+      "id": "L2733",
+      "t": 2144000,
+      "food": 2,
+      "fuel": 2,
+      "creditLimit": 90,
+      "accountBalance": 16
+    },
+    {
+      "id": "L3614",
+      "t": 2844000,
+      "food": 2,
+      "fuel": 2,
+      "creditLimit": 90,
+      "accountBalance": 20
+    }
+  ],
+  "firstMerchantDeliveryId": "L54",
+  "carrierKnockCount": 13,
+  "pausedWorldEvents": 0,
+  "canonArchiveSha": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "firstCrossSourceCorrection": {
+    "id": "L956",
+    "t": 744200,
+    "day": 7,
+    "type": "belief_corrected",
+    "room": "bedchamber",
+    "description": "I saw Rosa Brandl here, contrary to a prior report of her prolonged absence.",
+    "provenance": "lived_runtime_memory",
+    "personId": "visitor_01",
+    "priorClaimId": "L205",
+    "hearsayId": "HEARSAY-L205",
+    "directWitness": 744200,
+    "previousConfidence": "hearsay",
+    "correctedBy": "direct_encounter"
+  }
+}

@@ -1,0 +1,1976 @@
+{
+  "schema": "simple-tower-v1.6-fidelity-samples-v1",
+  "sourceHead": "e502bc51ca60078fc9c1d4d2bc68c0b4cc5683f2",
+  "graded": false,
+  "sampleCount": 112,
+  "rosaConversationCount": 25,
+  "samples": [
+    {
+      "seed": 11,
+      "eventId": "L43",
+      "day": 0,
+      "tick": 44200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "The path needs attention. Put the baskets on sound boards.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 11,
+      "eventId": "L44",
+      "day": 0,
+      "tick": 44200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L194",
+      "day": 1,
+      "tick": 151300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L419",
+      "day": 3,
+      "tick": 343300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L705",
+      "day": 5,
+      "tick": 543700,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L947",
+      "day": 7,
+      "tick": 744200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 11,
+      "eventId": "L948",
+      "day": 7,
+      "tick": 744200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L1080",
+      "day": 8,
+      "tick": 844700,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L1340",
+      "day": 10,
+      "tick": 1044500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L1576",
+      "day": 12,
+      "tick": 1245100,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L1810",
+      "day": 14,
+      "tick": 1444200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 11,
+      "eventId": "L1811",
+      "day": 14,
+      "tick": 1444200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L1977",
+      "day": 15,
+      "tick": 1549500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L2444",
+      "day": 19,
+      "tick": 1949800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L2699",
+      "day": 21,
+      "tick": 2144200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 11,
+      "eventId": "L2700",
+      "day": 21,
+      "tick": 2144200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L2833",
+      "day": 22,
+      "tick": 2244800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L3101",
+      "day": 24,
+      "tick": 2446900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L3328",
+      "day": 26,
+      "tick": 2644500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L3554",
+      "day": 28,
+      "tick": 2844600,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 11,
+      "eventId": "L3555",
+      "day": 28,
+      "tick": 2844600,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 11,
+      "eventId": "L3717",
+      "day": 29,
+      "tick": 2948600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L55",
+      "day": 0,
+      "tick": 44200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "The path needs attention. Put the baskets on sound boards.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 12,
+      "eventId": "L56",
+      "day": 0,
+      "tick": 44200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L199",
+      "day": 1,
+      "tick": 150600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L437",
+      "day": 3,
+      "tick": 350800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L665",
+      "day": 5,
+      "tick": 542000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L900",
+      "day": 7,
+      "tick": 744200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 12,
+      "eventId": "L901",
+      "day": 7,
+      "tick": 744200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L1082",
+      "day": 8,
+      "tick": 849900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L1312",
+      "day": 10,
+      "tick": 1051600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L1528",
+      "day": 12,
+      "tick": 1242800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L1802",
+      "day": 14,
+      "tick": 1444200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 12,
+      "eventId": "L1803",
+      "day": 14,
+      "tick": 1444200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L1919",
+      "day": 15,
+      "tick": 1543200,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L2191",
+      "day": 17,
+      "tick": 1749300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L2431",
+      "day": 19,
+      "tick": 1949900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L2652",
+      "day": 21,
+      "tick": 2144200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 12,
+      "eventId": "L2653",
+      "day": 21,
+      "tick": 2144200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L2814",
+      "day": 22,
+      "tick": 2244400,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L3057",
+      "day": 24,
+      "tick": 2447400,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L3293",
+      "day": 26,
+      "tick": 2650200,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L3547",
+      "day": 28,
+      "tick": 2844200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 12,
+      "eventId": "L3548",
+      "day": 28,
+      "tick": 2844200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 12,
+      "eventId": "L3679",
+      "day": 29,
+      "tick": 2944800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L55",
+      "day": 0,
+      "tick": 44200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "The path needs attention. Put the baskets on sound boards.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 13,
+      "eventId": "L56",
+      "day": 0,
+      "tick": 44200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L199",
+      "day": 1,
+      "tick": 150600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L445",
+      "day": 3,
+      "tick": 350000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L715",
+      "day": 5,
+      "tick": 544000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L950",
+      "day": 7,
+      "tick": 744200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 13,
+      "eventId": "L951",
+      "day": 7,
+      "tick": 744200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L1131",
+      "day": 8,
+      "tick": 849600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L1370",
+      "day": 10,
+      "tick": 1051500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L1603",
+      "day": 12,
+      "tick": 1250000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L1850",
+      "day": 14,
+      "tick": 1444200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 13,
+      "eventId": "L1851",
+      "day": 14,
+      "tick": 1444200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L1999",
+      "day": 15,
+      "tick": 1545400,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L2251",
+      "day": 17,
+      "tick": 1745900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L2496",
+      "day": 19,
+      "tick": 1944300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L2727",
+      "day": 21,
+      "tick": 2144200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 13,
+      "eventId": "L2728",
+      "day": 21,
+      "tick": 2144200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L2873",
+      "day": 22,
+      "tick": 2245800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L3122",
+      "day": 24,
+      "tick": 2447900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L3371",
+      "day": 26,
+      "tick": 2645600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L3601",
+      "day": 28,
+      "tick": 2844200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 13,
+      "eventId": "L3602",
+      "day": 28,
+      "tick": 2844200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 13,
+      "eventId": "L3733",
+      "day": 29,
+      "tick": 2950300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L57",
+      "day": 0,
+      "tick": 44300,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "The path needs attention. Put the baskets on sound boards.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 14,
+      "eventId": "L58",
+      "day": 0,
+      "tick": 44300,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L200",
+      "day": 1,
+      "tick": 151200,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L430",
+      "day": 3,
+      "tick": 344900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L713",
+      "day": 5,
+      "tick": 544700,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L952",
+      "day": 7,
+      "tick": 744200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 14,
+      "eventId": "L953",
+      "day": 7,
+      "tick": 744200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L1085",
+      "day": 8,
+      "tick": 844700,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L1343",
+      "day": 10,
+      "tick": 1048900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L1576",
+      "day": 12,
+      "tick": 1246400,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L1802",
+      "day": 14,
+      "tick": 1444500,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 14,
+      "eventId": "L1803",
+      "day": 14,
+      "tick": 1444500,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L1981",
+      "day": 15,
+      "tick": 1549800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L2436",
+      "day": 19,
+      "tick": 1947000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L2688",
+      "day": 21,
+      "tick": 2144200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 14,
+      "eventId": "L2689",
+      "day": 21,
+      "tick": 2144200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L2831",
+      "day": 22,
+      "tick": 2244300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L3099",
+      "day": 24,
+      "tick": 2446400,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L3324",
+      "day": 26,
+      "tick": 2645400,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L3593",
+      "day": 28,
+      "tick": 2844200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 14,
+      "eventId": "L3594",
+      "day": 28,
+      "tick": 2844200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 14,
+      "eventId": "L3714",
+      "day": 29,
+      "tick": 2949200,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L57",
+      "day": 0,
+      "tick": 44200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "The path needs attention. Put the baskets on sound boards.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 15,
+      "eventId": "L58",
+      "day": 0,
+      "tick": 44200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L202",
+      "day": 1,
+      "tick": 147000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L433",
+      "day": 3,
+      "tick": 350000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L721",
+      "day": 5,
+      "tick": 543600,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L950",
+      "day": 7,
+      "tick": 744200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 15,
+      "eventId": "L951",
+      "day": 7,
+      "tick": 744200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L1126",
+      "day": 8,
+      "tick": 845300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L1361",
+      "day": 10,
+      "tick": 1051000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L1594",
+      "day": 12,
+      "tick": 1250500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L1820",
+      "day": 14,
+      "tick": 1444200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 15,
+      "eventId": "L1821",
+      "day": 14,
+      "tick": 1444200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L1996",
+      "day": 15,
+      "tick": 1549000,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L2227",
+      "day": 17,
+      "tick": 1744900,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L2504",
+      "day": 19,
+      "tick": 1951500,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L2736",
+      "day": 21,
+      "tick": 2144200,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 15,
+      "eventId": "L2737",
+      "day": 21,
+      "tick": 2144200,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L2889",
+      "day": 22,
+      "tick": 2248200,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L3393",
+      "day": 26,
+      "tick": 2644300,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L3620",
+      "day": 28,
+      "tick": 2844300,
+      "type": "noticed_by_person",
+      "personId": "visitor_01",
+      "description": "I see the bench still claims your hours.",
+      "words": [],
+      "register": null,
+      "sourceIds": [
+        "E22-001",
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": []
+    },
+    {
+      "seed": 15,
+      "eventId": "L3621",
+      "day": 28,
+      "tick": 2844300,
+      "type": "visitor_conversation",
+      "personId": "visitor_01",
+      "description": "Rosa spoke as a merchant familiar with my actual dealings.",
+      "words": [
+        "Good evening, Doctor Pretorius.",
+        "Coal by weight, Doctor. The old account needs no ceremony."
+      ],
+      "register": "familiar_non_deferential",
+      "sourceIds": [
+        "E22-001",
+        "E22-003"
+      ],
+      "witnesses": [
+        "visitor_01",
+        "pretorius"
+      ]
+    },
+    {
+      "seed": 15,
+      "eventId": "L3774",
+      "day": 29,
+      "tick": 2945800,
+      "type": "carrier_conversation",
+      "personId": "mcfeely",
+      "description": "Mr. McFeely knocked three times and waited for an acknowledgment.",
+      "words": [],
+      "register": null,
+      "sourceIds": [],
+      "witnesses": [
+        "pretorius",
+        "mcfeely"
+      ]
+    }
+  ]
+}
