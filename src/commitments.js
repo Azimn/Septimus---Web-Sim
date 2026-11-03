@@ -2,6 +2,27 @@
 // Commitments remain separate durable records; new days may never discard them.
 const open=c=>!c.done&&(c.status===undefined||c.status==='open');
 const actionFor=c=>c.action||'prepare';
+// The monthly provisions oath refers to edible portions physically held,
+// whether freshly picked or stored as preserved batches. No future crop is counted.
+function heldStock(s,stockTarget){
+ if(!stockTarget)return null;
+ const value=s.stores[stockTarget.item]||0;
+ return stockTarget.includePreserved&&stockTarget.item==='food'?
+  value+(s.stores.preserved||0):value;
+}
+function targetSatisfied(s,c){return !c.stockTarget||
+ heldStock(s,c.stockTarget)>=c.stockTarget.minimum;}
+function obligationPressure(s,c){
+ if(!open(c))return 0;
+ const stages=Math.max(0,(c.requiredProgress||1)-(c.progressCount||0));
+ const deficit=c.stockTarget?Math.max(0,c.stockTarget.minimum-heldStock(s,c.stockTarget)):0;
+ const daysRemaining=Math.max(0,(c.deadline-s.clock.centibeats)/100000);
+ // The plan is useful when it opens, not only after the deadline is almost gone.
+ // No completed work is awarded by prioritization; availability still gates action.
+ const score=18+stages*19+(deficit>0?Math.min(28,deficit*2):0)+
+  32*Math.max(0,1-daysRemaining/2.65);
+ return Math.min(125,Math.round(score*100)/100);
+}
 function matching(s,kind){return s.commitments.filter(c=>open(c)&&actionFor(c)===kind).sort((a,b)=>a.deadline-b.deadline);}
 function began(s,activity,log){
  const c=matching(s,activity.kind)[0];
@@ -40,13 +61,14 @@ function completed(s,activity,log){
  const c=s.commitments.find(x=>x.id===activity.commitmentId);
  if(!c||!open(c))return;
  c.progressCount=(c.progressCount||0)+1;
- const targetReached=!c.stockTarget||s.stores[c.stockTarget.item]>=c.stockTarget.minimum;
+ const targetReached=targetSatisfied(s,c);
  const stagesFinished=c.progressCount>=(c.requiredProgress||1);
  if(!targetReached||!stagesFinished){
   log(s,'commitment_progress','I completed one real work session, but the undertaking remains open.',
    {commitmentId:c.id,action:activity.kind,stage:c.progressCount,
     requiredProgress:c.requiredProgress||1,stockTarget:c.stockTarget||null,
-    targetReached,sourceActionTick:s.clock.centibeats});
+    targetReached,heldStock:heldStock(s,c.stockTarget),
+    sourceActionTick:s.clock.centibeats});
   return;
  }
  c.done=true;c.status='kept';c.keptAt=s.clock.centibeats;c.sourceAction=activity.kind;
@@ -74,7 +96,7 @@ function add(s,{id,title,deadline,action,stockTarget=null,origin='chosen',requir
 const MONTH_SCHEDULE=Object.freeze([
  {openDay:8,id:'MONTH-FOLIO',title:'Consult folios in two sessions before the tenth day closes',action:'read',dueDay:10,requiredProgress:2},
  {openDay:16,id:'MONTH-INSTRUMENT',title:'Inspect the instrument in two sessions before the eighteenth day closes',action:'inspect',dueDay:18,requiredProgress:2},
- {openDay:23,id:'MONTH-PROVISIONS',title:'Tend two sessions and store at least twelve food before the twenty-fifth day closes',action:'tend',dueDay:25,requiredProgress:2,stockTarget:{item:'food',minimum:12}}
+ {openDay:23,id:'MONTH-PROVISIONS',title:'Tend two sessions and hold at least twelve edible portions (fresh plus preserved) before the twenty-fifth day closes',action:'tend',dueDay:25,requiredProgress:2,stockTarget:{item:'food',minimum:12,includePreserved:true}}
 ]);
 function scheduleMonth(s,log){
  for(const scheduled of MONTH_SCHEDULE){
@@ -85,4 +107,4 @@ function scheduleMonth(s,log){
   c.scheduledDay=scheduled.openDay;
  }
 }
-module.exports={open,matching,began,interrupted,completed,deadlines,nextDay,add,scheduleMonth,MONTH_SCHEDULE};
+module.exports={open,heldStock,targetSatisfied,obligationPressure,matching,began,interrupted,completed,deadlines,nextDay,add,scheduleMonth,MONTH_SCHEDULE};

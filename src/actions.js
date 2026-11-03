@@ -2,6 +2,7 @@
 const {OBJECTS,TRIGGERS,distance}=require('./world');
 const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
 const {POST}=require('./post_contract');
+const Commitments=require('./commitments');
 const post=()=>require('./post');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
@@ -99,8 +100,11 @@ function scores(state){const enabled=state.debugSwitches||{};
   const commitmentFactors=[];
   if(enabled.commitments!==false)for(const c of state.commitments){
    if(!c.done&&(c.status===undefined||c.status==='open')&&c.action===key&&key!=='prepare')
-    {const bonus=Math.max(0,75-Math.max(0,c.deadline-state.clock.centibeats)/750);
-     score+=bonus;commitmentFactors.push({id:c.id,deadline:c.deadline,bonus});}
+    {const bonus=Commitments.obligationPressure(state,c);
+     score+=bonus;commitmentFactors.push({id:c.id,deadline:c.deadline,bonus,
+      remainingStages:Math.max(0,(c.requiredProgress||1)-(c.progressCount||0)),
+      stockShortfall:c.stockTarget?Math.max(0,c.stockTarget.minimum-
+       Commitments.heldStock(state,c.stockTarget)):0});}
   }
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;

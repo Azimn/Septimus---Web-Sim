@@ -2,6 +2,16 @@
 const {applyMood,clip}=require('./actions');
 const {STEP,distance,ROSA_PRIOR}=require('./world');
 const VISITOR='visitor_01';
+// Trust approaches its upper bound by diminishing earned gains, rather than
+// growing indefinitely through repetitive trade receipts. Losses remain real.
+const RELATIONSHIP=Object.freeze({upper:99.99,lower:-100,frictionPenalty:-4});
+function changeTrust(p,raw){
+ const before=p.trust||0;
+ const scaled=raw>0?Math.round(raw*Math.max(0,100-Math.max(0,before))/100*100)/100:raw;
+ const after=Math.max(RELATIONSHIP.lower,Math.min(RELATIONSHIP.upper,
+  Math.round((before+scaled)*100)/100));
+ p.trust=after;return {delta:Math.round((after-before)*100)/100,rawDelta:raw};
+}
 function person(s,id=VISITOR){return s.people[id]??(s.people[id]={id,
  name:id==='mcfeely'?'Mr. McFeely':id,marker:id==='mcfeely'?'three deliberate knocks at the garden path':id,
  role:id==='mcfeely'?'mail carrier':'caller',present:false,trust:0,affinity:0,
@@ -135,14 +145,25 @@ function scheduled(s,log){
  meet(s,log);
  checkCustoms(s,log);
 }
-function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false}={}){
+function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false,sourceEventId=null}={}){
  const p=person(s,id);if(!p.present||p.room!==s.location)throw Error('Shared social event requires physical co-presence');
  const prior=p.events.map(x=>x.kind);
- const delta=kind==='gift'?(prior.includes('insult')?5:20):kind==='insult'?(prior.includes('gift')?-35:-15):kind==='greeting'?2:kind==='conversation'?3:kind==='trade'?(prior.includes('insult')?1:4):kind==='negotiation'?2:0;
- p.trust+=delta;p.affinity+=kind==='gift'?7:kind==='insult'?-5:0;p.grievance+=kind==='insult'?1:0;
+ const raw=kind==='gift'?(prior.includes('insult')?5:20):
+  kind==='insult'?(prior.includes('gift')?-35:-15):
+  kind==='greeting'?2:kind==='conversation'?3:
+  kind==='trade'?(prior.includes('insult')?1:4):
+  kind==='negotiation'?2:kind==='friction'?RELATIONSHIP.frictionPenalty:0;
+ const {delta,rawDelta}=changeTrust(p,raw);
+ p.affinity+=kind==='gift'?7:kind==='insult'?-5:0;
+ p.grievance+=kind==='insult'?1:kind==='friction'?1:0;
  const witnesses=privateToVisitor?[id,'pretorius']:[id,'pretorius','player'];
- const e=log(s,'social',`I recorded a shared ${kind} with ${id}.`,{kind,personId:id,delta,trust:p.trust,witnesses,privateToVisitor});
- p.events.push({id:e.id,kind,delta});p.witnessed.push(e.id);
+ const e=log(s,'social',kind==='friction'?
+  'I witnessed disagreement over an established custom and felt it strain our relationship.':
+  `I recorded a shared ${kind} with ${id}.`,
+  {kind,personId:id,delta,rawDelta,trust:p.trust,witnesses,
+   privateToVisitor,sourceEventId});
+ p.events.push({id:e.id,kind,delta,sourceEventId,t:s.clock.centibeats});
+ p.witnessed.push(e.id);
  if(privateToVisitor){if(fact)p.knowledge.push({fact,sourceEventId:e.id});}
  else s.people.player.witnessed.push(e.id);
  return e;
@@ -168,10 +189,12 @@ function negotiateCustom(s,log,kind){
     s.events.findLast(e=>e.type==='habit_formed'&&e.kind==='work')?.id:null,
    learnedFrom:[...c.sourceEventIds]});
  applyMood(s,'visitor custom conflict',-2,4500);
- const negotiation=shared(s,log,'negotiation');
+ const friction=shared(s,log,'friction',{sourceEventId:conflict.id});
+ const negotiation=shared(s,log,'negotiation',{sourceEventId:conflict.id});
  return log(s,'custom_negotiation','I acknowledged the custom without relinquishing my independence.',
   {personId:VISITOR,custom:kind,conflictEventId:conflict.id,
-   socialEventId:negotiation.id,sourceIds:[...c.sourceEventIds]});
+   frictionEventId:friction.id,socialEventId:negotiation.id,
+   sourceIds:[...c.sourceEventIds]});
 }
 function checkCustoms(s,log){
  const p=person(s);
@@ -206,4 +229,4 @@ function SocialNoteForCurrentOnly(s,log,source){
 function violateCustom(s,log){const c=s.customs.greeting;if(!c.learned||!person(s).present||person(s).room!==s.location)return null;const e=log(s,'surprise','I was surprised by the breach of a greeting I had learned.',{custom:'greeting',sourceIds:[...c.sourceEventIds],moodDelta:-3});applyMood(s,'custom breached',-3);return e;}
 function markFunny(s,log,id=VISITOR){const e=shared(s,log,'funny',{id});s.humor.push({sourceEventId:e.id,personId:id,used:false,cooldownUntil:0});return e;}
 function callback(s,log,id=VISITOR){const h=s.humor.find(x=>x.personId===id&&!x.used&&s.clock.centibeats>=x.cooldownUntil);if(!h)return null;h.used=true;h.cooldownUntil=s.clock.centibeats+5000;return log(s,'humor_callback','I recalled our earlier absurd mishap, once.',{sourceEventId:h.sourceEventId,personId:id,cooldownUntil:h.cooldownUntil});}
-module.exports={VISITOR,DELIVERY,person,priorWeight,effectiveTrust,treatment,recordEncounter,deliverGoods,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateMerchantCustom,violateCustom,markFunny,callback};
+module.exports={VISITOR,DELIVERY,RELATIONSHIP,changeTrust,person,priorWeight,effectiveTrust,treatment,recordEncounter,deliverGoods,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateMerchantCustom,violateCustom,markFunny,callback};
