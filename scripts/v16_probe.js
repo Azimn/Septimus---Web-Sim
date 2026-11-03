@@ -118,7 +118,7 @@ function historySwap(){
 }
 function threeMind(){
  const s=fresh(11),rosa=s.people.visitor_01,p=Post.carrierRecord(s);
- p.present=true;p.room='garden';s.location='garden';
+ p.present=true;p.room='garden';s.location='bedchamber';
  // Independent written request physically enters the tower on a mock round.
  s.clock.day=3;s.clock.centibeats=342000;
  Post.arrive(s,log);
