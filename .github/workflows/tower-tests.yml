@@ -28,6 +28,8 @@ jobs:
         run: node scripts/v14_discriminations.js
       - name: V1.5 fixed-economy 5 by 30 days and 90-day slow failure audit
         run: node scripts/v15_probe.js
+      - name: V1.5 remaining Article and 100 decision/10 seed depth discriminations
+        run: node scripts/v15_discriminations.js
       - name: Verify exact frozen source and identity
         run: |
           node - <<'NODE'
