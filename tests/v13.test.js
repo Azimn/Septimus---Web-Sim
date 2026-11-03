@@ -81,10 +81,15 @@ test('Article 04: real consulted folio becomes a cited utility factor and withho
  assert.ok(witness,'no causally attributed choice difference found');
  assert.notEqual(witness.d.chosen,witness.e.chosen);
  assert.ok(witness.d.candidates.some(x=>x.memoryFactors?.some(f=>f.folioId===r.id)));
+ const withhold=copy(basis);withhold.folioReads=[];cognition.impair(withhold,'folios',withhold.clock.centibeats+100000,log);
+ const reply=speak(withhold,'Do you recall a folio you have not consulted?');
+ assert.ok(!reply.includes(r.id),'unread folio was claimed');
 });
 test('Article 09: two days after a witnessed trigger, residue affects a matched choice',()=>{
  const basis=fresh(11);speak(basis,'Henry Frankenstein');
  ticks(basis,2000);assert.ok(basis.residue.henry>0);
+ assert.equal(basis.events.filter(e=>e.type==='heard').length,1,'a second reminder contaminated the delay');
+ assert.ok(basis.residueSources.henry.eventId,'source event was not recorded');
  let witness=null;
  outer:for(const hunger of [5,15,25,35,45,55,65,75])for(const energy of [20,40,60,80])for(const stim of [20,40,60,80]){
   const a=copy(basis),b=copy(basis);
@@ -107,9 +112,14 @@ test('Articles 17 and 18: separate commitments persist, resume and alter a timed
  assert.ok(stepUntil(s,()=>s.commitments.find(c=>c.id==='EX-W').done,180));
  ticks(s,1900);
  assert.ok(s.commitments.some(c=>c.id==='EX-R'),'a non-daily commitment was silently discarded');
+ assert.ok(s.events.some(e=>e.type==='commitment_progress'&&e.commitmentId==='EX-R'),'second commitment never progressed');
  assert.ok(s.commitments.some(c=>c.id==='EX-W'&&c.status==='kept'));
+ assert.equal(s.commitments.find(c=>c.id==='EX-R').status,'kept');
  const a=fresh(12),b=copy(a);
  commitments.add(b,{id:'URGENT-I',title:'Inspect before the bell',action:'inspect',deadline:b.clock.centibeats+4000},log);
+ const near=scores(b).find(x=>x.kind==='inspect').score;
+ const early=copy(b);early.clock.centibeats-=20000;early.commitments.find(c=>c.id==='URGENT-I').deadline=b.commitments.find(c=>c.id==='URGENT-I').deadline;
+ assert.ok(near>scores(early).find(x=>x.kind==='inspect').score);
  assert.notEqual(top(a),top(b));
  advance(b,archive,1);const decision=b.events.find(e=>e.type==='decision');
  assert.ok(decision.candidates.find(x=>x.kind==='inspect').commitmentFactors.some(c=>c.id==='URGENT-I'));
@@ -136,4 +146,16 @@ test('Article 28: gift and insult order cause distinct subsequent autonomous soc
  ticks(a,15);ticks(b,15);
  assert.ok(a.events.some(e=>e.type==='visitor_avoided'));
  assert.ok(b.events.some(e=>e.type==='visitor_conversation'&&e.t>=44000));
+});
+
+test('Part A: fuel gathering and water drawing have explicit finite-stock receipts',()=>{
+ const s=fresh(11);s.stores.fuel=1;s.stores.water=1;
+ direct(s,'gather_fuel');
+ assert.ok(stepUntil(s,()=>s.events.some(e=>e.type==='production'&&e.stock==='fuel'),90));
+ const fuel=s.events.find(e=>e.type==='production'&&e.stock==='fuel');
+ assert.equal(fuel.after-fuel.before,fuel.delta);assert.ok(fuel.delta>0);
+ direct(s,'draw_water');
+ assert.ok(stepUntil(s,()=>s.events.some(e=>e.type==='production'&&e.stock==='water'),90));
+ const water=s.events.find(e=>e.type==='production'&&e.stock==='water');
+ assert.equal(water.after-water.before,water.delta);assert.ok(water.delta>0);
 });
