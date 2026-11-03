@@ -34,7 +34,7 @@ function choiceFactor(s,kind){
   ['preserve','cook'].includes(kind)?'household':null;
  if(!skill)return {kind:null,bonus:0};
  const value=s.skills[skill]||0;
- return {kind:skill,bonus:Math.round(500*value/(value+70))/100,
+ return {kind:skill,bonus:Math.round(180*value/(value+70))/100,
   value,source:'lived_practice'};
 }
 module.exports={SKILL_RULES,practice,daily,choiceFactor};

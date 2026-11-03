@@ -80,7 +80,11 @@ function envelope(card,{id,claims=[],utterance=null,audience=card.audience,conte
 function check(proposal,card){
  const fail=(reason,index=null)=>({ok:false,reason,failedClaim:index});
  if(!proposal||typeof proposal!=='object'||!Array.isArray(proposal.claims)||
-  typeof proposal.utterance!=='string'||!proposal.proposalId)return fail('malformed_envelope');
+  typeof proposal.utterance!=='string'||typeof proposal.proposalId!=='string'||!proposal.proposalId)
+  return fail('malformed_envelope');
+ const allowed=['proposalId','utterance','claims','intendedAudience','contextKey','stateRevision'];
+ if(Object.keys(proposal).some(k=>!allowed.includes(k)))
+  return fail('unexpected_envelope_field');
  if(proposal.stateRevision!==card.revision)return fail('stale_revision');
  if(proposal.contextKey!==card.contextKey||proposal.intendedAudience!==card.audience)return fail('context_or_audience_mismatch');
  if(proposal.utterance.length>MAX.chars||proposal.claims.length>MAX.claims)return fail('size_or_claim_limit');
@@ -94,7 +98,8 @@ function check(proposal,card){
  const source=new Map(card.source.map(x=>[x.id,x]));
  for(let i=0;i<proposal.claims.length;i++){
   const claim=proposal.claims[i];
-  if(!claim||typeof claim!=='object'||typeof claim.sourceId!=='string'||typeof claim.text!=='string')
+  if(!claim||typeof claim!=='object'||typeof claim.sourceId!=='string'||typeof claim.text!=='string'||
+    Object.keys(claim).some(k=>!['sourceId','predicate','text','provenance'].includes(k)))
    return fail('malformed_atomic_claim',i);
   const fact=source.get(claim.sourceId);
   if(!fact)return fail('unknown_or_inaccessible_source',i);

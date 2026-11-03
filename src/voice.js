@@ -66,7 +66,8 @@ function deliver(s,message,log){
  const card=stateCard(s,{audience:message.audience||'player',
   contextKey:message.contextKey||'speech:player'});
  const fixture=message.fixture||{};
- const mode=fixture.mode||'ok';
+ const mode=s.clock.centibeats-message.receivedAt>POLICY.maxDeferredCentibeats?
+  'timeout':fixture.mode||'ok';
  const proposal=fixture.proposal??compose(s,message.text,card);
  // Delayed requests may not borrow an earlier state card. Always recheck at
  // delivery. Templates are constructed at delivery and never become stale.
@@ -77,7 +78,7 @@ function receive(s,text,log,fixture=null){
  const e=log(s,'speech_received','I received a question at the tower.',{
   source:'player',messageText:String(text).slice(0,200)});
  const message={id:e.id,text:String(text).slice(0,300),receivedAt:s.clock.centibeats,
-  audience:'player',contextKey:'speech:player'};
+  audience:'player',contextKey:'speech:player:'+e.id};
  if(s.activity){
   s.replyQueue.push(message);
   log(s,'reply_queued','I could not answer while occupied or asleep.',{
@@ -86,7 +87,7 @@ function receive(s,text,log,fixture=null){
  // The caller may provide a fixture proposal or failure mode, never a client.
  // The proposal is stamped only after all receipt writes at submission.
  if(fixture&&typeof fixture==='object'){
-  const card=stateCard(s);
+  const card=stateCard(s,{audience:message.audience,contextKey:message.contextKey});
   const proposal=typeof fixture.factory==='function'?fixture.factory(card):fixture.proposal;
   message.fixture={mode:fixture.mode||'ok',proposal:proposal||null};
  }
