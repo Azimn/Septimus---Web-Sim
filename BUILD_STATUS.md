@@ -75,6 +75,20 @@ Do not merge the draft PR until the final branch commit's CI shows the entire de
 
 **Character fidelity:** 30 context-bearing, unscored records, six per seed, are in `evidence/v1.2/fidelity-review.md` and `fidelity-packet.json`. No character-quality judgment has been made on Jay's or Calibos's behalf.
 
+### Named grade-promotion tests
+
+These five live tests in `tests/v12.test.js` call `scripts/v12_probe.js` against the actual code and passed at source SHA `cfb1b7b9e03675bd7bd8c7862031a19d241a21f3` in [Actions 41578010529](https://github.com/Azimn/Septimus---Web-Sim/actions/runs/41578010529). Each is a limited scenario demonstration, not general Article qualification.
+
+| Article | Before | After | Named passing test |
+|---|---|---|---|
+| 02 | Partial | Demonstrated (bounded scenario) | `Article 02: unattended hourly rumination sources beat the declared weak shuffled control` |
+| 08 | Partial | Demonstrated (bounded scenario) | `Article 08: a naturally formed habit misfires after an unseen cue relocation without player commands` |
+| 10 | Partial | Demonstrated (bounded scenario) | `Article 10: bounded mood intervention changes real activity counts in the predicted score direction` |
+| 16 | Partial | Demonstrated (bounded scenario) | `Article 16: one matched trait swap changes one-day choice distributions` |
+| 22 | Partial | Demonstrated (bounded scenario) | `Article 22: all five state lesions change a selected autonomous action` |
+
+The additional `Article 28: distinct social event order persists across 1000 autonomous ticks, not yet a conduct difference` test passes for persistence of trust history but does **not** advance Article 28, since independently selected downstream conduct did not change.
+
 ### Twelve discriminator outcomes
 
 | Article | Result | Qualification limit |
