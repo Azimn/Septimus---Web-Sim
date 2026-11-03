@@ -84,7 +84,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   if(enabled.habits!==false){
    score+=Math.min(5,(state.habits[key]||0))*.5;
    const profile=state.habitProfiles?.[key];
-   if(profile?.formed&&(state.objectPositions?.[a.target]||OBJECTS[a.target].room)===OBJECTS[a.target].room)score+=3;
+   if(profile?.formed&&a.target in OBJECTS&&(state.objectPositions?.[a.target]||OBJECTS[a.target].room)===OBJECTS[a.target].room)score+=3;
   }
   const recent=state.events.filter(e=>e.type==='completed'&&e.day===state.clock.day).slice(-3);
   score-=recent.filter(e=>e.kind===key).length*16;
