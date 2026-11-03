@@ -79,7 +79,7 @@ function ensureHooks(s){
  for(const [name,record] of Object.entries(defaults.customs))if(!s.customs[name])s.customs[name]=structuredClone(record);
  if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
  if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
- if(!s.people.visitor_01.prior)s.people.visitor_01.prior=structuredClone(ROSA_PRIOR);
+ if(s.people.visitor_01.prior===undefined)s.people.visitor_01.prior=structuredClone(ROSA_PRIOR);
  for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;
  return s;
 }

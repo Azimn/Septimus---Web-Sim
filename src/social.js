@@ -71,7 +71,18 @@ function deliverGoods(s,log){
    price:actualPrice,creditLimit:p.account.creditLimit});
 }
 function address(s,log){const p=person(s);if(!p.present||p.room!==s.location)throw Error('Visitor conversation requires shared presence');
- const e=log(s,'visitor_conversation','I heard the caller offer a guarded formal greeting.',{personId:VISITOR,visitorText:'Good evening, Doctor Pretorius.',witnesses:[VISITOR,'pretorius']});
+ const policy=treatment(p),hasPrior=policy.priorWeight>0;
+ const text=hasPrior&&policy.shareConfidence?
+  'You will have the coal by weight, Doctor. Our old arrangements require no ceremony.':
+  'I can arrange delivery, provided the terms are understood.';
+ const e=log(s,'visitor_conversation',
+  hasPrior?'Rosa spoke as a merchant whose familiarity never became deference.':
+    'I heard the merchant introduce the terms of a possible delivery.',
+  {personId:VISITOR,visitorText:text,register:hasPrior?'familiar_non_deferential':'formal',
+   greetingForm:hasPrior?'established_contract':'new_contact',
+   timeOffered:policy.minutes,confidenceShared:policy.shareConfidence,
+   priorWeight:policy.priorWeight,historyFactors:policy.factors,
+   witnesses:[VISITOR,'pretorius']});
  p.witnessed.push(e.id);return e;
 }
 function depart(s,log){const p=person(s);if(!p.present)return null;p.present=false;p.targetRoom=null;p.travelRemaining=0;return log(s,'visitor_departure',s.location==='library'?'I saw the caller depart.':'The caller departed without my witnessing it.',{personId:VISITOR,perceived:s.location==='library'});}
@@ -163,7 +174,27 @@ function checkCustoms(s,log){
   return negotiateCustom(s,log,'tea_first');
  return null;
 }
+function violateMerchantCustom(s,log,violation='volume_measure'){
+ const p=person(s),policy=treatment(p);
+ if(!p.present)return null;
+ if(!['volume_measure','unsafe_floor','cart_wait'].includes(violation))throw Error('Unknown merchant custom');
+ const archiveRefs=p.prior?.sourceEventIds||['E22-001'];
+ const e=log(s,'merchant_custom_breached',
+  'The merchant refused to substitute an assumption for the weight or safe delivery point.',
+  {personId:VISITOR,violation,sourceEvents:[...archiveRefs],
+   prior_source:'reconstructed_archive',currentEncounter:p.metVisitDay,
+   historyFactors:policy.factors});
+ const surprise=log(s,'surprise','I met resistance to a practice I thought could be altered.',
+  {personId:VISITOR,reason:violation,sourceEventId:e.id,moodDelta:-3});
+ applyMood(s,'merchant measurement dispute',-3);
+ SocialNoteForCurrentOnly(s,log,e);
+ return surprise;
+}
+function SocialNoteForCurrentOnly(s,log,source){
+ return log(s,'relationship_friction','I found that our business arrangements still have edges.',
+  {personId:VISITOR,sourceEventId:source.id});
+}
 function violateCustom(s,log){const c=s.customs.greeting;if(!c.learned||!person(s).present||person(s).room!==s.location)return null;const e=log(s,'surprise','I was surprised by the breach of a greeting I had learned.',{custom:'greeting',sourceIds:[...c.sourceEventIds],moodDelta:-3});applyMood(s,'custom breached',-3);return e;}
 function markFunny(s,log,id=VISITOR){const e=shared(s,log,'funny',{id});s.humor.push({sourceEventId:e.id,personId:id,used:false,cooldownUntil:0});return e;}
 function callback(s,log,id=VISITOR){const h=s.humor.find(x=>x.personId===id&&!x.used&&s.clock.centibeats>=x.cooldownUntil);if(!h)return null;h.used=true;h.cooldownUntil=s.clock.centibeats+5000;return log(s,'humor_callback','I recalled our earlier absurd mishap, once.',{sourceEventId:h.sourceEventId,personId:id,cooldownUntil:h.cooldownUntil});}
-module.exports={VISITOR,DELIVERY,person,priorWeight,effectiveTrust,treatment,recordEncounter,deliverGoods,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateCustom,markFunny,callback};
+module.exports={VISITOR,DELIVERY,person,priorWeight,effectiveTrust,treatment,recordEncounter,deliverGoods,arrive,depart,address,meet,scheduled,shared,observeCustom,negotiateCustom,checkCustoms,violateMerchantCustom,violateCustom,markFunny,callback};
