@@ -51,7 +51,7 @@ function deliverGoods(s,log){
  const price=DELIVERY.food*DELIVERY.priceFood+DELIVERY.fuel*DELIVERY.priceFuel;
  p.account??={balance:0,creditLimit:policy.extendCredit?DELIVERY.creditWithPrior:DELIVERY.creditForStranger,
   deliveryPoint:'kitchen',basis:'weight'};
- p.account.creditLimit=p.prior?DELIVERY.creditWithPrior:DELIVERY.creditForStranger;
+ p.account.creditLimit=policy.extendCredit?DELIVERY.creditWithPrior:DELIVERY.creditForStranger;
  if(p.account.balance+price>p.account.creditLimit){
   log(s,'delivery_refused','The account was not extended without settled terms.',
    {personId:VISITOR,price,accountBalance:p.account.balance,
@@ -71,17 +71,22 @@ function deliverGoods(s,log){
    price:actualPrice,creditLimit:p.account.creditLimit});
 }
 function address(s,log){const p=person(s);if(!p.present||p.room!==s.location)throw Error('Visitor conversation requires shared presence');
- const policy=treatment(p),hasPrior=policy.priorWeight>0;
- const text=hasPrior&&policy.shareConfidence?
-  'You will have the coal by weight, Doctor. Our old arrangements require no ceremony.':
-  'I can arrange delivery, provided the terms are understood.';
+ const policy=treatment(p),established=policy.trust>=16;
+ const historical=established&&!!p.prior&&policy.priorWeight>0.10;
+ const text=historical?
+  'Coal by weight, Doctor. The old account needs no ceremony.':
+  established?'Coal by weight. We have settled those terms already.':
+  'Coal by weight, Doctor. Titles do not change the terms.';
  const e=log(s,'visitor_conversation',
-  hasPrior?'Rosa spoke as a merchant whose familiarity never became deference.':
-    'I heard the merchant introduce the terms of a possible delivery.',
-  {personId:VISITOR,visitorText:'Good evening, Doctor Pretorius.',additionalLine:text,register:hasPrior?'familiar_non_deferential':'formal',
-   greetingForm:hasPrior?'established_contract':'new_contact',
+  established?'Rosa spoke as a merchant familiar with my actual dealings.':
+    'I heard the merchant set out her terms without deference.',
+  {personId:VISITOR,visitorText:'Good evening, Doctor Pretorius.',additionalLine:text,
+   register:established?'familiar_non_deferential':'formal_non_deferential',
+   greetingForm:established?'established_contract':'new_contact',
    timeOffered:policy.minutes,confidenceShared:policy.shareConfidence,
    priorWeight:policy.priorWeight,historyFactors:policy.factors,
+   sourceProvenance:historical?'reconstructed_archive':'lived_runtime_memory',
+   sourceIds:historical?[...p.prior.sourceEventIds]:p.events.map(x=>x.id),
    witnesses:[VISITOR,'pretorius']});
  p.witnessed.push(e.id);return e;
 }
@@ -103,12 +108,16 @@ function meet(s,log){
  observeCustom(s,log,VISITOR,'tea_first');
  observeCustom(s,log,VISITOR,'instrument_quiet');
  shared(s,log,'greeting');
- const staleReports=(s.mail?.hearsay||[]).filter(x=>!x.corrected&&x.aboutPerson===VISITOR);
+ const staleReports=(s.mail?.hearsay||[]).filter(x=>!x.corrected&&x.aboutPerson===VISITOR&&x.laterDisconfirmedBy==='direct_visit');
  for(const hearsay of staleReports){
   const witness=log(s,'belief_corrected','I saw Rosa Brandl here, contrary to a prior report of her prolonged absence.',
    {personId:VISITOR,priorClaimId:hearsay.sourceEventId,hearsayId:hearsay.id,
     directWitness:s.clock.centibeats,previousConfidence:'hearsay',correctedBy:'direct_encounter'});
   hearsay.corrected=true;hearsay.correctionEventId=witness.id;
+  for(const belief of s.mail.knowledge.filter(x=>x.sourceEventId===hearsay.sourceEventId)){
+   belief.epistemicStatus='disconfirmed_by_direct_witness';
+   belief.correctionEventId=witness.id;
+  }
  }
  s.needs.company=clip(s.needs.company+18);
 }

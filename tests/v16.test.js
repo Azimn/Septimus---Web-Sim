@@ -125,3 +125,32 @@ test('No model is admitted and no fourth person is introduced',()=>{
  assert.deepEqual(Object.keys(s.people).sort(),['mcfeely','player','visitor_01']);
  assert.equal(s.mail.henryLetters,0);
 });
+
+test('Article 05: Rosa account terms follow earned trust, not existence of an archive prior',()=>{
+ const s=fresh(11),p=s.people.visitor_01;
+ p.prior=null;p.present=true;p.room='garden';s.location='garden';
+ p.trust=30;Social.deliverGoods(s,log);
+ assert.equal(p.account.creditLimit,Social.DELIVERY.creditWithPrior);
+ p.trust=-30;Social.deliverGoods(s,log);
+ assert.equal(p.account.creditLimit,Social.DELIVERY.creditForStranger);
+ p.account.balance=p.account.creditLimit+1;
+ const before={...s.stores},refused=Social.deliverGoods(s,log);
+ assert.equal(refused,null);
+ assert.deepEqual(s.stores,before);
+ assert.ok(s.events.some(x=>x.type==='delivery_refused'));
+});
+test('Article 06: unrelated hearsay stays unconfirmed after Rosa is physically encountered',()=>{
+ const s=fresh(11),carrier=Post.carrierRecord(s),rosa=s.people.visitor_01;
+ carrier.present=true;carrier.room='garden';s.location='garden';
+ const unrelated=Post.relay(s,log,{sourcePerson:'visitor_01',
+  fact:'Rosa plans to raise the coal price next month'});
+ const absence=Post.relay(s,log,{sourcePerson:'visitor_01',
+  fact:'Rosa will be absent for the season',laterDisconfirmedBy:'direct_visit'});
+ rosa.present=true;rosa.room='garden';Social.meet(s,log);
+ assert.equal(unrelated.corrected,false);
+ assert.equal(absence.corrected,true);
+ assert.equal(s.mail.knowledge.find(x=>x.sourceEventId===unrelated.sourceEventId).epistemicStatus,'unconfirmed');
+ const belief=s.mail.knowledge.find(x=>x.sourceEventId===absence.sourceEventId);
+ assert.equal(belief.epistemicStatus,'disconfirmed_by_direct_witness');
+ assert.equal(belief.correctionEventId,absence.correctionEventId);
+});

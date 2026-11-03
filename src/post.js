@@ -218,7 +218,7 @@ function openParcel(s,log){
    sourceDeliveryId:p.deliveryEventId,noticeReadEventId:a?.readEventId||null,
    provenance:'synthesized_correspondence'});
 }
-function relay(s,log,{sourcePerson,fact,knowledgeAt='earlier_report',status='unconfirmed',laterDisconfirmedBy='direct_visit'}){
+function relay(s,log,{sourcePerson,fact,knowledgeAt='earlier_report',status='unconfirmed',laterDisconfirmedBy=null}){
  const p=carrierRecord(s);if(!p.present||p.room!==s.location)throw Error('Hearsay requires a witnessed encounter with carrier');
  const source=log(s,'hearsay_source','I heard the carrier attribute a report to another person.',
   {sourcePerson,intermediary:CARRIER,content:fact,

@@ -138,7 +138,7 @@ function threeMind(){
  const factKnownByCarrier=p.knowledge.some(x=>x.fact==='The west jar contains a corrected measure'),
   factKnownByRosa=rosa.knowledge.some(x=>x.fact==='The west jar contains a corrected measure');
  const relay=Post.relay(s,log,{sourcePerson:'visitor_01',
-  fact:'Rosa has taken her cart away for the season'});
+  fact:'Rosa has taken her cart away for the season',laterDisconfirmedBy:'direct_visit'});
  const beforehand=relay.corrected;
  const visit=SocialReturn(s,log);
  const correction=s.events.find(x=>x.type==='belief_corrected'&&x.priorClaimId===relay.sourceEventId);
