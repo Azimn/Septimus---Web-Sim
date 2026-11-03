@@ -178,3 +178,16 @@ test('v1.9 B delayed delivery-time fixture uses live state card and survives ser
  assert.equal(s.deliveredReplies.at(-1).fallbackUsed,false);
  assert.ok(!s.operatorMetadata.some(x=>x.kind==='model_rejected'));
 });
+
+test('v1.9 B factual journal indexes receipts while rendered diary interprets separately',()=>{
+ const s=fresh(11);s.location='library';
+ log(s,'completed','I performed documented work.',{kind:'work'});
+ const last=s.events.at(-1);
+ s.diary.push({day:s.clock.day,t:s.clock.centibeats,recordType:'factual_receipt_index',
+  sourceEventId:last.id,receiptIds:[last.id]});
+ const entry=Diary.render(s,log(s,'completed','I wrote in the factual journal.',{kind:'diary'})).entry;
+ assert.ok(entry.sourceReceiptIds.includes(last.id));
+ assert.notEqual(entry.provenance,s.diary.at(-1).provenance);
+ assert.equal(entry.memoryEligible,false);
+ assert.equal(entry.text,'I completed work.');
+});

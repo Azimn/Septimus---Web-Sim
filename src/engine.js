@@ -95,7 +95,17 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  case 'read':{const results=findFolios(archive,a.query,1),r=results[0];if(r){s.folioReads.push({day:s.clock.day,t:s.clock.centibeats,id:r.event_id,query:a.query,provenance:r.provenance,memoryClass:'pre_awakened_'+r.provenance,
   actionCue:require('./actions').memoryCue(r)});
  Cognition.originQuirk(s,r.event_id,'This account bears on my private intellectual preferences.',log);const hits=perceiveTopic(s,[r.title,...(r.participants||[])].join(' '),'folio');for(const topic of hits)s.residueSources[topic].eventId=r.event_id;description=`I consulted folio ${r.event_id}: ${r.title}. Its account belongs to my earlier life, not to this morning.`;}else description='I searched the folios but found no matching record.';break;}
- case 'diary':{const last=s.events.filter(e=>e.type==='completed'&&e.kind!=='diary').at(-1);const line=last?`I returned to the notebook after ${last.kind}. The work remains mine to judge.`:'I wrote what I could verify, leaving my uncertainties intact.';s.diary.push({day:s.clock.day,t:s.clock.centibeats,text:line,sourceEventId:last?.id||null});description=line;break;}
+ case 'diary':{
+  const last=s.events.filter(e=>e.type==='completed'&&e.kind!=='diary').at(-1);
+  // Factual journal records are append-only receipt indexes, never
+  // unsourced autobiographical prose. The separate rendering follows later.
+  const line=last?`I recorded receipt ${last.id} for ${last.kind}.`:
+   'I opened a factual journal index without inventing an event.';
+  s.diary.push({day:s.clock.day,t:s.clock.centibeats,text:line,
+   sourceEventId:last?.id||null,receiptIds:last?[last.id]:[],
+   recordType:'factual_receipt_index',provenance:'lived_runtime_memory'});
+  description=line;break;
+ }
  case 'walk':n.comfort=clip(n.comfort+7);description='I walked along the garden path.';break;
  case 'draw_water':Economy.collect(s,a.kind,log);n.energy=clip(n.energy-2);description='I drew a measured supply of water.';break;
  case 'gather_fuel':Economy.collect(s,a.kind,log);n.energy=clip(n.energy-3);description='I gathered fallen wood for the hearth.';break;
