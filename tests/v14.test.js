@@ -5,7 +5,7 @@ const {runSeed}=require('../scripts/v14_probe');
 const {scores}=require('../src/actions');
 const report=run(),byArticle=n=>report.probes.find(x=>x.article===n);
 test('Article 01: 30 independently recorded explanations are audited against visible and hidden causes',()=>{
- const a=byArticle(1);assert.equal(a.evidence.totalSamples,30);
+ const a=byArticle(1);assert.equal(a.pass,true,JSON.stringify({coverage:a.evidence.coverage,misses:a.evidence.missesByAction}));assert.equal(a.evidence.totalSamples,30);
  assert.equal(a.evidence.hiddenLeaks,0);
  assert.equal(a.evidence.unsupportedClaims,0);
  assert.ok(a.evidence.samples.every(x=>x.eventId&&x.tick&&x.chosen));
@@ -66,8 +66,10 @@ test('Article 17 month: three calendar commitments progress and resolve, retaini
  assert.ok(r.monthCommitments.every(c=>c.progressEvents.length>0));
  assert.ok(r.monthDynamics.monthTasksResolved===3);
  // Interruption/resumption is a separate criterion. It remains explicitly reported by the runner.
- assert.equal(typeof r.monthDynamics.monthTasksInterrupted,'number');
- assert.equal(typeof r.monthDynamics.monthTasksResumed,'number');
+ assert.equal(r.monthDynamics.monthTasksInterrupted,3,'all three goals must be interrupted by competing actual activities');
+ assert.equal(r.monthDynamics.monthTasksResumed,3,'all three goals must be resumed after interruption');
+ assert.ok(r.monthCommitments.every(c=>c.interrupts.length>0&&c.resumes.length>0));
+ assert.ok(r.monthCommitments.every(c=>c.progressEvents.length>0));
 });
 test('F5: month fidelity packet includes replayable first-person or decision context without grading character',()=>{
  assert.equal(month.samples.length,6);
