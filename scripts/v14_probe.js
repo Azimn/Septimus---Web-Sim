@@ -152,7 +152,7 @@ function runSeed(seed,{restart=false}={}){
   startGardenHealth:100,endGardenHealth:s.health,
   sourceRunNotes:'No player commands, frozen v1.3 economy constants, weekly visitor calendar, thirty elapsed 24-hour windows unless fatal.',
   finalEventId:events.at(-1)?.id||null};
- return {summary,samples:observations.filter(Boolean)};
+ return {summary,samples:observations.filter(Boolean),finalState:s};
 }
 function starvationControl(){
  const s=fresh(11);s.productionDisabled=true;let steps=0;
