@@ -36,6 +36,7 @@ function memoryCue(record){
 }
 function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OBJECTS||a.target==='visitor_01'))return false;
  if(state.dead)return false;
+ if(state.productionDisabled&&['tend','gather_fuel','draw_water'].includes(kind))return false;
  if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
  if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
  if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
@@ -56,7 +57,8 @@ function scores(state){const enabled=state.debugSwitches||{};
  const time=state.clock.centibeats%100000;
  return Object.entries(DEFINITIONS).filter(([key,a])=>available(state,key)&&(key!=='sleep'||time>=70000||n.energy<20)&&
   !(a.target in OBJECTS&&OBJECTS[a.target].room===state.location&&state.perception?.length&&
-   !state.perception.some(x=>x.id===a.target))).map(([key,a])=>{
+   !state.perception.some(x=>x.id===a.target))&&
+  !(a.target in OBJECTS&&(state.objectSalience?.[a.target]||0)<=-20&&!state.seenObjects?.includes(a.target))).map(([key,a])=>{
   let score=a.base*(state.traits[a.trait]||1);
   if(key==='sleep')score+=(100-n.energy)*.72+(time>=70000?30:0);
   if(key==='rest')score+=(100-n.energy)*.23;
@@ -71,9 +73,11 @@ function scores(state){const enabled=state.debugSwitches||{};
    const rem=deadline.deadline-state.clock.centibeats;
    score+=rem<=0?1:Math.min(95,15+65*Math.max(0,1-rem/36000));
   }
+  const commitmentFactors=[];
   if(enabled.commitments!==false)for(const c of state.commitments){
    if(!c.done&&(c.status===undefined||c.status==='open')&&c.action===key&&key!=='prepare')
-    score+=Math.max(0,75-Math.max(0,c.deadline-state.clock.centibeats)/750);
+    {const bonus=Math.max(0,75-Math.max(0,c.deadline-state.clock.centibeats)/750);
+     score+=bonus;commitmentFactors.push({id:c.id,deadline:c.deadline,bonus});}
   }
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   score+=supplyScore(state,key);
@@ -115,7 +119,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
   const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):OBJECTS[a.target].room;
-  return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,
+  return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
     failures:state.outcomes?.[key]?.failure||0,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}

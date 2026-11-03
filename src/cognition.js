@@ -5,8 +5,8 @@ function observe(s,log){
  const candidates=ids.map(id=>{const obj=OBJECTS[id],novel=!s.seenObjects.includes(id)?12:0;
  const relevance=(id==='stores'&&s.needs.hunger>65?15:0)+(id==='bed'&&s.needs.energy<35?15:0);
  const moving=s.movingObjects?.includes(id)?10:0,noise=s.noisyObjects?.includes(id)?8:0;
- const trigger=Object.entries(TRIGGERS).reduce((m,[key,v])=>obj.label.toLowerCase().includes(key)?m+v.salience:m,0);
- return {id,label:obj.label,room:s.location,score:10+novel+relevance+moving+noise+trigger,factors:{novel,relevance,moving,noise,trigger}};
+ const trigger=Object.entries(TRIGGERS).reduce((m,[key,v])=>obj.label.toLowerCase().includes(key)?m+v.salience:m,0),ambient=s.objectSalience?.[id]||0;
+ return {id,label:obj.label,room:s.location,score:Math.max(0,10+novel+relevance+moving+noise+trigger+ambient),factors:{novel,relevance,moving,noise,trigger,ambient}};
  });
  if(s.people?.visitor_01?.present&&s.people.visitor_01.room===s.location)candidates.push({id:'visitor_01',label:'The visiting caller',room:s.location,score:28,factors:{movement:10,novel:8}});
  for(const signal of (s.roomSignals||[]).filter(x=>x.room===s.location&&s.events.some(e=>e.id===x.sourceEventId))){
