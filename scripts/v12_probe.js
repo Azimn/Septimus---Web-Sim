@@ -132,7 +132,8 @@ function switches22(){
  return record(22,names.every(n=>out[n]),{switches:out},'One matched chosen-action contrast per named switch. Does not prove universal causal isolation.');
 }
 function traits16(){
- const runs=[];for(const seed of SEEDS){const a=fresh(seed),b=clone(a);b.traits.curious=.25;ticks(a,1000);ticks(b,1000);
+ const runs=[];for(const seed of SEEDS){const a=fresh(seed),b=clone(a);b.traits.curious=.25;
+ log(b,'operator_trait_intervention','An experimenter altered the trait parameter on a research fork.',{trait:'curious',previous:1.5,current:.25,operatorOnly:true});ticks(a,1000);ticks(b,1000);
  const ca=dist(a.events),cb=dist(b.events),all=new Set([...Object.keys(ca),...Object.keys(cb)]);
  const totalDiff=[...all].reduce((v,k)=>v+Math.abs((ca[k]||0)-(cb[k]||0)),0);
  runs.push({seed,trait:'curious',base:1.5,swapped:.25,baseActions:ca,changedActions:cb,l1Counts:totalDiff});}
@@ -140,6 +141,7 @@ function traits16(){
 }
 function affect10(){
  const runs=[];for(const seed of SEEDS){const a=fresh(seed),b=clone(a);applyMood(b,'controlled_positive',45,100000);
+ log(b,'operator_mood_intervention','An experimenter imposed a temporary state on a research fork.',{tag:'controlled_positive',value:45,operatorOnly:true});
  const before=scores(a).find(x=>x.kind==='work'),after=scores(b).find(x=>x.kind==='work');
  ticks(a,1000);ticks(b,1000);
  const ca=dist(a.events),cb=dist(b.events);const difference=[...new Set([...Object.keys(ca),...Object.keys(cb)])].reduce((v,k)=>v+Math.abs((ca[k]||0)-(cb[k]||0)),0);
@@ -235,7 +237,8 @@ function habit8(){
      const newRoom=Object.keys(ROOMS).find(r=>r!==original&&r!==s.location);
      if(!newRoom)continue;
      const e=cognition.moveUnseen(s,target,newRoom,log);
-     displaced={kind,target,oldRoom:original,newRoom,sourceEventId:e.id,tick:s.clock.centibeats};
+     displaced={kind,target,oldRoom:original,newRoom,sourceEventId:e.id,tick:s.clock.centibeats,
+      receiptValid:/^L\d+$/.test(e.id)&&e.objectId===target&&e.perceived===false&&s.events.some(row=>row.id===e.id)};
      break;
     }
    }
@@ -245,7 +248,7 @@ function habit8(){
   runs.push({seed,formedCount:s.events.filter(e=>e.type==='habit_formed').length,intervention:displaced,
    autonomousCueMisfires:failures.map(e=>({id:e.id,tick:e.t,kind:e.kind})),lastTick:s.clock.centibeats});
  }
- return record(8,runs.some(x=>x.intervention&&x.autonomousCueMisfires.length>0),
+ return record(8,runs.some(x=>x.intervention?.receiptValid&&x.autonomousCueMisfires.length>0),
  {runs},'At least one natural habit forms under autonomous play and is later defeated by an unseen physical cue relocation, without directed action.');
 }
 function probe(){
@@ -270,4 +273,5 @@ function main(){
  for(const r of summaries)console.log('V12_SEED '+r.seed+' '+JSON.stringify({actions:r.activitiesTotal,distinct:Object.keys(r.activityDistribution).length,softlocks:r.softlocks,collapses:r.varietyCollapseConsecutiveDays,restarts:r.restartCheckpoints.length,paused:r.pausedEventRequirementMet,folios:r.folioReads,diary:r.diaryEntries,habits:r.formedHabits.length,misfires:r.habitMisfires.length}));
  console.log('V12_DISCRIMINATIONS '+JSON.stringify({passed:discriminations.observedArticles,notDemonstrated:discriminations.notDemonstrated}));
 }
-main();
+if(require.main===module)main();
+module.exports={probe,endurance,main,fresh,ticks,SEEDS,archive,identity};
