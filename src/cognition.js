@@ -8,7 +8,7 @@ function observe(s,log){
  const trigger=Object.entries(TRIGGERS).reduce((m,[key,v])=>obj.label.toLowerCase().includes(key)?m+v.salience:m,0);
  return {id,label:obj.label,room:s.location,score:10+novel+relevance+moving+noise+trigger,factors:{novel,relevance,moving,noise,trigger}};
  });
- if(s.people?.visitor_01?.present&&s.location==='library')candidates.push({id:'visitor_01',label:'The visiting caller',room:'library',score:28,factors:{movement:10,novel:8}});
+ if(s.people?.visitor_01?.present&&s.people.visitor_01.room===s.location)candidates.push({id:'visitor_01',label:'The visiting caller',room:s.location,score:28,factors:{movement:10,novel:8}});
  for(const signal of (s.roomSignals||[]).filter(x=>x.room===s.location&&s.events.some(e=>e.id===x.sourceEventId))){
   candidates.push({id:'signal:'+signal.sourceEventId,label:signal.label||'An observable disturbance',
     room:s.location,score:10+(signal.movement?20:0)+(signal.noise?15:0)+(signal.needRelevance||0),
