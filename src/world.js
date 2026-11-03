@@ -22,6 +22,23 @@ const OBJECTS = Object.freeze({
 });
 const TRAITS=Object.freeze({curious:1.5,industrious:1.4,stubborn:1.3,nervous:.7,gentle:.8,sociable:.6});
 const TRIGGERS=Object.freeze({henry:{salience:12,mood:3},victor:{salience:7,mood:-2},bride:{salience:10,mood:3},university:{salience:8,mood:-4},homunculi:{salience:12,mood:4}});
+// Starting relationship is reconstructed content, not newly lived history.
+const ROSA_PRIOR=Object.freeze({
+ prior_source:'reconstructed_archive',sourceEventIds:['E22-001','E22-003'],
+ knownSinceYear:1869,asOfYear:1899,initialFacetWeight:24,decayPerLivedEncounter:0.55,
+ facets:{
+  commercialReliability:{value:8,sourceEventIds:['E22-001'],claim:'Rosa Brandl measures supplies by weight'},
+  frictionTolerance:{value:6,sourceEventIds:['E22-001'],claim:'The dispute about scales was survived'},
+  personalRegister:{value:4,sourceEventIds:['E22-001'],claim:'She does not defer to scientific titles'},
+  knownHabits:{value:3,sourceEventIds:['E22-003'],claim:'She has seen him forget a meal while working'},
+  standingAccount:{value:3,sourceEventIds:['E22-001','E22-003'],claim:'The tower has established delivery conventions'}
+ },
+ knownToRosa:[
+  {fact:'tower_residence',sourceEventId:'E22-001',provenance:'reconstructed_archive'},
+  {fact:'title_no_priority_over_scales',sourceEventId:'E22-001',provenance:'reconstructed_archive'},
+  {fact:'forgets_meals_at_bench',sourceEventId:'E22-003',provenance:'reconstructed_archive'}
+ ]
+});
 const START=25000, DAY=100000, STEP=100;
 function initialState(identitySha,archiveSha){return {
   schema:1,owner:'simple-tower',identitySha,archiveSha,clock:{centibeats:START,step:STEP,day:0},
@@ -30,7 +47,10 @@ function initialState(identitySha,archiveSha){return {
   traits:{...TRAITS},mood:[],residue:{},habits:{},outcomes:{},events:[],diary:[],folioReads:[],
   commitments:[{id:'C1',title:'Secure the hearth before dusk',deadline:65000,done:false}],
   activity:null,proposed:null,decisions:[],seed:1729,sequence:0,completedDays:0,
-  people:{visitor_01:{id:'visitor_01',marker:'regular caller at the tower',present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[]},player:{id:'player',witnessed:[],knowledge:[]}},
+  people:{visitor_01:{id:'visitor_01',name:'Rosa Brandl',firm:"Rosa Brandl's firm",role:'coal and provisions merchant',marker:'known supplier of the tower since 1869',present:false,trust:0,affinity:0,grievance:0,events:[],witnessed:[],knowledge:[],
+ prior:structuredClone(ROSA_PRIOR),liveEncounters:0,account:{balance:0,creditLimit:90,deliveryPoint:'kitchen',basis:'weight'}},
+ player:{id:'player',witnessed:[],knowledge:[]}},
+  mail:{letters:[],parcels:[],box:[],carried:[],outgoing:[],knowledge:[],hearsay:[],mailDays:[],pendingParcelNotices:[],henryLetters:0},
   customs:{
    greeting:{observations:0,sourceEventIds:[],learned:false},
    tea_first:{observations:0,sourceEventIds:[],learned:false},
@@ -48,7 +68,7 @@ function ensureHooks(s){
  const defaults=initialState(s.identitySha||'',s.archiveSha||'');
  for(const key of ['people','customs','humor','replyQueue','deliveredReplies','thoughts','predictions',
  'beliefs','objectPositions','perception','seenObjects','lastPerceptionIds','deliberation',
- 'debugSwitches','habitProfiles','quirks','worldLosses'])
+ 'debugSwitches','habitProfiles','quirks','worldLosses','mail'])
   if(s[key]===undefined)s[key]=structuredClone(defaults[key]);
  if(s.health===undefined)s.health=100;
  if(s.dead===undefined)s.dead=false;
@@ -59,7 +79,8 @@ function ensureHooks(s){
  for(const [name,record] of Object.entries(defaults.customs))if(!s.customs[name])s.customs[name]=structuredClone(record);
  if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
  if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
+ if(!s.people.visitor_01.prior)s.people.visitor_01.prior=structuredClone(ROSA_PRIOR);
  for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;
  return s;
 }
-module.exports={ROOMS,OBJECTS,TRAITS,TRIGGERS,DAY,STEP,START,initialState,ensureHooks,distance,context};
+module.exports={ROOMS,OBJECTS,TRAITS,TRIGGERS,ROSA_PRIOR,DAY,STEP,START,initialState,ensureHooks,distance,context};
