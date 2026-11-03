@@ -24,7 +24,7 @@ function probe01(){
    if(selected.commitmentFactors?.some(x=>x.bonus>0))trueKnown.add('obligation');
    if(e.chosen==='prepare'&&card.reasons.includes('dusk obligation'))trueKnown.add('dusk obligation');
    if(e.chosen==='prepare'&&card.reasons.includes('known hearth duty')&&
-    s.events.some(x=>x.type==='commitment_opened'&&x.t<=e.t)||e.chosen==='prepare'&&card.reasons.includes('known hearth duty')&&s.commitments.some(c=>c.action==='prepare'))
+    s.events.some(x=>x.type==='commitment_opened'&&x.t<=e.t)||e.chosen==='prepare'&&card.reasons.includes('known hearth duty')&&s.commitments.some(c=>c.action==='prepare'||/^C\d+$/.test(c.id)))
     trueKnown.add('known hearth duty');
    if(e.chosen==='diary'&&card.reasons.includes('unfinished daily record')&&
     s.events.filter(x=>x.type==='completed'&&x.day===e.day&&x.t<=e.t).length>=2)
