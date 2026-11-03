@@ -96,7 +96,7 @@ function direct(s,kind,query=''){ensureHooks(s);if(!available(s,kind))throw Erro
  const result=start(s,kind,'player',query);return result;}
 function speak(s,text){ensureHooks(s);const topics=perceiveTopic(s,text);
  const response=Voice.receive(s,text,log);
- log(s,'heard',`I heard a visitor speak${topics.length?' of '+topics.join(', '):''}.`,{source:'visitor',topics});
+ log(s,'heard',`I heard someone speak${topics.length?' of '+topics.join(', '):''}.`,{source:'player',topics});
  return response;}
 function view(s){ensureHooks(s);return {clock:s.clock,day:s.clock.day+1,room:s.location,objects:ROOMS[s.location].objects.map(id=>({id,...OBJECTS[id]})),needs:s.needs,stores:s.stores,activity:s.activity,commitments:s.commitments,diary:s.diary.slice(-8),folioReads:s.folioReads.slice(-8),events:s.events.slice(-25),words:s.surface.lastWords,perception:context(s),choices:scores(s).slice(0,8),
  people:s.people,customs:s.customs,humor:s.humor,replyQueue:s.replyQueue,thoughts:s.thoughts.slice(-8),

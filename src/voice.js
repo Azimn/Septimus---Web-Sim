@@ -18,7 +18,7 @@ function deliver(s,message,log){const output=compose(s,message.text),card=stateC
  const value=check.ok?output.text:'I cannot substantiate that account.';
  s.surface.lastWords=value;const e=log(s,'reply_delivered','I answered after attending to the matter at hand.',{messageId:message.id,reply:value,delay:s.clock.centibeats-message.receivedAt});
  s.deliveredReplies.push({messageId:message.id,reply:value,eventId:e.id});return value;}
-function receive(s,text,log){const e=log(s,'speech_received','I received a question at the tower.',{source:'visitor',messageText:String(text).slice(0,200)});
+function receive(s,text,log){const e=log(s,'speech_received','I received a question at the tower.',{source:'player',messageText:String(text).slice(0,200)});
  const message={id:e.id,text:String(text).slice(0,300),receivedAt:s.clock.centibeats};
  if(s.activity){s.replyQueue.push(message);log(s,'reply_queued','I could not answer while occupied or asleep.',{messageId:e.id,busy:s.activity.kind});return s.surface.lastWords;}
  return deliver(s,message,log);

@@ -4,7 +4,7 @@
 
 **Grade semantics:** *Partial* means the hook is executable and observable, not that the Article's discriminating research test passed. *Unassessable (socket present)* means the relevant runtime prerequisite is intentionally absent. No row is silently promoted to a scientific qualification. This ledger reports in-repository deterministic tests and GitHub Actions when green; it does not claim a new independent long-run evaluation.
 
-**Baseline:** 13 tests (11 mechanical + 2 directed/autonomous day), previously green. **v1.1 target:** 21 additive focused tests, **34 total**, across `tests/hooks.test.js` and the unchanged baseline tests. Test counts must be reconciled against the final branch CI before acceptance.
+**Baseline:** 13 tests (11 mechanical + 2 directed/autonomous day), previously green. **v1.1 target:** 22 additive focused tests, **35 total**, across `tests/hooks.test.js` and the unchanged baseline tests. Test counts must be reconciled against the final branch CI before acceptance.
 
 ## 34-Article hook register
 
@@ -14,8 +14,8 @@
 | 02 Spontaneous thought | Hourly unprompted `rumination` with commitment or event source ID | Partial | Silent-hour seeded comparison and recurring thought quality |
 | 03 Temporal continuity | Integer clock, persisted activities, commitments, history | Partial | Explicit process-downtime pause interval and independent long-delay restart |
 | 04 Memory | Folio source IDs, diary/event provenance, winner and foregone action with margin | Partial | Source-memory ablation changes action with matched alternatives |
-| 05 Relationships | Single per-person visitor record, trust updated by event order, recognition marker | Partial | Different treatment of two independently encountered people |
-| 06 Social cognition | Visitor and player witness lists; visitor-only statement stays visitor-only | Partial | Multi-person false-belief intervention beyond one visitor |
+| 05 Relationships | Single physically co-present visitor record, order-sensitive trust, recognized scripted greeting | Partial | Different treatment of two independently encountered people |
+| 06 Social cognition | Co-presence-gated witness lists; visitor-only statement stays visitor-only | Partial | Multi-person false-belief intervention beyond one visitor |
 | 07 Motivation | Bodily need gradients change legal-action utility | Partial | Multi-seed resource conflict against simple alternative controller |
 | 08 Habits | Contextual cues, formed counts, score bonus and real broken-cue misfire receipt | Partial | Autonomous misfire after cue relocation, without directed task |
 | 09 Carryover | Topic-based residue and mood retained in state | Partial | Hidden delayed residue ablation with no reminder |

@@ -18,24 +18,28 @@ test('scripted visitor arrives and leaves; only nearby subject perceives them',(
  s.clock.centibeats=59900;advance(s,archive,1);assert.equal(s.people.visitor_01.present,false);
 });
 test('gift/insult order affects derived per-person trust with logged factors',()=>{
- const a=make(),b=make();social.shared(a,log,'gift');social.shared(a,log,'insult');
+ const a=make(),b=make();for(const s of [a,b]){s.location='library';social.arrive(s,log);}
+ social.shared(a,log,'gift');social.shared(a,log,'insult');
  social.shared(b,log,'insult');social.shared(b,log,'gift');
  assert.notEqual(a.people.visitor_01.trust,b.people.visitor_01.trust);
  assert.ok(a.events.filter(x=>x.type==='social').every(x=>typeof x.delta==='number'));
 });
 test('private visitor testimony does not confer player knowledge',()=>{
- const s=make();const e=social.shared(s,log,'told',{fact:'The old lock has been altered.',privateToVisitor:true});
+ const s=make();s.location='library';social.arrive(s,log);
+ const e=social.shared(s,log,'told',{fact:'The old lock has been altered.',privateToVisitor:true});
  assert.ok(s.people.visitor_01.witnessed.includes(e.id));
  assert.ok(s.people.visitor_01.knowledge.some(x=>x.sourceEventId===e.id));
  assert.ok(!s.people.player.witnessed.includes(e.id));assert.ok(!s.people.player.knowledge.length);
 });
 test('custom must be observed twice before its violation produces surprise and mood',()=>{
- const s=make();social.observeCustom(s,log);assert.equal(social.violateCustom(s,log),null);
+ const s=make();s.location='library';social.arrive(s,log);
+ social.observeCustom(s,log);assert.equal(social.violateCustom(s,log),null);
  social.observeCustom(s,log);const e=social.violateCustom(s,log);
  assert.equal(e.type,'surprise');assert.equal(e.sourceIds.length,2);assert.ok(s.mood.some(x=>x.tag==='custom breached'));
 });
 test('humor callback refers to real shared event exactly once',()=>{
- const s=make(),source=social.markFunny(s,log),first=social.callback(s,log);
+ const s=make();s.location='library';social.arrive(s,log);
+ const source=social.markFunny(s,log),first=social.callback(s,log);
  assert.equal(first.sourceEventId,source.id);assert.equal(social.callback(s,log),null);
 });
 test('prediction ledger records hit/miss and exposes its actual ratio',()=>{
@@ -143,4 +147,14 @@ test('existing v1 save gains v1.1 sockets without losing original identity or pr
  assert.equal(restored.identitySha,s.identitySha);assert.equal(restored.clock.centibeats,s.clock.centibeats);
  assert.ok(restored.people.visitor_01);assert.equal(restored.debugSwitches.needs,true);
  advance(restored,archive,1);assert.ok(restored.events.some(x=>x.type==='decision'));
+});
+
+test('visitor claims require co-presence and real scripted greeting only where witnessed',()=>{
+ const s=make();assert.throws(()=>social.shared(s,log,'gift'),/co-presence/);
+ social.arrive(s,log);assert.ok(!s.events.some(e=>e.type==='visitor_conversation'));
+ s.location='library';const e=social.address(s,log);
+ assert.equal(e.visitorText,'Good evening, Doctor Pretorius.');
+ assert.ok(s.people.visitor_01.witnessed.includes(e.id));
+ social.shared(s,log,'gift');assert.equal(s.people.visitor_01.trust,20);
+ s.location='bedchamber';assert.throws(()=>social.shared(s,log,'insult'),/co-presence/);
 });
