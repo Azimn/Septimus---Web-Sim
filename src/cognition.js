@@ -1,7 +1,7 @@
 'use strict';
 const {OBJECTS,ROOMS,TRIGGERS}=require('./world');
 function observe(s,log){
- const ids=ROOMS[s.location].objects.filter(id=>(s.objectPositions[id]||OBJECTS[id].room)===s.location);
+ const ids=Object.keys(OBJECTS).filter(id=>(s.objectPositions[id]||OBJECTS[id].room)===s.location);
  const candidates=ids.map(id=>{const obj=OBJECTS[id],novel=!s.seenObjects.includes(id)?12:0;
  const relevance=(id==='stores'&&s.needs.hunger>65?15:0)+(id==='bed'&&s.needs.energy<35?15:0);
  const moving=s.movingObjects?.includes(id)?10:0,noise=s.noisyObjects?.includes(id)?8:0;
@@ -18,7 +18,14 @@ function observe(s,log){
  const observed=candidates.slice(0,4),set=new Set(observed.map(x=>x.id));
  const previous=new Set(s.lastPerceptionIds||[]);
  for(const p of observed){if(!s.seenObjects.includes(p.id))s.seenObjects.push(p.id);
-  if(p.id in OBJECTS)s.beliefs[p.id]={room:s.location,sourceTick:s.clock.centibeats};}
+  if(p.id in OBJECTS){
+   const belief=s.beliefs[p.id],prior=belief?.room;
+   if(prior&&prior!==s.location){
+    log?.(s,'route_learned','I updated where I must travel to find this object.',
+      {objectId:p.id,previousRoom:prior,newRoom:s.location,source:'perceived_object'});
+   }
+   s.beliefs[p.id]={room:s.location,sourceTick:s.clock.centibeats};
+  }}
  for(const [id,b] of Object.entries(s.beliefs)){if(b?.room===s.location&&!ids.includes(id))s.beliefs[id]={room:null,sourceTick:s.clock.centibeats,staleCorrected:true};}
  s.perception=observed;s.lastPerceptionIds=observed.map(x=>x.id);
  if(log&&observed.some(x=>!previous.has(x.id)))log(s,'perception','I noticed something newly salient in this room.',{observed:observed.map(x=>({id:x.id,score:x.score,factors:x.factors})),unnoticed:candidates.filter(x=>!set.has(x.id)).map(x=>x.id)});

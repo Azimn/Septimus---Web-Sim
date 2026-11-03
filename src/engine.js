@@ -37,6 +37,9 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  if(['eat','cook'].includes(a.kind)&&st.food<1&&(st.preserved||0)<1)return fail(s,a,'food_exhausted');
  if(a.kind==='trade'&&!Economy.tradeOffer(s))return fail(s,a,'trade_offer_unavailable');
  if(a.kind==='preserve'&&!available(s,'preserve'))return fail(s,a,'preservation_materials_unavailable');
+ if(DEFINITIONS[a.kind].duration>=Economy.BODY_LIMITS.longActionCentibeats&&a.kind!=='sleep'&&
+  (n.energy<=Economy.BODY_LIMITS.minimumEnergy||n.hunger>=Economy.BODY_LIMITS.maximumHunger))
+  return fail(s,a,'physical_refusal');
  if(a.kind==='work'&&n.hunger>=Economy.ECONOMY.workFailureHunger&&n.energy<Economy.ECONOMY.workFailureEnergy)
   return fail(s,a,'deprivation_reduced_work_success');
  if(['converse','trade'].includes(a.kind)&&!s.people.visitor_01.present)return fail(s,a,'visitor_departed');

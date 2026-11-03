@@ -1,6 +1,6 @@
 'use strict';
 const {OBJECTS,TRIGGERS,distance}=require('./world');
-const {ECONOMY,SURPLUS,availableGarden,supplyScore,tradeOffer}=require('./economy');
+const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
  rest:{target:'bed',duration:3000,base:6,trait:'gentle'},
@@ -38,6 +38,9 @@ function memoryCue(record){
 }
 function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OBJECTS||a.target==='visitor_01'))return false;
  if(state.dead)return false;
+ // A body can refuse lengthy work even when a utility score would favor it.
+ if(a.duration>=BODY_LIMITS.longActionCentibeats&&kind!=='sleep'&&
+  (state.needs.energy<=BODY_LIMITS.minimumEnergy||state.needs.hunger>=BODY_LIMITS.maximumHunger))return false;
  if(state.productionDisabled&&['tend','gather_fuel','draw_water'].includes(kind))return false;
  if(kind==='converse')return !!state.people?.visitor_01?.present&&!state.people.visitor_01.manuallyIntroduced;
  if(kind==='trade')return !!tradeOffer(state);
@@ -62,7 +65,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   (state.commitments.find(c=>!c.done&&(c.status===undefined||c.status==='open')&&(c.action===undefined||c.action==='prepare'))||{done:true});
  const time=state.clock.centibeats%100000;
  return Object.entries(DEFINITIONS).filter(([key,a])=>available(state,key)&&(key!=='sleep'||time>=70000||n.energy<20)&&
-  !(a.target in OBJECTS&&OBJECTS[a.target].room===state.location&&state.perception?.length&&
+  !(a.target in OBJECTS&&(state.objectPositions?.[a.target]||OBJECTS[a.target].room)===state.location&&state.perception?.length&&
    !state.perception.some(x=>x.id===a.target))&&
   !(a.target in OBJECTS&&(state.objectSalience?.[a.target]||0)<=-20&&!state.seenObjects?.includes(a.target))).map(([key,a])=>{
   let score=a.base*(state.traits[a.trait]||1);
@@ -122,13 +125,13 @@ function scores(state){const enabled=state.debugSwitches||{};
   if(['tea','rest','walk'].includes(key))score-=mood*.22;
   // Bounded deterministic tie-breaking, not an LLM or unrecorded randomness.
   const noise=((Math.imul(state.clock.centibeats+13,key.length*7919)+state.seed)>>>0)%5-2;
-  const targetBeliefRoom=state.beliefs?.[a.target]?.room||OBJECTS[a.target]?.room||state.people?.visitor_01?.room||'library';
+  const targetBeliefRoom=state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target]?.room||state.people?.visitor_01?.room||'library';
   const contextKey=a.target+'@'+targetBeliefRoom;
   const contextualFailures=state.outcomeContexts?.[contextKey]||0;
   score-=Math.min(20,contextualFailures*5);
   const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
-  const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):(state.beliefs?.[a.target]?.room||OBJECTS[a.target].room);
+  const targetRoom=a.target==='visitor_01'?(state.people.visitor_01.room||'library'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
   return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
     failures:contextualFailures,contextKey,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}

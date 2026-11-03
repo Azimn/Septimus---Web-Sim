@@ -10,6 +10,7 @@ const ECONOMY=Object.freeze({
 // v1.5 surplus options are additive: the v1.3 ECONOMY object above is unchanged.
 // Food is tracked as physical batches; resource receipts are the only writer of gains.
 // These declared scenario constants are frozen before endurance, not silently tuned.
+const BODY_LIMITS=Object.freeze({longActionCentibeats:3700,minimumEnergy:15,maximumHunger:95});
 const SURPLUS=Object.freeze({
  preserveInput:6,preserveOutput:5,preserveFuel:1,preserveDuration:3000,
  maxPreserved:144,freshShelfLifeDays:12,preservedShelfLifeDays:90,
@@ -174,4 +175,4 @@ function metabolicTick(s,log,clip){
  }else if(n.hunger<70&&n.energy>35&&s.health<100)s.health=clip(s.health+ECONOMY.healthRecoveryPerRest);
  return true;
 }
-module.exports={ECONOMY,SURPLUS,batches,drawStock,putFresh,preserve,tradeOffer,trade,consumeMeal,spoil,ensureGarden,availableGarden,supplyScore,harvestOrPlant,collect,metabolicTick};
+module.exports={ECONOMY,SURPLUS,BODY_LIMITS,batches,drawStock,putFresh,preserve,tradeOffer,trade,consumeMeal,spoil,ensureGarden,availableGarden,supplyScore,harvestOrPlant,collect,metabolicTick};
