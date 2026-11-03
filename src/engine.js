@@ -20,7 +20,7 @@ function start(s,kind,controller='autonomous',query=''){
 function fail(s,a,reason){
  const prior=s.outcomes[a.kind]||{},context=a.target+'@'+a.room;
  s.outcomes[a.kind]={...prior,failure:(prior.failure||0)+1,lastFailure:reason,context};
- if((s.objectPositions[a.target]||OBJECTS[a.target].room)!==a.room){
+ if(a.target in OBJECTS&&(s.objectPositions[a.target]||OBJECTS[a.target].room)!==a.room){
    s.beliefs[a.target]={room:null,sourceTick:s.clock.centibeats,staleCorrected:true};
    log(s,'belief_correction','I discovered that my belief about an object location was stale.',{object:a.target,previousRoom:a.room,correctedRoom:null});
  }
