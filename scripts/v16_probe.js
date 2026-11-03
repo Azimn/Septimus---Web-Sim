@@ -108,15 +108,30 @@ function historySwap(){
  Social.shared(s,log,'insult',{id:'mcfeely'});
  Social.shared(s,log,'insult',{id:'mcfeely'});
  const before=[Social.treatment(rosa),Social.treatment(carrier)];
+ const exercise=(source)=>{
+  const fork=structuredClone(source),start=fork.events.length;
+  Social.meet(fork,log);Post.socialMeet(fork,log);
+  const receipts=fork.events.slice(start);
+  return {rosaGreeted:receipts.some(e=>e.type==='visitor_conversation'),
+   rosaAvoided:receipts.some(e=>e.type==='visitor_avoided'),
+   carrierGreeted:receipts.some(e=>e.type==='carrier_conversation'),
+   carrierAvoided:receipts.some(e=>e.type==='person_avoided'&&e.personId==='mcfeely'),
+   sourceReceipts:receipts.filter(e=>['visitor_conversation','visitor_avoided',
+     'carrier_conversation','person_avoided'].includes(e.type)).map(e=>({id:e.id,type:e.type,personId:e.personId}))};
+ };
+ const witnessedBefore=exercise(s);
  const dataA={trust:rosa.trust,events:structuredClone(rosa.events),liveEncounters:rosa.liveEncounters||0},
   dataB={trust:carrier.trust,events:structuredClone(carrier.events),liveEncounters:carrier.liveEncounters||0};
  Object.assign(rosa,dataB);Object.assign(carrier,dataA);
  const after=[Social.treatment(rosa),Social.treatment(carrier)];
+ const witnessedAfter=exercise(s);
  const logEvent=log(s,'social_history_swap_control','Only the two persons lived social histories were exchanged in a fork.',
   {operatorOnly:true,changes:['trust','events','liveEncounters'],
    noPersonIdInTreatment:!/visitor_01|mcfeely/.test(String(Social.treatment))});
- return {before,after,eventId:logEvent.id,
-  passed:before[0].greet==='greet'&&before[1].greet==='withhold'&&
+ return {before,after,witnessedBefore,witnessedAfter,eventId:logEvent.id,
+  passed:witnessedBefore.rosaGreeted&&witnessedBefore.carrierAvoided&&
+  witnessedAfter.rosaAvoided&&witnessedAfter.carrierGreeted&&
+  before[0].greet==='greet'&&before[1].greet==='withhold'&&
   after[0].greet==='withhold'&&after[1].greet==='greet'&&
   before[0].shareConfidence&&!after[0].shareConfidence&&
   before[0].minutes===after[1].minutes&&

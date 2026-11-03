@@ -164,3 +164,23 @@ test('F5: sample packets contain actual witnessed Rosa exchanges and archive-cit
   assert.ok(r.fidelitySamples.some(x=>x.personId==='mcfeely'&&x.type==='carrier_conversation'));
  }
 });
+
+test('Article 05: witnessed treatment changes hands after the history swap',()=>{
+ const h=packet.historySwap;
+ assert.equal(h.witnessedBefore.rosaGreeted,true);
+ assert.equal(h.witnessedBefore.carrierAvoided,true);
+ assert.equal(h.witnessedAfter.rosaAvoided,true);
+ assert.equal(h.witnessedAfter.carrierGreeted,true);
+ assert.ok(h.witnessedBefore.sourceReceipts.length>=2);
+ assert.ok(h.witnessedAfter.sourceReceipts.length>=2);
+});
+test('Rosa measurement violations produce source-linked surprise and mood consequences',()=>{
+ const s=fresh(11),p=s.people.visitor_01;
+ p.present=true;p.room='garden';s.location='garden';
+ const prior=s.mood.length,receipt=Social.violateMerchantCustom(s,log,'volume_measure');
+ assert.ok(receipt);
+ assert.ok(s.events.some(x=>x.type==='merchant_custom_breached'&&
+  x.sourceEvents.includes('E22-001')&&x.violation==='volume_measure'));
+ assert.ok(s.events.some(x=>x.type==='surprise'&&x.reason==='volume_measure'));
+ assert.ok(s.mood.length>prior);
+});
