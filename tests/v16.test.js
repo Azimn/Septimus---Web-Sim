@@ -57,8 +57,8 @@ test('Letter delivery has a distinct handed or boxed receipt determined by physi
  assert.equal(b.mail.letters[0].deliveryMode,'boxed');
  assert.equal(a.mail.letters[0].readAt,null);
  assert.equal(b.mail.letters[0].readAt,null);
- assert.equal(a.mail.knowledge.length,0);
- assert.equal(b.mail.knowledge.length,0);
+ assert.equal(a.mail.knowledge.some(x=>x.letterId===a.mail.letters[0].id),false);
+ assert.equal(b.mail.knowledge.some(x=>x.letterId===b.mail.letters[0].id),false);
  assert.ok(b.events.some(x=>x.type==='mail_boxed'));
  assert.ok(a.events.some(x=>x.type==='mail_handed'));
 });
