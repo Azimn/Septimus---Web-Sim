@@ -27,10 +27,10 @@ function observe(s,log){
 function selfSheet(s){const band=(v)=>v<30?'urgent':v<60?'noticeable':'settled';
  return {room:s.location,needs:Object.fromEntries(Object.entries(s.needs).map(([k,v])=>[k,band(v)])),
  mood:s.mood.map(x=>({tag:x.tag,value:x.value})),open:s.commitments.filter(x=>!x.done).map(x=>({id:x.id,title:x.title})),
- visible:s.perception.map(x=>x.id),quirks:s.quirks.map(x=>({...x})),memory:s.folioReads.slice(-2).map(x=>x.id),
+ duskSoon:s.clock.centibeats%100000>=50000,visible:s.perception.map(x=>x.id),quirks:s.quirks.map(x=>({...x})),memory:s.folioReads.slice(-2).map(x=>x.id),
  hidden:['residue','numeric needs','unperceived room state']};}
 function predictedAction(s){const sheet=selfSheet(s);if(sheet.needs.energy==='urgent')return 'rest';
- if(sheet.needs.hunger==='urgent')return 'eat';if(sheet.open.length&&s.clock.centibeats%100000>=50000)return 'prepare';
+ if(sheet.needs.hunger==='urgent')return 'eat';if(sheet.open.length&&sheet.duskSoon)return 'prepare';
  return sheet.needs.stimulation==='urgent'?'read':'work';}
 function deliberate(s,ranked,log){
  s.deliberation.checks++;

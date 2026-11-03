@@ -40,4 +40,15 @@ function initialState(identitySha,archiveSha){return {
 };}
 function distance(from,to){if(from===to)return 0;let q=[[from,0]],visited=new Set([from]);while(q.length){const [r,d]=q.shift();for(const n of ROOMS[r].exits){if(n===to)return d+1;if(!visited.has(n)){visited.add(n);q.push([n,d+1]);}}}throw Error('Disconnected tower');}
 function context(state){const nearby=ROOMS[state.location].objects.map(id=>OBJECTS[id].label);return {room:ROOMS[state.location].label,objects:(state.perception?.length?state.perception.map(p=>p.label):nearby.slice(0,4)),needs:Object.fromEntries(Object.entries(state.needs).map(([k,v])=>[k,v<25?'urgent':v<55?'noticeable':'settled']))};}
-module.exports={ROOMS,OBJECTS,TRAITS,TRIGGERS,DAY,STEP,START,initialState,distance,context};
+function ensureHooks(s){
+ const defaults=initialState(s.identitySha||'',s.archiveSha||'');
+ for(const key of ['people','customs','humor','replyQueue','deliveredReplies','thoughts','predictions',
+ 'beliefs','objectPositions','perception','seenObjects','lastPerceptionIds','deliberation',
+ 'debugSwitches','habitProfiles','quirks','worldLosses'])
+  if(s[key]===undefined)s[key]=structuredClone(defaults[key]);
+ if(!s.people.player)s.people.player=structuredClone(defaults.people.player);
+ if(!s.people.visitor_01)s.people.visitor_01=structuredClone(defaults.people.visitor_01);
+ for(const [name,value] of Object.entries(defaults.debugSwitches))if(!(name in s.debugSwitches))s.debugSwitches[name]=value;
+ return s;
+}
+module.exports={ROOMS,OBJECTS,TRAITS,TRIGGERS,DAY,STEP,START,initialState,ensureHooks,distance,context};

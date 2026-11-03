@@ -1,5 +1,5 @@
 'use strict';
-const {DAY,STEP,ROOMS,OBJECTS,context,distance}=require('./world');
+const {DAY,STEP,ROOMS,OBJECTS,context,distance,ensureHooks}=require('./world');
 const {DEFINITIONS,scores,available,clip,applyMood,perceiveTopic}=require('./actions');
 const {findFolios}=require('./history');
 const Cognition=require('./cognition');
@@ -7,6 +7,7 @@ const Social=require('./social');
 const Voice=require('./voice');
 function log(s,type,description,extra={}){const event={id:`L${++s.sequence}`,t:s.clock.centibeats,day:s.clock.day,type,room:s.location,description,provenance:'lived_runtime_memory',...extra};s.events.push(event);return event;}
 function start(s,kind,controller='autonomous',query=''){
+ ensureHooks(s);
  if(s.activity)throw Error('Current activity must finish or be interrupted');
  if(!available(s,kind))throw Error(`Unavailable: ${kind}`);
  const a=DEFINITIONS[kind],destination=s.beliefs?.[a.target]?.room||OBJECTS[a.target].room;
@@ -58,7 +59,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
  s.surface.lastWords=description;log(s,'completed',description,{kind:a.kind,controller:a.controller,object:a.target});
  s.activity=null;Voice.flush(s,log);
 }
-function tick(s,archive){const n=s.needs,a=s.activity,now=s.clock.centibeats;
+function tick(s,archive){ensureHooks(s);const n=s.needs,a=s.activity,now=s.clock.centibeats;
  s.clock.centibeats+=STEP;s.clock.day=Math.floor(s.clock.centibeats/DAY);
  n.hunger=clip(n.hunger+.06);n.stimulation=clip(n.stimulation-.027);n.comfort=clip(n.comfort-.013);
  if(a?.kind==='sleep'&&a.status==='active')n.energy=clip(n.energy+.18);else n.energy=clip(n.energy-.038);
@@ -86,18 +87,18 @@ function tick(s,archive){const n=s.needs,a=s.activity,now=s.clock.centibeats;
  s.decisions=s.decisions.slice(-100);start(s,ranked[0].kind);}}
  else if(a.status==='traveling'){a.travelRemaining-=STEP;if(a.travelRemaining<=0){s.location=a.room;a.status='active';log(s,'arrived',`I reached the ${ROOMS[s.location].label.toLowerCase()}.`,{target:a.target});}}
  else if(a.status==='active'){a.remaining-=STEP;if(a.remaining<=0)finish(s,a,archive);}
- Cognition.observe(s,null);
+ Cognition.observe(s,log);
  s.surface.lastObservation=s.perception.map(x=>x.label);
  return s;
 }
 function advance(s,archive,steps=1){if(!Number.isSafeInteger(steps)||steps<1||steps>1000)throw Error('Steps must be integer 1..1000');for(let i=0;i<steps;i++)tick(s,archive);return s;}
-function direct(s,kind,query=''){if(!available(s,kind))throw Error(`Unavailable: ${kind}`);if(s.activity){log(s,'interrupted',`I was interrupted while attempting ${s.activity.kind}.`,{controller:'player',interrupted:s.activity.kind});s.activity=null;}
+function direct(s,kind,query=''){ensureHooks(s);if(!available(s,kind))throw Error(`Unavailable: ${kind}`);if(s.activity){log(s,'interrupted',`I was interrupted while attempting ${s.activity.kind}.`,{controller:'player',interrupted:s.activity.kind});s.activity=null;}
  const result=start(s,kind,'player',query);return result;}
-function speak(s,text){const topics=perceiveTopic(s,text);
+function speak(s,text){ensureHooks(s);const topics=perceiveTopic(s,text);
  const response=Voice.receive(s,text,log);
  log(s,'heard',`I heard a visitor speak${topics.length?' of '+topics.join(', '):''}.`,{source:'visitor',topics});
  return response;}
-function view(s){return {clock:s.clock,day:s.clock.day+1,room:s.location,objects:ROOMS[s.location].objects.map(id=>({id,...OBJECTS[id]})),needs:s.needs,stores:s.stores,activity:s.activity,commitments:s.commitments,diary:s.diary.slice(-8),folioReads:s.folioReads.slice(-8),events:s.events.slice(-25),words:s.surface.lastWords,perception:context(s),choices:scores(s).slice(0,8),
+function view(s){ensureHooks(s);return {clock:s.clock,day:s.clock.day+1,room:s.location,objects:ROOMS[s.location].objects.map(id=>({id,...OBJECTS[id]})),needs:s.needs,stores:s.stores,activity:s.activity,commitments:s.commitments,diary:s.diary.slice(-8),folioReads:s.folioReads.slice(-8),events:s.events.slice(-25),words:s.surface.lastWords,perception:context(s),choices:scores(s).slice(0,8),
  people:s.people,customs:s.customs,humor:s.humor,replyQueue:s.replyQueue,thoughts:s.thoughts.slice(-8),
  predictionAccuracy:{count:s.predictions.length,hits:s.predictions.filter(x=>x.hit).length,rate:s.predictions.length?s.predictions.filter(x=>x.hit).length/s.predictions.length:0},
  deliberation:s.deliberation,quirks:s.quirks,claimsCheck:'template-only socket',

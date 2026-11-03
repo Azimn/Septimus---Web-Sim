@@ -1,8 +1,9 @@
 'use strict';
-const test=require('node:test'),assert=require('node:assert/strict');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const {initialState,OBJECTS}=require('../src/world');
 const {advance,direct,speak,view,log,social,cognition,voice}=require('../src/engine');
 const {scores,available,applyMood}=require('../src/actions');
+const {save,load}=require('../src/store');
 const archive={sha:'test-v11',records:[
  {event_id:'E09-001',title:'The Magistrate and the Tower',participants:['Septimus Pretorius'],locations:['Ingolstadt'],recall_cues:['magistrate'],provenance:'reconstructed',memory_text:'I remember the waiting room.'},
  {event_id:'E22-001',title:'The broken ladder',participants:['Septimus Pretorius'],locations:['Tower'],recall_cues:['ladder'],provenance:'reconstructed',memory_text:'I recall the broken step.'}
@@ -119,7 +120,7 @@ test('temporary loss genuinely removes and restores an available object action',
 test('each autonomous choice logs runner up, score and margin',()=>{
  const s=make();advance(s,archive,1);
  const d=s.events.find(x=>x.type==='decision');assert.ok(d);
- assert.equal(typeof d.score,'number');assert.equal(d.margin,d.score-d.foregoneScore);
+ assert.equal(typeof d.score,'number');assert.equal(d.margin,Math.round((d.score-d.foregoneScore)*100)/100);
  assert.ok(d.candidates.length>1);
 });
 test('template voice goes through claims socket; unauthenticated memory claim fails',()=>{
@@ -132,4 +133,14 @@ test('attention and open threads remain non-omniscient, with no model calls',()=
  const s=make();s.location='library';cognition.observe(s,log);
  const card=voice.stateCard(s);assert.ok(!card.visible.includes('instrument'));
  assert.ok(card.open.includes('C1'));assert.equal(typeof s.model,'undefined');
+});
+
+test('existing v1 save gains v1.1 sockets without losing original identity or progress',()=>{
+ const s=make(),file=path.join(fs.mkdtempSync(path.join(os.tmpdir(),'tower-v11-')),'save.json');
+ for(const k of ['people','customs','humor','replyQueue','deliveredReplies','thoughts','predictions','beliefs','objectPositions',
+ 'perception','seenObjects','lastPerceptionIds','deliberation','debugSwitches','habitProfiles','quirks','worldLosses'])delete s[k];
+ save(file,s);const restored=load(file,{sha:s.identitySha},archive);
+ assert.equal(restored.identitySha,s.identitySha);assert.equal(restored.clock.centibeats,s.clock.centibeats);
+ assert.ok(restored.people.visitor_01);assert.equal(restored.debugSwitches.needs,true);
+ advance(restored,archive,1);assert.ok(restored.events.some(x=>x.type==='decision'));
 });
