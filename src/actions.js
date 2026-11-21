@@ -3,6 +3,7 @@ const {OBJECTS,TRIGGERS,distance}=require('./world');
 const {ECONOMY,SURPLUS,BODY_LIMITS,availableGarden,supplyScore,tradeOffer}=require('./economy');
 const {POST}=require('./post_contract');
 const Commitments=require('./commitments');
+const Recurrent=require('./recurrent_coupling');
 const post=()=>require('./post');
 const DEFINITIONS={
  sleep:{target:'bed',duration:25000,base:5,trait:'stubborn'},
@@ -106,6 +107,9 @@ function scores(state){const enabled=state.debugSwitches||{};
       stockShortfall:c.stockTarget?Math.max(0,c.stockTarget.minimum-
        Commitments.heldStock(state,c.stockTarget)):0});}
   }
+  // Source-linked, bounded optional research influence; baseline adds zero.
+  const recurrenceFactor=Recurrent.pressure(state,key);
+  score+=recurrenceFactor.bonus;
   if(['walk','tend'].includes(key))score+=(100-n.comfort)*.23;
   if(key==='eat'&&state.stores.food===0&&state.stores.preserved>0)score+=14;
   const supplyFactor=supplyScore(state,key);score+=supplyFactor;
@@ -163,7 +167,7 @@ function scores(state){const enabled=state.debugSwitches||{};
   const utilityWeight=state.utilityWeights?.[key]??ACTION_WEIGHTS[key];
   score=Math.round((score+a.base*(utilityWeight-1)+noise)*100)/100;
   const targetRoom=a.target in (state.people||{})?(state.people[a.target].room||'garden'):(state.beliefs?.[a.target]?.room||state.objectPositions?.[a.target]||OBJECTS[a.target].room);
-  return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,
+  return {kind:key,target:a.target,score,noise,utilityWeight,memoryFactors,residueFactors,commitmentFactors,recurrenceFactor,
     failures:contextualFailures,contextKey,quirkFactors,supplyFactor,distance:distance(state.location,targetRoom)};
  }).sort((a,b)=>b.score-a.score||a.kind.localeCompare(b.kind));}
 function applyMood(state,tag,value,duration=5000){state.mood.push({tag,value,until:state.clock.centibeats+duration});state.mood=state.mood.slice(-20);}
