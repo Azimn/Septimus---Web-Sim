@@ -1,0 +1,34 @@
+name: Recurrent lesion forensic evidence
+on:
+  push:
+    branches:
+      - experiment/recurrent-rumination-20261120
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  forensic-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm original v1.8 source and frozen preregistration still exist
+        run: |
+          git merge-base --is-ancestor af899b25212df4c55f55e9a9758b4a94d33f6079 HEAD
+          git diff --quiet af899b25212df4c55f55e9a9758b4a94d33f6079 -- canon/ identity.json 'old sim/'
+          test -f research/RECURRENT_COUPLING_PREREG_2026-11-20.md
+      - name: Forensic replay of same-state lesion and full two-condition world forks
+        run: node scripts/recurrent_lesion_forensic.js
+      - name: Upload snapshot, full candidate arrays, and every 200-tick event receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recurrent-lesion-forensic-evidence
+          path: research-results/recurrent-lesion-forensic-20261120/
+          retention-days: 90
+          if-no-files-found: error
