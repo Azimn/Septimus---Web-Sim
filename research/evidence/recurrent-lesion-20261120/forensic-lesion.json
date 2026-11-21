@@ -1,0 +1,1589 @@
+{
+  "schema": "pretorius.recurrent-lesion-forensic.v1",
+  "auditType": "post-hoc archival reproduction of preregistered lesion, not new discovery or retuned trial",
+  "frozenExperiment": {
+    "baselineExecutableSha": "af899b25212df4c55f55e9a9758b4a94d33f6079",
+    "originalRunHeadSha": "724fad1dbeaa698ed929d61a834e4c0aec4f72cf",
+    "originalActionsRunId": 44854991267,
+    "originalJobId": 136694983250,
+    "originalEvidenceArtifactId": 14687730005,
+    "originalEvidenceZipSha256": "c03d16cf50736ff3f633d02cfcdbc5039d87fe31b15afdefde06a5c22810041d"
+  },
+  "forensicExecution": {
+    "sourceRevision": "22534e710b84769e0cb8a3e8abafb86238d7e7e2",
+    "sourceHashes": {
+      "engine": "a2dc4afec2103fdf9b7bffc87c266f0f3951a4c6a5278f6c10f3ef070df07e80",
+      "world": "223e2f6ebde6f9fce56c3c7d073eaa177cae8510b637a47270db18996f7e3e72",
+      "cognition": "efdde45f52f11271615d01f6f183336a7e856521d60c5c70453791a7fed8aeba",
+      "actions": "ab00415435a70871ea8cba9c97a5e50655ca0b2ef08791e0bcd7977d6d5bfff1",
+      "coupling": "6dc6512530db3226f10bd80536d882501e809f33f4441a014e5b90b5d8a349b4",
+      "preregistration": "dffbd223ffa80dc504a395d5f5d19df5816dfe66c42fd78235b7a8ca46b22ce5",
+      "forensicScript": "c5f2dfb2b6767a47a98d87f418c4614933602e26faedc13be1ccb63058644f27"
+    },
+    "nodeVersion": "v22.23.4",
+    "command": "node scripts/recurrent_lesion_forensic.js"
+  },
+  "identicalStateSnapshot": {
+    "id": "sha256:be483b5d292320aa9730e4d4c8eb33d3ebc999a5402d1adcb193ca55bb17a214",
+    "jsonUtf8Sha256": "be483b5d292320aa9730e4d4c8eb33d3ebc999a5402d1adcb193ca55bb17a214",
+    "seed": 11,
+    "arm": "coupled",
+    "simulatedDays": 149,
+    "tick": 14925000,
+    "rawSnapshotGzipFile": "same-state-14925000.json.gz",
+    "rawJsonByteCount": 11281542,
+    "lastEventId": "L18778",
+    "lastEventType": "completed",
+    "lastEventTick": 14925000,
+    "activeCommitment": {
+      "id": "C150",
+      "seriesId": "DAILY-HEARTH"
+    },
+    "sourceThought": {
+      "id": "L18774",
+      "t": 14917500,
+      "day": 149,
+      "type": "rumination",
+      "room": "kitchen",
+      "description": "I found myself returning to an unfinished matter.",
+      "provenance": "lived_runtime_memory",
+      "sourceId": "C150",
+      "seriesId": null,
+      "seriesBrokenStreak": 0,
+      "private": true
+    }
+  },
+  "scoringAtExactlySameState": {
+    "enabled": {
+      "tick": 14925000,
+      "mode": "enabled",
+      "winner": "prepare",
+      "winnerScore": 33.37,
+      "candidates": [
+        {
+          "kind": "prepare",
+          "target": "hearth",
+          "score": 33.37,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 2.67,
+            "sourceCommitmentId": "C150",
+            "sourceSeriesId": "DAILY-HEARTH",
+            "sourceThoughtIds": [
+              "L18774"
+            ]
+          },
+          "failures": 0,
+          "contextKey": "hearth@kitchen",
+          "quirkFactors": [
+            {
+              "originEventId": "L4424",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:35"
+            },
+            {
+              "originEventId": "L6993",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:55"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "work",
+          "target": "bench",
+          "score": 32.86,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [
+            {
+              "topic": "henry",
+              "sourceEventId": null,
+              "bonus": 1.8
+            }
+          ],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bench@laboratory",
+          "quirkFactors": [
+            {
+              "originEventId": "L4484",
+              "bonus": 2.5,
+              "originTag": "mature:work:180"
+            },
+            {
+              "originEventId": "L6241",
+              "bonus": 2.5,
+              "originTag": "mature:work:250"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "rest",
+          "target": "bed",
+          "score": 26.15,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bed@bedchamber",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "inspect",
+          "target": "instrument",
+          "score": 22.1,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "instrument@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "study",
+          "target": "specimens",
+          "score": 17.5,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "specimens@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "walk",
+          "target": "path",
+          "score": 12.09,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "path@garden",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 3
+        },
+        {
+          "kind": "cook",
+          "target": "stove",
+          "score": 10.75,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "stove@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "tea",
+          "target": "kettle",
+          "score": 3.39,
+          "noise": -2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "kettle@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "eat",
+          "target": "stores",
+          "score": -2.77,
+          "noise": -2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "stores@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "draw_water",
+          "target": "path",
+          "score": -13.5,
+          "noise": -1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "path@garden",
+          "quirkFactors": [],
+          "supplyFactor": -25,
+          "distance": 3
+        }
+      ],
+      "candidatesSha256": "8f773d457ac1d6187aa727da7db003924fc1c41a9ff846c0c582325b2adbb90e"
+    },
+    "removed": {
+      "tick": 14925000,
+      "mode": "disabled",
+      "winner": "work",
+      "winnerScore": 32.86,
+      "candidates": [
+        {
+          "kind": "work",
+          "target": "bench",
+          "score": 32.86,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [
+            {
+              "topic": "henry",
+              "sourceEventId": null,
+              "bonus": 1.8
+            }
+          ],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bench@laboratory",
+          "quirkFactors": [
+            {
+              "originEventId": "L4484",
+              "bonus": 2.5,
+              "originTag": "mature:work:180"
+            },
+            {
+              "originEventId": "L6241",
+              "bonus": 2.5,
+              "originTag": "mature:work:250"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "prepare",
+          "target": "hearth",
+          "score": 30.7,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "hearth@kitchen",
+          "quirkFactors": [
+            {
+              "originEventId": "L4424",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:35"
+            },
+            {
+              "originEventId": "L6993",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:55"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "rest",
+          "target": "bed",
+          "score": 26.15,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bed@bedchamber",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "inspect",
+          "target": "instrument",
+          "score": 22.1,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "instrument@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "study",
+          "target": "specimens",
+          "score": 17.5,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "specimens@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "walk",
+          "target": "path",
+          "score": 12.09,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "path@garden",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 3
+        },
+        {
+          "kind": "cook",
+          "target": "stove",
+          "score": 10.75,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "stove@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "tea",
+          "target": "kettle",
+          "score": 3.39,
+          "noise": -2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "kettle@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "eat",
+          "target": "stores",
+          "score": -2.77,
+          "noise": -2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "stores@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "draw_water",
+          "target": "path",
+          "score": -13.5,
+          "noise": -1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "path@garden",
+          "quirkFactors": [],
+          "supplyFactor": -25,
+          "distance": 3
+        }
+      ],
+      "candidatesSha256": "eeb023a5882e3fcf13c94f712f7fd3fe5915fe202e7f118deb39e85745111502"
+    },
+    "restored": {
+      "tick": 14925000,
+      "mode": "restored",
+      "winner": "prepare",
+      "winnerScore": 33.37,
+      "candidates": [
+        {
+          "kind": "prepare",
+          "target": "hearth",
+          "score": 33.37,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 2.67,
+            "sourceCommitmentId": "C150",
+            "sourceSeriesId": "DAILY-HEARTH",
+            "sourceThoughtIds": [
+              "L18774"
+            ]
+          },
+          "failures": 0,
+          "contextKey": "hearth@kitchen",
+          "quirkFactors": [
+            {
+              "originEventId": "L4424",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:35"
+            },
+            {
+              "originEventId": "L6993",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:55"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "work",
+          "target": "bench",
+          "score": 32.86,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [
+            {
+              "topic": "henry",
+              "sourceEventId": null,
+              "bonus": 1.8
+            }
+          ],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bench@laboratory",
+          "quirkFactors": [
+            {
+              "originEventId": "L4484",
+              "bonus": 2.5,
+              "originTag": "mature:work:180"
+            },
+            {
+              "originEventId": "L6241",
+              "bonus": 2.5,
+              "originTag": "mature:work:250"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "rest",
+          "target": "bed",
+          "score": 26.15,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bed@bedchamber",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "inspect",
+          "target": "instrument",
+          "score": 22.1,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "instrument@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "study",
+          "target": "specimens",
+          "score": 17.5,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "specimens@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "walk",
+          "target": "path",
+          "score": 12.09,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "path@garden",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 3
+        },
+        {
+          "kind": "cook",
+          "target": "stove",
+          "score": 10.75,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "stove@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "tea",
+          "target": "kettle",
+          "score": 3.39,
+          "noise": -2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "kettle@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "eat",
+          "target": "stores",
+          "score": -2.77,
+          "noise": -2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "stores@kitchen",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "draw_water",
+          "target": "path",
+          "score": -13.5,
+          "noise": -1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "path@garden",
+          "quirkFactors": [],
+          "supplyFactor": -25,
+          "distance": 3
+        }
+      ],
+      "candidatesSha256": "8f773d457ac1d6187aa727da7db003924fc1c41a9ff846c0c582325b2adbb90e"
+    }
+  },
+  "nextDecisionAfterOneWorldTick": {
+    "tick": 14925100,
+    "enabled": {
+      "id": "L18780",
+      "tick": 14925100,
+      "chosen": "prepare",
+      "score": 33.32,
+      "foregone": "work",
+      "foregoneScore": 32.85,
+      "candidates": [
+        {
+          "kind": "prepare",
+          "target": "hearth",
+          "score": 33.32,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 2.62,
+            "sourceCommitmentId": "C150",
+            "sourceSeriesId": "DAILY-HEARTH",
+            "sourceThoughtIds": [
+              "L18774"
+            ]
+          },
+          "failures": 0,
+          "contextKey": "hearth@kitchen",
+          "quirkFactors": [
+            {
+              "originEventId": "L4424",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:35"
+            },
+            {
+              "originEventId": "L6993",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:55"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "work",
+          "target": "bench",
+          "score": 32.85,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [
+            {
+              "topic": "henry",
+              "sourceEventId": null,
+              "bonus": 1.8
+            }
+          ],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bench@laboratory",
+          "quirkFactors": [
+            {
+              "originEventId": "L4484",
+              "bonus": 2.5,
+              "originTag": "mature:work:180"
+            },
+            {
+              "originEventId": "L6241",
+              "bonus": 2.5,
+              "originTag": "mature:work:250"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "rest",
+          "target": "bed",
+          "score": 26.16,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bed@bedchamber",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "inspect",
+          "target": "instrument",
+          "score": 22.11,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "instrument@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "study",
+          "target": "specimens",
+          "score": 17.51,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "specimens@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        }
+      ]
+    },
+    "disabled": {
+      "id": "L18780",
+      "tick": 14925100,
+      "chosen": "work",
+      "score": 32.85,
+      "foregone": "prepare",
+      "foregoneScore": 30.7,
+      "candidates": [
+        {
+          "kind": "work",
+          "target": "bench",
+          "score": 32.85,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [
+            {
+              "topic": "henry",
+              "sourceEventId": null,
+              "bonus": 1.8
+            }
+          ],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bench@laboratory",
+          "quirkFactors": [
+            {
+              "originEventId": "L4484",
+              "bonus": 2.5,
+              "originTag": "mature:work:180"
+            },
+            {
+              "originEventId": "L6241",
+              "bonus": 2.5,
+              "originTag": "mature:work:250"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "prepare",
+          "target": "hearth",
+          "score": 30.7,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "hearth@kitchen",
+          "quirkFactors": [
+            {
+              "originEventId": "L4424",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:35"
+            },
+            {
+              "originEventId": "L6993",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:55"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "rest",
+          "target": "bed",
+          "score": 26.16,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bed@bedchamber",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "inspect",
+          "target": "instrument",
+          "score": 22.11,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "instrument@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "study",
+          "target": "specimens",
+          "score": 17.51,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "specimens@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        }
+      ]
+    },
+    "restored": {
+      "id": "L18780",
+      "tick": 14925100,
+      "chosen": "prepare",
+      "score": 33.32,
+      "foregone": "work",
+      "foregoneScore": 32.85,
+      "candidates": [
+        {
+          "kind": "prepare",
+          "target": "hearth",
+          "score": 33.32,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 2.62,
+            "sourceCommitmentId": "C150",
+            "sourceSeriesId": "DAILY-HEARTH",
+            "sourceThoughtIds": [
+              "L18774"
+            ]
+          },
+          "failures": 0,
+          "contextKey": "hearth@kitchen",
+          "quirkFactors": [
+            {
+              "originEventId": "L4424",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:35"
+            },
+            {
+              "originEventId": "L6993",
+              "bonus": 2.5,
+              "originTag": "mature:prepare:55"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "work",
+          "target": "bench",
+          "score": 32.85,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [
+            {
+              "topic": "henry",
+              "sourceEventId": null,
+              "bonus": 1.8
+            }
+          ],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bench@laboratory",
+          "quirkFactors": [
+            {
+              "originEventId": "L4484",
+              "bonus": 2.5,
+              "originTag": "mature:work:180"
+            },
+            {
+              "originEventId": "L6241",
+              "bonus": 2.5,
+              "originTag": "mature:work:250"
+            }
+          ],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "rest",
+          "target": "bed",
+          "score": 26.16,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "bed@bedchamber",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 2
+        },
+        {
+          "kind": "inspect",
+          "target": "instrument",
+          "score": 22.11,
+          "noise": 1,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "instrument@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        },
+        {
+          "kind": "study",
+          "target": "specimens",
+          "score": 17.51,
+          "noise": 2,
+          "utilityWeight": 1,
+          "memoryFactors": [],
+          "residueFactors": [],
+          "commitmentFactors": [],
+          "recurrenceFactor": {
+            "arm": "coupled",
+            "bonus": 0,
+            "sourceCommitmentId": null,
+            "sourceThoughtIds": []
+          },
+          "failures": 0,
+          "contextKey": "specimens@laboratory",
+          "quirkFactors": [],
+          "supplyFactor": 0,
+          "distance": 0
+        }
+      ]
+    }
+  },
+  "sourceDecayExplanation": {
+    "gain": 6,
+    "window": 13500,
+    "cap": 12,
+    "ageAtSnapshot": 7500,
+    "bonusAtSnapshot": 2.6666666666666665,
+    "ageAtNextDecision": 7600,
+    "bonusAtNextDecision": 2.622222222222222,
+    "note": "At the next tick the clock and ordinary bodily conditions advance before choosing. It is not a rescoring of the preceding snapshot."
+  },
+  "fork200Ticks": {
+    "fromTick": 14925000,
+    "toTick": 14945000,
+    "enabled": {
+      "eventLogFile": "fork-enabled-200-ticks.jsonl",
+      "rawEventSha256": "5101c3611bc446fd273e43058d322b994f88faef3f115a4a80f3dc35c7cb2c08",
+      "eventsCount": 31,
+      "physicalReceipts": [
+        {
+          "id": "L18782",
+          "t": 14925100,
+          "day": 149,
+          "type": "commitment_progress",
+          "room": "laboratory",
+          "description": "I began the next part of an obligation.",
+          "provenance": "lived_runtime_memory",
+          "commitmentId": "C150",
+          "seriesId": "DAILY-HEARTH",
+          "action": "prepare",
+          "deadline": 14965000,
+          "controller": "autonomous"
+        },
+        {
+          "id": "L18787",
+          "t": 14927500,
+          "day": 149,
+          "type": "series_outcome",
+          "room": "kitchen",
+          "description": "I retained the result of one obligation in its recurring series.",
+          "provenance": "lived_runtime_memory",
+          "seriesId": "DAILY-HEARTH",
+          "instanceId": "C150",
+          "seriesOrdinal": 150,
+          "status": "kept",
+          "cause": "",
+          "keptStreak": 150,
+          "brokenStreak": 0,
+          "averageCompletionTicks": 28253
+        },
+        {
+          "id": "L18788",
+          "t": 14927500,
+          "day": 149,
+          "type": "completed",
+          "room": "kitchen",
+          "description": "I secured the hearth against the approaching dusk.",
+          "provenance": "lived_runtime_memory",
+          "kind": "prepare",
+          "controller": "autonomous",
+          "object": "hearth"
+        },
+        {
+          "id": "L18796",
+          "t": 14935600,
+          "day": 149,
+          "type": "completed",
+          "room": "laboratory",
+          "description": "I worked at my bench and learned something of the apparatus.",
+          "provenance": "lived_runtime_memory",
+          "kind": "work",
+          "controller": "autonomous",
+          "object": "bench"
+        },
+        {
+          "id": "L18802",
+          "t": 14939300,
+          "day": 149,
+          "type": "completed",
+          "room": "bedchamber",
+          "description": "I sat awhile to recover my strength.",
+          "provenance": "lived_runtime_memory",
+          "kind": "rest",
+          "controller": "autonomous",
+          "object": "bed"
+        }
+      ],
+      "finalWorldSummary": {
+        "room": "laboratory",
+        "activity": {
+          "kind": "work",
+          "controller": "autonomous",
+          "query": "",
+          "target": "bench",
+          "room": "laboratory",
+          "status": "active",
+          "remaining": 2400,
+          "travelRemaining": 0,
+          "started": 14939400
+        },
+        "needs": {
+          "energy": 39.92,
+          "hunger": 16.86,
+          "comfort": 98.25,
+          "stimulation": 97.18,
+          "company": 40.84
+        },
+        "stores": {
+          "food": 19,
+          "water": 7,
+          "fuel": 12,
+          "tea": 16,
+          "preserved": 141,
+          "lampSupplies": 2,
+          "books": 1
+        },
+        "health": 100,
+        "dead": false
+      }
+    },
+    "disabled": {
+      "eventLogFile": "fork-disabled-200-ticks.jsonl",
+      "rawEventSha256": "3a122b887b6e0fa2a008ee8e115b3cc4fc4be3aced44263e7813327655fb3a60",
+      "eventsCount": 29,
+      "physicalReceipts": [
+        {
+          "id": "L18784",
+          "t": 14932500,
+          "day": 149,
+          "type": "completed",
+          "room": "laboratory",
+          "description": "I worked at my bench and learned something of the apparatus.",
+          "provenance": "lived_runtime_memory",
+          "kind": "work",
+          "controller": "autonomous",
+          "object": "bench"
+        },
+        {
+          "id": "L18788",
+          "t": 14932600,
+          "day": 149,
+          "type": "commitment_progress",
+          "room": "laboratory",
+          "description": "I began the next part of an obligation.",
+          "provenance": "lived_runtime_memory",
+          "commitmentId": "C150",
+          "seriesId": "DAILY-HEARTH",
+          "action": "prepare",
+          "deadline": 14965000,
+          "controller": "autonomous"
+        },
+        {
+          "id": "L18792",
+          "t": 14935000,
+          "day": 149,
+          "type": "series_outcome",
+          "room": "kitchen",
+          "description": "I retained the result of one obligation in its recurring series.",
+          "provenance": "lived_runtime_memory",
+          "seriesId": "DAILY-HEARTH",
+          "instanceId": "C150",
+          "seriesOrdinal": 150,
+          "status": "kept",
+          "cause": "",
+          "keptStreak": 150,
+          "brokenStreak": 0,
+          "averageCompletionTicks": 28303
+        },
+        {
+          "id": "L18793",
+          "t": 14935000,
+          "day": 149,
+          "type": "completed",
+          "room": "kitchen",
+          "description": "I secured the hearth against the approaching dusk.",
+          "provenance": "lived_runtime_memory",
+          "kind": "prepare",
+          "controller": "autonomous",
+          "object": "hearth"
+        },
+        {
+          "id": "L18800",
+          "t": 14938700,
+          "day": 149,
+          "type": "completed",
+          "room": "bedchamber",
+          "description": "I sat awhile to recover my strength.",
+          "provenance": "lived_runtime_memory",
+          "kind": "rest",
+          "controller": "autonomous",
+          "object": "bed"
+        }
+      ],
+      "finalWorldSummary": {
+        "room": "laboratory",
+        "activity": {
+          "kind": "work",
+          "controller": "autonomous",
+          "query": "",
+          "target": "bench",
+          "room": "laboratory",
+          "status": "active",
+          "remaining": 1800,
+          "travelRemaining": 0,
+          "started": 14938800
+        },
+        "needs": {
+          "energy": 39.92,
+          "hunger": 16.86,
+          "comfort": 99,
+          "stimulation": 96.25,
+          "company": 40.84
+        },
+        "stores": {
+          "food": 19,
+          "water": 7,
+          "fuel": 12,
+          "tea": 16,
+          "preserved": 141,
+          "lampSupplies": 2,
+          "books": 1
+        },
+        "health": 100,
+        "dead": false
+      }
+    },
+    "restored": {
+      "eventLogFile": "fork-restored-200-ticks.jsonl",
+      "rawEventSha256": "5101c3611bc446fd273e43058d322b994f88faef3f115a4a80f3dc35c7cb2c08",
+      "eventsCount": 31,
+      "physicalReceipts": [
+        {
+          "id": "L18782",
+          "t": 14925100,
+          "day": 149,
+          "type": "commitment_progress",
+          "room": "laboratory",
+          "description": "I began the next part of an obligation.",
+          "provenance": "lived_runtime_memory",
+          "commitmentId": "C150",
+          "seriesId": "DAILY-HEARTH",
+          "action": "prepare",
+          "deadline": 14965000,
+          "controller": "autonomous"
+        },
+        {
+          "id": "L18787",
+          "t": 14927500,
+          "day": 149,
+          "type": "series_outcome",
+          "room": "kitchen",
+          "description": "I retained the result of one obligation in its recurring series.",
+          "provenance": "lived_runtime_memory",
+          "seriesId": "DAILY-HEARTH",
+          "instanceId": "C150",
+          "seriesOrdinal": 150,
+          "status": "kept",
+          "cause": "",
+          "keptStreak": 150,
+          "brokenStreak": 0,
+          "averageCompletionTicks": 28253
+        },
+        {
+          "id": "L18788",
+          "t": 14927500,
+          "day": 149,
+          "type": "completed",
+          "room": "kitchen",
+          "description": "I secured the hearth against the approaching dusk.",
+          "provenance": "lived_runtime_memory",
+          "kind": "prepare",
+          "controller": "autonomous",
+          "object": "hearth"
+        },
+        {
+          "id": "L18796",
+          "t": 14935600,
+          "day": 149,
+          "type": "completed",
+          "room": "laboratory",
+          "description": "I worked at my bench and learned something of the apparatus.",
+          "provenance": "lived_runtime_memory",
+          "kind": "work",
+          "controller": "autonomous",
+          "object": "bench"
+        },
+        {
+          "id": "L18802",
+          "t": 14939300,
+          "day": 149,
+          "type": "completed",
+          "room": "bedchamber",
+          "description": "I sat awhile to recover my strength.",
+          "provenance": "lived_runtime_memory",
+          "kind": "rest",
+          "controller": "autonomous",
+          "object": "bed"
+        }
+      ],
+      "finalWorldSummary": {
+        "room": "laboratory",
+        "activity": {
+          "kind": "work",
+          "controller": "autonomous",
+          "query": "",
+          "target": "bench",
+          "room": "laboratory",
+          "status": "active",
+          "remaining": 2400,
+          "travelRemaining": 0,
+          "started": 14939400
+        },
+        "needs": {
+          "energy": 39.92,
+          "hunger": 16.86,
+          "comfort": 98.25,
+          "stimulation": 97.18,
+          "company": 40.84
+        },
+        "stores": {
+          "food": 19,
+          "water": 7,
+          "fuel": 12,
+          "tea": 16,
+          "preserved": 141,
+          "lampSupplies": 2,
+          "books": 1
+        },
+        "health": 100,
+        "dead": false
+      }
+    },
+    "restorationByteIdentical": true,
+    "physicalKindSequences": {
+      "enabled": [
+        "prepare",
+        "work",
+        "rest"
+      ],
+      "disabled": [
+        "work",
+        "prepare",
+        "rest"
+      ]
+    },
+    "conclusion": "Decision and physical action order differed; eventual action-kind multiset was identical in the 200-tick window."
+  }
+}
