@@ -1,0 +1,36 @@
+name: Recurrent rumination preregistered causal trial
+on:
+  push:
+    branches:
+      - experiment/recurrent-rumination-20261120
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matched-trials:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm frozen experiment branch provenance
+        run: |
+          test -f research/RECURRENT_COUPLING_PREREG_2026-11-20.md
+          git merge-base --is-ancestor af899b25212df4c55f55e9a9758b4a94d33f6079 HEAD
+          git diff --quiet af899b25212df4c55f55e9a9758b4a94d33f6079 -- canon/ identity.json 'old sim/'
+      - name: Original regression plus new focused lesion tests
+        run: npm test
+      - name: Preregistered three-arm five-seed 90-day and seed-11 annual cohorts
+        run: node scripts/recurrent_coupling_trial.js
+      - name: Preserve full receipts, source hashes, individual outcomes and negative findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recurrent-rumination-preregistered
+          path: research-results/recurrent-20261120/
+          retention-days: 90
+          if-no-files-found: warn
