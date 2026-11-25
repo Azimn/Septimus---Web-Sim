@@ -1,0 +1,2 @@
+# Canonical data and executable source are byte-pinned across operating systems.
+* -text

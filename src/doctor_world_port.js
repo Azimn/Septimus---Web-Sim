@@ -91,7 +91,7 @@ function eventText(e){
  if(e.type==='visitor_conversation'&&witnessed)return 'I heard Rosa Brandl say, “'+e.additionalLine+'”';
  if(e.type==='carrier_conversation'&&witnessed)return 'I heard Mr. McFeely knock three times and wait for my acknowledgment.';
  if(e.type==='carrier_knock'&&e.coPresent===true)return 'I heard three knocks from the path-side post box.';
- if(e.type==='merchant_settlement'&&e.coPresent===true)return 'I settled an account with Rosa Brandl.';
+ if(e.type==='merchant_settlement'&&e.coPresent===true)return 'I attended to my account with Rosa Brandl.';
  if(e.type==='social'&&witnessed&&NAMES[e.personId]){
   const words={greeting:'greeted',conversation:'spoke with',trade:'traded with',friction:'had a disagreement with',
    negotiation:'negotiated with',gift:'exchanged a gift with',insult:'had an unpleasant exchange with'};
