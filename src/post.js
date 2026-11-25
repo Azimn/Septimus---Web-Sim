@@ -123,7 +123,7 @@ function arrive(s,log){
    marker:p.marker,source:'scenario_calendar'});
  log(s,'carrier_knock','Three knocks came from the path-side post box.',
   {personId:CARRIER,knocks:3,coPresent:s.location==='garden'&&!s.activity});
- const handed=s.location==='garden'&&!s.activity;
+ const handed=s.controllerMode!=='doctor_world'&&s.location==='garden'&&!s.activity;
  if(handed)socialMeet(s,log);
  const l=letter(day);
  if(l.senderId==='henry_frankenstein')mail.henryLetters++;
@@ -146,7 +146,7 @@ function scheduled(s,log){
  const phase=s.clock.centibeats%DAY,day=s.clock.day,p=carrierRecord(s);
  if(POST.days.includes(day%7)&&phase>=POST.arrivalPhase&&phase<POST.departurePhase&&!p.present&&!ensure(s).mailDays.includes(day))arrive(s,log);
  if(p.present&&phase>=POST.departurePhase)depart(s,log);
- if(p.present&&s.location==='garden'&&!s.activity)socialMeet(s,log);
+ if(s.controllerMode!=='doctor_world'&&p.present&&s.location==='garden'&&!s.activity)socialMeet(s,log);
 }
 function canCheck(s){return ensure(s).box.length>0;}
 function canRead(s){const mail=ensure(s);
