@@ -53,7 +53,7 @@ function arrive(s,log,scheduledVisit=false){const p=person(s);if(p.present)retur
      knowledgeNotLived:true});}
    deliverGoods(s,log);
  }
- if(s.location==='library'){if(scheduledVisit)meet(s,log);else address(s,log);}
+ if(s.location==='library'&&s.controllerMode!=='doctor_world'){if(scheduledVisit)meet(s,log);else address(s,log);}
  return event;
 }
 const DELIVERY=Object.freeze({food:2,fuel:2,priceFood:1,priceFuel:1,creditForStranger:30,creditWithPrior:90});
@@ -217,8 +217,7 @@ function scheduled(s,log){
   p.travelRemaining-=STEP;
   if(p.travelRemaining<=0){p.room=p.targetRoom;log(s,'visitor_moved','A caller walked through the tower to find me.',{personId:VISITOR,visitorRoom:p.room,perceived:p.room===s.location});}
  }
- meet(s,log);
- checkCustoms(s,log);
+ if(s.controllerMode!=='doctor_world'){meet(s,log);checkCustoms(s,log);}
 }
 function shared(s,log,kind,{id=VISITOR,fact='',privateToVisitor=false,sourceEventId=null}={}){
  const p=person(s,id);if(!p.present||p.room!==s.location)throw Error('Shared social event requires physical co-presence');
