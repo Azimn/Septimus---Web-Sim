@@ -14,7 +14,7 @@ const LABELS={
  work:'work at my bench',inspect:'inspect the instrument',study:'study my specimens',
  walk:'walk in my garden',tend:'tend my garden',gather_fuel:'gather fallen wood',
  draw_water:'draw water',converse:'speak with Rosa Brandl',preserve:'preserve provisions',
- trade:'exchange provisions with Rosa Brandl',meet_carrier:'speak with Mr. McFeely',
+ trade:'exchange provisions with Rosa Brandl',settle_account:'attend to my account with Rosa Brandl',meet_carrier:'speak with Mr. McFeely',
  check_mail:'collect my unopened post',read_letter:'read a letter in my possession',
  write_reply:'write a reply',post_reply:'post my reply',open_parcel:'open my delivered package'};
 function requireWorld(s){if(s.controllerMode!=='doctor_world'||!s.doctorWorld||!ID.test(s.doctorWorld.epoch))throw Error('Explicit canonical world enrollment required');}
@@ -39,6 +39,16 @@ function narrative(s){
  requireWorld(s);
  const lines=['I am in my '+ROOMS[s.location].label.toLowerCase()+'.'];
  for(const label of visible(s))lines.push('I can see '+label+'.');
+ if(s.perception.some(x=>x.id==='stores'&&x.room===s.location)){
+  if(s.stores.food+(s.stores.preserved||0)<=3)lines.push('I can see that my edible provisions are running low.');
+  if(s.stores.fuel<=3)lines.push('I can see that my fuel is running low.');
+  if(s.stores.water<=3)lines.push('I can see that my water is running low.');
+  if(s.stores.tea<=2)lines.push('I can see that my tea is running low.');
+ }
+ const rosa=s.people.visitor_01;
+ if(rosa?.present&&rosa.room===s.location)lines.push('I see Rosa Brandl here with me.');
+ const carrier=s.people.mcfeely;
+ if(carrier?.present&&carrier.room===s.location)lines.push('I see Mr. McFeely at the garden path.');
  if(s.needs.hunger>=70)lines.push('I am painfully hungry.');
  else if(s.needs.hunger>=40)lines.push('I could do with something to eat.');
  if(s.needs.energy<30)lines.push('I feel worn out and find it hard to concentrate.');
@@ -102,7 +112,8 @@ function eventsAfter(s,after=0){
   if(seq<=after)continue;
   const text=eventText(e);
   if(text)events.push({id:e.id,sequence:seq,sha256:digest(JSON.stringify(e)),
-   text,kind:e.type,actor:NAMES[e.personId]||e.sender||null,
+   text,kind:e.type,operation:e.type==='completed'||e.type==='action_failed'?e.kind:null,
+   actor:NAMES[e.personId]||e.sender||null,
    socialKind:e.type==='social'?e.kind:null,
    epistemic:e.type==='letter_read'?'received_testimony':'witnessed_experience',
    policyRef:e.policyRef||null});
@@ -116,7 +127,8 @@ function pulse(s,archive,request){
  requireWorld(s);
  if(!request||!ID.test(request.id)||!Number.isSafeInteger(request.steps)||request.steps<1||request.steps>1000||
     typeof request.revision!=='string')throw Error('Invalid bounded canonical host request');
- const signature=digest(JSON.stringify(request)),prior=s.doctorWorld.requests[request.id];
+ if(['__proto__','constructor','prototype'].includes(request.id))throw Error('Reserved request identifier');
+ const signature=digest(JSON.stringify(request)),prior=Object.hasOwn(s.doctorWorld.requests,request.id)?s.doctorWorld.requests[request.id]:null;
  if(prior){if(prior.signature!==signature)throw Error('Changed canonical request');return {...prior.result,replayed:true};}
  if(request.revision!==revision(s))throw Error('Stale observation');
  if(s.dead)throw Error('The inhabitant is deceased');

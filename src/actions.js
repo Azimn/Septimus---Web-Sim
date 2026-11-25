@@ -25,6 +25,7 @@ const DEFINITIONS={
  converse:{target:'visitor_01',duration:900,base:9,trait:'sociable'},
  preserve:{target:'stove',duration:SURPLUS.preserveDuration,base:8,trait:'industrious'},
  trade:{target:'visitor_01',duration:SURPLUS.tradeDuration,base:8,trait:'sociable'},
+ settle_account:{target:'visitor_01',duration:900,base:0,trait:'sociable'},
  meet_carrier:{target:'mcfeely',duration:650,base:10,trait:'sociable'},
  check_mail:{target:'path',duration:POST.mailCheckDuration,base:8,trait:'curious'},
  read_letter:{target:'notebook',duration:POST.letterReadDuration,base:12,trait:'curious'},
@@ -61,6 +62,9 @@ function available(state,kind){const a=DEFINITIONS[kind];if(!a||!(a.target in OB
  if(kind==='post_reply')return post().canPost(state);
  if(kind==='open_parcel')return post().canOpen(state);
  if(kind==='trade')return !!tradeOffer(state);
+ if(kind==='settle_account')return state.controllerMode==='doctor_world'&&
+  !!state.people.visitor_01?.present&&state.people.visitor_01.room===state.location&&
+  !!state.people.visitor_01.account?.statements?.some(x=>x.status==='due');
  if((state.worldLosses?.[a.target]||0)>state.clock.centibeats)return false;
  if((state.worldLosses?.['room:'+OBJECTS[a.target].room]||0)>state.clock.centibeats)return false;
  if(['eat','cook'].includes(kind)&&state.stores.food<1&&(state.stores.preserved||0)<1)return false;

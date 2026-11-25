@@ -45,7 +45,7 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
   return fail(s,a,'physical_refusal');
  if(a.kind==='work'&&n.hunger>=Economy.ECONOMY.workFailureHunger&&n.energy<Economy.ECONOMY.workFailureEnergy)
   return fail(s,a,'deprivation_reduced_work_success');
- if(['converse','trade'].includes(a.kind)&&!s.people.visitor_01.present)return fail(s,a,'visitor_departed');
+ if(['converse','trade','settle_account'].includes(a.kind)&&!s.people.visitor_01.present)return fail(s,a,'visitor_departed');
  if(a.kind==='meet_carrier'&&!s.people.mcfeely?.present)return fail(s,a,'carrier_departed');
  if(['cook','tea'].includes(a.kind)&&(st.water<1||st.fuel<1))return fail(s,a,'supplies_exhausted');
  if(a.kind==='tea'&&st.tea<1)return fail(s,a,'tea_exhausted');
@@ -87,6 +87,11 @@ function finish(s,a,archive){const n=s.needs,st=s.stores;let description='';
   log(s,'trade_link','The economic exchange and social consequence concern the same visitor.',
    {tradeEventId:receipt.id,socialEventId:shared.id,personId:'visitor_01'});
   break;
+ }
+ case 'settle_account':{
+  const settled=Social.settleAccount(s,log);
+  if(!settled)return fail(s,a,'statement_or_merchant_unavailable');
+  description='I attended to my account with Rosa Brandl.';break;
  }
  case 'prepare':n.comfort=clip(n.comfort+8);description='I secured the hearth against the approaching dusk.';break;
  case 'work':Skill.practice(s,'science',log,'work');n.energy=clip(n.energy-9);n.stimulation=clip(n.stimulation+18);description='I worked at my bench and learned something of the apparatus.';break;
